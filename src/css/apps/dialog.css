@@ -50,6 +50,9 @@
   border-color: var(--cpr-background-dialog-border);
   border-width: 0.125rem;
   border-radius: 0.313rem;
+  max-height: 20rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
 
   /*
   These are swapped due to the lack of header rows on dialogues.
@@ -69,6 +72,9 @@
   .dialog-item.dialog-item-header {
     background-color: var(--cpr-background-header) !important;
     color: var(--cpr-text-header);
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   .dialog-item.dialog-item-footer {
