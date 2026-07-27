@@ -1,9 +1,4 @@
-/* Mook skill dialog — two-column layout */
-
-.mook-skill-dialog .skill-columns {
-  display: flex;
-  gap: 0.625rem;
-}
+/* Mook skill dialog — scrollable list with sticky header */
 
 .mook-skill-dialog .dialog-list {
   border-style: outset;
@@ -13,8 +8,6 @@
   max-height: 20rem;
   overflow-y: auto;
   scrollbar-width: thin;
-  flex: 1 1 0;
-  min-height: 0;
 
   /*
   These are swapped due to the lack of header rows on dialogues.
@@ -44,15 +37,4 @@
     border-color: var(--cpr-background-dialog-border);
     border-width: 0.125rem 0 0;
   }
-}
-
-.mook-skill-dialog .dialog-item {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 0.25rem;
-}
-
-.mook-skill-dialog .dialog-item.dialog-item-header {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
 }
