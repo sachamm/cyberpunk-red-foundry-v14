@@ -135,11 +135,19 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       skillObj[s.id] = skillRef;
     });
 
+    const skills = Object.values(skillObj);
+    const mid = Math.ceil(skills.length / 2);
+    const leftSkills = skills.slice(0, mid);
+    const rightSkills = skills.slice(mid);
+    const templateData = { ...foundry.utils.duplicate(skillObj), leftSkills, rightSkills };
+
     // Pop up the form with embedded skill details.
     const formData = await cprFormPrompt({
-      data: foundry.utils.duplicate(skillObj),
+      data: templateData,
       title: SystemUtils.Localize("CPR.mookSheet.dialog.modSkillTitle"),
       template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
+      width: 720,
+      height: 520,
     });
     if (!formData) {
       return;

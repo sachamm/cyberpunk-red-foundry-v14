@@ -1,0 +1,58 @@
+/* Mook skill dialog — two-column layout */
+
+.mook-skill-dialog .skill-columns {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.mook-skill-dialog .dialog-list {
+  border-style: outset;
+  border-color: var(--cpr-background-dialog-border);
+  border-width: 0.125rem;
+  border-radius: 0.313rem;
+  max-height: 20rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  flex: 1 1 0;
+  min-height: 0;
+
+  /*
+  These are swapped due to the lack of header rows on dialogues.
+  Normally the order is: header > even (white) > odd (pink)
+  this makes the order: odd (white) > even (pink) so it matches
+  the same alternating order as the rest of the sheets.
+  */
+
+  li:nth-child(even) {
+    background-color: var(--cpr-background-row-odd);
+  }
+
+  li:nth-child(odd) {
+    background-color: var(--cpr-background-row-even);
+  }
+
+  .dialog-item.dialog-item-header {
+    background-color: var(--cpr-background-header) !important;
+    color: var(--cpr-text-header);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .dialog-item.dialog-item-footer {
+    border-style: outset;
+    border-color: var(--cpr-background-dialog-border);
+    border-width: 0.125rem 0 0;
+  }
+}
+
+.mook-skill-dialog .dialog-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 0.25rem;
+}
+
+.mook-skill-dialog .dialog-item.dialog-item-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}

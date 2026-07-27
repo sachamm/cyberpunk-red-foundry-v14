@@ -44,6 +44,7 @@ export async function cprConfirm(message, { title } = {}) {
  * @param {object} config.data - the data object passed to the template (and returned, mutated)
  * @param {string} config.title - the (already-localized) window title
  * @param {number|string} [config.width] - optional fixed window width
+ * @param {number|string} [config.height] - optional fixed window height
  * @param {(formData: object, data: object) => any} [config.process] - optional hook to transform the
  *   submitted form values before returning; when provided, its return value is what the promise resolves to
  * @param {boolean} [config.modal=false] - show as a modal dialog. Use for blocking
@@ -58,6 +59,7 @@ export async function cprFormPrompt({
   data,
   title,
   width,
+  height,
   process,
   modal = false,
   confirmLabel = "CPR.dialog.common.confirm",
@@ -69,9 +71,9 @@ export async function cprFormPrompt({
   const content = await renderTemplate(template, { ...data, object: data });
   const result = await DialogV2.wait({
     window: { title },
-    // Only set position when a width is requested; passing `position: undefined`
+    // Only set position when a width or height is requested; passing `position: undefined`
     // makes DialogV2's option merge throw.
-    ...(width ? { position: { width: parseInt(width, 10) } } : {}),
+    ...(width || height ? { position: { width: width ? parseInt(width, 10) : undefined, height: height ? parseInt(height, 10) : undefined } } : {}),
     modal,
     classes: ["cpr-dialog"],
     content,
