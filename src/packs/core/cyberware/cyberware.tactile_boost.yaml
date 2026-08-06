@@ -7,7 +7,7 @@ flags:
       current: 42
       previous: "41"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/tactile_boot.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/tactile_boost.svg
 name: Tactile Boost
 ownership:
   default: 0
