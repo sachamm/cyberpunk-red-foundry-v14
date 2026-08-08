@@ -20,21 +20,31 @@ Read it, keep every heading, and fill each section terse.
 
 ## Fill it out
 
-- **Intent** — a 1–2 sentence overview of what the MR does and why, then **one bullet per _major_
-  change** (a behaviour, API, or data-shape change). Not a per-commit changelog — skip incidental
-  refactors. Keep implementation detail out; reviewers read the diff.
+- **Intent** — everything from `### Intent` down to the first `---` belongs to this section. Treat that
+  divider as a **hard boundary**: put the 1–2 sentence overview and **one bullet per _major_ change**
+  (a behaviour, API, or data-shape change) above it, and do not let checklist items, issue references,
+  test instructions, screenshots, future work, or notes drift into that region. This is not a per-commit
+  changelog — skip incidental refactors. Keep implementation detail out; reviewers read the diff.
 - **Steps to Test** — the load-bearing section. Numbered, in order, **followable by a human with no
-  context**, like bug repro steps. Group them per thing to check: the steps to exercise it, then the
-  result they should see. Cover each major change. Shape:
+  context**. Write this as a procedural checklist, not prose. Prefer **one concrete action per numbered
+  step**. Put expected results in nested `-` bullets under the relevant step. Include setup and
+  precondition steps when they matter (for example: stop Foundry, set an env var, edit a config file).
+  Use exact files, env vars, commands, buttons, and visible pages where relevant. **Do not use inline
+  result markers like `→`. Do not list automated test commands here; CI covers automated tests, so this
+  section is only for manual human verification. Do not write conditional or branchy manual test steps
+  around incidental internal paths unless there is a reproducible human-triggerable setup for them; in
+  those cases, test the visible outcome the human can actually verify.** Cover each major change. Shape:
 
   ```text
   ### Steps to Test
   1. Open a weapon and set Damage to `{3d6,12}kh`, then roll damage.
-     → the roll is refused with a "not supported in a Damage field" warning (no crash).
+     - The roll is refused with a "not supported in a Damage field" warning.
+     - Foundry does not crash.
   2. In chat, type `/r 1d6red4dmg`.
-     → the roll is blocked with a red/dmg warning; nothing is posted.
+     - The roll is blocked with a red/dmg warning.
+     - Nothing is posted to chat.
   3. In chat, type `/r 1d10red`.
-     → rolls normally.
+     - The roll works normally.
   ```
 
 - **Screenshots (visible UI changes only)** — if the MR adjusts a sheet layout or makes visible CSS
@@ -66,7 +76,17 @@ Read it, keep every heading, and fill each section terse.
   Replace the placeholder `#100`.
 - **Checklist** — set the boxes: `[x]` = applies, `[~]` = not applicable (the template's convention).
   Almost every change is for the next release, so leave "next release" checked unless it's a hotfix.
-- **Future Work / Additional Notes** — terse, or delete the heading if there's nothing to say.
+- **Future Work** — only include this when there is an existing tracked follow-up (issue, ticket, or
+  other clearly recorded work). Do **not** put speculative ideas or untracked cleanup wishes here. If
+  there is no tracked follow-up, delete the heading or leave it empty per the template. **Never raise a
+  new ticket just to fill this section unless the dev explicitly asked you to create one.**
+- **Additional Notes** — only include this when there is genuinely useful reviewer context that is
+  important, non-obvious, and not already clear from **Intent**, **Steps to Test**, or the diff. Good
+  uses: a scope boundary reviewers are likely to misread, a temporary operational caveat, or a
+  verification constraint that changes how the MR should be reviewed. Do **not** use this section for
+  filler, implementation narration, restating the MR, or speculative future ideas. If there is nothing
+  genuinely load-bearing to say, delete the heading or leave it empty per the template. When in doubt,
+  omit it.
 
 ## Milestone
 
