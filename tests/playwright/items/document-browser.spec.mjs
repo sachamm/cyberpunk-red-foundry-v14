@@ -125,11 +125,10 @@ test.describe("Document browser", () => {
     await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
-    // Cycle the Weapon box's tri-state include -> exclude -> only.
+    // First click now narrows the type box directly to "only".
     const weaponTristate = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"] .cpr-browser-tristate[data-tree="type"]',
     );
-    await weaponTristate.click();
     await weaponTristate.click();
     await expect(weaponTristate).toHaveAttribute("data-state", "only");
 
@@ -173,17 +172,17 @@ test.describe("Document browser", () => {
       '.cpr-browser-tristate[data-tree="type"]',
     );
 
-    // Cycle the sub-filter include -> exclude -> only: this auto-promotes the
-    // box to "only".
-    await subFilter.click();
+    // First click now sets the sub-filter to "only", which auto-promotes the
+    // box to "only" as well.
     await subFilter.click();
     await expect(subFilter).toHaveAttribute("data-state", "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
 
-    // Cycle it once more (only -> include). With no "only" sub-filter left, a box
-    // we auto-promoted must fall back to "include", not stay stuck on "only".
+    // The next click moves "only" -> "exclude". With no "only" sub-filter left,
+    // a box we auto-promoted must fall back to "include", not stay stuck on
+    // "only".
     await subFilter.click();
-    await expect(subFilter).toHaveAttribute("data-state", "include");
+    await expect(subFilter).toHaveAttribute("data-state", "exclude");
     await expect(typeTristate).toHaveAttribute("data-state", "include");
   });
 
@@ -213,8 +212,7 @@ test.describe("Document browser", () => {
       '.cpr-browser-tristate[data-tree="type"]',
     );
 
-    // Set the box to "only" by hand (include -> exclude -> only); this expands it.
-    await typeTristate.click();
+    // Set the box to "only" by hand on the first click; this expands it.
     await typeTristate.click();
     await expect(typeTristate).toHaveAttribute("data-state", "only");
 
@@ -310,7 +308,6 @@ test.describe("Document browser", () => {
 
     // Choosing a child as "only" must auto-promote the parent type box.
     await armorOption.click();
-    await armorOption.click();
     await expect(armorOption).toHaveAttribute("data-state", "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
     await expect(entries).toHaveCount(2);
@@ -329,7 +326,6 @@ test.describe("Document browser", () => {
     await expect(typeTristate).toHaveAttribute("data-state", "include");
     await expect(entries).toHaveCount(expectedOrder.length);
 
-    await vehicleOption.click();
     await vehicleOption.click();
     await expect(vehicleOption).toHaveAttribute("data-state", "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
@@ -407,9 +403,8 @@ test.describe("Document browser", () => {
     );
     // The toggle is reachable by keyboard...
     await expect(weaponTristate).toHaveAttribute("tabindex", "0");
-    // ...and Enter cycles it the same way a click does (include -> exclude -> only).
+    // ...and Enter cycles it the same way a click does (include -> only).
     await weaponTristate.focus();
-    await weaponTristate.press("Enter");
     await weaponTristate.press("Enter");
     await expect(weaponTristate).toHaveAttribute("data-state", "only");
 

@@ -1127,14 +1127,14 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
 
   /**
    * Wire every tri-state toggle (the Type tree's type/sub-type nodes and the
-   * quality/source-book filters). Clicking cycles include → exclude → only and
+   * quality/source-book filters). Clicking cycles include → only → exclude and
    * re-renders the results.
    *
    * @private
    * @param {HTMLElement} root
    */
   #activateTristateListeners(root) {
-    const cycle = { include: "exclude", exclude: "only", only: "include" };
+    const cycle = { include: "only", only: "exclude", exclude: "include" };
     root.querySelectorAll(".cpr-browser-tristate").forEach((toggle) => {
       const tooltip = CPRDocumentBrowser.#tristateTooltip(toggle.dataset.state);
       toggle.setAttribute("data-tooltip", tooltip);
