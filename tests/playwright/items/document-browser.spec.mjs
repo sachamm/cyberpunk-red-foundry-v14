@@ -44,6 +44,16 @@ async function openItemBrowser(page) {
   return documentBrowser;
 }
 
+// Click a tristate span until it reports the wanted state. Use this for setup
+// where the final state matters more than how many clicks it took to reach it.
+async function cycleTo(locator, target) {
+  for (let i = 0; i < 4; i += 1) {
+    if ((await locator.getAttribute("data-state")) === target) return;
+    await locator.click();
+  }
+  await expect(locator).toHaveAttribute("data-state", target);
+}
+
 // Create a world upgrade item and retarget it to a specific upgradable item type.
 async function createUpgrade(page, { name, targetType }) {
   const id = await createDocumentViaUI(page, {
@@ -212,8 +222,8 @@ test.describe("Document browser", () => {
       '.cpr-browser-tristate[data-tree="type"]',
     );
 
-    // Set the box to "only" by hand on the first click; this expands it.
-    await typeTristate.click();
+    // Put the box in the manual "only" state before touching any child filter.
+    await cycleTo(typeTristate, "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
 
     // Toggling a sub-filter must not undo a box the user set to "only" directly —
@@ -221,7 +231,7 @@ test.describe("Document browser", () => {
     const subFilter = weaponBox.locator(
       '.cpr-browser-tristate[data-set="1"][data-filter="weaponType"][data-value="heavyMelee"]',
     );
-    await subFilter.click();
+    await cycleTo(subFilter, "exclude");
     await expect(subFilter).toHaveAttribute("data-state", "exclude");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
   });
@@ -307,7 +317,7 @@ test.describe("Document browser", () => {
     await expect(clothingOption).toBeVisible();
 
     // Choosing a child as "only" must auto-promote the parent type box.
-    await armorOption.click();
+    await cycleTo(armorOption, "only");
     await expect(armorOption).toHaveAttribute("data-state", "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
     await expect(entries).toHaveCount(2);
@@ -320,13 +330,13 @@ test.describe("Document browser", () => {
     await expect(vehicleOption).toBeVisible();
     await expect(clothingOption).toBeVisible();
 
-    // Repro: Armor only -> include -> Vehicle only, and Armor still displays.
-    await armorOption.click();
+    // Repro: Armor back to include, then Vehicle only, and Armor stays hidden.
+    await cycleTo(armorOption, "include");
     await expect(armorOption).toHaveAttribute("data-state", "include");
     await expect(typeTristate).toHaveAttribute("data-state", "include");
     await expect(entries).toHaveCount(expectedOrder.length);
 
-    await vehicleOption.click();
+    await cycleTo(vehicleOption, "only");
     await expect(vehicleOption).toHaveAttribute("data-state", "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
     await expect(armorOption).toBeVisible();

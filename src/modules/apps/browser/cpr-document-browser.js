@@ -1277,8 +1277,11 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    * @param {string} type
    */
   #promoteTypeToOnly(child, type) {
+    const parentWasManualOnly =
+      this.filterState.types[type] === "only" &&
+      !this.filterState.autoPromoted.has(type);
     this.filterState.types[type] = "only";
-    this.filterState.autoPromoted.add(type);
+    if (!parentWasManualOnly) this.filterState.autoPromoted.add(type);
     const box = child.closest(".cpr-browser-collapsible");
     const parent = box?.querySelector(
       '.cpr-browser-tristate[data-tree="type"]',
