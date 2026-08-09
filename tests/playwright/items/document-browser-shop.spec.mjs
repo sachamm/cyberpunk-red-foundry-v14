@@ -54,7 +54,10 @@ function parseDisplayedCurrency(valueText) {
 // set wealth just above/below it). The price-min filter guarantees the bought
 // item costs something, so the total is > 0.
 async function addPricedItemToCart(documentBrowser) {
-  const min = documentBrowser.locator(".cpr-browser-price-min");
+  const min = documentBrowser.locator(
+    ".cpr-browser-sidebar .cpr-browser-price-min",
+  );
+  await expect(min).toBeVisible();
   await min.fill("1");
   await min.blur();
   await expect(
@@ -116,6 +119,51 @@ test.describe("Document browser — player shop", () => {
         return dt.getData("text/plain");
       });
       expect(payload).toBe("");
+    } finally {
+      await context.close();
+    }
+  });
+
+  test("the sidebar minimum price filter stays active in shop mode", async ({
+    browser,
+    baseURL,
+  }) => {
+    const { context, page: player } = await openPlayerPage(browser, baseURL);
+    try {
+      const documentBrowser = await openItemBrowser(player);
+      await expect(
+        documentBrowser.locator(
+          ".cpr-browser-global-filters .cpr-browser-price-min",
+        ),
+      ).toHaveCount(0);
+
+      const min = documentBrowser.locator(
+        ".cpr-browser-sidebar .cpr-browser-price-min",
+      );
+      const buyableRows = documentBrowser.locator(
+        ".cpr-browser-entry:has(.cpr-browser-buy)",
+      );
+      await expect(min).toBeVisible();
+      await expect(buyableRows.first()).toBeVisible();
+
+      await min.fill("1000000");
+      await min.blur();
+      await expect(buyableRows).toHaveCount(0);
+
+      await min.fill("");
+      await min.blur();
+      await expect(buyableRows.first()).toBeVisible();
+
+      const rowToBuy = buyableRows.first();
+      const itemName = (
+        await rowToBuy.locator(".item-header-name").textContent()
+      )?.trim();
+      expect(itemName).toBeTruthy();
+      await rowToBuy.locator(".cpr-browser-buy").click();
+
+      const line = documentBrowser.locator(".cpr-browser-cart-item").first();
+      await expect(line).toBeVisible();
+      await expect(line.locator(".cpr-browser-cart-name")).toHaveText(itemName);
     } finally {
       await context.close();
     }

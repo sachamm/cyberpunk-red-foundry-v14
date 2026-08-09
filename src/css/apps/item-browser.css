@@ -12,15 +12,15 @@
   color: var(--cpr-text-normal);
 }
 
-/* Global filters across the top, on a single line. The grid mirrors the
-   sidebar/results columns below (same tracks + gap), so the search sits exactly
-   over the sidebar and the filters over the results list. */
+/* Global filters across the top. The grid mirrors the sidebar/results
+   columns below (same tracks + gap), so the search sits exactly over the
+   sidebar and the filters over the results list. */
 .cpr-browser-globals {
   grid-area: globals;
   display: grid;
   grid-template-columns: 16rem 1fr;
   column-gap: 0.5rem;
-  align-items: center;
+  align-items: start;
   padding-bottom: 0.5rem;
 }
 
@@ -36,23 +36,23 @@
   width: 100%;
 }
 
-/* The price/category/quality filters sit over the results list and are spread
-   evenly across its width. The reserved scrollbar gutter (matching the list's
-   thin scrollbar) keeps their right edge aligned with the list rows' edge rather
-   than overhanging the scrollbar. */
+/* The item-only filters sit over the results list. They still wrap when the
+   browser narrows, but only the compact top-bar controls remain here. */
 .cpr-browser-global-filters {
   min-width: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  overflow-y: auto;
-  scrollbar-gutter: stable;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem 0.75rem;
+  padding-right: 0.4rem;
 }
 
-/* Each filter field is label-beside-inputs so the whole bar is one row. */
+/* Keep the established label-beside-input layout, but let each field shrink or
+   move to the next row instead of forcing the whole bar to overflow. */
 .cpr-browser-global-filters .cpr-browser-field {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
   flex-direction: row;
   align-items: center;
   gap: 0.4rem;
@@ -62,10 +62,7 @@
   white-space: nowrap;
 }
 
-.cpr-browser-globals .cpr-browser-field-row > input {
-  width: 4rem;
-}
-
+.cpr-browser-globals .cpr-browser-source-scope,
 .cpr-browser-globals .cpr-browser-quality {
   width: 7rem;
 }
@@ -78,6 +75,18 @@
   gap: 0.5rem;
   padding-right: 0.4rem;
   overflow: hidden;
+}
+
+.cpr-browser-sidebar-price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 0 0 auto;
+}
+
+.cpr-browser-sidebar-price legend {
+  font-size: var(--cpr-font-small);
+  color: var(--cpr-text-hint);
 }
 
 .cpr-browser-sidebar-scroll {
@@ -125,6 +134,7 @@
 .cpr-document-browser .window-content input.cpr-browser-price-max,
 .cpr-document-browser .window-content select.cpr-browser-price-category-op,
 .cpr-document-browser .window-content select.cpr-browser-price-category-value,
+.cpr-document-browser .window-content select.cpr-browser-source-scope,
 .cpr-document-browser .window-content select.cpr-browser-quality,
 .cpr-document-browser .window-content select.cpr-browser-cart-actor-select {
   background: var(--cpr-background-foundry-input);

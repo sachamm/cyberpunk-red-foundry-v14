@@ -75,20 +75,71 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Document browser", () => {
-  test("launches from the Item directory and renders its filter UI", async ({
+  test("launches from the Item directory and renders its relocated price filter UI", async ({
     page: game,
   }) => {
     const documentBrowser = await openItemBrowser(game);
     await expect(
       documentBrowser.locator(".cpr-browser-name-input"),
     ).toBeVisible();
-    // The top-bar global filters and a per-type filter box are present.
-    await expect(
-      documentBrowser.locator(".cpr-browser-global-filters"),
-    ).toBeVisible();
-    await expect(
-      documentBrowser.locator('.cpr-browser-typebox[data-type="weapon"]'),
-    ).toBeVisible();
+
+    const globalFilters = documentBrowser.locator(
+      ".cpr-browser-global-filters",
+    );
+    const globalFields = globalFilters.locator(".cpr-browser-field");
+    await expect(globalFilters).toBeVisible();
+    await expect(globalFields).toHaveCount(3);
+    await expect(globalFields.nth(0)).toContainText("Source");
+    await expect(globalFields.nth(1)).toContainText("Quality");
+    await expect(globalFields.nth(2)).toContainText("Category");
+    await expect(globalFilters.locator(".cpr-browser-price-min")).toHaveCount(
+      0,
+    );
+    await expect(globalFilters.locator(".cpr-browser-price-max")).toHaveCount(
+      0,
+    );
+
+    const sidebarPrice = documentBrowser.locator(
+      ".cpr-browser-sidebar .cpr-browser-sidebar-price",
+    );
+    const priceMin = sidebarPrice.locator(".cpr-browser-price-min");
+    const priceMax = sidebarPrice.locator(".cpr-browser-price-max");
+    const ammoTypeBox = documentBrowser.locator(
+      '.cpr-browser-sidebar-scroll .cpr-browser-typebox[data-type="ammo"]',
+    );
+    await expect(sidebarPrice).toBeVisible();
+    await expect(priceMin).toBeVisible();
+    await expect(priceMax).toBeVisible();
+    await expect(ammoTypeBox).toBeVisible();
+
+    const sidebarOrder = await documentBrowser.evaluate((browser) => {
+      const sidebar = browser.querySelector(".cpr-browser-sidebar");
+      const sidebarChildren = sidebar ? [...sidebar.children] : [];
+      const priceFieldset = sidebar?.querySelector(
+        ".cpr-browser-sidebar-price",
+      );
+      const ammoFieldset = sidebar?.querySelector(
+        '.cpr-browser-typebox[data-type="ammo"]',
+      );
+      return {
+        priceIndex: sidebarChildren.findIndex((child) =>
+          child.classList.contains("cpr-browser-sidebar-price"),
+        ),
+        scrollIndex: sidebarChildren.findIndex((child) =>
+          child.classList.contains("cpr-browser-sidebar-scroll"),
+        ),
+        priceBeforeAmmo:
+          Boolean(priceFieldset && ammoFieldset) &&
+          Boolean(
+            priceFieldset.compareDocumentPosition(ammoFieldset) &
+            Node.DOCUMENT_POSITION_FOLLOWING,
+          ),
+      };
+    });
+    expect(sidebarOrder.priceIndex).toBeGreaterThanOrEqual(0);
+    expect(sidebarOrder.scrollIndex).toBeGreaterThanOrEqual(0);
+    expect(sidebarOrder.priceIndex).toBeLessThan(sidebarOrder.scrollIndex);
+    expect(sidebarOrder.priceBeforeAmmo).toBe(true);
   });
 
   test("name search narrows to a matching item and opens it on click", async ({
@@ -346,45 +397,69 @@ test.describe("Document browser", () => {
     );
   });
 
-  test("the price filter excludes items above the max", async ({
+  test("the sidebar price filter still applies both min and max bounds", async ({
     page: game,
   }) => {
     const nameTag = uniqueName("price");
+    const cheapName = `${nameTag} 1 cheap`;
+    const midName = `${nameTag} 2 mid`;
+    const dearName = `${nameTag} 3 dear`;
     const cheapId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "gear",
-      name: `${nameTag} cheap`,
+      name: cheapName,
     });
     await closeDocSheet(game, { collection: "items", id: cheapId });
+    const midId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: midName,
+    });
+    await closeDocSheet(game, { collection: "items", id: midId });
     const dearId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "gear",
-      name: `${nameTag} dear`,
+      name: dearName,
     });
     await closeDocSheet(game, { collection: "items", id: dearId });
 
     // Distinct prices (setup, not the action under test).
     await game.evaluate(
-      async ({ cheapId, dearId }) => {
+      async ({ cheapId, midId, dearId }) => {
         await game.items.get(cheapId).update({ "system.price.market": 50 });
+        await game.items.get(midId).update({ "system.price.market": 200 });
         await game.items.get(dearId).update({ "system.price.market": 500 });
       },
-      { cheapId, dearId },
+      { cheapId, midId, dearId },
     );
 
     const documentBrowser = await openItemBrowser(game);
     await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
-    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
-
-    const maxInput = documentBrowser.locator(".cpr-browser-price-max");
-    await maxInput.fill("100");
-    await maxInput.blur();
 
     const entries = documentBrowser.locator(".cpr-browser-entry");
-    await expect(entries).toHaveCount(1);
-    await expect(entries.first().locator(".item-header-name")).toHaveText(
-      `${nameTag} cheap`,
+    const entryNames = entries.locator(".item-header-name");
+    await expect(entries).toHaveCount(3);
+    await expect(entryNames).toHaveText([cheapName, midName, dearName]);
+
+    const minInput = documentBrowser.locator(
+      ".cpr-browser-sidebar .cpr-browser-price-min",
     );
+    await expect(minInput).toBeVisible();
+    await minInput.fill("100");
+    await minInput.blur();
+
+    await expect(entries).toHaveCount(2);
+    await expect(entryNames).toHaveText([midName, dearName]);
+
+    const maxInput = documentBrowser.locator(
+      ".cpr-browser-sidebar .cpr-browser-price-max",
+    );
+    await expect(maxInput).toBeVisible();
+    await maxInput.fill("300");
+    await maxInput.blur();
+
+    await expect(entries).toHaveCount(1);
+    await expect(entryNames).toHaveText([midName]);
   });
 
   test("a type box tri-state is keyboard operable (focus + Enter cycles it)", async ({

@@ -1,4 +1,19 @@
 <div class="cpr-browser-sidebar">
+  {{#if isItemContext}}
+  <fieldset class="cpr-browser-filter cpr-browser-sidebar-price">
+    <legend>{{localize "CPR.browser.price.label"}}</legend>
+    <div class="cpr-browser-field-row">
+      <input type="number" id="cpr-browser-price-min" class="cpr-browser-price-min"
+        min="0" value="{{priceMin}}"
+        aria-label="{{localize 'CPR.browser.price.label'}} {{localize 'CPR.browser.price.min'}}"
+        placeholder="{{localize 'CPR.browser.price.min'}}" />
+      <input type="number" class="cpr-browser-price-max" min="0" value="{{priceMax}}"
+        aria-label="{{localize 'CPR.browser.price.label'}} {{localize 'CPR.browser.price.max'}}"
+        placeholder="{{localize 'CPR.browser.price.max'}}" />
+    </div>
+  </fieldset>
+  {{/if}}
+
   <div class="cpr-browser-sidebar-scroll">
     {{#each typeBoxes}}
     <fieldset
