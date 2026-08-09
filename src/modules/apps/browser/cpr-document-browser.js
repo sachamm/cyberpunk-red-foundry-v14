@@ -117,6 +117,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       price: { min: null, max: null },
       priceCategory: { op: "any", value: null },
       quality: "",
+      sourceScope: "any",
       tristate: {},
       types: {},
       sets: {},
@@ -208,6 +209,12 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     };
     context.priceCategories = CPR.itemPriceCategory;
     context.quality = this.filterState.quality;
+    context.sourceScope = this.filterState.sourceScope;
+    context.sourceScopeOptions = {
+      any: "CPR.browser.compare.any",
+      world: "CPR.browser.source.world",
+      compendium: "CPR.browser.source.compendium",
+    };
     context.itemQuality = CPR.itemQuality;
 
     context.isShop = CPRDocumentBrowser.#isShop();
@@ -270,7 +277,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       docClass: entry.docClass,
       type: entry.type,
       typeLabel: CPRDocumentBrowser.#typeLabel(entry),
-      sourceLabel: entry.sourceLabel,
+      sourceLabel: CPRDocumentBrowser.#sourceKindLabel(entry),
       description: CPRDocumentBrowser.#plainText(
         foundry.utils.getProperty(entry, "system.description.value"),
       ),
@@ -312,12 +319,25 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     };
   }
 
+  /** @private @param {object} entry @returns {"world"|"compendium"} */
+  static #sourceKind(entry) {
+    return entry.source === "world" ? "world" : "compendium";
+  }
+
+  /** @private @param {object} entry @returns {string} */
+  static #sourceKindLabel(entry) {
+    return SystemUtils.Localize(
+      CPRDocumentBrowser.#sourceKind(entry) === "world"
+        ? "CPR.browser.source.world"
+        : "CPR.browser.source.compendium",
+    );
+  }
+
   /**
-   * The source citation shown in an entry card's header. An item may cite
-   * several source books (`system.sources`); the first book-having source is
-   * shown inline (uppercased by CSS) and any remaining sources go into a hover
-   * tooltip, one per line. Returns `{source, sourceTooltip}`, both "" when no
-   * source book is set.
+   * The source text shown in an entry card's header. Browser rows prepend the
+   * coarse source kind label and, when present, append the first cited
+   * source-book citation. Remaining cited books stay in the hover tooltip
+   * exactly as before.
    *
    * @private
    * @param {object} entry
@@ -325,7 +345,12 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    */
   static #sourceDisplay(entry) {
     const sources = foundry.utils.getProperty(entry, "system.sources");
-    return SystemUtils.FormatSourceDisplay(sources);
+    const { source, sourceTooltip } = SystemUtils.FormatSourceDisplay(sources);
+    const originLabel = CPRDocumentBrowser.#sourceKindLabel(entry);
+    return {
+      source: source ? `${originLabel} / ${source}` : originLabel,
+      sourceTooltip,
+    };
   }
 
   /**
@@ -503,9 +528,9 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
 
   /**
    * The filter definitions active for the current mode/type: the common item
-   * filters (plus the dynamic source-book filter) when browsing items, followed
-   * by the selected type's own filters. Shared by the filter UI and predicates
-   * so they never drift apart.
+   * filters (plus the dynamic brand/source-book filters) when browsing items,
+   * followed by the selected type's own filters. Shared by the filter UI and
+   * predicates so they never drift apart.
    *
    * @private
    * @returns {Array<object>}
@@ -536,7 +561,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   /**
    * Resolve the active filter definitions into render-ready controls carrying
    * the current selection. Set filters with a fixed enum read their options
-   * from config; the dynamic book filter derives its options from the entries.
+   * from config; dynamic filters derive their options from the indexed entries.
    *
    * @private
    * @param {Array<object>} entries - the unfiltered entries for the active mode
@@ -545,12 +570,11 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   #getFilterContext(entries) {
     return this.#activeFilterDefs().map((definition) => {
       const choices = definition.dynamic
-        ? CPRDocumentBrowser.#dynamicChoices(
-            definition.field,
-            entries,
-            definition.multi,
-            definition.valueKey,
-          )
+        ? CPRDocumentBrowser.#dynamicChoices(definition.field, entries, {
+            multi: definition.multi,
+            valueKey: definition.valueKey,
+            labelField: definition.labelField,
+          })
         : Object.entries(CPR[definition.choices] ?? {});
       const states = this.filterState.tristate[definition.id] ?? {};
       return {
@@ -570,7 +594,8 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   /**
    * Build [value, label] choice pairs from the distinct, non-empty values a
    * field takes across the supplied entries (used for free-text fields like the
-   * source book and brand). The raw value is its own label.
+   * source book, brand, and origin). The raw value is its own label unless a
+   * separate `labelField` is supplied.
    *
    * When `multi` is set, `field` is an array path (e.g. `system.sources`) and
    * each element's `valueKey` property supplies the value, so an entry citing
@@ -579,29 +604,37 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    * @private
    * @param {string} field
    * @param {Array<object>} entries
-   * @param {boolean} [multi] - whether `field` is an array of value-bearing objects
-   * @param {string} [valueKey] - the property to read off each array element when `multi`
+   * @param {object} [options]
+   * @param {boolean} [options.multi] - whether `field` is an array of value-bearing objects
+   * @param {string} [options.valueKey] - the property to read off each array element when `multi`
+   * @param {string} [options.labelField] - an alternate field to read a visible label from
    * @returns {Array<[string, string]>}
    */
-  static #dynamicChoices(field, entries, multi = false, valueKey = null) {
-    const values = new Set();
+  static #dynamicChoices(
+    field,
+    entries,
+    { multi = false, valueKey = null, labelField = null } = {},
+  ) {
+    const values = new Map();
     for (const entry of entries) {
       if (multi) {
         const list = foundry.utils.getProperty(entry, field) ?? [];
         for (const item of list) {
           const value = item?.[valueKey];
-          if (value) values.add(value);
+          if (value && !values.has(value)) values.set(value, value);
         }
       } else {
         const value = foundry.utils.getProperty(entry, field);
-        if (value) values.add(value);
+        if (!value || values.has(value)) continue;
+        values.set(
+          value,
+          foundry.utils.getProperty(entry, labelField) || value,
+        );
       }
     }
-    return Array.from(values)
-      .map((value) => [value, value])
-      .sort((a, b) =>
-        SystemUtils.Localize(a[1]).localeCompare(SystemUtils.Localize(b[1])),
-      );
+    return Array.from(values.entries()).sort((a, b) =>
+      SystemUtils.Localize(a[1]).localeCompare(SystemUtils.Localize(b[1])),
+    );
   }
 
   /**
@@ -724,6 +757,15 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       predicates.push(
         (entry) =>
           foundry.utils.getProperty(entry, "system.quality") === quality,
+      );
+    }
+
+    const { sourceScope } = this.filterState;
+    if (sourceScope !== "any") {
+      predicates.push((entry) =>
+        sourceScope === "world"
+          ? CPRDocumentBrowser.#sourceKind(entry) === "world"
+          : CPRDocumentBrowser.#sourceKind(entry) === "compendium",
       );
     }
 
@@ -1026,7 +1068,8 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Wire the top global controls: name search, price range, and price category.
+   * Wire the top global controls: name search, source scope, price range, and
+   * price category.
    *
    * @private
    */
@@ -1072,6 +1115,13 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       ?.addEventListener("change", (event) => {
         const { value } = event.target;
         this.filterState.priceCategory.value = value === "" ? null : value;
+        this.render({ parts: ["results"] });
+      });
+
+    root
+      .querySelector(".cpr-browser-source-scope")
+      ?.addEventListener("change", (event) => {
+        this.filterState.sourceScope = event.target.value;
         this.render({ parts: ["results"] });
       });
 
