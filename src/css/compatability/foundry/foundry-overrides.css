@@ -4,6 +4,8 @@
  * here is now scoped to CPR's own windows (sheets, dialogs, apps) and — for the
  * deliberate journal exception — journal page content. Our stylesheet sits on
  * the @system cascade layer (see src/system.json).
+ *
+ * Rolltables also require their own set of exceptions.
  */
 
 /****************
@@ -16,7 +18,8 @@
 .demon-sheet,
 .dialog-sheet,
 .item-sheet,
-.mook-sheet {
+.mook-sheet,
+.roll-table-sheet .window-content {
   font-family: var(--cpr-font-primary);
   color: var(--cpr-text-normal);
   background: var(--cpr-background-window);
@@ -53,6 +56,24 @@
     text-shadow: 0 0 0.5rem var(--cpr-background-foundry-hover);
   }
 
+  /* Inline code in our own windows (Foundry styles its own code elsewhere). */
+  code {
+    background-color: var(--cpr-background-code);
+    padding: 0.125rem;
+  }
+}
+
+/*
+ * CPR input field styling obfuscates user editable fields on rolltables.
+ * Rolltable input fields will be handled further down the sheet.
+ */
+.actor-sheet,
+.blackice-sheet,
+.container-sheet,
+.demon-sheet,
+.dialog-sheet,
+.item-sheet,
+.mook-sheet {
   input[type="text"],
   input[type="number"],
   input[type="password"],
@@ -83,18 +104,13 @@
     color: var(--cpr-text-normal);
     opacity: 0.6;
   }
-
-  /* Inline code in our own windows (Foundry styles its own code elsewhere). */
-  code {
-    background-color: var(--cpr-background-code);
-    padding: 0.125rem;
-  }
 }
 
 /* Inline code in journal page content (journal exception). */
 .journal-entry-content code,
 .journal-page-content code,
-.journal-sheet-container code {
+.journal-sheet-container code,
+.roll-table-sheet code {
   background-color: var(--cpr-background-code);
   padding: 0.125rem;
 }
@@ -144,7 +160,9 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     .releasenotes,
     .journal-entry-content,
     .journal-page-content,
-    .journal-sheet-container
+    .journal-sheet-container,
+    .roll-table-sheet .window-content,
+    .table-result-config
   )
   :is(.prosemirror, .prosemirror.menu-dialog) {
   form {
@@ -208,7 +226,9 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     .releasenotes,
     .journal-entry-content,
     .journal-page-content,
-    .journal-sheet-container
+    .journal-sheet-container,
+    .roll-table-sheet .window-content,
+    .table-result-config
   )
   .editor.prosemirror {
   min-height: 10rem;
@@ -232,6 +252,9 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
  * TextEditor/Prosemirror Overides — journal page content plus rich-text inside
  * our own windows.
  */
+
+.roll-table-sheet .window-content,
+.table-result-config,
 .releasenotes,
 .journal-entry-content,
 .journal-page-content,
@@ -244,7 +267,8 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     .dialog-sheet,
     .item-sheet,
     .mook-sheet,
-    .cpr-migration-dialog
+    .cpr-migration-dialog,
+
   )
   :is(.prosemirror, .editor-content) {
   font-family: var(--cpr-font-primary);
@@ -263,51 +287,6 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
   /* We don't want no stinkin' borders */
   img {
     border: none;
-  }
-
-  /*
-  This only supports tables with alternating color rows (90% of tables in the
-  the book), will need some more rules for alternating color columns.
-  This mess is because when using the markdown editor (vs. TinyMCE /
-  Prosemirror) it add a 'thead' element so we need to account for that when
-  coloring the rows. The only difference is that tables with a 'thead' start
-  with pink rows rather than white rows. This shouldn't really matter as
-  they should be consistent across all uses of tables with 'thead'.
-  */
-
-  /* First row of every table */
-  table tr:first-of-type {
-    color: var(--cpr-text-journal-table-header);
-    background: var(--cpr-background-dialog-border);
-    font-weight: 550;
-    text-align: left;
-    text-shadow: none;
-  }
-
-  table thead + tbody tr:first-of-type {
-    background-color: var(--cpr-background-progress);
-  }
-
-  table tbody tr:nth-of-type(even):not(:first-of-type),
-  table thead + tbody tr:nth-of-type(2n) {
-    color: var(--cpr-text-normal);
-    background: var(--cpr-background-row-even);
-  }
-
-  table tbody tr:nth-of-type(odd):not(:first-of-type),
-  table thead + tbody tr:nth-of-type(2n + 1) {
-    color: var(--cpr-text-normal);
-    background: var(--cpr-background-row-odd);
-    font-weight: 400;
-  }
-
-  table {
-    tr,
-    td,
-    th {
-      border: 0.313rem solid var(--cpr-background-dialog-border) !important;
-      padding: 0.313rem !important;
-    }
   }
 
   .journal-sidebar {
@@ -334,7 +313,7 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     font-variant: small-caps;
   }
 
-  h1 {
+  h1:not(.roll-table-sheet .sheet-header h1) {
     position: relative;
     border-bottom: 1.57rem solid var(--cpr-text-header-line);
     font-size: 2rem;
@@ -394,7 +373,7 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     }
   }
 
-  h4 {
+  h4:not(.roll-table-sheet .sheet-header h4) {
     text-align: center;
     border-bottom: none;
     font-size: 1.8rem;
@@ -454,5 +433,129 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     background: var(--cpr-background-journal-info);
     border-radius: 0.313rem;
     margin: 0.313rem 0;
+  }
+}
+
+.releasenotes,
+.journal-entry-content,
+.journal-page-content,
+.journal-sheet-container,
+:is(
+    .actor-sheet,
+    .blackice-sheet,
+    .container-sheet,
+    .demon-sheet,
+    .dialog-sheet,
+    .item-sheet,
+    .mook-sheet,
+    .cpr-migration-dialog,
+
+  )
+  :is(.prosemirror, .editor-content) {
+  /*
+  Roll table sheets make heavy use of <table> elements but otherwise don't give them their own class.
+  We'll separate out this block and address Rolltable tables on the own terms further down.
+  *
+  *
+  This only supports tables with alternating color rows (90% of tables in the
+  the book), will need some more rules for alternating color columns.
+  This mess is because when using the markdown editor (vs. TinyMCE /
+  Prosemirror) it add a 'thead' element so we need to account for that when
+  coloring the rows. The only difference is that tables with a 'thead' start
+  with pink rows rather than white rows. This shouldn't really matter as
+  they should be consistent across all uses of tables with 'thead'.
+  *
+  *
+  We take a shortcut here and style the first row of every table as if it were a header because prosemirror doesn't create any <thead>.
+  */
+  table tr:first-of-type {
+    color: var(--cpr-text-journal-table-header);
+    background: var(--cpr-background-dialog-border);
+    font-weight: 550;
+    text-align: left;
+    text-shadow: none;
+  }
+
+  table thead + tbody tr:first-of-type {
+    background-color: var(--cpr-background-progress);
+  }
+
+  table tbody tr:nth-of-type(even):not(:first-of-type),
+  table thead + tbody tr:nth-of-type(2n) {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-row-even);
+  }
+
+  table tbody tr:nth-of-type(odd):not(:first-of-type),
+  table thead + tbody tr:nth-of-type(2n + 1) {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-row-odd);
+    font-weight: 400;
+  }
+
+  table {
+    tr,
+    td,
+    th {
+      border: 0.313rem solid var(--cpr-background-dialog-border) !important;
+      padding: 0.313rem !important;
+    }
+  }
+}
+
+/*
+ * Rolltables don't follow the same class construction as Journals, but we want to carry over the same styling for rolltables too.
+ * The .sheet-header contains unclassed img, h1, h3, and button elements
+ * The table description is just dropped into the `section.window-contnet` as is instead of being wrapped in a div or assigned a class,
+ */
+.roll-table-sheet {
+  .sheet-header {
+    img {
+      max-width: 5rem;
+    }
+
+    h4 {
+      text-align: center;
+
+      &::before {
+        content: "🎲 ";
+      }
+    }
+
+    input {
+      color: var(--cpr-text-chat-normal) !important;
+      font-family: var(--cpr-font-journal-header);
+      font-weight: 800;
+      font-variant: small-caps;
+    }
+  }
+
+  /* CPR's prose mirror styles take a shortcut and apply all header-like styling to the first row of any table
+   * since foundry's rolltables use thead elements, we need to follow foundry's lead here and undo our shortcut
+  */
+  table thead {
+    color: var(--cpr-text-journal-table-header);
+    background: var(--cpr-background-dialog-border);
+    font-weight: 550;
+    text-align: left;
+    text-shadow: none;
+  }
+
+  table tbody tr:nth-of-type(even),
+  table thead + tbody tr:nth-of-type(2n) {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-row-even);
+  }
+
+  table tbody tr:nth-of-type(odd),
+  table thead + tbody tr:nth-of-type(2n + 1) {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-row-odd);
+    font-weight: 400;
+  }
+
+  /* Provide enhanced visual clarity between drawn & undrawn result entries */
+  tr.drawn {
+    font-family: var(--cpr-font-pause);
   }
 }
