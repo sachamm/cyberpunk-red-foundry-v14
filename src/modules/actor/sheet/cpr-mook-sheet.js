@@ -135,11 +135,28 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       skillObj[s.id] = skillRef;
     });
 
+    // Split skills into two halves for the two-column dialog layout.
+    const skillArr = Object.values(skillObj);
+    const mid = Math.ceil(skillArr.length / 2);
+    const left = {};
+    const right = {};
+    skillArr.slice(0, mid).forEach((s) => {
+      left[s.id] = s;
+    });
+    skillArr.slice(mid).forEach((s) => {
+      right[s.id] = s;
+    });
+
     // Pop up the form with embedded skill details.
     const formData = await cprFormPrompt({
-      data: foundry.utils.duplicate(skillObj),
+      data: {
+        ...foundry.utils.duplicate(skillObj),
+        objectLeft: left,
+        objectRight: right,
+      },
       title: SystemUtils.Localize("CPR.mookSheet.dialog.modSkillTitle"),
       template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
+      resizable: true,
     });
     if (!formData) {
       return;
@@ -149,6 +166,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     const updatedSkills = [];
     for (const oldSkill of Object.values(skillObj)) {
       const newSkill = formData[oldSkill.id];
+      if (newSkill === undefined) continue;
       if (oldSkill.level !== newSkill.level) {
         LOGGER.debug(
           `you changed ${oldSkill.name} from ${oldSkill.level} to ${newSkill.level}`,

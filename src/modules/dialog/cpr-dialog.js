@@ -52,6 +52,7 @@ export async function cprConfirm(message, { title } = {}) {
  *   in the top layer, centred and constrained to the viewport.
  * @param {string} [config.confirmLabel] - localization key for the confirm button
  * @param {string} [config.cancelLabel] - localization key for the cancel button
+ * @param {boolean} [config.resizable] - allow the user to resize the dialog window
  * @returns {Promise<object|null>} the mutated data object on confirm, or null if cancelled/dismissed
  */
 export async function cprFormPrompt({
@@ -62,6 +63,7 @@ export async function cprFormPrompt({
   height,
   process,
   modal = false,
+  resizable = false,
   confirmLabel = "CPR.dialog.common.confirm",
   cancelLabel = "CPR.dialog.common.cancel",
 }) {
@@ -70,7 +72,10 @@ export async function cprFormPrompt({
   // and also under `object` (which several templates iterate).
   const content = await renderTemplate(template, { ...data, object: data });
   const result = await DialogV2.wait({
-    window: { title },
+    window: {
+      title,
+      ...(resizable ? { resizable: true } : {}),
+    },
     // Only set position when a width or height is requested; passing `position: undefined`
     // makes DialogV2's option merge throw.
     ...(width || height ? { position: { width: width ? parseInt(width, 10) : undefined, height: height ? parseInt(height, 10) : undefined } } : {}),

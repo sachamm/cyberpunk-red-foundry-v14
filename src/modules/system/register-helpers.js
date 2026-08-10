@@ -623,6 +623,19 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Split a skills object (keyed by skill id) into two halves for a
+   * two-column layout. Returns `{ left: [...], right: [...] }`.
+   */
+  Handlebars.registerHelper("cprSplitSkills", (object) => {
+    const skills = Object.values(object);
+    const mid = Math.ceil(skills.length / 2);
+    return {
+      left: skills.slice(0, mid),
+      right: skills.slice(mid),
+    };
+  });
+
+  /**
    * Get all installed cyberware and options and return it as an array. This is
    * used in the mook sheet.
    */
