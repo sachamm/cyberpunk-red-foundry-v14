@@ -156,7 +156,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       },
       title: SystemUtils.Localize("CPR.mookSheet.dialog.modSkillTitle"),
       template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
-      resizable: true,
     });
     if (!formData) {
       return;
