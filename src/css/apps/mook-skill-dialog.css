@@ -1,23 +1,5 @@
 /* Mook skill dialog — two-column scrollable list with sticky headers */
 
-.mook-skill-dialog .dialog-list {
-  border-style: outset;
-  border-color: var(--cpr-background-dialog-border);
-  border-width: 0.125rem;
-  border-radius: 0.313rem;
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.mook-skill-dialog .dialog-scroll {
-  overflow-y: auto;
-  scrollbar-width: thin;
-  flex: 1 1 auto;
-  min-height: 0;
-}
-
 .mook-skills-columns {
   display: flex;
   flex-direction: row;
@@ -28,18 +10,10 @@
   min-width: 0;
 }
 
-.mook-skills-column .dialog-item-header {
-  background-color: var(--cpr-background-header) !important;
-  color: var(--cpr-text-header);
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.mook-skills-column .dialog-item:nth-child(even) {
+.mook-skills-column li:nth-of-type(even) {
   background-color: var(--cpr-background-row-odd);
 }
 
-.mook-skills-column .dialog-item:nth-child(odd) {
+.mook-skills-column li:nth-of-type(odd) {
   background-color: var(--cpr-background-row-even);
 }

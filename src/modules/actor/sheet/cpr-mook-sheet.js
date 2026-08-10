@@ -162,6 +162,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     }
 
     // go over each skill and see if the value differs from the skill objects on the mook (actor)
+    const skillById = new Map(this.actor.itemTypes.skill.map((s) => [s.id, s]));
     const updatedSkills = [];
     for (const oldSkill of Object.values(skillObj)) {
       const newSkill = formData[oldSkill.id];
@@ -170,9 +171,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
         LOGGER.debug(
           `you changed ${oldSkill.name} from ${oldSkill.level} to ${newSkill.level}`,
         );
-        const [updatedSkill] = this.actor.itemTypes.skill.filter(
-          (s) => oldSkill.name === s.name,
-        );
+        const updatedSkill = skillById.get(oldSkill.id);
         updatedSkill.setSkillLevel(newSkill.level);
         updatedSkills.push({
           _id: updatedSkill._id,
