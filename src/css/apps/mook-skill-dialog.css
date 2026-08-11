@@ -2,7 +2,7 @@
 
 .mook-skills-scrollable {
   overflow-y: auto;
-  max-height: 400px;
+  max-height: 25rem;
 }
 
 .mook-skills-columns {
@@ -22,7 +22,7 @@
   z-index: 100 !important;
   background-color: var(--cpr-background-header);
   color: var(--cpr-text-header);
-  border-bottom: 1px solid var(--cpr-border-color);
+  border-bottom: 0.063rem solid var(--cpr-border-color);
 }
 
 .mook-skills-column li:nth-of-type(even) {
@@ -43,7 +43,7 @@
   padding: 0.25rem 0.5rem;
   background-color: var(--cpr-background-header);
   color: var(--cpr-text-header);
-  border-bottom: 1px solid var(--cpr-border-color);
+  border-bottom: 0.063rem solid var(--cpr-border-color);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;

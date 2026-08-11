@@ -73,7 +73,14 @@ export async function cprFormPrompt({
     window: { title },
     // Only set position when a width or height is requested; passing `position: undefined`
     // makes DialogV2's option merge throw.
-    ...(width || height ? { position: { width: width ? parseInt(width, 10) : undefined, height: height ? parseInt(height, 10) : undefined } } : {}),
+    ...(width || height
+      ? {
+          position: {
+            width: width ? parseInt(width, 10) : undefined,
+            height: height ? parseInt(height, 10) : undefined,
+          },
+        }
+      : {}),
     modal,
     classes: ["cpr-dialog"],
     content,
