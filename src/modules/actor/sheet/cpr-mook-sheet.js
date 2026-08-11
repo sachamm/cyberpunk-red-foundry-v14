@@ -135,17 +135,53 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       skillObj[s.id] = skillRef;
     });
 
-    // Split skills into two halves for the two-column dialog layout.
-    const skillArr = Object.values(skillObj);
-    const mid = Math.ceil(skillArr.length / 2);
+    // Group skills by category (in CPR.skillCategories order) for display.
+    const categoryOrder = Object.keys(CPR.skillCategories);
+    // Attach category to each skill ref.
+    for (const skill of this.actor.itemTypes.skill) {
+      if (skillObj[skill.id]) {
+        skillObj[skill.id]._category = skill.system.category;
+      }
+    }
+    // Build per-category arrays.
+    const grouped = {};
+    for (const cat of categoryOrder) {
+      const skillsInCat = Object.values(skillObj).filter(
+        (s) => s._category === cat,
+      );
+      if (skillsInCat.length > 0) {
+        grouped[cat] = skillsInCat;
+      }
+    }
+    // Split at a category boundary: find where the halfway point falls.
+    const totalSkills = Object.values(skillObj).length;
+    const half = Math.ceil(totalSkills / 2);
+    let cumulative = 0;
+    let splitIndex = 0;
+    for (let i = 0; i < categoryOrder.length; i++) {
+      const cat = categoryOrder[i];
+      const catCount = grouped[cat] ? grouped[cat].length : 0;
+      if (cumulative + catCount >= half) {
+        splitIndex = i;
+        break;
+      }
+      cumulative += catCount;
+    }
+    // Assign categories to left (before split) and right (from split onward).
     const left = {};
     const right = {};
-    skillArr.slice(0, mid).forEach((s) => {
-      left[s.id] = s;
-    });
-    skillArr.slice(mid).forEach((s) => {
-      right[s.id] = s;
-    });
+    for (let i = 0; i < splitIndex; i++) {
+      const cat = categoryOrder[i];
+      if (grouped[cat]) {
+        left[cat] = grouped[cat];
+      }
+    }
+    for (let i = splitIndex; i < categoryOrder.length; i++) {
+      const cat = categoryOrder[i];
+      if (grouped[cat]) {
+        right[cat] = grouped[cat];
+      }
+    }
 
     // Pop up the form with embedded skill details.
     const formData = await cprFormPrompt({
