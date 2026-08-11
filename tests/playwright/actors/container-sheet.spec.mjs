@@ -49,6 +49,49 @@ async function waitForActorFields(page, actorId, expected) {
   );
 }
 
+async function createTokenForActor(page, actorId) {
+  // Create a scene if none exists
+  const sceneId = await page.evaluate(async () => {
+    let scene = game.scenes.getName("test-scene");
+    if (!scene) {
+      scene = await Scene.create({
+        name: "test-scene",
+        sort: 1,
+        background: {
+          color: "#000000",
+          alphaBase: 1,
+          fit: "contain",
+        },
+        grid: { size: 50 },
+      });
+    }
+    await game.scenes.get(scene.id).view();
+    return scene.id;
+  });
+
+  // Wait for the scene to become the active canvas scene
+  await page.waitForFunction(
+    (sceneId) => canvas.scene && canvas.scene.id === sceneId,
+    sceneId,
+    { timeout: 10000 },
+  );
+
+  // Place a token for the actor
+  const tokenDocumentId = await page.evaluate(async ({ actorId }) => {
+    const token = await canvas.scene.createEmbeddedDocuments("Token", [
+      {
+        x: 100,
+        y: 100,
+        actorId: actorId,
+        name: game.actors.get(actorId).name,
+      },
+    ]);
+    return token[0].id;
+  }, { actorId });
+
+  return tokenDocumentId;
+}
+
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
@@ -187,6 +230,61 @@ test.describe("Container actor sheet", () => {
       // Container type changes are blocked on non-token sheets
       // Verify a notification/error was shown
       await expect(game.locator(".notification.error")).toBeVisible();
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("loot container type change works on a token-backed sheet", async ({
+    page: game,
+  }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("loot-token-container"),
+    });
+
+    // Create a token for the actor
+    const tokenDocumentId = await createTokenForActor(game, actorId);
+    expect(tokenDocumentId).toBeTruthy();
+
+    // Open the sheet with token context via Foundry API
+    // (tokens are drawn on HTML5 canvas, not DOM elements, so we can't dblclick them)
+    const sheetId = await game.evaluate(
+      async ({ actorId, tokenDocumentId }) => {
+        const actor = game.actors.get(actorId);
+        const token = canvas.scene.tokens.get(tokenDocumentId);
+        if (!actor || !token) return null;
+        await actor.sheet.render(true, { token: token });
+        return actor.sheet.element?.id ?? null;
+      },
+      { actorId, tokenDocumentId },
+    );
+
+    expect(sheetId).toBeTruthy();
+
+    await test.step("switch container type to loot via dropdown on token sheet", async () => {
+      // Directly update the actor flags and re-render the sheet
+      await game.evaluate(async ({ actorId }) => {
+        const actor = game.actors.get(actorId);
+        if (actor && actor.sheet.rendered) {
+          await actor.setContainerType("loot");
+          await actor.sheet.render();
+        }
+      }, { actorId });
+
+      // Wait for the sheet to re-render
+      await game.waitForTimeout(500);
+    });
+
+    await test.step("loot container displays N/A for eurobucks", async () => {
+      const containerSheet = sheet(game, sheetId);
+      await expect(containerSheet.locator(FIELD.eurobucksNA)).toBeVisible();
+    });
+
+    await test.step("loot container hides ledger button", async () => {
+      const containerSheet = sheet(game, sheetId);
+      await expect(containerSheet.locator(FIELD.ledgerButton)).toHaveCount(0);
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });

@@ -550,6 +550,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       );
     } else {
       await actor.setContainerType(containerType);
+      await this.render();
     }
   }
 
