@@ -201,15 +201,32 @@ export default class CPRActor extends Actor {
     if (isMigration || !embeddedName === "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
-    let itemsToCreate = items;
-
     // Don't add core items.
+    let itemsToCreate = items;
     const coreItemIds = itemsToCreate
       .filter((i) => i.system?.core)
       .map((i) => i._id);
     if (coreItemIds.length > 0) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
       itemsToCreate = itemsToCreate.filter((i) => !coreItemIds.includes(i._id));
+    }
+
+    // Prevent creating duplicate roles. Allowing it would introduce all kinds of data integrity
+    // issues for the user, and potentially block future data migrations for them.
+    const dontCreate = [];
+    const roleDuplicates = itemsToCreate.filter(
+      (doc) =>
+        doc.type === "role" &&
+        this.items.some((i) => i.type === "role" && i.name === doc.name),
+    );
+    if (roleDuplicates.length > 0) {
+      // Role duplicates were found, so we skip them, and continue with the other items.
+      Rules.lawyer(false, "CPR.messages.roleDuplicates");
+      // Remove duplicates from the creation set
+      roleDuplicates.forEach((d) => {
+        dontCreate.push(d._id);
+      });
+      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.includes(i._id));
     }
 
     // Stack items.
@@ -221,7 +238,6 @@ export default class CPRActor extends Actor {
     const stackedItemReferences = [];
     if (canStack && !context.CPRsplitStack) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
-      const dontCreate = [];
       for (const doc of itemsToCreate) {
         if (!doc.system) continue;
         const [returnValue] = await this.automaticallyStackItems(doc);
