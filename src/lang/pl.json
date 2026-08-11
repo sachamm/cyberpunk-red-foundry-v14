@@ -1121,6 +1121,7 @@
   "CPR.messages.noValidAmmo": "Nie masz amunicji do tej broni, Choomba!",
   "CPR.messages.notEnoughDrugs": "Nie masz nic do spożycia, sprawdź tą ilość!",
   "CPR.messages.reloadOutOfAmmo": "Sorry, you're out of ammo, Choomba!",
+  "CPR.messages.roleDuplicates": "You already have a role with that name, Choomba!",
   "CPR.messages.rezBlackIceWithoutToken": "Próbowałeś zrezować Czarny LOD z Globalnego Aktora, jednak aktor ten nie ma powiązanego tokena, przez co Aktor/Token Czarnego LODu nie mógł zostać stworzony. Program Czarnego LODu jest pokazany jako zrezowany tylko w cyberdeku. Możesz go zderezować, umieścić token aktora i zrezować go ponownie z karty postaci tokenu aby stworzyć aktora Czarnego LODu.",
   "CPR.messages.tradeDragInWarn": "Nie posiadasz uprawnień do tworzenia przedmiotów w tym pojemniku. Poproś MG o sprawdzenie ustawień pojemnika",
   "CPR.messages.tradeDragInstalledCyberwareError": "Nie można handlować zamontowanymi cyborgizacjami. Od montuj je i sprzedaj z zakładki Sprzęt.",

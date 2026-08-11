@@ -1121,6 +1121,7 @@
   "CPR.messages.noValidAmmo": "その武器の弾薬がないぞ！",
   "CPR.messages.notEnoughDrugs": "消費するアイテムがありません。数量を確認してください！",
   "CPR.messages.reloadOutOfAmmo": "おい、チューマ。弾切れだ！",
+  "CPR.messages.roleDuplicates": "You already have a role with that name, Choomba!",
   "CPR.messages.rezBlackIceWithoutToken": "You have attempted to REZ a Black ICE from a World Actor, however that actor has no token linked to it, therefore a Black ICE Actor/Token can not be created. The Black ICE Program is only shown as REZ'd in the Cyberdeck.  You can de-rez it, place an Actor Token and re-rez it from the Token Character Sheet to create the Black ICE Actor.",
   "CPR.messages.tradeDragInWarn": "このコンテナ内に項目を作成する権限がありません。GMはコンテナ設定をチェックして下さい",
   "CPR.messages.tradeDragInstalledCyberwareError": "インストール済みのサイバーウェアをトレードすることはできません。サイバーウェアをアンインストールし、装備タブから取引してください。",

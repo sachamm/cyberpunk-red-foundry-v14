@@ -1121,6 +1121,7 @@
   "CPR.messages.noValidAmmo": "¡No tienes munición para esa arma, Choomba!",
   "CPR.messages.notEnoughDrugs": "¡No tienes nada que consumir, comprueba esa cantidad!",
   "CPR.messages.reloadOutOfAmmo": "Sorry, you're out of ammo, Choomba!",
+  "CPR.messages.roleDuplicates": "You already have a role with that name, Choomba!",
   "CPR.messages.rezBlackIceWithoutToken": "Ha intentado REZZAR un Hielo Negro de un Actor del Mundo; sin embargo, ese actor no tiene ningún token vinculado a él, por lo tanto, un Actor/Token Black ICE no puede ser creado. El programa Hielo Negro solo se muestra como REZ'd en el Ciberterminal. Puedes des-rezzarlo. Coloca un Actor Token y re-rezzalo desde la Hoja de Personaje Token para crear el actor Hielo Negro.",
   "CPR.messages.tradeDragInWarn": "No tiene permiso para crear elementos en este contenedor. Pide al GM que compruebe la configuración del contenedor",
   "CPR.messages.tradeDragInstalledCyberwareError": "No puede comerciar Ciberware instalado. Desinstale el Ciberware y comercie con él desde la pestaña de Equipo.",

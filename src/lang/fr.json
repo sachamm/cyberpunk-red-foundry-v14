@@ -1121,6 +1121,7 @@
   "CPR.messages.noValidAmmo": "Vous n'avez pas de munitions pour cette arme, Choomba!",
   "CPR.messages.notEnoughDrugs": "Vous n'avez plus rien à consommer, vérifiez la quantité !",
   "CPR.messages.reloadOutOfAmmo": "Désolé, tu as épuisé tes munitions, Choomba!",
+  "CPR.messages.roleDuplicates": "You already have a role with that name, Choomba!",
   "CPR.messages.rezBlackIceWithoutToken": "Vous avez tenté de REZ une GLACE depuis un Acteur du Monde, cependant cet acteur n'a aucun token lié, ce qui fait qu'un Acteur/Token de GLACE ne peut pas être créé. Le programme GLACE est seulement affiché comme REZ dans la Cyberconsole. Vous pouvez le dé-REZ, placer un Jeton Acteur et le re-REZ depuis la feuille de Jeton de Personnage pour créer un Acteur de GLACE.",
   "CPR.messages.tradeDragInWarn": "Vous n'avez pas la permission de créer des objets dans ce conteneur. Voir avec le MJ afin qu'il vérifie les paramètres du conteneur.",
   "CPR.messages.tradeDragInstalledCyberwareError": "Vous ne pouvez pas commercer les Cyberimplants installés. Désinstallez le cyberimplant et commercez-le à partir de l'onglet Objets.",

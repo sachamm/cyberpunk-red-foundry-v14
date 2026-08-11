@@ -1121,6 +1121,7 @@
   "CPR.messages.noValidAmmo": "Non hai munizioni per quell'arma, Choomba!",
   "CPR.messages.notEnoughDrugs": "Non hai ancora nulla da consumare, controlla quella quantità!",
   "CPR.messages.reloadOutOfAmmo": "Sorry, you're out of ammo, Choomba!",
+  "CPR.messages.roleDuplicates": "You already have a role with that name, Choomba!",
   "CPR.messages.rezBlackIceWithoutToken": "Hai tentato di REZ un Black ICE da un Personaggio Mondiale, inoltre quel personaggio non ha alcun token collegato ad esso, quindi un personaggio Black ICE / Token non può essere creato. Il Programma Black ICE  è mostrato solo come rezzato nel Cyberdeck. È possibile derezzarlo, posizionare un token e ri-rezzarlo dalla Token della Scheda del Personaggio per creare il personaggio Black ICE.",
   "CPR.messages.tradeDragInWarn": "Non hai il permesso di creare oggetti in questo contenitore. Abilita l'opzione per il Contenitore sotto la colonna GM nelle impostazioni.",
   "CPR.messages.tradeDragInstalledCyberwareError": "Non è possibile trattare con Cyberware installato. Disinstallare il cyberware e fare affari dalla scheda Equipaggiamento.",

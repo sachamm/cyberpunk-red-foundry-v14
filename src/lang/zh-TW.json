@@ -1121,6 +1121,7 @@
   "CPR.messages.noValidAmmo": "You have no ammo for that weapon, Choomba!",
   "CPR.messages.notEnoughDrugs": "You do not have anything left to consume, check that amount!",
   "CPR.messages.reloadOutOfAmmo": "Sorry, you're out of ammo, Choomba!",
+  "CPR.messages.roleDuplicates": "You already have a role with that name, Choomba!",
   "CPR.messages.rezBlackIceWithoutToken": "You have attempted to REZ a Black ICE from a World Actor, however that actor has no token linked to it, therefore a Black ICE Actor/Token can not be created. The Black ICE Program is only shown as REZ'd in the Cyberdeck.  You can de-rez it, place an Actor Token and re-rez it from the Token Character Sheet to create the Black ICE Actor.",
   "CPR.messages.tradeDragInWarn": "You lack the permission to create items in this container. Have GM check container settings",
   "CPR.messages.tradeDragInstalledCyberwareError": "You can't trade installed Cyberware. Uninstall the cyberware and trade it from the Gear tab.",

@@ -1121,6 +1121,7 @@
   "CPR.messages.noValidAmmo": "Você não tem munição para essa arma, Choomba!",
   "CPR.messages.notEnoughDrugs": "You do not have anything left to consume, check that amount!",
   "CPR.messages.reloadOutOfAmmo": "Sorry, you're out of ammo, Choomba!",
+  "CPR.messages.roleDuplicates": "You already have a role with that name, Choomba!",
   "CPR.messages.rezBlackIceWithoutToken": "Você tentou Carregar na RAM um Black ICE global que não tem nenhum Token ligado a ele, portanto não vai aparecer no mapa. O Black ICE só vai aparecer como Carregado na RAM no Console. Você pode desfazer isso, colocar um Token no Ator e usar o botão Carregar na RAM para invocar ele no mapa.",
   "CPR.messages.tradeDragInWarn": "You lack the permission to create items in this container. Have GM check container settings",
   "CPR.messages.tradeDragInstalledCyberwareError": "You can't trade installed Cyberware. Uninstall the cyberware and trade it from the Gear tab.",
