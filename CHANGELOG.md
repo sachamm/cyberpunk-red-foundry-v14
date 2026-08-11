@@ -60,6 +60,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Pre-Installed smartgun-link upgrade into Malorian Arms 3516
 - Pre-Installed hands and feet into Meatlimbs
 - Pre-Installed hands, feet, and exposed cyberware coverings into Cyberlimbs
+- Dragging a duplicate role (by name) is intentionally prevented and shows a warning
 
 ### Plumbing
 
