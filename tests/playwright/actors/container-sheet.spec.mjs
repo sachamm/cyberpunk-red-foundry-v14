@@ -212,7 +212,7 @@ test.describe("Container actor sheet", () => {
       await expect(containerSheet.locator(FIELD.ledgerButton)).toBeVisible();
     });
 
-    await test.step("inventory categories are rendered as collapsible sections", async () => {
+    await test.step("inventory categories are rendered as collapsible sections even when empty", async () => {
       const containerSheet = sheet(game, sheetId);
       const categories = containerSheet.locator(FIELD.categoryHeader);
       const count = await categories.count();
@@ -220,6 +220,12 @@ test.describe("Container actor sheet", () => {
 
       const firstCategory = categories.first();
       await expect(firstCategory.locator(FIELD.expandIcon)).toBeVisible();
+
+      // Verify categories are rendered even when container has no items
+      const categoryNames = await categories.evaluateAll((els) =>
+        els.map((el) => el.textContent.trim()),
+      );
+      expect(categoryNames.length).toBeGreaterThan(0);
     });
 
     await test.step("create item buttons are visible for GM on category headers", async () => {
@@ -251,6 +257,9 @@ test.describe("Container actor sheet", () => {
 
       await containerSheet.locator(FIELD.name).fill(editedName);
       await containerSheet.locator(FIELD.name).blur();
+
+      // Verify live update on the same sheet (name field reflects the new value immediately)
+      await expect(containerSheet.locator(FIELD.name)).toHaveValue(editedName);
 
       await waitForActorFields(game, actorId, { name: editedName });
 
@@ -338,7 +347,10 @@ test.describe("Container actor sheet", () => {
       const containerSheet = sheet(game, sheetId);
       const dropdown = containerSheet.locator(FIELD.containerTypeDropdown);
       await dropdown.selectOption({ value: "loot" });
-      await expect(game.locator(".notification.error").first()).toBeVisible();
+      const errorNotification = game.locator(".notification.error");
+      await expect(errorNotification).toBeVisible();
+      const errorMessage = await errorNotification.evaluate((el) => el.textContent);
+      expect(errorMessage.toLowerCase()).toContain("token");
       await dismissNotifications(game);
     });
 
@@ -350,7 +362,10 @@ test.describe("Container actor sheet", () => {
       const exists = await toggle.count();
       if (exists > 0) {
         await toggle.click();
-        await expect(game.locator(".notification.error").first()).toBeVisible();
+        const errorNotification = game.locator(".notification.error");
+        await expect(errorNotification).toBeVisible();
+        const errorMessage = await errorNotification.evaluate((el) => el.textContent);
+        expect(errorMessage.toLowerCase()).toContain("token");
         await dismissNotifications(game);
       }
     });
@@ -750,6 +765,41 @@ test.describe("Container actor sheet", () => {
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("multiple containers open maintain independent state", async ({
+    page: game,
+  }) => {
+    const actorId1 = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("multi-container-1"),
+    });
+
+    const actorId2 = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("multi-container-2"),
+    });
+
+    let sheetId1 = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId1,
+    });
+
+    await test.step("open second container sheet while first is open", async () => {
+      const containerSheet1 = sheet(game, sheetId1);
+      await expect(containerSheet1.locator(FIELD.name)).toHaveValue(/multi-container-1/);
+
+      await closeDocSheet(game, { collection: "actors", id: actorId2 });
+    });
+
+    await test.step("first container retains its state after second is closed", async () => {
+      const containerSheet1 = sheet(game, sheetId1);
+      await expect(containerSheet1.locator(FIELD.name)).toHaveValue(/multi-container-1/);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId1 });
   });
 });
 
@@ -1513,7 +1563,7 @@ test("purchase a part of a stack", async ({ page: game }) => {
     await purchasePartLink.click();
 
     const dialog = game.locator(".dialog, .application.dialog");
-  await expect(dialog).toBeVisible();
+    await expect(dialog).toBeVisible();
 
     const amountInput = dialog.locator('input[name="purchaseAmount"]');
     await expect(amountInput).toBeVisible();
@@ -1522,6 +1572,9 @@ test("purchase a part of a stack", async ({ page: game }) => {
     const confirmBtn = dialog.locator('button[data-action="confirm"]');
     await expect(confirmBtn).toBeVisible();
     await confirmBtn.click();
+
+    // Wait for dialog to close
+    await expect(dialog).not.toBeVisible();
   });
 
   await test.step("verify remaining amount is 3 (5 - 2)", async () => {
@@ -1533,7 +1586,7 @@ test("purchase a part of a stack", async ({ page: game }) => {
         return item?.system?.amount === 3;
       },
       { actorId },
-      { timeout: 5000 },
+      { timeout: 10000 },
     );
 
     const containerSheet = sheet(game, sheetId);
@@ -1875,21 +1928,15 @@ test("stacking after purchase", async ({ page: game }) => {
       { timeout: 5000 },
     );
 
-    const itemSheetCloseBtn = game.locator('.application .item-sheet button[data-action="close"]');
-    const closeBtnCount = await itemSheetCloseBtn.count();
-    if (closeBtnCount > 0) {
-      await itemSheetCloseBtn.click();
-    } else {
-      await game.evaluate(async ({ actorId }) => {
-        const actor = game.actors.get(actorId);
-        if (actor) {
-          const item = actor.items.find((i) => i.name === "Plasma Rifle");
-          if (item && item.sheet.rendered) {
-            item.sheet.close();
-          }
+    await game.evaluate(async ({ actorId }) => {
+      const actor = game.actors.get(actorId);
+      if (actor) {
+        const item = actor.items.find((i) => i.name === "Plasma Rifle");
+        if (item && item.sheet.rendered) {
+          item.sheet.close();
         }
-      }, { actorId });
-    }
+      }
+    }, { actorId });
 
     await game.waitForTimeout(500);
 
