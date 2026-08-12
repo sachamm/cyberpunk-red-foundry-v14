@@ -213,6 +213,9 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
       );
     }
 
+    if (!cprData.options) cprData.options = {};
+    cprData.options.collapsedSections = this.collapsedSections;
+
     return { ...foundryData, ...cprData };
   }
 
@@ -439,18 +442,6 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
     collapsibleElement
       .querySelectorAll(".collapse-icon, .expand-icon")
       .forEach((icon) => icon.classList.toggle("hide"));
-    const itemOrderedList = collapsibleElement.querySelector(":scope > ol");
-    const itemList = itemOrderedList
-      ? Array.from(itemOrderedList.children).filter((c) => c.tagName === "LI")
-      : [];
-    itemList.forEach((lineItem) => {
-      if (
-        lineItem.classList.contains("item") &&
-        !lineItem.classList.contains("favorite")
-      ) {
-        lineItem.classList.toggle("hide");
-      }
-    });
 
     if (this.collapsedSections.includes(event.currentTarget.id)) {
       this.collapsedSections = this.collapsedSections.filter(
@@ -459,6 +450,7 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
     } else {
       this.collapsedSections.push(event.currentTarget.id);
     }
+    this.render();
   }
 
   /**

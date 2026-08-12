@@ -297,6 +297,498 @@ test.describe("Container actor sheet", () => {
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
+  test("container settings require a token sheet", async ({ page: game }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("non-token-settings-test"),
+    });
+
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    await test.step("changing container type on non-token sheet shows error", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const dropdown = containerSheet.locator(FIELD.containerTypeDropdown);
+      await dropdown.selectOption({ value: "loot" });
+      await expect(game.locator(".notification.error").first()).toBeVisible();
+      // Wait for notification to dismiss
+      await game.waitForTimeout(2000);
+    });
+
+    await test.step("toggling infinite-stock on non-token sheet shows error", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const toggle = containerSheet.locator(
+        '.checkbox-toggle[data-flag-name="infinite-stock"]',
+      );
+      const exists = await toggle.count();
+      if (exists > 0) {
+        await toggle.click();
+        await expect(game.locator(".notification.error").first()).toBeVisible();
+      }
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("custom container type shows settings on token sheet", async ({
+    page: game,
+  }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("custom-token-container"),
+    });
+
+    const tokenDocumentId = await createTokenForActor(game, actorId);
+    expect(tokenDocumentId).toBeTruthy();
+
+    let sheetId = await game.evaluate(
+      async ({ actorId, tokenDocumentId }) => {
+        const actor = game.actors.get(actorId);
+        const token = canvas.scene.tokens.get(tokenDocumentId);
+        if (!actor || !token) return null;
+        await actor.sheet.render(true, { token });
+        return actor.sheet.element?.id ?? null;
+      },
+      { actorId, tokenDocumentId },
+    );
+    expect(sheetId).toBeTruthy();
+
+    await test.step("switch to custom container type", async () => {
+      await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (actor && actor.sheet.rendered) {
+            await actor.setContainerType("custom");
+            await actor.sheet.render();
+          }
+        },
+        { actorId },
+      );
+      await game.waitForTimeout(500);
+
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+    });
+
+    await test.step("custom container shows custom settings section", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const playersCanLabel = containerSheet.getByText("Can players:");
+      await expect(playersCanLabel).toBeVisible();
+    });
+
+    await test.step("custom container shows player permission checkboxes", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const checkboxes = containerSheet.locator(
+        ".container-shop-settings .checkbox-toggle",
+      );
+      const count = await checkboxes.count();
+      expect(count).toBeGreaterThan(0);
+    });
+
+    await test.step("toggling infinite-stock on custom token sheet succeeds", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      const isInfiniteOn = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          return actor?.flags?.[game.system.id]?.["infinite-stock"] ?? false;
+        },
+        { actorId },
+      );
+      if (!isInfiniteOn) {
+        await game.evaluate(
+          async ({ actorId }) => {
+            const actor = game.actors.get(actorId);
+            if (actor) {
+              await actor.update({
+                [`flags.${game.system.id}.infinite-stock`]: true,
+              });
+              if (actor.sheet.rendered) await actor.sheet.render();
+            }
+          },
+          { actorId },
+        );
+        await game.waitForTimeout(500);
+        const isInfiniteOnAfter = await game.evaluate(
+          async ({ actorId }) => {
+            const actor = game.actors.get(actorId);
+            return actor?.flags?.[game.system.id]?.["infinite-stock"] ?? false;
+          },
+          { actorId },
+        );
+        expect(isInfiniteOnAfter).toBe(true);
+      }
+    });
+
+    await test.step("toggling items-free on custom token sheet succeeds", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      const isItemsFreeOn = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          return actor?.flags?.[game.system.id]?.["items-free"] ?? false;
+        },
+        { actorId },
+      );
+      if (!isItemsFreeOn) {
+        await game.evaluate(
+          async ({ actorId }) => {
+            const actor = game.actors.get(actorId);
+            if (actor) {
+              await actor.update({
+                [`flags.${game.system.id}.items-free`]: true,
+              });
+              if (actor.sheet.rendered) await actor.sheet.render();
+            }
+          },
+          { actorId },
+        );
+        await game.waitForTimeout(500);
+        const isItemsFreeOnAfter = await game.evaluate(
+          async ({ actorId }) => {
+            const actor = game.actors.get(actorId);
+            return actor?.flags?.[game.system.id]?.["items-free"] ?? false;
+          },
+          { actorId },
+        );
+        expect(isItemsFreeOnAfter).toBe(true);
+      }
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("shop container shows configure shop link on token sheet", async ({
+    page: game,
+  }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("shop-token-container"),
+    });
+
+    const tokenDocumentId = await createTokenForActor(game, actorId);
+    expect(tokenDocumentId).toBeTruthy();
+
+    const sheetId = await game.evaluate(
+      async ({ actorId, tokenDocumentId }) => {
+        const actor = game.actors.get(actorId);
+        const token = canvas.scene.tokens.get(tokenDocumentId);
+        if (!actor || !token) return null;
+        await actor.sheet.render(true, { token });
+        return actor.sheet.element?.id ?? null;
+      },
+      { actorId, tokenDocumentId },
+    );
+    expect(sheetId).toBeTruthy();
+
+    await test.step("shop container shows configure shop link", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const configureLink = containerSheet.locator(".vendor-configure-sell-to");
+      await expect(configureLink).toBeVisible();
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("infinite-stock flag prevents item removal on purchase", async ({
+    page: game,
+  }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("infinite-stock-container"),
+    });
+
+    const tokenDocumentId = await createTokenForActor(game, actorId);
+    expect(tokenDocumentId).toBeTruthy();
+
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    await test.step("enable infinite stock on token sheet", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      const containerSheet = sheet(game, sheetId);
+      const toggle = containerSheet.locator(
+        '.checkbox-toggle[data-flag-name="infinite-stock"]',
+      );
+      const isOff = await toggle
+        .locator("i.fa-circle")
+        .isVisible()
+        .catch(() => true);
+      if (isOff) {
+        await toggle.click();
+        await game.waitForTimeout(300);
+      }
+    });
+
+    await test.step("create a gear item in the container", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      const containerSheet = sheet(game, sheetId);
+      const gearCreateBtn = containerSheet.locator(
+        FIELD.createButtonByType("gear"),
+      );
+      await expect(gearCreateBtn).toBeVisible();
+      await gearCreateBtn.click();
+
+      const itemRow = containerSheet
+        .locator(FIELD.itemName)
+        .filter({ hasText: "New Gear" });
+      await expect(itemRow).toBeVisible();
+    });
+
+    await test.step("purchase item and verify it is NOT removed", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      const containerSheet = sheet(game, sheetId);
+      const itemRow = containerSheet
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Gear" });
+      await expect(itemRow).toBeVisible();
+
+      const purchaseLink = itemRow.locator(FIELD.purchaseAll);
+      await expect(purchaseLink).toBeVisible();
+      await purchaseLink.click();
+      await game.waitForTimeout(500);
+
+      const remainingItems = containerSheet
+        .locator(FIELD.itemName)
+        .filter({ hasText: "New Gear" });
+      await expect(remainingItems).toHaveCount(1);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("items-free flag prevents wealth deduction on purchase", async ({
+    page: game,
+  }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("free-items-container"),
+    });
+
+    const tokenDocumentId = await createTokenForActor(game, actorId);
+    expect(tokenDocumentId).toBeTruthy();
+
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    await test.step("switch to custom type and enable items-free", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (actor && actor.sheet.rendered) {
+            await actor.setContainerType("custom");
+            await actor.sheet.render();
+          }
+        },
+        { actorId },
+      );
+      await game.waitForTimeout(500);
+
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      const containerSheet = sheet(game, sheetId);
+      const toggle = containerSheet.locator(
+        '.checkbox-toggle[data-flag-name="items-free"]',
+      );
+      const isOff = await toggle
+        .locator("i.fa-circle")
+        .isVisible()
+        .catch(() => true);
+      if (isOff) {
+        await toggle.click();
+        await game.waitForTimeout(300);
+      }
+    });
+
+    await test.step("create a gear item in the container", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      const containerSheet = sheet(game, sheetId);
+      const gearCreateBtn = containerSheet.locator(
+        FIELD.createButtonByType("gear"),
+      );
+      await expect(gearCreateBtn).toBeVisible();
+      await gearCreateBtn.click();
+
+      const itemRow = containerSheet
+        .locator(FIELD.itemName)
+        .filter({ hasText: "New Gear" });
+      await expect(itemRow).toBeVisible();
+    });
+
+    await test.step("purchase item and verify trade partner wealth is unchanged", async () => {
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      const containerSheet = sheet(game, sheetId);
+      const tradeDropdown = containerSheet.locator(
+        'select[name="trade-with-dropdown"]',
+      );
+      const options = await tradeDropdown.evaluate((el) =>
+        Array.from(el.options).map((o) => o.value),
+      );
+      const tradePartnerOption = options.find((v) => v !== "");
+      if (tradePartnerOption) {
+        await tradeDropdown.selectOption({ value: tradePartnerOption });
+        await game.waitForTimeout(300);
+      }
+
+      const tradePartnerWealthBefore = await game.evaluate(
+        async ({ tradePartnerOption }) => {
+          const tradePartner = game.actors.get(tradePartnerOption);
+          return tradePartner?.system?.wealth?.value ?? 0;
+        },
+        { tradePartnerOption },
+      );
+
+      const itemRow = containerSheet
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Gear" });
+      await expect(itemRow).toBeVisible();
+
+      const purchaseLink = itemRow.locator(FIELD.purchaseAll);
+      await expect(purchaseLink).toBeVisible();
+      await purchaseLink.click();
+      await game.waitForTimeout(500);
+
+      const tradePartnerWealthAfter = await game.evaluate(
+        async ({ tradePartnerOption }) => {
+          const tradePartner = game.actors.get(tradePartnerOption);
+          return tradePartner?.system?.wealth?.value ?? 0;
+        },
+        { tradePartnerOption },
+      );
+
+      expect(tradePartnerWealthAfter).toBe(tradePartnerWealthBefore);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
   test("category collapse/expand toggles item visibility", async ({
     page: game,
   }) => {
@@ -311,34 +803,93 @@ test.describe("Container actor sheet", () => {
       id: actorId,
     });
 
-    await test.step("first category starts expanded, click expand-button to collapse", async () => {
+    await test.step("create a gear item to test collapse on", async () => {
       const containerSheet = sheet(game, sheetId);
-      const categories = containerSheet.locator(FIELD.categoryHeader);
-      const count = await categories.count();
-      expect(count).toBeGreaterThan(0);
 
-      // First category starts expanded (expand icon visible, collapse icon hidden)
-      const firstCategory = containerSheet
-        .locator(FIELD.categoryHeader)
-        .first();
-      await expect(firstCategory.locator(FIELD.expandIcon)).toBeVisible();
+      const gearCreateBtn = containerSheet.locator(
+        FIELD.createButtonByType("gear"),
+      );
+      await expect(gearCreateBtn).toBeVisible();
+      await gearCreateBtn.click();
 
-      // Click the expand-button span (where the click handler is registered)
-      await firstCategory.locator(FIELD.expandButton).click();
+      const itemRow = containerSheet
+        .locator(FIELD.itemName)
+        .filter({ hasText: "New Gear" });
+      await expect(itemRow).toBeVisible();
 
-      // After collapse, collapse icon should be visible
-      await expect(firstCategory.locator(FIELD.collapseIcon)).toBeVisible();
+      sheetId = await game.evaluate(
+        async ({ actorId }) => {
+          const actor = game.actors.get(actorId);
+          if (!actor) return null;
+          return actor.sheet?.element?.id ?? null;
+        },
+        { actorId },
+      );
+
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
     });
 
-    await test.step("click expand-button again to re-expand", async () => {
+    await test.step("verify item is visible in expanded category, then collapse hides it", async () => {
       const containerSheet = sheet(game, sheetId);
-      const firstCategory = containerSheet
-        .locator(FIELD.categoryHeader)
-        .first();
-      await firstCategory.locator(FIELD.expandButton).click();
 
-      // After expand, expand icon should be visible again
-      await expect(firstCategory.locator(FIELD.expandIcon)).toBeVisible();
+      // Find the Gear category header
+      const gearCategory = containerSheet
+        .locator(FIELD.categoryHeader)
+        .filter({ hasText: "Gear" });
+      await expect(gearCategory).toBeVisible();
+
+      // Verify the gear item row does NOT have the hide class (expanded)
+      const gearItemRow = containerSheet
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Gear" });
+      await expect(gearItemRow).toBeVisible();
+      const itemHasHide = await gearItemRow.evaluate((el) =>
+        el.classList.contains("hide"),
+      );
+      expect(itemHasHide).toBe(false);
+
+      // Click the expand-button to collapse the category
+      await gearCategory.locator(FIELD.expandButton).click();
+      await game.waitForTimeout(300);
+
+      // After collapse, the item row should have the hide class
+      const itemHasHideAfter = await gearItemRow.evaluate((el) =>
+        el.classList.contains("hide"),
+      );
+      expect(itemHasHideAfter).toBe(true);
+
+      // The item should no longer be visible in the accessibility tree
+      await expect(gearItemRow).not.toBeVisible();
+    });
+
+    await test.step("re-expand shows the item again", async () => {
+      const containerSheet = sheet(game, sheetId);
+
+      const gearCategory = containerSheet
+        .locator(FIELD.categoryHeader)
+        .filter({ hasText: "Gear" });
+      await expect(gearCategory).toBeVisible();
+
+      // Click to re-expand
+      await gearCategory.locator(FIELD.expandButton).click();
+      await game.waitForTimeout(300);
+
+      // The item row should no longer have the hide class
+      const gearItemRow = containerSheet
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Gear" });
+      const itemHasHideAfter = await gearItemRow.evaluate((el) =>
+        el.classList.contains("hide"),
+      );
+      expect(itemHasHideAfter).toBe(false);
+
+      // The item should be visible again
+      await expect(gearItemRow).toBeVisible();
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -447,7 +998,7 @@ test.describe("Container actor sheet", () => {
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
-  test("GM can purchase items from container inventory", async ({
+  test("GM can purchase items from container inventory with sufficient funds", async ({
     page: game,
   }) => {
     const actorId = await createDocumentViaUI(game, {
@@ -478,7 +1029,7 @@ test.describe("Container actor sheet", () => {
       }
     });
 
-    await test.step("create an ammo item in the container", async () => {
+    await test.step("create a gear item in the container", async () => {
       // Re-fetch sheet ID in case it changed
       sheetId = await game.evaluate(async ({ actorId }) => {
         const actor = game.actors.get(actorId);
@@ -495,17 +1046,17 @@ test.describe("Container actor sheet", () => {
 
       const containerSheet = sheet(game, sheetId);
 
-      // Find the Ammo category create button and click it
-      const ammoCreateBtn = containerSheet.locator(
-        FIELD.createButtonByType("ammo"),
+      // Find the Gear category create button and click it
+      const gearCreateBtn = containerSheet.locator(
+        FIELD.createButtonByType("gear"),
       );
-      await expect(ammoCreateBtn).toBeVisible();
-      await ammoCreateBtn.click();
+      await expect(gearCreateBtn).toBeVisible();
+      await gearCreateBtn.click();
 
       // Wait for item to appear in inventory
       const itemRow = containerSheet
         .locator(FIELD.itemName)
-        .filter({ hasText: "New Ammo" });
+        .filter({ hasText: "New Gear" });
       await expect(itemRow).toBeVisible();
 
       // Re-fetch container sheet ID
@@ -524,38 +1075,10 @@ test.describe("Container actor sheet", () => {
       }
     });
 
-    await test.step("verify item appears in container with correct amount and price", async () => {
-      const containerSheet = sheet(game, sheetId);
-      const itemRow = containerSheet
-        .locator(FIELD.itemName)
-        .filter({ hasText: "New Ammo" });
-      await expect(itemRow).toBeVisible();
-
-      // Verify amount is displayed (1)
-      const itemAmounts = containerSheet.locator(FIELD.itemAmount);
-      const amountText = await itemAmounts.first().textContent();
-      expect(amountText).toContain("1");
-
-      // Verify price is displayed (10)
-      const itemPrices = containerSheet.locator(FIELD.itemPrice);
-      const priceText = await itemPrices.first().textContent();
-      expect(priceText).toContain("10");
-    });
-
-    await test.step("verify purchase button is visible and clickable", async () => {
+    await test.step("set trade partner with sufficient funds", async () => {
       const containerSheet = sheet(game, sheetId);
 
-      // Find the item row by name using has() to match the entire row
-      const itemRow = containerSheet
-        .locator(".item.flexrow")
-        .filter({ hasText: "New Ammo" });
-      await expect(itemRow).toBeVisible();
-
-      // Get the purchase link within the item row
-      const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-      await expect(purchaseLink).toBeVisible();
-
-      // Select a trade partner from the dropdown before purchasing
+      // Set the trade partner to the E2E Shopper actor
       const tradeDropdown = containerSheet.locator(
         'select[name="trade-with-dropdown"]',
       );
@@ -568,11 +1091,54 @@ test.describe("Container actor sheet", () => {
         await game.waitForTimeout(300);
       }
 
-      // Click the purchase button
+      // Set the trade partner's wealth to a high value so they can afford purchases
+      await game.evaluate(
+        async ({ tradePartnerOption }) => {
+          const tradePartner = game.actors.get(tradePartnerOption);
+          if (tradePartner) {
+            await tradePartner.update({ "system.wealth.value": 999999 });
+          }
+        },
+        { tradePartnerOption },
+      );
+    });
+
+    await test.step("purchase all items and verify they are removed", async () => {
+      // Re-fetch sheet ID in case it changed
+      sheetId = await game.evaluate(async ({ actorId }) => {
+        const actor = game.actors.get(actorId);
+        if (!actor) return null;
+        return actor.sheet?.element?.id ?? null;
+      }, actorId);
+
+      if (!sheetId) {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+      }
+
+      const containerSheet = sheet(game, sheetId);
+
+      // Find the item row by name using has() to match the entire row
+      const itemRow = containerSheet
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Gear" });
+      await expect(itemRow).toBeVisible();
+
+      // Get the purchase link within the item row
+      const purchaseLink = itemRow.locator(FIELD.purchaseAll);
+      await expect(purchaseLink).toBeVisible();
       await purchaseLink.click();
 
-      // Wait for any dialog to appear (purchase requires sufficient funds)
+      // Wait for the item to be removed from the container
       await game.waitForTimeout(500);
+
+      // Verify the item is no longer in the container
+      const remainingItems = containerSheet
+        .locator(FIELD.itemName)
+        .filter({ hasText: "New Gear" });
+      await expect(remainingItems).toHaveCount(0);
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });

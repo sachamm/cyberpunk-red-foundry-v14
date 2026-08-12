@@ -529,7 +529,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         SystemUtils.Localize("CPR.messages.containerSettingsOnToken"),
       );
     } else {
-      actor.toggleFlag(flagName);
+      await actor.toggleFlag(flagName);
+      await this.render();
     }
   }
 
