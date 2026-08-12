@@ -6,6 +6,8 @@ import {
   closeDocSheet,
   uniqueName,
   reopenActorSheetViaUI,
+  dragItemToActorSheet,
+  createItemViaUI,
 } from "../../../tools/playwright/ui/index.mjs";
 
 const FIELD = {
@@ -2423,5 +2425,189 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
       await closeDocSheet(game, { collection: "actors", id: secondPartnerId });
     });
+  });
+
+  test("drag-and-drop onto container", async ({ page: game }) => {
+    const itemId = await createItemViaUI(game, {
+      type: "gear",
+      name: uniqueName("dropped-item"),
+    });
+
+    const { actorId, sheetId } = await createContainerWithItem(game, {
+      containerName: "drag-drop-container",
+      itemType: "gear",
+    });
+
+    await test.step("drag item from compendium onto container sheet", async () => {
+      await dragItemToActorSheet(game, { itemId, sheetId, actorId });
+    });
+
+    await test.step("verify item appears in container inventory", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const droppedItemRow = containerSheet
+        .locator(FIELD.itemName)
+        .filter({ hasText: "dropped-item" });
+      await expect(droppedItemRow).toBeVisible();
+
+      const itemCount = await containerSheet
+        .locator(FIELD.itemName)
+        .count();
+      expect(itemCount).toBe(2);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("content filter/search is not available on container sheet", async ({ page: game }) => {
+    const { actorId, sheetId } = await createContainerWithItem(game, {
+      containerName: "no-filter-container",
+      itemType: "gear",
+    });
+
+    await test.step("verify no filter input exists on container sheet", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const filterInput = containerSheet.locator('input[placeholder*="filter"], input[placeholder*="search"], input.filter-contents');
+      const filterCount = await filterInput.count();
+      expect(filterCount).toBe(0);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("multiple categories collapse/expand independently", async ({ page: game }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("multi-category-container"),
+    });
+
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    await test.step("create items in multiple categories", async () => {
+      const containerSheet = sheet(game, sheetId);
+
+      // Create a weapon
+      const weaponBtn = containerSheet.locator(FIELD.createButtonByType("weapon"));
+      await expect(weaponBtn).toBeVisible();
+      await weaponBtn.click();
+      await expect(containerSheet.locator(FIELD.itemName).filter({ hasText: "New Weapon" })).toBeVisible();
+
+      // Create armor
+      const armorBtn = containerSheet.locator(FIELD.createButtonByType("armor"));
+      await expect(armorBtn).toBeVisible();
+      await armorBtn.click();
+      await expect(containerSheet.locator(FIELD.itemName).filter({ hasText: "New Armor" })).toBeVisible();
+
+      // Re-fetch sheet ID after creating items
+      sheetId = await game.evaluate(async (params) => {
+        const actor = game.actors.get(params.actorId);
+        if (!actor) return null;
+        return actor.sheet?.element?.id ?? null;
+      }, { actorId });
+    });
+
+    await test.step("collapse Weapon category and verify only Armor items remain visible", async () => {
+      const containerSheet = sheet(game, sheetId);
+
+      // Find the Weapon category header
+      const weaponCategory = containerSheet
+        .locator(FIELD.categoryHeader)
+        .filter({ hasText: "Weapon" });
+      await expect(weaponCategory).toBeVisible();
+
+      // Collapse the Weapon category
+      await weaponCategory.locator(FIELD.expandButton).click();
+
+      // Verify Weapon items are hidden
+      const weaponItem = containerSheet.locator(FIELD.itemName).filter({ hasText: "New Weapon" });
+      await expect(weaponItem).not.toBeVisible();
+
+      // Verify Armor items are still visible
+      const armorItem = containerSheet.locator(FIELD.itemName).filter({ hasText: "New Armor" });
+      await expect(armorItem).toBeVisible();
+    });
+
+    await test.step("re-expand Weapon category and verify both are visible", async () => {
+      const containerSheet = sheet(game, sheetId);
+
+      const weaponCategory = containerSheet
+        .locator(FIELD.categoryHeader)
+        .filter({ hasText: "Weapon" });
+      await weaponCategory.locator(FIELD.expandButton).click();
+
+      const weaponItem = containerSheet.locator(FIELD.itemName).filter({ hasText: "New Weapon" });
+      await expect(weaponItem).toBeVisible();
+
+      const armorItem = containerSheet.locator(FIELD.itemName).filter({ hasText: "New Armor" });
+      await expect(armorItem).toBeVisible();
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("loot container shows take button instead of purchase", async ({ page: game }) => {
+    const { actorId, sheetId: initialSheetId } = await createContainerWithItem(game, {
+      containerName: "loot-take-button-container",
+      itemType: "gear",
+    });
+
+    const tokenDocumentId = await createTokenForActor(game, actorId);
+    expect(tokenDocumentId).toBeTruthy();
+
+    let sheetId = await game.evaluate(
+      async (params) => {
+        const actor = game.actors.get(params.actorId);
+        const token = canvas.scene.tokens.get(params.tokenDocumentId);
+        if (!actor || !token) return null;
+        await actor.sheet.render(true, { token });
+        return actor.sheet.element?.id ?? null;
+      },
+      { actorId, tokenDocumentId },
+    );
+
+    await test.step("switch to loot type and verify hand icon", async () => {
+      await game.evaluate(
+        async (params) => {
+          const actor = game.actors.get(params.actorId);
+          if (actor && actor.sheet.rendered) {
+            await actor.setContainerType("loot");
+            await actor.update({
+              [`flags.${game.system.id}.items-free`]: true,
+            });
+            await actor.sheet.render();
+          }
+        },
+        { actorId },
+      );
+
+      await game.waitForFunction(
+        async (params) => {
+          const actor = game.actors.get(params.actorId);
+          return actor?.flags?.[game.system.id]?.["items-free"] === true;
+        },
+        { actorId },
+        { timeout: 5000 },
+      );
+
+      sheetId = await game.evaluate(async (params) => {
+        const actor = game.actors.get(params.actorId);
+        if (!actor) return null;
+        return actor.sheet?.element?.id ?? null;
+      }, { actorId });
+
+      const containerSheet = sheet(game, sheetId);
+      const itemRow = containerSheet.locator(".item.flexrow").filter({ hasText: "New Gear" });
+      await expect(itemRow).toBeVisible();
+
+      // Loot container should show hand icon (take) instead of cart icon (purchase)
+      const purchaseBtn = itemRow.locator('a.item-action[data-action-type="purchase"] i');
+      await expect(purchaseBtn).toBeVisible();
+      await expect(purchaseBtn).toHaveClass(/fa-hand/);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 });
