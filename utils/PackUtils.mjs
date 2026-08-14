@@ -86,17 +86,16 @@ export class PackUtils {
    * @throws {Error} If unable to determine filename for the data
    */
   static #getFragmentName(data) {
-    // Folders don't have a key, generate a dummy one
+    // Folders don't have a key, generate a dummy one.
     let key = data._key;
     if (!key) {
       key = "!folders!dummyValue";
     }
     const keyType = PackUtils.#getPackType(key);
     const { type } = data;
-    const name = data.name ? data.name.split(" ").slice(0, 5).join(" ") : "";
 
     const typeLower = typeof data.type === "string" ? type.toLowerCase() : "";
-    const nameLower = data.name ? name.toLowerCase() : "";
+    const nameLower = data.name ? data.name.toLowerCase() : "";
 
     switch (keyType) {
       case "items":
@@ -112,6 +111,54 @@ export class PackUtils {
       default:
         throw new Error(`Unable to determine filename for ${data}`);
     }
+  }
+
+  /**
+   * Ensures generated fragment filenames stay unique within one extracted pack.
+   * This protects names that sanitize to the same stem (for example variants
+   * that only differ after the old truncation boundary).
+   *
+   * @private
+   * @param {string} fragmentName - The candidate fragment filename
+   * @param {Object} data - The pack entry being named
+   * @param {Set<string>} usedNames - Names already claimed in this pack
+   * @returns {string} A unique fragment filename
+   */
+  static #dedupeFragmentName(fragmentName, data, usedNames) {
+    if (!usedNames.has(fragmentName)) {
+      usedNames.add(fragmentName);
+      return fragmentName;
+    }
+
+    const ext = path.extname(fragmentName);
+    const stem = fragmentName.slice(0, -ext.length);
+    const suffixes = [];
+
+    if (data._id) {
+      suffixes.push(String(data._id).toLowerCase());
+    }
+    if (data._key) {
+      suffixes.push(
+        FileUtils.sanitizeFilename(String(data._key).replaceAll("!", ".")),
+      );
+    }
+
+    for (const suffix of suffixes) {
+      const candidate = `${stem}.${suffix}${ext}`;
+      if (!usedNames.has(candidate)) {
+        usedNames.add(candidate);
+        return candidate;
+      }
+    }
+
+    let index = 2;
+    while (usedNames.has(`${stem}.${index}${ext}`)) {
+      index += 1;
+    }
+
+    const fallback = `${stem}.${index}${ext}`;
+    usedNames.add(fallback);
+    return fallback;
   }
 
   /**
@@ -297,13 +344,20 @@ export class PackUtils {
     };
 
     const { transformName, transformEntry } = config.packs;
+    const usedNames = new Set();
 
     try {
       await FoundryPacks.extractPack(inputDir, outputDir, {
         yaml: true,
         yamlOptions: yamlOptions,
         transformName:
-          transformName || ((entry) => PackUtils.#getFragmentName(entry)),
+          transformName ||
+          ((entry) =>
+            PackUtils.#dedupeFragmentName(
+              PackUtils.#getFragmentName(entry),
+              entry,
+              usedNames,
+            )),
         transformEntry:
           transformEntry || ((entry) => PackUtils.#transformEntry(entry)),
       });
