@@ -28,9 +28,17 @@ system:
     count: 2
     threshold: 0
   description:
-    value: >
-      <p>Allows you to install up to 5 more cybereyes. Cybereyes sold
-      separately.</p>
+    value: |
+      <p>
+        Allows you to install up to 5 additional cybereyes. Additional cybereyes are
+        sold &amp; installed separately.
+      </p>
+      <blockquote>
+        <p>
+          * Install your extra foundational Cybereyes as normal, do not install your
+          extra cybereyes into this item.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:
@@ -41,13 +49,14 @@ system:
     static: 14
   ignoreArmorPercent: 50
   ignoreBelowSP: 0
+  ignoredByBrowser: false
   installLocation: hospital
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - cyberware
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: true
   isFoundational: true
@@ -63,6 +72,7 @@ system:
   revealed: true
   rof: 1
   size: 0
+  source: null
   sources:
     - book: Cyberpunk RED
       page: 367

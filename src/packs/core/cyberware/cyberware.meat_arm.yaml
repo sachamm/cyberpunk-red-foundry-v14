@@ -28,7 +28,6 @@ flags:
         img: systems/cyberpunk-red-core/icons/compendium/cyberware/meathand.svg
         name: Meat Hand
         ownership:
-          aeZ1eHbUQsohUjKc: 3
           default: 0
         sort: 400000
         system:
@@ -137,7 +136,7 @@ system:
       - cyberware
     list:
       - lExOdUfAaRuqXyKN
-    slots: 3
+    slots: 1
     usedSlots: 0
   isElectronic: false
   isFoundational: true

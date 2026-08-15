@@ -29,7 +29,6 @@ flags:
           systems/cyberpunk-red-core/icons/compendium/cyberware/exposed_covering.svg
         name: Exposed Covering (Cyber Leg)
         ownership:
-          aeZ1eHbUQsohUjKc: 3
           default: 0
         sort: 200000
         system:
@@ -119,7 +118,6 @@ flags:
           systems/cyberpunk-red-core/icons/compendium/cyberware/standard_foot.svg
         name: Standard Foot
         ownership:
-          aeZ1eHbUQsohUjKc: 3
           default: 0
         sort: 150000
         system:
@@ -145,8 +143,8 @@ flags:
             autoFire: 0
             suppressiveFire: false
           humanityLoss:
-            roll: 1d3
-            static: 2
+            roll: "0"
+            static: 0
           ignoreArmorPercent: 50
           ignoreBelowSP: 0
           ignoredByBrowser: false

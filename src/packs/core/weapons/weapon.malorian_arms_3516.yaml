@@ -28,7 +28,6 @@ flags:
         img: systems/cyberpunk-red-core/icons/compendium/upgrades/smartgun_link.svg
         name: Smartgun Link
         ownership:
-          62fniNbymaXTm4QO: 3
           default: 0
         sort: 0
         system:

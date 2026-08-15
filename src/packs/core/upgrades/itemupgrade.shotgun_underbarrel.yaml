@@ -54,7 +54,7 @@ system:
       - itemUpgrade
       - ammo
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: false
   isRanged: true

@@ -19,7 +19,7 @@ system:
   brand: ""
   canIgnoreArmor: false
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   critFailEffect: jammed
@@ -45,10 +45,9 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - cyberware
       - ammo
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: true
   isFoundational: false
