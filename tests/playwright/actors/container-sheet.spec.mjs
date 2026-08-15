@@ -1061,7 +1061,7 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
-    test("eurobucks ledger decreases after selling items to shop", async ({
+    test("both actors' eurobucks ledgers update when selling items to shop", async ({
       page: game,
     }) => {
       const playerActorId = await createDocumentViaUI(game, {
@@ -1143,9 +1143,9 @@ test.describe("Container actor sheet", () => {
           { containerActorId },
           { timeout: 5000 },
         );
-      });
+     });
 
-      await test.step("set up trade partner with sufficient funds", async () => {
+      await test.step("set up shop with sufficient funds", async () => {
         const containerSheet = sheet(game, containerSheetId);
         const tradeDropdown = containerSheet.locator(
           'select[name="trade-with-dropdown"]',
@@ -1156,19 +1156,19 @@ test.describe("Container actor sheet", () => {
         const tradePartnerOption = options.find((v) => v !== "");
         if (tradePartnerOption) {
           await tradeDropdown.selectOption({ value: tradePartnerOption });
-          await game.evaluate(
-            async ({ tradePartnerOption }) => {
-              const tradePartner = game.actors.get(tradePartnerOption);
-              if (tradePartner) {
-                await tradePartner.update({ "system.wealth.value": 999999 });
-              }
-            },
-            { tradePartnerOption },
-          );
         }
+        await game.evaluate(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            if (container) {
+              await container.update({ "system.wealth.value": 999999 });
+            }
+          },
+          { containerActorId },
+        );
       });
 
-   await test.step("sell item to shop via drag-and-drop and verify eurobucks decrease", async () => {
+    await test.step("sell item to shop via drag-and-drop and verify both ledgers update", async () => {
         await openSidebarTab(game, "actors");
         const playerEntry = game.locator(
           `#actors [data-entry-id="${playerActorId}"]`,
@@ -1247,7 +1247,247 @@ await game.waitForTimeout(1000);
           { containerActorId },
         );
         expect(containerItemAfter).toBe(true);
+
+        // Verify both actors' ledgers were updated correctly
+        const ledgerData = await game.evaluate(
+          async ({ playerActorId, containerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            const container = game.actors.get(containerActorId);
+            return {
+              playerWealth: player.system.wealth.value,
+              playerTransactions: player.system.wealth.transactions,
+              shopWealth: container.system.wealth.value,
+              shopTransactions: container.system.wealth.transactions,
+            };
+          },
+          { playerActorId, containerActorId },
+        );
+
+        // Player (seller) wealth increased by vendorOffer (100 * 50% = 50)
+        expect(ledgerData.playerWealth).toBe(50);
+
+        // Shop wealth decreased by vendorOffer (999999 - 50 = 999949)
+        expect(ledgerData.shopWealth).toBe(999949);
+
+        // Player's ledger has an "increase" transaction entry
+        expect(
+          ledgerData.playerTransactions.some((t) =>
+            t[0].includes("increase"),
+          ),
+        ).toBe(true);
+
+        // Shop's ledger has a "decrease" transaction entry
+        expect(
+          ledgerData.shopTransactions.some((t) =>
+            t[0].includes("decrease"),
+          ),
+        ).toBe(true);
       });
+
+      await closeDocSheet(game, { collection: "actors", id: playerActorId });
+      await closeDocSheet(game, { collection: "actors", id: containerActorId });
+    });
+
+    test("player sells item to shop with zero wealth", async ({
+      page: game,
+    }) => {
+      const playerActorId = await createDocumentViaUI(game, {
+        documentTab: "actors",
+        type: "character",
+        name: uniqueName("seller-zero-wealth"),
+      });
+
+      await test.step("create a gear item on the player character", async () => {
+        await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            if (player) {
+              // eslint-disable-next-line no-restricted-syntax -- selling test needs direct API
+              await player.createEmbeddedDocuments("Item", [
+                {
+                  name: "Sellable Gear Zero",
+                  type: "gear",
+                  system: {
+                    amount: 1,
+                    price: { market: 100 },
+                    description: { value: "Item to sell" },
+                  },
+                },
+              ]);
+            }
+          },
+          { playerActorId },
+        );
+
+        await game.waitForFunction(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            if (!player) return false;
+            return player.items.some(
+              (i) => i.name === "Sellable Gear Zero",
+            );
+          },
+          { playerActorId },
+          { timeout: 5000 },
+        );
+      });
+
+      const containerActorId = await createDocumentViaUI(game, {
+        documentTab: "actors",
+        type: "container",
+        name: uniqueName("shop-zero-wealth-container"),
+      });
+
+      let containerSheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: containerActorId,
+      });
+
+      await test.step("configure container to buy gear at 50% with zero funds", async () => {
+        await game.evaluate(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            if (container) {
+              await container.setContainerType("shop");
+              await container.update({
+                "system.wealth.value": 0,
+                "system.vendor": {
+                  itemTypes: {
+                    gear: { isPurchasing: true, purchasePercentage: "50" },
+                  },
+                },
+              });
+              if (container.sheet.rendered) await container.sheet.render();
+            }
+          },
+          { containerActorId },
+        );
+
+        await game.waitForFunction(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            return (
+              container?.system?.vendor?.itemTypes?.gear?.isPurchasing === true
+            );
+          },
+          { containerActorId },
+          { timeout: 5000 },
+        );
+      });
+
+      await test.step(
+        "sell item to shop with zero funds and verify ledgers update",
+        async () => {
+          await openSidebarTab(game, "actors");
+          const playerEntry = game.locator(
+            `#actors [data-entry-id="${playerActorId}"]`,
+          );
+          await expect(playerEntry).toBeVisible();
+          await playerEntry.click();
+
+          await game.waitForFunction(
+            (id) => game.actors.get(id)?.sheet?.rendered === true,
+            playerActorId,
+            { timeout: 15000 },
+          );
+          const playerSheetId = await game.evaluate((id) => {
+            const sheet = game.actors.get(id).sheet;
+            return sheet.element?.id ?? null;
+          }, playerActorId);
+
+          const playerSheet = game.locator(`#${playerSheetId}`);
+          await expect(playerSheet).toBeVisible();
+
+          const gearTab = playerSheet.locator(
+            '.navtabs-right a[data-tab="gear"]',
+          );
+          await gearTab.click();
+          const gearContent = playerSheet.locator(
+            '.right-content-section div.tab.gear-tab[data-tab="gear"]',
+          );
+          await expect(gearContent).toHaveClass(/active/);
+
+          const itemRow = gearContent
+            .locator('li.item[data-item-category="gear"]')
+            .filter({ hasText: "Sellable Gear Zero" });
+          await expect(itemRow).toBeVisible();
+
+          const containerEl = game.locator(`#${containerSheetId}`);
+          await expect(containerEl).toBeVisible();
+
+          const saleResult = await game.evaluate(
+            async ({ containerActorId, playerActorId }) => {
+              const container = game.actors.get(containerActorId);
+              const player = game.actors.get(playerActorId);
+              if (!container || !player) {
+                return { error: "container or player not found" };
+              }
+
+              const item = player.items.find(
+                (i) => i.name === "Sellable Gear Zero",
+              );
+              if (!item) {
+                return { error: "item not found in player inventory" };
+              }
+
+              try {
+                // Mock DialogV2.confirm to return true immediately
+                const originalConfirm =
+                  foundry.applications.api.DialogV2.confirm;
+                foundry.applications.api.DialogV2.confirm = async () => true;
+
+                await container.sheet._sellItemTo(playerActorId, item);
+
+                // Restore original DialogV2.confirm
+                foundry.applications.api.DialogV2.confirm = originalConfirm;
+
+                return { success: true };
+              } catch (e) {
+                return { error: e.message };
+              }
+            },
+            { containerActorId, playerActorId },
+          );
+          await game.waitForTimeout(1000);
+
+          const containerItemAfter = await game.evaluate(
+            async ({ containerActorId }) => {
+              const container = game.actors.get(containerActorId);
+              if (!container) return false;
+              return container.items.some(
+                (i) => i.name === "Sellable Gear Zero",
+              );
+            },
+            { containerActorId },
+          );
+          expect(containerItemAfter).toBe(true);
+
+          // Verify both actors' ledgers were updated (shop has 0 wealth, so vendorOffer = 0)
+          const ledgerData = await game.evaluate(
+            async ({ playerActorId, containerActorId }) => {
+              const player = game.actors.get(playerActorId);
+              const container = game.actors.get(containerActorId);
+              return {
+                playerWealth: player.system.wealth.value,
+                playerTransactions: player.system.wealth.transactions,
+                shopWealth: container.system.wealth.value,
+                shopTransactions: container.system.wealth.transactions,
+              };
+            },
+            { playerActorId, containerActorId },
+          );
+
+          // Player wealth stays at 0 (shop could only offer 0)
+          expect(ledgerData.playerWealth).toBe(0);
+
+          // Shop wealth stays at 0
+          expect(ledgerData.shopWealth).toBe(0);
+
+          // Both ledgers should still have entries recorded
+          expect(ledgerData.playerTransactions.length).toBeGreaterThan(0);
+          expect(ledgerData.shopTransactions.length).toBeGreaterThan(0);
+        },
+      );
 
       await closeDocSheet(game, { collection: "actors", id: playerActorId });
       await closeDocSheet(game, { collection: "actors", id: containerActorId });
@@ -1885,8 +2125,8 @@ await game.waitForTimeout(1000);
         itemType: "gear",
       });
 
-      await test.step("set up trade partner with sufficient funds", async () => {
-        const containerSheet = sheet(game, sheetId);
+     await test.step("set up shop with sufficient funds", async () => {
+        const containerSheet = sheet(game, containerSheetId);
         const tradeDropdown = containerSheet.locator(
           'select[name="trade-with-dropdown"]',
         );
@@ -1896,16 +2136,16 @@ await game.waitForTimeout(1000);
         const tradePartnerOption = options.find((v) => v !== "");
         if (tradePartnerOption) {
           await tradeDropdown.selectOption({ value: tradePartnerOption });
-          await game.evaluate(
-            async ({ tradePartnerOption }) => {
-              const tradePartner = game.actors.get(tradePartnerOption);
-              if (tradePartner) {
-                await tradePartner.update({ "system.wealth.value": 999999 });
-              }
-            },
-            { tradePartnerOption },
-          );
         }
+        await game.evaluate(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            if (container) {
+              await container.update({ "system.wealth.value": 999999 });
+            }
+          },
+          { containerActorId },
+        );
       });
 
       await test.step("purchase item and verify trade log entry exists", async () => {
