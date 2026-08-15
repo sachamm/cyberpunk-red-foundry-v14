@@ -31,6 +31,8 @@ const FIELD = {
   itemPrice: ".gear-data",
   purchaseAll: 'a.item-action[data-action-type="purchase"]',
   purchasePart: 'a.item-action[data-action-type="purchaseFraction"]',
+  takeItemAll: 'a.item-action[data-action-type="purchase"]',
+  takeItemPart: 'a.item-action[data-action-type="purchaseFraction"]',
   deleteItem: 'a.item-action[data-action-type="delete"]',
   toggleInstalled: ".toggle-installed-visibility",
 };
@@ -150,6 +152,56 @@ async function createContainerWithItem(game, { containerName, itemType }) {
       id: actorId,
     });
   }
+
+  return { actorId, sheetId };
+}
+
+async function createStashWithItem(game, { stashName, itemName }) {
+  const actorId = await createDocumentViaUI(game, {
+    documentTab: "actors",
+    type: "container",
+    name: uniqueName(stashName),
+  });
+
+  await game.evaluate(
+    async ({ actorId, itemName }) => {
+      const actor = game.actors.get(actorId);
+      if (actor) {
+        await actor.setContainerType("stash");
+        await actor.createEmbeddedDocuments("Item", [
+          {
+            name: itemName,
+            type: "gear",
+            system: {
+              amount: 1,
+              price: { market: 100 },
+              description: { value: "Item for stash test" },
+            },
+          },
+        ]);
+        if (actor.sheet.rendered) await actor.sheet.render();
+      }
+    },
+    { actorId, itemName },
+  );
+
+  await game.waitForFunction(
+    async ({ actorId }) => {
+      const actor = game.actors.get(actorId);
+      if (!actor) return false;
+      return (
+        actor.flags?.[game.system.id]?.["container-type"] === "stash" &&
+        actor.items.some((i) => i.name.includes("Stash Item"))
+      );
+    },
+    { actorId },
+    { timeout: 5000 },
+  );
+
+  const sheetId = await expectSheetRendered(game, {
+    collection: "actors",
+    id: actorId,
+  });
 
   return { actorId, sheetId };
 }
@@ -2437,6 +2489,302 @@ await game.waitForTimeout(1000);
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
+    });
+  });
+
+  test.describe("Stash", () => {
+    test("shows take button instead of purchase", async ({ page: game }) => {
+      const { actorId, sheetId } = await createStashWithItem(game, {
+        stashName: "stash-take-button",
+        itemName: "Stash Item",
+      });
+
+      await test.step("stash container shows hand icon instead of cart icon", async () => {
+        const containerSheet = sheet(game, sheetId);
+        const itemRow = containerSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: "Stash Item" });
+        await expect(itemRow).toBeVisible();
+
+        const takeBtn = itemRow.locator(
+          'a.item-action[data-action-type="purchase"] i',
+        );
+        await expect(takeBtn).toBeVisible();
+        await expect(takeBtn).toHaveClass(/fa-hand/);
+
+        const purchaseBtn = itemRow.locator(
+          'a.item-action[data-action-type="purchase"] i',
+        );
+        await expect(purchaseBtn).not.toHaveClass(/fa-cart-shopping/);
+      });
+
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+    });
+
+    test("storing item in stash doesn't affect ledgers", async ({
+      page: game,
+    }) => {
+      const playerActorId = await createDocumentViaUI(game, {
+        documentTab: "actors",
+        type: "character",
+        name: uniqueName("stash-seller"),
+      });
+
+      await test.step("create a gear item on the player character", async () => {
+        await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            if (player) {
+              await player.createEmbeddedDocuments("Item", [
+                {
+                  name: "Stash Seller Item",
+                  type: "gear",
+                  system: {
+                    amount: 1,
+                    price: { market: 100 },
+                    description: { value: "Item to stash" },
+                  },
+                },
+              ]);
+            }
+          },
+          { playerActorId },
+        );
+
+        await game.waitForFunction(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            if (!player) return false;
+            return player.items.some(
+              (i) => i.name === "Stash Seller Item",
+            );
+          },
+          { playerActorId },
+          { timeout: 5000 },
+        );
+      });
+
+      const stashActorId = await createDocumentViaUI(game, {
+        documentTab: "actors",
+        type: "container",
+        name: uniqueName("stash-storage"),
+      });
+
+      await test.step("set up stash with player having initial wealth", async () => {
+        await game.evaluate(
+          async ({ playerActorId, stashActorId }) => {
+            const player = game.actors.get(playerActorId);
+            const stash = game.actors.get(stashActorId);
+            if (player) {
+              await player.update({ "system.wealth.value": 500 });
+            }
+            if (stash) {
+              await stash.setContainerType("stash");
+            }
+          },
+          { playerActorId, stashActorId },
+        );
+      });
+
+      await test.step(
+        "move item into stash and verify no ledger changes",
+        async () => {
+          // Capture initial wealth values
+          const initialData = await game.evaluate(
+            async ({ playerActorId }) => {
+              const player = game.actors.get(playerActorId);
+              return {
+                playerWealth: player.system.wealth.value,
+                playerTransactions: player.system.wealth.transactions,
+              };
+            },
+            { playerActorId },
+          );
+
+          // Move item from player to stash directly (simulating stash storage)
+          await game.evaluate(
+            async ({ playerActorId, stashActorId }) => {
+              const stash = game.actors.get(stashActorId);
+              const player = game.actors.get(playerActorId);
+              const playerItem = player.items.find(
+                (i) => i.name === "Stash Seller Item",
+              );
+              if (playerItem) {
+                // Clone the item for the stash
+                const itemData = foundry.utils.duplicate(playerItem);
+                await stash.createEmbeddedDocuments("Item", [itemData]);
+                await player.deleteEmbeddedDocuments("Item", [
+                  playerItem.id,
+                ]);
+              }
+            },
+            { playerActorId, stashActorId },
+          );
+
+          await game.waitForTimeout(500);
+
+          // Verify item is now in stash
+          const stashAfterItem = await game.evaluate(
+            async ({ stashActorId }) => {
+              const stash = game.actors.get(stashActorId);
+              if (!stash) return false;
+              return stash.items.some(
+                (i) => i.name === "Stash Seller Item",
+              );
+            },
+            { stashActorId },
+          );
+          expect(stashAfterItem).toBe(true);
+
+          // Verify player's wealth is unchanged
+          const playerAfter = await game.evaluate(
+            async ({ playerActorId }) => {
+              const player = game.actors.get(playerActorId);
+              return {
+                playerWealth: player.system.wealth.value,
+                playerTransactions: player.system.wealth.transactions,
+              };
+            },
+            { playerActorId },
+          );
+
+          expect(playerAfter.playerWealth).toBe(
+            initialData.playerWealth,
+          );
+          expect(playerAfter.playerTransactions).toEqual(
+            initialData.playerTransactions,
+          );
+        },
+      );
+
+      await closeDocSheet(game, { collection: "actors", id: playerActorId });
+      await closeDocSheet(game, { collection: "actors", id: stashActorId });
+    });
+
+    test("removing item from stash doesn't affect ledgers", async ({
+      page: game,
+    }) => {
+      const playerActorId = await createDocumentViaUI(game, {
+        documentTab: "actors",
+        type: "character",
+        name: uniqueName("stash-taker"),
+      });
+
+      const stashActorId = await createDocumentViaUI(game, {
+        documentTab: "actors",
+        type: "container",
+        name: uniqueName("stash-with-item"),
+      });
+
+      await test.step("set up stash with item and player with initial wealth", async () => {
+        await game.evaluate(
+          async ({ stashActorId, playerActorId }) => {
+            const stash = game.actors.get(stashActorId);
+            const player = game.actors.get(playerActorId);
+            if (stash) {
+              await stash.setContainerType("stash");
+              await stash.createEmbeddedDocuments("Item", [
+                {
+                  name: "Stash Taker Item",
+                  type: "gear",
+                  system: {
+                    amount: 1,
+                    price: { market: 100 },
+                    description: { value: "Item to take from stash" },
+                  },
+                },
+              ]);
+            }
+            if (player) {
+              await player.update({ "system.wealth.value": 300 });
+            }
+          },
+          { stashActorId, playerActorId },
+        );
+
+        await game.waitForFunction(
+          async ({ stashActorId }) => {
+            const stash = game.actors.get(stashActorId);
+            if (!stash) return false;
+            return (
+              stash.flags?.[game.system.id]?.["container-type"] === "stash" &&
+              stash.items.some((i) => i.name === "Stash Taker Item")
+            );
+          },
+          { stashActorId },
+          { timeout: 5000 },
+        );
+      });
+
+      await test.step(
+        "take item from stash and verify no ledger changes",
+        async () => {
+          // Capture initial wealth values
+          const initialData = await game.evaluate(
+            async ({ playerActorId }) => {
+              const player = game.actors.get(playerActorId);
+              return {
+                playerWealth: player.system.wealth.value,
+                playerTransactions: player.system.wealth.transactions,
+              };
+            },
+            { playerActorId },
+          );
+
+          // Move item from stash to player by deleting from stash
+          await game.evaluate(
+            async ({ stashActorId }) => {
+              const stash = game.actors.get(stashActorId);
+              const stashItem = stash.items.find(
+                (i) => i.name === "Stash Taker Item",
+              );
+              if (stashItem) {
+                await stash.deleteEmbeddedDocuments("Item", [
+                  stashItem.id,
+                ]);
+              }
+            },
+            { stashActorId },
+          );
+
+          await game.waitForTimeout(500);
+
+          // Verify item is no longer in stash
+          const stashAfter = await game.evaluate(
+            async ({ stashActorId }) => {
+              const stash = game.actors.get(stashActorId);
+              if (!stash) return false;
+              return stash.items.some(
+                (i) => i.name === "Stash Taker Item",
+              );
+            },
+            { stashActorId },
+          );
+          expect(stashAfter).toBe(false);
+
+          // Verify player's wealth is unchanged
+          const playerAfter = await game.evaluate(
+            async ({ playerActorId }) => {
+              const player = game.actors.get(playerActorId);
+              return {
+                playerWealth: player.system.wealth.value,
+                playerTransactions: player.system.wealth.transactions,
+              };
+            },
+            { playerActorId },
+          );
+
+          expect(playerAfter.playerWealth).toBe(
+            initialData.playerWealth,
+          );
+          expect(playerAfter.playerTransactions).toEqual(
+            initialData.playerTransactions,
+          );
+        },
+      );
+
+      await closeDocSheet(game, { collection: "actors", id: playerActorId });
+      await closeDocSheet(game, { collection: "actors", id: stashActorId });
     });
   });
 
