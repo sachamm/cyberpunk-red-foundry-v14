@@ -18,7 +18,7 @@ export async function reopenActorSheetViaUI(page, actorId) {
   await openSidebarTab(page, "actors");
   const entry = page.locator(`#actors [data-entry-id="${actorId}"]`);
   await expect(entry).toBeVisible();
-  await entry.dblclick();
+  await entry.click();
 
   await page.waitForFunction(
     (id) => game.actors.get(id)?.sheet?.rendered === true,
