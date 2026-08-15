@@ -1198,27 +1198,27 @@ test.describe("Container actor sheet", () => {
      });
 
       await test.step("set up shop with sufficient funds", async () => {
-        const containerSheet = sheet(game, containerSheetId);
-        const tradeDropdown = containerSheet.locator(
-          'select[name="trade-with-dropdown"]',
-        );
-        const options = await tradeDropdown.evaluate((el) =>
-          Array.from(el.options).map((o) => o.value),
-        );
-        const tradePartnerOption = options.find((v) => v !== "");
-        if (tradePartnerOption) {
-          await tradeDropdown.selectOption({ value: tradePartnerOption });
-        }
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({ "system.wealth.value": 999999 });
-            }
-          },
-          { containerActorId },
-        );
-      });
+         const containerSheet = sheet(game, sheetId);
+         const tradeDropdown = containerSheet.locator(
+           'select[name="trade-with-dropdown"]',
+         );
+         const options = await tradeDropdown.evaluate((el) =>
+           Array.from(el.options).map((o) => o.value),
+         );
+         const tradePartnerOption = options.find((v) => v !== "");
+         if (tradePartnerOption) {
+           await tradeDropdown.selectOption({ value: tradePartnerOption });
+         }
+         await game.evaluate(
+           async ({ actorId }) => {
+             const container = game.actors.get(actorId);
+             if (container) {
+               await container.update({ "system.wealth.value": 999999 });
+             }
+           },
+           { actorId },
+         );
+       });
 
     await test.step("sell item to shop via drag-and-drop and verify both ledgers update", async () => {
         await openSidebarTab(game, "actors");
@@ -2118,14 +2118,14 @@ await game.waitForTimeout(1000);
         );
 
        const tradePartnerWealthBefore = await game.evaluate(
-          async ({ tradePartnerId }) => {
-            if (!tradePartnerId) return 0;
-            const tradePartner = game.actors.get(tradePartnerId);
-            if (!tradePartner) return 0;
-            return tradePartner.system?.wealth?.value ?? 0;
-          },
-          { tradePartnerId: tradePartnerOption },
-        );
+           async ({ tradePartnerId }) => {
+             if (!tradePartnerId) return 0;
+             const tradePartner = game.actors.get(tradePartnerId);
+             if (!tradePartner) return 0;
+             return tradePartner.system?.wealth?.value ?? 0;
+           },
+           { tradePartnerId: selectedTradePartnerId },
+         );
 
         const itemRow = containerSheet
           .locator(".item.flexrow")
@@ -2154,15 +2154,15 @@ await game.waitForTimeout(1000);
           { actorId },
         );
 
-       const tradePartnerWealthAfter = await game.evaluate(
-          async ({ tradePartnerId }) => {
-            if (!tradePartnerId) return 0;
-            const tradePartner = game.actors.get(tradePartnerId);
-            if (!tradePartner) return 0;
-            return tradePartner.system?.wealth?.value ?? 0;
-          },
-          { tradePartnerId: tradePartnerOption },
-        );
+      const tradePartnerWealthAfter = await game.evaluate(
+           async ({ tradePartnerId }) => {
+             if (!tradePartnerId) return 0;
+             const tradePartner = game.actors.get(tradePartnerId);
+             if (!tradePartner) return 0;
+             return tradePartner.system?.wealth?.value ?? 0;
+           },
+           { tradePartnerId: selectedTradePartnerId },
+         );
 
         expect(tradePartnerWealthAfter).toBe(tradePartnerWealthBefore - 100);
         expect(containerWealthAfter).toBe(containerWealthBefore + 100);
@@ -2177,9 +2177,9 @@ await game.waitForTimeout(1000);
         itemType: "gear",
       });
 
-     await test.step("set up shop with sufficient funds", async () => {
-        const containerSheet = sheet(game, containerSheetId);
-        const tradeDropdown = containerSheet.locator(
+await test.step("set up shop with sufficient funds", async () => {
+         const containerSheet = sheet(game, sheetId);
+         const tradeDropdown = containerSheet.locator(
           'select[name="trade-with-dropdown"]',
         );
         const options = await tradeDropdown.evaluate((el) =>
@@ -2190,13 +2190,13 @@ await game.waitForTimeout(1000);
           await tradeDropdown.selectOption({ value: tradePartnerOption });
         }
         await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
+          async ({ actorId }) => {
+            const container = game.actors.get(actorId);
             if (container) {
               await container.update({ "system.wealth.value": 999999 });
             }
           },
-          { containerActorId },
+          { actorId },
         );
       });
 
