@@ -461,53 +461,50 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
           createItems,
         );
         if (creationSuccess.length > 0) {
-          const deletionSuccess =
-            await tradePartnerActor.deleteEmbeddedDocuments(
-              "Item",
-              deleteItems,
-            );
-          if (deletionSuccess.length > 0) {
-            let reason;
-            if (amount > 1) {
-              reason = `${SystemUtils.Format(
-                "CPR.containerSheet.tradeLog.multipleSold",
-                {
-                  amount,
-                  name: item.name,
-                  price: vendorOffer,
-                  vendor: this.actor.name,
-                },
-              )} - ${username}`;
-            } else {
-              reason = `${SystemUtils.Format(
-                "CPR.containerSheet.tradeLog.singleSold",
-                {
-                  name: item.name,
-                  price: vendorOffer,
-                  vendor: this.actor.name,
-                },
-              )} - ${username}`;
-            }
-            const vendorReason = `${SystemUtils.Format(
-              "CPR.containerSheet.tradeLog.vendorPurchased",
+          await tradePartnerActor.deleteEmbeddedDocuments(
+            "Item",
+            deleteItems,
+          );
+          let reason;
+          if (amount > 1) {
+            reason = `${SystemUtils.Format(
+              "CPR.containerSheet.tradeLog.multipleSold",
               {
+                amount,
                 name: item.name,
-                quantity: cprItemData.amount,
-                seller: tradePartnerActor.name,
                 price: vendorOffer,
+                vendor: this.actor.name,
               },
             )} - ${username}`;
-            await tradePartnerActor.deltaLedgerProperty(
-              "wealth",
-              vendorOffer,
-              reason,
-            );
-            await this.actor.recordTransaction(
-              vendorOffer,
-              vendorReason,
-              tradePartnerActor,
-            );
+          } else {
+            reason = `${SystemUtils.Format(
+              "CPR.containerSheet.tradeLog.singleSold",
+              {
+                name: item.name,
+                price: vendorOffer,
+                vendor: this.actor.name,
+              },
+            )} - ${username}`;
           }
+          const vendorReason = `${SystemUtils.Format(
+            "CPR.containerSheet.tradeLog.vendorPurchased",
+            {
+              name: item.name,
+              quantity: cprItemData.amount,
+              seller: tradePartnerActor.name,
+              price: vendorOffer,
+            },
+          )} - ${username}`;
+          await tradePartnerActor.deltaLedgerProperty(
+            "wealth",
+            vendorOffer,
+            reason,
+          );
+          await this.actor.recordTransaction(
+            vendorOffer,
+            vendorReason,
+            tradePartnerActor,
+          );
         }
       }
     }
