@@ -1759,6 +1759,67 @@ await game.waitForTimeout(1000);
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
+    test("purchase without trade partner shows warning", async ({
+      page: game,
+    }) => {
+      const { actorId, sheetId } = await createContainerWithItem(game, {
+        containerName: "no-trade-partner-container",
+        itemType: "gear",
+      });
+
+      await test.step("attempting purchase without trade partner shows warning", async () => {
+        const containerSheet = sheet(game, sheetId);
+        const itemRow = containerSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: "New Gear" });
+        await expect(itemRow).toBeVisible();
+
+        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
+        await expect(purchaseLink).toBeVisible();
+        await purchaseLink.click();
+
+        await expect(game.locator(".notification.warning")).toBeVisible();
+        await dismissNotifications(game);
+
+        const remainingItems = containerSheet
+          .locator(FIELD.itemName)
+          .filter({ hasText: "New Gear" });
+        await expect(remainingItems).toHaveCount(1);
+      });
+
+      await test.step("selecting trade partner and completing purchase works", async () => {
+        const containerSheet = sheet(game, sheetId);
+        const tradeDropdown = containerSheet.locator(
+          'select[name="trade-with-dropdown"]',
+        );
+        const options = await tradeDropdown.evaluate((el) =>
+          Array.from(el.options).map((o) => o.value),
+        );
+        const tradePartnerOption = options.find((v) => v !== "");
+        if (tradePartnerOption) {
+          await tradeDropdown.selectOption({ value: tradePartnerOption });
+        }
+
+        const itemRow = containerSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: "New Gear" });
+        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
+        await purchaseLink.click();
+
+        await game.waitForFunction(
+          async ({ actorId }) => {
+            const actor = game.actors.get(actorId);
+            if (!actor) return false;
+            return !actor.items.some((i) => i.name === "New Gear");
+          },
+          { actorId },
+          { timeout: 5000 },
+        );
+      });
+
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+    });
+
     test("ammo pricing edge case (÷10)", async ({ page: game }) => {
       const actorId = await createDocumentViaUI(game, {
         documentTab: "actors",
