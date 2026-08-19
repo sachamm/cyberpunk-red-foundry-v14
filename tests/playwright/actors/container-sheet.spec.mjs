@@ -168,6 +168,7 @@ async function createStashWithItem(game, { stashName, itemName }) {
       const actor = game.actors.get(actorId);
       if (actor) {
         await actor.setContainerType("stash");
+        // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
         await actor.createEmbeddedDocuments("Item", [
           {
             name: itemName,
@@ -1122,38 +1123,39 @@ test.describe("Container actor sheet", () => {
         name: uniqueName("seller-character"),
       });
 
-      await test.step("create a gear item on the player character", async () => {
-        await game.evaluate(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (player) {
-              // eslint-disable-next-line no-restricted-syntax -- selling test needs direct API
-              await player.createEmbeddedDocuments("Item", [
-                {
-                  name: "Sellable Gear",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 100 },
-                    description: { value: "Item to sell" },
-                  },
+      const weaponName = uniqueName("assault-rifle");
+      await game.evaluate(
+        async ({ playerActorId, weaponName }) => {
+          const player = game.actors.get(playerActorId);
+          if (player) {
+            // eslint-disable-next-line no-restricted-syntax -- selling test needs direct API
+            await player.createEmbeddedDocuments("Item", [
+              {
+                name: weaponName,
+                type: "weapon",
+                system: {
+                  weaponType: "assaultRifle",
+                  isRanged: true,
+                  magazine: { value: 0, max: 30 },
+                  price: { market: 100 },
+                  installedItems: { allowedTypes: ["ammo"] },
+                  ammoVariety: ["rifle"],
                 },
-              ]);
-            }
-          },
-          { playerActorId },
-        );
+              },
+            ]);
+          }
+        },
+        { playerActorId, weaponName },
+      );
 
-        await game.waitForFunction(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (!player) return false;
-            return player.items.some((i) => i.name === "Sellable Gear");
-          },
-          { playerActorId },
-          { timeout: 5000 },
-        );
-      });
+      await game.waitForFunction(
+        async ({ playerActorId, weaponName }) => {
+          const player = game.actors.get(playerActorId);
+          return player?.items.some((i) => i.name === weaponName);
+        },
+        { playerActorId, weaponName },
+        { timeout: 5000 },
+      );
 
       const containerActorId = await createDocumentViaUI(game, {
         documentTab: "actors",
@@ -1166,7 +1168,7 @@ test.describe("Container actor sheet", () => {
         id: containerActorId,
       });
 
-      await test.step("configure container to buy gear at 50% of market price", async () => {
+      await test.step("configure container to buy weapons at 50% of market price", async () => {
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
@@ -1175,7 +1177,7 @@ test.describe("Container actor sheet", () => {
               await container.update({
                 "system.vendor": {
                   itemTypes: {
-                    gear: { isPurchasing: true, purchasePercentage: "50" },
+                    weapon: { isPurchasing: true, purchasePercentage: "50" },
                   },
                 },
               });
@@ -1189,38 +1191,39 @@ test.describe("Container actor sheet", () => {
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
             return (
-              container?.system?.vendor?.itemTypes?.gear?.isPurchasing === true
+              container?.system?.vendor?.itemTypes?.weapon?.isPurchasing ===
+              true
             );
           },
           { containerActorId },
           { timeout: 5000 },
         );
-     });
+      });
 
       await test.step("set up shop with sufficient funds", async () => {
-         const containerSheet = sheet(game, sheetId);
-         const tradeDropdown = containerSheet.locator(
-           'select[name="trade-with-dropdown"]',
-         );
-         const options = await tradeDropdown.evaluate((el) =>
-           Array.from(el.options).map((o) => o.value),
-         );
-         const tradePartnerOption = options.find((v) => v !== "");
-         if (tradePartnerOption) {
-           await tradeDropdown.selectOption({ value: tradePartnerOption });
-         }
-         await game.evaluate(
-           async ({ actorId }) => {
-             const container = game.actors.get(actorId);
-             if (container) {
-               await container.update({ "system.wealth.value": 999999 });
-             }
-           },
-           { actorId },
-         );
-       });
+        const containerSheet = sheet(game, containerSheetId);
+        const tradeDropdown = containerSheet.locator(
+          'select[name="trade-with-dropdown"]',
+        );
+        const options = await tradeDropdown.evaluate((el) =>
+          Array.from(el.options).map((o) => o.value),
+        );
+        const tradePartnerOption = options.find((v) => v !== "");
+        if (tradePartnerOption) {
+          await tradeDropdown.selectOption({ value: tradePartnerOption });
+        }
+        await game.evaluate(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            if (container) {
+              await container.update({ "system.wealth.value": 999999 });
+            }
+          },
+          { containerActorId },
+        );
+      });
 
-    await test.step("sell item to shop via drag-and-drop and verify both ledgers update", async () => {
+      await test.step("sell item to shop via drag-and-drop and verify both ledgers update", async () => {
         await openSidebarTab(game, "actors");
         const playerEntry = game.locator(
           `#actors [data-entry-id="${playerActorId}"]`,
@@ -1250,55 +1253,72 @@ test.describe("Container actor sheet", () => {
         );
         await expect(gearContent).toHaveClass(/active/);
 
-        const itemRow = gearContent
-          .locator('li.item[data-item-category="gear"]')
-          .filter({ hasText: "Sellable Gear" });
-        await expect(itemRow).toBeVisible();
+        const weaponRow = gearContent
+          .locator('li.item[data-item-category="weapon"]')
+          .filter({ hasText: weaponName });
+        await expect(weaponRow).toBeVisible();
 
         const containerEl = game.locator(`#${containerSheetId}`);
-      await expect(containerEl).toBeVisible();
+        await expect(containerEl).toBeVisible();
 
-const saleResult = await game.evaluate(
-          async ({ containerActorId, playerActorId }) => {
+        const itemBefore = await game.evaluate(
+          async ({ playerActorId, weaponName }) => {
+            const player = game.actors.get(playerActorId);
+            const item = player.items.find((i) => i.name === weaponName);
+            if (!item) return null;
+            return {
+              price: item.system.price.market,
+              magazineValue: item.system.magazine?.value,
+              magazineMax: item.system.magazine?.max,
+            };
+          },
+          { playerActorId, weaponName },
+        );
+
+        await game.evaluate(
+          async ({ playerActorId, containerActorId, weaponName }) => {
             const container = game.actors.get(containerActorId);
             const player = game.actors.get(playerActorId);
-            if (!container || !player) {
-              return { error: "container or player not found" };
-            }
-
-            const item = player.items.find((i) => i.name === "Sellable Gear");
+            const item = player.items.find((i) => i.name === weaponName);
             if (!item) {
-              return { error: "item not found in player inventory" };
+              throw new Error("Weapon not found on player");
             }
-
-            try {
-              // Mock DialogV2.confirm to return true immediately
-              const originalConfirm = foundry.applications.api.DialogV2.confirm;
-              foundry.applications.api.DialogV2.confirm = async () => true;
-
-              await container.sheet._sellItemTo(playerActorId, item);
-
-              // Restore original DialogV2.confirm
-              foundry.applications.api.DialogV2.confirm = originalConfirm;
-
-              return { success: true };
-            } catch (e) {
-              return { error: e.message };
-            }
+            // Mock DialogV2.confirm to return true immediately
+            const originalConfirm = foundry.applications.api.DialogV2.confirm;
+            foundry.applications.api.DialogV2.confirm = async () => true;
+            await container.sheet._sellItemTo(playerActorId, item);
+            foundry.applications.api.DialogV2.confirm = originalConfirm;
           },
-          { containerActorId, playerActorId },
+          { playerActorId, containerActorId, weaponName },
         );
-await game.waitForTimeout(1000);
+
+        await game.waitForTimeout(1000);
 
         const containerItemAfter = await game.evaluate(
-          async ({ containerActorId }) => {
+          async ({ containerActorId, weaponName }) => {
             const container = game.actors.get(containerActorId);
             if (!container) return false;
-            return container.items.some((i) => i.name === "Sellable Gear");
+            return container.items.some((i) => i.name === weaponName);
           },
-          { containerActorId },
+          { containerActorId, weaponName },
         );
         expect(containerItemAfter).toBe(true);
+
+        const containerItemData = await game.evaluate(
+          async ({ containerActorId, weaponName }) => {
+            const container = game.actors.get(containerActorId);
+            const item = container.items.find((i) => i.name === weaponName);
+            return {
+              price: item?.system?.price?.market,
+              magazineValue: item?.system?.magazine?.value,
+              magazineMax: item?.system?.magazine?.max,
+            };
+          },
+          { containerActorId, weaponName },
+        );
+        expect(containerItemData.price).toBe(itemBefore.price);
+        expect(containerItemData.magazineValue).toBe(itemBefore.magazineValue);
+        expect(containerItemData.magazineMax).toBe(itemBefore.magazineMax);
 
         // Verify both actors' ledgers were updated correctly
         const ledgerData = await game.evaluate(
@@ -1323,16 +1343,12 @@ await game.waitForTimeout(1000);
 
         // Player's ledger has an "increase" transaction entry
         expect(
-          ledgerData.playerTransactions.some((t) =>
-            t[0].includes("increase"),
-          ),
+          ledgerData.playerTransactions.some((t) => t[0].includes("increase")),
         ).toBe(true);
 
         // Shop's ledger has a "decrease" transaction entry
         expect(
-          ledgerData.shopTransactions.some((t) =>
-            t[0].includes("decrease"),
-          ),
+          ledgerData.shopTransactions.some((t) => t[0].includes("decrease")),
         ).toBe(true);
       });
 
@@ -1375,9 +1391,7 @@ await game.waitForTimeout(1000);
           async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
             if (!player) return false;
-            return player.items.some(
-              (i) => i.name === "Sellable Gear Zero",
-            );
+            return player.items.some((i) => i.name === "Sellable Gear Zero");
           },
           { playerActorId },
           { timeout: 5000 },
@@ -1427,119 +1441,107 @@ await game.waitForTimeout(1000);
         );
       });
 
-      await test.step(
-        "sell item to shop with zero funds and verify ledgers update",
-        async () => {
-          await openSidebarTab(game, "actors");
-          const playerEntry = game.locator(
-            `#actors [data-entry-id="${playerActorId}"]`,
-          );
-          await expect(playerEntry).toBeVisible();
-          await playerEntry.click();
+      await test.step("sell item to shop with zero funds and verify ledgers update", async () => {
+        await openSidebarTab(game, "actors");
+        const playerEntry = game.locator(
+          `#actors [data-entry-id="${playerActorId}"]`,
+        );
+        await expect(playerEntry).toBeVisible();
+        await playerEntry.click();
 
-          await game.waitForFunction(
-            (id) => game.actors.get(id)?.sheet?.rendered === true,
-            playerActorId,
-            { timeout: 15000 },
-          );
-          const playerSheetId = await game.evaluate((id) => {
-            const sheet = game.actors.get(id).sheet;
-            return sheet.element?.id ?? null;
-          }, playerActorId);
+        await game.waitForFunction(
+          (id) => game.actors.get(id)?.sheet?.rendered === true,
+          playerActorId,
+          { timeout: 15000 },
+        );
+        const playerSheetId = await game.evaluate((id) => {
+          const sheet = game.actors.get(id).sheet;
+          return sheet.element?.id ?? null;
+        }, playerActorId);
 
-          const playerSheet = game.locator(`#${playerSheetId}`);
-          await expect(playerSheet).toBeVisible();
+        const playerSheet = game.locator(`#${playerSheetId}`);
+        await expect(playerSheet).toBeVisible();
 
-          const gearTab = playerSheet.locator(
-            '.navtabs-right a[data-tab="gear"]',
-          );
-          await gearTab.click();
-          const gearContent = playerSheet.locator(
-            '.right-content-section div.tab.gear-tab[data-tab="gear"]',
-          );
-          await expect(gearContent).toHaveClass(/active/);
+        const gearTab = playerSheet.locator(
+          '.navtabs-right a[data-tab="gear"]',
+        );
+        await gearTab.click();
+        const gearContent = playerSheet.locator(
+          '.right-content-section div.tab.gear-tab[data-tab="gear"]',
+        );
+        await expect(gearContent).toHaveClass(/active/);
 
-          const itemRow = gearContent
-            .locator('li.item[data-item-category="gear"]')
-            .filter({ hasText: "Sellable Gear Zero" });
-          await expect(itemRow).toBeVisible();
+        const itemRow = gearContent
+          .locator('li.item[data-item-category="gear"]')
+          .filter({ hasText: "Sellable Gear Zero" });
+        await expect(itemRow).toBeVisible();
 
-          const containerEl = game.locator(`#${containerSheetId}`);
-          await expect(containerEl).toBeVisible();
+        const containerEl = game.locator(`#${containerSheetId}`);
+        await expect(containerEl).toBeVisible();
 
-          const saleResult = await game.evaluate(
-            async ({ containerActorId, playerActorId }) => {
-              const container = game.actors.get(containerActorId);
-              const player = game.actors.get(playerActorId);
-              if (!container || !player) {
-                return { error: "container or player not found" };
-              }
+        await game.evaluate(
+          async ({ containerActorId, playerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            const player = game.actors.get(playerActorId);
+            if (!container || !player) {
+              throw new Error("container or player not found");
+            }
 
-              const item = player.items.find(
-                (i) => i.name === "Sellable Gear Zero",
-              );
-              if (!item) {
-                return { error: "item not found in player inventory" };
-              }
+            const item = player.items.find(
+              (i) => i.name === "Sellable Gear Zero",
+            );
+            if (!item) {
+              throw new Error("item not found in player inventory");
+            }
 
-              try {
-                // Mock DialogV2.confirm to return true immediately
-                const originalConfirm =
-                  foundry.applications.api.DialogV2.confirm;
-                foundry.applications.api.DialogV2.confirm = async () => true;
+            // Mock DialogV2.confirm to return true immediately
+            const originalConfirm = foundry.applications.api.DialogV2.confirm;
+            foundry.applications.api.DialogV2.confirm = async () => true;
 
-                await container.sheet._sellItemTo(playerActorId, item);
+            await container.sheet._sellItemTo(playerActorId, item);
 
-                // Restore original DialogV2.confirm
-                foundry.applications.api.DialogV2.confirm = originalConfirm;
+            // Restore original DialogV2.confirm
+            foundry.applications.api.DialogV2.confirm = originalConfirm;
+          },
+          { containerActorId, playerActorId },
+        );
+        await game.waitForTimeout(1000);
 
-                return { success: true };
-              } catch (e) {
-                return { error: e.message };
-              }
-            },
-            { containerActorId, playerActorId },
-          );
-          await game.waitForTimeout(1000);
+        const containerItemAfter = await game.evaluate(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            if (!container) return false;
+            return container.items.some((i) => i.name === "Sellable Gear Zero");
+          },
+          { containerActorId },
+        );
+        expect(containerItemAfter).toBe(true);
 
-          const containerItemAfter = await game.evaluate(
-            async ({ containerActorId }) => {
-              const container = game.actors.get(containerActorId);
-              if (!container) return false;
-              return container.items.some(
-                (i) => i.name === "Sellable Gear Zero",
-              );
-            },
-            { containerActorId },
-          );
-          expect(containerItemAfter).toBe(true);
+        // Verify both actors' ledgers were updated (shop has 0 wealth, so vendorOffer = 0)
+        const ledgerData = await game.evaluate(
+          async ({ playerActorId, containerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            const container = game.actors.get(containerActorId);
+            return {
+              playerWealth: player.system.wealth.value,
+              playerTransactions: player.system.wealth.transactions,
+              shopWealth: container.system.wealth.value,
+              shopTransactions: container.system.wealth.transactions,
+            };
+          },
+          { playerActorId, containerActorId },
+        );
 
-          // Verify both actors' ledgers were updated (shop has 0 wealth, so vendorOffer = 0)
-          const ledgerData = await game.evaluate(
-            async ({ playerActorId, containerActorId }) => {
-              const player = game.actors.get(playerActorId);
-              const container = game.actors.get(containerActorId);
-              return {
-                playerWealth: player.system.wealth.value,
-                playerTransactions: player.system.wealth.transactions,
-                shopWealth: container.system.wealth.value,
-                shopTransactions: container.system.wealth.transactions,
-              };
-            },
-            { playerActorId, containerActorId },
-          );
+        // Player wealth stays at 0 (shop could only offer 0)
+        expect(ledgerData.playerWealth).toBe(0);
 
-          // Player wealth stays at 0 (shop could only offer 0)
-          expect(ledgerData.playerWealth).toBe(0);
+        // Shop wealth stays at 0
+        expect(ledgerData.shopWealth).toBe(0);
 
-          // Shop wealth stays at 0
-          expect(ledgerData.shopWealth).toBe(0);
-
-          // Both ledgers should still have entries recorded
-          expect(ledgerData.playerTransactions.length).toBeGreaterThan(0);
-          expect(ledgerData.shopTransactions.length).toBeGreaterThan(0);
-        },
-      );
+        // Both ledgers should still have entries recorded
+        expect(ledgerData.playerTransactions.length).toBeGreaterThan(0);
+        expect(ledgerData.shopTransactions.length).toBeGreaterThan(0);
+      });
 
       await closeDocSheet(game, { collection: "actors", id: playerActorId });
       await closeDocSheet(game, { collection: "actors", id: containerActorId });
@@ -2178,15 +2180,15 @@ await game.waitForTimeout(1000);
           { actorId },
         );
 
-       const tradePartnerWealthBefore = await game.evaluate(
-           async ({ tradePartnerId }) => {
-             if (!tradePartnerId) return 0;
-             const tradePartner = game.actors.get(tradePartnerId);
-             if (!tradePartner) return 0;
-             return tradePartner.system?.wealth?.value ?? 0;
-           },
-           { tradePartnerId: selectedTradePartnerId },
-         );
+        const tradePartnerWealthBefore = await game.evaluate(
+          async ({ tradePartnerId }) => {
+            if (!tradePartnerId) return 0;
+            const tradePartner = game.actors.get(tradePartnerId);
+            if (!tradePartner) return 0;
+            return tradePartner.system?.wealth?.value ?? 0;
+          },
+          { tradePartnerId: selectedTradePartnerId },
+        );
 
         const itemRow = containerSheet
           .locator(".item.flexrow")
@@ -2215,15 +2217,15 @@ await game.waitForTimeout(1000);
           { actorId },
         );
 
-      const tradePartnerWealthAfter = await game.evaluate(
-           async ({ tradePartnerId }) => {
-             if (!tradePartnerId) return 0;
-             const tradePartner = game.actors.get(tradePartnerId);
-             if (!tradePartner) return 0;
-             return tradePartner.system?.wealth?.value ?? 0;
-           },
-           { tradePartnerId: selectedTradePartnerId },
-         );
+        const tradePartnerWealthAfter = await game.evaluate(
+          async ({ tradePartnerId }) => {
+            if (!tradePartnerId) return 0;
+            const tradePartner = game.actors.get(tradePartnerId);
+            if (!tradePartner) return 0;
+            return tradePartner.system?.wealth?.value ?? 0;
+          },
+          { tradePartnerId: selectedTradePartnerId },
+        );
 
         expect(tradePartnerWealthAfter).toBe(tradePartnerWealthBefore - 100);
         expect(containerWealthAfter).toBe(containerWealthBefore + 100);
@@ -2238,9 +2240,9 @@ await game.waitForTimeout(1000);
         itemType: "gear",
       });
 
-await test.step("set up shop with sufficient funds", async () => {
-         const containerSheet = sheet(game, sheetId);
-         const tradeDropdown = containerSheet.locator(
+      await test.step("set up shop with sufficient funds", async () => {
+        const containerSheet = sheet(game, sheetId);
+        const tradeDropdown = containerSheet.locator(
           'select[name="trade-with-dropdown"]',
         );
         const options = await tradeDropdown.evaluate((el) =>
@@ -2596,6 +2598,7 @@ await test.step("set up shop with sufficient funds", async () => {
           async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
             if (player) {
+              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
               await player.createEmbeddedDocuments("Item", [
                 {
                   name: "Stash Seller Item",
@@ -2616,9 +2619,7 @@ await test.step("set up shop with sufficient funds", async () => {
           async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
             if (!player) return false;
-            return player.items.some(
-              (i) => i.name === "Stash Seller Item",
-            );
+            return player.items.some((i) => i.name === "Stash Seller Item");
           },
           { playerActorId },
           { timeout: 5000 },
@@ -2647,76 +2648,69 @@ await test.step("set up shop with sufficient funds", async () => {
         );
       });
 
-      await test.step(
-        "move item into stash and verify no ledger changes",
-        async () => {
-          // Capture initial wealth values
-          const initialData = await game.evaluate(
-            async ({ playerActorId }) => {
-              const player = game.actors.get(playerActorId);
-              return {
-                playerWealth: player.system.wealth.value,
-                playerTransactions: player.system.wealth.transactions,
-              };
-            },
-            { playerActorId },
-          );
+      await test.step("move item into stash and verify no ledger changes", async () => {
+        // Capture initial wealth values
+        const initialData = await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            return {
+              playerWealth: player.system.wealth.value,
+              playerTransactions: player.system.wealth.transactions,
+            };
+          },
+          { playerActorId },
+        );
 
-          // Move item from player to stash directly (simulating stash storage)
-          await game.evaluate(
-            async ({ playerActorId, stashActorId }) => {
-              const stash = game.actors.get(stashActorId);
-              const player = game.actors.get(playerActorId);
-              const playerItem = player.items.find(
-                (i) => i.name === "Stash Seller Item",
-              );
-              if (playerItem) {
-                // Clone the item for the stash
-                const itemData = foundry.utils.duplicate(playerItem);
-                await stash.createEmbeddedDocuments("Item", [itemData]);
-                await player.deleteEmbeddedDocuments("Item", [
-                  playerItem.id,
-                ]);
-              }
-            },
-            { playerActorId, stashActorId },
-          );
+        // Move item from player to stash directly (simulating stash storage)
+        await game.evaluate(
+          async ({ playerActorId, stashActorId }) => {
+            const stash = game.actors.get(stashActorId);
+            const player = game.actors.get(playerActorId);
+            const playerItem = player.items.find(
+              (i) => i.name === "Stash Seller Item",
+            );
+            if (playerItem) {
+              // Clone the item for the stash
+              const itemData = foundry.utils.duplicate(playerItem);
+              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
+              await stash.createEmbeddedDocuments("Item", [itemData]);
+              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
+              await player.deleteEmbeddedDocuments("Item", [playerItem.id]);
+            }
+          },
+          { playerActorId, stashActorId },
+        );
 
-          await game.waitForTimeout(500);
+        await game.waitForTimeout(500);
 
-          // Verify item is now in stash
-          const stashAfterItem = await game.evaluate(
-            async ({ stashActorId }) => {
-              const stash = game.actors.get(stashActorId);
-              if (!stash) return false;
-              return stash.items.some(
-                (i) => i.name === "Stash Seller Item",
-              );
-            },
-            { stashActorId },
-          );
-          expect(stashAfterItem).toBe(true);
+        // Verify item is now in stash
+        const stashAfterItem = await game.evaluate(
+          async ({ stashActorId }) => {
+            const stash = game.actors.get(stashActorId);
+            if (!stash) return false;
+            return stash.items.some((i) => i.name === "Stash Seller Item");
+          },
+          { stashActorId },
+        );
+        expect(stashAfterItem).toBe(true);
 
-          // Verify player's wealth is unchanged
-          const playerAfter = await game.evaluate(
-            async ({ playerActorId }) => {
-              const player = game.actors.get(playerActorId);
-              return {
-                playerWealth: player.system.wealth.value,
-                playerTransactions: player.system.wealth.transactions,
-              };
-            },
-            { playerActorId },
-          );
+        // Verify player's wealth is unchanged
+        const playerAfter = await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            return {
+              playerWealth: player.system.wealth.value,
+              playerTransactions: player.system.wealth.transactions,
+            };
+          },
+          { playerActorId },
+        );
 
-          expect(playerAfter.playerWealth).toBe(
-            initialData.playerWealth,
-          );
-          expect(playerAfter.playerTransactions).toEqual(
-            initialData.playerTransactions,
-          );
-        },
-      );
+        expect(playerAfter.playerWealth).toBe(initialData.playerWealth);
+        expect(playerAfter.playerTransactions).toEqual(
+          initialData.playerTransactions,
+        );
+      });
 
       await closeDocSheet(game, { collection: "actors", id: playerActorId });
       await closeDocSheet(game, { collection: "actors", id: stashActorId });
@@ -2744,6 +2738,7 @@ await test.step("set up shop with sufficient funds", async () => {
             const player = game.actors.get(playerActorId);
             if (stash) {
               await stash.setContainerType("stash");
+              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
               await stash.createEmbeddedDocuments("Item", [
                 {
                   name: "Stash Taker Item",
@@ -2777,72 +2772,64 @@ await test.step("set up shop with sufficient funds", async () => {
         );
       });
 
-      await test.step(
-        "take item from stash and verify no ledger changes",
-        async () => {
-          // Capture initial wealth values
-          const initialData = await game.evaluate(
-            async ({ playerActorId }) => {
-              const player = game.actors.get(playerActorId);
-              return {
-                playerWealth: player.system.wealth.value,
-                playerTransactions: player.system.wealth.transactions,
-              };
-            },
-            { playerActorId },
-          );
+      await test.step("take item from stash and verify no ledger changes", async () => {
+        // Capture initial wealth values
+        const initialData = await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            return {
+              playerWealth: player.system.wealth.value,
+              playerTransactions: player.system.wealth.transactions,
+            };
+          },
+          { playerActorId },
+        );
 
-          // Move item from stash to player by deleting from stash
-          await game.evaluate(
-            async ({ stashActorId }) => {
-              const stash = game.actors.get(stashActorId);
-              const stashItem = stash.items.find(
-                (i) => i.name === "Stash Taker Item",
-              );
-              if (stashItem) {
-                await stash.deleteEmbeddedDocuments("Item", [
-                  stashItem.id,
-                ]);
-              }
-            },
-            { stashActorId },
-          );
+        // Move item from stash to player by deleting from stash
+        await game.evaluate(
+          async ({ stashActorId }) => {
+            const stash = game.actors.get(stashActorId);
+            const stashItem = stash.items.find(
+              (i) => i.name === "Stash Taker Item",
+            );
+            if (stashItem) {
+              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
+              await stash.deleteEmbeddedDocuments("Item", [stashItem.id]);
+            }
+          },
+          { stashActorId },
+        );
 
-          await game.waitForTimeout(500);
+        await game.waitForTimeout(500);
 
-          // Verify item is no longer in stash
-          const stashAfter = await game.evaluate(
-            async ({ stashActorId }) => {
-              const stash = game.actors.get(stashActorId);
-              if (!stash) return false;
-              return stash.items.some(
-                (i) => i.name === "Stash Taker Item",
-              );
-            },
-            { stashActorId },
-          );
-          expect(stashAfter).toBe(false);
+        // Verify item is no longer in stash
+        const stashAfter = await game.evaluate(
+          async ({ stashActorId }) => {
+            const stash = game.actors.get(stashActorId);
+            if (!stash) return false;
+            return stash.items.some((i) => i.name === "Stash Taker Item");
+          },
+          { stashActorId },
+        );
+        expect(stashAfter).toBe(false);
 
-          // Verify player's wealth is unchanged
-          const playerAfter = await game.evaluate(
-            async ({ playerActorId }) => {
-              const player = game.actors.get(playerActorId);
-              return {
-                playerWealth: player.system.wealth.value,
-                playerTransactions: player.system.wealth.transactions,
-              };
-            },
-            { playerActorId },
-          );
+        // Verify player's wealth is unchanged
+        const playerAfter = await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            return {
+              playerWealth: player.system.wealth.value,
+              playerTransactions: player.system.wealth.transactions,
+            };
+          },
+          { playerActorId },
+        );
 
-          expect(playerAfter.playerWealth).toBe(
-            initialData.playerWealth,
-          );
-          expect(playerAfter.playerTransactions).toEqual(
-            initialData.playerTransactions,
-          );
-        },
-      );
+        expect(playerAfter.playerWealth).toBe(initialData.playerWealth);
+        expect(playerAfter.playerTransactions).toEqual(
+          initialData.playerTransactions,
+        );
+      });
 
       await closeDocSheet(game, { collection: "actors", id: playerActorId });
       await closeDocSheet(game, { collection: "actors", id: stashActorId });
