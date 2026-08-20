@@ -651,6 +651,55 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
+    test("ctrl-clicking an item name posts an item card to the chat log", async ({
+      page: game,
+    }) => {
+      // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
+      // dispatches `click`, so use Cmd there. The handler accepts both modifiers
+      // (`event.ctrlKey || event.metaKey`).
+      const cardModifier =
+        process.platform === "darwin" ? ["Meta"] : ["Control"];
+
+      const { actorId, sheetId } = await createContainerWithItem(game, {
+        containerName: "item-card-container",
+        itemType: "gear",
+      });
+
+      await test.step("open the chat log", async () => {
+        await openSidebarTab(game, "chat");
+      });
+
+      await test.step("ctrl-clicking the item name posts a chat message with the item card", async () => {
+        const containerSheet = sheet(game, sheetId);
+        const itemEditLink = containerSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: "New Gear" })
+          .locator(FIELD.itemName);
+        await expect(itemEditLink).toBeVisible();
+
+        const before = await game.evaluate(() => game.messages.size);
+        await itemEditLink.click({ modifiers: cardModifier });
+
+        await game.waitForFunction((n) => game.messages.size > n, before, {
+          timeout: 10000,
+        });
+
+        const card = game
+          .locator("#chat .chat-message")
+          .last()
+          .locator(".item-card-grid-container");
+        await expect(card).toBeVisible();
+        await expect(card.locator(".item-card-name")).toContainText("New Gear");
+        await expect(card.locator(".item-card-type")).toContainText("Gear");
+      });
+
+      await test.step("ctrl-click does not open the item sheet", async () => {
+        await expect(game.locator(".application .item-sheet")).toHaveCount(0);
+      });
+
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+    });
+
     test("drag-and-drop onto container", async ({ page: game }) => {
       const itemId = await createItemViaUI(game, {
         type: "gear",
