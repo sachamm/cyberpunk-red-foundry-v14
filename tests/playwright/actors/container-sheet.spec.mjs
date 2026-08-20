@@ -4,6 +4,9 @@ import {
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
+  openOwnedItemSheet,
+  closeOwnedItemSheet,
+  dismissNotifications,
   uniqueName,
   reopenActorSheetViaUI,
   dragItemToActorSheet,
@@ -44,37 +47,6 @@ function sheet(page, sheetId) {
   return page.locator(`#${sheetId}`);
 }
 
-// Wait for an owned item's sheet to be open and return its element id.
-async function openOwnedItemSheet(page, { actorId, itemId }) {
-  await page.waitForFunction(
-    ({ actorId, itemId }) =>
-      game.actors.get(actorId).items.get(itemId)?.sheet?.rendered === true,
-    { actorId, itemId },
-    { timeout: 15000 },
-  );
-  const elementId = await page.evaluate(
-    ({ actorId, itemId }) => {
-      const item = game.actors.get(actorId).items.get(itemId);
-      return item.sheet.element?.id ?? null;
-    },
-    { actorId, itemId },
-  );
-  expect(elementId).toBeTruthy();
-  await expect(page.locator(`#${elementId}`)).toBeVisible();
-  return elementId;
-}
-
-// Close an owned item's sheet (closeDocSheet only covers world documents).
-async function closeOwnedItemSheet(page, { actorId, itemId }) {
-  await page.evaluate(
-    ({ actorId, itemId }) => {
-      const item = game.actors.get(actorId).items.get(itemId);
-      return item?.sheet?.close();
-    },
-    { actorId, itemId },
-  );
-}
-
 async function waitForActorFields(page, actorId, expected) {
   await page.waitForFunction(
     ({ actorId, expected }) => {
@@ -87,17 +59,6 @@ async function waitForActorFields(page, actorId, expected) {
     { actorId, expected },
     { timeout: 10000 },
   );
-}
-
-async function dismissNotifications(page) {
-  const notifications = page.locator(".notification");
-  if ((await notifications.count()) > 0) {
-    await notifications
-      .first()
-      .click({ force: true })
-      .catch(() => {});
-    await page.waitForTimeout(200);
-  }
 }
 
 async function createContainerWithItem(game, { containerName, itemType }) {

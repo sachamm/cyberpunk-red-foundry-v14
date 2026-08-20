@@ -94,7 +94,38 @@ export async function closeDocSheet(page, { collection, id }) {
   );
 }
 
-async function dismissNotifications(page) {
+// Wait for an owned item's sheet to be open and return its element id.
+export async function openOwnedItemSheet(page, { actorId, itemId }) {
+  await page.waitForFunction(
+    ({ actorId, itemId }) =>
+      game.actors.get(actorId).items.get(itemId)?.sheet?.rendered === true,
+    { actorId, itemId },
+    { timeout: 15000 },
+  );
+  const elementId = await page.evaluate(
+    ({ actorId, itemId }) => {
+      const item = game.actors.get(actorId).items.get(itemId);
+      return item.sheet.element?.id ?? null;
+    },
+    { actorId, itemId },
+  );
+  expect(elementId).toBeTruthy();
+  await expect(page.locator(`#${elementId}`)).toBeVisible();
+  return elementId;
+}
+
+// Close an owned item's sheet (closeDocSheet only covers world documents).
+export async function closeOwnedItemSheet(page, { actorId, itemId }) {
+  await page.evaluate(
+    ({ actorId, itemId }) => {
+      const item = game.actors.get(actorId).items.get(itemId);
+      return item?.sheet?.close();
+    },
+    { actorId, itemId },
+  );
+}
+
+export async function dismissNotifications(page) {
   await page.evaluate(() => {
     try {
       globalThis.ui?.notifications?.clear?.();
