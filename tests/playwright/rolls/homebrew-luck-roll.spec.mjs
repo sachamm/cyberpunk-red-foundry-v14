@@ -88,9 +88,13 @@ async function attemptRestoreLuckRollDefaults(page, label) {
 // message, and read back what kind of roll it was and the rendered result.
 async function rollLuck(page, sheetId) {
   const before = await page.evaluate(() => game.messages.size);
+  // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
+  // dispatches `click`, so use Cmd there. The roll handler accepts both
+  // (`event.ctrlKey || event.metaKey`).
+  const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
   await page
     .locator(`#${sheetId} ${LUCK_ROLLABLE}`)
-    .click({ modifiers: ["Control"] });
+    .click({ modifiers: modifier });
   await page.waitForFunction((n) => game.messages.size > n, before, {
     timeout: 10000,
   });
