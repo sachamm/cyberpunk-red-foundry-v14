@@ -35,3 +35,4 @@ export {
   changeActorSheetViaUI,
 } from "./sheets.mjs";
 export { openNotesEditorViaUI, saveNotesEditorViaUI } from "./editors.mjs";
+export { fakeTokenDocument, openTokenSheet } from "./tokens.mjs";

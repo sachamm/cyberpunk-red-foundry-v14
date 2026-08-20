@@ -9,6 +9,7 @@ import {
   dragItemToActorSheet,
   createItemViaUI,
   openSidebarTab,
+  openTokenSheet,
 } from "../../../tools/playwright/ui/index.mjs";
 
 const FIELD = {
@@ -64,51 +65,6 @@ async function dismissNotifications(page) {
       .catch(() => {});
     await page.waitForTimeout(200);
   }
-}
-
-async function ensureTestScene(page) {
-  const sceneId = await page.evaluate(async () => {
-    let scene = game.scenes.getName("test-scene");
-    if (!scene) {
-      scene = await Scene.create({
-        name: "test-scene",
-        sort: 1,
-        background: {
-          color: "#000000",
-          alphaBase: 1,
-          fit: "contain",
-        },
-        grid: { size: 50 },
-      });
-    }
-    await game.scenes.get(scene.id).view();
-    return scene.id;
-  });
-  await page.waitForFunction(
-    (sceneId) => canvas.scene && canvas.scene.id === sceneId,
-    sceneId,
-    { timeout: 10000 },
-  );
-  return sceneId;
-}
-
-async function createTokenForActor(page, actorId) {
-  const tokenDocumentId = await page.evaluate(
-    async ({ actorId }) => {
-      // eslint-disable-next-line no-restricted-syntax -- token setup needs direct API access
-      const token = await canvas.scene.createEmbeddedDocuments("Token", [
-        {
-          x: 100,
-          y: 100,
-          actorId: actorId,
-          name: game.actors.get(actorId).name,
-        },
-      ]);
-      return token[0].id;
-    },
-    { actorId },
-  );
-  return tokenDocumentId;
 }
 
 async function createContainerWithItem(game, { containerName, itemType }) {
@@ -212,12 +168,6 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Container actor sheet", () => {
-  test.describe("token setup", () => {
-    test.beforeAll(async ({ page }) => {
-      await ensureTestScene(page);
-    });
-  });
-
   test.describe("Shared behavior", () => {
     test("name edits persist after close and reopen", async ({
       page: game,
@@ -2449,9 +2399,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("loot container displays N/A for eurobucks on token sheet", async () => {
-        const tokenDocumentId = await createTokenForActor(game, actorId);
-        expect(tokenDocumentId).toBeTruthy();
-
         await game.evaluate(
           async (params) => {
             const actor = game.actors.get(params.actorId);
@@ -2491,19 +2438,7 @@ test.describe("Container actor sheet", () => {
         itemType: "gear",
       });
 
-      const tokenDocumentId = await createTokenForActor(game, actorId);
-      expect(tokenDocumentId).toBeTruthy();
-
-      let sheetId = await game.evaluate(
-        async (params) => {
-          const actor = game.actors.get(params.actorId);
-          const token = canvas.scene.tokens.get(params.tokenDocumentId);
-          if (!actor || !token) return null;
-          await actor.sheet.render(true, { token });
-          return actor.sheet.element?.id ?? null;
-        },
-        { actorId, tokenDocumentId },
-      );
+      let sheetId = await openTokenSheet(game, actorId);
 
       await test.step("switch to loot type and verify hand icon", async () => {
         await game.evaluate(
@@ -2846,19 +2781,7 @@ test.describe("Container actor sheet", () => {
         name: uniqueName("custom-token-container"),
       });
 
-      const tokenDocumentId = await createTokenForActor(game, actorId);
-      expect(tokenDocumentId).toBeTruthy();
-
-      let sheetId = await game.evaluate(
-        async (params) => {
-          const actor = game.actors.get(params.actorId);
-          const token = canvas.scene.tokens.get(params.tokenDocumentId);
-          if (!actor || !token) return null;
-          await actor.sheet.render(true, { token });
-          return actor.sheet.element?.id ?? null;
-        },
-        { actorId, tokenDocumentId },
-      );
+      let sheetId = await openTokenSheet(game, actorId);
 
       await test.step("switch to custom container type", async () => {
         await game.evaluate(

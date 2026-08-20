@@ -20,6 +20,9 @@ import {
   joinAsUser,
 } from "../../tools/playwright/setup/foundry-setup.mjs";
 
+const disableCanvas = (page) =>
+  page.evaluate(() => game.settings.set("core", "noCanvas", true));
+
 export default async function globalSetup() {
   const { child, config } = await startFoundry({
     config: undefined,
@@ -40,6 +43,7 @@ export default async function globalSetup() {
     const page = await browser.newPage();
     await driveSetup(page, { config, worldId });
     await joinAsGM(page, config);
+    await disableCanvas(page);
     await createPlayerWithCharacter(page, {
       userName: PLAYER_NAME,
       characterName: PLAYER_CHARACTER_NAME,
@@ -49,6 +53,7 @@ export default async function globalSetup() {
     const playerContext = await browser.newContext();
     const playerPage = await playerContext.newPage();
     await joinAsUser(playerPage, config, PLAYER_NAME);
+    await disableCanvas(playerPage);
     await playerContext.storageState({ path: PLAYER_STORAGE_STATE });
     await playerContext.close();
   } catch (error) {
