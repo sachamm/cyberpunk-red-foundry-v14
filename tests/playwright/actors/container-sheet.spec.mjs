@@ -10,6 +10,8 @@ import {
   createItemViaUI,
   openSidebarTab,
   openTokenSheet,
+  activateGearTab,
+  openItemSettings,
 } from "../../../tools/playwright/ui/index.mjs";
 
 const FIELD = {
@@ -40,6 +42,37 @@ const FIELD = {
 
 function sheet(page, sheetId) {
   return page.locator(`#${sheetId}`);
+}
+
+// Wait for an owned item's sheet to be open and return its element id.
+async function openOwnedItemSheet(page, { actorId, itemId }) {
+  await page.waitForFunction(
+    ({ actorId, itemId }) =>
+      game.actors.get(actorId).items.get(itemId)?.sheet?.rendered === true,
+    { actorId, itemId },
+    { timeout: 15000 },
+  );
+  const elementId = await page.evaluate(
+    ({ actorId, itemId }) => {
+      const item = game.actors.get(actorId).items.get(itemId);
+      return item.sheet.element?.id ?? null;
+    },
+    { actorId, itemId },
+  );
+  expect(elementId).toBeTruthy();
+  await expect(page.locator(`#${elementId}`)).toBeVisible();
+  return elementId;
+}
+
+// Close an owned item's sheet (closeDocSheet only covers world documents).
+async function closeOwnedItemSheet(page, { actorId, itemId }) {
+  await page.evaluate(
+    ({ actorId, itemId }) => {
+      const item = game.actors.get(actorId).items.get(itemId);
+      return item?.sheet?.close();
+    },
+    { actorId, itemId },
+  );
 }
 
 async function waitForActorFields(page, actorId, expected) {
@@ -2427,6 +2460,340 @@ test.describe("Container actor sheet", () => {
         await closeDocSheet(game, {
           collection: "actors",
           id: secondPartnerId,
+        });
+      });
+    });
+
+    test("transacted items arrive with their installed upgrades", async ({
+      page: game,
+    }) => {
+      // A weapon with an installed itemUpgrade is sold to a shop and bought
+      // back again. Both transaction directions must carry the upgrade over
+      // (sell duplicates it via the container's createEmbeddedDocuments;
+      // purchase carries it via the install-tree flag). Proof is read off the
+      // recipient's sheets first, with supporting state reads.
+      const weaponName = uniqueName("upgraded-rifle");
+      const upgradeName = uniqueName("rifle-upgrade");
+      let playerActorId;
+      let containerActorId;
+      let embeddedWeaponId;
+      let embeddedUpgradeId;
+
+      // State read shared by both transaction directions: how many upgrades
+      // the recipient owns, and whether every installed-upgrade reference on
+      // the weapon resolves to one of them (by id or uuid).
+      const readInstalledState = (actorId) =>
+        game.evaluate(
+          ({ actorId, weaponName, upgradeName }) => {
+            const actor = game.actors.get(actorId);
+            const weapon = actor.items.find((i) => i.name === weaponName);
+            const list = weapon.system.installedItems.list;
+            return {
+              listLength: list.length,
+              allReferencesResolve: list.every((ref) =>
+                actor.items.some((i) => i.id === ref || i.uuid === ref),
+              ),
+              upgradeCount: actor.items.filter(
+                (i) => i.name === upgradeName && i.type === "itemUpgrade",
+              ).length,
+            };
+          },
+          { actorId, weaponName, upgradeName },
+        );
+
+      await test.step("create a character, a weapon, and an upgrade via the UI", async () => {
+        playerActorId = await createDocumentViaUI(game, {
+          documentTab: "actors",
+          type: "character",
+          name: uniqueName("upgrade-trade-character"),
+        });
+        const worldWeaponId = await createItemViaUI(game, {
+          type: "weapon",
+          name: weaponName,
+        });
+        const worldUpgradeId = await createItemViaUI(game, {
+          type: "itemUpgrade",
+          name: upgradeName,
+        });
+        // Close the item sheets that open on creation so drags land on the actor sheet.
+        await closeDocSheet(game, { collection: "items", id: worldWeaponId });
+        await closeDocSheet(game, { collection: "items", id: worldUpgradeId });
+
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+        await dragItemToActorSheet(game, {
+          itemId: worldWeaponId,
+          sheetId: playerSheetId,
+          actorId: playerActorId,
+        });
+        await dragItemToActorSheet(game, {
+          itemId: worldUpgradeId,
+          sheetId: playerSheetId,
+          actorId: playerActorId,
+        });
+
+        ({ embeddedWeaponId, embeddedUpgradeId } = await game.evaluate(
+          ({ playerActorId, weaponName, upgradeName }) => {
+            const actor = game.actors.get(playerActorId);
+            return {
+              embeddedWeaponId: actor.items.find((i) => i.name === weaponName)
+                .id,
+              embeddedUpgradeId: actor.items.find((i) => i.name === upgradeName)
+                .id,
+            };
+          },
+          { playerActorId, weaponName, upgradeName },
+        ));
+      });
+
+      await test.step("install the upgrade into the weapon from the weapon's item sheet", async () => {
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+        const gear = await activateGearTab(game, playerSheetId);
+        const weaponRow = gear
+          .locator('li.item[data-item-category="weapon"]')
+          .filter({ hasText: weaponName });
+        await expect(weaponRow).toBeVisible();
+        await weaponRow.locator(".item-edit").click();
+
+        let itemSheetId = await openOwnedItemSheet(game, {
+          actorId: playerActorId,
+          itemId: embeddedWeaponId,
+        });
+        let itemSheet = await openItemSettings(game, itemSheetId);
+        const manageLink = itemSheet.locator(".manage-installed-upgrades");
+        await expect(manageLink).toBeVisible();
+        await manageLink.click();
+
+        const dialog = game
+          .locator(".application")
+          .filter({ has: game.locator('input[name="selectedItems"]') });
+        await expect(dialog).toBeVisible();
+        const checkbox = dialog.locator(
+          `input[name="selectedItems"][value="${embeddedUpgradeId}"]`,
+        );
+        await expect(checkbox).toBeVisible();
+        await checkbox.check();
+        await dialog
+          .locator('button.cpr-dialog-button[data-action="confirm"]')
+          .click();
+
+        await game.waitForFunction(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId).system.installedItems
+              .list.length === 1,
+          { actorId: playerActorId, itemId: embeddedWeaponId },
+          { timeout: 10000 },
+        );
+
+        // Hard-reopen guard: close and reopen the item sheet, then prove on a
+        // fresh render that the upgrade is listed as installed.
+        await closeOwnedItemSheet(game, {
+          actorId: playerActorId,
+          itemId: embeddedWeaponId,
+        });
+        await weaponRow.locator(".item-edit").click();
+        itemSheetId = await openOwnedItemSheet(game, {
+          actorId: playerActorId,
+          itemId: embeddedWeaponId,
+        });
+        itemSheet = await openItemSettings(game, itemSheetId);
+        await expect(
+          itemSheet.locator("a.item-view", { hasText: upgradeName }),
+        ).toBeVisible();
+      });
+
+      await test.step("sell the upgraded weapon to a shop container", async () => {
+        containerActorId = await createDocumentViaUI(game, {
+          documentTab: "actors",
+          type: "container",
+          name: uniqueName("upgrade-shop-container"),
+        });
+        await expectSheetRendered(game, {
+          collection: "actors",
+          id: containerActorId,
+        });
+
+        // Scaffolding: give the shop funds so the vendor offer is not clamped to zero.
+        await game.evaluate(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            if (container) {
+              await container.update({ "system.wealth.value": 999999 });
+            }
+          },
+          { containerActorId },
+        );
+
+        // Selling is a player-initiated drag in the real UI; as GM we drive the same
+        // sheet method the drop handler calls (the established pattern for sell tests here).
+        await game.evaluate(
+          async ({ containerActorId, playerActorId, weaponName }) => {
+            const container = game.actors.get(containerActorId);
+            const player = game.actors.get(playerActorId);
+            const item = player.items.find((i) => i.name === weaponName);
+            if (!item)
+              throw new Error(`Weapon "${weaponName}" not found on player`);
+            const originalConfirm = foundry.applications.api.DialogV2.confirm;
+            foundry.applications.api.DialogV2.confirm = async () => true;
+            try {
+              await container.sheet._sellItemTo(playerActorId, item);
+            } finally {
+              foundry.applications.api.DialogV2.confirm = originalConfirm;
+            }
+          },
+          { containerActorId, playerActorId, weaponName },
+        );
+
+        await game.waitForFunction(
+          ({ containerActorId, weaponName }) =>
+            game.actors
+              .get(containerActorId)
+              ?.items.some((i) => i.name === weaponName) === true,
+          { containerActorId, weaponName },
+          { timeout: 10000 },
+        );
+      });
+
+      await test.step("the shop's copy of the weapon still has the upgrade installed", async () => {
+        const containerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: containerActorId,
+        });
+        const containerSheet = sheet(game, containerSheetId);
+        const weaponRow = containerSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: weaponName });
+        await expect(weaponRow).toBeVisible();
+        // The "upgraded" caret on the row is visible proof the upgrade arrived with the weapon.
+        await expect(weaponRow.locator(".fa-square-caret-up")).toBeVisible();
+
+        const shopWeaponId = await game.evaluate(
+          ({ containerActorId, weaponName }) =>
+            game.actors
+              .get(containerActorId)
+              .items.find((i) => i.name === weaponName).id,
+          { containerActorId, weaponName },
+        );
+
+        await weaponRow.locator(".item-edit").click();
+        const itemSheetId = await openOwnedItemSheet(game, {
+          actorId: containerActorId,
+          itemId: shopWeaponId,
+        });
+        const itemSheet = await openItemSettings(game, itemSheetId);
+        await expect(
+          itemSheet.locator("a.item-view", { hasText: upgradeName }),
+        ).toBeVisible();
+
+        const state = await readInstalledState(containerActorId);
+        expect(state.listLength).toBe(1);
+        // The weapon's installed-upgrade references must all resolve to items
+        // owned by the recipient; a dangling reference is an orphaned upgrade.
+        expect(state.allReferencesResolve, JSON.stringify(state)).toBe(true);
+
+        await closeOwnedItemSheet(game, {
+          actorId: containerActorId,
+          itemId: shopWeaponId,
+        });
+      });
+
+      await test.step("buy the upgraded weapon back from the shop", async () => {
+        const containerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: containerActorId,
+        });
+        const containerSheet = sheet(game, containerSheetId);
+
+        const tradeDropdown = containerSheet.locator(
+          'select[name="trade-with-dropdown"]',
+        );
+        await tradeDropdown.selectOption({ value: playerActorId });
+
+        // Scaffolding: give the character funds to cover the weapon's price.
+        await game.evaluate(
+          async ({ playerActorId }) => {
+            const actor = game.actors.get(playerActorId);
+            if (actor) {
+              await actor.update({ "system.wealth.value": 999999 });
+            }
+          },
+          { playerActorId },
+        );
+
+        const weaponRow = containerSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: weaponName });
+        await expect(weaponRow).toBeVisible();
+        await weaponRow.locator(FIELD.purchaseAll).click();
+
+        await game.waitForFunction(
+          ({ playerActorId, containerActorId, weaponName }) => {
+            const player = game.actors.get(playerActorId);
+            const container = game.actors.get(containerActorId);
+            return (
+              player.items.some((i) => i.name === weaponName) &&
+              !container.items.some((i) => i.name === weaponName)
+            );
+          },
+          { playerActorId, containerActorId, weaponName },
+          { timeout: 10000 },
+        );
+      });
+
+      await test.step("the purchased weapon still has the upgrade installed", async () => {
+        // The purchase step left the container sheet in front; close it so our
+        // clicks land on the player sheet.
+        await closeDocSheet(game, {
+          collection: "actors",
+          id: containerActorId,
+        });
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+        const gear = await activateGearTab(game, playerSheetId);
+        const weaponRow = gear
+          .locator('li.item[data-item-category="weapon"]')
+          .filter({ hasText: weaponName });
+        await expect(weaponRow).toBeVisible();
+        // The "upgraded" caret on the gear row is visible proof the upgrade survived the round trip.
+        await expect(weaponRow.locator(".fa-square-caret-up")).toBeVisible();
+
+        const finalWeaponId = await game.evaluate(
+          ({ playerActorId, weaponName }) =>
+            game.actors
+              .get(playerActorId)
+              .items.find((i) => i.name === weaponName).id,
+          { playerActorId, weaponName },
+        );
+
+        await weaponRow.locator(".item-edit").click();
+        const itemSheetId = await openOwnedItemSheet(game, {
+          actorId: playerActorId,
+          itemId: finalWeaponId,
+        });
+        const itemSheet = await openItemSettings(game, itemSheetId);
+        await expect(
+          itemSheet.locator("a.item-view", { hasText: upgradeName }),
+        ).toBeVisible();
+
+        const state = await readInstalledState(playerActorId);
+        expect(state.listLength).toBe(1);
+        expect(state.allReferencesResolve, JSON.stringify(state)).toBe(true);
+
+        await closeOwnedItemSheet(game, {
+          actorId: playerActorId,
+          itemId: finalWeaponId,
+        });
+        await closeDocSheet(game, { collection: "actors", id: playerActorId });
+        await closeDocSheet(game, {
+          collection: "actors",
+          id: containerActorId,
         });
       });
     });

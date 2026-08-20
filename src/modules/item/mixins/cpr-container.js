@@ -430,7 +430,7 @@ const Container = function Container() {
     // When uninstalling an upgrade that increases magazine size, make sure any extra ammo
     // that would be in the upgrade is returned to the ammo item. Do this before unloading ammo.
     const uninstalledMagUpgrade = uninstallList.find(
-      (i) => i.type === "itemUpgrade" && i.system.modifiers.magazine.value,
+      (i) => i.type === "itemUpgrade" && i.system.modifiers?.magazine?.value,
     );
     if (loadableTypes.includes(this.type) && uninstalledMagUpgrade) {
       await this.syncMagazine();
