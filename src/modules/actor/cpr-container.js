@@ -83,10 +83,12 @@ export default class CPRContainerActor extends Actor {
       context,
     );
 
+    const handledInstalledItems = new Set();
     if (context.createInstalled) {
       // Handle creating and installing any items into the parent item.
       for (const item of createdItems) {
         if (!item.system.hasInstalled) continue;
+        handledInstalledItems.add(item.id);
         // The item will only have this flag if it is imported/coming from another actor.
         const imported = !!ContainerUtils.getInstallTreeFlag(item);
         // The following function recusrively creates and installs all items in the install tree.
@@ -97,6 +99,8 @@ export default class CPRContainerActor extends Actor {
     // Handle upgradable items (weapons, armor, clothing) with installed upgrades
     const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
     for (const item of createdItems) {
+      // Items handled above already have their installed upgrades duplicated and re-linked.
+      if (handledInstalledItems.has(item.id)) continue;
       // skip item if it is not upgradeable - nothing should be there
       if (!upgradableTypes.includes(item.type)) continue;
       const installedUpgradeIds = item.system.installedItems?.list ?? [];

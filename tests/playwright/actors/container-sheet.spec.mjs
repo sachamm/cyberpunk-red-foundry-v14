@@ -2695,6 +2695,8 @@ test.describe("Container actor sheet", () => {
         // The weapon's installed-upgrade references must all resolve to items
         // owned by the recipient; a dangling reference is an orphaned upgrade.
         expect(state.allReferencesResolve, JSON.stringify(state)).toBe(true);
+        // Exactly one copy of the upgrade may exist: no duplicates, no orphans.
+        expect(state.upgradeCount, JSON.stringify(state)).toBe(1);
 
         await closeOwnedItemSheet(game, {
           actorId: containerActorId,
@@ -2785,6 +2787,8 @@ test.describe("Container actor sheet", () => {
         const state = await readInstalledState(playerActorId);
         expect(state.listLength).toBe(1);
         expect(state.allReferencesResolve, JSON.stringify(state)).toBe(true);
+        // Exactly one copy of the upgrade may exist: no duplicates, no orphans.
+        expect(state.upgradeCount, JSON.stringify(state)).toBe(1);
 
         await closeOwnedItemSheet(game, {
           actorId: playerActorId,

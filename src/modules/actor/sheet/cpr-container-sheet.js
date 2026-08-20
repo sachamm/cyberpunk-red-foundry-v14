@@ -430,7 +430,14 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       let createItems = [];
       const deleteItems = [];
 
-      createItems.push(item);
+      // Package installed items so they duplicate on the vendor, mirroring _purchaseItem.
+      const transferredItemData = foundry.utils.duplicate(item);
+      if (SystemUtils.hasMixin(item.type, "container")) {
+        const cprInstallTree = item.createInstalledObjectData();
+        ContainerUtils.setInstallTreeFlag(transferredItemData, cprInstallTree);
+      }
+
+      createItems.push(transferredItemData);
       deleteItems.push(item._id);
       if (containerTypes.includes(item.type) && item.system.hasInstalled) {
         const deleteItemList = item.recursiveGetAllInstalledItems();
