@@ -87,21 +87,10 @@ async function createContainerWithItem(game, { containerName, itemType }) {
     .filter({ hasText: `New ${capitalize(itemType)}` });
   await expect(itemRow).toBeVisible();
 
-  sheetId = await game.evaluate(
-    async (params) => {
-      const actor = game.actors.get(params.actorId);
-      if (!actor) return null;
-      return actor.sheet?.element?.id ?? null;
-    },
-    { actorId },
-  );
-
-  if (!sheetId) {
-    sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
-  }
+  sheetId = await expectSheetRendered(game, {
+    collection: "actors",
+    id: actorId,
+  });
 
   return { actorId, sheetId };
 }
@@ -381,21 +370,10 @@ test.describe("Container actor sheet", () => {
             .filter({ hasText: cat.defaultName });
           await expect(itemRow).toBeVisible();
 
-          sheetId = await game.evaluate(
-            async (params) => {
-              const actor = game.actors.get(params.actorId);
-              if (!actor) return null;
-              return actor.sheet?.element?.id ?? null;
-            },
-            { actorId },
-          );
-
-          if (!sheetId) {
-            sheetId = await expectSheetRendered(game, {
-              collection: "actors",
-              id: actorId,
-            });
-          }
+          sheetId = await expectSheetRendered(game, {
+            collection: "actors",
+            id: actorId,
+          });
         }
       });
 
@@ -439,20 +417,10 @@ test.describe("Container actor sheet", () => {
             .filter({ hasText: "New Gear" }),
         ).toBeVisible();
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId: actorId },
-        );
-        if (!sheetId) {
-          sheetId = await expectSheetRendered(game, {
-            collection: "actors",
-            id: actorId,
-          });
-        }
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
       });
 
       await test.step("delete item without confirmation dialog appearing", async () => {
@@ -586,21 +554,10 @@ test.describe("Container actor sheet", () => {
         await expect(itemSheet).not.toBeVisible();
       });
 
-      let updatedSheetId = await game.evaluate(
-        async (params) => {
-          const actor = game.actors.get(params.actorId);
-          if (!actor) return null;
-          return actor.sheet?.element?.id ?? null;
-        },
-        { actorId },
-      );
-
-      if (!updatedSheetId) {
-        updatedSheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: actorId,
-        });
-      }
+      let updatedSheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: actorId,
+      });
 
       await test.step("verify price change is reflected on container sheet", async () => {
         const containerSheet = sheet(game, updatedSheetId);
@@ -782,14 +739,10 @@ test.describe("Container actor sheet", () => {
             .filter({ hasText: "New Armor" }),
         ).toBeVisible();
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
       });
 
       await test.step("collapse Weapon category and verify only Armor items remain visible", async () => {
@@ -1224,27 +1177,11 @@ test.describe("Container actor sheet", () => {
         await expect(playerEntry).toBeVisible();
         await playerEntry.click();
 
-        await game.waitForFunction(
-          (id) => game.actors.get(id)?.sheet?.rendered === true,
-          playerActorId,
-          { timeout: 15000 },
-        );
-        const playerSheetId = await game.evaluate((id) => {
-          const sheet = game.actors.get(id).sheet;
-          return sheet.element?.id ?? null;
-        }, playerActorId);
-
-        const playerSheet = game.locator(`#${playerSheetId}`);
-        await expect(playerSheet).toBeVisible();
-
-        const gearTab = playerSheet.locator(
-          '.navtabs-right a[data-tab="gear"]',
-        );
-        await gearTab.click();
-        const gearContent = playerSheet.locator(
-          '.right-content-section div.tab.gear-tab[data-tab="gear"]',
-        );
-        await expect(gearContent).toHaveClass(/active/);
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+        const gearContent = await activateGearTab(game, playerSheetId);
 
         const weaponRow = gearContent
           .locator('li.item[data-item-category="weapon"]')
@@ -1442,27 +1379,11 @@ test.describe("Container actor sheet", () => {
         await expect(playerEntry).toBeVisible();
         await playerEntry.click();
 
-        await game.waitForFunction(
-          (id) => game.actors.get(id)?.sheet?.rendered === true,
-          playerActorId,
-          { timeout: 15000 },
-        );
-        const playerSheetId = await game.evaluate((id) => {
-          const sheet = game.actors.get(id).sheet;
-          return sheet.element?.id ?? null;
-        }, playerActorId);
-
-        const playerSheet = game.locator(`#${playerSheetId}`);
-        await expect(playerSheet).toBeVisible();
-
-        const gearTab = playerSheet.locator(
-          '.navtabs-right a[data-tab="gear"]',
-        );
-        await gearTab.click();
-        const gearContent = playerSheet.locator(
-          '.right-content-section div.tab.gear-tab[data-tab="gear"]',
-        );
-        await expect(gearContent).toHaveClass(/active/);
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+        const gearContent = await activateGearTab(game, playerSheetId);
 
         const itemRow = gearContent
           .locator('li.item[data-item-category="gear"]')
@@ -1615,14 +1536,10 @@ test.describe("Container actor sheet", () => {
 
         await expect(itemSheet).not.toBeVisible();
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
       });
 
       await test.step("set trade partner and click purchase fraction", async () => {
@@ -1892,14 +1809,10 @@ test.describe("Container actor sheet", () => {
 
         await expect(itemSheet).not.toBeVisible();
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
       });
 
       await test.step("purchase ammo and verify price is divided by 10", async () => {
@@ -2044,14 +1957,10 @@ test.describe("Container actor sheet", () => {
         const itemSheetAfter = game.locator(".application .item-sheet");
         await expect(itemSheetAfter).not.toBeVisible();
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
       });
 
       await test.step("create trade partner with existing 'Plasma Rifle'", async () => {
@@ -2792,14 +2701,10 @@ test.describe("Container actor sheet", () => {
         );
         await game.waitForTimeout(500);
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
 
         const containerSheet = sheet(game, sheetId);
         await expect(containerSheet.locator(FIELD.eurobucksNA)).toBeVisible();
@@ -2845,14 +2750,10 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
 
         const containerSheet = sheet(game, sheetId);
         const itemRow = containerSheet
@@ -3186,14 +3087,10 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
       });
 
       await test.step("custom container shows custom settings section", async () => {
@@ -3220,14 +3117,10 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("toggling infinite-stock on custom token sheet succeeds", async () => {
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
         const isInfiniteOn = await game.evaluate(
           async (params) => {
             const actor = game.actors.get(params.actorId);
@@ -3272,14 +3165,10 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("toggling items-free on custom token sheet succeeds", async () => {
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
         const isItemsFreeOn = await game.evaluate(
           async (params) => {
             const actor = game.actors.get(params.actorId);
@@ -3392,14 +3281,10 @@ test.describe("Container actor sheet", () => {
         itemType: "gear",
       });
 
-      let sheetId = await game.evaluate(
-        async (params) => {
-          const actor = game.actors.get(params.actorId);
-          if (!actor) return null;
-          return actor.sheet?.element?.id ?? null;
-        },
-        { actorId },
-      );
+      let sheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: actorId,
+      });
 
       await test.step("switch to custom type and enable items-free", async () => {
         await game.evaluate(
@@ -3424,20 +3309,10 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        sheetId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.sheet?.element?.id ?? null;
-          },
-          { actorId },
-        );
-        if (!sheetId) {
-          sheetId = await expectSheetRendered(game, {
-            collection: "actors",
-            id: actorId,
-          });
-        }
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
       });
 
       await test.step("purchase item and verify trade partner wealth is unchanged", async () => {
@@ -3626,27 +3501,11 @@ test.describe("Container actor sheet", () => {
         await expect(playerEntry).toBeVisible();
         await playerEntry.click();
 
-        await game.waitForFunction(
-          (id) => game.actors.get(id)?.sheet?.rendered === true,
-          playerActorId,
-          { timeout: 15000 },
-        );
-        const playerSheetId = await game.evaluate((id) => {
-          const sheet = game.actors.get(id).sheet;
-          return sheet.element?.id ?? null;
-        }, playerActorId);
-
-        const playerSheet = game.locator(`#${playerSheetId}`);
-        await expect(playerSheet).toBeVisible();
-
-        const gearTab = playerSheet.locator(
-          '.navtabs-right a[data-tab="gear"]',
-        );
-        await gearTab.click();
-        const gearContent = playerSheet.locator(
-          '.right-content-section div.tab.gear-tab[data-tab="gear"]',
-        );
-        await expect(gearContent).toHaveClass(/active/);
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+        const gearContent = await activateGearTab(game, playerSheetId);
 
         const itemRow = gearContent
           .locator('li.item[data-item-category="gear"]')
