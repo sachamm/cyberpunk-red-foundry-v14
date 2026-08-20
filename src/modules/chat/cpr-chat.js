@@ -174,7 +174,7 @@ export default class CPRChat {
         // See RenderRollCard: getSpeaker fills scene/token/alias. Fixes #677.
         chatOptions.speaker = ChatMessage.getSpeaker({ actor });
       }
-      return ChatMessage.create(chatOptions, false);
+      return ChatMessage.create(chatOptions);
     });
   }
 

@@ -461,10 +461,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
           createItems,
         );
         if (creationSuccess.length > 0) {
-          await tradePartnerActor.deleteEmbeddedDocuments(
-            "Item",
-            deleteItems,
-          );
+          await tradePartnerActor.deleteEmbeddedDocuments("Item", deleteItems);
           let reason;
           if (amount > 1) {
             reason = `${SystemUtils.Format(
