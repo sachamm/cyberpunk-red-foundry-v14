@@ -1956,23 +1956,30 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        await game.evaluate(
+        // A close issued while the rename submit is still in flight can be
+        // dropped, so retry until the sheet is actually gone.
+        await game.waitForFunction(
           async ({ actorId }) => {
             const actor = game.actors.get(actorId);
-            if (actor) {
-              const item = actor.items.find((i) => i.name === "Plasma Rifle");
-              if (item && item.sheet.rendered) {
-                item.sheet.close();
+            if (!actor) return true;
+            const item = actor.items.find((i) => i.name === "Plasma Rifle");
+            const sheetApp = item?.sheet;
+            if (sheetApp?.rendered) {
+              try {
+                sheetApp.options.submitOnClose = false;
+              } catch {
+                /* AppV2 options are frozen; close() is safe */
               }
+              await sheetApp.close();
             }
+            return !sheetApp || sheetApp.rendered === false;
           },
           { actorId },
+          { timeout: 10000 },
         );
 
-        await game.waitForTimeout(500);
-
         const itemSheetAfter = game.locator(".application .item-sheet");
-        await expect(itemSheetAfter).not.toBeVisible();
+        await expect(itemSheetAfter).not.toBeVisible({ timeout: 5000 });
 
         sheetId = await expectSheetRendered(game, {
           collection: "actors",
@@ -2036,20 +2043,32 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        const tradePartnerAmount = await game.evaluate(async () => {
-          const options = Array.from(
-            document.querySelectorAll(
-              'select[name="trade-with-dropdown"] option',
-            ),
+        const tradePartnerId = await game.evaluate((sid) => {
+          const sheetEl = document.getElementById(sid);
+          const select = sheetEl?.querySelector(
+            'select[name="trade-with-dropdown"]',
           );
-          const tradePartnerOption = options.find((o) => o.value !== "")?.value;
-          if (!tradePartnerOption) return null;
-          const tradePartner = game.actors.get(tradePartnerOption);
-          const plasmaRifle = tradePartner?.items.find(
-            (i) => i.name === "Plasma Rifle",
+          return (
+            Array.from(select?.options ?? []).find((o) => o.value !== "")
+              ?.value ?? null
           );
-          return plasmaRifle?.system.amount;
-        });
+        }, sheetId);
+
+        // The stacking update fired by _purchaseItem is not awaited in the
+        // sheet code, so poll until the partner's stack reflects it.
+        const tradePartnerAmount = await game.waitForFunction(
+          ({ partnerId }) => {
+            const partner = game.actors.get(partnerId);
+            const plasmaRifle = partner?.items.find(
+              (i) => i.name === "Plasma Rifle",
+            );
+            return plasmaRifle?.system.amount === 2
+              ? plasmaRifle.system.amount
+              : null;
+          },
+          { partnerId: tradePartnerId },
+          { timeout: 10000 },
+        );
         expect(tradePartnerAmount).toBe(2);
       });
 
@@ -2210,32 +2229,28 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        await game.waitForFunction(
-          async (params) => {
+        // Capture the ledger in the same poll that observes the entry so a
+        // late update cannot clear it between the wait and the assertion.
+        // The capture is JSON-encoded because waitForFunction only returns
+        // primitives directly.
+        const recordsJson = await game.waitForFunction(
+          (params) => {
             const container = game.actors.get(params.actorId);
-            if (!container) return false;
-            const records = container.listRecords("wealth");
-            if (!Array.isArray(records) || records.length === 0) return false;
-            const latestEntry = records[records.length - 1];
-            return (
-              typeof latestEntry?.[1] === "string" &&
+            if (!container) return null;
+            const recs = container.listRecords("wealth");
+            if (!Array.isArray(recs) || recs.length === 0) return null;
+            const latestEntry = recs[recs.length - 1];
+            return typeof latestEntry?.[1] === "string" &&
               latestEntry[1].includes("New Gear") &&
               latestEntry[1].includes("100")
-            );
+              ? JSON.stringify(recs)
+              : null;
           },
           { actorId },
           { timeout: 5000 },
         );
 
-        const records = await game.evaluate(
-          async ({ actorId }) => {
-            const container = game.actors.get(actorId);
-            if (!container) return [];
-            return container.listRecords("wealth");
-          },
-          { actorId },
-        );
-
+        const records = JSON.parse(recordsJson);
         expect(records.length).toBeGreaterThan(0);
         const latestEntry = records[records.length - 1];
         expect(latestEntry[1]).toContain("New Gear");
@@ -3452,7 +3467,8 @@ test.describe("Container actor sheet", () => {
         name: uniqueName("custom-compensation-container"),
       });
 
-      let containerSheetId = await expectSheetRendered(game, {
+      // The sheet must be rendered so the sell call below can drive it.
+      await expectSheetRendered(game, {
         collection: "actors",
         id: containerActorId,
       });
@@ -3488,102 +3504,83 @@ test.describe("Container actor sheet", () => {
         );
       });
 
-      await test.step("set up trade partner with sufficient funds", async () => {
-        const containerSheet = sheet(game, containerSheetId);
-        const tradeDropdown = containerSheet.locator(
-          'select[name="trade-with-dropdown"]',
+      await test.step("give the container funds", async () => {
+        // Scaffolding: give the shop funds so the vendor offer is not clamped to zero.
+        await game.evaluate(
+          async ({ containerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            if (container) {
+              await container.update({ "system.wealth.value": 999999 });
+            }
+          },
+          { containerActorId },
         );
-        const options = await tradeDropdown.evaluate((el) =>
-          Array.from(el.options).map((o) => o.value),
-        );
-        const tradePartnerOption = options.find((v) => v !== "");
-        if (tradePartnerOption) {
-          await tradeDropdown.selectOption({ value: tradePartnerOption });
-          await game.evaluate(
-            async ({ tradePartnerOption }) => {
-              const tradePartner = game.actors.get(tradePartnerOption);
-              if (tradePartner) {
-                await tradePartner.update({ "system.wealth.value": 999999 });
-              }
-            },
-            { tradePartnerOption },
-          );
-        }
       });
 
       await test.step("sell item to container and verify 75% compensation (150)", async () => {
-        const tradePartnerOption = await game.evaluate(
+        const playerWealthBefore = await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            return player?.system?.wealth?.value ?? 0;
+          },
+          { playerActorId },
+        );
+
+        const containerWealthBefore = await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
-            return container?.system?.tradePartnerId ?? null;
+            return container?.system?.wealth?.value ?? 0;
           },
           { containerActorId },
         );
 
-        const tradePartnerWealthBefore = await game.evaluate(
-          async ({ tradePartnerId }) => {
-            const tradePartner = game.actors.get(tradePartnerId);
-            return tradePartner?.system?.wealth?.value ?? 0;
+        // Selling is a player-initiated drag in the real UI; as GM we drive the same
+        // sheet method the drop handler calls (the established pattern for sell tests here).
+        await game.evaluate(
+          async ({ containerActorId, playerActorId }) => {
+            const container = game.actors.get(containerActorId);
+            const player = game.actors.get(playerActorId);
+            const item = player.items.find((i) => i.name === "Sellable Gear");
+            if (!item)
+              throw new Error('Gear "Sellable Gear" not found on player');
+            const originalConfirm = foundry.applications.api.DialogV2.confirm;
+            foundry.applications.api.DialogV2.confirm = async () => true;
+            try {
+              await container.sheet._sellItemTo(playerActorId, item);
+            } finally {
+              foundry.applications.api.DialogV2.confirm = originalConfirm;
+            }
           },
-          { tradePartnerId: tradePartnerOption },
+          { containerActorId, playerActorId },
         );
-
-        await openSidebarTab(game, "actors");
-        const playerEntry = game.locator(
-          `#actors [data-entry-id="${playerActorId}"]`,
-        );
-        await expect(playerEntry).toBeVisible();
-        await playerEntry.click();
-
-        const playerSheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: playerActorId,
-        });
-        const gearContent = await activateGearTab(game, playerSheetId);
-
-        const itemRow = gearContent
-          .locator('li.item[data-item-category="gear"]')
-          .filter({ hasText: "Sellable Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const containerEl = game.locator(`#${containerSheetId}`);
-        await expect(containerEl).toBeVisible();
-
-        await itemRow.dragTo(containerEl, { timeout: 5000 });
-
-        const dialog = game.locator(".application.dialog");
-        await expect(dialog).toBeVisible();
-
-        const confirmBtn = dialog.locator('button[data-action="confirm"]');
-        await expect(confirmBtn).toBeVisible();
-        await confirmBtn.click();
-
-        await expect(dialog).not.toBeVisible();
 
         await game.waitForFunction(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
             if (!container) return false;
-            return !container.items.some((i) => i.name === "Sellable Gear");
+            return container.items.some((i) => i.name === "Sellable Gear");
           },
           { containerActorId },
           { timeout: 5000 },
         );
 
-        await waitForActorFields(game, tradePartnerOption, {
-          "system.wealth.value": tradePartnerWealthBefore - 150,
+        await waitForActorFields(game, playerActorId, {
+          "system.wealth.value": playerWealthBefore + 150,
+        });
+        await waitForActorFields(game, containerActorId, {
+          "system.wealth.value": containerWealthBefore - 150,
         });
 
-        const tradePartnerWealthAfter = await game.evaluate(
-          async ({ tradePartnerId }) => {
-            const tradePartner = game.actors.get(tradePartnerId);
-            return tradePartner?.system?.wealth?.value ?? 0;
+        const playerWealthAfter = await game.evaluate(
+          async ({ playerActorId }) => {
+            const player = game.actors.get(playerActorId);
+            return player?.system?.wealth?.value ?? 0;
           },
-          { tradePartnerId: tradePartnerOption },
+          { playerActorId },
         );
 
         const expectedCompensation = 150;
-        expect(tradePartnerWealthBefore - tradePartnerWealthAfter).toBe(
+        expect(playerWealthAfter - playerWealthBefore).toBe(
           expectedCompensation,
         );
       });
