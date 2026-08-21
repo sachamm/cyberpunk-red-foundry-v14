@@ -514,6 +514,19 @@ test.describe("Container actor sheet", () => {
         await expect(amountInput).toBeVisible();
         await amountInput.fill("10");
         await amountInput.blur();
+
+        await game.waitForFunction(
+          async (params) => {
+            const actor = game.actors.get(params.actorId);
+            if (!actor) return false;
+            const item = actor.items.find((i) => i.name === "New Gear");
+            return (
+              item?.system?.price?.market === 500 && item?.system?.amount === 10
+            );
+          },
+          { actorId },
+          { timeout: 5000 },
+        );
       });
 
       await test.step("edit the description field via Foundry API", async () => {
@@ -569,8 +582,7 @@ test.describe("Container actor sheet", () => {
 
         const gearData = itemRow.locator(".gear-data");
         await expect(gearData).toBeVisible();
-        const priceText = await gearData.evaluate((el) => el.textContent);
-        expect(priceText).toContain("500");
+        await expect(gearData).toContainText("500");
       });
 
       await test.step("verify amount change is reflected on container sheet", async () => {
@@ -583,8 +595,7 @@ test.describe("Container actor sheet", () => {
 
         const itemDetail = itemRow.locator(".item-detail");
         await expect(itemDetail).toBeVisible();
-        const amountText = await itemDetail.evaluate((el) => el.textContent);
-        expect(amountText).toContain("10");
+        await expect(itemDetail).toContainText("10");
       });
 
       await test.step("verify description change is reflected on container sheet", async () => {
@@ -595,8 +606,10 @@ test.describe("Container actor sheet", () => {
           .filter({ hasText: "New Gear" });
         await expect(itemEditLink).toBeVisible();
 
-        const tooltip = await itemEditLink.getAttribute("data-tooltip");
-        expect(tooltip).toContain("edited description");
+        await expect(itemEditLink).toHaveAttribute(
+          "data-tooltip",
+          /edited description/,
+        );
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -1864,6 +1877,10 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
+        await waitForActorFields(game, tradePartnerOption, {
+          "system.wealth.value": tradePartnerWealthBefore - 10,
+        });
+
         const tradePartnerWealthAfter = await game.evaluate(
           async ({ tradePartnerOption }) => {
             const tradePartner = game.actors.get(tradePartnerOption);
@@ -2111,6 +2128,13 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
+        await waitForActorFields(game, selectedTradePartnerId, {
+          "system.wealth.value": tradePartnerWealthBefore - 100,
+        });
+        await waitForActorFields(game, actorId, {
+          "system.wealth.value": containerWealthBefore + 100,
+        });
+
         const containerWealthAfter = await game.evaluate(
           async ({ actorId }) => {
             const container = game.actors.get(actorId);
@@ -2191,7 +2215,13 @@ test.describe("Container actor sheet", () => {
             const container = game.actors.get(params.actorId);
             if (!container) return false;
             const records = container.listRecords("wealth");
-            return Array.isArray(records) && records.length > 0;
+            if (!Array.isArray(records) || records.length === 0) return false;
+            const latestEntry = records[records.length - 1];
+            return (
+              typeof latestEntry?.[1] === "string" &&
+              latestEntry[1].includes("New Gear") &&
+              latestEntry[1].includes("100")
+            );
           },
           { actorId },
           { timeout: 5000 },
@@ -2316,6 +2346,10 @@ test.describe("Container actor sheet", () => {
           { actorId },
           { timeout: 5000 },
         );
+
+        await waitForActorFields(game, secondPartnerId, {
+          "system.wealth.value": 4900,
+        });
 
         const secondPartnerWealthAfter = await game.evaluate(
           async ({ secondPartnerId }) => {
@@ -3535,6 +3569,10 @@ test.describe("Container actor sheet", () => {
           { containerActorId },
           { timeout: 5000 },
         );
+
+        await waitForActorFields(game, tradePartnerOption, {
+          "system.wealth.value": tradePartnerWealthBefore - 150,
+        });
 
         const tradePartnerWealthAfter = await game.evaluate(
           async ({ tradePartnerId }) => {
