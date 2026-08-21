@@ -115,13 +115,24 @@ export async function openOwnedItemSheet(page, { actorId, itemId }) {
 }
 
 // Close an owned item's sheet (closeDocSheet only covers world documents).
+// A close issued while a submit is still in flight can be dropped, so poll
+// until the sheet is actually gone.
 export async function closeOwnedItemSheet(page, { actorId, itemId }) {
-  await page.evaluate(
-    ({ actorId, itemId }) => {
-      const item = game.actors.get(actorId).items.get(itemId);
-      return item?.sheet?.close();
+  await page.waitForFunction(
+    async ({ actorId, itemId }) => {
+      const item = game.actors.get(actorId)?.items.get(itemId);
+      const sheetApp = item?.sheet;
+      if (!sheetApp || !sheetApp.rendered) return true;
+      try {
+        sheetApp.options.submitOnClose = false;
+      } catch {
+        /* AppV2 options are frozen; close() is safe */
+      }
+      await sheetApp.close();
+      return sheetApp.rendered === false;
     },
     { actorId, itemId },
+    { timeout: 10000 },
   );
 }
 

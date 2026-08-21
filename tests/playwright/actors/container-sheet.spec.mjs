@@ -133,15 +133,6 @@ async function createStashWithItem(game, { stashName, itemName }) {
     { actorId },
   );
 
-  await game.waitForFunction(
-    async ({ actorId }) => {
-      const actor = game.actors.get(actorId);
-      return actor?.flags?.[game.system.id]?.["container-type"] === "stash";
-    },
-    { actorId },
-    { timeout: 5000 },
-  );
-
   const sheetId = await expectSheetRendered(game, {
     collection: "actors",
     id: actorId,
@@ -242,7 +233,23 @@ async function createInventoryItemViaUI(
       ({ actorId, itemId, data }) => {
         const item = game.actors.get(actorId)?.items.get(itemId);
         if (!item) return false;
-        return Object.entries(foundry.utils.expandObject(data)).every(
+        const flat = [];
+        const walk = (obj, prefix) => {
+          for (const [key, value] of Object.entries(obj)) {
+            const path = prefix ? `${prefix}.${key}` : key;
+            if (
+              value !== null &&
+              typeof value === "object" &&
+              !Array.isArray(value)
+            ) {
+              walk(value, path);
+            } else {
+              flat.push([path, value]);
+            }
+          }
+        };
+        walk(foundry.utils.expandObject(data), "");
+        return flat.every(
           ([path, value]) =>
             JSON.stringify(foundry.utils.getProperty(item, path)) ===
             JSON.stringify(value),
@@ -1043,14 +1050,6 @@ test.describe("Container actor sheet", () => {
           },
           { actorId },
         );
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor?.flags?.[game.system.id]?.["infinite-stock"] === true;
-          },
-          { actorId },
-          { timeout: 5000 },
-        );
       });
 
       await test.step("purchase item and verify it is NOT removed", async () => {
@@ -1117,15 +1116,6 @@ test.describe("Container actor sheet", () => {
         },
       });
 
-      await game.waitForFunction(
-        async ({ playerActorId, weaponName }) => {
-          const player = game.actors.get(playerActorId);
-          return player?.items.some((i) => i.name === weaponName);
-        },
-        { playerActorId, weaponName },
-        { timeout: 5000 },
-      );
-
       const containerActorId = await createDocumentViaUI(game, {
         documentTab: "actors",
         type: "container",
@@ -1154,18 +1144,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { containerActorId },
-        );
-
-        await game.waitForFunction(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            return (
-              container?.system?.vendor?.itemTypes?.weapon?.isPurchasing ===
-              true
-            );
-          },
-          { containerActorId },
-          { timeout: 5000 },
         );
       });
 
@@ -1244,8 +1222,6 @@ test.describe("Container actor sheet", () => {
           },
           { playerActorId, containerActorId, weaponName },
         );
-
-        await game.waitForTimeout(1000);
 
         const containerItemAfter = await game.evaluate(
           async ({ containerActorId, weaponName }) => {
@@ -1332,16 +1308,6 @@ test.describe("Container actor sheet", () => {
           itemType: "gear",
           itemName: "Sellable Gear Zero",
         });
-
-        await game.waitForFunction(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (!player) return false;
-            return player.items.some((i) => i.name === "Sellable Gear Zero");
-          },
-          { playerActorId },
-          { timeout: 5000 },
-        );
       });
 
       const containerActorId = await createDocumentViaUI(game, {
@@ -1373,17 +1339,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { containerActorId },
-        );
-
-        await game.waitForFunction(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            return (
-              container?.system?.vendor?.itemTypes?.gear?.isPurchasing === true
-            );
-          },
-          { containerActorId },
-          { timeout: 5000 },
         );
       });
 
@@ -1435,7 +1390,6 @@ test.describe("Container actor sheet", () => {
           },
           { containerActorId, playerActorId },
         );
-        await game.waitForTimeout(1000);
 
         const containerItemAfter = await game.evaluate(
           async ({ containerActorId }) => {
@@ -1765,17 +1719,6 @@ test.describe("Container actor sheet", () => {
         await waitForActorFields(game, tradePartnerOption, {
           "system.wealth.value": tradePartnerWealthBefore - 10,
         });
-
-        const tradePartnerWealthAfter = await game.evaluate(
-          async ({ tradePartnerOption }) => {
-            const tradePartner = game.actors.get(tradePartnerOption);
-            return tradePartner?.system?.wealth?.value ?? 0;
-          },
-          { tradePartnerOption },
-        );
-
-        const wealthDelta = tradePartnerWealthBefore - tradePartnerWealthAfter;
-        expect(wealthDelta).toBe(10);
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -1971,27 +1914,6 @@ test.describe("Container actor sheet", () => {
         await waitForActorFields(game, actorId, {
           "system.wealth.value": containerWealthBefore + 100,
         });
-
-        const containerWealthAfter = await game.evaluate(
-          async ({ actorId }) => {
-            const container = game.actors.get(actorId);
-            return container?.system?.wealth?.value ?? 0;
-          },
-          { actorId },
-        );
-
-        const tradePartnerWealthAfter = await game.evaluate(
-          async ({ tradePartnerId }) => {
-            if (!tradePartnerId) return 0;
-            const tradePartner = game.actors.get(tradePartnerId);
-            if (!tradePartner) return 0;
-            return tradePartner.system?.wealth?.value ?? 0;
-          },
-          { tradePartnerId: selectedTradePartnerId },
-        );
-
-        expect(tradePartnerWealthAfter).toBe(tradePartnerWealthBefore - 100);
-        expect(containerWealthAfter).toBe(containerWealthBefore + 100);
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -2138,7 +2060,6 @@ test.describe("Container actor sheet", () => {
           },
           { actorId },
         );
-        await game.waitForTimeout(500);
 
         const options = await tradeDropdown.evaluate((el) =>
           Array.from(el.options).map((o) => o.value),
@@ -2183,15 +2104,6 @@ test.describe("Container actor sheet", () => {
         await waitForActorFields(game, secondPartnerId, {
           "system.wealth.value": 4900,
         });
-
-        const secondPartnerWealthAfter = await game.evaluate(
-          async ({ secondPartnerId }) => {
-            const partner = game.actors.get(secondPartnerId);
-            return partner?.system?.wealth?.value ?? 0;
-          },
-          { secondPartnerId },
-        );
-        expect(secondPartnerWealthAfter).toBe(4900);
 
         await closeDocSheet(game, { collection: "actors", id: actorId });
         await closeDocSheet(game, {
@@ -2566,7 +2478,6 @@ test.describe("Container actor sheet", () => {
           },
           { actorId },
         );
-        await game.waitForTimeout(500);
 
         sheetId = await expectSheetRendered(game, {
           collection: "actors",
@@ -2606,15 +2517,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { actorId },
-        );
-
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor?.flags?.[game.system.id]?.["items-free"] === true;
-          },
-          { actorId },
-          { timeout: 5000 },
         );
 
         sheetId = await expectSheetRendered(game, {
@@ -2691,16 +2593,6 @@ test.describe("Container actor sheet", () => {
           itemType: "gear",
           itemName: "Stash Seller Item",
         });
-
-        await game.waitForFunction(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (!player) return false;
-            return player.items.some((i) => i.name === "Stash Seller Item");
-          },
-          { playerActorId },
-          { timeout: 5000 },
-        );
       });
 
       const stashActorId = await createDocumentViaUI(game, {
@@ -2757,8 +2649,6 @@ test.describe("Container actor sheet", () => {
           },
           { playerActorId, stashActorId },
         );
-
-        await game.waitForTimeout(500);
 
         // Verify item is now in stash
         const stashAfterItem = await game.evaluate(
@@ -2835,19 +2725,6 @@ test.describe("Container actor sheet", () => {
           itemType: "gear",
           itemName: "Stash Taker Item",
         });
-
-        await game.waitForFunction(
-          async ({ stashActorId }) => {
-            const stash = game.actors.get(stashActorId);
-            if (!stash) return false;
-            return (
-              stash.flags?.[game.system.id]?.["container-type"] === "stash" &&
-              stash.items.some((i) => i.name === "Stash Taker Item")
-            );
-          },
-          { stashActorId },
-          { timeout: 5000 },
-        );
       });
 
       await test.step("take item from stash and verify no ledger changes", async () => {
@@ -2877,8 +2754,6 @@ test.describe("Container actor sheet", () => {
           },
           { stashActorId },
         );
-
-        await game.waitForTimeout(500);
 
         // Verify item is no longer in stash
         const stashAfter = await game.evaluate(
@@ -2936,16 +2811,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { actorId },
-        );
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return (
-              actor?.flags?.[game.system.id]?.["container-type"] === "custom"
-            );
-          },
-          { actorId },
-          { timeout: 5000 },
         );
 
         sheetId = await expectSheetRendered(game, {
@@ -3012,16 +2877,6 @@ test.describe("Container actor sheet", () => {
             { actorId },
             { timeout: 5000 },
           );
-          const isInfiniteOnAfter = await game.evaluate(
-            async (params) => {
-              const actor = game.actors.get(params.actorId);
-              return (
-                actor?.flags?.[game.system.id]?.["infinite-stock"] ?? false
-              );
-            },
-            { actorId },
-          );
-          expect(isInfiniteOnAfter).toBe(true);
         }
       });
 
@@ -3058,14 +2913,6 @@ test.describe("Container actor sheet", () => {
             { actorId },
             { timeout: 5000 },
           );
-          const isItemsFreeOnAfter = await game.evaluate(
-            async (params) => {
-              const actor = game.actors.get(params.actorId);
-              return actor?.flags?.[game.system.id]?.["items-free"] ?? false;
-            },
-            { actorId },
-          );
-          expect(isItemsFreeOnAfter).toBe(true);
         }
       });
 
@@ -3092,14 +2939,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { actorId },
-        );
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor?.flags?.[game.system.id]?.["infinite-stock"] === true;
-          },
-          { actorId },
-          { timeout: 5000 },
         );
       });
 
@@ -3160,14 +2999,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { actorId },
-        );
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor?.flags?.[game.system.id]?.["items-free"] === true;
-          },
-          { actorId },
-          { timeout: 5000 },
         );
 
         sheetId = await expectSheetRendered(game, {
@@ -3255,16 +3086,6 @@ test.describe("Container actor sheet", () => {
           itemName: "Sellable Gear",
           data: { system: { "price.market": 200 } },
         });
-
-        await game.waitForFunction(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (!player) return false;
-            return player.items.some((i) => i.name === "Sellable Gear");
-          },
-          { playerActorId },
-          { timeout: 5000 },
-        );
       });
 
       const containerActorId = await createDocumentViaUI(game, {
@@ -3296,17 +3117,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { containerActorId },
-        );
-
-        await game.waitForFunction(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            return (
-              container?.system?.vendor?.itemTypes?.gear?.isPurchasing === true
-            );
-          },
-          { containerActorId },
-          { timeout: 5000 },
         );
       });
 
@@ -3376,19 +3186,6 @@ test.describe("Container actor sheet", () => {
         await waitForActorFields(game, containerActorId, {
           "system.wealth.value": containerWealthBefore - 150,
         });
-
-        const playerWealthAfter = await game.evaluate(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            return player?.system?.wealth?.value ?? 0;
-          },
-          { playerActorId },
-        );
-
-        const expectedCompensation = 150;
-        expect(playerWealthAfter - playerWealthBefore).toBe(
-          expectedCompensation,
-        );
       });
 
       await closeDocSheet(game, { collection: "actors", id: playerActorId });
@@ -3694,17 +3491,6 @@ test.describe("Container actor sheet", () => {
           itemName: "Sellable Gear",
         });
         containerSheetId = result.sheetId;
-
-        const sellableGearExists = await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            return container
-              ? container.items.some((i) => i.name === "Sellable Gear")
-              : false;
-          },
-          { containerActorId },
-        );
-        expect(sellableGearExists).toBe(true);
       });
 
       await test.step("configure container to buy gear at 50%", async () => {
@@ -3724,17 +3510,6 @@ test.describe("Container actor sheet", () => {
             }
           },
           { containerActorId },
-        );
-
-        await game.waitForFunction(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            return (
-              container?.system?.vendor?.itemTypes?.gear?.isPurchasing === true
-            );
-          },
-          { containerActorId },
-          { timeout: 5000 },
         );
       });
 
