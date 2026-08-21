@@ -1,5 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import {
+  gotoReadyWorld,
+  openPlayerPage,
+} from "../../../tools/playwright/session/world.mjs";
 import {
   createDocumentViaUI,
   expectSheetRendered,
@@ -3710,284 +3713,275 @@ test.describe("Container actor sheet", () => {
 
     test("player permissions: create, delete, and modify items when flags are set", async ({
       page: game,
+      browser,
+      baseURL,
     }) => {
-      const { playerId } = await game.evaluate(async () => {
-        const { CONST } = globalThis;
-        const user =
-          game.users.getName("E2E Player") ??
-          (await game.users.create({
-            name: "E2E Player",
-            role: CONST.USER_ROLES.PLAYER,
-          }));
-        return { playerId: user.id };
-      });
-
-      const createActorId = await createDocumentViaUI(game, {
-        documentTab: "actors",
-        type: "container",
-        name: uniqueName("player-create-container"),
-      });
-
-      await game.evaluate(
-        async (params) => {
-          const actor = game.actors.get(params.actorId);
-          await actor.setContainerType("custom");
-          await actor.update({
-            [`flags.${game.system.id}.players-create`]: true,
-          });
-          await actor.update({
-            [`ownership.${params.playerId}`]:
-              CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
-          });
-        },
-        { actorId: createActorId, playerId },
+      // The player session is the "E2E Player" user that global setup created;
+      // openPlayerPage logs in as exactly that user.
+      const playerId = await game.evaluate(
+        () => game.users.getName("E2E Player")?.id ?? null,
       );
+      expect(playerId).toBeTruthy();
 
-      await test.step("player can create items when players-create flag is set", async () => {
-        const itemBeforeCount = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor ? actor.items.size : 0;
-          },
-          { actorId: createActorId },
+      const { context, page: player } = await openPlayerPage(browser, baseURL);
+      // deleteItemConfirmation is client-scoped (default true): disable it on the
+      // player session, otherwise the player's delete click opens a confirmation
+      // dialog that nothing confirms and the item is never deleted.
+      await player.evaluate(async () => {
+        await game.settings.set(
+          game.system.id,
+          "deleteItemConfirmation",
+          false,
         );
-
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor) {
-              // eslint-disable-next-line no-restricted-syntax -- player permission test needs direct API
-              await actor.createEmbeddedDocuments("Item", [
-                {
-                  name: "Player-Created Item",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 100 },
-                    description: { value: "Created by player test" },
-                  },
-                },
-              ]);
-            }
-          },
-          { actorId: createActorId },
-        );
-
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return false;
-            return actor.items.size === params.itemBeforeCount + 1;
-          },
-          { actorId: createActorId, itemBeforeCount },
-          { timeout: 5000 },
-        );
-
-        const playerItem = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            const item = actor.items.find(
-              (i) => i.name === "Player-Created Item",
-            );
-            return item ? item.name : null;
-          },
-          { actorId: createActorId },
-        );
-        expect(playerItem).toBe("Player-Created Item");
-
-        await closeDocSheet(game, { collection: "actors", id: createActorId });
       });
-
-      const deleteActorId = await createDocumentViaUI(game, {
-        documentTab: "actors",
-        type: "container",
-        name: uniqueName("player-delete-container"),
-      });
-
-      await game.evaluate(
-        async (params) => {
-          const actor = game.actors.get(params.actorId);
-          await actor.setContainerType("custom");
-          await actor.update({
-            [`flags.${game.system.id}.players-delete`]: true,
+      try {
+        await test.step("player can create items when players-create flag is set", async () => {
+          const createActorId = await createDocumentViaUI(game, {
+            documentTab: "actors",
+            type: "container",
+            name: uniqueName("player-create-container"),
           });
-          await actor.update({
-            [`ownership.${params.playerId}`]:
-              CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+
+          await game.evaluate(
+            async (params) => {
+              const actor = game.actors.get(params.actorId);
+              await actor.setContainerType("custom");
+              await actor.update({
+                [`flags.${game.system.id}.players-create`]: true,
+                [`ownership.${params.playerId}`]:
+                  CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+              });
+            },
+            { actorId: createActorId, playerId },
+          );
+
+          const sheetId = await reopenActorSheetViaUI(player, createActorId);
+          const { itemId } = await createInventoryItemViaUI(player, {
+            actorId: createActorId,
+            sheetId,
+            itemType: "gear",
           });
-        },
-        { actorId: deleteActorId, playerId },
-      );
 
-      const deleteSheetId = await expectSheetRendered(game, {
-        collection: "actors",
-        id: deleteActorId,
-      });
+          // Verified on the GM page: server-side state, not the player's view.
+          const createdName = await game.evaluate(
+            ({ actorId, itemId }) =>
+              game.actors.get(actorId).items.get(itemId)?.name ?? null,
+            { actorId: createActorId, itemId },
+          );
+          expect(createdName).toBe("New Gear");
 
-      await test.step("player can delete items when players-delete flag is set", async () => {
-        const containerSheet = sheet(game, deleteSheetId);
-        const gearCreateBtn = containerSheet.locator(
-          FIELD.createButtonByType("gear"),
-        );
-        await expect(gearCreateBtn).toBeVisible();
-        await gearCreateBtn.click();
-        await expect(
-          containerSheet
-            .locator(FIELD.itemName)
-            .filter({ hasText: "New Gear" }),
-        ).toBeVisible();
-
-        const embeddedItemId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            const item = actor.items.find((i) => i.name === "New Gear");
-            return item?._id ?? null;
-          },
-          { actorId: deleteActorId },
-        );
-
-        const itemBeforeCount = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor ? actor.items.size : 0;
-          },
-          { actorId: deleteActorId },
-        );
-
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor && params.embeddedItemId) {
-              // eslint-disable-next-line no-restricted-syntax -- player permission test needs direct API
-              await actor.deleteEmbeddedDocuments("Item", [
-                params.embeddedItemId,
-              ]);
-            }
-          },
-          { actorId: deleteActorId, embeddedItemId },
-        );
-
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return false;
-            return actor.items.size === params.itemBeforeCount - 1;
-          },
-          { actorId: deleteActorId, itemBeforeCount },
-          { timeout: 5000 },
-        );
-
-        const remainingItem = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            return actor.items.find((i) => i.name === "New Gear");
-          },
-          { actorId: deleteActorId },
-        );
-        expect(remainingItem).toBeUndefined();
-
-        await closeDocSheet(game, { collection: "actors", id: deleteActorId });
-      });
-
-      const modifyActorId = await createDocumentViaUI(game, {
-        documentTab: "actors",
-        type: "container",
-        name: uniqueName("player-modify-container"),
-      });
-
-      await game.evaluate(
-        async (params) => {
-          const actor = game.actors.get(params.actorId);
-          await actor.setContainerType("custom");
-          await actor.update({
-            [`flags.${game.system.id}.players-modify`]: true,
+          await closeDocSheet(player, {
+            collection: "actors",
+            id: createActorId,
           });
-          await actor.update({
-            [`ownership.${params.playerId}`]:
-              CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+          await closeDocSheet(game, {
+            collection: "actors",
+            id: createActorId,
           });
-        },
-        { actorId: modifyActorId, playerId },
-      );
+        });
 
-      const modifySheetId = await expectSheetRendered(game, {
-        collection: "actors",
-        id: modifyActorId,
-      });
+        await test.step("player can delete items when players-delete flag is set", async () => {
+          const deleteActorId = await createDocumentViaUI(game, {
+            documentTab: "actors",
+            type: "container",
+            name: uniqueName("player-delete-container"),
+          });
 
-      await test.step("player can modify items when players-modify flag is set", async () => {
-        const containerSheet = sheet(game, modifySheetId);
-        const gearCreateBtn = containerSheet.locator(
-          FIELD.createButtonByType("gear"),
-        );
-        await expect(gearCreateBtn).toBeVisible();
-        await gearCreateBtn.click();
-        await expect(
-          containerSheet
-            .locator(FIELD.itemName)
-            .filter({ hasText: "New Gear" }),
-        ).toBeVisible();
+          const sheetId = await expectSheetRendered(game, {
+            collection: "actors",
+            id: deleteActorId,
+          });
 
-        const embeddedItemId = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            const item = actor.items.find((i) => i.name === "New Gear");
-            return item?._id ?? null;
-          },
-          { actorId: modifyActorId },
-        );
+          const { itemId } = await createInventoryItemViaUI(game, {
+            actorId: deleteActorId,
+            sheetId,
+            itemType: "gear",
+            itemName: "Player-Deleted Item",
+          });
 
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor && params.embeddedItemId) {
-              await actor.updateEmbeddedDocuments("Item", [
-                {
-                  _id: params.embeddedItemId,
-                  "system.price.market": 750,
-                  "system.description.value": "Player modified this item",
-                },
-              ]);
-            }
-          },
-          { actorId: modifyActorId, embeddedItemId },
-        );
+          await game.evaluate(
+            async (params) => {
+              const actor = game.actors.get(params.actorId);
+              await actor.setContainerType("custom");
+              await actor.update({
+                [`flags.${game.system.id}.players-delete`]: true,
+                [`ownership.${params.playerId}`]:
+                  CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+              });
+            },
+            { actorId: deleteActorId, playerId },
+          );
 
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return false;
-            const item = actor.items.find((i) => i.name === "New Gear");
-            return item && item.system.price.market === 750;
-          },
-          { actorId: modifyActorId },
-          { timeout: 5000 },
-        );
+          await closeDocSheet(game, {
+            collection: "actors",
+            id: deleteActorId,
+          });
 
-        const modifiedItem = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return null;
-            const item = actor.items.find((i) => i.name === "New Gear");
-            return item
-              ? {
-                  price: item.system.price.market,
-                  description: item.system.description.value,
-                }
-              : null;
-          },
-          { actorId: modifyActorId },
-        );
+          const playerSheetId = await reopenActorSheetViaUI(
+            player,
+            deleteActorId,
+          );
+          const containerSheet = sheet(player, playerSheetId);
+          const itemRow = containerSheet
+            .locator(".item.flexrow")
+            .filter({ hasText: "Player-Deleted Item" });
+          await expect(itemRow).toBeVisible();
 
-        expect(modifiedItem.price).toBe(750);
-        expect(modifiedItem.description).toBe("Player modified this item");
+          const deleteLink = itemRow.locator(FIELD.deleteItem);
+          await expect(deleteLink).toBeVisible();
+          await deleteLink.click();
 
-        await closeDocSheet(game, { collection: "actors", id: modifyActorId });
-      });
+          await game.waitForFunction(
+            ({ actorId, itemId }) =>
+              !game.actors.get(actorId)?.items.get(itemId),
+            { actorId: deleteActorId, itemId },
+            { timeout: 5000 },
+          );
+
+          await closeDocSheet(player, {
+            collection: "actors",
+            id: deleteActorId,
+          });
+        });
+
+        await test.step("player can modify items when players-modify flag is set", async () => {
+          const modifyActorId = await createDocumentViaUI(game, {
+            documentTab: "actors",
+            type: "container",
+            name: uniqueName("player-modify-container"),
+          });
+
+          const sheetId = await expectSheetRendered(game, {
+            collection: "actors",
+            id: modifyActorId,
+          });
+
+          const { itemId } = await createInventoryItemViaUI(game, {
+            actorId: modifyActorId,
+            sheetId,
+            itemType: "gear",
+            itemName: "Player-Modified Item",
+          });
+
+          await game.evaluate(
+            async (params) => {
+              const actor = game.actors.get(params.actorId);
+              await actor.setContainerType("custom");
+              await actor.update({
+                [`flags.${game.system.id}.players-modify`]: true,
+                [`ownership.${params.playerId}`]:
+                  CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+              });
+            },
+            { actorId: modifyActorId, playerId },
+          );
+
+          await closeDocSheet(game, {
+            collection: "actors",
+            id: modifyActorId,
+          });
+
+          const playerSheetId = await reopenActorSheetViaUI(
+            player,
+            modifyActorId,
+          );
+          const containerSheet = sheet(player, playerSheetId);
+          const itemRow = containerSheet
+            .locator(".item.flexrow")
+            .filter({ hasText: "Player-Modified Item" });
+          await expect(itemRow).toBeVisible();
+
+          // Clicking the item name opens the item sheet; with players-modify set it
+          // is editable, so the price change below persists.
+          await itemRow.locator(FIELD.itemName).click();
+          const itemSheetId = await openOwnedItemSheet(player, {
+            actorId: modifyActorId,
+            itemId,
+          });
+          const itemSheet = await openItemSettings(player, itemSheetId);
+          const priceInput = itemSheet.locator(
+            'input[name="system.price.market"]',
+          );
+          await expect(priceInput).toBeVisible();
+          await priceInput.fill("750");
+          await priceInput.blur();
+
+          await game.waitForFunction(
+            ({ actorId, itemId }) =>
+              game.actors.get(actorId).items.get(itemId)?.system?.price
+                ?.market === 750,
+            { actorId: modifyActorId, itemId },
+            { timeout: 5000 },
+          );
+
+          await closeOwnedItemSheet(player, { actorId: modifyActorId, itemId });
+          await closeDocSheet(player, {
+            collection: "actors",
+            id: modifyActorId,
+          });
+        });
+
+        await test.step("player without flags sees no create or delete controls", async () => {
+          const lockedActorId = await createDocumentViaUI(game, {
+            documentTab: "actors",
+            type: "container",
+            name: uniqueName("player-locked-container"),
+          });
+
+          const sheetId = await expectSheetRendered(game, {
+            collection: "actors",
+            id: lockedActorId,
+          });
+
+          await createInventoryItemViaUI(game, {
+            actorId: lockedActorId,
+            sheetId,
+            itemType: "gear",
+            itemName: "Locked Item",
+          });
+
+          // Custom type with ownership but no players-* flags.
+          await game.evaluate(
+            async (params) => {
+              const actor = game.actors.get(params.actorId);
+              await actor.setContainerType("custom");
+              await actor.update({
+                [`ownership.${params.playerId}`]:
+                  CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+              });
+            },
+            { actorId: lockedActorId, playerId },
+          );
+
+          await closeDocSheet(game, {
+            collection: "actors",
+            id: lockedActorId,
+          });
+
+          const playerSheetId = await reopenActorSheetViaUI(
+            player,
+            lockedActorId,
+          );
+          const containerSheet = sheet(player, playerSheetId);
+
+          await expect(containerSheet.locator(FIELD.createButton)).toHaveCount(
+            0,
+          );
+
+          const itemRow = containerSheet
+            .locator(".item.flexrow")
+            .filter({ hasText: "Locked Item" });
+          await expect(itemRow).toBeVisible();
+          await expect(itemRow.locator(FIELD.deleteItem)).toHaveCount(0);
+
+          await closeDocSheet(player, {
+            collection: "actors",
+            id: lockedActorId,
+          });
+        });
+      } finally {
+        await context.close();
+      }
     });
 
     test("selling items to a container", async ({ page: game }) => {
