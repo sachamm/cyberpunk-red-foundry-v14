@@ -189,6 +189,104 @@ async function createStashWithItem(game, { stashName, itemName }) {
   return { actorId, sheetId };
 }
 
+/**
+ * Enable the world setting that lets players create inventory items. The
+ * + buttons on character sheets only render when it is on; container
+ * sheets show them to GMs regardless.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ */
+async function enablePlayersCreateInventory(game) {
+  await game.evaluate(async () => {
+    await game.settings.set(game.system.id, "playersCreateInventory", true);
+  });
+}
+
+/**
+ * Create an item in an actor's inventory via the UI by clicking the
+ * category header's + button on the actor's sheet (container or
+ * character). Optionally renames the item and applies additional item
+ * data after creation. Character sheets need the playersCreateInventory
+ * world setting enabled first; see enablePlayersCreateInventory.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} actorId - id of the actor owning the item
+ * @param {String} sheetId - rendered element id of the actor's sheet
+ * @param {String} itemType - type of the item to create (a key of CPR.inventoryCategories)
+ * @param {String} itemName - (optional) name for the item; defaults to "New {Type}"
+ * @param {Object} data - (optional) additional item data applied after creation
+ * @returns {Object} - an object with the itemId and a refreshed sheetId
+ */
+async function createInventoryItemViaUI(
+  game,
+  { actorId, sheetId, itemType, itemName, data },
+) {
+  const actorSheet = sheet(game, sheetId);
+
+  // Character sheets keep the gear list behind a tab; activate it so the
+  // + button is visible. Container sheets have no such tab.
+  if (await actorSheet.locator('.navtabs-right a[data-tab="gear"]').count()) {
+    await activateGearTab(game, sheetId);
+  }
+
+  const existingIds = await game.evaluate((id) => {
+    return Array.from(game.actors.get(id).items.map((item) => item.id));
+  }, actorId);
+
+  const createBtn = actorSheet.locator(FIELD.createButtonByType(itemType));
+  await expect(createBtn).toBeVisible();
+  await createBtn.click();
+
+  const newItemHandle = await game.waitForFunction(
+    ({ id, existingIds }) => {
+      const items = Array.from(game.actors.get(id).items.map((i) => i.id));
+      return items.find((v) => !existingIds.includes(v)) ?? null;
+    },
+    { id: actorId, existingIds },
+    { timeout: 10000 },
+  );
+  const itemId = await newItemHandle.jsonValue();
+  expect(itemId).toBeTruthy();
+
+  if (itemName) {
+    const nameLink = actorSheet
+      .locator(`li.item[data-item-id="${itemId}"]`)
+      .locator("a.item-edit");
+    await nameLink.click();
+
+    const itemSheetId = await openOwnedItemSheet(game, { actorId, itemId });
+    const itemSheet = await openItemSettings(game, itemSheetId);
+    const nameInput = itemSheet.locator('input[name="name"]');
+    await expect(nameInput).toBeVisible();
+    await nameInput.fill(itemName);
+    await nameInput.blur();
+
+    await game.waitForFunction(
+      ({ actorId, itemId, itemName }) =>
+        game.actors.get(actorId)?.items.get(itemId)?.name === itemName,
+      { actorId, itemId, itemName },
+      { timeout: 5000 },
+    );
+
+    await closeOwnedItemSheet(game, { actorId, itemId });
+  }
+
+  if (data) {
+    await game.evaluate(
+      ({ actorId, itemId, data }) =>
+        game.actors.get(actorId).items.get(itemId).update(data),
+      { actorId, itemId, data },
+    );
+  }
+
+  const freshSheetId = await expectSheetRendered(game, {
+    collection: "actors",
+    id: actorId,
+  });
+
+  return { itemId, sheetId: freshSheetId };
+}
+
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
@@ -1116,36 +1214,35 @@ test.describe("Container actor sheet", () => {
     test("both actors' eurobucks ledgers update when selling items to shop", async ({
       page: game,
     }) => {
+      await enablePlayersCreateInventory(game);
+
       const playerActorId = await createDocumentViaUI(game, {
         documentTab: "actors",
         type: "character",
         name: uniqueName("seller-character"),
       });
 
+      const playerSheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: playerActorId,
+      });
+
       const weaponName = uniqueName("assault-rifle");
-      await game.evaluate(
-        async ({ playerActorId, weaponName }) => {
-          const player = game.actors.get(playerActorId);
-          if (player) {
-            // eslint-disable-next-line no-restricted-syntax -- selling test needs direct API
-            await player.createEmbeddedDocuments("Item", [
-              {
-                name: weaponName,
-                type: "weapon",
-                system: {
-                  weaponType: "assaultRifle",
-                  isRanged: true,
-                  magazine: { value: 0, max: 30 },
-                  price: { market: 100 },
-                  installedItems: { allowedTypes: ["ammo"] },
-                  ammoVariety: ["rifle"],
-                },
-              },
-            ]);
-          }
+      await createInventoryItemViaUI(game, {
+        actorId: playerActorId,
+        sheetId: playerSheetId,
+        itemType: "weapon",
+        itemName: weaponName,
+        data: {
+          system: {
+            weaponType: "assaultRifle",
+            isRanged: true,
+            magazine: { value: 0, max: 30 },
+            installedItems: { allowedTypes: ["ammo"] },
+            ammoVariety: ["rifle"],
+          },
         },
-        { playerActorId, weaponName },
-      );
+      });
 
       await game.waitForFunction(
         async ({ playerActorId, weaponName }) => {
@@ -1342,6 +1439,8 @@ test.describe("Container actor sheet", () => {
     test("player sells item to shop with zero wealth", async ({
       page: game,
     }) => {
+      await enablePlayersCreateInventory(game);
+
       const playerActorId = await createDocumentViaUI(game, {
         documentTab: "actors",
         type: "character",
@@ -1349,26 +1448,17 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("create a gear item on the player character", async () => {
-        await game.evaluate(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (player) {
-              // eslint-disable-next-line no-restricted-syntax -- selling test needs direct API
-              await player.createEmbeddedDocuments("Item", [
-                {
-                  name: "Sellable Gear Zero",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 100 },
-                    description: { value: "Item to sell" },
-                  },
-                },
-              ]);
-            }
-          },
-          { playerActorId },
-        );
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+
+        await createInventoryItemViaUI(game, {
+          actorId: playerActorId,
+          sheetId: playerSheetId,
+          itemType: "gear",
+          itemName: "Sellable Gear Zero",
+        });
 
         await game.waitForFunction(
           async ({ playerActorId }) => {
@@ -2894,6 +2984,8 @@ test.describe("Container actor sheet", () => {
     test("storing item in stash doesn't affect ledgers", async ({
       page: game,
     }) => {
+      await enablePlayersCreateInventory(game);
+
       const playerActorId = await createDocumentViaUI(game, {
         documentTab: "actors",
         type: "character",
@@ -2901,26 +2993,17 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("create a gear item on the player character", async () => {
-        await game.evaluate(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (player) {
-              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
-              await player.createEmbeddedDocuments("Item", [
-                {
-                  name: "Stash Seller Item",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 100 },
-                    description: { value: "Item to stash" },
-                  },
-                },
-              ]);
-            }
-          },
-          { playerActorId },
-        );
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+
+        await createInventoryItemViaUI(game, {
+          actorId: playerActorId,
+          sheetId: playerSheetId,
+          itemType: "gear",
+          itemName: "Stash Seller Item",
+        });
 
         await game.waitForFunction(
           async ({ playerActorId }) => {
@@ -3045,18 +3128,7 @@ test.describe("Container actor sheet", () => {
             const player = game.actors.get(playerActorId);
             if (stash) {
               await stash.setContainerType("stash");
-              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
-              await stash.createEmbeddedDocuments("Item", [
-                {
-                  name: "Stash Taker Item",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 100 },
-                    description: { value: "Item to take from stash" },
-                  },
-                },
-              ]);
+              if (stash.sheet.rendered) await stash.sheet.render();
             }
             if (player) {
               await player.update({ "system.wealth.value": 300 });
@@ -3064,6 +3136,18 @@ test.describe("Container actor sheet", () => {
           },
           { stashActorId, playerActorId },
         );
+
+        const stashSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: stashActorId,
+        });
+
+        await createInventoryItemViaUI(game, {
+          actorId: stashActorId,
+          sheetId: stashSheetId,
+          itemType: "gear",
+          itemName: "Stash Taker Item",
+        });
 
         await game.waitForFunction(
           async ({ stashActorId }) => {
@@ -3463,6 +3547,8 @@ test.describe("Container actor sheet", () => {
     test("selling with customized compensation percentage", async ({
       page: game,
     }) => {
+      await enablePlayersCreateInventory(game);
+
       const playerActorId = await createDocumentViaUI(game, {
         documentTab: "actors",
         type: "character",
@@ -3470,26 +3556,18 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("create a gear item with market price 200 on the player character", async () => {
-        await game.evaluate(
-          async ({ playerActorId }) => {
-            const player = game.actors.get(playerActorId);
-            if (player) {
-              // eslint-disable-next-line no-restricted-syntax -- selling test needs direct API
-              await player.createEmbeddedDocuments("Item", [
-                {
-                  name: "Sellable Gear",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 200 },
-                    description: { value: "Item to sell" },
-                  },
-                },
-              ]);
-            }
-          },
-          { playerActorId },
-        );
+        const playerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: playerActorId,
+        });
+
+        await createInventoryItemViaUI(game, {
+          actorId: playerActorId,
+          sheetId: playerSheetId,
+          itemType: "gear",
+          itemName: "Sellable Gear",
+          data: { system: { "price.market": 200 } },
+        });
 
         await game.waitForFunction(
           async ({ playerActorId }) => {
@@ -3931,26 +4009,13 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("create a gear item on the container", async () => {
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              // eslint-disable-next-line no-restricted-syntax -- selling test needs direct API
-              await container.createEmbeddedDocuments("Item", [
-                {
-                  name: "Sellable Gear",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 100 },
-                    description: { value: "Item to sell" },
-                  },
-                },
-              ]);
-            }
-          },
-          { containerActorId },
-        );
+        const result = await createInventoryItemViaUI(game, {
+          actorId: containerActorId,
+          sheetId: containerSheetId,
+          itemType: "gear",
+          itemName: "Sellable Gear",
+        });
+        containerSheetId = result.sheetId;
 
         const sellableGearExists = await game.evaluate(
           async ({ containerActorId }) => {
