@@ -47,6 +47,16 @@ function sheet(page, sheetId) {
   return page.locator(`#${sheetId}`);
 }
 
+/**
+ * Wait for specific fields to be available in the UI. This is useful to avoid race
+ * conditions when rendering a sheet, sometimes the DB updates land quickly but
+ * the UI doesn't catch up or re-render, resulting in an apparent desync between
+ * server and client.
+ *
+ * @param {String} actorId - which actor's sheet to wait for
+ * @param {Map} expected - a map-like of field names and values
+ * @returns undefined
+ */
 async function waitForActorFields(page, actorId, expected) {
   await page.waitForFunction(
     ({ actorId, expected }) => {
@@ -61,7 +71,19 @@ async function waitForActorFields(page, actorId, expected) {
   );
 }
 
-async function createContainerWithItem(game, { containerName, itemType }) {
+/**
+ * Convenience function to generate a container actor with an item in its inventory.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} containerName - base name for the container actor (made unique)
+ * @param {String} itemType - type of the item created in the container's inventory
+ * @param {String} itemName - (optional) name for the item; defaults to "New {Type}"
+ * @returns {Object} - an object with an actorId and sheetId
+ */
+async function createContainerWithItem(
+  game,
+  { containerName, itemType, itemName },
+) {
   const actorId = await createDocumentViaUI(game, {
     documentTab: "actors",
     type: "container",
@@ -87,6 +109,34 @@ async function createContainerWithItem(game, { containerName, itemType }) {
     .filter({ hasText: `New ${capitalize(itemType)}` });
   await expect(itemRow).toBeVisible();
 
+  if (itemName) {
+    await itemRow.click();
+
+    const itemId = await game.evaluate(
+      ({ actorId, itemType }) => {
+        const actor = game.actors.get(actorId);
+        return actor?.items.find((i) => i.type === itemType)?.id ?? null;
+      },
+      { actorId, itemType },
+    );
+
+    const itemSheetId = await openOwnedItemSheet(game, { actorId, itemId });
+    const itemSheet = await openItemSettings(game, itemSheetId);
+    const nameInput = itemSheet.locator('input[name="name"]');
+    await expect(nameInput).toBeVisible();
+    await nameInput.fill(itemName);
+    await nameInput.blur();
+
+    await game.waitForFunction(
+      ({ actorId, itemId, itemName }) =>
+        game.actors.get(actorId)?.items.get(itemId)?.name === itemName,
+      { actorId, itemId, itemName },
+      { timeout: 5000 },
+    );
+
+    await closeOwnedItemSheet(game, { actorId, itemId });
+  }
+
   sheetId = await expectSheetRendered(game, {
     collection: "actors",
     id: actorId,
@@ -95,44 +145,37 @@ async function createContainerWithItem(game, { containerName, itemType }) {
   return { actorId, sheetId };
 }
 
+/**
+ * Similar to createContainerWithItem but sets the type to stash after
+ * creating the actor and item.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} stashName - base name for the stash (made unique)
+ * @param {String} itemName - (optional) name for the item; defaults to "New {Type}"
+ * @returns {Object} - an object with an actorId and sheetId
+ */
 async function createStashWithItem(game, { stashName, itemName }) {
-  const actorId = await createDocumentViaUI(game, {
-    documentTab: "actors",
-    type: "container",
-    name: uniqueName(stashName),
+  const { actorId } = await createContainerWithItem(game, {
+    containerName: stashName,
+    itemType: "gear",
+    itemName,
   });
 
   await game.evaluate(
-    async ({ actorId, itemName }) => {
+    async ({ actorId }) => {
       const actor = game.actors.get(actorId);
       if (actor) {
         await actor.setContainerType("stash");
-        // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
-        await actor.createEmbeddedDocuments("Item", [
-          {
-            name: itemName,
-            type: "gear",
-            system: {
-              amount: 1,
-              price: { market: 100 },
-              description: { value: "Item for stash test" },
-            },
-          },
-        ]);
         if (actor.sheet.rendered) await actor.sheet.render();
       }
     },
-    { actorId, itemName },
+    { actorId },
   );
 
   await game.waitForFunction(
     async ({ actorId }) => {
       const actor = game.actors.get(actorId);
-      if (!actor) return false;
-      return (
-        actor.flags?.[game.system.id]?.["container-type"] === "stash" &&
-        actor.items.some((i) => i.name.includes("Stash Item"))
-      );
+      return actor?.flags?.[game.system.id]?.["container-type"] === "stash";
     },
     { actorId },
     { timeout: 5000 },
@@ -150,8 +193,12 @@ test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
 
+/**
+ * Tests begin here ya mook
+ */
+
 test.describe("Container actor sheet", () => {
-  test.describe("Shared behavior", () => {
+  test.describe("Common behaviors", () => {
     test("name edits persist after close and reopen", async ({
       page: game,
     }) => {
@@ -173,14 +220,11 @@ test.describe("Container actor sheet", () => {
 
         await containerSheet.locator(FIELD.name).fill(editedName);
         await containerSheet.locator(FIELD.name).blur();
-
-        // Verify live update on the same sheet (name field reflects the new value immediately)
         await expect(containerSheet.locator(FIELD.name)).toHaveValue(
           editedName,
         );
 
         await waitForActorFields(game, actorId, { name: editedName });
-
         await closeDocSheet(game, { collection: "actors", id: actorId });
         sheetId = await reopenActorSheetViaUI(game, actorId);
 
@@ -2056,7 +2100,7 @@ test.describe("Container actor sheet", () => {
 
         // The stacking update fired by _purchaseItem is not awaited in the
         // sheet code, so poll until the partner's stack reflects it.
-        const tradePartnerAmount = await game.waitForFunction(
+        const amountHandle = await game.waitForFunction(
           ({ partnerId }) => {
             const partner = game.actors.get(partnerId);
             const plasmaRifle = partner?.items.find(
@@ -2069,6 +2113,7 @@ test.describe("Container actor sheet", () => {
           { partnerId: tradePartnerId },
           { timeout: 10000 },
         );
+        const tradePartnerAmount = await amountHandle.jsonValue();
         expect(tradePartnerAmount).toBe(2);
       });
 
