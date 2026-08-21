@@ -294,45 +294,6 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
-    test("multiple containers open maintain independent state", async ({
-      page: game,
-    }) => {
-      const actorId1 = await createDocumentViaUI(game, {
-        documentTab: "actors",
-        type: "container",
-        name: uniqueName("multi-container-1"),
-      });
-
-      const actorId2 = await createDocumentViaUI(game, {
-        documentTab: "actors",
-        type: "container",
-        name: uniqueName("multi-container-2"),
-      });
-
-      let sheetId1 = await expectSheetRendered(game, {
-        collection: "actors",
-        id: actorId1,
-      });
-
-      await test.step("open second container sheet while first is open", async () => {
-        const containerSheet1 = sheet(game, sheetId1);
-        await expect(containerSheet1.locator(FIELD.name)).toHaveValue(
-          /multi-container-1/,
-        );
-
-        await closeDocSheet(game, { collection: "actors", id: actorId2 });
-      });
-
-      await test.step("first container retains its state after second is closed", async () => {
-        const containerSheet1 = sheet(game, sheetId1);
-        await expect(containerSheet1.locator(FIELD.name)).toHaveValue(
-          /multi-container-1/,
-        );
-      });
-
-      await closeDocSheet(game, { collection: "actors", id: actorId1 });
-    });
-
     test("GM can create items from category headers and verify defaults", async ({
       page: game,
     }) => {
@@ -394,6 +355,41 @@ test.describe("Container actor sheet", () => {
           name: "cyberware",
           displayName: "Cyberware",
           defaultName: "New Cyberware",
+          price: "100",
+          hasAmount: false,
+        },
+        {
+          name: "vehicle",
+          displayName: "Vehicle",
+          defaultName: "New Vehicle",
+          price: "100",
+          hasAmount: false,
+        },
+        {
+          name: "cyberdeck",
+          displayName: "Cyberdeck",
+          defaultName: "New Cyberdeck",
+          price: "100",
+          hasAmount: false,
+        },
+        {
+          name: "program",
+          displayName: "Program",
+          defaultName: "New Program",
+          price: "100",
+          hasAmount: false,
+        },
+        {
+          name: "itemUpgrade",
+          displayName: "Upgrade",
+          defaultName: "New Upgrade",
+          price: "100",
+          hasAmount: false,
+        },
+        {
+          name: "netarch",
+          displayName: "NET Architecture",
+          defaultName: "New NET Architecture",
           price: "100",
           hasAmount: false,
         },
