@@ -14,6 +14,7 @@ import {
   reopenActorSheetViaUI,
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
+  hoverGearRow,
   createItemViaUI,
   openSidebarTab,
   openTokenSheet,
@@ -376,6 +377,139 @@ async function purchaseAllViaUI(game, sheetId, itemName) {
   const purchaseLink = itemRow.locator(FIELD.purchaseAll);
   await expect(purchaseLink).toBeVisible();
   await purchaseLink.click();
+}
+
+/**
+ * Sell an item from a character's inventory to a container by dragging it onto
+ * the container sheet as a player. GM drags copy items into the container
+ * instead of selling (cpr-container-sheet.js only routes non-GM drops to the
+ * vendor flow), so this grants "E2E Player" ownership of both actors, enables
+ * the container's players-sell flag (the sheet's "Sell items?" toggle), opens
+ * a player page, drags the item row from the character's gear tab onto the
+ * container sheet, and confirms the "Selling to vendor" offer dialog.
+ *
+ * @param {Object} game - GM page fixture
+ * @param {Object} browser - Playwright browser fixture
+ * @param {String} baseURL - Foundry base URL fixture
+ * @param {String} containerActorId - id of the container (shop) actor
+ * @param {String} characterActorId - id of the character selling the item
+ * @param {String} itemId - id of the owned item to sell
+ */
+async function sellItemToContainerViaUI(
+  game,
+  browser,
+  baseURL,
+  { containerActorId, characterActorId, itemId },
+) {
+  const playerId = await game.evaluate(
+    () => game.users.getName("E2E Player")?.id ?? null,
+  );
+  expect(playerId).toBeTruthy();
+
+  await game.evaluate(
+    async ({ containerActorId, characterActorId, playerId }) => {
+      for (const id of [containerActorId, characterActorId]) {
+        const actor = game.actors.get(id);
+        await actor.update({
+          [`ownership.${playerId}`]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+        });
+      }
+      const container = game.actors.get(containerActorId);
+      await container.setFlag(game.system.id, "players-sell", true);
+    },
+    { containerActorId, characterActorId, playerId },
+  );
+
+  const itemName = await game.evaluate(
+    ({ characterActorId, itemId }) =>
+      game.actors.get(characterActorId).items.get(itemId)?.name ?? null,
+    { characterActorId, itemId },
+  );
+  expect(
+    itemName,
+    `expected owned item ${itemId} on actor ${characterActorId}`,
+  ).toBeTruthy();
+
+  const { context, page: player } = await openPlayerPage(browser, baseURL);
+  try {
+    const characterSheetId = await reopenActorSheetViaUI(
+      player,
+      characterActorId,
+    );
+    const gear = await activateGearTab(player, characterSheetId);
+    const row = await hoverGearRow(gear, itemId);
+
+    const containerSheetId = await reopenActorSheetViaUI(
+      player,
+      containerActorId,
+    );
+    const target = player.locator(`#${containerSheetId}`);
+    await expect(target).toBeVisible();
+
+    const offerDialog = () =>
+      player.locator(".dialog", { hasText: "offering you" });
+
+    await row.dragTo(target, { timeout: 5000 }).catch(() => {});
+    await player.mouse.up().catch(() => {});
+
+    const dialogShown = await offerDialog()
+      .first()
+      .waitFor({ state: "visible", timeout: 3000 })
+      .then(() => true)
+      .catch(() => false);
+
+    if (!dialogShown) {
+      // Native HTML5 drag did not land; dispatch a synthetic drop carrying the
+      // same payload Foundry writes on dragstart.
+      const uuid = await player.evaluate(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId)?.uuid ?? null,
+        { actorId: characterActorId, itemId },
+      );
+      expect(uuid).toBeTruthy();
+      await player.evaluate(
+        ({ uuid, containerSheetId, characterActorId }) => {
+          const sheetEl = document.getElementById(containerSheetId);
+          const data = new DataTransfer();
+          data.setData(
+            "text/plain",
+            JSON.stringify({
+              type: "Item",
+              uuid,
+              system: { actorId: characterActorId, tokenId: null },
+            }),
+          );
+          sheetEl.dispatchEvent(
+            new DragEvent("drop", {
+              bubbles: true,
+              cancelable: true,
+              dataTransfer: data,
+            }),
+          );
+        },
+        { uuid, containerSheetId, characterActorId },
+      );
+    }
+
+    await expect(offerDialog().first()).toBeVisible({ timeout: 5000 });
+    // DialogV2.confirm renders its accept button with data-action="yes".
+    await offerDialog().first().locator('button[data-action="yes"]').click();
+
+    await game.waitForFunction(
+      ({ containerActorId, characterActorId, itemId, itemName }) => {
+        const container = game.actors.get(containerActorId);
+        const character = game.actors.get(characterActorId);
+        return (
+          !character.items.has(itemId) &&
+          container.items.some((i) => i.name === itemName)
+        );
+      },
+      { containerActorId, characterActorId, itemId, itemName },
+      { timeout: 10000 },
+    );
+  } finally {
+    await context.close();
+  }
 }
 
 test.beforeEach(async ({ page }) => {
@@ -1112,6 +1246,8 @@ test.describe("Container actor sheet", () => {
 
     test("both actors' eurobucks ledgers update when selling items to shop", async ({
       page: game,
+      browser,
+      baseURL,
     }) => {
       await enablePlayersCreateInventory(game);
 
@@ -1149,7 +1285,7 @@ test.describe("Container actor sheet", () => {
         name: uniqueName("shop-sell-container"),
       });
 
-      let containerSheetId = await expectSheetRendered(game, {
+      await expectSheetRendered(game, {
         collection: "actors",
         id: containerActorId,
       });
@@ -1187,27 +1323,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("sell item to shop via drag-and-drop and verify both ledgers update", async () => {
-        await openSidebarTab(game, "actors");
-        const playerEntry = game.locator(
-          `#actors [data-entry-id="${playerActorId}"]`,
-        );
-        await expect(playerEntry).toBeVisible();
-        await playerEntry.click();
-
-        const playerSheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: playerActorId,
-        });
-        const gearContent = await activateGearTab(game, playerSheetId);
-
-        const weaponRow = gearContent
-          .locator('li.item[data-item-category="weapon"]')
-          .filter({ hasText: weaponName });
-        await expect(weaponRow).toBeVisible();
-
-        const containerEl = game.locator(`#${containerSheetId}`);
-        await expect(containerEl).toBeVisible();
-
         const itemBefore = await game.evaluate(
           async ({ playerActorId, weaponName }) => {
             const player = game.actors.get(playerActorId);
@@ -1222,21 +1337,19 @@ test.describe("Container actor sheet", () => {
           { playerActorId, weaponName },
         );
 
-        await game.evaluate(
-          async ({ playerActorId, containerActorId, weaponName }) => {
-            const container = game.actors.get(containerActorId);
-            const player = game.actors.get(playerActorId);
-            const item = player.items.find((i) => i.name === weaponName);
-            if (!item) {
-              throw new Error("Weapon not found on player");
-            }
-            const originalConfirm = foundry.applications.api.DialogV2.confirm;
-            foundry.applications.api.DialogV2.confirm = async () => true;
-            await container.sheet._sellItemTo(playerActorId, item);
-            foundry.applications.api.DialogV2.confirm = originalConfirm;
-          },
-          { playerActorId, containerActorId, weaponName },
+        const itemId = await game.evaluate(
+          ({ playerActorId, weaponName }) =>
+            game.actors
+              .get(playerActorId)
+              .items.find((i) => i.name === weaponName)?.id ?? null,
+          { playerActorId, weaponName },
         );
+
+        await sellItemToContainerViaUI(game, browser, baseURL, {
+          containerActorId,
+          characterActorId: playerActorId,
+          itemId,
+        });
 
         const containerItemAfter = await game.evaluate(
           async ({ containerActorId, weaponName }) => {
@@ -1302,6 +1415,8 @@ test.describe("Container actor sheet", () => {
      */
     test("player sells item to shop with zero wealth", async ({
       page: game,
+      browser,
+      baseURL,
     }) => {
       await enablePlayersCreateInventory(game);
 
@@ -1331,7 +1446,7 @@ test.describe("Container actor sheet", () => {
         name: uniqueName("shop-zero-wealth-container"),
       });
 
-      let containerSheetId = await expectSheetRendered(game, {
+      await expectSheetRendered(game, {
         collection: "actors",
         id: containerActorId,
       });
@@ -1358,51 +1473,19 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("sell item to shop with zero funds and verify ledgers update", async () => {
-        await openSidebarTab(game, "actors");
-        const playerEntry = game.locator(
-          `#actors [data-entry-id="${playerActorId}"]`,
+        const itemId = await game.evaluate(
+          ({ playerActorId }) =>
+            game.actors
+              .get(playerActorId)
+              .items.find((i) => i.name === "Sellable Gear Zero")?.id ?? null,
+          { playerActorId },
         );
-        await expect(playerEntry).toBeVisible();
-        await playerEntry.click();
 
-        const playerSheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: playerActorId,
+        await sellItemToContainerViaUI(game, browser, baseURL, {
+          containerActorId,
+          characterActorId: playerActorId,
+          itemId,
         });
-        const gearContent = await activateGearTab(game, playerSheetId);
-
-        const itemRow = gearContent
-          .locator('li.item[data-item-category="gear"]')
-          .filter({ hasText: "Sellable Gear Zero" });
-        await expect(itemRow).toBeVisible();
-
-        const containerEl = game.locator(`#${containerSheetId}`);
-        await expect(containerEl).toBeVisible();
-
-        await game.evaluate(
-          async ({ containerActorId, playerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            const player = game.actors.get(playerActorId);
-            if (!container || !player) {
-              throw new Error("container or player not found");
-            }
-
-            const item = player.items.find(
-              (i) => i.name === "Sellable Gear Zero",
-            );
-            if (!item) {
-              throw new Error("item not found in player inventory");
-            }
-
-            const originalConfirm = foundry.applications.api.DialogV2.confirm;
-            foundry.applications.api.DialogV2.confirm = async () => true;
-
-            await container.sheet._sellItemTo(playerActorId, item);
-
-            foundry.applications.api.DialogV2.confirm = originalConfirm;
-          },
-          { containerActorId, playerActorId },
-        );
 
         const containerItemAfter = await game.evaluate(
           async ({ containerActorId }) => {
@@ -1937,6 +2020,8 @@ test.describe("Container actor sheet", () => {
 
     test("transacted items arrive with their installed upgrades", async ({
       page: game,
+      browser,
+      baseURL,
     }) => {
       const weaponName = uniqueName("upgraded-rifle");
       const upgradeName = uniqueName("rifle-upgrade");
@@ -1946,6 +2031,9 @@ test.describe("Container actor sheet", () => {
       let embeddedWeaponId;
       let embeddedUpgradeId;
 
+      /**
+       * Once we have item tests this can likely be moved out as a helper.
+       */
       const readInstalledState = (actorId) =>
         game.evaluate(
           ({ actorId, weaponName, upgradeName }) => {
@@ -2090,32 +2178,11 @@ test.describe("Container actor sheet", () => {
           { containerActorId },
         );
 
-        await game.evaluate(
-          async ({ containerActorId, playerActorId, weaponName }) => {
-            const container = game.actors.get(containerActorId);
-            const player = game.actors.get(playerActorId);
-            const item = player.items.find((i) => i.name === weaponName);
-            if (!item)
-              throw new Error(`Weapon "${weaponName}" not found on player`);
-            const originalConfirm = foundry.applications.api.DialogV2.confirm;
-            foundry.applications.api.DialogV2.confirm = async () => true;
-            try {
-              await container.sheet._sellItemTo(playerActorId, item);
-            } finally {
-              foundry.applications.api.DialogV2.confirm = originalConfirm;
-            }
-          },
-          { containerActorId, playerActorId, weaponName },
-        );
-
-        await game.waitForFunction(
-          ({ containerActorId, weaponName }) =>
-            game.actors
-              .get(containerActorId)
-              ?.items.some((i) => i.name === weaponName) === true,
-          { containerActorId, weaponName },
-          { timeout: 10000 },
-        );
+        await sellItemToContainerViaUI(game, browser, baseURL, {
+          containerActorId,
+          characterActorId: playerActorId,
+          itemId: embeddedWeaponId,
+        });
       });
 
       await test.step("the shop's copy of the weapon still has the upgrade installed", async () => {
@@ -2823,6 +2890,8 @@ test.describe("Container actor sheet", () => {
 
     test("selling with customized compensation percentage", async ({
       page: game,
+      browser,
+      baseURL,
     }) => {
       await enablePlayersCreateInventory(game);
 
@@ -2907,33 +2976,19 @@ test.describe("Container actor sheet", () => {
           { containerActorId },
         );
 
-        await game.evaluate(
-          async ({ containerActorId, playerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            const player = game.actors.get(playerActorId);
-            const item = player.items.find((i) => i.name === "Sellable Gear");
-            if (!item)
-              throw new Error('Gear "Sellable Gear" not found on player');
-            const originalConfirm = foundry.applications.api.DialogV2.confirm;
-            foundry.applications.api.DialogV2.confirm = async () => true;
-            try {
-              await container.sheet._sellItemTo(playerActorId, item);
-            } finally {
-              foundry.applications.api.DialogV2.confirm = originalConfirm;
-            }
-          },
-          { containerActorId, playerActorId },
+        const itemId = await game.evaluate(
+          ({ playerActorId }) =>
+            game.actors
+              .get(playerActorId)
+              .items.find((i) => i.name === "Sellable Gear")?.id ?? null,
+          { playerActorId },
         );
 
-        await game.waitForFunction(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (!container) return false;
-            return container.items.some((i) => i.name === "Sellable Gear");
-          },
-          { containerActorId },
-          { timeout: 5000 },
-        );
+        await sellItemToContainerViaUI(game, browser, baseURL, {
+          containerActorId,
+          characterActorId: playerActorId,
+          itemId,
+        });
 
         await waitForActorFields(game, playerActorId, {
           "system.wealth.value": playerWealthBefore + 150,
