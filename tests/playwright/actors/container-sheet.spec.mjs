@@ -161,6 +161,43 @@ async function setContainerTypeViaUI(game, actorId, type) {
 }
 
 /**
+ * Set a container's eurobucks wealth through the ledger window: open the
+ * ledger from the container sheet, type the value, and click "set". The
+ * ledger window is closed again afterwards.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} actorId - id of the container actor (sheet must be rendered)
+ * @param {Number} value - wealth value to set
+ */
+async function setContainerWealthViaUI(game, actorId, value) {
+  const sheetId = await expectSheetRendered(game, {
+    collection: "actors",
+    id: actorId,
+  });
+  const ledgerButton = sheet(game, sheetId).locator(FIELD.ledgerButton);
+  await expect(ledgerButton).toBeVisible();
+  await ledgerButton.click();
+
+  const ledger = game.locator(".application.ledger");
+  await expect(ledger).toBeVisible();
+  await ledger.locator('input[name="modifyValue"]').fill(String(value));
+  await ledger.locator('input[name="reason"]').fill("Test setup");
+  await ledger.locator('.ledger-edit-button[data-action="set"]').click();
+
+  await game.waitForFunction(
+    ({ actorId, value }) => {
+      const actor = game.actors.get(actorId);
+      return actor?.system?.wealth?.value === value;
+    },
+    { actorId, value },
+    { timeout: 5000 },
+  );
+
+  await ledger.locator('button[data-action="close"]').click();
+  await expect(ledger).toBeHidden();
+}
+
+/**
  * Enable the world setting that lets players create inventory items. The
  * + buttons on character sheets only render when it is on; container
  * sheets show them to GMs regardless.
@@ -1332,15 +1369,7 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("set up shop with sufficient funds", async () => {
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({ "system.wealth.value": 999999 });
-            }
-          },
-          { containerActorId },
-        );
+        await setContainerWealthViaUI(game, containerActorId, 999999);
       });
 
       await test.step("sell item to shop via drag-and-drop and verify both ledgers update", async () => {
@@ -1474,12 +1503,12 @@ test.describe("Container actor sheet", () => {
 
       await test.step("configure container to buy gear at 50% with zero funds", async () => {
         await setContainerTypeViaUI(game, containerActorId, "shop");
+        await setContainerWealthViaUI(game, containerActorId, 0);
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
             if (container) {
               await container.update({
-                "system.wealth.value": 0,
                 "system.vendor": {
                   itemTypes: {
                     gear: { isPurchasing: true, purchasePercentage: "50" },
@@ -2188,15 +2217,7 @@ test.describe("Container actor sheet", () => {
           id: containerActorId,
         });
 
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({ "system.wealth.value": 999999 });
-            }
-          },
-          { containerActorId },
-        );
+        await setContainerWealthViaUI(game, containerActorId, 999999);
 
         await sellItemToContainerViaUI(game, browser, baseURL, {
           containerActorId,
@@ -2920,15 +2941,7 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("give the container funds", async () => {
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({ "system.wealth.value": 999999 });
-            }
-          },
-          { containerActorId },
-        );
+        await setContainerWealthViaUI(game, containerActorId, 999999);
       });
 
       await test.step("sell item to container and verify 75% compensation (150)", async () => {
