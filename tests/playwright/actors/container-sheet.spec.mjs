@@ -30,6 +30,7 @@ const FIELD = {
   ledgerButton: ".eurobucks-open-ledger",
   containerTypeDropdown: "select.container-type-dropdown",
   flagCheckbox: (name) => `.checkbox-toggle[data-flag-name="${name}"]`,
+  vendorConfigureLink: ".vendor-configure-sell-to",
   imageBlock: ".image-block img",
   gmSettings: ".settings-gm-section",
   createButton: ".item-create",
@@ -231,6 +232,58 @@ async function setContainerFlagViaUI(game, actorId, flagName) {
     ({ id, flag }) =>
       game.actors.get(id)?.getFlag(game.system.id, flag) === true,
     { id: actorId, flag: flagName },
+    { timeout: 5000 },
+  );
+}
+
+/**
+ * Configure which item types a container buys and at what percentage of
+ * market price through the sheet's "Configure Shop" prompt (the shop link on
+ * shop containers, or the wrench next to "Sell items?" on custom containers).
+ * Opens the prompt, sets one item type's purchase percentage (ensuring its
+ * purchasing checkbox is enabled), confirms, and waits for the value to land
+ * on the actor. Other item types keep their current values.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} actorId - id of the container actor (sheet must be rendered)
+ * @param {Object} options
+ * @param {String} options.itemType - item type to configure (e.g. "gear")
+ * @param {Number} [options.purchasePercentage=100] - percentage of market price paid when buying
+ */
+async function configureContainerVendorViaUI(
+  game,
+  actorId,
+  { itemType, purchasePercentage = 100 },
+) {
+  const sheetId = await expectSheetRendered(game, {
+    collection: "actors",
+    id: actorId,
+  });
+  const configureLink = sheet(game, sheetId).locator(FIELD.vendorConfigureLink);
+  await expect(configureLink).toBeVisible();
+  await configureLink.click();
+
+  const percentInput = `input[name="currentConfig.itemTypes.${itemType}.purchasePercentage"]`;
+  const dialog = game
+    .locator(".dialog")
+    .filter({ has: game.locator(percentInput) })
+    .first();
+  await expect(dialog).toBeVisible();
+  await dialog.locator(percentInput).fill(String(purchasePercentage));
+  const buyCheckbox = dialog.locator(
+    `input[name="currentConfig.itemTypes.${itemType}.isPurchasing"]`,
+  );
+  if (!(await buyCheckbox.isChecked())) await buyCheckbox.check();
+  await dialog.locator('button[data-action="confirm"]').click();
+
+  await game.waitForFunction(
+    ({ actorId, itemType, purchasePercentage }) => {
+      const actor = game.actors.get(actorId);
+      const value =
+        actor?.system?.vendor?.itemTypes?.[itemType]?.purchasePercentage;
+      return Number(value) === purchasePercentage;
+    },
+    { actorId, itemType, purchasePercentage },
     { timeout: 5000 },
   );
 }
@@ -1383,21 +1436,10 @@ test.describe("Container actor sheet", () => {
 
       await test.step("configure container to buy weapons at 50% of market price", async () => {
         await setContainerTypeViaUI(game, containerActorId, "shop");
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({
-                "system.vendor": {
-                  itemTypes: {
-                    weapon: { isPurchasing: true, purchasePercentage: "50" },
-                  },
-                },
-              });
-            }
-          },
-          { containerActorId },
-        );
+        await configureContainerVendorViaUI(game, containerActorId, {
+          itemType: "weapon",
+          purchasePercentage: 50,
+        });
       });
 
       await test.step("set up shop with sufficient funds", async () => {
@@ -1536,21 +1578,10 @@ test.describe("Container actor sheet", () => {
       await test.step("configure container to buy gear at 50% with zero funds", async () => {
         await setContainerTypeViaUI(game, containerActorId, "shop");
         await setContainerWealthViaUI(game, containerActorId, 0);
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({
-                "system.vendor": {
-                  itemTypes: {
-                    gear: { isPurchasing: true, purchasePercentage: "50" },
-                  },
-                },
-              });
-            }
-          },
-          { containerActorId },
-        );
+        await configureContainerVendorViaUI(game, containerActorId, {
+          itemType: "gear",
+          purchasePercentage: 50,
+        });
       });
 
       await test.step("sell item to shop with zero funds and verify ledgers update", async () => {
@@ -2711,9 +2742,7 @@ test.describe("Container actor sheet", () => {
 
       await test.step("shop container shows configure shop link", async () => {
         const containerSheet = sheet(game, sheetId);
-        const configureLink = containerSheet.locator(
-          ".vendor-configure-sell-to",
-        );
+        const configureLink = containerSheet.locator(FIELD.vendorConfigureLink);
         await expect(configureLink).toBeVisible();
       });
 
@@ -2860,21 +2889,10 @@ test.describe("Container actor sheet", () => {
 
       await test.step("configure container to buy gear at 75% of market price", async () => {
         await setContainerTypeViaUI(game, containerActorId, "custom");
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({
-                "system.vendor": {
-                  itemTypes: {
-                    gear: { isPurchasing: true, purchasePercentage: "75" },
-                  },
-                },
-              });
-            }
-          },
-          { containerActorId },
-        );
+        await configureContainerVendorViaUI(game, containerActorId, {
+          itemType: "gear",
+          purchasePercentage: 75,
+        });
       });
 
       await test.step("give the container funds", async () => {
@@ -3218,28 +3236,15 @@ test.describe("Container actor sheet", () => {
 
       await test.step("configure container to buy gear at 50%", async () => {
         await setContainerTypeViaUI(game, containerActorId, "custom");
-        await game.evaluate(
-          async ({ containerActorId }) => {
-            const container = game.actors.get(containerActorId);
-            if (container) {
-              await container.update({
-                "system.vendor": {
-                  itemTypes: {
-                    gear: { isPurchasing: true, purchasePercentage: "50" },
-                  },
-                },
-              });
-            }
-          },
-          { containerActorId },
-        );
+        await configureContainerVendorViaUI(game, containerActorId, {
+          itemType: "gear",
+          purchasePercentage: 50,
+        });
       });
 
       await test.step("verify container sheet renders with vendor configuration", async () => {
         const containerSheet = sheet(game, containerSheetId);
-        const vendorSection = containerSheet.locator(
-          ".vendor-configure-sell-to",
-        );
+        const vendorSection = containerSheet.locator(FIELD.vendorConfigureLink);
         await expect(vendorSection).toBeVisible();
       });
 
