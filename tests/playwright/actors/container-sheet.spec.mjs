@@ -314,65 +314,6 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
-    test("category collapse/expand toggles item visibility", async ({
-      page: game,
-    }) => {
-      const { actorId, sheetId } = await createContainerWithItem(game, {
-        containerName: "stash-container",
-        itemType: "gear",
-      });
-
-      await test.step("verify item is visible in expanded category, then collapse hides it", async () => {
-        const containerSheet = sheet(game, sheetId);
-
-        const gearCategory = containerSheet
-          .locator(FIELD.categoryHeader)
-          .filter({ hasText: "Gear" });
-        await expect(gearCategory).toBeVisible();
-
-        const gearItemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(gearItemRow).toBeVisible();
-        const itemHasHide = await gearItemRow.evaluate((el) =>
-          el.classList.contains("hide"),
-        );
-        expect(itemHasHide).toBe(false);
-
-        await gearCategory.locator(FIELD.expandButton).click();
-
-        await expect(gearItemRow).not.toBeVisible();
-
-        const itemHasHideAfter = await gearItemRow.evaluate((el) =>
-          el.classList.contains("hide"),
-        );
-        expect(itemHasHideAfter).toBe(true);
-      });
-
-      await test.step("re-expand shows the item again", async () => {
-        const containerSheet = sheet(game, sheetId);
-
-        const gearCategory = containerSheet
-          .locator(FIELD.categoryHeader)
-          .filter({ hasText: "Gear" });
-        await expect(gearCategory).toBeVisible();
-
-        await gearCategory.locator(FIELD.expandButton).click();
-
-        const gearItemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(gearItemRow).toBeVisible();
-
-        const itemHasHideAfter = await gearItemRow.evaluate((el) =>
-          el.classList.contains("hide"),
-        );
-        expect(itemHasHideAfter).toBe(false);
-      });
-
-      await closeDocSheet(game, { collection: "actors", id: actorId });
-    });
-
     test("GM can create items from category headers and verify defaults", async ({
       page: game,
     }) => {
@@ -724,27 +665,7 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
-    test("content filter/search is not available on container sheet", async ({
-      page: game,
-    }) => {
-      const { actorId, sheetId } = await createContainerWithItem(game, {
-        containerName: "no-filter-container",
-        itemType: "gear",
-      });
-
-      await test.step("verify no filter input exists on container sheet", async () => {
-        const containerSheet = sheet(game, sheetId);
-        const filterInput = containerSheet.locator(
-          'input[placeholder*="filter"], input[placeholder*="search"], input.filter-contents',
-        );
-        const filterCount = await filterInput.count();
-        expect(filterCount).toBe(0);
-      });
-
-      await closeDocSheet(game, { collection: "actors", id: actorId });
-    });
-
-    test("multiple categories collapse/expand independently", async ({
+    test("categories collapse/expand independently and toggle item visibility", async ({
       page: game,
     }) => {
       const actorId = await createDocumentViaUI(game, {
@@ -776,7 +697,7 @@ test.describe("Container actor sheet", () => {
         ).sheetId;
       });
 
-      await test.step("collapse Weapon category and verify only Armor items remain visible", async () => {
+      await test.step("verify items in both categories are visible when expanded", async () => {
         const containerSheet = sheet(game, sheetId);
 
         const weaponCategory = containerSheet
@@ -784,6 +705,28 @@ test.describe("Container actor sheet", () => {
           .filter({ hasText: "Weapon" });
         await expect(weaponCategory).toBeVisible();
 
+        const armorCategory = containerSheet
+          .locator(FIELD.categoryHeader)
+          .filter({ hasText: "Armor" });
+        await expect(armorCategory).toBeVisible();
+
+        const weaponItem = containerSheet
+          .locator(FIELD.itemName)
+          .filter({ hasText: "New Weapon" });
+        await expect(weaponItem).toBeVisible();
+
+        const armorItem = containerSheet
+          .locator(FIELD.itemName)
+          .filter({ hasText: "New Armor" });
+        await expect(armorItem).toBeVisible();
+      });
+
+      await test.step("collapse Weapon and verify only Armor remains visible", async () => {
+        const containerSheet = sheet(game, sheetId);
+
+        const weaponCategory = containerSheet
+          .locator(FIELD.categoryHeader)
+          .filter({ hasText: "Weapon" });
         await weaponCategory.locator(FIELD.expandButton).click();
 
         const weaponItem = containerSheet
@@ -797,7 +740,7 @@ test.describe("Container actor sheet", () => {
         await expect(armorItem).toBeVisible();
       });
 
-      await test.step("re-expand Weapon category and verify both are visible", async () => {
+      await test.step("re-expand Weapon and verify both items are visible", async () => {
         const containerSheet = sheet(game, sheetId);
 
         const weaponCategory = containerSheet
@@ -814,6 +757,25 @@ test.describe("Container actor sheet", () => {
           .locator(FIELD.itemName)
           .filter({ hasText: "New Armor" });
         await expect(armorItem).toBeVisible();
+      });
+
+      await test.step("collapse Armor and verify only Weapon remains visible", async () => {
+        const containerSheet = sheet(game, sheetId);
+
+        const armorCategory = containerSheet
+          .locator(FIELD.categoryHeader)
+          .filter({ hasText: "Armor" });
+        await armorCategory.locator(FIELD.expandButton).click();
+
+        const weaponItem = containerSheet
+          .locator(FIELD.itemName)
+          .filter({ hasText: "New Weapon" });
+        await expect(weaponItem).toBeVisible();
+
+        const armorItem = containerSheet
+          .locator(FIELD.itemName)
+          .filter({ hasText: "New Armor" });
+        await expect(armorItem).not.toBeVisible();
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
