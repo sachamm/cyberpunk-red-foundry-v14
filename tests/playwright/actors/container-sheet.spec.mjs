@@ -29,6 +29,7 @@ const FIELD = {
   eurobucksNA: ".eurobucks-value span[data-tooltip]",
   ledgerButton: ".eurobucks-open-ledger",
   containerTypeDropdown: "select.container-type-dropdown",
+  flagCheckbox: (name) => `.checkbox-toggle[data-flag-name="${name}"]`,
   imageBlock: ".image-block img",
   gmSettings: ".settings-gm-section",
   createButton: ".item-create",
@@ -195,6 +196,43 @@ async function setContainerWealthViaUI(game, actorId, value) {
 
   await ledger.locator('button[data-action="close"]').click();
   await expect(ledger).toBeHidden();
+}
+
+/**
+ * Enable a container settings flag through the checkbox in the GM section of
+ * the container sheet (e.g. "infinite-stock", "items-free", "players-create").
+ * Checkboxes only render for certain container types - "custom" shows all of
+ * them, while "shop" and unset containers only show "infinite-stock" - so the
+ * caller must have set the type first. No-ops when the flag is already on.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} actorId - id of the container actor
+ * @param {String} flagName - value of the checkbox's data-flag-name attribute
+ */
+async function setContainerFlagViaUI(game, actorId, flagName) {
+  const isOn = await game.evaluate(
+    ({ id, flag }) => game.actors.get(id)?.getFlag(game.system.id, flag),
+    { id: actorId, flag: flagName },
+  );
+  if (isOn === true) return;
+
+  await game.evaluate(({ id }) => game.actors.get(id).sheet.render(true), {
+    id: actorId,
+  });
+  const sheetId = await expectSheetRendered(game, {
+    collection: "actors",
+    id: actorId,
+  });
+  const toggle = sheet(game, sheetId).locator(FIELD.flagCheckbox(flagName));
+  await expect(toggle).toBeVisible();
+  await toggle.click();
+
+  await game.waitForFunction(
+    ({ id, flag }) =>
+      game.actors.get(id)?.getFlag(game.system.id, flag) === true,
+    { id: actorId, flag: flagName },
+    { timeout: 5000 },
+  );
 }
 
 /**
@@ -437,10 +475,11 @@ async function purchaseAllViaUI(game, sheetId, itemName) {
  * Sell an item from a character's inventory to a container by dragging it onto
  * the container sheet as a player. GM drags copy items into the container
  * instead of selling (cpr-container-sheet.js only routes non-GM drops to the
- * vendor flow), so this grants "E2E Player" ownership of both actors, enables
- * the container's players-sell flag (the sheet's "Sell items?" toggle), opens
- * a player page, drags the item row from the character's gear tab onto the
- * container sheet, and confirms the "Selling to vendor" offer dialog.
+ * vendor flow), so this grants "E2E Player" ownership of both actors, switches
+ * the container to custom type when needed and enables its players-sell flag
+ * through the sheet's "Sell items?" checkbox, opens a player page, drags the
+ * item row from the character's gear tab onto the container sheet, and
+ * confirms the "Selling to vendor" offer dialog.
  *
  * @param {Object} game - GM page fixture
  * @param {Object} browser - Playwright browser fixture
@@ -468,11 +507,15 @@ async function sellItemToContainerViaUI(
           [`ownership.${playerId}`]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
         });
       }
-      const container = game.actors.get(containerActorId);
-      await container.setFlag(game.system.id, "players-sell", true);
     },
     { containerActorId, characterActorId, playerId },
   );
+
+  // The "Sell items?" checkbox only renders on custom containers; switching to
+  // custom has no other flag side effects and the vendor purchase flow does not
+  // depend on the container type.
+  await setContainerTypeViaUI(game, containerActorId, "custom");
+  await setContainerFlagViaUI(game, containerActorId, "players-sell");
 
   const itemName = await game.evaluate(
     ({ characterActorId, itemId }) =>
@@ -1255,18 +1298,7 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("enable infinite stock flag on shop container", async () => {
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor) {
-              await actor.update({
-                [`flags.${game.system.id}.infinite-stock`]: true,
-              });
-              if (actor.sheet.rendered) await actor.sheet.render();
-            }
-          },
-          { actorId },
-        );
+        await setContainerFlagViaUI(game, actorId, "infinite-stock");
       });
 
       let tradePartnerId = null;
@@ -2383,18 +2415,10 @@ test.describe("Container actor sheet", () => {
       let sheetId = await openTokenSheet(game, actorId);
 
       await test.step("switch to loot type and verify hand icon", async () => {
+        // Setting the type to loot via the dropdown also sets items-free as a
+        // side effect (see setContainerType), which is what shows the take
+        // button; there is no checkbox for it on loot containers.
         sheetId = await setContainerTypeViaUI(game, actorId, "loot");
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor) {
-              await actor.update({
-                [`flags.${game.system.id}.items-free`]: true,
-              });
-            }
-          },
-          { actorId },
-        );
 
         const containerSheet = sheet(game, sheetId);
         const itemRow = containerSheet
@@ -2694,77 +2718,11 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("toggling infinite-stock on custom token sheet succeeds", async () => {
-        sheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: actorId,
-        });
-        const isInfiniteOn = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor?.flags?.[game.system.id]?.["infinite-stock"] ?? false;
-          },
-          { actorId },
-        );
-        if (!isInfiniteOn) {
-          await game.evaluate(
-            async (params) => {
-              const actor = game.actors.get(params.actorId);
-              if (actor) {
-                await actor.update({
-                  [`flags.${game.system.id}.infinite-stock`]: true,
-                });
-                if (actor.sheet.rendered) await actor.sheet.render();
-              }
-            },
-            { actorId },
-          );
-          await game.waitForFunction(
-            async (params) => {
-              const actor = game.actors.get(params.actorId);
-              return (
-                actor?.flags?.[game.system.id]?.["infinite-stock"] === true
-              );
-            },
-            { actorId },
-            { timeout: 5000 },
-          );
-        }
+        await setContainerFlagViaUI(game, actorId, "infinite-stock");
       });
 
       await test.step("toggling items-free on custom token sheet succeeds", async () => {
-        sheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: actorId,
-        });
-        const isItemsFreeOn = await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            return actor?.flags?.[game.system.id]?.["items-free"] ?? false;
-          },
-          { actorId },
-        );
-        if (!isItemsFreeOn) {
-          await game.evaluate(
-            async (params) => {
-              const actor = game.actors.get(params.actorId);
-              if (actor) {
-                await actor.update({
-                  [`flags.${game.system.id}.items-free`]: true,
-                });
-                if (actor.sheet.rendered) await actor.sheet.render();
-              }
-            },
-            { actorId },
-          );
-          await game.waitForFunction(
-            async (params) => {
-              const actor = game.actors.get(params.actorId);
-              return actor?.flags?.[game.system.id]?.["items-free"] === true;
-            },
-            { actorId },
-            { timeout: 5000 },
-          );
-        }
+        await setContainerFlagViaUI(game, actorId, "items-free");
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -2779,18 +2737,7 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("enable infinite stock on token sheet", async () => {
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor) {
-              await actor.update({
-                [`flags.${game.system.id}.infinite-stock`]: true,
-              });
-              if (actor.sheet.rendered) await actor.sheet.render();
-            }
-          },
-          { actorId },
-        );
+        await setContainerFlagViaUI(game, actorId, "infinite-stock");
       });
 
       await test.step("purchase item and verify it is NOT removed", async () => {
@@ -2832,17 +2779,7 @@ test.describe("Container actor sheet", () => {
 
       await test.step("switch to custom type and enable items-free", async () => {
         sheetId = await setContainerTypeViaUI(game, actorId, "custom");
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor) {
-              await actor.update({
-                [`flags.${game.system.id}.items-free`]: true,
-              });
-            }
-          },
-          { actorId },
-        );
+        await setContainerFlagViaUI(game, actorId, "items-free");
       });
 
       await test.step("purchase item and verify trade partner wealth is unchanged", async () => {
@@ -3013,12 +2950,12 @@ test.describe("Container actor sheet", () => {
             name: uniqueName("player-create-container"),
           });
 
+          await setContainerTypeViaUI(game, createActorId, "custom");
+          await setContainerFlagViaUI(game, createActorId, "players-create");
           await game.evaluate(
             async (params) => {
               const actor = game.actors.get(params.actorId);
-              await actor.setContainerType("custom");
               await actor.update({
-                [`flags.${game.system.id}.players-create`]: true,
                 [`ownership.${params.playerId}`]:
                   CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
               });
@@ -3069,12 +3006,12 @@ test.describe("Container actor sheet", () => {
             itemName: "Player-Deleted Item",
           });
 
+          await setContainerTypeViaUI(game, deleteActorId, "custom");
+          await setContainerFlagViaUI(game, deleteActorId, "players-delete");
           await game.evaluate(
             async (params) => {
               const actor = game.actors.get(params.actorId);
-              await actor.setContainerType("custom");
               await actor.update({
-                [`flags.${game.system.id}.players-delete`]: true,
                 [`ownership.${params.playerId}`]:
                   CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
               });
@@ -3133,12 +3070,12 @@ test.describe("Container actor sheet", () => {
             itemName: "Player-Modified Item",
           });
 
+          await setContainerTypeViaUI(game, modifyActorId, "custom");
+          await setContainerFlagViaUI(game, modifyActorId, "players-modify");
           await game.evaluate(
             async (params) => {
               const actor = game.actors.get(params.actorId);
-              await actor.setContainerType("custom");
               await actor.update({
-                [`flags.${game.system.id}.players-modify`]: true,
                 [`ownership.${params.playerId}`]:
                   CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
               });
