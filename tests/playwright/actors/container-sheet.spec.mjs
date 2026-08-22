@@ -124,23 +124,40 @@ async function createStashWithItem(game, { stashName, itemName }) {
     itemName,
   });
 
-  await game.evaluate(
-    async ({ actorId }) => {
-      const actor = game.actors.get(actorId);
-      if (actor) {
-        await actor.setContainerType("stash");
-        if (actor.sheet.rendered) await actor.sheet.render();
-      }
-    },
-    { actorId },
-  );
+  const sheetId = await setContainerTypeViaUI(game, actorId, "stash");
 
+  return { actorId, sheetId };
+}
+
+/**
+ * Set a container actor's type through the GM settings dropdown on its
+ * sheet, waiting for the flag to land on the actor.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} actorId - id of the container actor
+ * @param {String} type - one of "shop", "loot", "stash", or "custom"
+ * @returns {Promise<String>} the rendered sheet element id
+ */
+async function setContainerTypeViaUI(game, actorId, type) {
+  await game.evaluate(({ id }) => game.actors.get(id).sheet.render(true), {
+    id: actorId,
+  });
   const sheetId = await expectSheetRendered(game, {
     collection: "actors",
     id: actorId,
   });
-
-  return { actorId, sheetId };
+  await sheet(game, sheetId)
+    .locator(FIELD.containerTypeDropdown)
+    .selectOption({ value: type });
+  await game.waitForFunction(
+    ({ actorId, type }) => {
+      const actor = game.actors.get(actorId);
+      return actor?.getFlag(game.system.id, "container-type") === type;
+    },
+    { actorId, type },
+    { timeout: 5000 },
+  );
+  return sheetId;
 }
 
 /**
@@ -1003,7 +1020,7 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
-    test("changing container type to loot on a non-token sheet shows an error", async ({
+    test("changing container type from the actor sheet updates the flag", async ({
       page: game,
     }) => {
       const actorId = await createDocumentViaUI(game, {
@@ -1017,20 +1034,26 @@ test.describe("Container actor sheet", () => {
         id: actorId,
       });
 
-      await test.step("changing container type to loot on a non-token sheet shows an error", async () => {
+      await test.step("changing container type to loot updates the flag on the actor", async () => {
         const containerSheet = sheet(game, sheetId);
         const dropdown = containerSheet.locator(FIELD.containerTypeDropdown);
 
         await dropdown.selectOption({ value: "loot" });
 
-        await expect(game.locator(".notification.error")).toBeVisible();
-        await dismissNotifications(game);
+        await game.waitForFunction(
+          ({ id }) =>
+            game.actors.get(id).getFlag(game.system.id, "container-type") ===
+            "loot",
+          { id: actorId },
+          { timeout: 5000 },
+        );
+        await expect(game.locator(".notification.error")).toHaveCount(0);
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
-    test("toggling infinite-stock on a non-token sheet shows an error", async ({
+    test("toggling infinite-stock from the actor sheet updates the flag", async ({
       page: game,
     }) => {
       const actorId = await createDocumentViaUI(game, {
@@ -1044,22 +1067,21 @@ test.describe("Container actor sheet", () => {
         id: actorId,
       });
 
-      await test.step("toggling infinite-stock on non-token sheet shows error", async () => {
+      await test.step("toggling infinite-stock updates the flag on the actor", async () => {
         const containerSheet = sheet(game, sheetId);
         const toggle = containerSheet.locator(
           '.checkbox-toggle[data-flag-name="infinite-stock"]',
         );
-        const exists = await toggle.count();
-        if (exists > 0) {
-          await toggle.click();
-          const errorNotification = game.locator(".notification.error");
-          await expect(errorNotification).toBeVisible();
-          const errorMessage = await errorNotification.evaluate(
-            (el) => el.textContent,
-          );
-          expect(errorMessage.toLowerCase()).toContain("token");
-          await dismissNotifications(game);
-        }
+        await expect(toggle).toBeVisible();
+        await toggle.click();
+
+        await game.waitForFunction(
+          ({ id }) =>
+            game.actors.get(id).getFlag(game.system.id, "infinite-stock") ===
+            true,
+          { id: actorId },
+          { timeout: 5000 },
+        );
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -1291,11 +1313,11 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("configure container to buy weapons at 50% of market price", async () => {
+        await setContainerTypeViaUI(game, containerActorId, "shop");
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
             if (container) {
-              await container.setContainerType("shop");
               await container.update({
                 "system.vendor": {
                   itemTypes: {
@@ -1303,7 +1325,6 @@ test.describe("Container actor sheet", () => {
                   },
                 },
               });
-              if (container.sheet.rendered) await container.sheet.render();
             }
           },
           { containerActorId },
@@ -1452,11 +1473,11 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("configure container to buy gear at 50% with zero funds", async () => {
+        await setContainerTypeViaUI(game, containerActorId, "shop");
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
             if (container) {
-              await container.setContainerType("shop");
               await container.update({
                 "system.wealth.value": 0,
                 "system.vendor": {
@@ -1465,7 +1486,6 @@ test.describe("Container actor sheet", () => {
                   },
                 },
               });
-              if (container.sheet.rendered) await container.sheet.render();
             }
           },
           { containerActorId },
@@ -2319,21 +2339,7 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("loot container displays N/A for eurobucks on token sheet", async () => {
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor && actor.sheet.rendered) {
-              await actor.setContainerType("loot");
-              await actor.sheet.render();
-            }
-          },
-          { actorId },
-        );
-
-        sheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: actorId,
-        });
+        sheetId = await setContainerTypeViaUI(game, actorId, "loot");
 
         const containerSheet = sheet(game, sheetId);
         await expect(containerSheet.locator(FIELD.eurobucksNA)).toBeVisible();
@@ -2356,24 +2362,18 @@ test.describe("Container actor sheet", () => {
       let sheetId = await openTokenSheet(game, actorId);
 
       await test.step("switch to loot type and verify hand icon", async () => {
+        sheetId = await setContainerTypeViaUI(game, actorId, "loot");
         await game.evaluate(
           async (params) => {
             const actor = game.actors.get(params.actorId);
-            if (actor && actor.sheet.rendered) {
-              await actor.setContainerType("loot");
+            if (actor) {
               await actor.update({
                 [`flags.${game.system.id}.items-free`]: true,
               });
-              await actor.sheet.render();
             }
           },
           { actorId },
         );
-
-        sheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: actorId,
-        });
 
         const containerSheet = sheet(game, sheetId);
         const itemRow = containerSheet
@@ -2455,18 +2455,15 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("set up stash with player having initial wealth", async () => {
+        await setContainerTypeViaUI(game, stashActorId, "stash");
         await game.evaluate(
-          async ({ playerActorId, stashActorId }) => {
+          async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
-            const stash = game.actors.get(stashActorId);
             if (player) {
               await player.update({ "system.wealth.value": 500 });
             }
-            if (stash) {
-              await stash.setContainerType("stash");
-            }
           },
-          { playerActorId, stashActorId },
+          { playerActorId },
         );
       });
 
@@ -2540,19 +2537,15 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("set up stash with item and player with initial wealth", async () => {
+        await setContainerTypeViaUI(game, stashActorId, "stash");
         await game.evaluate(
-          async ({ stashActorId, playerActorId }) => {
-            const stash = game.actors.get(stashActorId);
+          async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
-            if (stash) {
-              await stash.setContainerType("stash");
-              if (stash.sheet.rendered) await stash.sheet.render();
-            }
             if (player) {
               await player.update({ "system.wealth.value": 300 });
             }
           },
-          { stashActorId, playerActorId },
+          { playerActorId },
         );
 
         let stashSheetId = await expectSheetRendered(game, {
@@ -2653,21 +2646,7 @@ test.describe("Container actor sheet", () => {
       let sheetId = await openTokenSheet(game, actorId);
 
       await test.step("switch to custom container type", async () => {
-        await game.evaluate(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (actor && actor.sheet.rendered) {
-              await actor.setContainerType("custom");
-              await actor.sheet.render();
-            }
-          },
-          { actorId },
-        );
-
-        sheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: actorId,
-        });
+        sheetId = await setContainerTypeViaUI(game, actorId, "custom");
       });
 
       await test.step("custom container shows custom settings section", async () => {
@@ -2831,24 +2810,18 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("switch to custom type and enable items-free", async () => {
+        sheetId = await setContainerTypeViaUI(game, actorId, "custom");
         await game.evaluate(
           async (params) => {
             const actor = game.actors.get(params.actorId);
             if (actor) {
-              await actor.setContainerType("custom");
               await actor.update({
                 [`flags.${game.system.id}.items-free`]: true,
               });
-              if (actor.sheet.rendered) await actor.sheet.render();
             }
           },
           { actorId },
         );
-
-        sheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: actorId,
-        });
       });
 
       await test.step("purchase item and verify trade partner wealth is unchanged", async () => {
@@ -2928,11 +2901,11 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("configure container to buy gear at 75% of market price", async () => {
+        await setContainerTypeViaUI(game, containerActorId, "custom");
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
             if (container) {
-              await container.setContainerType("custom");
               await container.update({
                 "system.vendor": {
                   itemTypes: {
@@ -2940,7 +2913,6 @@ test.describe("Container actor sheet", () => {
                   },
                 },
               });
-              if (container.sheet.rendered) await container.sheet.render();
             }
           },
           { containerActorId },
@@ -3295,11 +3267,11 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("configure container to buy gear at 50%", async () => {
+        await setContainerTypeViaUI(game, containerActorId, "custom");
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
             if (container) {
-              await container.setContainerType("custom");
               await container.update({
                 "system.vendor": {
                   itemTypes: {
@@ -3307,7 +3279,6 @@ test.describe("Container actor sheet", () => {
                   },
                 },
               });
-              if (container.sheet.rendered) await container.sheet.render();
             }
           },
           { containerActorId },

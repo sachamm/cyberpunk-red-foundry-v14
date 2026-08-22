@@ -523,16 +523,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _checkboxToggle(event) {
     const flagName = SystemUtils.GetEventDatum(event, "data-flag-name");
-    const actor = this.token === null ? this.actor : this.token.actor;
-    if (this.token === null) {
-      SystemUtils.DisplayMessage(
-        "error",
-        SystemUtils.Localize("CPR.messages.containerSettingsOnToken"),
-      );
-    } else {
-      await actor.toggleFlag(flagName);
-      await this.render();
-    }
+    await this.actor.toggleFlag(flagName);
+    await this.render();
   }
 
   /**
@@ -544,16 +536,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _setContainerType(event) {
     const containerType = event.currentTarget.value;
-    const actor = this.token === null ? this.actor : this.token.actor;
-    if (this.token === null) {
-      SystemUtils.DisplayMessage(
-        "error",
-        SystemUtils.Localize("CPR.messages.containerSettingsOnToken"),
-      );
-    } else {
-      await actor.setContainerType(containerType);
-      await this.render();
-    }
+    await this.actor.setContainerType(containerType);
+    await this.render();
   }
 
   /**
