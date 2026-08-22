@@ -13,6 +13,7 @@ import {
   uniqueName,
   reopenActorSheetViaUI,
   dragItemToActorSheet,
+  dragOwnedItemToActorSheet,
   createItemViaUI,
   openSidebarTab,
   openTokenSheet,
@@ -1225,7 +1226,6 @@ test.describe("Container actor sheet", () => {
             if (!item) {
               throw new Error("Weapon not found on player");
             }
-            // Mock DialogV2.confirm to return true immediately
             const originalConfirm = foundry.applications.api.DialogV2.confirm;
             foundry.applications.api.DialogV2.confirm = async () => true;
             await container.sheet._sellItemTo(playerActorId, item);
@@ -1260,7 +1260,6 @@ test.describe("Container actor sheet", () => {
         expect(containerItemData.magazineValue).toBe(itemBefore.magazineValue);
         expect(containerItemData.magazineMax).toBe(itemBefore.magazineMax);
 
-        // Verify both actors' ledgers were updated correctly
         const ledgerData = await game.evaluate(
           async ({ playerActorId, containerActorId }) => {
             const player = game.actors.get(playerActorId);
@@ -1275,18 +1274,14 @@ test.describe("Container actor sheet", () => {
           { playerActorId, containerActorId },
         );
 
-        // Player (seller) wealth increased by vendorOffer (100 * 50% = 50)
         expect(ledgerData.playerWealth).toBe(50);
 
-        // Shop wealth decreased by vendorOffer (999999 - 50 = 999949)
         expect(ledgerData.shopWealth).toBe(999949);
 
-        // Player's ledger has an "increase" transaction entry
         expect(
           ledgerData.playerTransactions.some((t) => t[0].includes("increase")),
         ).toBe(true);
 
-        // Shop's ledger has a "decrease" transaction entry
         expect(
           ledgerData.shopTransactions.some((t) => t[0].includes("decrease")),
         ).toBe(true);
@@ -1390,13 +1385,11 @@ test.describe("Container actor sheet", () => {
               throw new Error("item not found in player inventory");
             }
 
-            // Mock DialogV2.confirm to return true immediately
             const originalConfirm = foundry.applications.api.DialogV2.confirm;
             foundry.applications.api.DialogV2.confirm = async () => true;
 
             await container.sheet._sellItemTo(playerActorId, item);
 
-            // Restore original DialogV2.confirm
             foundry.applications.api.DialogV2.confirm = originalConfirm;
           },
           { containerActorId, playerActorId },
@@ -1412,7 +1405,6 @@ test.describe("Container actor sheet", () => {
         );
         expect(containerItemAfter).toBe(true);
 
-        // Verify both actors' ledgers were updated (shop has 0 wealth, so vendorOffer = 0)
         const ledgerData = await game.evaluate(
           async ({ playerActorId, containerActorId }) => {
             const player = game.actors.get(playerActorId);
@@ -1427,13 +1419,10 @@ test.describe("Container actor sheet", () => {
           { playerActorId, containerActorId },
         );
 
-        // Player wealth stays at 0 (shop could only offer 0)
         expect(ledgerData.playerWealth).toBe(0);
 
-        // Shop wealth stays at 0
         expect(ledgerData.shopWealth).toBe(0);
 
-        // Both ledgers should still have entries recorded
         expect(ledgerData.playerTransactions.length).toBeGreaterThan(0);
         expect(ledgerData.shopTransactions.length).toBeGreaterThan(0);
       });
@@ -1490,7 +1479,6 @@ test.describe("Container actor sheet", () => {
         await expect(confirmBtn).toBeVisible();
         await confirmBtn.click();
 
-        // Wait for dialog to close
         await expect(dialog).not.toBeVisible();
       });
 
@@ -1685,49 +1673,49 @@ test.describe("Container actor sheet", () => {
         id: actorId,
       });
 
-      await test.step("create a gear item named 'Plasma Rifle' in the container", async () => {
+      await test.step("create a gear item named 'Airhypo' in the container", async () => {
         sheetId = (
           await createInventoryItemViaUI(game, {
             actorId,
             sheetId,
             itemType: "gear",
-            itemName: "Plasma Rifle",
+            itemName: "Airhypo",
           })
         ).sheetId;
       });
 
       let tradePartnerId = null;
 
-      await test.step("create trade partner with existing 'Plasma Rifle'", async () => {
+      await test.step("create trade partner with existing 'Airhypo'", async () => {
         tradePartnerId = await setTradePartnerWithWealth(game, sheetId);
 
-        await game.evaluate(
-          async ({ tradePartnerId }) => {
-            const tradePartner = game.actors.get(tradePartnerId);
-            if (tradePartner) {
-              // eslint-disable-next-line no-restricted-syntax -- stacking test needs direct API
-              await tradePartner.createEmbeddedDocuments("Item", [
-                {
-                  name: "Plasma Rifle",
-                  type: "gear",
-                  system: {
-                    amount: 1,
-                    price: { market: 500 },
-                    description: { value: "Existing plasma rifle" },
-                  },
-                },
-              ]);
-            }
-          },
-          { tradePartnerId },
+        const worldRifleId = await createItemViaUI(game, {
+          type: "gear",
+          name: "Airhypo",
+        });
+        await closeDocSheet(game, { collection: "items", id: worldRifleId });
+
+        const partnerSheetId = await reopenActorSheetViaUI(
+          game,
+          tradePartnerId,
         );
+        await dragItemToActorSheet(game, {
+          itemId: worldRifleId,
+          sheetId: partnerSheetId,
+          actorId: tradePartnerId,
+        });
+        await closeDocSheet(game, { collection: "actors", id: tradePartnerId });
       });
 
-      await test.step("purchase another 'Plasma Rifle' and verify stacking", async () => {
+      await test.step("purchase another 'Airhypo' and verify stacking", async () => {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
         const containerSheet = sheet(game, sheetId);
         const itemRow = containerSheet
           .locator(".item.flexrow")
-          .filter({ hasText: "Plasma Rifle" });
+          .filter({ hasText: "Airhypo" });
         await expect(itemRow).toBeVisible();
 
         const purchaseLink = itemRow.locator(FIELD.purchaseAll);
@@ -1738,19 +1726,17 @@ test.describe("Container actor sheet", () => {
           async (params) => {
             const actor = game.actors.get(params.actorId);
             if (!actor) return false;
-            return !actor.items.some((i) => i.name === "Plasma Rifle");
+            return !actor.items.some((i) => i.name === "Airhypo");
           },
           { actorId },
           { timeout: 5000 },
         );
 
-        // The stacking update fired by _purchaseItem is not awaited in the
-        // sheet code, so poll until the partner's stack reflects it.
         const amountHandle = await game.waitForFunction(
           ({ partnerId }) => {
             const partner = game.actors.get(partnerId);
             const plasmaRifle = partner?.items.find(
-              (i) => i.name === "Plasma Rifle",
+              (i) => i.name === "Airhypo",
             );
             return plasmaRifle?.system.amount === 2
               ? plasmaRifle.system.amount
@@ -1864,10 +1850,6 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        // Capture the ledger in the same poll that observes the entry so a
-        // late update cannot clear it between the wait and the assertion.
-        // The capture is JSON-encoded because waitForFunction only returns
-        // primitives directly.
         const recordsJson = await game.waitForFunction(
           (params) => {
             const container = game.actors.get(params.actorId);
@@ -1977,11 +1959,6 @@ test.describe("Container actor sheet", () => {
     test("transacted items arrive with their installed upgrades", async ({
       page: game,
     }) => {
-      // A weapon with an installed itemUpgrade is sold to a shop and bought
-      // back again. Both transaction directions must carry the upgrade over
-      // (sell duplicates it via the container's createEmbeddedDocuments;
-      // purchase carries it via the install-tree flag). Proof is read off the
-      // recipient's sheets first, with supporting state reads.
       const weaponName = uniqueName("upgraded-rifle");
       const upgradeName = uniqueName("rifle-upgrade");
       let playerActorId;
@@ -1990,9 +1967,6 @@ test.describe("Container actor sheet", () => {
       let embeddedWeaponId;
       let embeddedUpgradeId;
 
-      // State read shared by both transaction directions: how many upgrades
-      // the recipient owns, and whether every installed-upgrade reference on
-      // the weapon resolves to one of them (by id or uuid).
       const readInstalledState = (actorId) =>
         game.evaluate(
           ({ actorId, weaponName, upgradeName }) => {
@@ -2027,7 +2001,6 @@ test.describe("Container actor sheet", () => {
           type: "itemUpgrade",
           name: upgradeName,
         });
-        // Close the item sheets that open on creation so drags land on the actor sheet.
         await closeDocSheet(game, { collection: "items", id: worldWeaponId });
         await closeDocSheet(game, { collection: "items", id: worldUpgradeId });
 
@@ -2102,8 +2075,6 @@ test.describe("Container actor sheet", () => {
           { timeout: 10000 },
         );
 
-        // Hard-reopen guard: close and reopen the item sheet, then prove on a
-        // fresh render that the upgrade is listed as installed.
         await closeOwnedItemSheet(game, {
           actorId: playerActorId,
           itemId: embeddedWeaponId,
@@ -2130,7 +2101,6 @@ test.describe("Container actor sheet", () => {
           id: containerActorId,
         });
 
-        // Scaffolding: give the shop funds so the vendor offer is not clamped to zero.
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
@@ -2141,8 +2111,6 @@ test.describe("Container actor sheet", () => {
           { containerActorId },
         );
 
-        // Selling is a player-initiated drag in the real UI; as GM we drive the same
-        // sheet method the drop handler calls (the established pattern for sell tests here).
         await game.evaluate(
           async ({ containerActorId, playerActorId, weaponName }) => {
             const container = game.actors.get(containerActorId);
@@ -2181,7 +2149,6 @@ test.describe("Container actor sheet", () => {
           .locator(".item.flexrow")
           .filter({ hasText: weaponName });
         await expect(weaponRow).toBeVisible();
-        // The "upgraded" caret on the row is visible proof the upgrade arrived with the weapon.
         await expect(weaponRow.locator(".fa-square-caret-up")).toBeVisible();
 
         const shopWeaponId = await game.evaluate(
@@ -2204,10 +2171,7 @@ test.describe("Container actor sheet", () => {
 
         const state = await readInstalledState(containerActorId);
         expect(state.listLength).toBe(1);
-        // The weapon's installed-upgrade references must all resolve to items
-        // owned by the recipient; a dangling reference is an orphaned upgrade.
         expect(state.allReferencesResolve, JSON.stringify(state)).toBe(true);
-        // Exactly one copy of the upgrade may exist: no duplicates, no orphans.
         expect(state.upgradeCount, JSON.stringify(state)).toBe(1);
 
         await closeOwnedItemSheet(game, {
@@ -2248,8 +2212,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("the purchased weapon still has the upgrade installed", async () => {
-        // The purchase step left the container sheet in front; close it so our
-        // clicks land on the player sheet.
         await closeDocSheet(game, {
           collection: "actors",
           id: containerActorId,
@@ -2263,7 +2225,6 @@ test.describe("Container actor sheet", () => {
           .locator('li.item[data-item-category="weapon"]')
           .filter({ hasText: weaponName });
         await expect(weaponRow).toBeVisible();
-        // The "upgraded" caret on the gear row is visible proof the upgrade survived the round trip.
         await expect(weaponRow.locator(".fa-square-caret-up")).toBeVisible();
 
         const finalWeaponId = await game.evaluate(
@@ -2287,7 +2248,6 @@ test.describe("Container actor sheet", () => {
         const state = await readInstalledState(playerActorId);
         expect(state.listLength).toBe(1);
         expect(state.allReferencesResolve, JSON.stringify(state)).toBe(true);
-        // Exactly one copy of the upgrade may exist: no duplicates, no orphans.
         expect(state.upgradeCount, JSON.stringify(state)).toBe(1);
 
         await closeOwnedItemSheet(game, {
@@ -2432,18 +2392,20 @@ test.describe("Container actor sheet", () => {
         name: uniqueName("stash-seller"),
       });
 
-      await test.step("create a gear item on the player character", async () => {
-        const playerSheetId = await expectSheetRendered(game, {
-          collection: "actors",
-          id: playerActorId,
-        });
+      let playerSheetId;
+      let playerItemId;
 
-        await createInventoryItemViaUI(game, {
-          actorId: playerActorId,
-          sheetId: playerSheetId,
-          itemType: "gear",
-          itemName: "Stash Seller Item",
-        });
+      await test.step("create a gear item on the player character", async () => {
+        ({ itemId: playerItemId, sheetId: playerSheetId } =
+          await createInventoryItemViaUI(game, {
+            actorId: playerActorId,
+            sheetId: await expectSheetRendered(game, {
+              collection: "actors",
+              id: playerActorId,
+            }),
+            itemType: "gear",
+            itemName: "Stash Seller Item",
+          }));
       });
 
       const stashActorId = await createDocumentViaUI(game, {
@@ -2469,7 +2431,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("move item into stash and verify no ledger changes", async () => {
-        // Capture initial wealth values
         const initialData = await game.evaluate(
           async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
@@ -2481,27 +2442,16 @@ test.describe("Container actor sheet", () => {
           { playerActorId },
         );
 
-        // Move item from player to stash directly (simulating stash storage)
-        await game.evaluate(
-          async ({ playerActorId, stashActorId }) => {
-            const stash = game.actors.get(stashActorId);
-            const player = game.actors.get(playerActorId);
-            const playerItem = player.items.find(
-              (i) => i.name === "Stash Seller Item",
-            );
-            if (playerItem) {
-              // Clone the item for the stash
-              const itemData = foundry.utils.duplicate(playerItem);
-              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
-              await stash.createEmbeddedDocuments("Item", [itemData]);
-              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
-              await player.deleteEmbeddedDocuments("Item", [playerItem.id]);
-            }
-          },
-          { playerActorId, stashActorId },
-        );
+        const stashSheetId = await reopenActorSheetViaUI(game, stashActorId);
+        playerSheetId = await reopenActorSheetViaUI(game, playerActorId);
+        await dragOwnedItemToActorSheet(game, {
+          sourceActorId: playerActorId,
+          sourceSheetId: playerSheetId,
+          itemId: playerItemId,
+          targetActorId: stashActorId,
+          targetSheetId: stashSheetId,
+        });
 
-        // Verify item is now in stash
         const stashAfterItem = await game.evaluate(
           async ({ stashActorId }) => {
             const stash = game.actors.get(stashActorId);
@@ -2512,7 +2462,6 @@ test.describe("Container actor sheet", () => {
         );
         expect(stashAfterItem).toBe(true);
 
-        // Verify player's wealth is unchanged
         const playerAfter = await game.evaluate(
           async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
@@ -2537,10 +2486,11 @@ test.describe("Container actor sheet", () => {
     test("removing item from stash doesn't affect ledgers", async ({
       page: game,
     }) => {
+      const playerName = uniqueName("stash-taker");
       const playerActorId = await createDocumentViaUI(game, {
         documentTab: "actors",
         type: "character",
-        name: uniqueName("stash-taker"),
+        name: playerName,
       });
 
       const stashActorId = await createDocumentViaUI(game, {
@@ -2565,21 +2515,24 @@ test.describe("Container actor sheet", () => {
           { stashActorId, playerActorId },
         );
 
-        const stashSheetId = await expectSheetRendered(game, {
+        let stashSheetId = await expectSheetRendered(game, {
           collection: "actors",
           id: stashActorId,
         });
 
-        await createInventoryItemViaUI(game, {
+        ({ sheetId: stashSheetId } = await createInventoryItemViaUI(game, {
           actorId: stashActorId,
           sheetId: stashSheetId,
           itemType: "gear",
           itemName: "Stash Taker Item",
+        }));
+        await setTradePartnerWithWealth(game, stashSheetId, {
+          partnerName: playerName,
+          wealth: 300,
         });
       });
 
       await test.step("take item from stash and verify no ledger changes", async () => {
-        // Capture initial wealth values
         const initialData = await game.evaluate(
           async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
@@ -2591,33 +2544,44 @@ test.describe("Container actor sheet", () => {
           { playerActorId },
         );
 
-        // Move item from stash to player by deleting from stash
-        await game.evaluate(
-          async ({ stashActorId }) => {
+        const stashSheetId = await reopenActorSheetViaUI(game, stashActorId);
+        const stashSheet = sheet(game, stashSheetId);
+        const itemRow = stashSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: "Stash Taker Item" });
+        await expect(itemRow).toBeVisible();
+        await itemRow.locator(FIELD.takeItemAll).click();
+
+        await game.waitForFunction(
+          ({ playerActorId, stashActorId }) => {
+            const player = game.actors.get(playerActorId);
             const stash = game.actors.get(stashActorId);
-            const stashItem = stash.items.find(
-              (i) => i.name === "Stash Taker Item",
+            return (
+              player.items.some((i) => i.name === "Stash Taker Item") &&
+              !stash.items.some((i) => i.name === "Stash Taker Item")
             );
-            if (stashItem) {
-              // eslint-disable-next-line no-restricted-syntax -- stash test needs direct API
-              await stash.deleteEmbeddedDocuments("Item", [stashItem.id]);
-            }
           },
-          { stashActorId },
+          { playerActorId, stashActorId },
+          { timeout: 10000 },
         );
 
-        // Verify item is no longer in stash
-        const stashAfter = await game.evaluate(
-          async ({ stashActorId }) => {
-            const stash = game.actors.get(stashActorId);
-            if (!stash) return false;
-            return stash.items.some((i) => i.name === "Stash Taker Item");
-          },
-          { stashActorId },
+        await closeDocSheet(game, { collection: "actors", id: stashActorId });
+        const freshStashSheetId = await reopenActorSheetViaUI(
+          game,
+          stashActorId,
         );
-        expect(stashAfter).toBe(false);
+        await expect(
+          sheet(game, freshStashSheetId)
+            .locator(".item.flexrow")
+            .filter({ hasText: "Stash Taker Item" }),
+        ).toHaveCount(0);
 
-        // Verify player's wealth is unchanged
+        const playerSheetId = await reopenActorSheetViaUI(game, playerActorId);
+        const gear = await activateGearTab(game, playerSheetId);
+        await expect(
+          gear.locator("li.item").filter({ hasText: "Stash Taker Item" }),
+        ).toBeVisible();
+
         const playerAfter = await game.evaluate(
           async ({ playerActorId }) => {
             const player = game.actors.get(playerActorId);
@@ -2936,7 +2900,6 @@ test.describe("Container actor sheet", () => {
         name: uniqueName("custom-compensation-container"),
       });
 
-      // The sheet must be rendered so the sell call below can drive it.
       await expectSheetRendered(game, {
         collection: "actors",
         id: containerActorId,
@@ -2963,7 +2926,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("give the container funds", async () => {
-        // Scaffolding: give the shop funds so the vendor offer is not clamped to zero.
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
@@ -2992,8 +2954,6 @@ test.describe("Container actor sheet", () => {
           { containerActorId },
         );
 
-        // Selling is a player-initiated drag in the real UI; as GM we drive the same
-        // sheet method the drop handler calls (the established pattern for sell tests here).
         await game.evaluate(
           async ({ containerActorId, playerActorId }) => {
             const container = game.actors.get(containerActorId);
@@ -3039,17 +2999,12 @@ test.describe("Container actor sheet", () => {
       browser,
       baseURL,
     }) => {
-      // The player session is the "E2E Player" user that global setup created;
-      // openPlayerPage logs in as exactly that user.
       const playerId = await game.evaluate(
         () => game.users.getName("E2E Player")?.id ?? null,
       );
       expect(playerId).toBeTruthy();
 
       const { context, page: player } = await openPlayerPage(browser, baseURL);
-      // deleteItemConfirmation is client-scoped (default true): disable it on the
-      // player session, otherwise the player's delete click opens a confirmation
-      // dialog that nothing confirms and the item is never deleted.
       await player.evaluate(async () => {
         await game.settings.set(
           game.system.id,
@@ -3085,7 +3040,6 @@ test.describe("Container actor sheet", () => {
             itemType: "gear",
           });
 
-          // Verified on the GM page: server-side state, not the player's view.
           const createdName = await game.evaluate(
             ({ actorId, itemId }) =>
               game.actors.get(actorId).items.get(itemId)?.name ?? null,
@@ -3214,8 +3168,6 @@ test.describe("Container actor sheet", () => {
             .filter({ hasText: "Player-Modified Item" });
           await expect(itemRow).toBeVisible();
 
-          // Clicking the item name opens the item sheet; with players-modify set it
-          // is editable, so the price change below persists.
           await itemRow.locator(FIELD.itemName).click();
           const itemSheetId = await openOwnedItemSheet(player, {
             actorId: modifyActorId,
@@ -3263,7 +3215,6 @@ test.describe("Container actor sheet", () => {
             itemName: "Locked Item",
           });
 
-          // Custom type with ownership but no players-* flags.
           await game.evaluate(
             async (params) => {
               const actor = game.actors.get(params.actorId);

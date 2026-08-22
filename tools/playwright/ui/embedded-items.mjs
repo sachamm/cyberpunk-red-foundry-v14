@@ -105,6 +105,99 @@ export async function createEmbeddedItemViaUI(
   );
 }
 
+async function waitForOwnedItemTransfer(
+  page,
+  { sourceActorId, itemId, targetActorId, targetBefore },
+  timeout,
+) {
+  try {
+    await page.waitForFunction(
+      ({ sourceActorId, itemId, targetActorId, targetBefore }) => {
+        const source = game.actors.get(sourceActorId);
+        const target = game.actors.get(targetActorId);
+        return !source.items.has(itemId) && target.items.size >= targetBefore;
+      },
+      { sourceActorId, itemId, targetActorId, targetBefore },
+      { timeout },
+    );
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function dragOwnedItemToActorSheet(
+  page,
+  { sourceActorId, sourceSheetId, itemId, targetActorId, targetSheetId },
+) {
+  const gear = await activateGearTab(page, sourceSheetId);
+  const row = await hoverGearRow(gear, itemId);
+  const target = page.locator(`#${targetSheetId}`);
+  await expect(target).toBeVisible();
+
+  const targetBefore = await page.evaluate(
+    (id) => game.actors.get(id).items.size,
+    targetActorId,
+  );
+
+  await row.dragTo(target, { timeout: 5000 }).catch(() => {});
+  await page.mouse.up().catch(() => {});
+
+  if (
+    await waitForOwnedItemTransfer(
+      page,
+      { sourceActorId, itemId, targetActorId, targetBefore },
+      3000,
+    )
+  )
+    return;
+
+  const uuid = await page.evaluate(
+    ({ actorId, itemId }) =>
+      game.actors.get(actorId).items.get(itemId)?.uuid ?? null,
+    { actorId: sourceActorId, itemId },
+  );
+  expect(
+    uuid,
+    `expected owned item ${itemId} on actor ${sourceActorId}`,
+  ).toBeTruthy();
+
+  await page.evaluate(
+    ({ uuid, sourceActorId, targetSheetId }) => {
+      const sheetEl = document.getElementById(targetSheetId);
+      const data = new DataTransfer();
+      data.setData(
+        "text/plain",
+        JSON.stringify({
+          type: "Item",
+          uuid,
+          system: { actorId: sourceActorId, tokenId: null },
+        }),
+      );
+      sheetEl.dispatchEvent(
+        new DragEvent("drop", {
+          bubbles: true,
+          cancelable: true,
+          dataTransfer: data,
+        }),
+      );
+    },
+    { uuid, sourceActorId, targetSheetId },
+  );
+
+  if (
+    !(await waitForOwnedItemTransfer(
+      page,
+      { sourceActorId, itemId, targetActorId, targetBefore },
+      5000,
+    ))
+  ) {
+    throw new Error(
+      `Owned item ${itemId} was not transferred from actor ${sourceActorId} to actor ${targetActorId}`,
+    );
+  }
+}
+
 export async function activateGearTab(page, actorSheetId) {
   const sheet = page.locator(`#${actorSheetId}`);
   await sheet.locator('.navtabs-right a[data-tab="gear"]').click();

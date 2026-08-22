@@ -23,6 +23,7 @@ export {
   activateGearTab,
   createEmbeddedItemViaUI,
   dragItemToActorSheet,
+  dragOwnedItemToActorSheet,
   hoverGearRow,
   installUpgrade,
 } from "./embedded-items.mjs";
