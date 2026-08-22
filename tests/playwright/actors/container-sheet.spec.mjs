@@ -327,6 +327,57 @@ async function createInventoryItemViaUI(
   return { itemId, sheetId: freshSheetId };
 }
 
+/**
+ * Click the purchase-fraction action on a named item row of a container
+ * sheet and confirm the prompt with a specific amount.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} sheetId - rendered element id of the container sheet
+ * @param {String} itemName - name of the item row to purchase part of
+ * @param {Number} [amount=1] - amount to enter in the purchase prompt
+ */
+async function purchasePartViaUI(game, sheetId, itemName, amount = 1) {
+  const containerSheet = sheet(game, sheetId);
+  const itemRow = containerSheet
+    .locator(".item.flexrow")
+    .filter({ hasText: itemName });
+  await expect(itemRow).toBeVisible();
+
+  const purchasePartLink = itemRow.locator(FIELD.purchasePart);
+  await expect(purchasePartLink).toBeVisible();
+  await purchasePartLink.click();
+
+  const dialog = game.locator(".dialog, .application.dialog");
+  await expect(dialog).toBeVisible();
+  const amountInput = dialog.locator('input[name="purchaseAmount"]');
+  await expect(amountInput).toBeVisible();
+  await amountInput.fill(String(amount));
+  const confirmBtn = dialog.locator('button[data-action="confirm"]');
+  await expect(confirmBtn).toBeVisible();
+  await confirmBtn.click();
+  await expect(dialog).not.toBeVisible();
+}
+
+/**
+ * Click the purchase-all action on a named item row of a container sheet.
+ * The same control is rendered as "take" on loot/stash sheets.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} sheetId - rendered element id of the container sheet
+ * @param {String} itemName - name of the item row to purchase
+ */
+async function purchaseAllViaUI(game, sheetId, itemName) {
+  const containerSheet = sheet(game, sheetId);
+  const itemRow = containerSheet
+    .locator(".item.flexrow")
+    .filter({ hasText: itemName });
+  await expect(itemRow).toBeVisible();
+
+  const purchaseLink = itemRow.locator(FIELD.purchaseAll);
+  await expect(purchaseLink).toBeVisible();
+  await purchaseLink.click();
+}
+
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
@@ -489,7 +540,7 @@ test.describe("Container actor sheet", () => {
     test("editing item fields from item sheet reflects on container sheet", async ({
       page: game,
     }) => {
-      const { actorId, sheetId } = await createContainerWithItem(game, {
+      const { actorId, sheetId, itemId } = await createContainerWithItem(game, {
         containerName: "edit-fields-container",
         itemType: "gear",
       });
@@ -502,49 +553,41 @@ test.describe("Container actor sheet", () => {
           .filter({ hasText: "New Gear" });
         await expect(itemRow).toBeVisible();
 
-        const itemEditLink = itemRow.locator(FIELD.itemName);
-        await itemEditLink.click();
-
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return false;
-            const item = actor.items.find((i) => i.name === "New Gear");
-            return item?.sheet?.rendered === true;
-          },
-          { actorId },
-          { timeout: 5000 },
-        );
-      });
-
-      await test.step("verify item sheet is open and editable", async () => {
-        const itemSheet = game.locator(".application .item-sheet");
-        await expect(itemSheet).toBeVisible();
+        await itemRow.locator(FIELD.itemName).click();
+        await openOwnedItemSheet(game, { actorId, itemId });
       });
 
       await test.step("edit the price field", async () => {
-        const itemSheet = game.locator(".application .item-sheet");
-
-        const settingsTab = itemSheet.locator('a[data-tab="item-settings"]');
-        await settingsTab.click();
-
-        await expect(settingsTab).toHaveClass(/active/);
+        const itemSheetId = await openOwnedItemSheet(game, { actorId, itemId });
+        const itemSheet = await openItemSettings(game, itemSheetId);
 
         const priceInput = itemSheet.locator(
           'input[name="system.price.market"]',
         );
         await expect(priceInput).toBeVisible();
         await priceInput.fill("500");
-        await priceInput.blur();
+        await priceInput.press("Tab");
+
+        await game.waitForFunction(
+          async (params) => {
+            const actor = game.actors.get(params.actorId);
+            if (!actor) return false;
+            const item = actor.items.find((i) => i.name === "New Gear");
+            return item?.system?.price?.market === 500;
+          },
+          { actorId },
+          { timeout: 5000 },
+        );
       });
 
       await test.step("edit the amount field", async () => {
-        const itemSheet = game.locator(".application .item-sheet");
+        const itemSheetId = await openOwnedItemSheet(game, { actorId, itemId });
+        const itemSheet = await openItemSettings(game, itemSheetId);
 
         const amountInput = itemSheet.locator('input[name="system.amount"]');
         await expect(amountInput).toBeVisible();
         await amountInput.fill("10");
-        await amountInput.blur();
+        await amountInput.press("Tab");
 
         await game.waitForFunction(
           async (params) => {
@@ -579,28 +622,13 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("close the item sheet", async () => {
-        const itemSheet = game.locator(".application .item-sheet");
-        await expect(itemSheet).toBeVisible();
-
-        await game.evaluate(
-          async ({ actorId }) => {
-            const actor = game.actors.get(actorId);
-            if (actor) {
-              const item = actor.items.find((i) => i.name === "New Gear");
-              if (item && item.sheet.rendered) {
-                item.sheet.close();
-              }
-            }
-          },
-          { actorId },
-        );
-
-        await expect(itemSheet).not.toBeVisible();
+        await closeOwnedItemSheet(game, { actorId, itemId });
       });
 
-      let updatedSheetId = await expectSheetRendered(game, {
-        collection: "actors",
-        id: actorId,
+      let updatedSheetId;
+      await test.step("reopen the container sheet", async () => {
+        await closeDocSheet(game, { collection: "actors", id: actorId });
+        updatedSheetId = await reopenActorSheetViaUI(game, actorId);
       });
 
       await test.step("verify price change is reflected on container sheet", async () => {
@@ -646,12 +674,13 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
+    /**
+     * Note: macOS Chromium treats Ctrl+click as a right-click (context menu) and never
+     *   dispatches a "ctrl" event. We add Cmd/Meta here, so the handler accepts both modifiers.
+     */
     test("ctrl-clicking an item name posts an item card to the chat log", async ({
       page: game,
     }) => {
-      // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
-      // dispatches `click`, so use Cmd there. The handler accepts both modifiers
-      // (`event.ctrlKey || event.metaKey`).
       const cardModifier =
         process.platform === "darwin" ? ["Meta"] : ["Control"];
 
@@ -1001,14 +1030,7 @@ test.describe("Container actor sheet", () => {
       await test.step("purchase all items and verify they are removed", async () => {
         const containerSheet = sheet(game, sheetId);
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await game.waitForFunction(
           async (params) => {
@@ -1062,14 +1084,7 @@ test.describe("Container actor sheet", () => {
       await test.step("purchase item and verify it is NOT removed", async () => {
         const containerSheet = sheet(game, sheetId);
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: itemName });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, itemName);
 
         await game.waitForFunction(
           async ({ tradePartnerId, itemName }) => {
@@ -1160,17 +1175,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("set up shop with sufficient funds", async () => {
-        const containerSheet = sheet(game, containerSheetId);
-        const tradeDropdown = containerSheet.locator(
-          'select[name="trade-with-dropdown"]',
-        );
-        const options = await tradeDropdown.evaluate((el) =>
-          Array.from(el.options).map((o) => o.value),
-        );
-        const tradePartnerOption = options.find((v) => v !== "");
-        if (tradePartnerOption) {
-          await tradeDropdown.selectOption({ value: tradePartnerOption });
-        }
         await game.evaluate(
           async ({ containerActorId }) => {
             const container = game.actors.get(containerActorId);
@@ -1291,6 +1295,11 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: containerActorId });
     });
 
+    /**
+     * Note: the shop has zero wealth, and this test confirms that the player (seller)
+     * does not get any Eurobucks because the shop doesn't have any. We may want
+     * to add a warning that is displayed during such a transaction.
+     */
     test("player sells item to shop with zero wealth", async ({
       page: game,
     }) => {
@@ -1455,31 +1464,9 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("set trade partner and click purchase fraction", async () => {
-        const containerSheet = sheet(game, sheetId);
-
         await setTradePartnerWithWealth(game, sheetId);
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const purchasePartLink = itemRow.locator(FIELD.purchasePart);
-        await expect(purchasePartLink).toBeVisible();
-        await purchasePartLink.click();
-
-        const dialog = game.locator(".dialog, .application.dialog");
-        await expect(dialog).toBeVisible();
-
-        const amountInput = dialog.locator('input[name="purchaseAmount"]');
-        await expect(amountInput).toBeVisible();
-        await amountInput.fill("2");
-
-        const confirmBtn = dialog.locator('button[data-action="confirm"]');
-        await expect(confirmBtn).toBeVisible();
-        await confirmBtn.click();
-
-        await expect(dialog).not.toBeVisible();
+        await purchasePartViaUI(game, sheetId, "New Gear", 2);
       });
 
       await test.step("verify remaining amount is 3 (5 - 2)", async () => {
@@ -1522,14 +1509,8 @@ test.describe("Container actor sheet", () => {
 
       await test.step("attempting purchase shows a warning notification", async () => {
         const containerSheet = sheet(game, sheetId);
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
 
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await expect(
           game.locator(".notification.warning, .notification.error"),
@@ -1555,14 +1536,8 @@ test.describe("Container actor sheet", () => {
 
       await test.step("attempting purchase without trade partner shows warning", async () => {
         const containerSheet = sheet(game, sheetId);
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
 
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await expect(game.locator(".notification.warning")).toBeVisible();
         await dismissNotifications(game);
@@ -1574,15 +1549,9 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("selecting trade partner and completing purchase works", async () => {
-        const containerSheet = sheet(game, sheetId);
-
         await setTradePartnerWithWealth(game, sheetId);
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await game.waitForFunction(
           async ({ actorId }) => {
@@ -1598,6 +1567,10 @@ test.describe("Container actor sheet", () => {
       await closeDocSheet(game, { collection: "actors", id: actorId });
     });
 
+    /**
+     * The "edge case" is on page 344 in the core rulebook: ammo is purchased in
+     * stacks of 10, so we divide by that when considering an items amount.
+     */
     test("ammo pricing edge case (÷10)", async ({ page: game }) => {
       const actorId = await createDocumentViaUI(game, {
         documentTab: "actors",
@@ -1622,8 +1595,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("purchase ammo and verify price is divided by 10", async () => {
-        const containerSheet = sheet(game, sheetId);
-
         const tradePartnerId = await setTradePartnerWithWealth(game, sheetId);
 
         const tradePartnerWealthBefore = await game.evaluate(
@@ -1634,14 +1605,7 @@ test.describe("Container actor sheet", () => {
           { tradePartnerId },
         );
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Ammo" });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Ammo");
 
         await game.waitForFunction(
           async (params) => {
@@ -1673,80 +1637,121 @@ test.describe("Container actor sheet", () => {
         id: actorId,
       });
 
-      await test.step("create a gear item named 'Airhypo' in the container", async () => {
+      await test.step("create a stack of three 'Airhypo' in the container", async () => {
         sheetId = (
           await createInventoryItemViaUI(game, {
             actorId,
             sheetId,
             itemType: "gear",
             itemName: "Airhypo",
+            data: { "system.amount": 3 },
           })
         ).sheetId;
       });
 
       let tradePartnerId = null;
+      let worldAirhypoId = null;
 
-      await test.step("create trade partner with existing 'Airhypo'", async () => {
+      await test.step("create trade partner and a world 'Airhypo'", async () => {
         tradePartnerId = await setTradePartnerWithWealth(game, sheetId);
 
-        const worldRifleId = await createItemViaUI(game, {
+        worldAirhypoId = await createItemViaUI(game, {
           type: "gear",
           name: "Airhypo",
         });
-        await closeDocSheet(game, { collection: "items", id: worldRifleId });
-
-        const partnerSheetId = await reopenActorSheetViaUI(
-          game,
-          tradePartnerId,
-        );
-        await dragItemToActorSheet(game, {
-          itemId: worldRifleId,
-          sheetId: partnerSheetId,
-          actorId: tradePartnerId,
-        });
-        await closeDocSheet(game, { collection: "actors", id: tradePartnerId });
+        await closeDocSheet(game, { collection: "items", id: worldAirhypoId });
       });
 
-      await test.step("purchase another 'Airhypo' and verify stacking", async () => {
+      await test.step("purchase one 'Airhypo' and verify the shop stack drops to two", async () => {
         sheetId = await expectSheetRendered(game, {
           collection: "actors",
           id: actorId,
         });
-        const containerSheet = sheet(game, sheetId);
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "Airhypo" });
-        await expect(itemRow).toBeVisible();
+        await purchasePartViaUI(game, sheetId, "Airhypo");
 
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
-
-        await game.waitForFunction(
-          async (params) => {
-            const actor = game.actors.get(params.actorId);
-            if (!actor) return false;
-            return !actor.items.some((i) => i.name === "Airhypo");
+        const shopAmount = await game.waitForFunction(
+          ({ actorId }) => {
+            const item = game.actors
+              .get(actorId)
+              ?.items.find((i) => i.name === "Airhypo");
+            return item?.system?.amount === 2 ? item.system.amount : null;
           },
           { actorId },
-          { timeout: 5000 },
+          { timeout: 10000 },
         );
+        expect(await shopAmount.jsonValue()).toBe(2);
+
+        await game.waitForFunction(
+          ({ partnerId }) => {
+            const partner = game.actors.get(partnerId);
+            const airhypo = partner?.items.find((i) => i.name === "Airhypo");
+            return airhypo?.system?.amount === 1;
+          },
+          { partnerId: tradePartnerId },
+          { timeout: 10000 },
+        );
+      });
+
+      await test.step("purchase a second 'Airhypo' and verify it stacks in the partner's inventory", async () => {
+        sheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: actorId,
+        });
+        await purchasePartViaUI(game, sheetId, "Airhypo");
+
+        const shopAmount = await game.waitForFunction(
+          ({ actorId }) => {
+            const item = game.actors
+              .get(actorId)
+              ?.items.find((i) => i.name === "Airhypo");
+            return item?.system?.amount === 1 ? item.system.amount : null;
+          },
+          { actorId },
+          { timeout: 10000 },
+        );
+        expect(await shopAmount.jsonValue()).toBe(1);
 
         const amountHandle = await game.waitForFunction(
           ({ partnerId }) => {
             const partner = game.actors.get(partnerId);
-            const plasmaRifle = partner?.items.find(
-              (i) => i.name === "Airhypo",
-            );
-            return plasmaRifle?.system.amount === 2
-              ? plasmaRifle.system.amount
-              : null;
+            const airhypo = partner?.items.find((i) => i.name === "Airhypo");
+            return airhypo?.system.amount === 2 ? airhypo.system.amount : null;
           },
           { partnerId: tradePartnerId },
           { timeout: 10000 },
         );
         const tradePartnerAmount = await amountHandle.jsonValue();
         expect(tradePartnerAmount).toBe(2);
+      });
+
+      await test.step("drag the world 'Airhypo' onto the partner and verify it stacks to three", async () => {
+        const partnerSheetId = await reopenActorSheetViaUI(
+          game,
+          tradePartnerId,
+        );
+        await dragItemToActorSheet(game, {
+          itemId: worldAirhypoId,
+          sheetId: partnerSheetId,
+          actorId: tradePartnerId,
+          expectStack: true,
+        });
+
+        const stackHandle = await game.waitForFunction(
+          ({ partnerId }) => {
+            const partner = game.actors.get(partnerId);
+            const airhypoItems =
+              partner?.items.filter((i) => i.name === "Airhypo") ?? [];
+            if (airhypoItems.length !== 1) return null;
+            return airhypoItems[0].system.amount === 3
+              ? airhypoItems[0].system.amount
+              : null;
+          },
+          { partnerId: tradePartnerId },
+          { timeout: 10000 },
+        );
+        expect(await stackHandle.jsonValue()).toBe(3);
+
+        await closeDocSheet(game, { collection: "actors", id: tradePartnerId });
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -1769,8 +1774,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("purchase item and verify wealth changes", async () => {
-        const containerSheet = sheet(game, sheetId);
-
         const containerWealthBefore = await game.evaluate(
           async ({ actorId }) => {
             const container = game.actors.get(actorId);
@@ -1789,14 +1792,7 @@ test.describe("Container actor sheet", () => {
           { tradePartnerId: selectedTradePartnerId },
         );
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await game.waitForFunction(
           async (params) => {
@@ -1830,15 +1826,7 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("purchase item and verify trade log entry exists", async () => {
-        const containerSheet = sheet(game, sheetId);
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await game.waitForFunction(
           async (params) => {
@@ -1895,8 +1883,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("switch to second trade partner and purchase", async () => {
-        const containerSheet = sheet(game, sheetId);
-
         await game.evaluate(
           async ({ actorId }) => {
             const actor = game.actors.get(actorId);
@@ -1925,14 +1911,7 @@ test.describe("Container actor sheet", () => {
           { timeout: 5000 },
         );
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await game.waitForFunction(
           async (params) => {
@@ -2185,17 +2164,11 @@ test.describe("Container actor sheet", () => {
           collection: "actors",
           id: containerActorId,
         });
-        const containerSheet = sheet(game, containerSheetId);
-
         await setTradePartnerWithWealth(game, containerSheetId, {
           partnerName: playerName,
         });
 
-        const weaponRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: weaponName });
-        await expect(weaponRow).toBeVisible();
-        await weaponRow.locator(FIELD.purchaseAll).click();
+        await purchaseAllViaUI(game, containerSheetId, weaponName);
 
         await game.waitForFunction(
           ({ playerActorId, containerActorId, weaponName }) => {
@@ -2545,12 +2518,8 @@ test.describe("Container actor sheet", () => {
         );
 
         const stashSheetId = await reopenActorSheetViaUI(game, stashActorId);
-        const stashSheet = sheet(game, stashSheetId);
-        const itemRow = stashSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "Stash Taker Item" });
-        await expect(itemRow).toBeVisible();
-        await itemRow.locator(FIELD.takeItemAll).click();
+
+        await purchaseAllViaUI(game, stashSheetId, "Stash Taker Item");
 
         await game.waitForFunction(
           ({ playerActorId, stashActorId }) => {
@@ -2760,14 +2729,7 @@ test.describe("Container actor sheet", () => {
       await test.step("purchase item and verify it is NOT removed", async () => {
         const containerSheet = sheet(game, sheetId);
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await game.waitForFunction(
           async (params) => {
@@ -2823,8 +2785,6 @@ test.describe("Container actor sheet", () => {
       });
 
       await test.step("purchase item and verify trade partner wealth is unchanged", async () => {
-        const containerSheet = sheet(game, sheetId);
-
         const tradePartnerId = await setTradePartnerWithWealth(game, sheetId);
 
         const tradePartnerWealthBefore = await game.evaluate(
@@ -2835,14 +2795,7 @@ test.describe("Container actor sheet", () => {
           { tradePartnerId },
         );
 
-        const itemRow = containerSheet
-          .locator(".item.flexrow")
-          .filter({ hasText: "New Gear" });
-        await expect(itemRow).toBeVisible();
-
-        const purchaseLink = itemRow.locator(FIELD.purchaseAll);
-        await expect(purchaseLink).toBeVisible();
-        await purchaseLink.click();
+        await purchaseAllViaUI(game, sheetId, "New Gear");
 
         await game.waitForFunction(
           async (params) => {

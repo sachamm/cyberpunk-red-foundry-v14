@@ -32,7 +32,28 @@ async function waitForItemCount(page, actorId, target, timeout) {
   }
 }
 
-export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
+async function waitForItemAmount(page, { actorId, name, target }, timeout) {
+  try {
+    await page.waitForFunction(
+      ({ actorId, name, target }) => {
+        const total = Array.from(game.actors.get(actorId).items)
+          .filter((i) => i.name === name)
+          .reduce((sum, i) => sum + (i.system.amount ?? 1), 0);
+        return total >= target;
+      },
+      { actorId, name, target },
+      { timeout },
+    );
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function dragItemToActorSheet(
+  page,
+  { itemId, sheetId, actorId, expectStack = false },
+) {
   await openSidebarTab(page, "items");
   const entry = page.locator(`#items [data-entry-id="${itemId}"]`);
   await expect(entry).toBeVisible();
@@ -43,11 +64,33 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
     (id) => game.actors.get(id).items.size,
     actorId,
   );
+  const draggedName = await page.evaluate(
+    (id) => game.items.get(id).name,
+    itemId,
+  );
+  const amountBefore = expectStack
+    ? await page.evaluate(
+        ({ id, name }) =>
+          Array.from(game.actors.get(id).items)
+            .filter((i) => i.name === name)
+            .reduce((sum, i) => sum + (i.system.amount ?? 1), 0),
+        { id: actorId, name: draggedName },
+      )
+    : null;
+
+  const landed = (timeout) =>
+    expectStack
+      ? waitForItemAmount(
+          page,
+          { actorId, name: draggedName, target: amountBefore + 1 },
+          timeout,
+        )
+      : waitForItemCount(page, actorId, before + 1, timeout);
 
   await entry.dragTo(sheetEl, { timeout: 5000 }).catch(() => {});
   await page.mouse.up().catch(() => {});
 
-  if (await waitForItemCount(page, actorId, before + 1, 3000)) return;
+  if (await landed(3000)) return;
 
   const uuid = await page.evaluate((id) => game.items.get(id).uuid, itemId);
   await page.evaluate(
@@ -67,7 +110,7 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
     { uuid, sheetId, actorId, before },
   );
 
-  if (!(await waitForItemCount(page, actorId, before + 1, 5000))) {
+  if (!(await landed(5000))) {
     throw new Error(`Item ${itemId} was not embedded on actor ${actorId}`);
   }
 }
