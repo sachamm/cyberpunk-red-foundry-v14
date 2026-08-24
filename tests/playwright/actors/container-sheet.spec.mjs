@@ -663,7 +663,21 @@ async function sellItemToContainerViaUI(
 }
 
 test.beforeEach(async ({ page }) => {
+  page.consoleErrors = [];
+  page.on("console", (msg) => {
+    if (msg.type() === "error") page.consoleErrors.push(msg.text());
+  });
+  page.on("pageerror", (err) => {
+    page.consoleErrors.push(`uncaught exception: ${err.message}`);
+  });
   await gotoReadyWorld(page);
+});
+
+test.afterEach(async ({ page }) => {
+  expect(
+    page.consoleErrors,
+    `console errors during test:\n${page.consoleErrors.join("\n")}`,
+  ).toEqual([]);
 });
 
 /**
