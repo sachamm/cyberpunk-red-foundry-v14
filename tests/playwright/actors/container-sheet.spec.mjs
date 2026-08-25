@@ -664,6 +664,10 @@ async function sellItemToContainerViaUI(
 
 test.beforeEach(async ({ page }) => {
   page.consoleErrors = [];
+  // Tests that intentionally trigger a console error (e.g. via
+  // DisplayMessage("error")) register a matching RegExp here so afterEach
+  // ignores exactly those messages. Uncaught exceptions always fail.
+  page.expectedConsoleErrors = [];
   page.on("console", (msg) => {
     if (msg.type() === "error") page.consoleErrors.push(msg.text());
   });
@@ -674,9 +678,14 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.afterEach(async ({ page }) => {
+  const unexpected = page.consoleErrors.filter(
+    (text) =>
+      text.startsWith("uncaught exception:") ||
+      !page.expectedConsoleErrors.some((re) => re.test(text)),
+  );
   expect(
-    page.consoleErrors,
-    `console errors during test:\n${page.consoleErrors.join("\n")}`,
+    unexpected,
+    `console errors during test:\n${unexpected.join("\n")}`,
   ).toEqual([]);
 });
 
@@ -1229,6 +1238,125 @@ test.describe("Container actor sheet", () => {
           { id: actorId },
           { timeout: 5000 },
         );
+      });
+
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+    });
+
+    test("#1076: dropping a role item onto a container is rejected", async ({
+      page: game,
+    }) => {
+      // The rejection intentionally surfaces an error notification. Both
+      // Foundry's ui.notifications.error and DisplayMessage's LOGGER.error
+      // log it to the console; register both so the global console check
+      // ignores exactly these messages.
+      game.expectedConsoleErrors.push(
+        /CPR ERR \| Roles cannot be added to containers/,
+        /^Roles cannot be added to containers, Choomba!/,
+      );
+
+      const actorId = await createDocumentViaUI(game, {
+        documentTab: "actors",
+        type: "container",
+        name: uniqueName("role-drop-container"),
+      });
+      let sheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: actorId,
+      });
+
+      const roleId = await createDocumentViaUI(game, {
+        documentTab: "items",
+        type: "role",
+        name: uniqueName("solo-role"),
+      });
+
+      const errorNotification = game.locator(".notification.error").filter({
+        hasText: "Roles cannot be added to containers",
+      });
+
+      await test.step("drag role onto container sheet", async () => {
+        await openSidebarTab(game, "items");
+        const entry = game.locator(`#items [data-entry-id="${roleId}"]`);
+        await expect(entry).toBeVisible();
+        const containerSheet = sheet(game, sheetId);
+        await expect(containerSheet).toBeVisible();
+
+        await entry.dragTo(containerSheet, { timeout: 5000 }).catch(() => {});
+        await game.mouse.up().catch(() => {});
+
+        let shown = await errorNotification
+          .first()
+          .waitFor({ state: "visible", timeout: 3000 })
+          .then(() => true)
+          .catch(() => false);
+        if (!shown) {
+          const uuid = await game.evaluate(
+            (id) => game.items.get(id).uuid,
+            roleId,
+          );
+          await game.evaluate(
+            ({ uuid, sheetId }) => {
+              const el = document.getElementById(sheetId);
+              const data = new DataTransfer();
+              data.setData(
+                "text/plain",
+                JSON.stringify({ type: "Item", uuid }),
+              );
+              el.dispatchEvent(
+                new DragEvent("drop", {
+                  bubbles: true,
+                  cancelable: true,
+                  dataTransfer: data,
+                }),
+              );
+            },
+            { uuid, sheetId },
+          );
+        }
+      });
+
+      await test.step("an error notification is shown to the user", async () => {
+        await expect(errorNotification.first()).toBeVisible({ timeout: 10000 });
+      });
+
+      await test.step("the role item is not persisted on the container", async () => {
+        const hasRole = await game.evaluate(
+          (id) =>
+            Array.from(game.actors.get(id).items).some(
+              (i) => i.type === "role",
+            ),
+          actorId,
+        );
+        expect(hasRole).toBe(false);
+      });
+
+      await test.step("the rejection is logged by both Foundry and the system logger, with no uncaught exception", async () => {
+        await game.waitForTimeout(2000);
+        const foundryLogged = game.consoleErrors.filter((text) =>
+          text.startsWith("Roles cannot be added to containers, Choomba!"),
+        );
+        expect(foundryLogged).toHaveLength(1);
+        const systemLogged = game.consoleErrors.filter((text) =>
+          text.includes("CPR ERR | Roles cannot be added to containers"),
+        );
+        expect(systemLogged).toHaveLength(1);
+        const uncaught = game.consoleErrors.filter((text) =>
+          text.startsWith("uncaught exception:"),
+        );
+        expect(uncaught).toHaveLength(0);
+      });
+
+      await test.step("reopening the sheet stays clean and shows no role row", async () => {
+        const before = game.consoleErrors.length;
+        await closeDocSheet(game, { collection: "actors", id: actorId });
+        sheetId = await reopenActorSheetViaUI(game, actorId);
+        await game.waitForTimeout(2000);
+        expect(game.consoleErrors.length).toBe(before);
+        const roleRows = await game
+          .locator(`#${sheetId} li.item[data-item-category="role"]`)
+          .count();
+        expect(roleRows).toBe(0);
       });
 
       await closeDocSheet(game, { collection: "actors", id: actorId });

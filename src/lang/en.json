@@ -1093,6 +1093,7 @@
   "CPR.macro.emp.hasSingleItem": "<strong>{actor}</strong><p>As the EMP goes off your <b>{item}</b> becomes inoperable for 1 minute.</p>",
   "CPR.macro.emp.hasNoItems": "<strong>{actor}</strong><p>Has no EMPable Items! The EMP detonates with no effect on them.</p>",
   "CPR.messages.amountNotNumber": "Error: The amount entered could not be converted to a number!",
+  "CPR.messages.cannotAddRoleToContainer": "Roles cannot be added to containers, Choomba!",
   "CPR.messages.cannotDeleteCoreCyberware": "You cannot delete core Cyberware. Just remove the options and it will be hidden.",
   "CPR.messages.cannotDropInstalledCyberware": "You cannot drop or transfer installed Cyberware. You must uninstall it first.",
   "CPR.messages.consumedDrug": " consumed. Make it count!",

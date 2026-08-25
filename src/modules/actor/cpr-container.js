@@ -57,6 +57,19 @@ export default class CPRContainerActor extends Actor {
       itemsToCreate = itemsToCreate.filter((i) => !coreItemIds.includes(i._id));
     }
 
+    // Role items serve no purpose on containers; discard them so they are
+    // not persisted.
+    const roleItemIds = itemsToCreate
+      .filter((i) => i.type === "role")
+      .map((i) => i._id);
+    if (roleItemIds.length > 0) {
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.cannotAddRoleToContainer"),
+      );
+      itemsToCreate = itemsToCreate.filter((i) => !roleItemIds.includes(i._id));
+    }
+
     // Attempt to stack item before creating it
     const stackedItemReferences = [];
     if (!context.CPRsplitStack) {
