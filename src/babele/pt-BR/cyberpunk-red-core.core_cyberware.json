@@ -16,7 +16,7 @@
     },
     "Artificial Shoulder Mount": {
       "name": "Montaria Ombro artificial",
-      "description": "<p>Permite instalar um par extra de armas virtuais. </p>",
+      "description": "<p>\n  Allows you to install an extra pair of cyberarms. Additional cyberarms are\n  sold &amp; installed separately.\n</p>\n<blockquote>\n  <p>\n    * Install your extra pair of foundational Cyberarms as normal, do not\n    install your extra cyberarms into this item.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Audio Recorder": {
@@ -296,7 +296,7 @@
     },
     "MultiOptic Mount": {
       "name": "Montaria Multiótica",
-      "description": "<p>Permite que você instale mais 5 cibereyes. Cybereyes vendido separadamente. </p>",
+      "description": "<p>\n  Allows you to install up to 5 additional cybereyes. Additional cybereyes are\n  sold &amp; installed separately.\n</p>\n<blockquote>\n  <p>\n    * Install your extra foundational Cybereyes as normal, do not install your\n    extra cybereyes into this item.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Nasal Filters": {
@@ -411,7 +411,7 @@
     },
     "Sensor Array": {
       "name": "Matriz de Sensor",
-      "description": "<p>Permite instalar até mais 5 opções de áudio virtual. </p>",
+      "description": "<p>Allows you to install up to 5 additional cyberaudio options.</p>\n<blockquote>\n  <p>* Manually adjust your Cyberaudio Suite's number of slots to 8.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Shift Tacts": {
