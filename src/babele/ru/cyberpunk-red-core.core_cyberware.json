@@ -16,7 +16,7 @@
     },
     "Artificial Shoulder Mount": {
       "name": "Искусственные плечи",
-      "description": "<p>Позволяют установить дополнительную пару киберрук.</p>",
+      "description": "<p>\n  Allows you to install an extra pair of cyberarms. Additional cyberarms are\n  sold &amp; installed separately.\n</p>\n<blockquote>\n  <p>\n    * Install your extra pair of foundational Cyberarms as normal, do not\n    install your extra cyberarms into this item.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Audio Recorder": {
@@ -296,7 +296,7 @@
     },
     "MultiOptic Mount": {
       "name": "Крепление МультиОптик",
-      "description": "<p>Позволяет установить ещё пять киберглаз. Глаза продаются отдельно.</p>",
+      "description": "<p>\n  Allows you to install up to 5 additional cybereyes. Additional cybereyes are\n  sold &amp; installed separately.\n</p>\n<blockquote>\n  <p>\n    * Install your extra foundational Cybereyes as normal, do not install your\n    extra cybereyes into this item.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Nasal Filters": {
@@ -411,7 +411,7 @@
     },
     "Sensor Array": {
       "name": "Сенсорная установка",
-      "description": "<p>Позволяет установить до пяти дополнительных расширений кибераудио.</p>",
+      "description": "<p>Allows you to install up to 5 additional cyberaudio options.</p>\n<blockquote>\n  <p>* Manually adjust your Cyberaudio Suite's number of slots to 8.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Shift Tacts": {
