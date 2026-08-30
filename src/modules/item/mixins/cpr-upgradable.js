@@ -139,7 +139,10 @@ const Upgradable = function Upgradable() {
         relevantUpgrades.push(mod);
       } else {
         installedUpgrades.forEach((u, index) => {
-          if (u.system.modifiers[dataPoint]?.value !== 0) {
+          if (
+            typeof u.system.modifiers[dataPoint]?.value === "number" &&
+            u.system.modifiers[dataPoint]?.value !== 0
+          ) {
             const mod = foundry.utils.duplicate(u.system.modifiers[dataPoint]);
             mod.id = `${u.name}-${key}-${index}`; // This should create a unique ID for the mod.
             mod.source = u.name; // Where the upgrade comes from.
