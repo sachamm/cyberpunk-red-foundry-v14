@@ -19,3 +19,4 @@ export { default as RemoveUnusedInstallFlag } from "./041-remove-unused-install-
 export { default as AddDamageCritConfig } from "./042-add-damage-crit-config.js";
 export { default as IgnoredByBrowserLootBoxes } from "./043-ignored-by-browser.js";
 export { default as SourceToSources } from "./044-source-to-sources.js";
+export { default as RelinkCyberwareIcons } from "./045-relink-cyberweapon-icons.js";
