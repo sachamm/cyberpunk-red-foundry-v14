@@ -14,7 +14,7 @@ import MigrationError from "./migration-error.js";
  */
 export default class MigrationRunner {
   /** The latest data model version we want to migrate to. */
-  static #LATEST_VERSION = 44;
+  static #LATEST_VERSION = 45;
 
   /**
    * The minimum data model version we allow users to migrate from.
