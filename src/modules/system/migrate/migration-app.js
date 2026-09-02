@@ -505,7 +505,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   static returnToSetup() {
     if (this.currentPhase === "userConfirm") this.rejectMigration();
     if (this.errorPhase) MigrationApp.downloadReport();
-    if (!DEV_MODE.migrations.returnToSetup) return;
+    if (!DEV_MODE.migrations.app.returnToSetup) return;
     game.shutDown();
   }
 
