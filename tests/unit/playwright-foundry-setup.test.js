@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   driveSetup,
+  launchedWorldHasJoinScreen,
   reachInteractableSetup,
 } from "../../tools/playwright/setup/foundry-setup.mjs";
 
@@ -33,10 +34,15 @@ class FakePage {
     passwordVisible = false,
     initialPath = "/join",
     goBackVisible = false,
+    joinNavigationError,
+    joinScreenVisibleAfterNavigationError = false,
   } = {}) {
     this.licenseVisible = licenseVisible;
     this.passwordVisible = passwordVisible;
     this.goBackVisible = goBackVisible;
+    this.joinNavigationError = joinNavigationError;
+    this.joinScreenVisibleAfterNavigationError =
+      joinScreenVisibleAfterNavigationError;
     this.joinScreenVisible = initialPath === "/join";
     this.currentUrl = `http://localhost:30001${initialPath}`;
     this.keyboard = {
@@ -63,6 +69,10 @@ class FakePage {
       return;
     }
     this.currentUrl = url;
+    if (url.endsWith("/join") && this.joinNavigationError) {
+      this.joinScreenVisible = this.joinScreenVisibleAfterNavigationError;
+      throw this.joinNavigationError;
+    }
   }
 
   url() {
@@ -117,6 +127,30 @@ function expectEnvOnlyGuidance(message, envKey) {
 }
 
 describe("playwright Foundry setup messaging", () => {
+  it("accepts an interrupted navigation that reaches the join screen", async () => {
+    const page = new FakePage({
+      initialPath: "/setup",
+      joinNavigationError: new Error("interrupted by another navigation"),
+      joinScreenVisibleAfterNavigationError: true,
+    });
+    const config = { url: "http://localhost:30001" };
+
+    await expect(launchedWorldHasJoinScreen(page, config)).resolves.toBe(true);
+  });
+
+  it("preserves a navigation error when no join screen appears", async () => {
+    const navigationError = new Error("join navigation failed");
+    const page = new FakePage({
+      initialPath: "/setup",
+      joinNavigationError: navigationError,
+    });
+    const config = { url: "http://localhost:30001" };
+
+    await expect(launchedWorldHasJoinScreen(page, config)).rejects.toBe(
+      navigationError,
+    );
+  });
+
   it("keeps missing admin-password guidance on the supported config workflow", async () => {
     const page = new FakePage({ passwordVisible: true });
     const config = {

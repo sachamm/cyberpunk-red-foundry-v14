@@ -349,9 +349,21 @@ async function currentPageHasJoinScreen(page) {
 }
 
 export async function launchedWorldHasJoinScreen(page, config) {
-  await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  let navigationError;
+  try {
+    await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  } catch (error) {
+    // Foundry can start its own redirect to /join while this fallback is
+    // navigating there. Let that navigation finish, then verify the result.
+    navigationError = error;
+    await page
+      .waitForLoadState("domcontentloaded", { timeout: SHORT })
+      .catch(() => {});
+  }
   await recoverNoActiveGameSession(page);
-  return currentPageHasJoinScreen(page);
+  const hasJoinScreen = await currentPageHasJoinScreen(page);
+  if (!hasJoinScreen && navigationError) throw navigationError;
+  return hasJoinScreen;
 }
 
 export async function launchExistingWorld(page, { config, worldId }) {
