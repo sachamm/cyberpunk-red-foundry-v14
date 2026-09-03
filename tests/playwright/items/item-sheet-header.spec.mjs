@@ -41,8 +41,14 @@ import {
 async function createItemSheet(game, { type, system = {}, prefix }) {
   const name = uniqueName(prefix ?? type);
   const id = await createItemViaUI(game, { type, name });
+  // Document updates can resolve before the open sheet finishes rerendering.
+  // Force and await one render so assertions never read the initial defaults.
   await game.evaluate(
-    ({ id, system }) => game.items.get(id).update({ system }),
+    async ({ id, system }) => {
+      const item = game.items.get(id);
+      await item.update({ system });
+      await item.sheet.render({ force: true });
+    },
     { id, system },
   );
   const sheetId = await expectSheetRendered(game, { collection: "items", id });
