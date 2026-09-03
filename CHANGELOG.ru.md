@@ -38,6 +38,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
 - Add a "Homebrew Rules" settings menu with JonJon's optional Luck Roll: when enabled, clicking the LUCK stat rolls 1d10 under your LUCK (Roll Under Max or Roll Under Current), with a Success/Failure chat card; off by default
 - The dialog box for updating mook skills now presents the skills by category, similar to the character sheet
+- Item upgrades may now be configured with negative modifiers
 
 ### Исправления
 
