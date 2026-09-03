@@ -16,7 +16,7 @@ const { ActiveEffectConfig } = foundry.applications.sheets;
 export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
-    classes: ["cpr"],
+    classes: ["cpr", "active-effect-sheet"],
     position: {
       width: 675,
       height: "auto",
@@ -256,13 +256,14 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     changes.splice(modnum, 1);
 
     // Then, reindex the corresponding flags for the deleted change.
-    const changeFlags = foundry.utils.getProperty(
-      this.document,
-      `flags.${game.system.id}.changes`,
-    );
+    const changeFlags =
+      foundry.utils.getProperty(
+        this.document,
+        `flags.${game.system.id}.changes`,
+      ) ?? {};
     const newFlags = { cats: {}, situational: {} };
-    const flagArrayCats = Object.entries(changeFlags.cats);
-    const flagArraySituational = Object.entries(changeFlags.situational);
+    const flagArrayCats = Object.entries(changeFlags.cats ?? {});
+    const flagArraySituational = Object.entries(changeFlags.situational ?? {});
 
     flagArrayCats.sort();
     flagArrayCats.forEach((chg) => {

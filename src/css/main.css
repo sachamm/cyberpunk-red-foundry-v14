@@ -19,6 +19,7 @@
 
 /* Thin scrollbars inside our own windows and journal page content. */
 :is(
+    .active-effect-sheet,
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,
@@ -37,6 +38,7 @@
 }
 
 /* Our font, only within our own windows. */
+.active-effect-sheet,
 .actor-sheet,
 .blackice-sheet,
 .container-sheet,
@@ -51,6 +53,7 @@
 
 /* Editors inside our windows and journal page content. */
 :is(
+    .active-effect-sheet,
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,
@@ -76,6 +79,7 @@
 }
 
 :is(
+    .active-effect-sheet,
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,

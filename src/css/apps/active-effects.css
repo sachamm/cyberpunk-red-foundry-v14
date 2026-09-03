@@ -1,22 +1,51 @@
-.cpr-effect-changes {
-  .changes-list {
+.active-effect-config.active-effect-sheet .cpr-effect-changes {
+  ol.changes-list {
     display: block;
+    margin: 0;
+    padding: 0;
   }
 
   .change-header,
-  .changes-list > li {
+  ol.changes-list > li {
+    display: flex;
     flex-wrap: nowrap;
     align-items: center;
   }
 
-  .changes-list > li:nth-child(odd),
-  .changes-list > li:nth-child(even) {
-    background-color: transparent;
+  .change-header {
+    color: var(--cpr-text-header);
+    background-color: var(--cpr-background-header);
+  }
+
+  .change-key {
+    flex-basis: 38%;
+  }
+
+  .change-actions {
+    flex-basis: 10%;
+  }
+
+  ol.changes-list > li:nth-child(odd) {
+    background-color: var(--cpr-background-row-even);
+  }
+
+  ol.changes-list > li:nth-child(even) {
+    background-color: var(--cpr-background-row-odd);
   }
 
   .effect-controls {
     margin-top: 0.5rem;
     text-align: center;
+  }
+}
+
+.active-effect-sheet .sheet-header.img-name {
+  padding: 0.313rem;
+  background-color: var(--cpr-background-border);
+
+  input[name="name"] {
+    padding-inline: 0.313rem;
+    background-color: var(--cpr-background-box);
   }
 }
 

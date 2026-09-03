@@ -12,6 +12,7 @@
  * CPR windows  *
  ****************/
 
+.active-effect-sheet,
 .actor-sheet,
 .blackice-sheet,
 .container-sheet,
@@ -67,6 +68,7 @@
  * CPR input field styling obfuscates user editable fields on rolltables.
  * Rolltable input fields will be handled further down the sheet.
  */
+.active-effect-sheet,
 .actor-sheet,
 .blackice-sheet,
 .container-sheet,
@@ -149,6 +151,7 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
  */
 
 :is(
+    .active-effect-sheet,
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,
@@ -215,6 +218,7 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
 }
 
 :is(
+    .active-effect-sheet,
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,
@@ -260,6 +264,7 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
 .journal-page-content,
 .journal-sheet-container,
 :is(
+    .active-effect-sheet,
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,
@@ -441,6 +446,7 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
 .journal-page-content,
 .journal-sheet-container,
 :is(
+    .active-effect-sheet,
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,

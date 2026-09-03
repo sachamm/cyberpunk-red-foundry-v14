@@ -10,14 +10,17 @@ export default class CPRMod {
    */
   constructor(effect, change) {
     const index = effect.changes.indexOf(change); // Index of change on the effect.
-    // We do optional chaining on the next few because some items may not have flags.${game.system.id}.situational or .cats defined.
-    this.category = effect.flags[game.system.id].changes.cats?.[index]; // Category of the change. This comes from Zyzyx's work.
+    // Effects created while Foundry's generic sheet was active may have changes
+    // without CPR's parallel category/situational flags. Treat those changes as
+    // custom so the CPR sheet can render and the user can repair them.
+    const changeFlags = effect.flags?.[game.system.id]?.changes;
+    this.category = changeFlags?.cats?.[index] ?? "custom";
     // New flag to determine if the mod is situational or permanent. If it's situational, should it be on by default?
-    this.isSituational =
-      effect.flags[game.system.id].changes.situational?.[index].isSituational;
+    this.isSituational = Boolean(
+      changeFlags?.situational?.[index]?.isSituational,
+    );
     // If it's situational, should it be on by default?
-    this.onByDefault =
-      effect.flags[game.system.id].changes.situational?.[index].onByDefault; // S
+    this.onByDefault = Boolean(changeFlags?.situational?.[index]?.onByDefault);
     this.id = `${change.key}-${effect.id}`; // We enforce one change key per effect, so this should always be a unique ID.
     this.source = effect.name;
     this.value = Number.parseInt(change.value, 10);
