@@ -78,14 +78,21 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       probe.style.color = "var(--cpr-text-normal)";
       probe.style.fontFamily = "var(--cpr-font-primary)";
       document.body.append(probe);
+      const buttonProbe = document.createElement("div");
+      buttonProbe.style.backgroundColor = "var(--cpr-background-foundry-input)";
+      document.body.append(buttonProbe);
       const expectedStyle = getComputedStyle(probe);
-      const rootStyle = getComputedStyle(element);
+      const contentStyle = getComputedStyle(
+        element.querySelector(".window-content"),
+      );
       const header = element.querySelector(".change-header");
       const actionHeader = header.querySelector(".change-actions");
+      const windowHeaderButton = element.querySelector(".window-header button");
+      const valueInput = element.querySelector('input[name="changes.0.value"]');
       const result = {
-        backgroundColor: rootStyle.backgroundColor,
-        color: rootStyle.color,
-        fontFamily: rootStyle.fontFamily,
+        backgroundColor: contentStyle.backgroundColor,
+        color: contentStyle.color,
+        fontFamily: contentStyle.fontFamily,
         expectedBackgroundColor: expectedStyle.backgroundColor,
         expectedColor: expectedStyle.color,
         expectedFontFamily: expectedStyle.fontFamily,
@@ -94,8 +101,13 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
           element.querySelector(".changes-list > li"),
         ).display,
         actionsClipped: actionHeader.scrollWidth > actionHeader.clientWidth,
+        windowHeaderButtonBackground:
+          getComputedStyle(windowHeaderButton).backgroundColor,
+        cprButtonBackground: getComputedStyle(buttonProbe).backgroundColor,
+        valueInputBorderStyle: getComputedStyle(valueInput).borderTopStyle,
       };
       probe.remove();
+      buttonProbe.remove();
       return result;
     });
     expect(theme.backgroundColor).toBe(theme.expectedBackgroundColor);
@@ -104,6 +116,10 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     expect(theme.headerDisplay).toBe("flex");
     expect(theme.rowDisplay).toBe("flex");
     expect(theme.actionsClipped).toBe(false);
+    expect(theme.windowHeaderButtonBackground).not.toBe(
+      theme.cprButtonBackground,
+    );
+    expect(theme.valueInputBorderStyle).not.toBe("none");
 
     const effectId = await game.evaluate(
       (id) => game.items.get(id).effects.contents[0].id,

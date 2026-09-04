@@ -12,7 +12,8 @@
  * CPR windows  *
  ****************/
 
-.active-effect-sheet,
+/* Keep Foundry's own header controls on the Active Effect sheet unchanged. */
+.active-effect-sheet .window-content,
 .actor-sheet,
 .blackice-sheet,
 .container-sheet,
@@ -65,10 +66,9 @@
 }
 
 /*
- * CPR input field styling obfuscates user editable fields on rolltables.
- * Rolltable input fields will be handled further down the sheet.
+ * CPR input field styling obfuscates user editable fields on Foundry forms.
+ * Rolltable and Active Effect inputs keep Foundry's visible field treatment.
  */
-.active-effect-sheet,
 .actor-sheet,
 .blackice-sheet,
 .container-sheet,
