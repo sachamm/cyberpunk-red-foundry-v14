@@ -12,6 +12,7 @@ import {
   dismissNotifications,
   uniqueName,
   reopenActorSheetViaUI,
+  positionActorSheet,
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
   hoverGearRow,
@@ -20,6 +21,7 @@ import {
   openTokenSheet,
   activateGearTab,
   openItemSettings,
+  setItemField,
 } from "../../../tools/playwright/ui/index.mjs";
 
 const FIELD = {
@@ -471,6 +473,29 @@ async function createInventoryItemViaUI(
   });
 
   return { itemId, sheetId: freshSheetId };
+}
+
+/**
+ * Click the equip action on an owned item's gear row until the item is
+ * equipped, stepping through the carried state first.
+ *
+ * @param {Object} game - the top-level game object from Foundry
+ * @param {String} actorSheetId - rendered element id of the actor's sheet
+ * @param {String} actorId - id of the actor owning the item
+ * @param {String} itemId - id of the owned item to equip
+ */
+async function equipWeapon(game, { actorSheetId, actorId, itemId }) {
+  for (const state of ["carried", "equipped"]) {
+    const gear = await activateGearTab(game, actorSheetId);
+    const row = await hoverGearRow(gear, itemId);
+    await row.locator("a.equip").click();
+    await game.waitForFunction(
+      ({ actorId, itemId, state }) =>
+        game.actors.get(actorId).items.get(itemId).system.equipped === state,
+      { actorId, itemId, state },
+      { timeout: 10000 },
+    );
+  }
 }
 
 /**
@@ -2546,6 +2571,382 @@ test.describe("Container actor sheet", () => {
           id: containerActorId,
         });
       });
+    });
+
+    test("purchasing a generated ammo pile first does not break purchasing its loaded weapon (#1291)", async ({
+      page: game,
+    }) => {
+      const weaponName = uniqueName("loaded-rifle");
+      const ammoName = uniqueName("rifle-ammo");
+      let characterActorId;
+      let characterSheetId;
+      let embeddedWeaponId;
+      let embeddedAmmoId;
+      let containerActorId;
+      let containerSheetId;
+      let buyerOneId;
+      let buyerTwoId;
+
+      await test.step("create a character with a loaded assault rifle", async () => {
+        characterActorId = await createDocumentViaUI(game, {
+          documentTab: "actors",
+          type: "character",
+          name: uniqueName("rifle-character"),
+        });
+        characterSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: characterActorId,
+        });
+
+        const weaponId = await createDocumentViaUI(game, {
+          documentTab: "items",
+          type: "weapon",
+          name: weaponName,
+        });
+        const weaponSheetId = await expectSheetRendered(game, {
+          collection: "items",
+          id: weaponId,
+        });
+        let weaponSheet = await openItemSettings(game, weaponSheetId);
+        await weaponSheet
+          .locator('select[name="system.weaponType"]')
+          .selectOption("assaultRifle");
+        await weaponSheet
+          .locator('a.item-checkbox[data-target="system.isRanged"]')
+          .click();
+        await game.waitForFunction(
+          (id) => game.items.get(id).system.isRanged === true,
+          weaponId,
+        );
+        await setItemField(game, {
+          sheetId: weaponSheetId,
+          itemId: weaponId,
+          name: "system.magazine.max",
+          path: "system.magazine.max",
+          value: 30,
+        });
+        // Allow the weapon to have ammo installed in it.
+        await (await openItemSettings(game, weaponSheetId))
+          .locator(".manage-installable-types")
+          .click();
+        const installableTypesDialog = game
+          .locator(".application")
+          .filter({ has: game.locator('input[name="selectedTypes"]') });
+        await installableTypesDialog
+          .locator('input[name="selectedTypes"][value="ammo"]')
+          .check();
+        await installableTypesDialog
+          .locator('button.cpr-dialog-button[data-action="confirm"]')
+          .click();
+        await game.waitForFunction((id) => {
+          const allowedTypes =
+            game.items.get(id).system.installedItems.allowedTypes;
+          return allowedTypes.includes("ammo");
+        }, weaponId);
+        // Make the weapon compatible with rifle ammo.
+        await (await openItemSettings(game, weaponSheetId))
+          .locator(".select-compatible-ammo")
+          .click();
+        const compatibleAmmoDialog = game
+          .locator(".application")
+          .filter({ has: game.locator('input[name="selectedAmmo"]') });
+        await compatibleAmmoDialog
+          .locator('input[name="selectedAmmo"][value="rifle"]')
+          .check();
+        await compatibleAmmoDialog
+          .locator('button.cpr-dialog-button[data-action="confirm"]')
+          .click();
+        await game.waitForFunction(
+          (id) => game.items.get(id).system.ammoVariety.includes("rifle"),
+          weaponId,
+        );
+        await closeDocSheet(game, { collection: "items", id: weaponId });
+
+        const ammoId = await createDocumentViaUI(game, {
+          documentTab: "items",
+          type: "ammo",
+          name: ammoName,
+        });
+        const ammoSheetId = await expectSheetRendered(game, {
+          collection: "items",
+          id: ammoId,
+        });
+        const ammoSheet = await openItemSettings(game, ammoSheetId);
+        await ammoSheet
+          .locator('select[name="system.variety"]')
+          .selectOption("rifle");
+        await game.waitForFunction(
+          (id) => game.items.get(id).system.variety === "rifle",
+          ammoId,
+        );
+        await setItemField(game, {
+          sheetId: ammoSheetId,
+          itemId: ammoId,
+          name: "system.amount",
+          path: "system.amount",
+          value: 40,
+        });
+        await closeDocSheet(game, { collection: "items", id: ammoId });
+
+        for (const itemId of [weaponId, ammoId]) {
+          await dragItemToActorSheet(game, {
+            itemId,
+            sheetId: characterSheetId,
+            actorId: characterActorId,
+          });
+        }
+
+        ({ embeddedWeaponId, embeddedAmmoId } = await game.evaluate(
+          ({ actorId, weaponName, ammoName }) => {
+            const actor = game.actors.get(actorId);
+            return {
+              embeddedWeaponId: actor.items.find((i) => i.name === weaponName)
+                .id,
+              embeddedAmmoId: actor.items.find((i) => i.name === ammoName).id,
+            };
+          },
+          { actorId: characterActorId, weaponName, ammoName },
+        ));
+
+        await equipWeapon(game, {
+          actorSheetId: characterSheetId,
+          actorId: characterActorId,
+          itemId: embeddedWeaponId,
+        });
+
+        // Load the rifle from the fight tab's change-ammo action. The
+        // magazine fills to its max and the remainder stays in the pile.
+        const characterSheet = game.locator(`#${characterSheetId}`);
+        await characterSheet
+          .locator('.navtabs-bottom a[data-tab="fight"]')
+          .click();
+        await characterSheet
+          .locator(
+            `.bottom-content-section .item-action[data-item-id="${embeddedWeaponId}"][data-action="select-ammo"]`,
+          )
+          .click();
+        const loadDialog = game
+          .locator(".application")
+          .filter({ has: game.locator('select[name="selectedAmmo"]') });
+        await expect(
+          loadDialog.locator('select[name="selectedAmmo"]'),
+        ).toHaveValue(embeddedAmmoId);
+        await loadDialog
+          .locator('button.cpr-dialog-button[data-action="confirm"]')
+          .click();
+        await game.waitForFunction(
+          ({ actorId, weaponId }) => {
+            const weapon = game.actors.get(actorId).items.get(weaponId);
+            return (
+              weapon.system.magazine.value === 30 &&
+              weapon.system.installedItems.list.length === 1
+            );
+          },
+          { actorId: characterActorId, weaponId: embeddedWeaponId },
+          { timeout: 10000 },
+        );
+      });
+
+      await test.step("drag the loaded weapon to a container", async () => {
+        containerActorId = await createDocumentViaUI(game, {
+          documentTab: "actors",
+          type: "container",
+          name: uniqueName("rifle-shop-container"),
+        });
+        containerSheetId = await expectSheetRendered(game, {
+          collection: "actors",
+          id: containerActorId,
+        });
+        await setContainerWealthViaUI(game, containerActorId, 999999);
+
+        // The two sheets together are wider than the test viewport, so they
+        // cannot sit fully side by side. Park the character sheet at the left
+        // edge and the container sheet at the right edge; bringing the
+        // character sheet to front for the drag leaves a strip of the
+        // container sheet visible to receive the drop.
+        const [charBox, contBox] = await Promise.all([
+          game.locator(`#${characterSheetId}`).boundingBox(),
+          game.locator(`#${containerSheetId}`).boundingBox(),
+        ]);
+        const viewportWidth = await game.evaluate(() => window.innerWidth);
+        const charLeft = 8;
+        const contLeft = Math.min(
+          charLeft + charBox.width + 8,
+          viewportWidth - contBox.width - 8,
+        );
+        await positionActorSheet(game, {
+          actorId: characterActorId,
+          left: charLeft,
+          top: 8,
+        });
+        await positionActorSheet(game, {
+          actorId: containerActorId,
+          left: contLeft,
+          top: 8,
+        });
+
+        await dragOwnedItemToActorSheet(game, {
+          sourceActorId: characterActorId,
+          sourceSheetId: characterSheetId,
+          itemId: embeddedWeaponId,
+          targetActorId: containerActorId,
+          targetSheetId: containerSheetId,
+          requireUiDrag: true,
+          // Drop on the part of the container sheet not covered by the
+          // character sheet; its center would be underneath.
+          dropPosition: {
+            x:
+              (Math.max(contLeft, charLeft + charBox.width) +
+                (contLeft + contBox.width)) /
+                2 -
+              contLeft,
+            y: contBox.height / 2,
+          },
+        });
+
+        const state = await game.evaluate(
+          ({ containerActorId, weaponName, ammoName }) => {
+            const container = game.actors.get(containerActorId);
+            const weapon = container.items.find((i) => i.name === weaponName);
+            const pile = container.items.find(
+              (i) => i.type === "ammo" && i.name === ammoName,
+            );
+            const list = weapon?.system.installedItems.list ?? [];
+            return {
+              hasWeapon: !!weapon,
+              hasPile: !!pile,
+              pileAmount: pile ? pile.system.amount : null,
+              installedListLength: list.length,
+              referencesResolve: list.every((ref) =>
+                container.items.some((i) => i.id === ref),
+              ),
+            };
+          },
+          { containerActorId, weaponName, ammoName },
+        );
+        expect(state.hasWeapon).toBe(true);
+        // Dragging a loaded weapon generates an empty ammo pile on the
+        // container, referenced by the weapon's installed items list.
+        expect(state.hasPile, JSON.stringify(state)).toBe(true);
+        expect(state.pileAmount, JSON.stringify(state)).toBe(0);
+        expect(state.installedListLength, JSON.stringify(state)).toBe(1);
+        expect(state.referencesResolve, JSON.stringify(state)).toBe(true);
+
+        // Park the container sheet back where it opened so it stops covering
+        // the sidebar; the next step reopens it through the sidebar, which
+        // also brings it back to front.
+        await positionActorSheet(game, {
+          actorId: containerActorId,
+          left: contBox.x,
+          top: contBox.y,
+        });
+      });
+
+      await test.step("buyer one purchases the generated ammo pile", async () => {
+        const buyerOneName = uniqueName("ammo-buyer");
+        buyerOneId = await createDocumentViaUI(game, {
+          documentTab: "actors",
+          type: "character",
+          name: buyerOneName,
+        });
+        await expectSheetRendered(game, {
+          collection: "actors",
+          id: buyerOneId,
+        });
+        await closeDocSheet(game, { collection: "actors", id: buyerOneId });
+
+        // Re-render so the trade partner dropdown offers the new buyer.
+        containerSheetId = await reopenActorSheetViaUI(game, containerActorId);
+        await setTradePartnerWithWealth(game, containerSheetId, {
+          partnerName: buyerOneName,
+          wealth: 999999,
+        });
+
+        // The pile's name also appears in the weapon row's nested sub-list,
+        // so scope to ammo rows and rely on only the top-level pile row
+        // carrying a purchase action.
+        const containerSheet = sheet(game, containerSheetId);
+        const pilePurchase = containerSheet
+          .locator('li.item.flexrow[data-item-category="ammo"]')
+          .filter({ hasText: ammoName })
+          .locator(FIELD.purchaseAll);
+        await expect(pilePurchase).toHaveCount(1);
+        await pilePurchase.click();
+
+        await game.waitForFunction(
+          ({ containerActorId, buyerOneId, ammoName }) => {
+            const container = game.actors.get(containerActorId);
+            const buyer = game.actors.get(buyerOneId);
+            return (
+              !container.items.some((i) => i.name === ammoName) &&
+              buyer.items.some((i) => i.name === ammoName)
+            );
+          },
+          { containerActorId, buyerOneId, ammoName },
+          { timeout: 10000 },
+        );
+      });
+
+      await test.step("buyer two purchases the weapon", async () => {
+        const buyerTwoName = uniqueName("weapon-buyer");
+        buyerTwoId = await createDocumentViaUI(game, {
+          documentTab: "actors",
+          type: "character",
+          name: buyerTwoName,
+        });
+        await expectSheetRendered(game, {
+          collection: "actors",
+          id: buyerTwoId,
+        });
+        await closeDocSheet(game, { collection: "actors", id: buyerTwoId });
+
+        containerSheetId = await reopenActorSheetViaUI(game, containerActorId);
+        await setTradePartnerWithWealth(game, containerSheetId, {
+          partnerName: buyerTwoName,
+          wealth: 999999,
+        });
+
+        await purchaseAllViaUI(game, containerSheetId, weaponName);
+
+        await game.waitForFunction(
+          ({ containerActorId, buyerTwoId, weaponName }) => {
+            const container = game.actors.get(containerActorId);
+            const buyer = game.actors.get(buyerTwoId);
+            return (
+              !container.items.some((i) => i.name === weaponName) &&
+              buyer.items.some((i) => i.name === weaponName)
+            );
+          },
+          { containerActorId, buyerTwoId, weaponName },
+          { timeout: 10000 },
+        );
+      });
+
+      await test.step("the purchased weapon has no dangling installed item references", async () => {
+        const state = await game.evaluate(
+          ({ buyerTwoId, weaponName }) => {
+            const buyer = game.actors.get(buyerTwoId);
+            const weapon = buyer.items.find((i) => i.name === weaponName);
+            if (!weapon) return null;
+            const list = weapon.system.installedItems.list;
+            return {
+              installedListLength: list.length,
+              referencesResolve: list.every((ref) =>
+                buyer.items.some((i) => i.id === ref),
+              ),
+            };
+          },
+          { buyerTwoId, weaponName },
+        );
+        expect(
+          state,
+          "expected the weapon to have been purchased",
+        ).toBeTruthy();
+        expect(state.referencesResolve, JSON.stringify(state)).toBe(true);
+      });
+
+      await closeDocSheet(game, { collection: "actors", id: characterActorId });
+      await closeDocSheet(game, { collection: "actors", id: containerActorId });
     });
   });
 

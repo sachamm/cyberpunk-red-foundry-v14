@@ -8,6 +8,7 @@ export {
 export {
   ACTOR_TYPES,
   createActorViaUI,
+  positionActorSheet,
   reopenActorSheetViaUI,
 } from "./actors.mjs";
 export {

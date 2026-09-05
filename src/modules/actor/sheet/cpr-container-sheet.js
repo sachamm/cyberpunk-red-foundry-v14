@@ -215,6 +215,20 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
+    // If the purchased item is installed in another item on this container and
+    // will be removed from stock, uninstall it first. This scrubs the reference
+    // so the other item does not dangle, and restores any magazine rounds to
+    // the item so the buyer receives the full amount at the correct price.
+    const removesFromStock =
+      all &&
+      !foundry.utils.getProperty(
+        this.actor,
+        `flags.${game.system.id}.infinite-stock`,
+      );
+    if (removesFromStock && item.system.isInstalled) {
+      await item.uninstall({ skipDialog: true });
+    }
+
     const transferredItemData = foundry.utils.duplicate(item);
 
     if (SystemUtils.hasMixin(item.type, "container")) {

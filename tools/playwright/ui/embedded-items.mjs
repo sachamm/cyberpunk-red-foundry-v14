@@ -171,7 +171,15 @@ async function waitForOwnedItemTransfer(
 
 export async function dragOwnedItemToActorSheet(
   page,
-  { sourceActorId, sourceSheetId, itemId, targetActorId, targetSheetId },
+  {
+    sourceActorId,
+    sourceSheetId,
+    itemId,
+    targetActorId,
+    targetSheetId,
+    requireUiDrag = false,
+    dropPosition = null,
+  },
 ) {
   const gear = await activateGearTab(page, sourceSheetId);
   const row = await hoverGearRow(gear, itemId);
@@ -183,7 +191,11 @@ export async function dragOwnedItemToActorSheet(
     targetActorId,
   );
 
-  await row.dragTo(target, { timeout: 5000 }).catch(() => {});
+  // dropPosition offsets the drop point from the target's top-left corner,
+  // for when the sheet center is covered by another window.
+  const dragOptions = { timeout: 5000 };
+  if (dropPosition) dragOptions.targetPosition = dropPosition;
+  await row.dragTo(target, dragOptions).catch(() => {});
   await page.mouse.up().catch(() => {});
 
   if (
@@ -194,6 +206,12 @@ export async function dragOwnedItemToActorSheet(
     )
   )
     return;
+
+  if (requireUiDrag) {
+    throw new Error(
+      `UI drag did not transfer owned item ${itemId} from actor ${sourceActorId} to actor ${targetActorId}; the target sheet may be covered by another window`,
+    );
+  }
 
   const uuid = await page.evaluate(
     ({ actorId, itemId }) =>

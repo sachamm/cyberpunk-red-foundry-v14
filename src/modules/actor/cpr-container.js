@@ -154,6 +154,76 @@ export default class CPRContainerActor extends Actor {
   }
 
   /**
+   * This is a copy of the same function in `cpr-actor.js`.
+   * We copy it because CPRContainerActor does not actually extend CPRActor.
+   * In the future, we should refactor so that CPRContainerActor extends CPRActor,
+   * thus rendering this function copy unnecessary.
+   *
+   * When we delete an owned item, we should first check if it has items installed into it,
+   * or if it's installed into something else (or both). That way we can make sure they get
+   * uninstalled properly and their references are scrubbed. Without this, deleting an
+   * installed item (e.g. purchasing a loaded weapon's ammo pile from a shop) leaves
+   * dangling ids in the other items' `installedItems.list`.
+   *
+   * @override
+   * @param {String} embeddedName - document name, usually a category like Item
+   * @param {Object} ids - Array of ids to consider
+   * @param {Object} [options] - an object tracking the context in which the method is being called
+   * @param {Boolean} [options.cprIsMigrating = false] - Whether or not this is being called during migration.
+   * @param {Boolean} [options.unloadAmmo = true]      - If ammo should be unloaded as a part of this delete action.
+   * @param {Boolean} [options.deleteInstalled = false]   - Uninstall or delete installed items?.
+   * @returns {null}
+   */
+  async deleteEmbeddedDocuments(
+    embeddedName,
+    ids,
+    options = {
+      cprIsMigrating: false,
+      unloadAmmo: true,
+      deleteInstalled: false,
+    },
+  ) {
+    // If migration is calling this, we assume migration is
+    // handling all references to containers and installable
+    // items, so we just delete the item.
+    const isMigration = !!options?.cprIsMigrating;
+    if (isMigration)
+      return super.deleteEmbeddedDocuments(embeddedName, ids, options);
+
+    // For every item that we are deleting...
+    const uninstallPromises = [];
+    for (const itemId of ids) {
+      // Get the item.
+      const item = this.getOwnedItem(itemId);
+      // Check if item is installed somewhere. Uninstall it first.
+      if (item?.system.isInstalled) {
+        uninstallPromises.push(item.uninstall({ skipDialog: true }));
+      }
+
+      // Check if it has installed items. Uninstall them before deleting.
+      if (item?.system.hasInstalled) {
+        const installedItemIDs = item.system.installedItems.list;
+        const installedItemsList = installedItemIDs.map((id) =>
+          this.getOwnedItem(id),
+        );
+        if (!options.deleteInstalled) {
+          // Uninstall all items before deletion of parent.
+          uninstallPromises.push(
+            item.uninstallItems(installedItemsList, {
+              unloadAmmo: options.unloadAmmo,
+            }),
+          );
+        }
+      }
+    }
+    // Resolve all promises.
+    await Promise.all(uninstallPromises);
+
+    // Continue on with deleting the documents (call the Foundry function).
+    return super.deleteEmbeddedDocuments(embeddedName, ids, options);
+  }
+
+  /**
    * This is a helper function for when syncing installed items fails irrecoverably.
    * It forcibly uninstalls all items from all other items so that the character sheet
    * can reset from a neutral state. This function should reveal items that are "invisible" on actors
@@ -530,5 +600,26 @@ export default class CPRContainerActor extends Actor {
       ? this.items.find((i) => i._id === itemId)
       : this.items.find((i) => i.uuid === itemId);
     return item;
+  }
+
+  /**
+   * This is a copy of the same function in `cpr-actor.js`.
+   * We copy it because CPRContainerActor does not actually extend CPRActor.
+   * In the future, we should refactor so that CPRContainerActor extends CPRActor,
+   * thus rendering this function copy unnecessary.
+   *
+   * Return an array of Item objects given an array of Ids
+   *
+   * @public
+   * @param {Array} itemIds - Array of Ids or UUIDs of the item(s) to get.
+   * @returns {Array<CPRItem>}
+   */
+  getMultipleOwnedItems(itemIds) {
+    const items = [];
+    for (const id of itemIds) {
+      const ownedItem = this.items.find((i) => i._id === id || i.uuid === id);
+      items.push(ownedItem);
+    }
+    return items;
   }
 }
