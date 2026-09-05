@@ -66,7 +66,6 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Pre-Installed hands, feet, and exposed cyberware coverings into Cyberlimbs
 - Dragging a duplicate role (by name) is intentionally prevented and shows a warning
 - Removed duplicate cyberware icons from `src/icons/cyberweapons`
-- Dragging loaded weapons to a container actor unloads the weapon first
 
 ### Plumbing
 

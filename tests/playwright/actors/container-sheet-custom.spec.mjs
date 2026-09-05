@@ -22,7 +22,7 @@ import {
   sellItemToContainerViaUI,
   setContainerFlagViaUI,
   setContainerTypeViaUI,
-  setContainerWealthViaUI,
+  setActorWealthViaUI,
   sheet,
   setTradePartnerWithWealth,
   waitForActorFields,
@@ -217,7 +217,7 @@ test.describe("Custom", () => {
     });
 
     await test.step("give the container funds", async () => {
-      await setContainerWealthViaUI(game, containerActorId, 999999);
+      await setActorWealthViaUI(game, containerActorId, 999999);
     });
 
     await test.step("sell item to container and verify 75% compensation (150)", async () => {
@@ -479,10 +479,11 @@ test.describe("Custom", () => {
           itemName: "Locked Item",
         });
 
+        await setContainerTypeViaUI(game, lockedActorId, "custom");
+
         await game.evaluate(
           async (params) => {
             const actor = game.actors.get(params.actorId);
-            await actor.setContainerType("custom");
             await actor.update({
               [`ownership.${params.playerId}`]:
                 CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,

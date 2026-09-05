@@ -15,6 +15,7 @@ import {
   enablePlayersCreateInventory,
   installConsoleErrorHarness,
   purchaseAllViaUI,
+  setActorWealthViaUI,
   setContainerTypeViaUI,
   sheet,
   setTradePartnerWithWealth,
@@ -88,15 +89,7 @@ test.describe("Stash", () => {
 
     await test.step("set up stash with player having initial wealth", async () => {
       await setContainerTypeViaUI(game, stashActorId, "stash");
-      await game.evaluate(
-        async ({ playerActorId }) => {
-          const player = game.actors.get(playerActorId);
-          if (player) {
-            await player.update({ "system.wealth.value": 500 });
-          }
-        },
-        { playerActorId },
-      );
+      await setActorWealthViaUI(game, playerActorId, 500);
     });
 
     await test.step("move item into stash and verify no ledger changes", async () => {
@@ -208,15 +201,8 @@ test.describe("Stash", () => {
 
     await test.step("set up stash with item and player with initial wealth", async () => {
       await setContainerTypeViaUI(game, stashActorId, "stash");
-      await game.evaluate(
-        async ({ playerActorId }) => {
-          const player = game.actors.get(playerActorId);
-          if (player) {
-            await player.update({ "system.wealth.value": 300 });
-          }
-        },
-        { playerActorId },
-      );
+      await setActorWealthViaUI(game, playerActorId, 300);
+      await closeDocSheet(game, { collection: "actors", id: playerActorId });
 
       let stashSheetId = await expectSheetRendered(game, {
         collection: "actors",

@@ -29,7 +29,7 @@ import {
   sellItemToContainerViaUI,
   setContainerFlagViaUI,
   setContainerTypeViaUI,
-  setContainerWealthViaUI,
+  setActorWealthViaUI,
   sheet,
   setTradePartnerWithWealth,
   waitForActorFields,
@@ -258,7 +258,7 @@ test.describe("Shop", () => {
     });
 
     await test.step("set up shop with sufficient funds", async () => {
-      await setContainerWealthViaUI(game, containerActorId, 999999);
+      await setActorWealthViaUI(game, containerActorId, 999999);
     });
 
     await test.step("sell item to shop via drag-and-drop and verify both ledgers update", async () => {
@@ -392,7 +392,7 @@ test.describe("Shop", () => {
 
     await test.step("configure container to buy gear at 50% with zero funds", async () => {
       await setContainerTypeViaUI(game, containerActorId, "shop");
-      await setContainerWealthViaUI(game, containerActorId, 0);
+      await setActorWealthViaUI(game, containerActorId, 0);
       await configureContainerVendorViaUI(game, containerActorId, {
         itemType: "gear",
         purchasePercentage: 50,
@@ -1093,7 +1093,7 @@ test.describe("Shop", () => {
         id: containerActorId,
       });
 
-      await setContainerWealthViaUI(game, containerActorId, 999999);
+      await setActorWealthViaUI(game, containerActorId, 999999);
 
       await sellItemToContainerViaUI(game, browser, baseURL, {
         containerActorId,
@@ -1173,10 +1173,9 @@ test.describe("Shop", () => {
         collection: "actors",
         id: containerActorId,
       });
-      const playerSheetId = await expectSheetRendered(game, {
-        collection: "actors",
-        id: playerActorId,
-      });
+      // The trade partner setup closed the player's sheet; bring it back to
+      // front through the sidebar.
+      const playerSheetId = await reopenActorSheetViaUI(game, playerActorId);
       const gear = await activateGearTab(game, playerSheetId);
       const weaponRow = gear
         .locator('li.item[data-item-category="weapon"]')
@@ -1402,7 +1401,7 @@ test.describe("Shop", () => {
         collection: "actors",
         id: containerActorId,
       });
-      await setContainerWealthViaUI(game, containerActorId, 999999);
+      await setActorWealthViaUI(game, containerActorId, 999999);
 
       // The two sheets together are wider than the test viewport, so they
       // cannot sit fully side by side. Park the character sheet at the left

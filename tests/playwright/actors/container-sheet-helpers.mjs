@@ -5,6 +5,7 @@ import {
 } from "../../../tools/playwright/session/world.mjs";
 import {
   activateGearTab,
+  closeDocSheet,
   closeOwnedItemSheet,
   createDocumentViaUI,
   expectSheetRendered,
@@ -156,19 +157,17 @@ export async function setContainerTypeViaUI(game, actorId, type) {
 }
 
 /**
- * Set a container's eurobucks wealth through the ledger window: open the
- * ledger from the container sheet, type the value, and click "set". The
- * ledger window is closed again afterwards.
+ * Set an actor's eurobucks wealth through the ledger window: open the actor
+ * sheet, open its eurobucks ledger, type the value, and click "set". The
+ * ledger window is closed again afterwards. Works for any actor whose sheet
+ * exposes the ledger button (characters and containers).
  *
  * @param {Object} game - the top-level game object from Foundry
- * @param {String} actorId - id of the container actor (sheet must be rendered)
+ * @param {String} actorId - id of the actor
  * @param {Number} value - wealth value to set
  */
-export async function setContainerWealthViaUI(game, actorId, value) {
-  const sheetId = await expectSheetRendered(game, {
-    collection: "actors",
-    id: actorId,
-  });
+export async function setActorWealthViaUI(game, actorId, value) {
+  const sheetId = await reopenActorSheetViaUI(game, actorId);
   const ledgerButton = sheet(game, sheetId).locator(FIELD.ledgerButton);
   await expect(ledgerButton).toBeVisible();
   await ledgerButton.click();
@@ -296,7 +295,9 @@ export async function enablePlayersCreateInventory(game) {
 
 /**
  * Select a trade partner on a container sheet and give them a known amount of
- * wealth. When `partnerName` is omitted, the first selectable partner is used.
+ * wealth through the ledger window on their character sheet. The partner's
+ * sheet is closed again afterwards so the container sheet stays clickable.
+ * When `partnerName` is omitted, the first selectable partner is used.
  *
  * @param {Object} game - the top-level game object from Foundry
  * @param {String} sheetId - rendered element id of the container actor's sheet
@@ -339,15 +340,12 @@ export async function setTradePartnerWithWealth(
 
   await tradeDropdown.selectOption({ value: tradePartnerId });
 
-  await game.evaluate(
-    async ({ tradePartnerId, wealth }) => {
-      const tradePartner = game.actors.get(tradePartnerId);
-      if (tradePartner) {
-        await tradePartner.update({ "system.wealth.value": wealth });
-      }
-    },
-    { tradePartnerId, wealth },
-  );
+  // Trade partners are always characters (the dropdown only lists owned
+  // characters), so their sheet exposes the eurobucks ledger button. The
+  // ledger flow opens the partner's sheet on top of the container sheet, so
+  // close it again to keep the container sheet clickable for the caller.
+  await setActorWealthViaUI(game, tradePartnerId, wealth);
+  await closeDocSheet(game, { collection: "actors", id: tradePartnerId });
 
   return tradePartnerId;
 }
