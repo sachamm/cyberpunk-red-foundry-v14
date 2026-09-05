@@ -77,6 +77,8 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       probe.style.background = "var(--cpr-background-window)";
       probe.style.color = "var(--cpr-text-normal)";
       probe.style.fontFamily = "var(--cpr-font-primary)";
+      probe.style.border = "1px solid var(--cpr-color-medium-grey)";
+      probe.style.outline = "2px solid var(--cpr-text-foundry-hover)";
       document.body.append(probe);
       const buttonProbe = document.createElement("div");
       buttonProbe.style.backgroundColor = "var(--cpr-background-foundry-input)";
@@ -99,6 +101,9 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       );
       const windowHeaderButton = element.querySelector(".window-header button");
       const valueInput = element.querySelector('input[name="changes.0.value"]');
+      const categorySelect = changeRow.querySelector(".key-cat");
+      const valueInputStyle = getComputedStyle(valueInput);
+      const categorySelectStyle = getComputedStyle(categorySelect);
       const isContained = (child, parent) => {
         const childRect = child.getBoundingClientRect();
         const parentRect = parent.getBoundingClientRect();
@@ -121,6 +126,8 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
         expectedBackgroundColor: expectedStyle.backgroundColor,
         expectedColor: expectedStyle.color,
         expectedFontFamily: expectedStyle.fontFamily,
+        expectedControlBorderColor: expectedStyle.borderTopColor,
+        expectedFocusOutlineColor: expectedStyle.outlineColor,
         headerDisplay: getComputedStyle(header).display,
         rowDisplay: getComputedStyle(changeRow).display,
         actionHeaderContained: isContained(actionHeader, header),
@@ -136,7 +143,12 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
         windowHeaderButtonBackground:
           getComputedStyle(windowHeaderButton).backgroundColor,
         cprButtonBackground: getComputedStyle(buttonProbe).backgroundColor,
-        valueInputBorderStyle: getComputedStyle(valueInput).borderTopStyle,
+        valueInputBorderColor: valueInputStyle.borderTopColor,
+        valueInputBorderStyle: valueInputStyle.borderTopStyle,
+        valueInputBoxShadow: valueInputStyle.boxShadow,
+        valueInputOutlineStyle: valueInputStyle.outlineStyle,
+        categorySelectBorderColor: categorySelectStyle.borderTopColor,
+        categorySelectBoxShadow: categorySelectStyle.boxShadow,
       };
       probe.remove();
       buttonProbe.remove();
@@ -154,7 +166,14 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     expect(theme.windowHeaderButtonBackground).not.toBe(
       theme.cprButtonBackground,
     );
-    expect(theme.valueInputBorderStyle).not.toBe("none");
+    expect(theme.valueInputBorderStyle).toBe("solid");
+    expect(theme.valueInputBorderColor).toBe(theme.expectedControlBorderColor);
+    expect(theme.valueInputBoxShadow).toBe("none");
+    expect(theme.valueInputOutlineStyle).toBe("none");
+    expect(theme.categorySelectBorderColor).toBe(
+      theme.expectedControlBorderColor,
+    );
+    expect(theme.categorySelectBoxShadow).toBe("none");
 
     const effectId = await game.evaluate(
       (id) => game.items.get(id).effects.contents[0].id,
@@ -178,6 +197,23 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
 
     const valueInput = aeConfig.locator('input[name="changes.0.value"]');
     await valueInput.fill("2");
+    await expect(valueInput).toHaveCSS(
+      "outline-color",
+      theme.expectedFocusOutlineColor,
+    );
+    const focusedInputStyle = await valueInput.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        outlineColor: style.outlineColor,
+        outlineStyle: style.outlineStyle,
+        outlineWidth: style.outlineWidth,
+      };
+    });
+    expect(focusedInputStyle.outlineColor).toBe(
+      theme.expectedFocusOutlineColor,
+    );
+    expect(focusedInputStyle.outlineStyle).toBe("solid");
+    expect(focusedInputStyle.outlineWidth).toBe("2px");
     await valueInput.press("Tab");
     await game.waitForFunction(
       ({ itemId: id, effectId: eid }) =>

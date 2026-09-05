@@ -37,6 +37,17 @@
     text-align: center;
   }
 
+  :is(input[type="text"], select) {
+    border-color: var(--cpr-color-medium-grey);
+    box-shadow: none;
+    outline: none;
+  }
+
+  :is(input[type="text"], select):focus {
+    outline: 0.125rem solid var(--cpr-text-foundry-hover);
+    outline-offset: -0.125rem;
+  }
+
   ol.changes-list > li:nth-child(odd) {
     background-color: var(--cpr-background-row-even);
   }
