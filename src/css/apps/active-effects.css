@@ -10,6 +10,13 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    gap: 0;
+  }
+
+  .change-header > div,
+  ol.changes-list > li > div {
+    box-sizing: border-box;
+    min-width: 0;
   }
 
   .change-header {
@@ -23,6 +30,11 @@
 
   .change-actions {
     flex-basis: 10%;
+  }
+
+  .situational,
+  .on-by-default {
+    text-align: center;
   }
 
   ol.changes-list > li:nth-child(odd) {

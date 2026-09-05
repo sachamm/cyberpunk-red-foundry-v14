@@ -87,8 +87,33 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       );
       const header = element.querySelector(".change-header");
       const actionHeader = header.querySelector(".change-actions");
+      const changeRow = element.querySelector(".changes-list > li");
+      const actionCell = changeRow.querySelector(".change-actions");
+      const situationalCell = changeRow.querySelector(".situational");
+      const situationalCheckbox = situationalCell.querySelector(
+        'input[type="checkbox"]',
+      );
+      const onByDefaultCell = changeRow.querySelector(".on-by-default");
+      const onByDefaultCheckbox = onByDefaultCell.querySelector(
+        'input[type="checkbox"]',
+      );
       const windowHeaderButton = element.querySelector(".window-header button");
       const valueInput = element.querySelector('input[name="changes.0.value"]');
+      const isContained = (child, parent) => {
+        const childRect = child.getBoundingClientRect();
+        const parentRect = parent.getBoundingClientRect();
+        return (
+          childRect.left >= parentRect.left - 1 &&
+          childRect.right <= parentRect.right + 1
+        );
+      };
+      const horizontalCenterOffset = (child, parent) => {
+        const childRect = child.getBoundingClientRect();
+        const parentRect = parent.getBoundingClientRect();
+        const childCenter = (childRect.left + childRect.right) / 2;
+        const parentCenter = (parentRect.left + parentRect.right) / 2;
+        return Math.abs(childCenter - parentCenter);
+      };
       const result = {
         backgroundColor: contentStyle.backgroundColor,
         color: contentStyle.color,
@@ -97,10 +122,17 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
         expectedColor: expectedStyle.color,
         expectedFontFamily: expectedStyle.fontFamily,
         headerDisplay: getComputedStyle(header).display,
-        rowDisplay: getComputedStyle(
-          element.querySelector(".changes-list > li"),
-        ).display,
-        actionsClipped: actionHeader.scrollWidth > actionHeader.clientWidth,
+        rowDisplay: getComputedStyle(changeRow).display,
+        actionHeaderContained: isContained(actionHeader, header),
+        actionCellContained: isContained(actionCell, changeRow),
+        situationalCheckboxCenterOffset: horizontalCenterOffset(
+          situationalCheckbox,
+          situationalCell,
+        ),
+        onByDefaultCheckboxCenterOffset: horizontalCenterOffset(
+          onByDefaultCheckbox,
+          onByDefaultCell,
+        ),
         windowHeaderButtonBackground:
           getComputedStyle(windowHeaderButton).backgroundColor,
         cprButtonBackground: getComputedStyle(buttonProbe).backgroundColor,
@@ -115,7 +147,10 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     expect(theme.fontFamily).toBe(theme.expectedFontFamily);
     expect(theme.headerDisplay).toBe("flex");
     expect(theme.rowDisplay).toBe("flex");
-    expect(theme.actionsClipped).toBe(false);
+    expect(theme.actionHeaderContained).toBe(true);
+    expect(theme.actionCellContained).toBe(true);
+    expect(theme.situationalCheckboxCenterOffset).toBeLessThanOrEqual(1);
+    expect(theme.onByDefaultCheckboxCenterOffset).toBeLessThanOrEqual(1);
     expect(theme.windowHeaderButtonBackground).not.toBe(
       theme.cprButtonBackground,
     );
