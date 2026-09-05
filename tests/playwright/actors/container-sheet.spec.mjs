@@ -1295,6 +1295,9 @@ test.describe("Container actor sheet", () => {
         type: "role",
         name: uniqueName("solo-role"),
       });
+      // Creating the item leaves its sheet open, in front of the container
+      // sheet; close it so the real drag can land on the container.
+      await closeDocSheet(game, { collection: "items", id: roleId });
 
       const errorNotification = game.locator(".notification.error").filter({
         hasText: "Roles cannot be added to containers",
@@ -1307,38 +1310,21 @@ test.describe("Container actor sheet", () => {
         const containerSheet = sheet(game, sheetId);
         await expect(containerSheet).toBeVisible();
 
+        // Real UI drag only: the drop itself is the behavior under test, so
+        // there is no synthetic DragEvent fallback. If it does not land, the
+        // assertion below fails the test.
         await entry.dragTo(containerSheet, { timeout: 5000 }).catch(() => {});
         await game.mouse.up().catch(() => {});
 
-        let shown = await errorNotification
+        const shown = await errorNotification
           .first()
           .waitFor({ state: "visible", timeout: 3000 })
           .then(() => true)
           .catch(() => false);
-        if (!shown) {
-          const uuid = await game.evaluate(
-            (id) => game.items.get(id).uuid,
-            roleId,
-          );
-          await game.evaluate(
-            ({ uuid, sheetId }) => {
-              const el = document.getElementById(sheetId);
-              const data = new DataTransfer();
-              data.setData(
-                "text/plain",
-                JSON.stringify({ type: "Item", uuid }),
-              );
-              el.dispatchEvent(
-                new DragEvent("drop", {
-                  bubbles: true,
-                  cancelable: true,
-                  dataTransfer: data,
-                }),
-              );
-            },
-            { uuid, sheetId },
-          );
-        }
+        expect(
+          shown,
+          "UI drag of the role item did not trigger the rejection notification; the container sheet may be covered by another window",
+        ).toBe(true);
       });
 
       await test.step("an error notification is shown to the user", async () => {
@@ -3100,12 +3086,50 @@ test.describe("Container actor sheet", () => {
 
         const stashSheetId = await reopenActorSheetViaUI(game, stashActorId);
         playerSheetId = await reopenActorSheetViaUI(game, playerActorId);
+
+        // The two sheets together are wider than the test viewport, so they
+        // cannot sit fully side by side. Park the player sheet at the left
+        // edge and the stash sheet at the right edge; the player sheet was
+        // reopened last, so it sits in front and leaves a strip of the stash
+        // sheet visible to receive the drop.
+        const [playerBox, stashBox] = await Promise.all([
+          game.locator(`#${playerSheetId}`).boundingBox(),
+          game.locator(`#${stashSheetId}`).boundingBox(),
+        ]);
+        const viewportWidth = await game.evaluate(() => window.innerWidth);
+        const playerLeft = 8;
+        const stashLeft = Math.min(
+          playerLeft + playerBox.width + 8,
+          viewportWidth - stashBox.width - 8,
+        );
+        await positionActorSheet(game, {
+          actorId: playerActorId,
+          left: playerLeft,
+          top: 8,
+        });
+        await positionActorSheet(game, {
+          actorId: stashActorId,
+          left: stashLeft,
+          top: 8,
+        });
+
         await dragOwnedItemToActorSheet(game, {
           sourceActorId: playerActorId,
           sourceSheetId: playerSheetId,
           itemId: playerItemId,
           targetActorId: stashActorId,
           targetSheetId: stashSheetId,
+          requireUiDrag: true,
+          // Drop on the part of the stash sheet not covered by the player
+          // sheet; its center would be underneath.
+          dropPosition: {
+            x:
+              (Math.max(stashLeft, playerLeft + playerBox.width) +
+                (stashLeft + stashBox.width)) /
+                2 -
+              stashLeft,
+            y: stashBox.height / 2,
+          },
         });
 
         const stashAfterItem = await game.evaluate(
