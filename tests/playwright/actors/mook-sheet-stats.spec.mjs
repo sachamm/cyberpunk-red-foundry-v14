@@ -14,29 +14,6 @@ import {
   setMookSheetField,
 } from "./mook-sheet-helpers.mjs";
 
-/*
- * Stat Pane coverage for this batch: in-line stat editing (one representative stat,
- * BODY), HP current/max editing, rolling a stat (BODY) to chat, the derived wound state
- * display, and the death save (increase / reset penalty, and rolling it).
- *
- * HP clamping is enforced by CPRActor._calculateDerivedStats (cpr-actor.js), which runs
- * in prepareData on every update for the owner/GM and sets
- * derivedStats.hp.value = min(value, max). So pushing current above max, or lowering max
- * below current, both clamp current down to max. Each test proves it on a fresh render
- * after a hard close/reopen, with the actor document as supporting evidence.
- *
- * The death save's displayed number is derivedStats.deathSave.value = penalty + basePenalty
- * (cpr-actor.js). A bare mook has no critical injuries, so basePenalty is 0 and the display
- * tracks the stored penalty alone: `.increase-deathsave-value` adds one, clicking the value
- * (`.reset-deathsave-value`) resets it to 0. Rolling posts a CPRDeathSaveRoll — a 1d10
- * roll-under BODY that always fails on a natural 10; because the serialised roll drops its
- * CPR state, the test reads the result total and outcome from the rendered card and BODY
- * from the actor document, then asserts the outcome matches `resultTotal < BODY`.
- */
-
-// Ctrl/Cmd-click the mook's Death Save rollable (skipping the verify dialog), wait for the
-// new chat message, and read back what kind of roll it was plus the rendered result total
-// and success/failure outcome. The chat log must already be open so the card is in the DOM.
 async function rollDeathSave(page, sheetId) {
   const before = await page.evaluate(() => game.messages.size);
   // macOS Chromium treats Ctrl+click as a right-click (context menu) and never dispatches
@@ -49,11 +26,9 @@ async function rollDeathSave(page, sheetId) {
     timeout: 10000,
   });
   const messageId = await page.evaluate(() => game.messages.contents.at(-1).id);
-  // Supporting evidence: the posted roll is specifically a death save.
   const rollClass = await page.evaluate(
     () => game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,
   );
-  // Visible proof: the result total and success/failure class on the rendered card.
   const card = page.locator(
     `#chat .chat-message[data-message-id="${messageId}"]`,
   );
@@ -84,7 +59,6 @@ test.describe("Stat Pane", () => {
 
     await test.step("setting BODY in-line commits the new value", async () => {
       await setMookSheetField(game, sheetId, MOOK_FIELD.bodyStatInput, 12);
-      // Supporting evidence: the document's stat value was updated.
       await waitForMookFields(game, actorId, { "system.stats.body.value": 12 });
     });
 
@@ -116,7 +90,6 @@ test.describe("Stat Pane", () => {
         "system.derivedStats.hp.value": 35,
       });
       await setMookSheetField(game, sheetId, MOOK_FIELD.hpMaxInput, 60);
-      // Supporting evidence: both distinct values were stored.
       await waitForMookFields(game, actorId, {
         "system.derivedStats.hp.value": 35,
         "system.derivedStats.hp.max": 60,
@@ -147,9 +120,7 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("setting current above max clamps it down to max", async () => {
-      // Default is 40/40. Pushing current to 70 clamps value = min(70, 40) = 40.
       await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, 70);
-      // Supporting evidence: current was clamped to max on the document.
       await waitForMookFields(game, actorId, {
         "system.derivedStats.hp.value": 40,
         "system.derivedStats.hp.max": 40,
@@ -182,9 +153,7 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("lowering max under the current value pulls current down to it", async () => {
-      // Default is 40/40 (current 40). Lowering max to 30 clamps value = min(40, 30) = 30.
       await setMookSheetField(game, sheetId, MOOK_FIELD.hpMaxInput, 30);
-      // Supporting evidence: current was pulled down to the new max on the document.
       await waitForMookFields(game, actorId, {
         "system.derivedStats.hp.value": 30,
         "system.derivedStats.hp.max": 30,
@@ -245,7 +214,6 @@ test.describe("Stat Pane", () => {
         () => game.messages.contents.at(-1).id,
       );
       await openSidebarTab(game, "chat");
-      // Visible proof: the new message renders as a card in the chat log.
       const card = game.locator(
         `#chat .chat-message[data-message-id="${messageId}"]`,
       );
@@ -253,7 +221,6 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("the posted card is a single roll attributed to the mook", async () => {
-      // Supporting evidence: one native roll, speaker resolves to the acting mook.
       const message = await game.evaluate(() => {
         const msg = game.messages.contents.at(-1);
         return { rolls: msg.rolls.length, actor: msg.speaker.actor };
@@ -277,28 +244,30 @@ test.describe("Stat Pane", () => {
       id: actorId,
     });
 
-    // Default mook HP is 40/40. The seriously-wounded threshold is ceil(max / 2) = 20
+    // A fresh mook's HP defaults to 40/40 (hp-schema.js). The seriously-wounded threshold is ceil(max / 2) = 20
     // (CPRActor._calculateDerivedStats, cpr-actor.js), so the derived states map to:
-    //   Not Wounded       hp == max             (40)
+    //   Not Wounded       hp == max             (40 is the default)
     //   Lightly Wounded   threshold <= hp < max  (20..39)
     //   Seriously Wounded 1 <= hp < threshold    (1..19)
     //   Mortally Wounded  hp < 1                (<= 0)
-    const cases = [
-      { label: "Not Wounded", hp: 40 },
+
+    await test.step('at the default HP the wound state reads "Not Wounded"', async () => {
+      await expect(
+        game.locator(`#${sheetId} ${MOOK_FIELD.woundStateStat}`),
+      ).toHaveText("Not Wounded");
+    });
+
+    for (const { label, hp } of [
       { label: "Lightly Wounded", hp: 20 },
       { label: "Seriously Wounded", hp: 19 },
       { label: "Mortally Wounded", hp: 0 },
-    ];
-
-    for (const { label, hp } of cases) {
+    ]) {
       await test.step(`at HP ${hp} the wound state reads "${label}"`, async () => {
         await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, hp);
-        // Supporting evidence: the stored current HP is what we set.
         await waitForMookFields(game, actorId, {
           "system.derivedStats.hp.value": hp,
         });
         sheetId = await closeAndReopenMookSheet(game, actorId);
-        // Visible proof: the derived wound-state label on the fresh render.
         await expect(
           game.locator(`#${sheetId} ${MOOK_FIELD.woundStateStat}`),
         ).toHaveText(label);
@@ -321,9 +290,7 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("each increase click adds one to the penalty and display", async () => {
-      // A fresh mook has no death-save penalty (penalty 0, basePenalty 0 -> displayed 0).
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
-      // Supporting evidence: the stored penalty was incremented.
       await waitForMookFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 1,
       });
@@ -335,7 +302,6 @@ test.describe("Stat Pane", () => {
       await waitForMookFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 2,
       });
-      // Visible proof: the derived display value tracks the penalty.
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
       ).toHaveText("2");
@@ -365,7 +331,6 @@ test.describe("Stat Pane", () => {
 
     await test.step("increasing then clicking the value resets the penalty to zero", async () => {
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
-      // Supporting evidence: the stored penalty was incremented.
       await waitForMookFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 1,
       });
@@ -373,12 +338,10 @@ test.describe("Stat Pane", () => {
         game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
       ).toHaveText("1");
 
-      // The displayed value is the reset trigger.
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`).click();
       await waitForMookFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 0,
       });
-      // Visible proof: the display is back to zero.
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
       ).toHaveText("0");
@@ -401,18 +364,12 @@ test.describe("Stat Pane", () => {
       type: "mook",
       name: uniqueName("mook"),
     });
-    let sheetId = await expectSheetRendered(game, {
+    const sheetId = await expectSheetRendered(game, {
       collection: "actors",
       id: actorId,
     });
 
-    await test.step("setting a low BODY gives a known roll-under target", async () => {
-      // A target of 6 keeps both outcomes reachable and makes the natural-10 auto-fail rule
-      // subsumed by the roll-under check (a natural 10 always totals >= 10 > 6).
-      await setMookSheetField(game, sheetId, MOOK_FIELD.bodyStatInput, 6);
-      await waitForMookFields(game, actorId, { "system.stats.body.value": 6 });
-    });
-
+    // A fresh mook's BODY defaults to 6 (stat-schema.js), which keeps both outcomes reachable after a few rolls
     const bodyStat = await game.evaluate(
       (id) => game.actors.get(id).system.stats.body.value,
       actorId,
@@ -426,7 +383,6 @@ test.describe("Stat Pane", () => {
           sheetId,
         );
         expect(rollClass).toBe("CPRDeathSaveRoll");
-        // Success iff the total rolls strictly under BODY (natural 10 subsumed at BODY 6).
         const expected = resultTotal < bodyStat ? "success" : "failure";
         expect(
           outcome,
