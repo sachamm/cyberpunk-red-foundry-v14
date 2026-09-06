@@ -16,16 +16,54 @@ import {
 
 /*
  * Stat Pane coverage for this batch: in-line stat editing (one representative stat,
- * BODY), HP current/max editing, rolling a stat (BODY) to chat, and the derived wound
- * state display. Death save is intentionally NOT covered here — it is the next Stat
- * Pane batch.
+ * BODY), HP current/max editing, rolling a stat (BODY) to chat, the derived wound state
+ * display, and the death save (increase / reset penalty, and rolling it).
  *
  * HP clamping is enforced by CPRActor._calculateDerivedStats (cpr-actor.js), which runs
  * in prepareData on every update for the owner/GM and sets
  * derivedStats.hp.value = min(value, max). So pushing current above max, or lowering max
  * below current, both clamp current down to max. Each test proves it on a fresh render
  * after a hard close/reopen, with the actor document as supporting evidence.
+ *
+ * The death save's displayed number is derivedStats.deathSave.value = penalty + basePenalty
+ * (cpr-actor.js). A bare mook has no critical injuries, so basePenalty is 0 and the display
+ * tracks the stored penalty alone: `.increase-deathsave-value` adds one, clicking the value
+ * (`.reset-deathsave-value`) resets it to 0. Rolling posts a CPRDeathSaveRoll — a 1d10
+ * roll-under BODY that always fails on a natural 10; because the serialised roll drops its
+ * CPR state, the test reads the result total and outcome from the rendered card and BODY
+ * from the actor document, then asserts the outcome matches `resultTotal < BODY`.
  */
+
+// Ctrl/Cmd-click the mook's Death Save rollable (skipping the verify dialog), wait for the
+// new chat message, and read back what kind of roll it was plus the rendered result total
+// and success/failure outcome. The chat log must already be open so the card is in the DOM.
+async function rollDeathSave(page, sheetId) {
+  const before = await page.evaluate(() => game.messages.size);
+  // macOS Chromium treats Ctrl+click as a right-click (context menu) and never dispatches
+  // `click`, so use Cmd there. The roll handler accepts both (`event.ctrlKey || event.metaKey`).
+  const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
+  await page
+    .locator(`#${sheetId} ${MOOK_FIELD.deathSaveRollable}`)
+    .click({ modifiers: modifier });
+  await page.waitForFunction((n) => game.messages.size > n, before, {
+    timeout: 10000,
+  });
+  const messageId = await page.evaluate(() => game.messages.contents.at(-1).id);
+  // Supporting evidence: the posted roll is specifically a death save.
+  const rollClass = await page.evaluate(
+    () => game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,
+  );
+  // Visible proof: the result total and success/failure class on the rendered card.
+  const card = page.locator(
+    `#chat .chat-message[data-message-id="${messageId}"]`,
+  );
+  const resultTotal = Number(
+    await card.locator(".d10-number-div span.clickable").textContent(),
+  );
+  const outcome =
+    (await card.locator(".roll-success").count()) > 0 ? "success" : "failure";
+  return { rollClass, resultTotal, outcome };
+}
 
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
@@ -266,6 +304,136 @@ test.describe("Stat Pane", () => {
         ).toHaveText(label);
       });
     }
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("increasing the death save penalty raises the displayed value", async ({
+    page: game,
+  }) => {
+    const actorId = await createActorViaUI(game, {
+      type: "mook",
+      name: uniqueName("mook"),
+    });
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    await test.step("each increase click adds one to the penalty and display", async () => {
+      // A fresh mook has no death-save penalty (penalty 0, basePenalty 0 -> displayed 0).
+      await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
+      // Supporting evidence: the stored penalty was incremented.
+      await waitForMookFields(game, actorId, {
+        "system.derivedStats.deathSave.penalty": 1,
+      });
+      await expect(
+        game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
+      ).toHaveText("1");
+
+      await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
+      await waitForMookFields(game, actorId, {
+        "system.derivedStats.deathSave.penalty": 2,
+      });
+      // Visible proof: the derived display value tracks the penalty.
+      await expect(
+        game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
+      ).toHaveText("2");
+    });
+
+    await test.step("the increased value is on a fresh render", async () => {
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      await expect(
+        game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
+      ).toHaveText("2");
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("resetting the death save penalty returns the displayed value to zero", async ({
+    page: game,
+  }) => {
+    const actorId = await createActorViaUI(game, {
+      type: "mook",
+      name: uniqueName("mook"),
+    });
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    await test.step("increasing then clicking the value resets the penalty to zero", async () => {
+      await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
+      // Supporting evidence: the stored penalty was incremented.
+      await waitForMookFields(game, actorId, {
+        "system.derivedStats.deathSave.penalty": 1,
+      });
+      await expect(
+        game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
+      ).toHaveText("1");
+
+      // The displayed value is the reset trigger.
+      await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`).click();
+      await waitForMookFields(game, actorId, {
+        "system.derivedStats.deathSave.penalty": 0,
+      });
+      // Visible proof: the display is back to zero.
+      await expect(
+        game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
+      ).toHaveText("0");
+    });
+
+    await test.step("the reset value is on a fresh render", async () => {
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      await expect(
+        game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
+      ).toHaveText("0");
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("rolling a death save posts a self-consistent roll-under card", async ({
+    page: game,
+  }) => {
+    const actorId = await createActorViaUI(game, {
+      type: "mook",
+      name: uniqueName("mook"),
+    });
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    await test.step("setting a low BODY gives a known roll-under target", async () => {
+      // A target of 6 keeps both outcomes reachable and makes the natural-10 auto-fail rule
+      // subsumed by the roll-under check (a natural 10 always totals >= 10 > 6).
+      await setMookSheetField(game, sheetId, MOOK_FIELD.bodyStatInput, 6);
+      await waitForMookFields(game, actorId, { "system.stats.body.value": 6 });
+    });
+
+    const bodyStat = await game.evaluate(
+      (id) => game.actors.get(id).system.stats.body.value,
+      actorId,
+    );
+    await openSidebarTab(game, "chat");
+
+    await test.step("each death save roll is consistent with its total and BODY", async () => {
+      for (let i = 0; i < 6; i += 1) {
+        const { rollClass, resultTotal, outcome } = await rollDeathSave(
+          game,
+          sheetId,
+        );
+        expect(rollClass).toBe("CPRDeathSaveRoll");
+        // Success iff the total rolls strictly under BODY (natural 10 subsumed at BODY 6).
+        const expected = resultTotal < bodyStat ? "success" : "failure";
+        expect(
+          outcome,
+          `total ${resultTotal} vs BODY ${bodyStat} should be ${expected}`,
+        ).toBe(expected);
+      }
+    });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });

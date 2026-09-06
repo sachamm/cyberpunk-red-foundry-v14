@@ -15,6 +15,9 @@ export const MOOK_FIELD = {
   hpValueInput: 'input[name="system.derivedStats.hp.value"]',
   hpMaxInput: 'input[name="system.derivedStats.hp.max"]',
   woundStateStat: ".mook-wounded-stat",
+  deathSaveRollable: 'a.rollable[data-roll-type="deathsave"]',
+  deathSaveValue: ".reset-deathsave-value",
+  deathSaveIncrease: ".increase-deathsave-value",
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).
