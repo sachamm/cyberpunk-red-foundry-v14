@@ -14,6 +14,7 @@ export default class ModuleMigrationSettings extends HandlebarsApplicationMixin(
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
     id: "module-migration-config",
+    classes: ["cpr"],
     tag: "form",
     position: {
       width: "auto",

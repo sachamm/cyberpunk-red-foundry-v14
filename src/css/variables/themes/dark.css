@@ -1,4 +1,5 @@
 html[data-cpr-theme="dark"] {
+  --cpr-color-scheme: dark;
   --cpr-background-border: var(--cpr-dark-main);
   --cpr-background-box: var(--cpr-dark-background);
   --cpr-background-chat-border: #999;

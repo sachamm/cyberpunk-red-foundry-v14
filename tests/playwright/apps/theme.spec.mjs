@@ -1,0 +1,233 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+
+const SYSTEM_ID = "cyberpunk-red-core";
+
+async function captureSettings(page) {
+  return page.evaluate(() => ({
+    theme: game.settings.get(game.system.id, "theme"),
+    themeFoundry: game.settings.get(game.system.id, "themeFoundry"),
+    uiConfig: game.settings.get("core", "uiConfig"),
+  }));
+}
+
+async function restoreSettings(page, settings) {
+  await page.evaluate(async (original) => {
+    await game.settings.set(game.system.id, "themeFoundry", false);
+    await game.settings.set(game.system.id, "theme", original.theme);
+    await game.settings.set("core", "uiConfig", original.uiConfig);
+    await game.settings.set(
+      game.system.id,
+      "themeFoundry",
+      original.themeFoundry,
+    );
+  }, settings);
+}
+
+async function readThemeTokens(page) {
+  return page.evaluate(() => {
+    const stock = document.createElement("section");
+    stock.className = "application themed theme-dark";
+    const cpr = document.createElement("section");
+    cpr.className = "application cpr themed theme-dark";
+    const legacy = document.createElement("section");
+    legacy.className = "app window-app themed theme-light";
+
+    const cprHeader = document.createElement("header");
+    cprHeader.className = "window-header";
+    const cprHeaderButton = document.createElement("button");
+    cprHeader.append(cprHeaderButton);
+
+    const cprContent = document.createElement("div");
+    cprContent.className = "window-content";
+    const cprContentButton = document.createElement("button");
+    cprContent.append(cprContentButton);
+    cpr.append(cprHeader, cprContent);
+
+    const legacyContent = document.createElement("div");
+    legacyContent.className = "window-content themed theme-light";
+    const legacyButton = document.createElement("button");
+    legacyContent.append(legacyButton);
+    legacy.append(legacyContent);
+
+    document.body.append(stock, cpr, legacy);
+
+    const rootStyle = getComputedStyle(document.documentElement);
+    const read = (element) => {
+      const style = getComputedStyle(element);
+      return {
+        background: style.getPropertyValue("--background").trim(),
+        text: style.getPropertyValue("--color-text-primary").trim(),
+      };
+    };
+    const result = {
+      cprBackground: rootStyle
+        .getPropertyValue("--cpr-background-window")
+        .trim(),
+      cprButtonBackground: rootStyle
+        .getPropertyValue("--cpr-background-foundry-input")
+        .trim(),
+      cprText: rootStyle.getPropertyValue("--cpr-text-normal").trim(),
+      stock: read(stock),
+      cpr: read(cpr),
+      cprHeaderButton: getComputedStyle(cprHeaderButton)
+        .getPropertyValue("--button-background-color")
+        .trim(),
+      cprContentButton: getComputedStyle(cprContentButton)
+        .getPropertyValue("--button-background-color")
+        .trim(),
+      legacy: read(legacy),
+      legacyButton: getComputedStyle(legacyButton)
+        .getPropertyValue("--button-background-color")
+        .trim(),
+      legacyContentBackground: getComputedStyle(legacyContent).backgroundImage,
+    };
+
+    stock.remove();
+    cpr.remove();
+    legacy.remove();
+    return result;
+  });
+}
+
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
+test.describe("CPR theme integration", () => {
+  test("registers the optional Foundry theme as a client setting", async ({
+    page: game,
+  }) => {
+    const setting = await game.evaluate((systemId) => {
+      const config = window.game.settings.settings.get(
+        `${systemId}.themeFoundry`,
+      );
+      return {
+        scope: config.scope,
+        config: config.config,
+        default: config.default,
+        name: config.name,
+        hint: config.hint,
+      };
+    }, SYSTEM_ID);
+
+    expect(setting).toEqual({
+      scope: "client",
+      config: true,
+      default: false,
+      name: "CPR.settings.themeFoundry.title",
+      hint: "CPR.settings.themeFoundry.hint",
+    });
+  });
+
+  test("always maps CPR windows without changing stock Foundry", async ({
+    page: game,
+  }) => {
+    const original = await captureSettings(game);
+    try {
+      await game.evaluate(async () => {
+        const uiConfig = game.settings.get("core", "uiConfig");
+        await game.settings.set("core", "uiConfig", {
+          ...uiConfig,
+          colorScheme: {
+            ...uiConfig.colorScheme,
+            applications: "dark",
+            interface: "dark",
+          },
+        });
+        await game.settings.set(game.system.id, "themeFoundry", false);
+        await game.settings.set(game.system.id, "theme", "light");
+      });
+
+      await expect(game.locator("html")).toHaveAttribute(
+        "data-cpr-theme",
+        "light",
+      );
+      await expect(game.locator("html")).not.toHaveAttribute(
+        "data-cpr-theme-foundry",
+      );
+
+      const tokens = await readThemeTokens(game);
+      expect(tokens.cpr.background).toBe(tokens.cprBackground);
+      expect(tokens.cpr.text).toBe(tokens.cprText);
+      expect(tokens.stock.background).not.toBe(tokens.cprBackground);
+      expect(tokens.stock.text).not.toBe(tokens.cprText);
+      expect(tokens.cprContentButton).toBe(tokens.cprButtonBackground);
+      expect(tokens.cprHeaderButton).not.toBe(tokens.cprContentButton);
+      expect(tokens.legacy.text).not.toBe(tokens.cprText);
+      expect(tokens.legacyButton).not.toBe(tokens.cprButtonBackground);
+      expect(tokens.legacyContentBackground).toContain("parchment.jpg");
+    } finally {
+      await restoreSettings(game, original);
+    }
+  });
+
+  test("extends an explicit variant to Foundry and follows Foundry in auto", async ({
+    page: game,
+  }) => {
+    const original = await captureSettings(game);
+    try {
+      await game.evaluate(async () => {
+        await game.settings.set(game.system.id, "themeFoundry", false);
+        await game.settings.set(game.system.id, "theme", "dark");
+        await game.settings.set(game.system.id, "themeFoundry", true);
+      });
+
+      await expect(game.locator("html")).toHaveAttribute(
+        "data-cpr-theme",
+        "dark",
+      );
+      await expect(game.locator("html")).toHaveAttribute(
+        "data-cpr-theme-foundry",
+        "",
+      );
+
+      let state = await game.evaluate(() => ({
+        colorScheme: game.settings.get("core", "uiConfig").colorScheme,
+        bodyClasses: [...document.body.classList],
+      }));
+      expect(state.colorScheme.applications).toBe("dark");
+      expect(state.colorScheme.interface).toBe("dark");
+      expect(state.bodyClasses).toContain("theme-dark");
+
+      let tokens = await readThemeTokens(game);
+      expect(tokens.stock.background).toBe(tokens.cprBackground);
+      expect(tokens.stock.text).toBe(tokens.cprText);
+      expect(tokens.cprHeaderButton).toBe(tokens.cprContentButton);
+      expect(tokens.legacy.text).not.toBe(tokens.cprText);
+      expect(tokens.legacyButton).not.toBe(tokens.cprButtonBackground);
+      expect(tokens.legacyContentBackground).toContain("parchment.jpg");
+
+      await game.evaluate(async () => {
+        await game.settings.set(game.system.id, "theme", "auto");
+        const uiConfig = game.settings.get("core", "uiConfig");
+        await game.settings.set("core", "uiConfig", {
+          ...uiConfig,
+          colorScheme: {
+            ...uiConfig.colorScheme,
+            applications: "light",
+            interface: "light",
+          },
+        });
+      });
+
+      await expect(game.locator("html")).toHaveAttribute(
+        "data-cpr-theme",
+        "light",
+      );
+      state = await game.evaluate(() => ({
+        colorScheme: game.settings.get("core", "uiConfig").colorScheme,
+        bodyClasses: [...document.body.classList],
+      }));
+      expect(state.colorScheme.applications).toBe("light");
+      expect(state.colorScheme.interface).toBe("light");
+      expect(state.bodyClasses).toContain("theme-light");
+
+      tokens = await readThemeTokens(game);
+      expect(tokens.stock.background).toBe(tokens.cprBackground);
+      expect(tokens.stock.text).toBe(tokens.cprText);
+    } finally {
+      await restoreSettings(game, original);
+    }
+  });
+});

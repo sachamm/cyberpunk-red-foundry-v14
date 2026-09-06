@@ -14,6 +14,7 @@ export default class CPRHomebrewSettings extends HandlebarsApplicationMixin(
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
     id: "homebrew-config",
+    classes: ["cpr"],
     tag: "form",
     position: {
       width: 540,

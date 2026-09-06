@@ -22,7 +22,7 @@ export async function cprConfirm(message, { title } = {}) {
     window: {
       title: title ?? SystemUtils.Localize("CPR.global.generic.title"),
     },
-    classes: ["cpr-dialog"],
+    classes: ["cpr", "cpr-dialog"],
     content: `<div class="cpr-dialog-message">${message}</div>`,
     rejectClose: false,
     modal: true,
@@ -82,7 +82,7 @@ export async function cprFormPrompt({
         }
       : {}),
     modal,
-    classes: ["cpr-dialog"],
+    classes: ["cpr", "cpr-dialog"],
     content,
     buttons: [
       {

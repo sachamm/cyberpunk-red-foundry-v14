@@ -109,32 +109,60 @@ export default class CPRSystemUtils {
    */
   static SetTheme(node) {
     const themeSetting = game.settings.get(game.system.id, "theme") || "auto";
+    const themeFoundry =
+      game.settings.get(game.system.id, "themeFoundry") || false;
+    const uiConfig = game.settings.get("core", "uiConfig") || {};
+    const foundryColorScheme = uiConfig.colorScheme?.applications;
+    const targetDocument = node ? node.ownerDocument : document;
     let theme;
 
     if (themeSetting === "auto") {
       // Follow Foundry's color scheme preference
-      const foundryColorScheme = game.settings.get("core", "uiConfig")
-        ?.colorScheme?.applications;
-
       if (foundryColorScheme === "light") {
-        theme = "default";
+        theme = "light";
       } else if (foundryColorScheme === "dark") {
         theme = "dark";
       } else {
         // foundryColorScheme is "" (browser default)
         // Check browser preference
-        const prefersDark = window.matchMedia(
+        const targetWindow = targetDocument.defaultView || window;
+        const prefersDark = targetWindow.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
-        theme = prefersDark ? "dark" : "default";
+        theme = prefersDark ? "dark" : "light";
       }
     } else {
       // User has manually selected a theme
-      theme = themeSetting;
+      theme = themeSetting === "default" ? "light" : themeSetting;
     }
 
-    const targetDocument = node ? node.ownerDocument : document;
     targetDocument.documentElement.setAttribute("data-cpr-theme", theme);
+    targetDocument.documentElement.toggleAttribute(
+      "data-cpr-theme-foundry",
+      themeFoundry,
+    );
+
+    // When the CPR theme is explicitly extended to Foundry, keep Foundry's
+    // application and interface variants aligned. Comparing before writing is
+    // important because updating core.uiConfig fires clientSettingChanged,
+    // which calls SetTheme again.
+    const isFoundryVariant =
+      themeSetting === "light" || themeSetting === "dark";
+    const foundryThemeMatches =
+      uiConfig.colorScheme?.applications === themeSetting &&
+      uiConfig.colorScheme?.interface === themeSetting;
+    if (!node && themeFoundry && isFoundryVariant && !foundryThemeMatches) {
+      return game.settings.set("core", "uiConfig", {
+        ...uiConfig,
+        colorScheme: {
+          ...uiConfig.colorScheme,
+          applications: themeSetting,
+          interface: themeSetting,
+        },
+      });
+    }
+
+    return undefined;
   }
 
   /**

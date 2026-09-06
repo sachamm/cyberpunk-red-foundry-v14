@@ -31,6 +31,18 @@ const registerSystemSettings = () => {
     },
   });
 
+  game.settings.register(game.system.id, "themeFoundry", {
+    name: "CPR.settings.themeFoundry.title",
+    hint: "CPR.settings.themeFoundry.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: () => {
+      SystemUtils.SetTheme();
+    },
+  });
+
   game.settings.register(game.system.id, "enablePauseAnimation", {
     name: "CPR.settings.enablePauseAnimation.name",
     hint: "CPR.settings.enablePauseAnimation.hint",

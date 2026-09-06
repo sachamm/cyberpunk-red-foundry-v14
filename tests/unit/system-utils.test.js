@@ -1,6 +1,48 @@
-import { describe, it, expect } from "vitest";
+import { afterEach, describe, it, expect, vi } from "vitest";
 
 import SystemUtils from "../../src/modules/utils/cpr-systemUtils.js";
+
+const makeThemeDocument = ({ prefersDark = false } = {}) => {
+  const attributes = new Map();
+  const documentElement = {
+    setAttribute: vi.fn((name, value) => attributes.set(name, value)),
+    toggleAttribute: vi.fn((name, force) => {
+      if (force) attributes.set(name, "");
+      else attributes.delete(name);
+      return force;
+    }),
+    getAttribute: (name) => attributes.get(name) ?? null,
+    hasAttribute: (name) => attributes.has(name),
+  };
+
+  return {
+    documentElement,
+    defaultView: {
+      matchMedia: vi.fn(() => ({ matches: prefersDark })),
+    },
+  };
+};
+
+const mockThemeSettings = ({
+  theme = "auto",
+  themeFoundry = false,
+  uiConfig = {},
+} = {}) => {
+  vi.spyOn(game.settings, "get").mockImplementation((namespace, key) => {
+    if (namespace === game.system.id && key === "theme") return theme;
+    if (namespace === game.system.id && key === "themeFoundry") {
+      return themeFoundry;
+    }
+    if (namespace === "core" && key === "uiConfig") return uiConfig;
+    return undefined;
+  });
+  return vi.spyOn(game.settings, "set").mockResolvedValue(undefined);
+};
+
+afterEach(() => {
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
+});
 
 /**
  * Tier-2 examples: `cpr-systemUtils.js` imports only the logger and touches no
@@ -42,6 +84,127 @@ describe("CPRSystemUtils.Localize / Format", () => {
     expect(SystemUtils.Format("Applied {amount} damage", { amount: 10 })).toBe(
       "Applied 10 damage",
     );
+  });
+});
+
+describe("CPRSystemUtils.SetTheme", () => {
+  it("follows Foundry's application theme in automatic mode", () => {
+    const themeDocument = makeThemeDocument();
+    vi.stubGlobal("document", themeDocument);
+    vi.stubGlobal("window", themeDocument.defaultView);
+    const setSetting = mockThemeSettings({
+      uiConfig: {
+        colorScheme: { applications: "light", interface: "dark" },
+      },
+    });
+
+    SystemUtils.SetTheme();
+
+    expect(themeDocument.documentElement.getAttribute("data-cpr-theme")).toBe(
+      "light",
+    );
+    expect(
+      themeDocument.documentElement.hasAttribute("data-cpr-theme-foundry"),
+    ).toBe(false);
+    expect(setSetting).not.toHaveBeenCalled();
+  });
+
+  it("falls back to the browser preference when Foundry uses automatic mode", () => {
+    const themeDocument = makeThemeDocument({ prefersDark: true });
+    vi.stubGlobal("document", themeDocument);
+    vi.stubGlobal("window", themeDocument.defaultView);
+    mockThemeSettings({
+      uiConfig: { colorScheme: { applications: "", interface: "" } },
+    });
+
+    SystemUtils.SetTheme();
+
+    expect(themeDocument.defaultView.matchMedia).toHaveBeenCalledWith(
+      "(prefers-color-scheme: dark)",
+    );
+    expect(themeDocument.documentElement.getAttribute("data-cpr-theme")).toBe(
+      "dark",
+    );
+  });
+
+  it("extends an explicit CPR variant to Foundry without dropping UI config", async () => {
+    const themeDocument = makeThemeDocument();
+    vi.stubGlobal("document", themeDocument);
+    vi.stubGlobal("window", themeDocument.defaultView);
+    const uiConfig = {
+      uiScale: 1.1,
+      colorScheme: {
+        applications: "light",
+        interface: "",
+      },
+      chatNotifications: "cards",
+    };
+    const setSetting = mockThemeSettings({
+      theme: "dark",
+      themeFoundry: true,
+      uiConfig,
+    });
+
+    await SystemUtils.SetTheme();
+
+    expect(themeDocument.documentElement.getAttribute("data-cpr-theme")).toBe(
+      "dark",
+    );
+    expect(
+      themeDocument.documentElement.hasAttribute("data-cpr-theme-foundry"),
+    ).toBe(true);
+    expect(setSetting).toHaveBeenCalledOnce();
+    expect(setSetting).toHaveBeenCalledWith("core", "uiConfig", {
+      ...uiConfig,
+      colorScheme: {
+        applications: "dark",
+        interface: "dark",
+      },
+    });
+  });
+
+  it("does not rewrite an already-matching Foundry variant", () => {
+    const themeDocument = makeThemeDocument();
+    vi.stubGlobal("document", themeDocument);
+    vi.stubGlobal("window", themeDocument.defaultView);
+    const setSetting = mockThemeSettings({
+      theme: "light",
+      themeFoundry: true,
+      uiConfig: {
+        colorScheme: { applications: "light", interface: "light" },
+      },
+    });
+
+    SystemUtils.SetTheme();
+
+    expect(setSetting).not.toHaveBeenCalled();
+  });
+
+  it("themes a pop-out document without rewriting the main client setting", () => {
+    const mainDocument = makeThemeDocument();
+    const popOutDocument = makeThemeDocument();
+    vi.stubGlobal("document", mainDocument);
+    vi.stubGlobal("window", mainDocument.defaultView);
+    const setSetting = mockThemeSettings({
+      theme: "dark",
+      themeFoundry: true,
+      uiConfig: {
+        colorScheme: { applications: "light", interface: "light" },
+      },
+    });
+
+    SystemUtils.SetTheme({ ownerDocument: popOutDocument });
+
+    expect(popOutDocument.documentElement.getAttribute("data-cpr-theme")).toBe(
+      "dark",
+    );
+    expect(
+      popOutDocument.documentElement.hasAttribute("data-cpr-theme-foundry"),
+    ).toBe(true);
+    expect(mainDocument.documentElement.getAttribute("data-cpr-theme")).toBe(
+      null,
+    );
+    expect(setSetting).not.toHaveBeenCalled();
   });
 });
 

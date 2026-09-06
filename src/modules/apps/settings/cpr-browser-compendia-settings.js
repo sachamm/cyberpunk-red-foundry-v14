@@ -19,6 +19,7 @@ export default class CPRBrowserCompendiaSettings extends HandlebarsApplicationMi
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
     id: "cpr-browser-compendia",
+    classes: ["cpr"],
     tag: "form",
     position: { width: 520, height: "auto" },
     window: {

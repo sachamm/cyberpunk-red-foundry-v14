@@ -127,7 +127,7 @@
  * (.window-app) and style their own links/inputs, so they must NOT be included
  * here — doing so turns every rollable <a> header (stats, box labels, tabs) red.
  */
-html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
+html[data-cpr-theme="light"] :is(.cpr-migration-dialog, #compendia-config) a {
   color: var(--cpr-color-red);
 }
 

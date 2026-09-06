@@ -228,7 +228,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   static DEFAULT_OPTIONS = {
     id: "cpr-migration",
-    classes: ["dialog", "cpr-migration-dialog"],
+    classes: ["cpr", "dialog", "cpr-migration-dialog"],
     tag: "dialog",
     window: {
       title: "CPR.migration.app.title",

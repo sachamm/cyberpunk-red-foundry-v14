@@ -7,6 +7,8 @@
  * All css variable must be prefixed with '--cpr-' to avoid namespace issues
  */
 :root {
+  --cpr-color-scheme: light;
+
   /* Fonts */
   --cpr-font-hero: "Rubik";
   --cpr-font-journal-header: "Rubik";

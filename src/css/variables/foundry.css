@@ -1,0 +1,217 @@
+/*
+ * Map Foundry's supported V13 theme tokens to the CPR palette. CPR-owned
+ * ApplicationV2 windows always receive the map. Foundry's interface and other
+ * ApplicationV2 windows receive it when the client enables themeFoundry.
+ * ApplicationV1 windows retain Foundry's legacy compatibility styling.
+ */
+:where(
+  .application.cpr,
+  html[data-cpr-theme-foundry] .themed:not(.window-app, .window-app *)
+) {
+  --color-scheme: var(--cpr-color-scheme);
+  --font-body: var(--cpr-font-primary);
+  --font-primary: var(--cpr-font-primary);
+  --color-text-emphatic: var(--cpr-text-normal);
+  --color-text-primary: var(--cpr-text-normal);
+  --color-text-secondary: var(--cpr-text-hint);
+  --color-text-subtle: var(--cpr-text-icon-dimmed);
+  --color-text-accent: var(--cpr-text-icon-highlight);
+  --color-text-selection: var(--cpr-text-header);
+  --color-text-selection-bg: var(--cpr-background-border);
+  --color-shadow-primary: var(--cpr-background-border);
+  --color-shadow-highlight: var(--cpr-background-foundry-hover);
+  --color-scrollbar: var(--cpr-background-border);
+  --fa-inverse: var(--cpr-background-window);
+  --hr-border: 0;
+  --hr-gradient: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cpr-background-border) 50%,
+    transparent 100%
+  );
+  --content-link-background: var(--cpr-background-content-link);
+  --content-link-border-color: var(--cpr-background-chat-border);
+  --content-link-icon-color: var(--cpr-text-content-link-icon);
+  --content-link-text-color: var(--cpr-text-normal);
+  --table-background-color: var(--cpr-background-box);
+  --table-header-bg-color: var(--cpr-background-header);
+  --table-header-border-color: var(--cpr-background-border);
+  --table-header-text-color: var(--cpr-text-header);
+  --table-row-color-even: var(--cpr-background-row-even);
+  --table-row-color-odd: var(--cpr-background-row-odd);
+  --table-row-color-highlight: var(--cpr-background-dialog-selected);
+  --sidebar-background: var(--cpr-background-window);
+  --sidebar-separator: 0.063rem solid var(--cpr-background-border);
+  --sidebar-entry-hover-bg: var(--cpr-background-row-odd);
+  --sidebar-folder-color: var(--cpr-background-header);
+
+  &.application,
+  .application {
+    --background: var(--cpr-background-window);
+    --color-header-background: var(--cpr-background-header);
+    --color-border: var(--cpr-background-border);
+    --color-tabs-border: var(--cpr-background-border);
+    --color-fieldset-border: var(--cpr-background-chat-border);
+    --color-form-label: var(--cpr-text-normal);
+    --color-form-label-hover: var(--cpr-text-icon-highlight);
+    --color-form-hint: var(--cpr-text-hint);
+    --color-form-hint-hover: var(--cpr-text-normal);
+    --color-select-option-bg: var(--cpr-background-window);
+    --color-data-border: var(--cpr-background-chat-border);
+    --color-data-background: var(--cpr-background-box);
+  }
+
+  input,
+  select,
+  textarea,
+  code-mirror,
+  label.icon {
+    --input-background-color: var(--cpr-background-foundry-input);
+    --input-border-color: var(--cpr-background-chat-border);
+    --input-box-shadow: none;
+    --input-text-color: var(--cpr-text-foundry-input);
+    --input-placeholder-color: var(--cpr-text-hint);
+    --input-focus-outline-color: var(--cpr-background-border);
+  }
+
+  input:disabled,
+  select:disabled,
+  textarea:disabled,
+  code-mirror:disabled,
+  label.icon:has(> input:disabled),
+  input[readonly] {
+    --input-background-color: var(--cpr-background-row-even);
+    --input-border-color: var(--cpr-text-icon-dimmed);
+    --input-box-shadow: none;
+    --input-text-color: var(--cpr-text-icon-dimmed);
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    --checkbox-background-color: var(--cpr-background-foundry-input);
+    --checkbox-checked-color: var(--cpr-text-icon-highlight);
+    --checkbox-checkmark-color: var(--cpr-text-normal);
+    --checkbox-disabled-color: var(--cpr-text-icon-dimmed);
+  }
+
+  :is(
+    .prosemirror,
+    prose-mirror,
+    #prosemirror-dropdown,
+    .menu-dialog.prosemirror
+  ) {
+    --menu-background: var(--cpr-background-box);
+    --dropdown-background: var(--cpr-background-box);
+    --dropdown-border: var(--cpr-background-chat-border);
+    --dialog-background: var(--cpr-background-window);
+    --dialog-border: var(--cpr-background-border);
+    --color-control-hover: var(--cpr-background-dialog-selected);
+  }
+
+  #context-menu,
+  &#context-menu {
+    --background-color: var(--cpr-background-window);
+    --border-color: var(--cpr-background-border);
+    --text-color: var(--cpr-text-normal);
+    --hover-text-color: var(--cpr-text-icon-highlight);
+    --group-separator: var(--cpr-background-chat-border);
+    --hover-entry-border: var(--cpr-background-border);
+    --hover-entry-background: var(--cpr-background-row-odd);
+  }
+
+  .ui-control,
+  .placeable-hud,
+  #measurement .waypoint-label {
+    --control-bg-color: var(--cpr-background-window);
+    --control-border-color: var(--cpr-background-chat-border);
+    --control-icon-color: var(--cpr-text-normal);
+    --control-hover-bg-color: var(--cpr-background-foundry-hover);
+    --control-hover-border-color: var(--cpr-background-border);
+    --control-hover-icon-color: var(--cpr-text-header);
+    --control-active-bg-color: var(--cpr-background-header);
+    --control-active-border-color: var(--cpr-background-border);
+    --control-active-icon-color: var(--cpr-text-header);
+    --control-button-border-color: var(--cpr-background-border);
+    --control-button-hover-bg-color: var(--cpr-background-foundry-hover);
+    --control-button-hover-border-color: var(--cpr-background-border);
+    --toggle-bg-color: var(--cpr-background-toggle-unchecked);
+    --toggle-border-color: var(--cpr-background-chat-border);
+    --toggle-active-bg-color: var(--cpr-background-toggle-checked);
+    --toggle-active-border-color: var(--cpr-background-border);
+  }
+
+  #hotbar {
+    --slot-color: var(--cpr-background-window);
+    --key-bg-color-empty: var(--cpr-background-box);
+    --key-bg-color-full: var(--cpr-background-row-even);
+    --key-text-color: var(--cpr-text-normal);
+    --page-control-color: var(--cpr-background-header);
+  }
+
+  #chat-message {
+    --text-color: var(--cpr-text-normal);
+    --placeholder-color: var(--cpr-text-hint);
+    --background-color: var(--cpr-background-foundry-input);
+    --border-color: var(--cpr-background-chat-border);
+    --chat-input-border: 0.063rem solid var(--cpr-background-chat-border);
+  }
+
+  #players {
+    --background-color: var(--cpr-background-window);
+    --border-color: var(--cpr-background-border);
+    --player-name-idle-color: var(--cpr-text-hint);
+    --player-name-self-color: var(--cpr-text-icon-highlight);
+  }
+
+  .combat-tracker {
+    --active-input-bg-color: var(--cpr-background-foundry-input);
+    --entry-hover-bg: var(--cpr-background-row-odd);
+    --entry-active-bg: var(--cpr-background-dialog-selected);
+  }
+
+  #camera-views,
+  &#camera-views {
+    --av-background-color: var(--cpr-background-window);
+    --av-border-color: var(--cpr-background-border);
+  }
+
+  #autocomplete,
+  &#autocomplete {
+    --background-color: var(--cpr-background-window);
+    --border-color: var(--cpr-background-border);
+    --active-background-color: var(--cpr-background-foundry-hover);
+    --active-color: var(--cpr-text-header);
+  }
+}
+
+/*
+ * A CPR window's content uses CPR button tokens, while its native window
+ * controls keep Foundry's own affordances. Enabling the global option extends
+ * the tokens to every button, including window chrome.
+ */
+:where(
+    .application.cpr .window-content,
+    html[data-cpr-theme-foundry] .themed:not(.window-app, .window-app *)
+  )
+  :is(a.button, button, kbd) {
+  --button-background-color: var(--cpr-background-foundry-input);
+  --button-border-color: var(--cpr-background-chat-border);
+  --button-text-color: var(--cpr-text-normal);
+  --button-focus-outline-color: var(--cpr-background-border);
+  --button-hover-background-color: var(--cpr-background-foundry-hover);
+  --button-hover-border-color: var(--cpr-background-border);
+  --button-hover-text-color: var(--cpr-text-header);
+}
+
+:where(
+    .application.cpr .window-content,
+    html[data-cpr-theme-foundry] .themed:not(.window-app, .window-app *)
+  )
+  :is(a.button[disabled], button[disabled], kbd[disabled]) {
+  --button-background-color: var(--cpr-background-row-even);
+  --button-border-color: var(--cpr-text-icon-dimmed);
+  --button-text-color: var(--cpr-text-icon-dimmed);
+  --button-hover-background-color: var(--button-background-color);
+  --button-hover-border-color: var(--button-border-color);
+  --button-hover-text-color: var(--button-text-color);
+}

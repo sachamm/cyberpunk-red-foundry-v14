@@ -183,7 +183,7 @@ export default class CPRLedger extends HandlebarsApplicationMixin(
       window: {
         title: SystemUtils.Localize("CPR.dialog.ledgerDeletion.title"),
       },
-      classes: ["cpr-dialog"],
+      classes: ["cpr", "cpr-dialog"],
       content,
       buttons: [
         {

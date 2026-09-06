@@ -15,6 +15,7 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
     id: "compendia-config",
+    classes: ["cpr"],
     tag: "form",
     position: {
       width: 540,

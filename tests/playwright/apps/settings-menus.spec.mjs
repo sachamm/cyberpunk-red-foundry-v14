@@ -60,6 +60,7 @@ test.describe("System settings menus (ApplicationV2)", () => {
       // ApplicationV2 renders the window element as a <form> with `.application`
       // and must not carry the legacy AppV1 `.window-app` class.
       await expect(app).toHaveClass(/application/);
+      await expect(app).toHaveClass(/cpr/);
       await expect(app).not.toHaveClass(/window-app/);
       await expect(app.locator('button[type="submit"]')).toBeVisible();
     });
