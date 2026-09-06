@@ -11,6 +11,9 @@ export const MOOK_FIELD = {
   dialogNameInput: 'input[name="name"]',
   dialogConfirm: 'button.cpr-dialog-button[data-action="confirm"]',
   dialogCancel: 'button.cpr-dialog-button[data-action="cancel"]',
+  bodyStatInput: 'input[name="system.stats.body.value"]',
+  hpValueInput: 'input[name="system.derivedStats.hp.value"]',
+  hpMaxInput: 'input[name="system.derivedStats.hp.max"]',
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).
@@ -61,4 +64,15 @@ export async function confirmMookRename(dialog) {
 export async function cancelMookRename(dialog) {
   await dialog.locator(MOOK_FIELD.dialogCancel).click();
   await expect(dialog).toHaveCount(0, { timeout: 5000 });
+}
+
+// Fill an input on the rendered mook sheet (given as a full CSS selector, e.g.
+// MOOK_FIELD.bodyStatInput) and commit it by blurring (Tab). AppV2 sheets persist
+// per-field on change/blur, so the blur is the whole save action. The spec owns all
+// waits/assertions on the resulting persisted state.
+export async function setMookSheetField(page, sheetId, selector, value) {
+  const input = page.locator(`#${sheetId} ${selector}`);
+  await expect(input).toBeVisible();
+  await input.fill(String(value));
+  await input.press("Tab");
 }
