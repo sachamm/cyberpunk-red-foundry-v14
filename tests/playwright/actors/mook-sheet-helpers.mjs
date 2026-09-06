@@ -14,6 +14,7 @@ export const MOOK_FIELD = {
   bodyStatInput: 'input[name="system.stats.body.value"]',
   hpValueInput: 'input[name="system.derivedStats.hp.value"]',
   hpMaxInput: 'input[name="system.derivedStats.hp.max"]',
+  woundStateStat: ".mook-wounded-stat",
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).

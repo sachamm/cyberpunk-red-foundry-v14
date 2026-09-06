@@ -16,8 +16,9 @@ import {
 
 /*
  * Stat Pane coverage for this batch: in-line stat editing (one representative stat,
- * BODY), HP current/max editing, and rolling a stat (BODY) to chat. Wound state and
- * death save are intentionally NOT covered here — they are the next Stat Pane batch.
+ * BODY), HP current/max editing, rolling a stat (BODY) to chat, and the derived wound
+ * state display. Death save is intentionally NOT covered here — it is the next Stat
+ * Pane batch.
  *
  * HP clamping is enforced by CPRActor._calculateDerivedStats (cpr-actor.js), which runs
  * in prepareData on every update for the owner/GM and sets
@@ -222,6 +223,49 @@ test.describe("Stat Pane", () => {
       expect(message.rolls).toBe(1);
       expect(message.actor).toBe(actorId);
     });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("wound state reflects HP against max across all four states", async ({
+    page: game,
+  }) => {
+    const actorId = await createActorViaUI(game, {
+      type: "mook",
+      name: uniqueName("mook"),
+    });
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    // Default mook HP is 40/40. The seriously-wounded threshold is ceil(max / 2) = 20
+    // (CPRActor._calculateDerivedStats, cpr-actor.js), so the derived states map to:
+    //   Not Wounded       hp == max             (40)
+    //   Lightly Wounded   threshold <= hp < max  (20..39)
+    //   Seriously Wounded 1 <= hp < threshold    (1..19)
+    //   Mortally Wounded  hp < 1                (<= 0)
+    const cases = [
+      { label: "Not Wounded", hp: 40 },
+      { label: "Lightly Wounded", hp: 20 },
+      { label: "Seriously Wounded", hp: 19 },
+      { label: "Mortally Wounded", hp: 0 },
+    ];
+
+    for (const { label, hp } of cases) {
+      await test.step(`at HP ${hp} the wound state reads "${label}"`, async () => {
+        await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, hp);
+        // Supporting evidence: the stored current HP is what we set.
+        await waitForMookFields(game, actorId, {
+          "system.derivedStats.hp.value": hp,
+        });
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        // Visible proof: the derived wound-state label on the fresh render.
+        await expect(
+          game.locator(`#${sheetId} ${MOOK_FIELD.woundStateStat}`),
+        ).toHaveText(label);
+      });
+    }
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
