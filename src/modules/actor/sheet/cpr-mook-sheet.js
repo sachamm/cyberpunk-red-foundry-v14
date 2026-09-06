@@ -247,7 +247,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     if (!dialogData) {
       return;
     }
-    if (!this.isToken) {
+    if (!this.actor.isToken) {
       await this.actor.update(dialogData);
     } else {
       await this.token.update(dialogData);
