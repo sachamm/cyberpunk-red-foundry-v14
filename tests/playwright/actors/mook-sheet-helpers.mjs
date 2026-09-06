@@ -18,6 +18,11 @@ export const MOOK_FIELD = {
   deathSaveRollable: 'a.rollable[data-roll-type="deathsave"]',
   deathSaveValue: ".reset-deathsave-value",
   deathSaveIncrease: ".increase-deathsave-value",
+  // Equipped weapons/armor render in the always-visible fight block (no tab). The
+  // row root carries a unique data-item-id per item; scope by it to avoid the many
+  // inner name/fire-mode/roll nodes that share the same id.
+  weaponRow: ".mook-weapon-list .item.weapon-grid",
+  armorRow: ".mook-armor .item.armor-grid",
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).
