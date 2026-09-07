@@ -23,6 +23,9 @@ export const MOOK_FIELD = {
   // inner name/fire-mode/roll nodes that share the same id.
   weaponRow: ".mook-weapon-list .item.weapon-grid",
   armorRow: ".mook-armor .item.armor-grid",
+  // The editable name link on an equipped item row (weapon/armor). Click to open its
+  // sheet, ctrl-click to send its card to chat, focus + Delete to remove it.
+  itemNameLink: ".name.item-edit",
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).
