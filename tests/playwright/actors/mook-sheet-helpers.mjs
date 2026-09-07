@@ -26,6 +26,11 @@ export const MOOK_FIELD = {
   // The editable name link on an equipped item row (weapon/armor). Click to open its
   // sheet, ctrl-click to send its card to chat, focus + Delete to remove it.
   itemNameLink: ".name.item-edit",
+  // Skill pane header (always visible, no tab): the facedown rollable doubles as the
+  // reputation display; the sticky-note icon opens the reputation ledger window.
+  facedownRollable: 'a.rollable[data-roll-type="facedown"]',
+  reputationLedgerIcon: "a.reputation-open-ledger",
+  skillsContent: ".mook-skills-content",
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).
@@ -87,4 +92,69 @@ export async function setMookSheetField(page, sheetId, selector, value) {
   await expect(input).toBeVisible();
   await input.fill(String(value));
   await input.press("Tab");
+}
+
+// Open the reputation ledger window from a rendered mook sheet; returns a locator
+// scoped to that window. Only waits for the window surface; the spec owns all
+// assertions on the total, history rows, and controls.
+export async function openReputationLedger(page, sheetId) {
+  await page.locator(`#${sheetId} ${MOOK_FIELD.reputationLedgerIcon}`).click();
+  const ledger = page.locator(".application.ledger");
+  await expect(ledger).toBeVisible();
+  return ledger;
+}
+
+// Apply an add / subtract / set change in an open reputation ledger window and wait
+// for the new total to persist on the actor (the window re-renders in place from it).
+export async function modifyReputationViaLedger(
+  page,
+  actorId,
+  action,
+  value,
+  reason,
+) {
+  const before = await page.evaluate(
+    (id) => game.actors.get(id)?.system?.reputation?.value,
+    actorId,
+  );
+  const expected =
+    action === "add"
+      ? before + value
+      : action === "subtract"
+        ? before - value
+        : value;
+
+  const ledger = page.locator(".application.ledger");
+  await ledger.locator('input[name="modifyValue"]').fill(String(value));
+  await ledger.locator('input[name="reason"]').fill(reason);
+  await ledger.locator(`.ledger-edit-button[data-action="${action}"]`).click();
+  await waitForMookFields(page, actorId, {
+    "system.reputation.value": expected,
+  });
+}
+
+// Close the reputation ledger window via its header close button.
+export async function closeReputationLedger(page) {
+  const ledger = page.locator(".application.ledger");
+  await ledger.locator('button[data-action="close"]').click();
+  await expect(ledger).toBeHidden();
+}
+
+// Click the mook's facedown rollable and wait for the verify dialog; returns a
+// locator scoped to it. The spec owns the dialog assertions and the confirm/cancel.
+export async function openFacedownRollDialog(page, sheetId) {
+  await page.locator(`#${sheetId} ${MOOK_FIELD.facedownRollable}`).click();
+  const dialog = page
+    .locator(".application")
+    .filter({ has: page.locator('input[name="repValue"]') });
+  await expect(dialog).toBeVisible();
+  return dialog;
+}
+
+// Confirm the facedown verify dialog and wait for it to close.
+export async function confirmFacedownRoll(dialog) {
+  await dialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+  await expect(dialog).toHaveCount(0, { timeout: 5000 });
 }
