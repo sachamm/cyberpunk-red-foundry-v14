@@ -194,7 +194,7 @@ test.describe("CPR theme integration", () => {
     expect(setting).toEqual({
       scope: "client",
       config: true,
-      default: false,
+      default: true,
       name: "CPR.settings.themeFoundry.title",
       hint: "CPR.settings.themeFoundry.hint",
     });
