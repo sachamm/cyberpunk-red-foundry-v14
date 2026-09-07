@@ -45,7 +45,10 @@ async function restoreSettings(page, settings) {
 async function readThemeTokens(page) {
   return page.evaluate(() => {
     const stock = document.createElement("section");
-    stock.className = "application themed theme-dark";
+    // AppV2 always adds `application`, but only adds `themed` after a
+    // per-sheet theme is selected. Macro sheets and document-creation dialogs
+    // exercise this unthemed state by default.
+    stock.className = "application";
     const cpr = document.createElement("section");
     cpr.className = "application cpr themed theme-dark";
     const legacy = document.createElement("section");
@@ -198,6 +201,55 @@ test.describe("CPR theme integration", () => {
       name: "CPR.settings.themeFoundry.title",
       hint: "CPR.settings.themeFoundry.hint",
     });
+  });
+
+  test("themes an unconfigured native ApplicationV2 sheet", async ({
+    page: game,
+  }) => {
+    const original = await captureSettings(game);
+    let macroId;
+    try {
+      await game.evaluate(async () => {
+        await game.settings.set(game.system.id, "theme", "dark");
+        await game.settings.set(game.system.id, "themeFoundry", true);
+      });
+
+      const state = await game.evaluate(async () => {
+        const macro = await Macro.create({
+          name: "ApplicationV2 theme probe",
+          type: "script",
+          command: "",
+        });
+        await macro.sheet.render({ force: true });
+        const element = macro.sheet.element;
+        const rootStyle = getComputedStyle(document.documentElement);
+        return {
+          macroId: macro.id,
+          classes: [...element.classList],
+          background: getComputedStyle(element)
+            .getPropertyValue("--background")
+            .trim(),
+          cprBackground: rootStyle
+            .getPropertyValue("--cpr-background-window")
+            .trim(),
+        };
+      });
+      macroId = state.macroId;
+
+      expect(state.classes).toContain("application");
+      expect(state.classes).not.toContain("themed");
+      expect(state.classes).not.toContain("window-app");
+      expect(state.background).toBe(state.cprBackground);
+    } finally {
+      if (macroId) {
+        await game.evaluate(async (id) => {
+          const macro = game.macros.get(id);
+          await macro?.sheet.close();
+          await macro?.delete();
+        }, macroId);
+      }
+      await restoreSettings(game, original);
+    }
   });
 
   test("always maps CPR windows without changing stock Foundry", async ({

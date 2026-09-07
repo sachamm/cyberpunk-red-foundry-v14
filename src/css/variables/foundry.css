@@ -6,7 +6,8 @@
  */
 :where(
   .application.cpr,
-  html[data-cpr-theme-foundry] .themed:not(.window-app, .window-app *)
+  html[data-cpr-theme-foundry]
+    :is(.themed, .application):not(.window-app, .window-app *)
 ) {
   --color-scheme: var(--cpr-color-scheme);
   --font-body: var(--cpr-font-primary);
@@ -197,7 +198,8 @@
  */
 :where(
     .application.cpr .window-content,
-    html[data-cpr-theme-foundry] .themed:not(.window-app, .window-app *)
+    html[data-cpr-theme-foundry]
+      :is(.themed, .application):not(.window-app, .window-app *)
   )
   :is(a.button, button, kbd) {
   --button-background-color: var(--cpr-background-foundry-input);
@@ -211,7 +213,8 @@
 
 :where(
     .application.cpr .window-content,
-    html[data-cpr-theme-foundry] .themed:not(.window-app, .window-app *)
+    html[data-cpr-theme-foundry]
+      :is(.themed, .application):not(.window-app, .window-app *)
   )
   :is(a.button[disabled], button[disabled], kbd[disabled]) {
   --button-background-color: var(--cpr-background-row-even);
