@@ -1,15 +1,15 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  createActorViaUI,
-  expectSheetRendered,
   closeDocSheet,
   openSidebarTab,
-  uniqueName,
   dismissNotifications,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  chatMessageCount,
+  createMookViaUI,
+  waitForNewChatMessage,
   closeAndReopenMookSheet,
   openReputationLedger,
   modifyReputationViaLedger,
@@ -17,18 +17,6 @@ import {
   openFacedownRollDialog,
   confirmFacedownRoll,
 } from "./mook-sheet-helpers.mjs";
-
-async function createMookWithSheet(game) {
-  const actorId = await createActorViaUI(game, {
-    type: "mook",
-    name: uniqueName("mook"),
-  });
-  const sheetId = await expectSheetRendered(game, {
-    collection: "actors",
-    id: actorId,
-  });
-  return { actorId, sheetId };
-}
 
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
@@ -38,7 +26,7 @@ test.describe("Reputation", () => {
   test("a fresh mook shows Reputation 0 and its default skill list", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("the header reads Reputation: 0", async () => {
       await expect(
@@ -61,7 +49,7 @@ test.describe("Reputation", () => {
   test("the ledger add, subtract and set controls update the total and history", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
     const gmName = await game.evaluate(() => game.user.name);
     const ledger = await openReputationLedger(game, sheetId);
 
@@ -131,7 +119,7 @@ test.describe("Reputation", () => {
   test("ledger changes persist across a sheet close and reopen", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
     await openReputationLedger(game, sheetId);
 
     await test.step("adding reputation through the ledger persists it on the actor", async () => {
@@ -166,7 +154,7 @@ test.describe("Reputation", () => {
   test("subtracting more reputation than the mook has warns", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
     const ledger = await openReputationLedger(game, sheetId);
 
     await test.step("subtracting below zero shows a warning banner", async () => {
@@ -209,14 +197,14 @@ test.describe("Reputation", () => {
   test("a facedown roll uses COOL plus the current reputation", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
     await openReputationLedger(game, sheetId);
     await modifyReputationViaLedger(game, actorId, "add", 3, "Test setup");
     await closeReputationLedger(game);
 
     let currentSheetId = sheetId;
     let messageId = null;
-    const messagesBefore = await game.evaluate(() => game.messages.size);
+    const messagesBefore = await chatMessageCount(game);
 
     await test.step("the header shows the new reputation on a fresh sheet render", async () => {
       currentSheetId = await closeAndReopenMookSheet(game, actorId);
@@ -235,12 +223,7 @@ test.describe("Reputation", () => {
     });
 
     await test.step("confirming posts a Facedown roll card to chat", async () => {
-      await game.waitForFunction(
-        (before) => game.messages.size > before,
-        messagesBefore,
-        { timeout: 10000 },
-      );
-      messageId = await game.evaluate(() => game.messages.contents.at(-1).id);
+      messageId = await waitForNewChatMessage(game, messagesBefore);
       const rollClass = await game.evaluate(
         () =>
           game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,
@@ -292,13 +275,13 @@ test.describe("Reputation", () => {
   test("a critical failure implodes the check die and subtracts a bonus d10", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
     await openReputationLedger(game, sheetId);
     await modifyReputationViaLedger(game, actorId, "add", 3, "Test setup");
     await closeReputationLedger(game);
 
     let messageId = null;
-    const messagesBefore = await game.evaluate(() => game.messages.size);
+    const messagesBefore = await chatMessageCount(game);
 
     // Foundry routes all die randomness through CONFIG.Dice.randomUniform and maps a face f on a
     // d10 from u = 1 - (f - 0.5) / 10. Queue: main die a natural 1 (implodes), penalty die a 7.
@@ -314,12 +297,7 @@ test.describe("Reputation", () => {
         const dialog = await openFacedownRollDialog(game, sheetId);
         await expect(dialog.locator('input[name="repValue"]')).toHaveValue("3");
         await confirmFacedownRoll(dialog);
-        await game.waitForFunction(
-          (before) => game.messages.size > before,
-          messagesBefore,
-          { timeout: 10000 },
-        );
-        messageId = await game.evaluate(() => game.messages.contents.at(-1).id);
+        messageId = await waitForNewChatMessage(game, messagesBefore);
       });
 
       await test.step("the total is the dice (1 - 7) plus COOL 6 plus reputation 3", async () => {

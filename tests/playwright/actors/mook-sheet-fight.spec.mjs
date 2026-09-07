@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
-  createActorViaUI,
   createItemViaUI,
   dismissNotifications,
   dragItemToActorSheet,
@@ -14,6 +13,10 @@ import {
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  chatMessageCount,
+  createMookViaUI,
+  waitForNewChatMessage,
+  ownedItemIdsByNames,
   closeAndReopenMookSheet,
   waitForMookFields,
 } from "./mook-sheet-helpers.mjs";
@@ -122,31 +125,17 @@ async function createConfiguredWeapon(
  * return its id, the freshly-reopened sheet id, and a name -> embedded-id map.
  */
 async function setupMookWithWeapons(page, weaponSpecs) {
-  const actorId = await createActorViaUI(page, {
-    type: "mook",
-    name: uniqueName("mook"),
-  });
-  let sheetId = await expectSheetRendered(page, {
-    collection: "actors",
-    id: actorId,
-  });
+  let { actorId, sheetId } = await createMookViaUI(page);
 
   for (const spec of weaponSpecs) {
     const itemId = await createConfiguredWeapon(page, spec);
     await dragItemToActorSheet(page, { itemId, sheetId, actorId });
   }
 
-  const byName = await page.evaluate(
-    ({ actorId, names }) => {
-      const items = game.actors.get(actorId).items;
-      const out = {};
-      for (const n of names) {
-        const item = items.find((i) => i.name === n);
-        if (item) out[n] = item.id;
-      }
-      return out;
-    },
-    { actorId, names: weaponSpecs.map((s) => s.name) },
+  const byName = await ownedItemIdsByNames(
+    page,
+    actorId,
+    weaponSpecs.map((s) => s.name),
   );
 
   sheetId = await closeAndReopenMookSheet(page, actorId);
@@ -235,14 +224,7 @@ async function createLoadableWeapon(page, { name }) {
  * onto it (auto-equipped). Returns the ids needed to drive the change-ammo flow.
  */
 async function setupMookWithLoadableWeapon(page) {
-  const actorId = await createActorViaUI(page, {
-    type: "mook",
-    name: uniqueName("mook"),
-  });
-  let sheetId = await expectSheetRendered(page, {
-    collection: "actors",
-    id: actorId,
-  });
+  let { actorId, sheetId } = await createMookViaUI(page);
 
   const weaponId = await createLoadableWeapon(page, {
     name: uniqueName("pistol"),
@@ -330,31 +312,17 @@ async function createConfiguredArmor(
  * return its id, the freshly-reopened sheet id, and a name -> embedded-id map.
  */
 async function setupMookWithArmors(page, armorSpecs) {
-  const actorId = await createActorViaUI(page, {
-    type: "mook",
-    name: uniqueName("mook"),
-  });
-  let sheetId = await expectSheetRendered(page, {
-    collection: "actors",
-    id: actorId,
-  });
+  let { actorId, sheetId } = await createMookViaUI(page);
 
   for (const spec of armorSpecs) {
     const itemId = await createConfiguredArmor(page, spec);
     await dragItemToActorSheet(page, { itemId, sheetId, actorId });
   }
 
-  const byName = await page.evaluate(
-    ({ actorId, names }) => {
-      const items = game.actors.get(actorId).items;
-      const out = {};
-      for (const n of names) {
-        const item = items.find((i) => i.name === n);
-        if (item) out[n] = item.id;
-      }
-      return out;
-    },
-    { actorId, names: armorSpecs.map((s) => s.name) },
+  const byName = await ownedItemIdsByNames(
+    page,
+    actorId,
+    armorSpecs.map((s) => s.name),
   );
 
   sheetId = await closeAndReopenMookSheet(page, actorId);
@@ -382,7 +350,7 @@ const fireFlag = (page, actorId, weaponId) =>
   );
 
 async function attackRollContent(page, sheetId, itemId) {
-  const messagesBefore = await page.evaluate(() => game.messages.size);
+  const messagesBefore = await chatMessageCount(page);
   await weaponRow(page, sheetId, itemId)
     .locator('[data-roll-type="attack"]')
     .click();
@@ -396,15 +364,9 @@ async function attackRollContent(page, sheetId, itemId) {
     .click();
   await expect(rollDialog).toHaveCount(0, { timeout: 10000 });
 
-  const messageId = await page.waitForFunction(
-    (before) => {
-      if (game.messages.size <= before) return false;
-      const msg = game.messages.contents.at(-1);
-      return msg && msg.rolls.length ? msg.id : false;
-    },
-    messagesBefore,
-    { timeout: 10000 },
-  );
+  const messageId = await waitForNewChatMessage(page, messagesBefore, {
+    requireRoll: true,
+  });
   return page.evaluate((id) => {
     const msg = game.messages.get(id);
     return { messageId: id, content: msg.content };
@@ -504,21 +466,14 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
 
     await test.step("ctrl-clicking sends the item card to chat", async () => {
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
       await weaponRow(game, sheetId, id)
         .locator(MOOK_FIELD.itemNameLink)
         .click({ modifiers: modifier });
 
-      const messageId = await game.waitForFunction(
-        (before) => {
-          if (game.messages.size <= before) return false;
-          const msg = game.messages.contents.at(-1);
-          return msg && msg.content ? msg.id : false;
-        },
-        messagesBefore,
-        { timeout: 10000 },
-      );
-      await expect(messageId).toBeTruthy();
+      const messageId = await waitForNewChatMessage(game, messagesBefore, {
+        requireContent: true,
+      });
 
       const nameKeyword = meleeName.split(" ")[1]; // "melee"
       const cardContent = await game.evaluate(
@@ -918,7 +873,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     const id = Object.values(byName)[0];
 
     await test.step("the attack roll posts a roll card to chat", async () => {
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
       await weaponRow(game, sheetId, id)
         .locator('[data-roll-type="attack"]')
         .click();
@@ -932,16 +887,9 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
         .click();
       await expect(rollDialog).toHaveCount(0, { timeout: 10000 });
 
-      const messageId = await game.waitForFunction(
-        (before) => {
-          if (game.messages.size <= before) return false;
-          const msg = game.messages.contents.at(-1);
-          return msg && msg.rolls.length ? msg.id : false;
-        },
-        messagesBefore,
-        { timeout: 10000 },
-      );
-      await expect(messageId).toBeTruthy();
+      const messageId = await waitForNewChatMessage(game, messagesBefore, {
+        requireRoll: true,
+      });
 
       const rollInfo = await game.evaluate((messageId) => {
         const msg = game.messages.get(messageId);
@@ -968,7 +916,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     const id = Object.values(byName)[0];
 
     await test.step("the damage roll posts a damage card to chat", async () => {
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
       await weaponRow(game, sheetId, id)
         .locator('[data-roll-type="damage"]')
         .click();
@@ -982,16 +930,9 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
         .click();
       await expect(rollDialog).toHaveCount(0, { timeout: 10000 });
 
-      const messageId = await game.waitForFunction(
-        (before) => {
-          if (game.messages.size <= before) return false;
-          const msg = game.messages.contents.at(-1);
-          return msg && msg.rolls.length ? msg.id : false;
-        },
-        messagesBefore,
-        { timeout: 10000 },
-      );
-      await expect(messageId).toBeTruthy();
+      const messageId = await waitForNewChatMessage(game, messagesBefore, {
+        requireRoll: true,
+      });
 
       await openSidebarTab(game, "chat");
       const chatMessage = game.locator(
@@ -1099,21 +1040,14 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
     const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
 
     await test.step("ctrl-clicking sends the item card to chat", async () => {
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
       await armorRow(game, sheetId, id)
         .locator(MOOK_FIELD.itemNameLink)
         .click({ modifiers: modifier });
 
-      const messageId = await game.waitForFunction(
-        (before) => {
-          if (game.messages.size <= before) return false;
-          const msg = game.messages.contents.at(-1);
-          return msg && msg.content ? msg.id : false;
-        },
-        messagesBefore,
-        { timeout: 10000 },
-      );
-      await expect(messageId).toBeTruthy();
+      const messageId = await waitForNewChatMessage(game, messagesBefore, {
+        requireContent: true,
+      });
 
       const nameKeyword = jacketName.split(" ")[1]; // "jacket"
       const cardContent = await game.evaluate(

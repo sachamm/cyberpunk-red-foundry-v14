@@ -1,31 +1,28 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  createActorViaUI,
-  expectSheetRendered,
   closeDocSheet,
   openSidebarTab,
-  uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  chatMessageCount,
+  createMookViaUI,
+  waitForNewChatMessage,
   waitForMookFields,
   closeAndReopenMookSheet,
   setMookSheetField,
 } from "./mook-sheet-helpers.mjs";
 
 async function rollDeathSave(page, sheetId) {
-  const before = await page.evaluate(() => game.messages.size);
+  const before = await chatMessageCount(page);
   // macOS Chromium treats Ctrl+click as a right-click (context menu) and never dispatches
   // `click`, so use Cmd there. The roll handler accepts both (`event.ctrlKey || event.metaKey`).
   const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
   await page
     .locator(`#${sheetId} ${MOOK_FIELD.deathSaveRollable}`)
     .click({ modifiers: modifier });
-  await page.waitForFunction((n) => game.messages.size > n, before, {
-    timeout: 10000,
-  });
-  const messageId = await page.evaluate(() => game.messages.contents.at(-1).id);
+  const messageId = await waitForNewChatMessage(page, before);
   const rollClass = await page.evaluate(
     () => game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,
   );
@@ -48,14 +45,7 @@ test.describe("Stat Pane", () => {
   test("editing a stat in-line persists after close/reopen", async ({
     page: game,
   }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("setting BODY in-line commits the new value", async () => {
       await setMookSheetField(game, sheetId, MOOK_FIELD.bodyStatInput, 12);
@@ -75,14 +65,7 @@ test.describe("Stat Pane", () => {
   test("HP current and max are separate editable values", async ({
     page: game,
   }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("setting current and max to different values commits both", async () => {
       await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, 35);
@@ -110,14 +93,7 @@ test.describe("Stat Pane", () => {
   });
 
   test("HP current cannot exceed max", async ({ page: game }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("setting current above max clamps it down to max", async () => {
       await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, 70);
@@ -143,14 +119,7 @@ test.describe("Stat Pane", () => {
   test("reducing HP max below current reduces the current too", async ({
     page: game,
   }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("lowering max under the current value pulls current down to it", async () => {
       await setMookSheetField(game, sheetId, MOOK_FIELD.hpMaxInput, 30);
@@ -174,16 +143,9 @@ test.describe("Stat Pane", () => {
   });
 
   test("rolling a stat posts a roll card to chat", async ({ page: game }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    const sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    const { actorId, sheetId } = await createMookViaUI(game);
 
-    const messagesBefore = await game.evaluate(() => game.messages.size);
+    const messagesBefore = await chatMessageCount(game);
 
     await test.step("clicking the BODY stat opens the roll dialog and confirms it", async () => {
       await game
@@ -205,14 +167,7 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("a new message card is posted to the chat log", async () => {
-      await game.waitForFunction(
-        (before) => game.messages.size > before,
-        messagesBefore,
-        { timeout: 10000 },
-      );
-      const messageId = await game.evaluate(
-        () => game.messages.contents.at(-1).id,
-      );
+      const messageId = await waitForNewChatMessage(game, messagesBefore);
       await openSidebarTab(game, "chat");
       const card = game.locator(
         `#chat .chat-message[data-message-id="${messageId}"]`,
@@ -235,14 +190,7 @@ test.describe("Stat Pane", () => {
   test("wound state reflects HP against max across all four states", async ({
     page: game,
   }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    let { actorId, sheetId } = await createMookViaUI(game);
 
     // A fresh mook's HP defaults to 40/40 (hp-schema.js). The seriously-wounded threshold is ceil(max / 2) = 20
     // (CPRActor._calculateDerivedStats, cpr-actor.js), so the derived states map to:
@@ -280,14 +228,7 @@ test.describe("Stat Pane", () => {
   test("increasing the death save penalty raises the displayed value", async ({
     page: game,
   }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("each increase click adds one to the penalty and display", async () => {
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
@@ -320,14 +261,7 @@ test.describe("Stat Pane", () => {
   test("resetting the death save penalty returns the displayed value to zero", async ({
     page: game,
   }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("increasing then clicking the value resets the penalty to zero", async () => {
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
@@ -360,14 +294,7 @@ test.describe("Stat Pane", () => {
   test("rolling a death save posts a self-consistent roll-under card", async ({
     page: game,
   }) => {
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
-      name: uniqueName("mook"),
-    });
-    const sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
+    const { actorId, sheetId } = await createMookViaUI(game);
 
     // A fresh mook's BODY defaults to 6 (stat-schema.js), which keeps both outcomes reachable after a few rolls
     const bodyStat = await game.evaluate(

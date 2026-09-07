@@ -1,7 +1,10 @@
 import { expect } from "@playwright/test";
 import {
   closeDocSheet,
+  createActorViaUI,
+  expectSheetRendered,
   reopenActorSheetViaUI,
+  uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
 // Mook sheet selectors. The mook name is a link (`.change-mook-name`), not an
@@ -60,6 +63,21 @@ export async function waitForMookFields(page, actorId, expected) {
 export async function closeAndReopenMookSheet(page, actorId) {
   await closeDocSheet(page, { collection: "actors", id: actorId });
   return reopenActorSheetViaUI(page, actorId);
+}
+
+// Create a mook via the actor directory and wait for its sheet to render; returns
+// { actorId, sheetId }. The standard setup for every mook spec. Pass an explicit
+// name when a test must assert against it (the rename tests do).
+export async function createMookViaUI(
+  page,
+  { name = uniqueName("mook") } = {},
+) {
+  const actorId = await createActorViaUI(page, { type: "mook", name });
+  const sheetId = await expectSheetRendered(page, {
+    collection: "actors",
+    id: actorId,
+  });
+  return { actorId, sheetId };
 }
 
 // Open the mook rename dialog from a rendered mook sheet; returns a locator scoped
@@ -208,9 +226,8 @@ export async function cancelMookSkillDialog(dialog) {
 export async function ownedSkillLevel(page, actorId, name) {
   return page.evaluate(
     ({ actorId, name }) =>
-      game.actors
-        .get(actorId)
-        .itemTypes.skill.find((s) => s.name === name)?.system.level ?? null,
+      game.actors.get(actorId).itemTypes.skill.find((s) => s.name === name)
+        ?.system.level ?? null,
     { actorId, name },
   );
 }
@@ -227,5 +244,52 @@ export async function waitForSkillLevel(page, actorId, name, level) {
     },
     { actorId, name, level },
     { timeout: 10000 },
+  );
+}
+
+// Snapshot the chat log size; pair with waitForNewChatMessage to detect a message
+// posted by an action taken in between.
+export async function chatMessageCount(page) {
+  return page.evaluate(() => game.messages.size);
+}
+
+// After the caller triggers an action, wait for a new chat message and return its
+// id. With requireRoll, waits until the newest message carries at least one roll
+// (roll actions post their roll on the message); with requireContent, until it
+// carries content (item cards post to chat as plain messages). Read-only; specs
+// own all card assertions.
+export async function waitForNewChatMessage(
+  page,
+  before,
+  { requireRoll = false, requireContent = false } = {},
+) {
+  return page.waitForFunction(
+    ({ before, requireRoll, requireContent }) => {
+      if (game.messages.size <= before) return false;
+      const msg = game.messages.contents.at(-1);
+      if (!msg) return false;
+      if (requireRoll && !msg.rolls.length) return false;
+      if (requireContent && !msg.content) return false;
+      return msg.id;
+    },
+    { before, requireRoll, requireContent },
+    { timeout: 10000 },
+  );
+}
+
+// Read the embedded item ids on an actor by name (read-only supporting evidence);
+// names with no owned match are omitted from the result.
+export async function ownedItemIdsByNames(page, actorId, names) {
+  return page.evaluate(
+    ({ actorId, names }) => {
+      const items = game.actors.get(actorId).items;
+      const out = {};
+      for (const n of names) {
+        const item = items.find((i) => i.name === n);
+        if (item) out[n] = item.id;
+      }
+      return out;
+    },
+    { actorId, names },
   );
 }

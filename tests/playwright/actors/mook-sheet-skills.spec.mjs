@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  createActorViaUI,
   createItemViaUI,
   expectSheetRendered,
   closeDocSheet,
@@ -16,6 +15,10 @@ import {
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  chatMessageCount,
+  createMookViaUI,
+  waitForNewChatMessage,
+  ownedItemIdsByNames,
   closeAndReopenMookSheet,
   openMookSkillDialog,
   mookSkillDialogRow,
@@ -34,18 +37,6 @@ import {
  * filter is level !== 0). Exactly one default is non-core, "Local Expert (Your
  * Home)", so even a fresh sheet already shows one raw-named entry with the edit glyph.
  */
-
-async function createMookWithSheet(game) {
-  const actorId = await createActorViaUI(game, {
-    type: "mook",
-    name: uniqueName("mook"),
-  });
-  const sheetId = await expectSheetRendered(game, {
-    collection: "actors",
-    id: actorId,
-  });
-  return { actorId, sheetId };
-}
 
 /**
  * Create a custom (non-core) skill item at the given level via its own sheet and
@@ -70,20 +61,16 @@ async function addLeveledCustomSkill(game, { actorId, sheetId, level }) {
 
   await dragItemToActorSheet(game, { itemId, sheetId, actorId });
 
-  const embeddedId = await game.evaluate(
-    ({ actorId, name }) =>
-      game.actors.get(actorId).items.find((i) => i.name === name)?.id ?? null,
-    { actorId, name },
-  );
+  const ids = await ownedItemIdsByNames(game, actorId, [name]);
   expect(
-    embeddedId,
+    ids[name],
     "the custom skill should be embedded on the mook",
   ).toBeTruthy();
-  return { name, embeddedId };
+  return { name, embeddedId: ids[name] };
 }
 
 async function createMookWithCustomSkill(game, level) {
-  const { actorId, sheetId } = await createMookWithSheet(game);
+  const { actorId, sheetId } = await createMookViaUI(game);
   const skill = await addLeveledCustomSkill(game, { actorId, sheetId, level });
   const freshSheetId = await closeAndReopenMookSheet(game, actorId);
   return { actorId, sheetId: freshSheetId, ...skill };
@@ -104,7 +91,7 @@ test.describe("Mook Skills", () => {
   test("the bulk skill dialog lists every owned skill and Confirm persists an edit", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
 
     let dialog;
     await test.step("the pen glyph opens the dialog with all 63 owned skills", async () => {
@@ -170,7 +157,7 @@ test.describe("Mook Skills", () => {
   test("bulk dialog Cancel and Escape discard edits", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("Cancel discards multiple changed levels", async () => {
       const dialog = await openMookSkillDialog(game, sheetId);
@@ -279,7 +266,7 @@ test.describe("Mook Skills", () => {
   test("the pane lists leveled skills alphabetically with base values", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("a fresh mook lists exactly the 13 pack-default level-2 skills in name order", async () => {
       const entries = game.locator(
@@ -316,7 +303,7 @@ test.describe("Mook Skills", () => {
   test("non-core skills show the edit glyph; core skills do not", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookWithSheet(game);
+    const { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("a fresh mook has exactly one glyph, on Local Expert (Your Home)", async () => {
       const entries = game.locator(`#${sheetId} ${MOOK_FIELD.skillEntry}`);
@@ -379,7 +366,7 @@ test.describe("Mook Skills", () => {
     const { actorId, sheetId, name } = await createMookWithCustomSkill(game, 2);
 
     let messageId = null;
-    const messagesBefore = await game.evaluate(() => game.messages.size);
+    const messagesBefore = await chatMessageCount(game);
 
     await test.step("the verify dialog shows the stat and the skill level", async () => {
       const entry = game
@@ -404,16 +391,9 @@ test.describe("Mook Skills", () => {
     });
 
     await test.step("confirming posts a skill roll card to chat", async () => {
-      await game.waitForFunction(
-        (before) => {
-          if (game.messages.size <= before) return false;
-          const msg = game.messages.contents.at(-1);
-          return msg && msg.rolls.length ? msg.id : false;
-        },
-        messagesBefore,
-        { timeout: 10000 },
-      );
-      messageId = await game.evaluate(() => game.messages.contents.at(-1).id);
+      messageId = await waitForNewChatMessage(game, messagesBefore, {
+        requireRoll: true,
+      });
       const rollClass = await game.evaluate(
         () =>
           game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,

@@ -1,14 +1,17 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  createActorViaUI,
   createItemViaUI,
-  expectSheetRendered,
   closeDocSheet,
   dragItemToActorSheet,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
-import { MOOK_FIELD, closeAndReopenMookSheet } from "./mook-sheet-helpers.mjs";
+import {
+  MOOK_FIELD,
+  createMookViaUI,
+  ownedItemIdsByNames,
+  closeAndReopenMookSheet,
+} from "./mook-sheet-helpers.mjs";
 
 /*
  * Drag an item of each Fight-pane type from the Items directory onto a mook sheet.
@@ -35,14 +38,7 @@ test.describe("Drag and Drop", () => {
     test(`dragging a ${type} onto a mook shows it in the fight pane`, async ({
       page: game,
     }) => {
-      const actorId = await createActorViaUI(game, {
-        type: "mook",
-        name: uniqueName("mook"),
-      });
-      let sheetId = await expectSheetRendered(game, {
-        collection: "actors",
-        id: actorId,
-      });
+      let { actorId, sheetId } = await createMookViaUI(game);
 
       const itemName = uniqueName(type);
       const itemId = await createItemViaUI(game, { type, name: itemName });
@@ -53,12 +49,8 @@ test.describe("Drag and Drop", () => {
         await dragItemToActorSheet(game, { itemId, sheetId, actorId });
       });
 
-      const embeddedId = await game.evaluate(
-        ({ actorId, itemName }) =>
-          game.actors.get(actorId).items.find((i) => i.name === itemName)?.id ??
-          null,
-        { actorId, itemName },
-      );
+      const ids = await ownedItemIdsByNames(game, actorId, [itemName]);
+      const embeddedId = ids[itemName];
       expect(
         embeddedId,
         `the ${type} should be embedded on the mook`,

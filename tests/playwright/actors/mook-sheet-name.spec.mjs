@@ -1,13 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  createActorViaUI,
-  expectSheetRendered,
   closeDocSheet,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  createMookViaUI,
   waitForMookFields,
   closeAndReopenMookSheet,
   openMookRenameDialog,
@@ -39,13 +38,8 @@ test.describe("Side Pane (Name)", () => {
     page: game,
   }) => {
     const initialName = uniqueName("mook");
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
+    let { actorId, sheetId } = await createMookViaUI(game, {
       name: initialName,
-    });
-    let sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
     });
 
     await test.step("header shows the initial name and opens a rename dialog", async () => {
@@ -78,13 +72,8 @@ test.describe("Side Pane (Name)", () => {
     page: game,
   }) => {
     const initialName = uniqueName("mook");
-    const actorId = await createActorViaUI(game, {
-      type: "mook",
+    const { actorId, sheetId } = await createMookViaUI(game, {
       name: initialName,
-    });
-    const sheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
     });
 
     await test.step("the cancel button discards the typed name", async () => {
