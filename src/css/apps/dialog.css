@@ -1,4 +1,22 @@
+.cpr-dialog {
+  .dialog-form,
+  .dialog-content {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .form-footer {
+    flex: 0 0 auto;
+  }
+}
+
 .dialog-sheet {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
   background-color: var(--cpr-background-box);
   color: var(--cpr-text-normal);
   min-width: 20.625rem;
@@ -33,7 +51,10 @@
   width: inherit;
   height: inherit;
   flex: 1 1 auto;
+  min-height: 0;
   padding: 0.313rem;
+  overflow: hidden auto;
+  scrollbar-gutter: stable;
 }
 
 .situational-mod-list,
