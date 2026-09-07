@@ -31,6 +31,13 @@ export const MOOK_FIELD = {
   facedownRollable: 'a.rollable[data-roll-type="facedown"]',
   reputationLedgerIcon: "a.reputation-open-ledger",
   skillsContent: ".mook-skills-content",
+  // The pen glyph in the skills header opens the bulk skill edit dialog.
+  modMookSkill: "a.mod-mook-skill",
+  // One entry of the comma-separated skill list; each is a focusable span carrying
+  // data-item-id, a rollable name link, and (non-core skills only) an edit glyph.
+  skillEntry: ".mook-skills-content .item",
+  skillRollable: 'a.rollable[data-roll-type="skill"]',
+  skillCustomGlyph: "a.item-edit.skill-custom",
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).
@@ -157,4 +164,68 @@ export async function confirmFacedownRoll(dialog) {
     .locator('button.cpr-dialog-button[data-action="confirm"]')
     .click();
   await expect(dialog).toHaveCount(0, { timeout: 5000 });
+}
+
+// Open the bulk mook skill edit dialog from a rendered mook sheet; returns a
+// locator scoped to that dialog. Only waits for the dialog surface; the spec owns
+// all assertions on its rows and controls.
+export async function openMookSkillDialog(page, sheetId) {
+  await page.locator(`#${sheetId} ${MOOK_FIELD.modMookSkill}`).click();
+  const dialog = page
+    .locator(".cpr-dialog")
+    .filter({ has: page.locator(".mook-skill-dialog") });
+  await expect(dialog).toBeVisible();
+  return dialog;
+}
+
+// Locate one row of the open bulk skill dialog by its (localized) skill name.
+export function mookSkillDialogRow(dialog, nameText) {
+  return dialog
+    .locator("li.dialog-item.skill-name")
+    .filter({ hasText: nameText });
+}
+
+// Fill a dialog row's level input. The input has no data-dtype, so the value is
+// submitted as a string (the spec owns any assertions on how that is handled).
+export async function setMookSkillDialogLevel(row, value) {
+  await row.locator("input.number.skill-input").fill(String(value));
+}
+
+// Confirm (persist) the bulk skill dialog and wait for it to close.
+export async function confirmMookSkillDialog(dialog) {
+  await dialog.locator(MOOK_FIELD.dialogConfirm).click();
+  await expect(dialog).toHaveCount(0, { timeout: 5000 });
+}
+
+// Cancel (discard) the bulk skill dialog and wait for it to close.
+export async function cancelMookSkillDialog(dialog) {
+  await dialog.locator(MOOK_FIELD.dialogCancel).click();
+  await expect(dialog).toHaveCount(0, { timeout: 5000 });
+}
+
+// Read the persisted level of an owned skill by name (read-only supporting
+// evidence; returns null if the mook does not own a skill with that name).
+export async function ownedSkillLevel(page, actorId, name) {
+  return page.evaluate(
+    ({ actorId, name }) =>
+      game.actors
+        .get(actorId)
+        .itemTypes.skill.find((s) => s.name === name)?.system.level ?? null,
+    { actorId, name },
+  );
+}
+
+// Wait until an owned skill's persisted level equals the expected value (the
+// proof that a dialog edit or Delete-key reset actually landed on the document).
+export async function waitForSkillLevel(page, actorId, name, level) {
+  await page.waitForFunction(
+    ({ actorId, name, level }) => {
+      const skill = game.actors
+        .get(actorId)
+        .itemTypes.skill.find((s) => s.name === name);
+      return skill && skill.system.level === level;
+    },
+    { actorId, name, level },
+    { timeout: 10000 },
+  );
 }
