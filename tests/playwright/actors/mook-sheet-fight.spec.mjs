@@ -12,27 +12,37 @@ import {
   setItemField,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
-import { MOOK_FIELD, closeAndReopenMookSheet } from "./mook-sheet-helpers.mjs";
+import {
+  MOOK_FIELD,
+  closeAndReopenMookSheet,
+  waitForMookFields,
+} from "./mook-sheet-helpers.mjs";
 
 /*
- * Fight Pane — Weapons. The mook sheet has no tabs: the fight block is always
- * visible and a dropped weapon is auto-equipped, so it renders immediately after
- * a drag. Each test builds a fresh mook with exactly the weapons it needs and
- * proves one behavior, asserting on a fresh render where an action mutates state.
+ * Fight Pane — Weapons and Armor. The mook sheet has no tabs: the fight block is
+ * always visible and a dropped weapon/armor is auto-equipped, so it renders
+ * immediately after a drag. Each test builds a fresh mook with exactly the items
+ * it needs and proves one behavior, asserting on a fresh render where an action
+ * mutates state.
  *
  * Fire-mode selection lives in an actor flag (flags.<system>.firetype-<weaponId>),
  * set/cleared by _fireCheckboxToggle; DV/aim measurement is out of scope under the
  * noCanvas harness (see the plan). The loaded-ammo display and reload-fill behavior
  * are already covered by extended-magazine.spec.mjs, so they are not re-proven here.
+ * Armor tracking drives a token resource bar that needs canvas, so under noCanvas
+ * the visible proof is the star glyph; externalData reads are supporting evidence.
  */
 
-async function toggleItemCheckbox(page, { sheetId, itemId, target }) {
+async function toggleItemCheckbox(
+  page,
+  { sheetId, itemId, target, expected = true },
+) {
   const sheet = await openItemSettings(page, sheetId);
   await sheet.locator(`a.item-checkbox[data-target="${target}"]`).click();
   await page.waitForFunction(
-    ({ itemId, target }) =>
-      foundry.utils.getProperty(game.items.get(itemId), target) === true,
-    { itemId, target },
+    ({ itemId, target, expected }) =>
+      foundry.utils.getProperty(game.items.get(itemId), target) === expected,
+    { itemId, target, expected },
     { timeout: 10000 },
   );
 }
@@ -181,7 +191,6 @@ async function createLoadableWeapon(page, { name }) {
     value: 8,
   });
 
-  // Add "ammo" to the weapon's installable types so it can hold a magazine.
   await (await openItemSettings(page, sheetId))
     .locator(".manage-installable-types")
     .click();
@@ -199,7 +208,6 @@ async function createLoadableWeapon(page, { name }) {
     return allowedTypes.includes("ammo");
   }, itemId);
 
-  // Mark a compatible ammo variety so the load dialog has a valid option.
   await (await openItemSettings(page, sheetId))
     .locator(".select-compatible-ammo")
     .click();
@@ -264,8 +272,100 @@ async function setupMookWithLoadableWeapon(page) {
   return { actorId, sheetId, weaponId, ammoId };
 }
 
+/**
+ * Create an armor via the UI and configure its locations/SP. A fresh armor is
+ * body-only with SP 7; the head SP input renders only once isHeadLocation is set,
+ * so the checkbox toggles happen before any SP entry.
+ */
+async function createConfiguredArmor(
+  page,
+  { name, isHeadLocation = false, isBodyLocation = true, headSp, bodySp },
+) {
+  const itemId = await createItemViaUI(page, { type: "armor", name });
+  const sheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+
+  if (isHeadLocation) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId,
+      target: "system.isHeadLocation",
+    });
+  }
+  if (!isBodyLocation) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId,
+      target: "system.isBodyLocation",
+      expected: false,
+    });
+  }
+  if (headSp !== undefined) {
+    await setItemField(page, {
+      sheetId,
+      itemId,
+      name: "system.headLocation.sp",
+      path: "system.headLocation.sp",
+      value: headSp,
+    });
+  }
+  if (bodySp !== undefined) {
+    await setItemField(page, {
+      sheetId,
+      itemId,
+      name: "system.bodyLocation.sp",
+      path: "system.bodyLocation.sp",
+      value: bodySp,
+    });
+  }
+
+  await closeDocSheet(page, { collection: "items", id: itemId });
+  return itemId;
+}
+
+/**
+ * Build a fresh mook, create + drag the given armors onto it (auto-equipped), and
+ * return its id, the freshly-reopened sheet id, and a name -> embedded-id map.
+ */
+async function setupMookWithArmors(page, armorSpecs) {
+  const actorId = await createActorViaUI(page, {
+    type: "mook",
+    name: uniqueName("mook"),
+  });
+  let sheetId = await expectSheetRendered(page, {
+    collection: "actors",
+    id: actorId,
+  });
+
+  for (const spec of armorSpecs) {
+    const itemId = await createConfiguredArmor(page, spec);
+    await dragItemToActorSheet(page, { itemId, sheetId, actorId });
+  }
+
+  const byName = await page.evaluate(
+    ({ actorId, names }) => {
+      const items = game.actors.get(actorId).items;
+      const out = {};
+      for (const n of names) {
+        const item = items.find((i) => i.name === n);
+        if (item) out[n] = item.id;
+      }
+      return out;
+    },
+    { actorId, names: armorSpecs.map((s) => s.name) },
+  );
+
+  sheetId = await closeAndReopenMookSheet(page, actorId);
+  return { actorId, sheetId, byName };
+}
+
 const weaponRow = (page, sheetId, itemId) =>
   page.locator(`#${sheetId} ${MOOK_FIELD.weaponRow}[data-item-id="${itemId}"]`);
+
+const armorRow = (page, sheetId, itemId) =>
+  page.locator(`#${sheetId} ${MOOK_FIELD.armorRow}[data-item-id="${itemId}"]`);
 
 const fireFlag = (page, actorId, weaponId) =>
   page.evaluate(
@@ -761,7 +861,6 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
       );
       const row = weaponRow(game, freshSheetId, weaponId);
       await expect(row).not.toContainText(unloaded);
-      // The ammo cell renders "<type>: <value> / <max>" (spaces around the slash).
       await expect(row).toContainText(`${weapon.value} / ${weapon.max}`);
     });
   });
@@ -929,6 +1028,315 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
 
       const freshSheet = await closeAndReopenMookSheet(game, actorId);
       await expect(weaponRow(game, freshSheet, id).first()).toHaveCount(0);
+    });
+  });
+});
+
+test.describe("Mook sheet - Fight Pane (armor)", () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoReadyWorld(page);
+  });
+
+  test("displays each armor's location and SP in the fight block", async ({
+    page: game,
+  }) => {
+    const { sheetId, byName } = await setupMookWithArmors(game, [
+      { name: uniqueName("jacket") },
+      {
+        name: uniqueName("helmet"),
+        isHeadLocation: true,
+        isBodyLocation: false,
+        headSp: 4,
+      },
+      { name: uniqueName("suit"), isHeadLocation: true, headSp: 4, bodySp: 5 },
+    ]);
+    const names = Object.keys(byName);
+    const jacketId = byName[names[0]];
+    const helmetId = byName[names[1]];
+    const suitId = byName[names[2]];
+
+    const labels = await game.evaluate(() => ({
+      head: game.i18n.localize("CPR.global.location.head"),
+      body: game.i18n.localize("CPR.global.location.body"),
+      sp: game.i18n.localize("CPR.global.itemType.armor.sp"),
+    }));
+
+    await test.step("body-only armor shows a single Body block with its SP", async () => {
+      const row = armorRow(game, sheetId, jacketId);
+      await expect(row.locator(".armor-1-location")).toContainText(labels.body);
+      await expect(row.locator(".armor-1-stats")).toHaveText("7/7");
+      await expect(row.locator(".armor-1-type")).toContainText(labels.sp);
+      await expect(row.locator(".armor-2-location")).toHaveCount(0);
+    });
+
+    await test.step("head-only armor shows a single Head block with its SP", async () => {
+      const row = armorRow(game, sheetId, helmetId);
+      await expect(row.locator(".armor-1-location")).toContainText(labels.head);
+      await expect(row.locator(".armor-1-stats")).toHaveText("4/4");
+      await expect(row.locator(".armor-2-location")).toHaveCount(0);
+    });
+
+    await test.step("dual-location armor shows a Head block and a Body block", async () => {
+      const row = armorRow(game, sheetId, suitId);
+      await expect(row.locator(".armor-1-location")).toContainText(labels.head);
+      await expect(row.locator(".armor-1-stats")).toHaveText("4/4");
+      await expect(row.locator(".armor-2-location")).toContainText(labels.body);
+      await expect(row.locator(".armor-2-stats")).toHaveText("5/5");
+    });
+  });
+
+  test("clicking an armor opens its item sheet; ctrl-click sends it to chat", async ({
+    page: game,
+  }) => {
+    const jacketName = uniqueName("jacket");
+    const { actorId, sheetId, byName } = await setupMookWithArmors(game, [
+      { name: jacketName },
+    ]);
+    const id = Object.values(byName)[0];
+
+    // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
+    // dispatches `click`, so use Cmd there. The handler accepts both ctrlKey/metaKey.
+    const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
+
+    await test.step("ctrl-clicking sends the item card to chat", async () => {
+      const messagesBefore = await game.evaluate(() => game.messages.size);
+      await armorRow(game, sheetId, id)
+        .locator(MOOK_FIELD.itemNameLink)
+        .click({ modifiers: modifier });
+
+      const messageId = await game.waitForFunction(
+        (before) => {
+          if (game.messages.size <= before) return false;
+          const msg = game.messages.contents.at(-1);
+          return msg && msg.content ? msg.id : false;
+        },
+        messagesBefore,
+        { timeout: 10000 },
+      );
+      await expect(messageId).toBeTruthy();
+
+      const nameKeyword = jacketName.split(" ")[1]; // "jacket"
+      const cardContent = await game.evaluate(
+        (id) => game.messages.get(id).content,
+        messageId,
+      );
+      expect(cardContent).toContain(nameKeyword);
+
+      await openSidebarTab(game, "chat");
+      const chatMessage = game.locator(
+        `#chat .chat-message[data-message-id="${messageId}"]`,
+      );
+      await expect(chatMessage).toBeVisible({ timeout: 10000 });
+    });
+
+    await test.step("clicking the name opens the armor's item sheet", async () => {
+      await armorRow(game, sheetId, id)
+        .locator(MOOK_FIELD.itemNameLink)
+        .click();
+      await game.waitForFunction(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId)?.sheet?.rendered === true,
+        { actorId, itemId: id },
+        { timeout: 15000 },
+      );
+    });
+  });
+
+  test("ablating armor via the ablate icon reduces its SP", async ({
+    page: game,
+  }) => {
+    const { actorId, sheetId, byName } = await setupMookWithArmors(game, [
+      { name: uniqueName("jacket") },
+    ]);
+    const id = Object.values(byName)[0];
+
+    await test.step("the fresh armor reads 7/7 SP", async () => {
+      await expect(
+        armorRow(game, sheetId, id).locator(".armor-1-stats"),
+      ).toHaveText("7/7");
+    });
+
+    let currentSheet = sheetId;
+
+    await test.step("clicking ablate reduces the displayed SP by one", async () => {
+      await armorRow(game, currentSheet, id)
+        .locator('.ablate[data-location="body"]')
+        .click();
+      await game.waitForFunction(
+        ({ actorId, itemId }) =>
+          foundry.utils.getProperty(
+            game.actors.get(actorId).items.get(itemId),
+            "system.bodyLocation.ablation",
+          ) === 1,
+        { actorId, itemId: id },
+        { timeout: 10000 },
+      );
+
+      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      await expect(
+        armorRow(game, currentSheet, id).locator(".armor-1-stats"),
+      ).toHaveText("6/7");
+    });
+
+    await test.step("ablating again accumulates to 5/7", async () => {
+      await armorRow(game, currentSheet, id)
+        .locator('.ablate[data-location="body"]')
+        .click();
+      await game.waitForFunction(
+        ({ actorId, itemId }) =>
+          foundry.utils.getProperty(
+            game.actors.get(actorId).items.get(itemId),
+            "system.bodyLocation.ablation",
+          ) === 2,
+        { actorId, itemId: id },
+        { timeout: 10000 },
+      );
+
+      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      await expect(
+        armorRow(game, currentSheet, id).locator(".armor-1-stats"),
+      ).toHaveText("5/7");
+    });
+  });
+
+  test("switching the tracked armor via the star moves its SP resource", async ({
+    page: game,
+  }) => {
+    const jacketName = uniqueName("jacket");
+    const vestName = uniqueName("vest");
+    const { actorId, sheetId, byName } = await setupMookWithArmors(game, [
+      { name: jacketName },
+      { name: vestName, bodySp: 5 },
+    ]);
+    const names = Object.keys(byName);
+    const jacketId = byName[names[0]];
+    const vestId = byName[names[1]];
+
+    await test.step("fresh armor starts untracked (outline star)", async () => {
+      for (const id of [jacketId, vestId]) {
+        const row = armorRow(game, sheetId, id);
+        await expect(
+          row.locator('a.armor-current-untrack[data-location="body"]'),
+        ).toBeVisible();
+        await expect(
+          row.locator('a.armor-current-track[data-location="body"]'),
+        ).toHaveCount(0);
+      }
+    });
+
+    let currentSheet = sheetId;
+
+    await test.step("clicking the star tracks that armor", async () => {
+      await armorRow(game, currentSheet, jacketId)
+        .locator('a.armor-current-untrack[data-location="body"]')
+        .click();
+      await waitForMookFields(game, actorId, {
+        "system.externalData.currentArmorBody.id": jacketId,
+      });
+
+      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      await expect(
+        armorRow(game, currentSheet, jacketId).locator(
+          'a.armor-current-track[data-location="body"]',
+        ),
+      ).toBeVisible();
+      await expect(
+        armorRow(game, currentSheet, vestId).locator(
+          'a.armor-current-untrack[data-location="body"]',
+        ),
+      ).toBeVisible();
+
+      const tracked = await game.evaluate(
+        ({ actorId }) => {
+          const data =
+            game.actors.get(actorId).system.externalData.currentArmorBody;
+          return { id: data.id, value: data.value, max: data.max };
+        },
+        { actorId },
+      );
+      expect(tracked).toEqual({ id: jacketId, value: 7, max: 7 });
+    });
+
+    await test.step("tracking a second armor switches the resource to it", async () => {
+      await armorRow(game, currentSheet, vestId)
+        .locator('a.armor-current-untrack[data-location="body"]')
+        .click();
+      await waitForMookFields(game, actorId, {
+        "system.externalData.currentArmorBody.id": vestId,
+      });
+
+      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      await expect(
+        armorRow(game, currentSheet, vestId).locator(
+          'a.armor-current-track[data-location="body"]',
+        ),
+      ).toBeVisible();
+      await expect(
+        armorRow(game, currentSheet, jacketId).locator(
+          'a.armor-current-untrack[data-location="body"]',
+        ),
+      ).toBeVisible();
+
+      const tracked = await game.evaluate(
+        ({ actorId }) => {
+          const data =
+            game.actors.get(actorId).system.externalData.currentArmorBody;
+          return { id: data.id, value: data.value, max: data.max };
+        },
+        { actorId },
+      );
+      expect(tracked).toEqual({ id: vestId, value: 5, max: 5 });
+    });
+
+    await test.step("clicking the filled star untracks it", async () => {
+      await armorRow(game, currentSheet, vestId)
+        .locator('a.armor-current-track[data-location="body"]')
+        .click();
+      await waitForMookFields(game, actorId, {
+        "system.externalData.currentArmorBody.id": null,
+        "system.externalData.currentArmorBody.value": 0,
+      });
+
+      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      for (const id of [jacketId, vestId]) {
+        const row = armorRow(game, currentSheet, id);
+        await expect(
+          row.locator('a.armor-current-untrack[data-location="body"]'),
+        ).toBeVisible();
+        await expect(
+          row.locator('a.armor-current-track[data-location="body"]'),
+        ).toHaveCount(0);
+      }
+    });
+  });
+
+  test("removes an armor with the Delete key", async ({ page: game }) => {
+    const { actorId, sheetId, byName } = await setupMookWithArmors(game, [
+      { name: uniqueName("jacket") },
+    ]);
+    const id = Object.values(byName)[0];
+
+    await test.step("focusing the name and pressing Delete removes it", async () => {
+      await armorRow(game, sheetId, id)
+        .locator(MOOK_FIELD.itemNameLink)
+        .focus();
+      await game.keyboard.press("Delete");
+
+      const confirmDialog = game.locator(".cpr-dialog").filter({
+        has: game.locator(".cpr-dialog-message"),
+      });
+      await expect(confirmDialog).toBeVisible({ timeout: 10000 });
+      await confirmDialog.locator('button[data-action="yes"]').click();
+      await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
+
+      await game.waitForFunction(
+        ({ actorId, itemId }) => !game.actors.get(actorId).items.has(itemId),
+        { actorId, itemId: id },
+        { timeout: 10000 },
+      );
+
+      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      await expect(armorRow(game, freshSheet, id).first()).toHaveCount(0);
     });
   });
 });
