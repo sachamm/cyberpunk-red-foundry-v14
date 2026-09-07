@@ -3,6 +3,24 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 const SYSTEM_ID = "cyberpunk-red-core";
 
+function contrastRatio(foreground, background) {
+  const luminance = (color) => {
+    const channels = color
+      .match(/[\d.]+/g)
+      .slice(0, 3)
+      .map((channel) => Number(channel) / 255)
+      .map((channel) =>
+        channel <= 0.04045
+          ? channel / 12.92
+          : ((channel + 0.055) / 1.055) ** 2.4,
+      );
+    return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+  };
+  const lighter = Math.max(luminance(foreground), luminance(background));
+  const darker = Math.min(luminance(foreground), luminance(background));
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 async function captureSettings(page) {
   return page.evaluate(() => ({
     theme: game.settings.get(game.system.id, "theme"),
@@ -90,6 +108,68 @@ async function readThemeTokens(page) {
   });
 }
 
+async function readDisabledCheckboxColors(page) {
+  return page.evaluate(() => {
+    const application = document.createElement("section");
+    application.className = "application cpr themed";
+
+    const createCheckbox = ({ checked = false, readonly = false } = {}) => {
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = checked;
+      if (readonly) checkbox.setAttribute("readonly", "");
+      else checkbox.disabled = true;
+      application.append(checkbox);
+      return checkbox;
+    };
+    const disabledUnchecked = createCheckbox();
+    const disabledChecked = createCheckbox({ checked: true });
+    const readonlyUnchecked = createCheckbox({ readonly: true });
+    const readonlyChecked = createCheckbox({ checked: true, readonly: true });
+
+    const surfaceColor = (variable) => {
+      const surface = document.createElement("div");
+      surface.style.backgroundColor = `var(${variable})`;
+      application.append(surface);
+      return getComputedStyle(surface).backgroundColor;
+    };
+
+    document.body.append(application);
+    const styles = getComputedStyle(disabledUnchecked);
+    const result = {
+      semanticColor: styles
+        .getPropertyValue("--cpr-checkbox-disabled-color")
+        .trim(),
+      foundryColor: styles.getPropertyValue("--checkbox-disabled-color").trim(),
+      controlColors: [
+        {
+          state: "disabled unchecked",
+          color: getComputedStyle(disabledUnchecked, "::before").color,
+        },
+        {
+          state: "disabled checked",
+          color: getComputedStyle(disabledChecked, "::after").color,
+        },
+        {
+          state: "readonly unchecked",
+          color: getComputedStyle(readonlyUnchecked, "::before").color,
+        },
+        {
+          state: "readonly checked",
+          color: getComputedStyle(readonlyChecked, "::after").color,
+        },
+      ],
+      surfaceColors: [
+        surfaceColor("--cpr-background-window"),
+        surfaceColor("--cpr-background-row-even"),
+        surfaceColor("--cpr-background-row-odd"),
+      ],
+    };
+    application.remove();
+    return result;
+  });
+}
+
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
@@ -157,6 +237,41 @@ test.describe("CPR theme integration", () => {
       expect(tokens.legacy.text).not.toBe(tokens.cprText);
       expect(tokens.legacyButton).not.toBe(tokens.cprButtonBackground);
       expect(tokens.legacyContentBackground).toContain("parchment.jpg");
+    } finally {
+      await restoreSettings(game, original);
+    }
+  });
+
+  test("keeps disabled checkboxes visible in both CPR variants", async ({
+    page: game,
+  }) => {
+    const original = await captureSettings(game);
+    try {
+      await game.evaluate(async () => {
+        await game.settings.set(game.system.id, "themeFoundry", false);
+      });
+
+      for (const variant of ["light", "dark"]) {
+        await game.evaluate(
+          async (theme) => game.settings.set(game.system.id, "theme", theme),
+          variant,
+        );
+        await expect(game.locator("html")).toHaveAttribute(
+          "data-cpr-theme",
+          variant,
+        );
+
+        const colors = await readDisabledCheckboxColors(game);
+        expect(colors.foundryColor).toBe(colors.semanticColor);
+        for (const control of colors.controlColors) {
+          for (const surfaceColor of colors.surfaceColors) {
+            expect(
+              contrastRatio(control.color, surfaceColor),
+              `${variant} ${control.state}: ${control.color} on ${surfaceColor}`,
+            ).toBeGreaterThanOrEqual(3);
+          }
+        }
+      }
     } finally {
       await restoreSettings(game, original);
     }

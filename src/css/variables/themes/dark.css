@@ -38,6 +38,9 @@ html[data-cpr-theme="dark"] {
   --cpr-dark-red: #c62828;
   --cpr-dark-text-main: #eaeaea;
 
+  /* UI Colors */
+  --cpr-checkbox-disabled-color: #999;
+
   /* Text Colors */
   --cpr-text-chat-failure: var(--cpr-dark-red);
   --cpr-text-chat-normal: var(--cpr-dark-text-main);

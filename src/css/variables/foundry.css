@@ -91,7 +91,13 @@
     --checkbox-background-color: var(--cpr-background-foundry-input);
     --checkbox-checked-color: var(--cpr-text-icon-highlight);
     --checkbox-checkmark-color: var(--cpr-text-normal);
-    --checkbox-disabled-color: var(--cpr-text-icon-dimmed);
+    --checkbox-disabled-color: var(--cpr-checkbox-disabled-color);
+  }
+
+  input[type="checkbox"]:is(:disabled, [readonly]),
+  input[type="radio"]:is(:disabled, [readonly]) {
+    --checkbox-background-color: var(--checkbox-disabled-color);
+    --checkbox-checked-color: var(--checkbox-disabled-color);
   }
 
   :is(
