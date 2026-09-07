@@ -96,6 +96,7 @@
 
   /* UI Colors */
   --cpr-checkbox-disabled-color: var(--cpr-color-medium-grey);
+  --cpr-checkbox-unchecked-color: var(--cpr-color-dark-grey);
   --cpr-item-dir-border: rgb(158 159 159 / 60%);
   --cpr-migration-overlay-error: rgb(156 18 18 / 70%);
   --cpr-migration-overlay-success: rgb(30 125 34 / 70%);
@@ -128,6 +129,7 @@
   --cpr-text-mook-name: var(--cpr-color-white);
   --cpr-text-mook-normal: var(--cpr-color-near-black);
   --cpr-text-normal: var(--cpr-color-near-black);
+  --cpr-text-placeholder: var(--cpr-color-medium-grey);
   --cpr-text-pill: var(--cpr-color-white);
   --cpr-text-tab-highlight: #ffff3f;
   --cpr-text-tab-normal: var(--cpr-color-white);

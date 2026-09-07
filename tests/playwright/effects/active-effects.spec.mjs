@@ -163,9 +163,12 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     expect(theme.actionCellContained).toBe(true);
     expect(theme.situationalCheckboxCenterOffset).toBeLessThanOrEqual(1);
     expect(theme.onByDefaultCheckboxCenterOffset).toBeLessThanOrEqual(1);
-    // Theme Foundry is enabled by default, so the native ApplicationV2
-    // window frame should use the same button token as the CPR sheet.
-    expect(theme.windowHeaderButtonBackground).toBe(theme.cprButtonBackground);
+    // Native ApplicationV2 window controls keep Foundry's transparent header
+    // treatment instead of receiving the content-button background.
+    expect(theme.windowHeaderButtonBackground).toBe("rgba(0, 0, 0, 0)");
+    expect(theme.windowHeaderButtonBackground).not.toBe(
+      theme.cprButtonBackground,
+    );
     expect(theme.valueInputBorderStyle).toBe("solid");
     expect(theme.valueInputBorderColor).toBe(theme.expectedControlBorderColor);
     expect(theme.valueInputBoxShadow).toBe("none");

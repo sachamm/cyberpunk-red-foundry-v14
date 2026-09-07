@@ -57,6 +57,7 @@ async function readThemeTokens(page) {
     const cprHeader = document.createElement("header");
     cprHeader.className = "window-header";
     const cprHeaderButton = document.createElement("button");
+    cprHeaderButton.className = "header-control";
     cprHeader.append(cprHeaderButton);
 
     const cprContent = document.createElement("div");
@@ -162,6 +163,95 @@ async function readDisabledCheckboxColors(page) {
           color: getComputedStyle(readonlyChecked, "::after").color,
         },
       ],
+      surfaceColors: [
+        surfaceColor("--cpr-background-window"),
+        surfaceColor("--cpr-background-row-even"),
+        surfaceColor("--cpr-background-row-odd"),
+      ],
+    };
+    application.remove();
+    return result;
+  });
+}
+
+async function readFormControlColors(page) {
+  return page.evaluate(() => {
+    const application = document.createElement("section");
+    application.className = "application themed";
+
+    const textInput = document.createElement("input");
+    textInput.type = "text";
+    textInput.placeholder = "Placeholder";
+
+    const unchecked = document.createElement("input");
+    unchecked.type = "checkbox";
+    const checked = document.createElement("input");
+    checked.type = "checkbox";
+    checked.checked = true;
+
+    const range = document.createElement("input");
+    range.type = "range";
+
+    const surfaceColor = (variable) => {
+      const surface = document.createElement("div");
+      surface.style.backgroundColor = `var(${variable})`;
+      application.append(surface);
+      return getComputedStyle(surface).backgroundColor;
+    };
+
+    application.append(textInput, unchecked, checked, range);
+    document.body.append(application);
+
+    const inputStyle = getComputedStyle(textInput);
+    const uncheckedStyle = getComputedStyle(unchecked);
+    const checkedStyle = getComputedStyle(checked);
+    const rangeStyle = getComputedStyle(range);
+    const result = {
+      input: {
+        background: inputStyle.backgroundColor,
+        text: inputStyle.color,
+        placeholder: getComputedStyle(textInput, "::placeholder").color,
+      },
+      checkbox: {
+        unchecked: getComputedStyle(unchecked, "::before").color,
+        checked: getComputedStyle(checked, "::after").color,
+        semanticUnchecked: uncheckedStyle
+          .getPropertyValue("--cpr-checkbox-unchecked-color")
+          .trim(),
+        mappedUnchecked: uncheckedStyle
+          .getPropertyValue("--checkbox-background-color")
+          .trim(),
+        semanticChecked: checkedStyle
+          .getPropertyValue("--cpr-background-toggle-checked")
+          .trim(),
+        mappedChecked: checkedStyle
+          .getPropertyValue("--checkbox-checked-color")
+          .trim(),
+      },
+      range: {
+        track: rangeStyle.getPropertyValue("--range-track-color").trim(),
+        trackBorder: rangeStyle
+          .getPropertyValue("--range-track-border-color")
+          .trim(),
+        thumb: rangeStyle
+          .getPropertyValue("--range-thumb-background-color")
+          .trim(),
+        thumbBorder: rangeStyle
+          .getPropertyValue("--range-thumb-border-color")
+          .trim(),
+        semanticTrack: rangeStyle
+          .getPropertyValue("--cpr-background-foundry-input")
+          .trim(),
+        semanticTrackBorder: rangeStyle
+          .getPropertyValue("--cpr-background-chat-border")
+          .trim(),
+        semanticThumb: rangeStyle
+          .getPropertyValue("--cpr-background-toggle-checked")
+          .trim(),
+        semanticThumbBorder: rangeStyle
+          .getPropertyValue("--cpr-background-border")
+          .trim(),
+      },
       surfaceColors: [
         surfaceColor("--cpr-background-window"),
         surfaceColor("--cpr-background-row-even"),
@@ -329,6 +419,93 @@ test.describe("CPR theme integration", () => {
     }
   });
 
+  test("keeps themed form control states distinct in both CPR variants", async ({
+    page: game,
+  }) => {
+    const original = await captureSettings(game);
+    try {
+      await game.evaluate(async () => {
+        await game.settings.set(game.system.id, "themeFoundry", true);
+      });
+
+      for (const variant of ["light", "dark"]) {
+        await game.evaluate(
+          async (theme) => game.settings.set(game.system.id, "theme", theme),
+          variant,
+        );
+        await expect(game.locator("html")).toHaveAttribute(
+          "data-cpr-theme",
+          variant,
+        );
+
+        const colors = await readFormControlColors(game);
+        expect(colors.input.placeholder).not.toBe(colors.input.text);
+        expect(
+          contrastRatio(colors.input.placeholder, colors.input.background),
+          `${variant} placeholder contrast`,
+        ).toBeGreaterThanOrEqual(3);
+
+        expect(colors.checkbox.mappedUnchecked).toBe(
+          colors.checkbox.semanticUnchecked,
+        );
+        expect(colors.checkbox.mappedChecked).toBe(
+          colors.checkbox.semanticChecked,
+        );
+        for (const surfaceColor of colors.surfaceColors) {
+          expect(
+            contrastRatio(colors.checkbox.unchecked, surfaceColor),
+            `${variant} unchecked checkbox contrast`,
+          ).toBeGreaterThanOrEqual(3);
+          expect(
+            contrastRatio(colors.checkbox.checked, surfaceColor),
+            `${variant} checked checkbox contrast`,
+          ).toBeGreaterThanOrEqual(3);
+        }
+
+        expect(colors.range.track).toBe(colors.range.semanticTrack);
+        expect(colors.range.trackBorder).toBe(colors.range.semanticTrackBorder);
+        expect(colors.range.thumb).toBe(colors.range.semanticThumb);
+        expect(colors.range.thumbBorder).toBe(colors.range.semanticThumbBorder);
+      }
+    } finally {
+      await restoreSettings(game, original);
+    }
+  });
+
+  test("keeps the main menu readable with the light CPR palette", async ({
+    page: game,
+  }) => {
+    const original = await captureSettings(game);
+    try {
+      await game.evaluate(async () => {
+        await game.settings.set(game.system.id, "themeFoundry", true);
+        await game.settings.set(game.system.id, "theme", "light");
+        await ui.menu.toggle();
+      });
+      await expect(game.locator("#menu")).toHaveClass(/active/);
+
+      const colors = await game.evaluate(() => {
+        const menu = document.querySelector("#menu");
+        const heading = menu.querySelector("h2");
+        const semanticProbe = document.createElement("span");
+        semanticProbe.style.color = "var(--cpr-text-header)";
+        menu.append(semanticProbe);
+        const result = {
+          heading: getComputedStyle(heading).color,
+          semantic: getComputedStyle(semanticProbe).color,
+        };
+        semanticProbe.remove();
+        return result;
+      });
+      expect(colors.heading).toBe(colors.semantic);
+    } finally {
+      await game.evaluate(async () => {
+        if (ui.menu.rendered) await ui.menu.toggle();
+      });
+      await restoreSettings(game, original);
+    }
+  });
+
   test("extends an explicit variant to Foundry and follows Foundry in auto", async ({
     page: game,
   }) => {
@@ -360,7 +537,7 @@ test.describe("CPR theme integration", () => {
       let tokens = await readThemeTokens(game);
       expect(tokens.stock.background).toBe(tokens.cprBackground);
       expect(tokens.stock.text).toBe(tokens.cprText);
-      expect(tokens.cprHeaderButton).toBe(tokens.cprContentButton);
+      expect(tokens.cprHeaderButton).not.toBe(tokens.cprContentButton);
       expect(tokens.legacy.text).not.toBe(tokens.cprText);
       expect(tokens.legacyButton).not.toBe(tokens.cprButtonBackground);
       expect(tokens.legacyContentBackground).toContain("parchment.jpg");

@@ -40,6 +40,7 @@ html[data-cpr-theme="dark"] {
 
   /* UI Colors */
   --cpr-checkbox-disabled-color: #999;
+  --cpr-checkbox-unchecked-color: #999;
 
   /* Text Colors */
   --cpr-text-chat-failure: var(--cpr-dark-red);
@@ -61,6 +62,7 @@ html[data-cpr-theme="dark"] {
   --cpr-text-icon-normal: #c0c0c5;
   --cpr-text-mook-normal: var(--cpr-dark-text-main);
   --cpr-text-normal: var(--cpr-dark-text-main);
+  --cpr-text-placeholder: #c0c0c0;
   --cpr-text-pill: var(--cpr-dark-text-main);
   --cpr-text-tab-normal: var(--cpr-dark-text-main);
   --cpr-text-window: var(--cpr-dark-text-main);

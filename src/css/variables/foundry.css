@@ -71,7 +71,7 @@
     --input-border-color: var(--cpr-background-chat-border);
     --input-box-shadow: none;
     --input-text-color: var(--cpr-text-foundry-input);
-    --input-placeholder-color: var(--cpr-text-hint);
+    --input-placeholder-color: var(--cpr-text-placeholder);
     --input-focus-outline-color: var(--cpr-background-border);
   }
 
@@ -89,8 +89,8 @@
 
   input[type="checkbox"],
   input[type="radio"] {
-    --checkbox-background-color: var(--cpr-background-foundry-input);
-    --checkbox-checked-color: var(--cpr-text-icon-highlight);
+    --checkbox-background-color: var(--cpr-checkbox-unchecked-color);
+    --checkbox-checked-color: var(--cpr-background-toggle-checked);
     --checkbox-checkmark-color: var(--cpr-text-normal);
     --checkbox-disabled-color: var(--cpr-checkbox-disabled-color);
   }
@@ -99,6 +99,13 @@
   input[type="radio"]:is(:disabled, [readonly]) {
     --checkbox-background-color: var(--checkbox-disabled-color);
     --checkbox-checked-color: var(--checkbox-disabled-color);
+  }
+
+  input[type="range"] {
+    --range-track-color: var(--cpr-background-foundry-input);
+    --range-track-border-color: var(--cpr-background-chat-border);
+    --range-thumb-background-color: var(--cpr-background-toggle-checked);
+    --range-thumb-border-color: var(--cpr-background-border);
   }
 
   :is(
@@ -157,7 +164,7 @@
 
   #chat-message {
     --text-color: var(--cpr-text-normal);
-    --placeholder-color: var(--cpr-text-hint);
+    --placeholder-color: var(--cpr-text-placeholder);
     --background-color: var(--cpr-background-foundry-input);
     --border-color: var(--cpr-background-chat-border);
     --chat-input-border: 0.063rem solid var(--cpr-background-chat-border);
@@ -191,6 +198,12 @@
   }
 }
 
+/* Foundry keeps the ESC menu dark in every interface variant. */
+html[data-cpr-theme-foundry] #menu {
+  --color-text-emphatic: var(--cpr-text-header);
+  --color-text-primary: var(--cpr-text-header);
+}
+
 /*
  * A CPR window's content uses CPR button tokens, while its native window
  * controls keep Foundry's own affordances. Enabling the global option extends
@@ -201,7 +214,7 @@
     html[data-cpr-theme-foundry]
       :is(.themed, .application):not(.window-app, .window-app *)
   )
-  :is(a.button, button, kbd) {
+  :is(a.button, button, kbd):not(.window-header *) {
   --button-background-color: var(--cpr-background-foundry-input);
   --button-border-color: var(--cpr-background-chat-border);
   --button-text-color: var(--cpr-text-normal);
@@ -216,7 +229,9 @@
     html[data-cpr-theme-foundry]
       :is(.themed, .application):not(.window-app, .window-app *)
   )
-  :is(a.button[disabled], button[disabled], kbd[disabled]) {
+  :is(a.button[disabled], button[disabled], kbd[disabled]):not(
+    .window-header *
+  ) {
   --button-background-color: var(--cpr-background-row-even);
   --button-border-color: var(--cpr-text-icon-dimmed);
   --button-text-color: var(--cpr-text-icon-dimmed);
