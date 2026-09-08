@@ -1308,6 +1308,8 @@
   "CPR.settings.theme.name.auto": "Automatic (Follow Foundry)",
   "CPR.settings.theme.name.light": "Світла",
   "CPR.settings.theme.name.dark": "Темна",
+  "CPR.settings.themeFoundry.title": "Theme Foundry",
+  "CPR.settings.themeFoundry.hint": "Apply the selected Cyberpunk RED theme to Foundry's interface and ApplicationV2 windows. Legacy ApplicationV1 windows retain their Foundry appearance.",
   "CPR.settings.browserCompendiaMenu.button": "Configure Browser Compendia",
   "CPR.settings.browserCompendiaMenu.desc": "Select which compendia the Document Browser includes. All are active by default; unchecking one hides it from the browser.",
   "CPR.settings.browserCompendiaMenu.hint": "Choose which compendia appear in the Document Browser.",
