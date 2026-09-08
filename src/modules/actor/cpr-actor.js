@@ -1966,8 +1966,11 @@ export default class CPRActor extends Actor {
       return item;
     }
 
-    // auto-install this cyberware
-    const allInstalled = item.recursiveGetAllInstalledItems();
+    // auto-install this cyberware. Only container types carry installed items;
+    // the method is assigned by the container mixin, so guard for the rest.
+    const allInstalled = SystemUtils.hasMixin(item.type, "container")
+      ? item.recursiveGetAllInstalledItems()
+      : [];
 
     if (item.type === "cyberware") {
       const installResult = await this.installCyberware(item._id);
