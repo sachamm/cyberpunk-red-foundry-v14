@@ -315,6 +315,7 @@ test.describe("CPR theme integration", () => {
         const rootStyle = getComputedStyle(document.documentElement);
         return {
           macroId: macro.id,
+          elementId: element.id,
           classes: [...element.classList],
           background: getComputedStyle(element)
             .getPropertyValue("--background")
@@ -330,6 +331,31 @@ test.describe("CPR theme integration", () => {
       expect(state.classes).not.toContain("themed");
       expect(state.classes).not.toContain("window-app");
       expect(state.background).toBe(state.cprBackground);
+
+      const headerButton = game
+        .locator(`#${state.elementId} .window-header button.header-control`)
+        .first();
+      await expect(headerButton).toHaveCSS(
+        "background-color",
+        "rgba(0, 0, 0, 0)",
+      );
+      const hoverColors = await headerButton.evaluate(() => {
+        const cprProbe = document.createElement("span");
+        cprProbe.style.backgroundColor = "var(--cpr-background-foundry-hover)";
+        const foundryProbe = document.createElement("span");
+        foundryProbe.style.backgroundColor = "var(--color-warm-2)";
+        document.body.append(cprProbe, foundryProbe);
+        const result = {
+          cpr: getComputedStyle(cprProbe).backgroundColor,
+          foundry: getComputedStyle(foundryProbe).backgroundColor,
+        };
+        cprProbe.remove();
+        foundryProbe.remove();
+        return result;
+      });
+      await headerButton.hover();
+      await expect(headerButton).toHaveCSS("background-color", hoverColors.cpr);
+      expect(hoverColors.cpr).not.toBe(hoverColors.foundry);
     } finally {
       if (macroId) {
         await game.evaluate(async (id) => {

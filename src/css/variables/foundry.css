@@ -206,8 +206,8 @@ html[data-cpr-theme-foundry] #menu {
 
 /*
  * A CPR window's content uses CPR button tokens, while its native window
- * controls keep Foundry's own affordances. Enabling the global option extends
- * the tokens to every button, including window chrome.
+ * controls keep Foundry's transparent resting state. Enabling the global
+ * option extends the content tokens to every ApplicationV2 window.
  */
 :where(
     .application.cpr .window-content,
@@ -219,6 +219,19 @@ html[data-cpr-theme-foundry] #menu {
   --button-border-color: var(--cpr-background-chat-border);
   --button-text-color: var(--cpr-text-normal);
   --button-focus-outline-color: var(--cpr-background-border);
+  --button-hover-background-color: var(--cpr-background-foundry-hover);
+  --button-hover-border-color: var(--cpr-background-border);
+  --button-hover-text-color: var(--cpr-text-header);
+}
+
+/* Keep native header controls transparent at rest, but use the CPR hover
+ * palette instead of Foundry's default orange button treatment. */
+:where(
+    .application.cpr,
+    html[data-cpr-theme-foundry] .application:not(.window-app, .window-app *)
+  )
+  .window-header
+  button.header-control {
   --button-hover-background-color: var(--cpr-background-foundry-hover);
   --button-hover-border-color: var(--cpr-background-border);
   --button-hover-text-color: var(--cpr-text-header);
