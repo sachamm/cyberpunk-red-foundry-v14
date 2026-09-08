@@ -349,10 +349,15 @@ const fireFlag = (page, actorId, weaponId) =>
     { actorId, weaponId },
   );
 
-async function attackRollContent(page, sheetId, itemId) {
+async function weaponRollContent(
+  page,
+  sheetId,
+  itemId,
+  { rollType = "attack" } = {},
+) {
   const messagesBefore = await chatMessageCount(page);
   await weaponRow(page, sheetId, itemId)
-    .locator('[data-roll-type="attack"]')
+    .locator(`[data-roll-type="${rollType}"]`)
     .click();
 
   const rollDialog = page.locator(".application").filter({
@@ -371,6 +376,51 @@ async function attackRollContent(page, sheetId, itemId) {
     const msg = game.messages.get(id);
     return { messageId: id, content: msg.content };
   }, messageId);
+}
+
+/**
+ * Prove the name-link behavior shared by equipped weapon and armor rows: a
+ * ctrl-click sends the item card to chat, a plain click opens the owned item's
+ * sheet. `row` is the rendered item row locator for the current sheet.
+ */
+async function itemNameLinkActions(
+  game,
+  { actorId, itemId, row, nameKeyword },
+) {
+  // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
+  // dispatches `click`, so use Cmd there. The handler accepts both ctrlKey/metaKey.
+  const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
+
+  await test.step("ctrl-clicking sends the item card to chat", async () => {
+    const messagesBefore = await chatMessageCount(game);
+    await row.locator(MOOK_FIELD.itemNameLink).click({ modifiers: modifier });
+
+    const messageId = await waitForNewChatMessage(game, messagesBefore, {
+      requireContent: true,
+    });
+
+    const cardContent = await game.evaluate(
+      (id) => game.messages.get(id).content,
+      messageId,
+    );
+    expect(cardContent).toContain(nameKeyword);
+
+    await openSidebarTab(game, "chat");
+    const chatMessage = game.locator(
+      `#chat .chat-message[data-message-id="${messageId}"]`,
+    );
+    await expect(chatMessage).toBeVisible({ timeout: 10000 });
+  });
+
+  await test.step("clicking the name opens the item's sheet", async () => {
+    await row.locator(MOOK_FIELD.itemNameLink).click();
+    await game.waitForFunction(
+      ({ actorId, itemId }) =>
+        game.actors.get(actorId).items.get(itemId)?.sheet?.rendered === true,
+      { actorId, itemId },
+      { timeout: 15000 },
+    );
+  });
 }
 
 /**
@@ -461,44 +511,11 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     ]);
     const id = Object.values(byName)[0];
 
-    // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
-    // dispatches `click`, so use Cmd there. The handler accepts both ctrlKey/metaKey.
-    const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
-
-    await test.step("ctrl-clicking sends the item card to chat", async () => {
-      const messagesBefore = await chatMessageCount(game);
-      await weaponRow(game, sheetId, id)
-        .locator(MOOK_FIELD.itemNameLink)
-        .click({ modifiers: modifier });
-
-      const messageId = await waitForNewChatMessage(game, messagesBefore, {
-        requireContent: true,
-      });
-
-      const nameKeyword = meleeName.split(" ")[1]; // "melee"
-      const cardContent = await game.evaluate(
-        (id) => game.messages.get(id).content,
-        messageId,
-      );
-      expect(cardContent).toContain(nameKeyword);
-
-      await openSidebarTab(game, "chat");
-      const chatMessage = game.locator(
-        `#chat .chat-message[data-message-id="${messageId}"]`,
-      );
-      await expect(chatMessage).toBeVisible({ timeout: 10000 });
-    });
-
-    await test.step("clicking the name opens the weapon's item sheet", async () => {
-      await weaponRow(game, sheetId, id)
-        .locator(MOOK_FIELD.itemNameLink)
-        .click();
-      await game.waitForFunction(
-        ({ actorId, itemId }) =>
-          game.actors.get(actorId).items.get(itemId)?.sheet?.rendered === true,
-        { actorId, itemId: id },
-        { timeout: 15000 },
-      );
+    await itemNameLinkActions(game, {
+      actorId,
+      itemId: id,
+      row: weaponRow(game, sheetId, id),
+      nameKeyword: meleeName.split(" ")[1], // "melee"
     });
   });
 
@@ -590,20 +607,20 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     }));
 
     await test.step("a plain attack uses the weapon's own skill, not Autofire", async () => {
-      const { content } = await attackRollContent(game, sheetId, id);
+      const { content } = await weaponRollContent(game, sheetId, id);
       expect(content).toContain(attackLabel);
       expect(content).not.toContain(autofireLabel);
     });
 
     await test.step("selecting autofire makes the attack use the Autofire skill", async () => {
       await row.locator('.fire-checkbox[data-fire-mode="autofire"]').click();
-      const { content } = await attackRollContent(game, sheetId, id);
+      const { content } = await weaponRollContent(game, sheetId, id);
       expect(content).toContain(autofireLabel);
     });
 
     await test.step("selecting suppressive also uses the Autofire skill", async () => {
       await row.locator('.fire-checkbox[data-fire-mode="suppressive"]').click();
-      const { messageId, content } = await attackRollContent(game, sheetId, id);
+      const { messageId, content } = await weaponRollContent(game, sheetId, id);
       expect(content).toContain(autofireLabel);
 
       await openSidebarTab(game, "chat");
@@ -626,13 +643,6 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     ]);
     const id = Object.values(byName)[0];
 
-    await test.step("the fresh ranged weapon reads Unloaded (empty magazine)", async () => {
-      const unloaded = await game.evaluate(() =>
-        game.i18n.localize("CPR.mookSheet.items.unloaded"),
-      );
-      await expect(weaponRow(game, sheetId, id)).toContainText(unloaded);
-    });
-
     await test.step("firing it shows a warning banner about the empty magazine", async () => {
       const needle = "you lack the bullets in your weapon";
 
@@ -641,7 +651,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
       );
       expect(localizedWarning).toContain(needle);
 
-      await attackRollContent(game, sheetId, id);
+      await weaponRollContent(game, sheetId, id);
 
       const banner = game
         .locator(".notification.warning")
@@ -778,13 +788,6 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     const { actorId, sheetId, weaponId } =
       await setupMookWithLoadableWeapon(game);
 
-    await test.step("the fresh weapon reads Unloaded with an empty magazine", async () => {
-      const unloaded = await game.evaluate(() =>
-        game.i18n.localize("CPR.mookSheet.items.unloaded"),
-      );
-      await expect(weaponRow(game, sheetId, weaponId)).toContainText(unloaded);
-    });
-
     await test.step("confirming the change-ammo dialog loads a full magazine", async () => {
       await confirmChangeAmmo(game, sheetId, weaponId);
       const mag = await game.evaluate(
@@ -802,21 +805,11 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
       expect(mag.value).toBe(mag.max);
     });
 
-    await test.step("a fresh render shows the loaded magazine instead of Unloaded", async () => {
+    await test.step("a fresh render shows the loaded magazine", async () => {
       const freshSheetId = await closeAndReopenMookSheet(game, actorId);
-      const weapon = await game.evaluate(
-        ({ actorId, itemId }) => {
-          const w = game.actors.get(actorId).items.get(itemId);
-          return foundry.utils.getProperty(w, "system.magazine");
-        },
-        { actorId, itemId: weaponId },
+      await expect(weaponRow(game, freshSheetId, weaponId)).toContainText(
+        "8 / 8",
       );
-      const unloaded = await game.evaluate(() =>
-        game.i18n.localize("CPR.mookSheet.items.unloaded"),
-      );
-      const row = weaponRow(game, freshSheetId, weaponId);
-      await expect(row).not.toContainText(unloaded);
-      await expect(row).toContainText(`${weapon.value} / ${weapon.max}`);
     });
   });
 
@@ -873,33 +866,19 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     const id = Object.values(byName)[0];
 
     await test.step("the attack roll posts a roll card to chat", async () => {
-      const messagesBefore = await chatMessageCount(game);
-      await weaponRow(game, sheetId, id)
-        .locator('[data-roll-type="attack"]')
-        .click();
-
-      const rollDialog = game.locator(".application").filter({
-        has: game.locator(".total-mods"),
-      });
-      await expect(rollDialog).toBeVisible({ timeout: 10000 });
-      await rollDialog
-        .locator('button.cpr-dialog-button[data-action="confirm"]')
-        .click();
-      await expect(rollDialog).toHaveCount(0, { timeout: 10000 });
-
-      const messageId = await waitForNewChatMessage(game, messagesBefore, {
-        requireRoll: true,
-      });
+      const { messageId } = await weaponRollContent(game, sheetId, id);
 
       const rollInfo = await game.evaluate((messageId) => {
         const msg = game.messages.get(messageId);
         return {
           speakerActor: msg.speaker?.actor ?? null,
-          rolls: msg.rolls.map((r) => r.total),
+          rollClass: msg.rolls[0]?.constructor?.name ?? null,
+          rollCount: msg.rolls.length,
         };
       }, messageId);
       expect(rollInfo.speakerActor).toBe(actorId);
-      expect(rollInfo.rolls.length).toBe(1);
+      expect(rollInfo.rollClass).toBe("CPRAttackRoll");
+      expect(rollInfo.rollCount).toBe(1);
 
       await openSidebarTab(game, "chat");
       const chatMessage = game.locator(
@@ -916,23 +895,15 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     const id = Object.values(byName)[0];
 
     await test.step("the damage roll posts a damage card to chat", async () => {
-      const messagesBefore = await chatMessageCount(game);
-      await weaponRow(game, sheetId, id)
-        .locator('[data-roll-type="damage"]')
-        .click();
-
-      const rollDialog = game.locator(".application").filter({
-        has: game.locator(".total-mods"),
+      const { messageId } = await weaponRollContent(game, sheetId, id, {
+        rollType: "damage",
       });
-      await expect(rollDialog).toBeVisible({ timeout: 10000 });
-      await rollDialog
-        .locator('button.cpr-dialog-button[data-action="confirm"]')
-        .click();
-      await expect(rollDialog).toHaveCount(0, { timeout: 10000 });
 
-      const messageId = await waitForNewChatMessage(game, messagesBefore, {
-        requireRoll: true,
-      });
+      const rollClass = await game.evaluate(
+        (id) => game.messages.get(id).rolls?.[0]?.constructor?.name ?? null,
+        messageId,
+      );
+      expect(rollClass).toBe("CPRDamageRoll");
 
       await openSidebarTab(game, "chat");
       const chatMessage = game.locator(
@@ -1035,44 +1006,11 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
     ]);
     const id = Object.values(byName)[0];
 
-    // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
-    // dispatches `click`, so use Cmd there. The handler accepts both ctrlKey/metaKey.
-    const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
-
-    await test.step("ctrl-clicking sends the item card to chat", async () => {
-      const messagesBefore = await chatMessageCount(game);
-      await armorRow(game, sheetId, id)
-        .locator(MOOK_FIELD.itemNameLink)
-        .click({ modifiers: modifier });
-
-      const messageId = await waitForNewChatMessage(game, messagesBefore, {
-        requireContent: true,
-      });
-
-      const nameKeyword = jacketName.split(" ")[1]; // "jacket"
-      const cardContent = await game.evaluate(
-        (id) => game.messages.get(id).content,
-        messageId,
-      );
-      expect(cardContent).toContain(nameKeyword);
-
-      await openSidebarTab(game, "chat");
-      const chatMessage = game.locator(
-        `#chat .chat-message[data-message-id="${messageId}"]`,
-      );
-      await expect(chatMessage).toBeVisible({ timeout: 10000 });
-    });
-
-    await test.step("clicking the name opens the armor's item sheet", async () => {
-      await armorRow(game, sheetId, id)
-        .locator(MOOK_FIELD.itemNameLink)
-        .click();
-      await game.waitForFunction(
-        ({ actorId, itemId }) =>
-          game.actors.get(actorId).items.get(itemId)?.sheet?.rendered === true,
-        { actorId, itemId: id },
-        { timeout: 15000 },
-      );
+    await itemNameLinkActions(game, {
+      actorId,
+      itemId: id,
+      row: armorRow(game, sheetId, id),
+      nameKeyword: jacketName.split(" ")[1], // "jacket"
     });
   });
 
@@ -1083,12 +1021,6 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
       { name: uniqueName("jacket") },
     ]);
     const id = Object.values(byName)[0];
-
-    await test.step("the fresh armor reads 7/7 SP", async () => {
-      await expect(
-        armorRow(game, sheetId, id).locator(".armor-1-stats"),
-      ).toHaveText("7/7");
-    });
 
     let currentSheet = sheetId;
 

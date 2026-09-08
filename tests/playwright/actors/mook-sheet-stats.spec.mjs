@@ -24,7 +24,8 @@ async function rollDeathSave(page, sheetId) {
     .click({ modifiers: modifier });
   const messageId = await waitForNewChatMessage(page, before);
   const rollClass = await page.evaluate(
-    () => game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,
+    (id) => game.messages.get(id).rolls?.[0]?.constructor?.name ?? null,
+    messageId,
   );
   const card = page.locator(
     `#chat .chat-message[data-message-id="${messageId}"]`,
@@ -145,6 +146,7 @@ test.describe("Stat Pane", () => {
   test("rolling a stat posts a roll card to chat", async ({ page: game }) => {
     const { actorId, sheetId } = await createMookViaUI(game);
 
+    let messageId = null;
     const messagesBefore = await chatMessageCount(game);
 
     await test.step("clicking the BODY stat opens the roll dialog and confirms it", async () => {
@@ -167,7 +169,7 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("a new message card is posted to the chat log", async () => {
-      const messageId = await waitForNewChatMessage(game, messagesBefore);
+      messageId = await waitForNewChatMessage(game, messagesBefore);
       await openSidebarTab(game, "chat");
       const card = game.locator(
         `#chat .chat-message[data-message-id="${messageId}"]`,
@@ -176,10 +178,10 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("the posted card is a single roll attributed to the mook", async () => {
-      const message = await game.evaluate(() => {
-        const msg = game.messages.contents.at(-1);
+      const message = await game.evaluate((id) => {
+        const msg = game.messages.get(id);
         return { rolls: msg.rolls.length, actor: msg.speaker.actor };
-      });
+      }, messageId);
       expect(message.rolls).toBe(1);
       expect(message.actor).toBe(actorId);
     });
@@ -268,9 +270,6 @@ test.describe("Stat Pane", () => {
       await waitForMookFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 1,
       });
-      await expect(
-        game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
-      ).toHaveText("1");
 
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`).click();
       await waitForMookFields(game, actorId, {

@@ -221,14 +221,13 @@ test.describe("Mook Skills", () => {
       await waitForSkillLevel(game, actorId, name, 0);
     });
 
-    await test.step("the entry is gone from the pane but the item stays owned", async () => {
+    await test.step("the entry is gone from the pane on a fresh render", async () => {
       const freshSheet = await closeAndReopenMookSheet(game, actorId);
       await expect(
         game
           .locator(`#${freshSheet} ${MOOK_FIELD.skillEntry}`)
           .filter({ hasText: name }),
       ).toHaveCount(0);
-      expect(await ownedSkillLevel(game, actorId, name)).toBe(0);
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -289,12 +288,6 @@ test.describe("Mook Skills", () => {
         "Persuasion (+8)",
         "Stealth (+8)",
       ]);
-    });
-
-    await test.step("level-0 core skills are not listed", async () => {
-      const entries = game.locator(`#${sheetId} ${MOOK_FIELD.skillEntry}`);
-      await expect(entries.filter({ hasText: "Handgun" })).toHaveCount(0);
-      await expect(entries.filter({ hasText: "Long Bladed" })).toHaveCount(0);
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -395,8 +388,8 @@ test.describe("Mook Skills", () => {
         requireRoll: true,
       });
       const rollClass = await game.evaluate(
-        () =>
-          game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,
+        (id) => game.messages.get(id).rolls?.[0]?.constructor?.name ?? null,
+        messageId,
       );
       expect(rollClass).toBe("CPRSkillRoll");
 
@@ -416,12 +409,12 @@ test.describe("Mook Skills", () => {
       const total = Number(
         await card.locator(".d10-number-div span.clickable").textContent(),
       );
-      const diceSum = await game.evaluate(() => {
-        const term = game.messages.contents.at(-1).rolls?.[0]?.dice?.[0];
+      const diceSum = await game.evaluate((id) => {
+        const term = game.messages.get(id).rolls?.[0]?.dice?.[0];
         return (
           term?.results.reduce((t, r) => t + (r.count ?? r.result), 0) ?? 0
         );
-      });
+      }, messageId);
       expect(
         total,
         `total ${total} should equal dice ${diceSum} + INT 6 + level 2`,

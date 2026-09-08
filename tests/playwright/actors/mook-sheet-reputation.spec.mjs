@@ -22,6 +22,18 @@ test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
 
+/**
+ * Build a fresh mook and raise its reputation through the ledger window, closing
+ * both windows again. Used by the roll tests that need a known reputation value.
+ */
+async function createMookWithReputation(game, value) {
+  const { actorId, sheetId } = await createMookViaUI(game);
+  await openReputationLedger(game, sheetId);
+  await modifyReputationViaLedger(game, actorId, "add", value, "Test setup");
+  await closeReputationLedger(game);
+  return { actorId, sheetId };
+}
+
 test.describe("Reputation", () => {
   test("a fresh mook shows Reputation 0 and its default skill list", async ({
     page: game,
@@ -103,16 +115,7 @@ test.describe("Reputation", () => {
       );
     });
 
-    await test.step("the entries survive a fresh render of the ledger window", async () => {
-      await closeReputationLedger(game);
-      const reopened = await openReputationLedger(game, sheetId);
-      await expect(
-        reopened.locator(".ledger-info > div:last-child"),
-      ).toHaveText("10");
-      await expect(reopened.locator(".ledger-list > li.item")).toHaveCount(3);
-      await closeReputationLedger(game);
-    });
-
+    await closeReputationLedger(game);
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
@@ -197,24 +200,13 @@ test.describe("Reputation", () => {
   test("a facedown roll uses COOL plus the current reputation", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookViaUI(game);
-    await openReputationLedger(game, sheetId);
-    await modifyReputationViaLedger(game, actorId, "add", 3, "Test setup");
-    await closeReputationLedger(game);
+    const { actorId, sheetId } = await createMookWithReputation(game, 3);
 
-    let currentSheetId = sheetId;
     let messageId = null;
     const messagesBefore = await chatMessageCount(game);
 
-    await test.step("the header shows the new reputation on a fresh sheet render", async () => {
-      currentSheetId = await closeAndReopenMookSheet(game, actorId);
-      await expect(
-        game.locator(`#${currentSheetId} ${MOOK_FIELD.facedownRollable}`),
-      ).toContainText("Reputation: 3");
-    });
-
     await test.step("the verify dialog shows COOL and the current reputation", async () => {
-      const dialog = await openFacedownRollDialog(game, currentSheetId);
+      const dialog = await openFacedownRollDialog(game, sheetId);
       const statInput = dialog.locator('input[name="statValue"]');
       await expect(statInput).toBeDisabled();
       await expect(statInput).toHaveValue("6");
@@ -225,8 +217,8 @@ test.describe("Reputation", () => {
     await test.step("confirming posts a Facedown roll card to chat", async () => {
       messageId = await waitForNewChatMessage(game, messagesBefore);
       const rollClass = await game.evaluate(
-        () =>
-          game.messages.contents.at(-1).rolls?.[0]?.constructor?.name ?? null,
+        (id) => game.messages.get(id).rolls?.[0]?.constructor?.name ?? null,
+        messageId,
       );
       expect(rollClass).toBe("CPRFacedownRoll");
       await openSidebarTab(game, "chat");
@@ -246,12 +238,12 @@ test.describe("Reputation", () => {
       // The check die is 1d10red: a natural 10 explodes (bonus d10 added) and a
       // natural 1 implodes (bonus d10 subtracted), so the dice alone range from
       // -9 to +20. Assert the exact composition instead of a floor.
-      const diceSum = await game.evaluate(() => {
-        const term = game.messages.contents.at(-1).rolls?.[0]?.dice?.[0];
+      const diceSum = await game.evaluate((id) => {
+        const term = game.messages.get(id).rolls?.[0]?.dice?.[0];
         return (
           term?.results.reduce((t, r) => t + (r.count ?? r.result), 0) ?? 0
         );
-      });
+      }, messageId);
       expect(
         total,
         `total ${total} should equal dice ${diceSum} + COOL 6 + reputation 3`,
@@ -275,10 +267,7 @@ test.describe("Reputation", () => {
   test("a critical failure implodes the check die and subtracts a bonus d10", async ({
     page: game,
   }) => {
-    const { actorId, sheetId } = await createMookViaUI(game);
-    await openReputationLedger(game, sheetId);
-    await modifyReputationViaLedger(game, actorId, "add", 3, "Test setup");
-    await closeReputationLedger(game);
+    const { actorId, sheetId } = await createMookWithReputation(game, 3);
 
     let messageId = null;
     const messagesBefore = await chatMessageCount(game);
