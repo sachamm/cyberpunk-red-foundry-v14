@@ -52,6 +52,16 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   #dragDrop;
 
   /**
+   * Scroll positions captured by the Handlebars part renderer. CPR's tab
+   * controllers make their content visible during `_onRender`, after Foundry's
+   * normal part-state synchronization has already run, so restoration is
+   * deferred until `_postRender`.
+   *
+   * @type {Array<[HTMLElement, number, number]>}
+   */
+  #scrollPositions = [];
+
+  /**
    * Track which collapsible sections are open/closed on this sheet instance,
    * seeded from the user's saved settings. (AppV2 freezes `options`, so this is a
    * plain instance field.)
@@ -424,6 +434,21 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
     this._on(".reputation-open-ledger", "click", () =>
       this.showLedger("reputation"),
     );
+  }
+
+  /** @override */
+  _syncPartState(partId, newElement, priorElement, state) {
+    super._syncPartState(partId, newElement, priorElement, state);
+    this.#scrollPositions = state.scrollPositions;
+  }
+
+  /** @override */
+  async _postRender(context, options) {
+    await super._postRender(context, options);
+    for (const [element, scrollTop, scrollLeft] of this.#scrollPositions) {
+      Object.assign(element, { scrollTop, scrollLeft });
+    }
+    this.#scrollPositions = [];
   }
 
   /**

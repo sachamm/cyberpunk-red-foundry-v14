@@ -31,6 +31,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   static PARTS = {
     form: {
       template: `systems/${CPR.systemId}/templates/actor/cpr-character-sheet.hbs`,
+      scrollable: [".right-content-section", ".bottom-content-section"],
     },
   };
 

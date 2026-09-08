@@ -33,6 +33,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   static PARTS = {
     form: {
       template: `systems/${CPR.systemId}/templates/actor/cpr-container-sheet.hbs`,
+      scrollable: [".right-content"],
     },
   };
 

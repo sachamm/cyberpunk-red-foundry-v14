@@ -24,6 +24,16 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
 export default class CPRItemSheet extends HandlebarsApplicationMixin(
   ItemSheetV2,
 ) {
+  /**
+   * Scroll positions captured by the Handlebars part renderer. CPR's tab
+   * controller makes its content visible during `_onRender`, after Foundry's
+   * normal part-state synchronization has already run, so restoration is
+   * deferred until `_postRender`.
+   *
+   * @type {Array<[HTMLElement, number, number]>}
+   */
+  #scrollPositions = [];
+
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
     classes: ["cpr", "item"],
@@ -45,6 +55,7 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
   static PARTS = {
     form: {
       template: `systems/${CPR.systemId}/templates/item/cpr-item-sheet.hbs`,
+      scrollable: [".item-bottom-content-section"],
     },
   };
 
@@ -522,6 +533,21 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
 
     // Set up right click context menu when clicking on Item's image
     this._createItemImageContextMenu(root);
+  }
+
+  /** @override */
+  _syncPartState(partId, newElement, priorElement, state) {
+    super._syncPartState(partId, newElement, priorElement, state);
+    this.#scrollPositions = state.scrollPositions;
+  }
+
+  /** @override */
+  async _postRender(context, options) {
+    await super._postRender(context, options);
+    for (const [element, scrollTop, scrollLeft] of this.#scrollPositions) {
+      Object.assign(element, { scrollTop, scrollLeft });
+    }
+    this.#scrollPositions = [];
   }
 
   #activeTab = "item-description";
