@@ -23,7 +23,9 @@ import {
  * Special Gear Pane — basic item types, drugs, and name-link actions. The pane
  * lists every owned item of the types ammo/clothing/cyberdeck/drug/gear/
  * itemUpgrade/netarch as a plain name link (cyberware renders separately above
- * them). Stackable items show an "(xN)" amount after their name; drug items
+ * them); other types, such as programs, are embedded but never listed —
+ * programs are managed on the cyberdeck's item sheet. Stackable items show an
+ * "(xN)" amount after their name; drug items
  * additionally render a snort glyph that consumes one dose behind a yes/no
  * confirmation. Note the confirm path posts a transient notification banner
  * ("<name> consumed..."), not a chat card — snort() calls DisplayMessage(
@@ -72,6 +74,57 @@ test.describe("Special Gear Pane", () => {
       });
     });
   }
+
+  test("only allowed item types are listed in the special gear pane", async ({
+    page: game,
+  }) => {
+    let { actorId, sheetId } = await createMookViaUI(game);
+
+    const deckName = uniqueName("cyberdeck");
+    const programName = uniqueName("program");
+    const deckId = await createItemViaUI(game, { type: "cyberdeck", name: deckName });
+    const programId = await createItemViaUI(game, {
+      type: "program",
+      name: programName,
+    });
+    // Close the items' sheets so they do not cover the drop target.
+    await closeDocSheet(game, { collection: "items", id: deckId });
+    await closeDocSheet(game, { collection: "items", id: programId });
+
+    let deckEmbeddedId;
+    let programEmbeddedId;
+    await test.step("dragging a cyberdeck and a program onto the mook embeds both", async () => {
+      await dragItemToActorSheet(game, { itemId: deckId, sheetId, actorId });
+      await dragItemToActorSheet(game, { itemId: programId, sheetId, actorId });
+      const ids = await ownedItemIdsByNames(game, actorId, [deckName, programName]);
+      deckEmbeddedId = ids[deckName];
+      programEmbeddedId = ids[programName];
+      expect(
+        deckEmbeddedId && programEmbeddedId,
+        "both items should be embedded on the mook",
+      ).toBeTruthy();
+    });
+
+    await test.step("the cyberdeck is listed but the program is not", async () => {
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      const deckLink = game.locator(
+        `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${deckEmbeddedId}"]`,
+      );
+      await expect(deckLink).toBeVisible();
+      await expect(deckLink).toHaveText(deckName);
+
+      // Programs are managed on the cyberdeck's item sheet, not the mook sheet:
+      // no name link for the program, and its name nowhere in the pane.
+      await expect(
+        game.locator(
+          `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${programEmbeddedId}"]`,
+        ),
+      ).toHaveCount(0);
+      await expect(
+        game.locator(`#${sheetId} .mook-special-content`),
+      ).not.toContainText(programName);
+    });
+  });
 
   test("consuming a drug via the snort icon decrements its amount by one", async ({
     page: game,
