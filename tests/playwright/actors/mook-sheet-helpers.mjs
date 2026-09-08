@@ -1,4 +1,5 @@
-import { expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   createActorViaUI,
@@ -43,6 +44,11 @@ export const MOOK_FIELD = {
   // The pills glyph next to a listed drug's name; clicking it starts the snort
   // (consume) flow. Renders only for drug items.
   snortAction: 'a.item-action[data-action-type="snort"]',
+  // The install/uninstall glyphs next to a listed item upgrade's name; the
+  // action type flips as the upgrade's installed state changes (the active,
+  // uninstall variant also carries the button-active class).
+  upgradeInstallAction: 'a.item-action[data-action-type="install-item"]',
+  upgradeUninstallAction: 'a.item-action[data-action-type="uninstall-item"]',
   // One entry of the comma-separated skill list; each is a focusable span carrying
   // data-item-id, a rollable name link, and (non-core skills only) an edit glyph.
   skillEntry: ".mook-skills-content .item",
@@ -299,4 +305,39 @@ export async function ownedItemIdsByNames(page, actorId, names) {
     },
     { actorId, names },
   );
+}
+
+/**
+ * Register the console-error harness shared by all mook sheet specs.
+ * beforeEach navigates to the ready world and collects console errors;
+ * afterEach fails the test on any uncaught exception or console error not
+ * registered as expected via page.expectedConsoleErrors.
+ */
+export function installConsoleErrorHarness() {
+  test.beforeEach(async ({ page }) => {
+    page.consoleErrors = [];
+    // Tests that intentionally trigger a console error (e.g. via
+    // DisplayMessage("error")) register a matching RegExp here so afterEach
+    // ignores exactly those messages. Uncaught exceptions always fail.
+    page.expectedConsoleErrors = [];
+    page.on("console", (msg) => {
+      if (msg.type() === "error") page.consoleErrors.push(msg.text());
+    });
+    page.on("pageerror", (err) => {
+      page.consoleErrors.push(`uncaught exception: ${err.message}`);
+    });
+    await gotoReadyWorld(page);
+  });
+
+  test.afterEach(async ({ page }) => {
+    const unexpected = page.consoleErrors.filter(
+      (text) =>
+        text.startsWith("uncaught exception:") ||
+        !page.expectedConsoleErrors.some((re) => re.test(text)),
+    );
+    expect(
+      unexpected,
+      `console errors during test:\n${unexpected.join("\n")}`,
+    ).toEqual([]);
+  });
 }

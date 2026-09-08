@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
+  closeOwnedItemSheet,
   createItemViaUI,
   dismissNotifications,
   dragItemToActorSheet,
@@ -14,66 +14,49 @@ import {
   MOOK_FIELD,
   chatMessageCount,
   createMookViaUI,
+  installConsoleErrorHarness,
   ownedItemIdsByNames,
   closeAndReopenMookSheet,
   waitForNewChatMessage,
 } from "./mook-sheet-helpers.mjs";
 
-/*
- * Special Gear Pane — basic item types, drugs, and name-link actions. The pane
- * lists every owned item of the types ammo/clothing/cyberdeck/drug/gear/
- * itemUpgrade/netarch as a plain name link (cyberware renders separately above
- * them); other types, such as programs, are embedded but never listed —
- * programs are managed on the cyberdeck's item sheet. Stackable items show an
- * "(xN)" amount after their name; drug items
- * additionally render a snort glyph that consumes one dose behind a yes/no
- * confirmation. Note the confirm path posts a transient notification banner
- * ("<name> consumed..."), not a chat card — snort() calls DisplayMessage(
- * "notify", ...). Ctrl-clicking a name link posts the item card to chat;
- * focusing a name link and pressing Delete removes the item behind the delete
- * confirmation (the deleteItemConfirmation setting defaults on). Item upgrades
- * and cyberware behaviors come in later batches.
- */
-
 const GEAR_TYPES = ["ammo", "clothing", "gear", "netarch"];
 
-test.beforeEach(async ({ page }) => {
-  await gotoReadyWorld(page);
-});
+installConsoleErrorHarness();
 
 test.describe("Special Gear Pane", () => {
-  for (const type of GEAR_TYPES) {
-    test(`dragging a ${type} onto a mook lists it in the special gear pane`, async ({
-      page: game,
-    }) => {
-      let { actorId, sheetId } = await createMookViaUI(game);
+  test("dragging plain gear types onto a mook lists each of them in the special gear pane", async ({
+    page: game,
+  }) => {
+    let { actorId, sheetId } = await createMookViaUI(game);
 
-      const itemName = uniqueName(type);
-      const itemId = await createItemViaUI(game, { type, name: itemName });
-      // Close the item's sheet so it does not cover the drop target.
-      await closeDocSheet(game, { collection: "items", id: itemId });
-
-      let embeddedId;
-      await test.step(`dragging the ${type} onto the mook embeds it`, async () => {
+    const listed = {};
+    for (const type of GEAR_TYPES) {
+      await test.step(`dragging a ${type} onto the mook embeds it`, async () => {
+        const itemName = uniqueName(type);
+        const itemId = await createItemViaUI(game, { type, name: itemName });
+        await closeDocSheet(game, { collection: "items", id: itemId });
         await dragItemToActorSheet(game, { itemId, sheetId, actorId });
         const ids = await ownedItemIdsByNames(game, actorId, [itemName]);
-        embeddedId = ids[itemName];
+        listed[type] = { name: itemName, embeddedId: ids[itemName] };
         expect(
-          embeddedId,
+          listed[type].embeddedId,
           `the ${type} should be embedded on the mook`,
         ).toBeTruthy();
       });
+    }
 
-      await test.step(`the ${type}'s name appears in the special gear pane on a fresh render`, async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+    await test.step("every type's name appears in the special gear pane on a fresh render", async () => {
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      for (const type of GEAR_TYPES) {
         const link = game.locator(
-          `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
+          `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${listed[type].embeddedId}"]`,
         );
         await expect(link).toBeVisible();
-        await expect(link).toHaveText(itemName);
-      });
+        await expect(link).toHaveText(listed[type].name);
+      }
     });
-  }
+  });
 
   test("only allowed item types are listed in the special gear pane", async ({
     page: game,
@@ -82,7 +65,10 @@ test.describe("Special Gear Pane", () => {
 
     const deckName = uniqueName("cyberdeck");
     const programName = uniqueName("program");
-    const deckId = await createItemViaUI(game, { type: "cyberdeck", name: deckName });
+    const deckId = await createItemViaUI(game, {
+      type: "cyberdeck",
+      name: deckName,
+    });
     const programId = await createItemViaUI(game, {
       type: "program",
       name: programName,
@@ -96,7 +82,10 @@ test.describe("Special Gear Pane", () => {
     await test.step("dragging a cyberdeck and a program onto the mook embeds both", async () => {
       await dragItemToActorSheet(game, { itemId: deckId, sheetId, actorId });
       await dragItemToActorSheet(game, { itemId: programId, sheetId, actorId });
-      const ids = await ownedItemIdsByNames(game, actorId, [deckName, programName]);
+      const ids = await ownedItemIdsByNames(game, actorId, [
+        deckName,
+        programName,
+      ]);
       deckEmbeddedId = ids[deckName];
       programEmbeddedId = ids[programName];
       expect(
@@ -112,9 +101,6 @@ test.describe("Special Gear Pane", () => {
       );
       await expect(deckLink).toBeVisible();
       await expect(deckLink).toHaveText(deckName);
-
-      // Programs are managed on the cyberdeck's item sheet, not the mook sheet:
-      // no name link for the program, and its name nowhere in the pane.
       await expect(
         game.locator(
           `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${programEmbeddedId}"]`,
@@ -171,8 +157,6 @@ test.describe("Special Gear Pane", () => {
     });
 
     const chatBefore = await chatMessageCount(game);
-
-    // Click the drug's snort glyph and wait for the consumption confirmation.
     const openSnortDialog = async () => {
       await game
         .locator(
@@ -243,7 +227,6 @@ test.describe("Special Gear Pane", () => {
       type: "gear",
       name: itemName,
     });
-    // Close the item's sheet so it does not cover the drop target.
     await closeDocSheet(game, { collection: "items", id: itemId });
 
     let embeddedId;
@@ -306,7 +289,6 @@ test.describe("Special Gear Pane", () => {
       type: "gear",
       name: itemName,
     });
-    // Close the item's sheet so it does not cover the drop target.
     await closeDocSheet(game, { collection: "items", id: itemId });
 
     let embeddedId;
@@ -327,8 +309,6 @@ test.describe("Special Gear Pane", () => {
     });
 
     await test.step("focusing the name and pressing Delete removes it after confirmation", async () => {
-      // "changeable" elements focus on hover in the sheet; focusing directly is
-      // the deterministic equivalent for the keydown handler.
       await game
         .locator(
           `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
@@ -358,6 +338,210 @@ test.describe("Special Gear Pane", () => {
           `#${freshSheet} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
         ),
       ).toHaveCount(0);
+    });
+  });
+
+  test("an item upgrade lists in the special gear pane with an install glyph", async ({
+    page: game,
+  }) => {
+    let { actorId, sheetId } = await createMookViaUI(game);
+
+    const itemName = uniqueName("itemUpgrade");
+    const itemId = await createItemViaUI(game, {
+      type: "itemUpgrade",
+      name: itemName,
+    });
+    await closeDocSheet(game, { collection: "items", id: itemId });
+
+    let embeddedId;
+    await test.step("dragging the upgrade onto the mook lists it with an install glyph", async () => {
+      await dragItemToActorSheet(game, { itemId, sheetId, actorId });
+      const ids = await ownedItemIdsByNames(game, actorId, [itemName]);
+      embeddedId = ids[itemName];
+      expect(
+        embeddedId,
+        "the upgrade should be embedded on the mook",
+      ).toBeTruthy();
+
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      const link = game.locator(
+        `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
+      );
+      await expect(link).toBeVisible();
+      await expect(link).toHaveText(itemName);
+
+      const glyph = game.locator(
+        `#${sheetId} ${MOOK_FIELD.upgradeInstallAction}[data-item-id="${embeddedId}"]`,
+      );
+      await expect(glyph).toBeVisible();
+      await expect(glyph.locator("i.fa-right-to-bracket")).toHaveCount(1);
+    });
+
+    await test.step("clicking the glyph with no compatible target offers nothing to install into", async () => {
+      await game
+        .locator(
+          `#${sheetId} ${MOOK_FIELD.upgradeInstallAction}[data-item-id="${embeddedId}"]`,
+        )
+        .click();
+
+      const dialog = game.locator(".cpr-dialog").filter({
+        hasText: "can be installed into",
+      });
+      await expect(dialog).toBeVisible({ timeout: 10000 });
+      await expect(dialog).toContainText(itemName);
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="cancel"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 10000 });
+
+      const isInstalled = await game.evaluate(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId).system.isInstalled,
+        { actorId, itemId: embeddedId },
+      );
+      expect(isInstalled).toBe(false);
+    });
+
+    await test.step("clicking the name opens the upgrade's editable item sheet", async () => {
+      await game
+        .locator(
+          `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
+        )
+        .click();
+      await expect(game.locator(".application .item-sheet")).toBeVisible({
+        timeout: 10000,
+      });
+      await closeOwnedItemSheet(game, { actorId, itemId: embeddedId });
+    });
+  });
+
+  test("the install glyph installs the upgrade into the selected weapon and back out again", async ({
+    page: game,
+  }) => {
+    let { actorId, sheetId } = await createMookViaUI(game);
+
+    const weaponName = uniqueName("weapon");
+    const upgradeName = uniqueName("itemUpgrade");
+    const weaponId = await createItemViaUI(game, {
+      type: "weapon",
+      name: weaponName,
+    });
+    const upgradeId = await createItemViaUI(game, {
+      type: "itemUpgrade",
+      name: upgradeName,
+    });
+    await closeDocSheet(game, { collection: "items", id: weaponId });
+    await closeDocSheet(game, { collection: "items", id: upgradeId });
+
+    let weaponEmbeddedId;
+    let upgradeEmbeddedId;
+    await test.step("dragging a weapon and an upgrade onto the mook embeds both", async () => {
+      await dragItemToActorSheet(game, { itemId: weaponId, sheetId, actorId });
+      await dragItemToActorSheet(game, { itemId: upgradeId, sheetId, actorId });
+      const ids = await ownedItemIdsByNames(game, actorId, [
+        weaponName,
+        upgradeName,
+      ]);
+      weaponEmbeddedId = ids[weaponName];
+      upgradeEmbeddedId = ids[upgradeName];
+      expect(
+        weaponEmbeddedId && upgradeEmbeddedId,
+        "both items should be embedded on the mook",
+      ).toBeTruthy();
+
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+    });
+
+    const installGlyph = game.locator(
+      `#${sheetId} ${MOOK_FIELD.upgradeInstallAction}[data-item-id="${upgradeEmbeddedId}"]`,
+    );
+
+    await test.step("clicking the install glyph installs the upgrade into the selected weapon", async () => {
+      await installGlyph.click();
+
+      const dialog = game.locator(".cpr-dialog").filter({
+        has: game.locator('input[name="selectedTarget"]'),
+      });
+      await expect(dialog).toBeVisible({ timeout: 10000 });
+      // The header names the upgrade; the weapon row offers a target radio and
+      // its available slots.
+      await expect(dialog).toContainText(upgradeName);
+      const weaponRow = dialog
+        .locator(".dialog-item")
+        .filter({ hasText: weaponName });
+      await expect(weaponRow).toBeVisible();
+      await expect(weaponRow).toContainText("3/3");
+      await weaponRow.locator('input[name="selectedTarget"]').check();
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 10000 });
+
+      await game.waitForFunction(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId).system.isInstalled ===
+          true,
+        { actorId, itemId: upgradeEmbeddedId },
+        { timeout: 10000 },
+      );
+      const installedIn = await game.evaluate(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId).system.installedItems.list,
+        { actorId, itemId: weaponEmbeddedId },
+      );
+      expect(installedIn).toContain(upgradeEmbeddedId);
+
+      // On a fresh render the glyph flips to its active uninstall variant.
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      const uninstallGlyph = game.locator(
+        `#${sheetId} ${MOOK_FIELD.upgradeUninstallAction}[data-item-id="${upgradeEmbeddedId}"]`,
+      );
+      await expect(uninstallGlyph).toBeVisible();
+      await expect(uninstallGlyph).toHaveClass(/button-active/);
+      await expect(
+        uninstallGlyph.locator("i.fa-arrow-right-from-bracket"),
+      ).toHaveCount(1);
+    });
+
+    await test.step("clicking the uninstall glyph removes the upgrade from the weapon again", async () => {
+      const uninstallGlyph = game.locator(
+        `#${sheetId} ${MOOK_FIELD.upgradeUninstallAction}[data-item-id="${upgradeEmbeddedId}"]`,
+      );
+      await uninstallGlyph.click();
+
+      const dialog = game.locator(".cpr-dialog").filter({
+        has: game.locator('input[name="selectedItems"]'),
+      });
+      await expect(dialog).toBeVisible({ timeout: 10000 });
+      // The weapon is the only container the upgrade is installed in, and its
+      // row comes pre-checked.
+      const weaponRow = dialog
+        .locator(".dialog-item")
+        .filter({ hasText: weaponName });
+      await expect(weaponRow).toBeVisible();
+      await expect(
+        weaponRow.locator('input[name="selectedItems"]'),
+      ).toBeChecked();
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 10000 });
+
+      await game.waitForFunction(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId).system.isInstalled ===
+          false,
+        { actorId, itemId: upgradeEmbeddedId },
+        { timeout: 10000 },
+      );
+
+      // On a fresh render the plain install glyph is back.
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      const glyph = game.locator(
+        `#${sheetId} ${MOOK_FIELD.upgradeInstallAction}[data-item-id="${upgradeEmbeddedId}"]`,
+      );
+      await expect(glyph).toBeVisible();
+      await expect(glyph).not.toHaveClass(/button-active/);
     });
   });
 });
