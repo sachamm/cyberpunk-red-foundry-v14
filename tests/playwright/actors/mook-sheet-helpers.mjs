@@ -36,6 +36,13 @@ export const MOOK_FIELD = {
   skillsContent: ".mook-skills-content",
   // The pen glyph in the skills header opens the bulk skill edit dialog.
   modMookSkill: "a.mod-mook-skill",
+  // Special Gear pane (always visible, no tab): each listed non-cyberware item is a
+  // deletable name link carrying data-item-id; cyberware renders above them with the
+  // item-view class instead of item-edit.
+  specialGearItem: ".mook-special-content .name.item-edit",
+  // The pills glyph next to a listed drug's name; clicking it starts the snort
+  // (consume) flow. Renders only for drug items.
+  snortAction: 'a.item-action[data-action-type="snort"]',
   // One entry of the comma-separated skill list; each is a focusable span carrying
   // data-item-id, a rollable name link, and (non-core skills only) an edit glyph.
   skillEntry: ".mook-skills-content .item",
