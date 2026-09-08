@@ -36,6 +36,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Render Foundry's native dice on every roll card, keeping the CPR title, modifier breakdown, critical flavour and apply-damage controls (a dedicated dice re-skin will follow)
 - Sanitise the `dmg`/`ab`/`cd`/`red` markers out of an item's **Damage** field on save — for every attackable item's `system.damage` **and** an ammo override's damage value. They are built from the item's own critical/ablation settings (and `red` conflicts with the auto-appended `dmg`); every other modifier is kept, e.g. `3d6kh2dmg5ab0cd10red` is saved as `3d6kh2`
 - Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
+- Add an optional client setting to extend the Cyberpunk RED theme to Foundry's interface and ApplicationV2 windows using Foundry's supported theme tokens; legacy ApplicationV1 windows retain their Foundry appearance
 - Add a "Homebrew Rules" settings menu with JonJon's optional Luck Roll: when enabled, clicking the LUCK stat rolls 1d10 under your LUCK (Roll Under Max or Roll Under Current), with a Success/Failure chat card; off by default
 - The dialog box for updating mook skills now presents the skills by category, similar to the character sheet
 - Item upgrades may now be configured with negative modifiers
