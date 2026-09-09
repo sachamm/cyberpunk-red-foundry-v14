@@ -25,4 +25,12 @@ export {
   hoverGearRow,
   installUpgrade,
 } from "./embedded-items.mjs";
-export { captureSheet, closeDocSheet, expectSheetRendered } from "./sheets.mjs";
+export {
+  captureSheet,
+  closeDocSheet,
+  expectSheetRendered,
+  waitForSheetReplacement,
+  resizeSheetViaUI,
+  changeActorSheetViaUI,
+} from "./sheets.mjs";
+export { openNotesEditorViaUI, saveNotesEditorViaUI } from "./editors.mjs";

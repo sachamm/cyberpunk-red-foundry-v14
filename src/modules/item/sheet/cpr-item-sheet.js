@@ -3,6 +3,7 @@ import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRSheetUtils from "../../utils/SheetUtils.js";
+import CPRScrollableSheetMixin from "../../utils/cpr-scrollable-sheet.js";
 import selectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
@@ -11,7 +12,6 @@ import { ContainerUtils } from "../mixins/cpr-container.js";
 import { applyUpgradeValue } from "../mixins/cpr-upgradable.js";
 import { buildItemChips, buildItemBreadcrumb } from "../item-chips.js";
 
-const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ItemSheetV2 } = foundry.applications.sheets;
 const { Tabs } = foundry.applications.ux;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
@@ -21,19 +21,7 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
  * @extends {ItemSheet}
  */
 
-export default class CPRItemSheet extends HandlebarsApplicationMixin(
-  ItemSheetV2,
-) {
-  /**
-   * Scroll positions captured by the Handlebars part renderer. CPR's tab
-   * controller makes its content visible during `_onRender`, after Foundry's
-   * normal part-state synchronization has already run, so restoration is
-   * deferred until `_postRender`.
-   *
-   * @type {Array<[HTMLElement, number, number]>}
-   */
-  #scrollPositions = [];
-
+export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
     classes: ["cpr", "item"],
@@ -533,21 +521,6 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
 
     // Set up right click context menu when clicking on Item's image
     this._createItemImageContextMenu(root);
-  }
-
-  /** @override */
-  _syncPartState(partId, newElement, priorElement, state) {
-    super._syncPartState(partId, newElement, priorElement, state);
-    this.#scrollPositions = state.scrollPositions;
-  }
-
-  /** @override */
-  async _postRender(context, options) {
-    await super._postRender(context, options);
-    for (const [element, scrollTop, scrollLeft] of this.#scrollPositions) {
-      Object.assign(element, { scrollTop, scrollLeft });
-    }
-    this.#scrollPositions = [];
   }
 
   #activeTab = "item-description";

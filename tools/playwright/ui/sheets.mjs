@@ -1,5 +1,59 @@
 import { expect } from "@playwright/test";
 
+export async function resizeSheetViaUI(page, sheet, { width, height }) {
+  const handle = await sheet.locator(".window-resize-handle").boundingBox();
+  const bounds = await sheet.boundingBox();
+  const x = handle.x + handle.width / 2;
+  const y = handle.y + handle.height / 2;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  // Foundry starts pointer capture on the first move within the application.
+  await page.mouse.move(x - 1, y - 1);
+  await page.evaluate(
+    () => new Promise((resolve) => requestAnimationFrame(resolve)),
+  );
+  await page.mouse.move(x + width - bounds.width, y + height - bounds.height, {
+    steps: 5,
+  });
+  await page.evaluate(
+    () => new Promise((resolve) => requestAnimationFrame(resolve)),
+  );
+  await page.mouse.up();
+}
+
+export async function changeActorSheetViaUI(
+  page,
+  { sheetId, actorId, sheetClass },
+) {
+  const sheet = page.locator(`#${sheetId}`);
+  await sheet.locator('[data-action="toggleControls"]').click();
+  await sheet.locator('[data-action="configureSheet"]').click();
+  const dialog = page.locator(".application.sheet-config");
+  await dialog
+    .locator('select[name="sheetClass"]')
+    .selectOption(`cyberpunk-red-core.${sheetClass}`);
+  await dialog.locator('button[type="submit"]').click();
+  await page.waitForFunction(
+    ({ actorId, sheetClass }) => {
+      const current = game.actors.get(actorId).sheet;
+      return current.constructor.name === sheetClass && current.rendered;
+    },
+    { actorId, sheetClass },
+  );
+  return page.evaluate((id) => game.actors.get(id).sheet.element.id, actorId);
+}
+
+export async function waitForSheetReplacement(page, priorPart) {
+  await page.waitForFunction((element) => !element.isConnected, priorPart);
+  await page.evaluate(
+    () =>
+      new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve)),
+      ),
+  );
+  await priorPart.dispose();
+}
+
 export async function expectSheetRendered(page, { collection, id }) {
   await page.waitForFunction(
     ({ collection, id }) => {

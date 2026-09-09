@@ -5,12 +5,12 @@ import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRSheetUtils from "../../utils/SheetUtils.js";
+import CPRScrollableSheetMixin from "../../utils/cpr-scrollable-sheet.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
 import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
-const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
@@ -20,7 +20,7 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
  * is used for common code between Mook sheets and Character sheets.
  * @extends {ActorSheet}
  */
-export default class CPRActorSheet extends HandlebarsApplicationMixin(
+export default class CPRActorSheet extends CPRScrollableSheetMixin(
   ActorSheetV2,
 ) {
   /**
@@ -50,16 +50,6 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
    * @private
    */
   #dragDrop;
-
-  /**
-   * Scroll positions captured by the Handlebars part renderer. CPR's tab
-   * controllers make their content visible during `_onRender`, after Foundry's
-   * normal part-state synchronization has already run, so restoration is
-   * deferred until `_postRender`.
-   *
-   * @type {Array<[HTMLElement, number, number]>}
-   */
-  #scrollPositions = [];
 
   /**
    * Track which collapsible sections are open/closed on this sheet instance,
@@ -123,7 +113,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
 
     cprData.isTokenSheet = !!this.token;
 
-    cprData.enrichedHTML = [];
+    cprData.enrichedHTML = {};
     if (this.actor.type !== "container") {
       cprData.enrichedHTML.systemInformationNotes = await TextEditor.enrichHTML(
         this.actor.system.information.notes,
@@ -434,21 +424,6 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
     this._on(".reputation-open-ledger", "click", () =>
       this.showLedger("reputation"),
     );
-  }
-
-  /** @override */
-  _syncPartState(partId, newElement, priorElement, state) {
-    super._syncPartState(partId, newElement, priorElement, state);
-    this.#scrollPositions = state.scrollPositions;
-  }
-
-  /** @override */
-  async _postRender(context, options) {
-    await super._postRender(context, options);
-    for (const [element, scrollTop, scrollLeft] of this.#scrollPositions) {
-      Object.assign(element, { scrollTop, scrollLeft });
-    }
-    this.#scrollPositions = [];
   }
 
   /**

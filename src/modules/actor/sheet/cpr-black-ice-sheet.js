@@ -2,9 +2,9 @@ import CPRChat from "../../chat/cpr-chat.js";
 import CPR from "../../system/config.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
+import CPRScrollableSheetMixin from "../../utils/cpr-scrollable-sheet.js";
 import { cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
-const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
@@ -14,7 +14,7 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
  *
  * @extends {ActorSheetV2}
  */
-export default class CPRBlackIceActorSheet extends HandlebarsApplicationMixin(
+export default class CPRBlackIceActorSheet extends CPRScrollableSheetMixin(
   ActorSheetV2,
 ) {
   /** @inheritDoc */
