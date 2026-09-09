@@ -136,6 +136,9 @@ test.describe("Mook Skills", () => {
         .locator(".notification")
         .filter({ hasText: "mook skills updated" });
       await expect(banner).toBeVisible();
+      // only Handgun changed; the count must be exactly one (guards against a
+      // type-mismatched comparison counting every row as updated)
+      await expect(banner).toHaveText("1 mook skills updated");
       await waitForSkillLevel(game, actorId, "Handgun", 2);
       await dismissNotifications(game);
     });

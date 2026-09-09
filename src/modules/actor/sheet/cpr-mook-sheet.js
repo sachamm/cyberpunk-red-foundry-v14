@@ -196,33 +196,24 @@ export default class CPRMookActorSheet extends CPRActorSheet {
 
     // go over each skill and see if the value differs from the skill objects on the mook (actor)
     const skillById = new Map(this.actor.itemTypes.skill.map((s) => [s.id, s]));
-    const updatedSkills = [];
+    let updatedCount = 0;
     for (const oldSkill of Object.values(skillObj)) {
       const newSkill = formData[oldSkill.id];
       if (newSkill === undefined) continue;
-      if (oldSkill.level !== newSkill.level) {
-        LOGGER.debug(
-          `you changed ${oldSkill.name} from ${oldSkill.level} to ${newSkill.level}`,
-        );
-        const updatedSkill = skillById.get(oldSkill.id);
-        updatedSkill.setSkillLevel(newSkill.level);
-        updatedSkills.push({
-          _id: updatedSkill._id,
-          system: {
-            level: updatedSkill.system.level,
-          },
-        });
-      }
+      // form inputs submit strings even with type="number"; coerce before comparing
+      const newLevel = Number(newSkill.level);
+      if (oldSkill.level === newLevel) continue;
+      LOGGER.debug(
+        `you changed ${oldSkill.name} from ${oldSkill.level} to ${newLevel}`,
+      );
+      await skillById.get(oldSkill.id).setSkillLevel(newLevel);
+      updatedCount++;
     }
-    if (!updatedSkills.length) return;
+    if (!updatedCount) return;
 
-    // finally, update the skill objects
-    this.actor.updateEmbeddedDocuments("Item", updatedSkills);
     SystemUtils.DisplayMessage(
       "notify",
-      `${updatedSkills.length} ${SystemUtils.Localize(
-        "CPR.mookSheet.skills.updated",
-      )}`,
+      `${updatedCount} ${SystemUtils.Localize("CPR.mookSheet.skills.updated")}`,
     );
   }
 
