@@ -91,9 +91,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
 
     this._on(".mod-mook-skill", "click", () => this._modMookSkills());
     this._on(".change-mook-name", "click", () => this._changeMookName());
-    this._on(".mook-image-toggle", "click", (event) =>
-      this._expandMookImage(event),
-    );
 
     // "changeable" elements focus on hover and handle key presses.
     this._on(".changeable", "mouseenter", (event) =>
@@ -252,41 +249,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     } else {
       await this.token.update(dialogData);
     }
-  }
-
-  /**
-   * Show or hide the profile icon on the mook sheet when clicked.
-   *
-   * @callback
-   * @private
-   * @param {Object} event - event data such as a mouse click or key press
-   */
-  _expandMookImage(event) {
-    const mookImageToggle = event.currentTarget;
-    const mookImageArea = mookImageToggle.closest(".mook-image");
-    const mookImageImg = mookImageArea?.querySelector(
-      ":scope > .mook-image-block",
-    );
-    let collapsedImage;
-    if (
-      mookImageToggle.dataset.text ===
-      SystemUtils.Localize("CPR.mookSheet.image.collapse")
-    ) {
-      mookImageToggle.dataset.text = SystemUtils.Localize(
-        "CPR.mookSheet.image.expand",
-      );
-      collapsedImage = true;
-    } else {
-      mookImageToggle.dataset.text = SystemUtils.Localize(
-        "CPR.mookSheet.image.collapse",
-      );
-      collapsedImage = false;
-    }
-    mookImageArea?.classList.toggle("mook-image-small-toggle");
-    mookImageImg?.classList.toggle("hide");
-    const cprActorData = foundry.utils.duplicate(this.actor.system);
-    cprActorData.flags.collapsedImage = collapsedImage;
-    this.actor.update(cprActorData);
   }
 
   /**

@@ -53,18 +53,6 @@
     padding: 0.313rem;
   }
 
-  .mook-image-small-toggle {
-    width: 1.063rem;
-  }
-
-  .mook-image-toggle {
-    grid-area: mook-image-toggle;
-
-    &::after {
-      content: attr(data-text);
-    }
-  }
-
   .mook-image-block {
     grid-area: mook-image-block;
     clip-path: polygon(1.563rem 0, 100% 0, 100% 100%, 0 100%, 0 1.563rem);

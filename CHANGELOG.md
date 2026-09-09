@@ -52,6 +52,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - The "Damage Dealt To" damage-application card now shows the target's Token name instead of the Actor name
 - Ctrl-Clicking (or Cmd-Clicking) an item properly sends a card to chat
 - Dragging invalid items (e.g. Roles) to a container actor is handled gracefully instead of throwing dev errors
+- Removed dead code around hiding the mook portrait
+- Fixed some items types throwing dev console errors when dragged to a mook sheet
 
 ### Changes
 
