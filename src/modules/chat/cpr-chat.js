@@ -512,7 +512,7 @@ export default class CPRChat {
         : game.actors.find((a) => a.id === actorId);
 
       dialogData.allowedActors.push(actor);
-      if (!event.ctrlKey) {
+      if (!(event.ctrlKey || event.metaKey)) {
         // Show "Damage Application" prompt.
         dialogData = await cprFormPrompt({
           data: dialogData,
@@ -560,7 +560,7 @@ export default class CPRChat {
       let count = 0;
       while (count < allowedActors.length) {
         if (!dialogData) return;
-        if (!event.ctrlKey) {
+        if (!(event.ctrlKey || event.metaKey)) {
           dialogData.count = count;
           dialogData.allowedActors = allowedActors;
           dialogData.forbiddenActors = forbiddenActors;

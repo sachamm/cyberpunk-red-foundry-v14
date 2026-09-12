@@ -922,7 +922,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   _renderItemCard(event) {
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.getOwnedItem(itemId);
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.metaKey) {
       CPRChat.RenderItemCard(item);
       return;
     }
@@ -942,7 +942,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   _renderReadOnlyItemCard(event) {
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.getOwnedItem(itemId);
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.metaKey) {
       CPRChat.RenderItemCard(item);
       return;
     }

@@ -155,7 +155,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   _renderItemCard(event) {
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.items.find((i) => i._id === itemId);
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.metaKey) {
       CPRChat.RenderItemCard(item);
     } else {
       const playersCanModify = foundry.utils.getProperty(
