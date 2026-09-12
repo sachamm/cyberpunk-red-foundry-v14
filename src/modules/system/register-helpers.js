@@ -630,11 +630,15 @@ export default function registerHandlebarsHelpers() {
     const installedCyberwareList = [];
     for (const installedId of mook.system.installedItems.list) {
       const item = mook.getOwnedItem(installedId);
+      // Skip stale ids that no longer resolve to an owned item.
+      if (!item) continue;
       if (item.type === "cyberware") {
         const optionals = [];
         if (item.system.hasInstalled) {
           for (const optionalid of item.system.installedItems.list) {
             const optionalItem = mook.getOwnedItem(optionalid);
+            // Skip stale ids so missing optionals don't render as empty entries.
+            if (!optionalItem) continue;
             optionals.push(optionalItem);
           }
         }
@@ -656,6 +660,8 @@ export default function registerHandlebarsHelpers() {
     ];
     for (const installedId of mook.system.installedItems.list) {
       const item = mook.getOwnedItem(installedId);
+      // Skip stale ids that no longer resolve to an owned item.
+      if (!item) continue;
       if (
         item.type === "cyberware" &&
         !exclusionList.includes(item.system.type)
@@ -664,6 +670,8 @@ export default function registerHandlebarsHelpers() {
         if (item.system.hasInstalled) {
           for (const optionalid of item.system.installedItems.list) {
             const optionalItem = mook.getOwnedItem(optionalid);
+            // Skip stale ids so missing optionals aren't counted.
+            if (!optionalItem) continue;
             installedCyberwareList.push(optionalItem);
           }
         }

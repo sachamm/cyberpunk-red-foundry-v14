@@ -573,6 +573,10 @@ const Container = function Container() {
           // This ensures we don't call the function we're currently in from `createEmbeddedDocuments`.
           // Just create the items normally, and let the function we're in handle the recursion.
           createInstalled: false,
+          // These are sub-items of an install tree; they are owned by their parent and must not be
+          // auto-installed/auto-equipped by mook drag handling (which would delete them before the
+          // parent foundational is installed).
+          cprSkipMookAutoInstall: true,
         },
       );
 

@@ -299,7 +299,7 @@ export default class CPRActor extends Actor {
       const newUpgrades = await item.actor.createEmbeddedDocuments(
         "Item",
         upgradeData,
-        { keepId: false },
+        { keepId: false, cprSkipMookAutoInstall: true },
       );
       const newUpgradeIds = newUpgrades.map((u) => u.id);
 
@@ -310,8 +310,14 @@ export default class CPRActor extends Actor {
       (app) => app instanceof CPRMookActorSheet,
     );
 
-    for (const item of createdItems) {
-      if (isMookSheet) await this.handleMookDraggedItem(item);
+    // Only auto-install/auto-equip items the user directly dropped. Sub-items and
+    // upgrades created while expanding an install tree are owned by their parent and
+    // must not be independently auto-installed here (doing so deletes bundled cyberware
+    // optionals before their foundational is installed, leaving stale ids behind).
+    if (!context.cprSkipMookAutoInstall) {
+      for (const item of createdItems) {
+        if (isMookSheet) await this.handleMookDraggedItem(item);
+      }
     }
 
     // Here, we return the created item array, but concatenated with references to any stacked items
@@ -531,6 +537,8 @@ export default class CPRActor extends Actor {
         idList = [];
         for (const id of loopList) {
           const itemLookup = this.getOwnedItem(id);
+          // Skip stale ids that no longer resolve to an owned item.
+          if (!itemLookup) continue;
           if (containerTypes.includes(itemLookup.type)) {
             if (
               itemLookup.system.installedItems.allowed &&
