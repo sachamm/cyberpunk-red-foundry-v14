@@ -97,44 +97,58 @@ test("mook notes keep separate scroll positions in two open sheets", async ({
   await closeDocSheet(page, { collection: "actors", id: first.id });
 });
 
-for (const ownership of ["OBSERVER", "LIMITED"]) {
-  test(`a ${ownership.toLowerCase()} player keeps mook notes scrolled when the GM updates the actor`, async ({
+async function setPlayerOwnership(page, actorId, ownership) {
+  await page.evaluate(
+    async ({ id, level }) => {
+      const player = game.users.getName("E2E Player");
+      await game.actors.get(id).update({
+        ownership: {
+          default: 0,
+          [player.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS[level],
+        },
+      });
+    },
+    { id: actorId, level: ownership },
+  );
+}
+
+async function openMookAsPlayer(player, actorId) {
+  const sheetId = await reopenActorSheetViaUI(player, actorId);
+  return player.locator(`#${sheetId}`);
+}
+
+async function reopenMookAsPlayer(player, actorId, previousSheet) {
+  await closeDocSheet(player, { collection: "actors", id: actorId });
+  await expect(previousSheet).toHaveCount(0);
+  return openMookAsPlayer(player, actorId);
+}
+
+async function expectEditing(notes, editable) {
+  await notes.hover();
+  const toggle = notes.locator("button.toggle");
+  if (editable) await expect(toggle).toBeEnabled();
+  else await expect(toggle).toBeDisabled();
+}
+
+for (const { ownership, editable } of [
+  { ownership: "OWNER", editable: true },
+  { ownership: "OBSERVER", editable: false },
+]) {
+  test(`an ${ownership.toLowerCase()} player keeps mook notes scrolled when the GM updates the actor`, async ({
     page,
     browser,
     baseURL,
   }) => {
     const actor = await createMookWithNotes(page);
-    await page.evaluate(
-      async ({ id, ownership }) => {
-        const player = game.users.getName("E2E Player");
-        const target = game.actors.get(id);
-        await target.update({
-          ownership: {
-            default: 0,
-            [player.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS[ownership],
-          },
-        });
-      },
-      { id: actor.id, ownership },
-    );
+    await setPlayerOwnership(page, actor.id, ownership);
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     const errors = [];
     player.on("pageerror", (error) => errors.push(error.message));
     try {
-      await player.locator('#sidebar-tabs [data-tab="actors"]').click();
-      await player.locator(`#actors [data-entry-id="${actor.id}"]`).dblclick();
-      const playerSheetId = await expectSheetRendered(player, {
-        collection: "actors",
-        id: actor.id,
-      });
-      const playerSheet = player.locator(`#${playerSheetId}`);
-      const notes = playerSheet.locator(`prose-mirror[name="${FIELD}"]`);
-      const content = notes.locator(".editor-content");
-      await expect(
-        playerSheet.locator(
-          ownership === "LIMITED" ? ".mook-sheet-limited" : ".mook-sheet",
-        ),
-      ).toBeVisible();
+      let playerSheet = await openMookAsPlayer(player, actor.id);
+      let notes = playerSheet.locator(`prose-mirror[name="${FIELD}"]`);
+      let content = notes.locator(".editor-content");
+      await expect(playerSheet.locator(".mook-sheet")).toBeVisible();
       await expect(content).toContainText("Mook note 40");
       await expect(notes).toBeVisible();
       await expect
@@ -143,11 +157,10 @@ for (const ownership of ["OBSERVER", "LIMITED"]) {
       await expect
         .poll(() => content.evaluate((element) => element.clientHeight))
         .toBeGreaterThan(0);
-      await notes.hover();
-      await expect(notes.locator("button.toggle")).toBeDisabled();
+      await expectEditing(notes, editable);
       const top = await scrollNotes(player, content, 240);
 
-      await test.step("a remote update preserves position without enabling editing", async () => {
+      await test.step("a remote update preserves position and editing permission", async () => {
         const playerPart = await playerSheet
           .locator('[data-application-part="form"]')
           .elementHandle();
@@ -165,16 +178,15 @@ for (const ownership of ["OBSERVER", "LIMITED"]) {
         await expect.soft
           .poll(() => content.evaluate((el) => el.scrollTop))
           .toBe(top);
-        await expect(notes.locator("button.toggle")).toBeDisabled();
+        await expectEditing(notes, editable);
         await closeDocSheet(page, { collection: "actors", id: actor.id });
         await reopenActorSheetViaUI(page, actor.id);
         await expect(input).toHaveValue(value);
-        await closeDocSheet(player, { collection: "actors", id: actor.id });
-        await player
-          .locator(`#actors [data-entry-id="${actor.id}"]`)
-          .dblclick();
+        playerSheet = await reopenMookAsPlayer(player, actor.id, playerSheet);
+        notes = playerSheet.locator(`prose-mirror[name="${FIELD}"]`);
+        content = notes.locator(".editor-content");
         await expect(content).toContainText("Mook note 40");
-        await expect(notes.locator("button.toggle")).toBeDisabled();
+        await expectEditing(notes, editable);
         expect(errors).toEqual([]);
       });
     } finally {
@@ -183,3 +195,60 @@ for (const ownership of ["OBSERVER", "LIMITED"]) {
     }
   });
 }
+
+test("limited permission does not display mook notes", async ({
+  page,
+  browser,
+  baseURL,
+}) => {
+  const actor = await createMookWithNotes(page);
+  await setPlayerOwnership(page, actor.id, "LIMITED");
+  const { context, page: player } = await openPlayerPage(browser, baseURL);
+  const errors = [];
+  player.on("pageerror", (error) => errors.push(error.message));
+  try {
+    let playerSheet = await openMookAsPlayer(player, actor.id);
+    let notes = playerSheet.locator(`prose-mirror[name="${FIELD}"]`);
+    let content = notes.locator(".editor-content");
+    await expect(playerSheet.locator(".mook-sheet-limited")).toBeVisible();
+    await expect(notes).toBeHidden();
+    await expect
+      .poll(() => content.evaluate((element) => element.clientWidth))
+      .toBeLessThan(20);
+
+    await test.step("a remote update does not display notes", async () => {
+      const playerPart = await playerSheet
+        .locator('[data-application-part="form"]')
+        .elementHandle();
+      const gmPart = await actor.sheet
+        .locator('[data-application-part="form"]')
+        .elementHandle();
+      const input = actor.sheet.locator(
+        'input[name="system.derivedStats.hp.value"]',
+      );
+      const value = String(Number(await input.inputValue()) - 1);
+      await input.fill(value);
+      await input.blur();
+      await waitForSheetReplacement(page, gmPart);
+      await waitForSheetReplacement(player, playerPart);
+      await expect(notes).toBeHidden();
+      await expect
+        .poll(() => content.evaluate((element) => element.clientWidth))
+        .toBeLessThan(20);
+      await closeDocSheet(page, { collection: "actors", id: actor.id });
+      await reopenActorSheetViaUI(page, actor.id);
+      await expect(input).toHaveValue(value);
+      playerSheet = await reopenMookAsPlayer(player, actor.id, playerSheet);
+      notes = playerSheet.locator(`prose-mirror[name="${FIELD}"]`);
+      content = notes.locator(".editor-content");
+      await expect(notes).toBeHidden();
+      await expect
+        .poll(() => content.evaluate((element) => element.clientWidth))
+        .toBeLessThan(20);
+      expect(errors).toEqual([]);
+    });
+  } finally {
+    await context.close();
+    await closeDocSheet(page, { collection: "actors", id: actor.id });
+  }
+});
