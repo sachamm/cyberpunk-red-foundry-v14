@@ -7,7 +7,7 @@ flags:
       current: 38
       previous: "33"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
+img: systems/cyberpunk-red-core/icons/compendium/roles/medtech.svg
 name: Medtech
 ownership:
   default: 0

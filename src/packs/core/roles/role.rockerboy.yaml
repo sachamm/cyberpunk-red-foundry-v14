@@ -7,7 +7,7 @@ flags:
       current: 33
       previous: "24"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
+img: systems/cyberpunk-red-core/icons/compendium/roles/rockerboy.svg
 name: Rockerboy
 ownership:
   default: 0
