@@ -3,9 +3,12 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   createActorViaUI,
+  createItemViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
+  openItemSettings,
   reopenActorSheetViaUI,
+  setItemSelected,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -57,6 +60,13 @@ export const MOOK_FIELD = {
   skillEntry: ".mook-skills-content .item",
   skillRollable: 'a.rollable[data-roll-type="skill"]',
   skillCustomGlyph: "a.item-edit.skill-custom",
+  // Critical Injuries pane (always visible, no tab): the header dice icon starts a
+  // table roll; each owned injury is a focusable name link in a comma-separated list.
+  criticalInjuryHeader: ".mook-crit-header",
+  criticalInjuryContent: ".mook-crit-content",
+  criticalInjuryItem: ".mook-crit-content .name.item-edit",
+  criticalInjuryRollButton: ".mook-crit a.roll-critical-injury",
+  criticalInjuryTableSelect: 'select[name="currentTable"]',
 };
 
 // Wait until the mook actor's persisted fields match `expected` (path -> value).
@@ -277,7 +287,7 @@ export async function chatMessageCount(page) {
 export async function waitForNewChatMessage(
   page,
   before,
-  { requireRoll = false, requireContent = false } = {},
+  { requireRoll = false, requireContent = false, timeout = 10000 } = {},
 ) {
   return page.waitForFunction(
     ({ before, requireRoll, requireContent }) => {
@@ -289,7 +299,7 @@ export async function waitForNewChatMessage(
       return msg.id;
     },
     { before, requireRoll, requireContent },
-    { timeout: 10000 },
+    { timeout },
   );
 }
 
@@ -344,6 +354,85 @@ export async function confirmInstallCyberwareDialog(
       .selectOption(humanity);
   }
   await dialog.locator(MOOK_FIELD.dialogConfirm).click();
+  await expect(dialog).toHaveCount(0, { timeout: 10000 });
+}
+
+// Create a top-level critical injury via its item sheet, optionally configuring its
+// location and death-save flag, close the item sheet, drag it onto the rendered mook
+// sheet, and return the embedded item's id (the spec owns all assertions).
+export async function seedCriticalInjuryOnMook(
+  page,
+  {
+    actorId,
+    sheetId,
+    name = uniqueName("criticalInjury"),
+    location,
+    deathSaveIncrease = false,
+  },
+) {
+  const itemId = await createItemViaUI(page, { type: "criticalInjury", name });
+  const itemSheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+
+  if (location) {
+    await setItemSelected(page, {
+      sheetId: itemSheetId,
+      itemId,
+      name: "system.location",
+      value: location,
+    });
+  }
+
+  if (deathSaveIncrease) {
+    const settings = await openItemSettings(page, itemSheetId);
+    await settings
+      .locator('a.item-checkbox[data-target="system.deathSaveIncrease"]')
+      .click();
+    await page.waitForFunction(
+      (id) => game.items.get(id).system.deathSaveIncrease === true,
+      itemId,
+      { timeout: 10000 },
+    );
+  }
+
+  await closeDocSheet(page, { collection: "items", id: itemId });
+  await dragItemToActorSheet(page, { itemId, sheetId, actorId });
+  const ids = await ownedItemIdsByNames(page, actorId, [name]);
+  return ids[name];
+}
+
+// Open the critical injury table roll prompt from a rendered mook sheet; returns a
+// locator scoped to that dialog. Only waits for the dialog surface; the spec owns all
+// assertions on its table options and confirm/cancel behavior.
+export async function openCriticalInjuryRollDialog(page, sheetId) {
+  await page
+    .locator(`#${sheetId} ${MOOK_FIELD.criticalInjuryRollButton}`)
+    .click();
+  const dialog = page
+    .locator(".cpr-dialog")
+    .filter({ has: page.locator(MOOK_FIELD.criticalInjuryTableSelect) });
+  await expect(dialog).toBeVisible({ timeout: 10000 });
+  return dialog;
+}
+
+// Confirm the critical injury roll prompt, optionally choosing a named table first, and
+// wait for it to close. The table draw itself is async; the spec waits for the resulting
+// injury entry and chat card.
+export async function confirmCriticalInjuryRoll(dialog, { table } = {}) {
+  if (table) {
+    await dialog
+      .locator(MOOK_FIELD.criticalInjuryTableSelect)
+      .selectOption({ label: table });
+  }
+  await dialog.locator(MOOK_FIELD.dialogConfirm).click();
+  await expect(dialog).toHaveCount(0, { timeout: 10000 });
+}
+
+// Cancel the critical injury roll prompt and wait for it to close.
+export async function cancelCriticalInjuryRollDialog(dialog) {
+  await dialog.locator(MOOK_FIELD.dialogCancel).click();
   await expect(dialog).toHaveCount(0, { timeout: 10000 });
 }
 
