@@ -515,6 +515,24 @@ html[data-cpr-theme="light"] :is(.cpr-migration-dialog, #compendia-config) a {
  * The table description is just dropped into the `section.window-contnet` as is instead of being wrapped in a div or assigned a class,
  */
 .roll-table-sheet {
+  &.edit-mode section[data-tab="summary"] {
+    flex: 1;
+    height: 0;
+
+    .form-group:first-child {
+      align-items: stretch;
+      display: grid;
+      flex: 1;
+      grid-template-rows: auto minmax(0, 1fr);
+      min-height: 0;
+
+      .form-fields,
+      .editor.prosemirror {
+        height: 100%;
+      }
+    }
+  }
+
   .sheet-header {
     img {
       max-width: 5rem;
