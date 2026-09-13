@@ -72,6 +72,39 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
   }
 }
 
+export async function createEmbeddedItemViaUI(
+  page,
+  { sheetId, actorId, type },
+) {
+  const beforeIds = await page.evaluate(
+    (id) => game.actors.get(id).items.map((item) => item.id),
+    actorId,
+  );
+  const createButton = page.locator(
+    `#${sheetId} .item-create[data-item-type="${type}"]`,
+  );
+  await createButton.scrollIntoViewIfNeeded();
+  await createButton.waitFor({ state: "visible" });
+  await createButton.click();
+
+  await page.waitForFunction(
+    ({ actorId, beforeIds }) =>
+      game.actors
+        .get(actorId)
+        .items.some((item) => !beforeIds.includes(item.id)),
+    { actorId, beforeIds },
+    { timeout: 10000 },
+  );
+
+  return page.evaluate(
+    ({ actorId, beforeIds }) =>
+      game.actors
+        .get(actorId)
+        .items.find((item) => !beforeIds.includes(item.id)).id,
+    { actorId, beforeIds },
+  );
+}
+
 export async function activateGearTab(page, actorSheetId) {
   const sheet = page.locator(`#${actorSheetId}`);
   await sheet.locator('.navtabs-right a[data-tab="gear"]').click();

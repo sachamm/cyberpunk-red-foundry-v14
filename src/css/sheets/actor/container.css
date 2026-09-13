@@ -98,6 +98,7 @@
     background-color: var(--cpr-background-box);
     display: flex;
     height: auto;
+    min-height: 0;
 
     .right-content {
       min-width: 46.875rem;

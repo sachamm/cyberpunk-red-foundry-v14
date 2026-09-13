@@ -21,6 +21,7 @@ export { openImagePickerViaUI, selectFileViaUI } from "./file-picker.mjs";
 export {
   DROP_TAB_BY_TYPE,
   activateGearTab,
+  createEmbeddedItemViaUI,
   dragItemToActorSheet,
   hoverGearRow,
   installUpgrade,

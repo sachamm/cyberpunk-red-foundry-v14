@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
+  createEmbeddedItemViaUI,
   createDocumentViaUI,
   expectSheetRendered,
   openItemSettings,
@@ -31,11 +32,25 @@ async function expectScrollPosition(locator, expected) {
     .toBe(expected);
 }
 
+async function scrollToBottomViaWheel(page, locator) {
+  await locator.hover();
+  await page.mouse.wheel(0, 2000);
+  await expect
+    .poll(() =>
+      locator.evaluate(
+        (element) =>
+          element.scrollTop === element.scrollHeight - element.clientHeight,
+      ),
+    )
+    .toBe(true);
+  return locator.evaluate((element) => element.scrollTop);
+}
+
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
 
-test.describe("Sheet scroll position (#1368)", () => {
+test.describe("Sheet scroll position (#1368, #1382)", () => {
   test("item settings remain stationary when an item update rerenders the sheet", async ({
     page: game,
   }) => {
@@ -127,6 +142,82 @@ test.describe("Sheet scroll position (#1368)", () => {
     await expect(
       sheet.locator(`[data-item-id="${skillId}"] .skill-input`),
     ).toHaveValue(String(level));
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("container inventory remains reachable and stationary when the sheet updates", async ({
+    page: game,
+  }) => {
+    const actorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("scroll-container"),
+    });
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+
+    let lastItemId;
+    await test.step("a populated inventory remains reachable after reopening", async () => {
+      for (let index = 0; index < 20; index += 1) {
+        lastItemId = await createEmbeddedItemViaUI(game, {
+          sheetId,
+          actorId,
+          type: "gear",
+        });
+      }
+
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+      sheetId = await reopenActorSheetViaUI(game, actorId);
+      const sheet = game.locator(`#${sheetId}`);
+      const scroller = sheet.locator(".right-content");
+      const lastItem = sheet.locator(`[data-item-id="${lastItemId}"]`).first();
+      await expect(lastItem).toBeVisible();
+      await expect
+        .poll(() =>
+          scroller.evaluate(
+            (element) => element.scrollHeight - element.clientHeight,
+          ),
+        )
+        .toBeGreaterThan(0);
+
+      const scrollTop = await scrollToBottomViaWheel(game, scroller);
+      await expect(lastItem).toBeInViewport();
+      expect(scrollTop).toBeGreaterThan(0);
+    });
+
+    await test.step("renaming the container preserves the inventory position", async () => {
+      const sheet = game.locator(`#${sheetId}`);
+      const scroller = sheet.locator(".right-content");
+      const lastItem = sheet.locator(`[data-item-id="${lastItemId}"]`).first();
+      const scrollTop = await scrollToBottomViaWheel(game, scroller);
+      const name = uniqueName("scroll-container-renamed");
+      const input = sheet.locator('input[name="name"]');
+      const priorPart = await sheet
+        .locator('[data-application-part="form"]')
+        .elementHandle();
+
+      await input.fill(name);
+      await input.blur();
+      await waitForSheetReplacement(game, priorPart);
+      await game.waitForFunction(
+        ({ actorId, name }) => game.actors.get(actorId).name === name,
+        { actorId, name },
+      );
+      await expectScrollPosition(scroller, scrollTop);
+      await expect(lastItem).toBeInViewport();
+
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+      sheetId = await reopenActorSheetViaUI(game, actorId);
+      await expect(game.locator(`#${sheetId} input[name="name"]`)).toHaveValue(
+        name,
+      );
+      await expect(
+        game.locator(`#${sheetId} [data-item-id="${lastItemId}"]`).first(),
+      ).toBeVisible();
+    });
+
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 });
