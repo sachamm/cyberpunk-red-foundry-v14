@@ -69,3 +69,16 @@ export async function setItemField(
     { timeout: 10000 },
   );
 }
+
+export async function setItemSelected(page, { sheetId, itemId, name, value }) {
+  const sheet = await openItemSettings(page, sheetId);
+  const select = sheet.locator(`select[name="${name}"]`);
+  await expect(select).toBeVisible();
+  await select.selectOption(value);
+  await page.waitForFunction(
+    ({ itemId, name, value }) =>
+      foundry.utils.getProperty(game.items.get(itemId), name) === value,
+    { itemId, name, value },
+    { timeout: 10000 },
+  );
+}

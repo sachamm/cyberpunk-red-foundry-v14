@@ -88,12 +88,17 @@ export default class CPRItem extends Item {
    */
   update(data, options = {}) {
     const cprData = data;
+    const incomingType = data["system.type"] ?? data.system?.type;
     if (
-      data["system.type"] === "cyberwareInternal" ||
-      data["system.type"] === "cyberwareExternal" ||
-      data["system.type"] === "fashionware"
+      incomingType === "cyberwareInternal" ||
+      incomingType === "cyberwareExternal" ||
+      incomingType === "fashionware"
     ) {
-      cprData["system.isFoundational"] = false;
+      if (data.system && typeof data.system === "object") {
+        cprData.system.isFoundational = false;
+      } else {
+        cprData["system.isFoundational"] = false;
+      }
     }
     if (this.type === "weapon") {
       cprData["system.dvTable"] =

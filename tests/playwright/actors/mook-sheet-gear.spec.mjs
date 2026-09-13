@@ -6,15 +6,20 @@ import {
   dismissNotifications,
   dragItemToActorSheet,
   expectSheetRendered,
+  openItemSettings,
   openSidebarTab,
   setItemField,
+  setItemSelected,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
   chatMessageCount,
+  confirmInstallCyberwareDialog,
   createMookViaUI,
+  coreFoundationalId,
   installConsoleErrorHarness,
+  openInstallCyberwareDialog,
   ownedItemIdsByNames,
   closeAndReopenMookSheet,
   waitForNewChatMessage,
@@ -542,6 +547,573 @@ test.describe("Special Gear Pane", () => {
       );
       await expect(glyph).toBeVisible();
       await expect(glyph).not.toHaveClass(/button-active/);
+    });
+  });
+
+  test.describe("Cyberware", () => {
+    async function installFoundationalArm(game, { actorId }) {
+      const name = uniqueName("cyberware");
+      const itemId = await createItemViaUI(game, { type: "cyberware", name });
+      await closeDocSheet(game, { collection: "items", id: itemId });
+      const sheetId = await closeAndReopenMookSheet(game, actorId);
+
+      const dialog = await openInstallCyberwareDialog(game, {
+        itemId,
+        sheetId,
+        actorId,
+      });
+      await expect(dialog.locator('select[name="foundationalId"]')).toHaveCount(
+        0,
+      );
+      await confirmInstallCyberwareDialog(dialog);
+
+      const ids = await ownedItemIdsByNames(game, actorId, [name]);
+      return { name, embeddedId: ids[name], sheetId };
+    }
+
+    async function installOptionalIntoCore(game, { actorId }) {
+      const name = uniqueName("cyberware");
+      const itemId = await createItemViaUI(game, { type: "cyberware", name });
+      const itemSheetId = await expectSheetRendered(game, {
+        collection: "items",
+        id: itemId,
+      });
+      await setItemSelected(game, {
+        sheetId: itemSheetId,
+        itemId,
+        name: "system.type",
+        value: "cyberwareInternal",
+      });
+      await closeDocSheet(game, { collection: "items", id: itemId });
+      const sheetId = await closeAndReopenMookSheet(game, actorId);
+
+      const coreId = await coreFoundationalId(
+        game,
+        actorId,
+        "cyberwareInternal",
+      );
+      expect(
+        coreId,
+        "the mook should ship with a seeded core Internal",
+      ).toBeTruthy();
+
+      const dialog = await openInstallCyberwareDialog(game, {
+        itemId,
+        sheetId,
+        actorId,
+      });
+      const foundationalSelect = dialog.locator(
+        'select[name="foundationalId"]',
+      );
+      await expect(foundationalSelect).toBeVisible();
+      await expect(
+        foundationalSelect.locator(`option[value="${coreId}"]`),
+      ).toHaveCount(1);
+      await foundationalSelect.selectOption(coreId);
+      await confirmInstallCyberwareDialog(dialog);
+
+      const ids = await ownedItemIdsByNames(game, actorId, [name]);
+      return { name, embeddedId: ids[name], sheetId };
+    }
+
+    test("a foundational cyberarm installs directly on the mook and renders as a clickable link", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      let arm;
+
+      await test.step("dragging the arm onto the mook installs it straight on the actor", async () => {
+        arm = await installFoundationalArm(game, { actorId, sheetId });
+        expect(
+          arm.embeddedId,
+          "the arm should be embedded on the mook",
+        ).toBeTruthy();
+
+        const isInstalled = await game.evaluate(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId).system.isInstalled,
+          { actorId, itemId: arm.embeddedId },
+        );
+        expect(isInstalled).toBe(true);
+        const installedIn = await game.evaluate(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId).system.installedIn,
+          { actorId, itemId: arm.embeddedId },
+        );
+        expect(installedIn).toEqual([actorId]);
+      });
+
+      await test.step("a fresh render lists the arm as a clickable cyberware link", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        const link = game.locator(
+          `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+        );
+        await expect(link).toBeVisible();
+        await expect(link).toContainText(arm.name);
+      });
+    });
+
+    test("an internal optional installs into the seeded core and renders under its label", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const coreInternalId = await coreFoundationalId(
+        game,
+        actorId,
+        "cyberwareInternal",
+      );
+      expect(
+        coreInternalId,
+        "the mook should ship with a seeded core Internal",
+      ).toBeTruthy();
+
+      let optional;
+      await test.step("dragging the internal onto the mook installs it into the core Internal", async () => {
+        optional = await installOptionalIntoCore(game, { actorId, sheetId });
+        expect(optional.embeddedId).toBeTruthy();
+
+        const installedIn = await game.evaluate(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId).system.installedIn,
+          { actorId, itemId: optional.embeddedId },
+        );
+        expect(installedIn).toEqual([coreInternalId]);
+      });
+
+      await test.step("a fresh render shows the core label with the optional in parentheses", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        const link = game.locator(
+          `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${optional.embeddedId}"]`,
+        );
+        await expect(link).toBeVisible();
+        await expect(link).toContainText(optional.name);
+        await expect(link).toHaveAttribute(
+          "data-foundational-id",
+          coreInternalId,
+        );
+        const internalLabel = game
+          .locator(`#${sheetId} .mook-special-content span.text-semi`)
+          .filter({ hasText: "Internal" });
+        await expect(internalLabel).toHaveCount(1);
+      });
+    });
+
+    test("clicking a cyberware link opens its item sheet in read-only mode", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const arm = await installFoundationalArm(game, { actorId, sheetId });
+
+      await test.step("a normal click on the link opens a non-editable item sheet", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await game
+          .locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          )
+          .click();
+
+        const itemSheet = game.locator(".application .item-sheet");
+        await expect(itemSheet).toBeVisible({ timeout: 10000 });
+
+        const itemSheetId = await game.evaluate(
+          ({ actorId, itemId }) => {
+            const sheet = game.actors.get(actorId).items.get(itemId).sheet;
+            return sheet.element?.id ?? null;
+          },
+          { actorId, itemId: arm.embeddedId },
+        );
+        expect(itemSheetId, "the item sheet should be rendered").toBeTruthy();
+
+        await openItemSettings(game, itemSheetId);
+        await expect(
+          game.locator(`#${itemSheetId} select[name="system.type"]`),
+        ).toHaveCount(0);
+        const typeSpan = game
+          .locator(`#${itemSheetId} .setting-value span.text-flex-end`)
+          .first();
+        await expect(typeSpan).toBeVisible();
+      });
+
+      await test.step("closing the read-only sheet leaves the mook unchanged", async () => {
+        await closeOwnedItemSheet(game, { actorId, itemId: arm.embeddedId });
+      });
+    });
+
+    test("ctrl-clicking a cyberware link posts its card to chat", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const arm = await installFoundationalArm(game, { actorId, sheetId });
+
+      const cardModifier =
+        process.platform === "darwin" ? ["Meta"] : ["Control"];
+
+      await test.step("ctrl-clicking the link posts an item card and opens no sheet", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        const messagesBefore = await chatMessageCount(game);
+        await game
+          .locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          )
+          .click({ modifiers: cardModifier });
+
+        const messageId = await waitForNewChatMessage(game, messagesBefore, {
+          requireContent: true,
+        });
+        await openSidebarTab(game, "chat");
+        const card = game
+          .locator(`#chat .chat-message[data-message-id="${messageId}"]`)
+          .locator(".item-card-grid-container");
+        await expect(card).toBeVisible({ timeout: 10000 });
+        await expect(card.locator(".item-card-name")).toContainText(
+          "cyberware",
+        );
+
+        await expect(game.locator(".application .item-sheet")).toHaveCount(0);
+      });
+    });
+
+    test("shift-clicking an installed foundational uninstalls it", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const arm = await installFoundationalArm(game, { actorId, sheetId });
+
+      await test.step("shift-clicking the link confirms and uninstalls the arm", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await game
+          .locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          )
+          .click({ modifiers: ["Shift"] });
+
+        const confirmDialog = game.locator(".cpr-dialog").filter({
+          has: game.locator(".cpr-dialog-message"),
+        });
+        await expect(confirmDialog).toBeVisible({ timeout: 10000 });
+        await expect(
+          confirmDialog.locator(".cpr-dialog-message"),
+        ).toContainText(arm.name);
+        await confirmDialog.locator('button[data-action="yes"]').click();
+        await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
+
+        const isInstalled = await game.evaluate(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId).system.isInstalled,
+          { actorId, itemId: arm.embeddedId },
+        );
+        expect(isInstalled).toBe(false);
+      });
+
+      await test.step("a fresh render no longer lists the uninstalled arm", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await expect(
+          game.locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          ),
+        ).toHaveCount(0);
+      });
+    });
+
+    test("shift-clicking an installed optional uninstalls it from its core", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const coreInternalId = await coreFoundationalId(
+        game,
+        actorId,
+        "cyberwareInternal",
+      );
+      expect(coreInternalId).toBeTruthy();
+      const optional = await installOptionalIntoCore(game, {
+        actorId,
+        sheetId,
+      });
+
+      await test.step("shift-clicking the optional confirms and uninstalls it", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await game
+          .locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${optional.embeddedId}"]`,
+          )
+          .click({ modifiers: ["Shift"] });
+
+        const confirmDialog = game.locator(".cpr-dialog").filter({
+          has: game.locator(".cpr-dialog-message"),
+        });
+        await expect(confirmDialog).toBeVisible({ timeout: 10000 });
+        await expect(
+          confirmDialog.locator(".cpr-dialog-message"),
+        ).toContainText(optional.name);
+        await confirmDialog.locator('button[data-action="yes"]').click();
+        await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
+
+        const isInstalled = await game.evaluate(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId).system.isInstalled,
+          { actorId, itemId: optional.embeddedId },
+        );
+        expect(isInstalled).toBe(false);
+      });
+
+      await test.step("a fresh render no longer shows the core label or the optional", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await expect(
+          game.locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${optional.embeddedId}"]`,
+          ),
+        ).toHaveCount(0);
+        const internalLabel = game
+          .locator(`#${sheetId} .mook-special-content span.text-semi`)
+          .filter({ hasText: "Internal" });
+        await expect(internalLabel).toHaveCount(0);
+      });
+    });
+
+    test("pressing Delete on a focused foundational removes it", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const arm = await installFoundationalArm(game, { actorId, sheetId });
+
+      await test.step("focusing the link and pressing Delete removes the arm after confirmation", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await game
+          .locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          )
+          .focus();
+        await game.keyboard.press("Delete");
+
+        const confirmDialog = game.locator(".cpr-dialog").filter({
+          has: game.locator(".cpr-dialog-message"),
+        });
+        await expect(confirmDialog).toBeVisible({ timeout: 10000 });
+        await expect(
+          confirmDialog.locator(".cpr-dialog-message"),
+        ).toContainText(arm.name);
+        await confirmDialog.locator('button[data-action="yes"]').click();
+        await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
+
+        const stillOwned = await game.evaluate(
+          ({ actorId, itemId }) => game.actors.get(actorId).items.has(itemId),
+          { actorId, itemId: arm.embeddedId },
+        );
+        expect(stillOwned, "the arm should be deleted from the mook").toBe(
+          false,
+        );
+      });
+
+      await test.step("a fresh render no longer lists the removed arm", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await expect(
+          game.locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          ),
+        ).toHaveCount(0);
+      });
+    });
+
+    test("pressing Delete on a foundational holding an optional offers the container-delete dialog", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const arm = await installFoundationalArm(game, { actorId, sheetId });
+
+      let optional;
+      await test.step("installing a matching optional into the arm makes the arm a container", async () => {
+        const name = uniqueName("cyberware");
+        const itemId = await createItemViaUI(game, { type: "cyberware", name });
+        const itemSheetId = await expectSheetRendered(game, {
+          collection: "items",
+          id: itemId,
+        });
+        await openItemSettings(game, itemSheetId);
+        await game
+          .locator(
+            `#${itemSheetId} a.item-checkbox[data-target="system.isFoundational"]`,
+          )
+          .click();
+        await game.waitForFunction(
+          (id) => game.items.get(id).system.isFoundational === false,
+          itemId,
+          { timeout: 10000 },
+        );
+        await closeDocSheet(game, { collection: "items", id: itemId });
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+
+        const dialog = await openInstallCyberwareDialog(game, {
+          itemId,
+          sheetId,
+          actorId,
+        });
+        const foundationalSelect = dialog.locator(
+          'select[name="foundationalId"]',
+        );
+        await expect(foundationalSelect).toBeVisible();
+        await expect(
+          foundationalSelect.locator(`option[value="${arm.embeddedId}"]`),
+        ).toHaveCount(1);
+        await foundationalSelect.selectOption(arm.embeddedId);
+        await dialog
+          .locator('select[name="humanityLossType"]')
+          .selectOption("none");
+        await dialog.locator(MOOK_FIELD.dialogConfirm).click();
+        await expect(dialog).toHaveCount(0, { timeout: 10000 });
+
+        const ids = await ownedItemIdsByNames(game, actorId, [name]);
+        optional = { name, embeddedId: ids[name] };
+        expect(optional.embeddedId).toBeTruthy();
+
+        const installedIn = await game.evaluate(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId).system.installedIn,
+          { actorId, itemId: optional.embeddedId },
+        );
+        expect(installedIn).toEqual([arm.embeddedId]);
+      });
+
+      await test.step("pressing Delete on the arm confirms removal then offers the container-delete dialog", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await game
+          .locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          )
+          .focus();
+        await game.keyboard.press("Delete");
+
+        const removeDialog = game.locator(".cpr-dialog").filter({
+          has: game.locator(".cpr-dialog-message"),
+        });
+        await expect(removeDialog).toBeVisible({ timeout: 10000 });
+        await expect(removeDialog.locator(".cpr-dialog-message")).toContainText(
+          arm.name,
+        );
+        await removeDialog.locator('button[data-action="yes"]').click();
+        await expect(removeDialog).toHaveCount(0, { timeout: 10000 });
+
+        const containerDialog = game.locator(".cpr-dialog").filter({
+          has: game.locator('input[name="deleteInstalled"]'),
+        });
+        await expect(containerDialog).toBeVisible({ timeout: 10000 });
+        await containerDialog.locator('input[name="deleteInstalled"]').check();
+        await containerDialog.locator(MOOK_FIELD.dialogConfirm).click();
+        await expect(containerDialog).toHaveCount(0, { timeout: 10000 });
+
+        const remaining = await game.evaluate(
+          ({ actorId, armId, optionalId }) => ({
+            arm: game.actors.get(actorId).items.has(armId),
+            optional: game.actors.get(actorId).items.has(optionalId),
+          }),
+          {
+            actorId,
+            armId: arm.embeddedId,
+            optionalId: optional.embeddedId,
+          },
+        );
+        expect(remaining.arm, "the arm should be deleted").toBe(false);
+        expect(
+          remaining.optional,
+          "the nested optional should be deleted too",
+        ).toBe(false);
+      });
+
+      await test.step("a fresh render lists neither the arm nor its former optional", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        await expect(
+          game.locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
+          ),
+        ).toHaveCount(0);
+        await expect(
+          game.locator(
+            `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${optional.embeddedId}"]`,
+          ),
+        ).toHaveCount(0);
+      });
+    });
+
+    test("two optionals in one core render comma-separated", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+      const first = await installOptionalIntoCore(game, { actorId, sheetId });
+      const second = await installOptionalIntoCore(game, { actorId, sheetId });
+
+      await test.step("a fresh render lists both optionals under the core label", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        const firstLink = game.locator(
+          `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${first.embeddedId}"]`,
+        );
+        const secondLink = game.locator(
+          `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${second.embeddedId}"]`,
+        );
+        await expect(firstLink).toBeVisible();
+        await expect(secondLink).toBeVisible();
+        const content = game.locator(`#${sheetId} .mook-special-content`);
+        await expect(content).toContainText(first.name);
+        await expect(content).toContainText(second.name);
+      });
+    });
+
+    test("installing and removing non-core cyberware leaves the seeded cores intact", async ({
+      page: game,
+    }) => {
+      let { actorId, sheetId } = await createMookViaUI(game);
+
+      const readCores = () =>
+        game.evaluate((id) => {
+          const cores = game.actors
+            .get(id)
+            .itemTypes.cyberware.filter(
+              (c) => c.system.core === true && c.system.isInstalled,
+            );
+          return cores
+            .map((c) => ({ id: c.id, type: c.system.type }))
+            .sort((a, b) => a.type.localeCompare(b.type));
+        }, actorId);
+
+      let baseline;
+      await test.step("a fresh mook ships with three installed core foundationals", async () => {
+        baseline = await readCores();
+        expect(baseline).toHaveLength(3);
+        expect(baseline.map((c) => c.type)).toEqual([
+          "cyberwareExternal",
+          "cyberwareInternal",
+          "fashionware",
+        ]);
+      });
+
+      const arm = await installFoundationalArm(game, { actorId, sheetId });
+      const optional = await installOptionalIntoCore(game, {
+        actorId,
+        sheetId,
+      });
+
+      await test.step("uninstalling the non-core arm and optional removes only those", async () => {
+        sheetId = await closeAndReopenMookSheet(game, actorId);
+        for (const item of [arm, optional]) {
+          await game
+            .locator(
+              `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${item.embeddedId}"]`,
+            )
+            .click({ modifiers: ["Shift"] });
+
+          const confirmDialog = game.locator(".cpr-dialog").filter({
+            has: game.locator(".cpr-dialog-message"),
+          });
+          await expect(confirmDialog).toBeVisible({ timeout: 10000 });
+          await confirmDialog.locator('button[data-action="yes"]').click();
+          await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
+
+          sheetId = await closeAndReopenMookSheet(game, actorId);
+        }
+      });
+
+      await test.step("the same three core foundationals are still installed afterwards", async () => {
+        const after = await readCores();
+        expect(after).toEqual(baseline);
+      });
     });
   });
 });

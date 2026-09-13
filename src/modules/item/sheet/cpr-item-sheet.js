@@ -63,6 +63,18 @@ export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
   }
 
   /** @override */
+  get isEditable() {
+    return this.#readOnly ? false : super.isEditable;
+  }
+
+  /** @override */
+  _configureRenderOptions(options) {
+    super._configureRenderOptions(options);
+    if (options.editable === false) this.#readOnly = true;
+    else if (options.editable === true) this.#readOnly = false;
+  }
+
+  /** @override */
   async _prepareContext(options) {
     const foundryData = await super._prepareContext(options);
     foundryData.item = this.item;
@@ -523,7 +535,14 @@ export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
     this._createItemImageContextMenu(root);
   }
 
+  /** @override */
+  _onClose(options) {
+    super._onClose(options);
+    this.#readOnly = false;
+  }
+
   #activeTab = "item-description";
+  #readOnly = false;
 
   /*
   INTERNAL METHODS BELOW HERE

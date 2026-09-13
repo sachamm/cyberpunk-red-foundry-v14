@@ -3,6 +3,7 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   createActorViaUI,
+  dragItemToActorSheet,
   expectSheetRendered,
   reopenActorSheetViaUI,
   uniqueName,
@@ -41,6 +42,8 @@ export const MOOK_FIELD = {
   // deletable name link carrying data-item-id; cyberware renders above them with the
   // item-view class instead of item-edit.
   specialGearItem: ".mook-special-content .name.item-edit",
+  cyberwareItem:
+    ".mook-special-content .name.item.installable.changeable.item-view",
   // The pills glyph next to a listed drug's name; clicking it starts the snort
   // (consume) flow. Renders only for drug items.
   snortAction: 'a.item-action[data-action-type="snort"]',
@@ -305,6 +308,43 @@ export async function ownedItemIdsByNames(page, actorId, names) {
     },
     { actorId, names },
   );
+}
+
+export async function coreFoundationalId(page, actorId, type) {
+  return page.evaluate(
+    ({ actorId, type }) =>
+      game.actors
+        .get(actorId)
+        .itemTypes.cyberware.find(
+          (c) => c.system.core === true && c.system.type === type,
+        )?.id ?? null,
+    { actorId, type },
+  );
+}
+
+export async function openInstallCyberwareDialog(
+  page,
+  { itemId, sheetId, actorId },
+) {
+  await dragItemToActorSheet(page, { itemId, sheetId, actorId });
+  const dialog = page.locator(".cpr-dialog").filter({
+    has: page.locator('select[name="humanityLossType"]'),
+  });
+  await expect(dialog).toBeVisible({ timeout: 10000 });
+  return dialog;
+}
+
+export async function confirmInstallCyberwareDialog(
+  dialog,
+  { humanity = "none" } = {},
+) {
+  if (humanity) {
+    await dialog
+      .locator('select[name="humanityLossType"]')
+      .selectOption(humanity);
+  }
+  await dialog.locator(MOOK_FIELD.dialogConfirm).click();
+  await expect(dialog).toHaveCount(0, { timeout: 10000 });
 }
 
 /**
