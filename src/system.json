@@ -46,8 +46,7 @@
         "core_skills-science",
         "core_upgrades",
         "core_vehicles",
-        "core_weapons",
-        "core_weapons-branded"
+        "core_weapons"
       ]
     },
     {
@@ -198,14 +197,6 @@
       "type": "Item",
       "name": "core_weapons",
       "path": "packs/core/weapons",
-      "system": "cyberpunk-red-core",
-      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
-    },
-    {
-      "label": "Weapons (Branded)",
-      "type": "Item",
-      "name": "core_weapons-branded",
-      "path": "packs/core/weapons-branded",
       "system": "cyberpunk-red-core",
       "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
     },
