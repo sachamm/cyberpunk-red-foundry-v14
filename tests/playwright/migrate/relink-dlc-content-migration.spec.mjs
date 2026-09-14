@@ -8,6 +8,10 @@ const NEW_WEAPON_UUID =
 const OLD_STATUS_IMG =
   "systems/cyberpunk-red-core/icons/compendium/status/sixgun.svg";
 const NEW_STATUS_IMG = "modules/cyberpunk-red-dlc/icons/dlc/status/sixgun.svg";
+const OLD_READIED_ACTION_IMG =
+  "systems/cyberpunk-red-core/icons/compendium/status/readied_action.svg";
+const NEW_TIMEWARP_IMG =
+  "modules/cyberpunk-red-dlc/icons/dlc/status/timewarp.svg";
 const OLD_UPGRADE_IMG =
   "systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/bulletproof_glass.svg";
 const NEW_UPGRADE_IMG =
@@ -21,7 +25,12 @@ test("046 migration relinks moved content recursively and idempotently", async (
   page: game,
 }) => {
   const out = await game.evaluate(
-    async ({ oldWeaponUuid, oldStatusImg, oldUpgradeImg }) => {
+    async ({
+      oldWeaponUuid,
+      oldStatusImg,
+      oldReadiedActionImg,
+      oldUpgradeImg,
+    }) => {
       const M = await import(
         `/systems/${game.system.id}/modules/system/migrate/scripts/046-relink-dlc-content.js`
       );
@@ -33,7 +42,11 @@ test("046 migration relinks moved content recursively and idempotently", async (
             value: `<p>@UUID[${oldWeaponUuid}]{Snipe-Star}</p><img src="${oldStatusImg}">`,
           },
         },
-        effects: [{ img: oldStatusImg }],
+        effects: [
+          { name: "Moved status", img: oldStatusImg },
+          { name: "Timewarp Primary", img: oldReadiedActionImg },
+          { name: "Readied Action", img: oldReadiedActionImg },
+        ],
         untouched:
           "systems/cyberpunk-red-core/icons/compendium/status/acid.svg",
       };
@@ -52,6 +65,7 @@ test("046 migration relinks moved content recursively and idempotently", async (
     {
       oldWeaponUuid: OLD_WEAPON_UUID,
       oldStatusImg: OLD_STATUS_IMG,
+      oldReadiedActionImg: OLD_READIED_ACTION_IMG,
       oldUpgradeImg: OLD_UPGRADE_IMG,
     },
   );
@@ -63,6 +77,8 @@ test("046 migration relinks moved content recursively and idempotently", async (
   expect(out.data.system.description.value).toContain(NEW_WEAPON_UUID);
   expect(out.data.system.description.value).toContain(NEW_STATUS_IMG);
   expect(out.data.effects[0].img).toBe(NEW_STATUS_IMG);
+  expect(out.data.effects[1].img).toBe(NEW_TIMEWARP_IMG);
+  expect(out.data.effects[2].img).toBe(OLD_READIED_ACTION_IMG);
   expect(out.data.untouched).toBe(
     "systems/cyberpunk-red-core/icons/compendium/status/acid.svg",
   );
@@ -72,7 +88,12 @@ test("046 migration persists item, journal, table, and macro links", async ({
   page: game,
 }) => {
   const out = await game.evaluate(
-    async ({ oldWeaponUuid, oldStatusImg, oldUpgradeImg }) => {
+    async ({
+      oldWeaponUuid,
+      oldStatusImg,
+      oldReadiedActionImg,
+      oldUpgradeImg,
+    }) => {
       const M = await import(
         `/systems/${game.system.id}/modules/system/migrate/scripts/046-relink-dlc-content.js`
       );
@@ -98,6 +119,24 @@ test("046 migration persists item, journal, table, and macro links", async ({
             {
               name: "Moved status",
               img: oldStatusImg,
+              changes: [],
+              disabled: false,
+              duration: {},
+              statuses: [],
+              transfer: false,
+            },
+            {
+              name: "Timewarp Primary",
+              img: oldReadiedActionImg,
+              changes: [],
+              disabled: false,
+              duration: {},
+              statuses: [],
+              transfer: false,
+            },
+            {
+              name: "Readied Action",
+              img: oldReadiedActionImg,
               changes: [],
               disabled: false,
               duration: {},
@@ -180,6 +219,8 @@ test("046 migration persists item, journal, table, and macro links", async ({
           itemImg: persistedItem.img,
           itemDescription: persistedItem.system.description.value,
           effectImg: persistedItem.effects.contents[0].img,
+          timewarpImg: persistedItem.effects.contents[1].img,
+          readiedActionImg: persistedItem.effects.contents[2].img,
           journalContent: persistedPage.text.content,
           resultUuid: persistedResult.documentUuid,
           resultImg: persistedResult.img,
@@ -206,6 +247,7 @@ test("046 migration persists item, journal, table, and macro links", async ({
     {
       oldWeaponUuid: OLD_WEAPON_UUID,
       oldStatusImg: OLD_STATUS_IMG,
+      oldReadiedActionImg: OLD_READIED_ACTION_IMG,
       oldUpgradeImg: OLD_UPGRADE_IMG,
     },
   );
@@ -213,6 +255,8 @@ test("046 migration persists item, journal, table, and macro links", async ({
   expect(out.itemImg).toBe(NEW_UPGRADE_IMG);
   expect(out.itemDescription).toContain(NEW_WEAPON_UUID);
   expect(out.effectImg).toBe(NEW_STATUS_IMG);
+  expect(out.timewarpImg).toBe(NEW_TIMEWARP_IMG);
+  expect(out.readiedActionImg).toBe(OLD_READIED_ACTION_IMG);
   expect(out.journalContent).toContain(NEW_WEAPON_UUID);
   expect(out.resultUuid).toBe(NEW_WEAPON_UUID.replace(".Item.", "."));
   expect(out.resultImg).toBe(NEW_STATUS_IMG);

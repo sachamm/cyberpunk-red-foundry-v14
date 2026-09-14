@@ -4,6 +4,10 @@ import { IMG_MAP as SPLIT_PACK_IMG_MAP } from "./039-split-packs.js";
 
 const OLD_BRANDED_WEAPONS_PACK = "cyberpunk-red-core.core_weapons-branded";
 const NEW_BRANDED_WEAPONS_PACK = "cyberpunk-red-dlc.dlc_weapons";
+const OLD_READIED_ACTION_IMG =
+  "systems/cyberpunk-red-core/icons/compendium/status/readied_action.svg";
+const NEW_TIMEWARP_IMG =
+  "modules/cyberpunk-red-dlc/icons/dlc/status/timewarp.svg";
 
 const IMG_MAP = {
   ...SPLIT_PACK_IMG_MAP,
@@ -54,7 +58,7 @@ export function relinkDlcString(value) {
 export function relinkDlcContent(data) {
   let changed = false;
 
-  function visit(value) {
+  function visit(value, isEffect = false) {
     if (typeof value === "string") {
       const result = relinkDlcString(value);
       if (result !== value) changed = true;
@@ -63,8 +67,25 @@ export function relinkDlcContent(data) {
 
     if (!value || typeof value !== "object") return value;
 
+    if (
+      isEffect &&
+      !Array.isArray(value) &&
+      value.name === "Timewarp Primary" &&
+      value.img === OLD_READIED_ACTION_IMG
+    ) {
+      value.img = NEW_TIMEWARP_IMG;
+      changed = true;
+    }
+
+    if (Array.isArray(value)) {
+      for (let index = 0; index < value.length; index += 1) {
+        value[index] = visit(value[index], isEffect);
+      }
+      return value;
+    }
+
     for (const [key, child] of Object.entries(value)) {
-      value[key] = visit(child);
+      value[key] = visit(child, key === "effects");
     }
     return value;
   }
