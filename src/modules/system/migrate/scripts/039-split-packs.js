@@ -2,7 +2,7 @@ import BaseMigrationScript from "../base-migration-script.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 
 // Map of the image moves, old: new
-const IMG_MAP = {
+export const IMG_MAP = {
   "systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/osmosis_compound.svg":
     "modules/cyberpunk-red-dlc/icons/dlc/ammo/osmosis_compound.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/arasaka-fire.svg":
@@ -916,26 +916,33 @@ export default class SplitPacks extends BaseMigrationScript {
     });
   }
 
-  _updatePageContent(doc) {
+  async _updatePageContent(doc) {
     for (const page of doc.pages) {
       const newText = this._processString(page.text.content);
-      page.update({ "text.content": newText });
+      if (newText !== page.text.content) {
+        await page.update({ "text.content": newText });
+      }
     }
   }
 
-  _updateTableResult(doc) {
+  async _updateTableResult(doc) {
     const { results } = doc;
     for (const result of results) {
       const id = result.documentId;
       const { img } = result;
       const newComp = PACK_MAP[id];
+      const update = {};
 
       if (newComp) {
-        result.update({ documentCollection: `cyberpunk-red-dlc.${newComp}` });
+        update.documentCollection = `cyberpunk-red-dlc.${newComp}`;
       }
 
       if (IMG_MAP[img]) {
-        result.update({ img: IMG_MAP[id] });
+        update.img = IMG_MAP[img];
+      }
+
+      if (Object.keys(update).length) {
+        await result.update(update);
       }
     }
   }
@@ -1000,7 +1007,7 @@ export default class SplitPacks extends BaseMigrationScript {
     const journalComps = [...journalsWorldComp, ...journalsModuleComp];
 
     for await (const journal of journalsWorld) {
-      this._updatePageContent(journal);
+      await this._updatePageContent(journal);
     }
 
     for await (const comp of journalComps) {
@@ -1013,7 +1020,7 @@ export default class SplitPacks extends BaseMigrationScript {
       }
 
       for (const doc of docs) {
-        this._updatePageContent(doc);
+        await this._updatePageContent(doc);
       }
 
       if (wasLocked) {
@@ -1037,7 +1044,7 @@ export default class SplitPacks extends BaseMigrationScript {
     const tablesComps = [...tablesWorldComp, ...tablesModuleComp];
 
     for await (const table of tablesWorld) {
-      this._updateTableResult(table);
+      await this._updateTableResult(table);
     }
 
     for await (const table of tablesComps) {
@@ -1050,7 +1057,7 @@ export default class SplitPacks extends BaseMigrationScript {
       }
 
       for (const doc of docs) {
-        this._updateTableResult(doc);
+        await this._updateTableResult(doc);
       }
 
       if (wasLocked) {
@@ -1076,31 +1083,31 @@ export default class SplitPacks extends BaseMigrationScript {
       for await (const tile of tiles) {
         const img = tile.texture.src;
         if (IMG_MAP[img]) {
-          tile.update({ "texture.src": IMG_MAP[img] });
+          await tile.update({ "texture.src": IMG_MAP[img] });
+        }
+      }
+    }
+
+    for await (const s of scenesComps) {
+      const pack = await game.packs.get(s.metadata.id);
+      const docs = await pack.getDocuments();
+      const wasLocked = await pack.locked;
+
+      if (wasLocked) {
+        await pack.configure({ locked: false });
+      }
+
+      for (const doc of docs) {
+        for (const tile of doc.tiles) {
+          const img = tile.texture.src;
+          if (IMG_MAP[img]) {
+            await tile.update({ "texture.src": IMG_MAP[img] });
+          }
         }
       }
 
-      for await (const s of scenesComps) {
-        const pack = await game.packs.get(s.metadata.id);
-        const docs = await pack.getDocuments();
-        const wasLocked = await pack.locked;
-
-        if (wasLocked) {
-          await pack.configure({ locked: false });
-        }
-
-        for (const doc of docs) {
-          for (const tile of doc.tiles) {
-            const img = tile.texture.src;
-            if (IMG_MAP[img]) {
-              tile.update({ "texture.src": IMG_MAP[img] });
-            }
-          }
-        }
-
-        if (wasLocked) {
-          await pack.configure({ locked: true });
-        }
+      if (wasLocked) {
+        await pack.configure({ locked: true });
       }
     }
   }
