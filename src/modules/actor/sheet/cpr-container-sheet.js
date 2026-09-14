@@ -215,27 +215,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
-    // If the purchased item is installed in another item on this container and
-    // will be removed from stock, uninstall it first. This scrubs the reference
-    // so the other item does not dangle, and restores any magazine rounds to
-    // the item so the buyer receives the full amount at the correct price.
-    const removesFromStock =
-      all &&
-      !foundry.utils.getProperty(
-        this.actor,
-        `flags.${game.system.id}.infinite-stock`,
-      );
-    if (removesFromStock && item.system.isInstalled) {
-      await item.uninstall({ skipDialog: true });
-    }
-
-    const transferredItemData = foundry.utils.duplicate(item);
-
-    if (SystemUtils.hasMixin(item.type, "container")) {
-      const cprInstallTree = item.createInstalledObjectData();
-      ContainerUtils.setInstallTreeFlag(transferredItemData, cprInstallTree);
-    }
-
     let cost;
     if (
       item.type === "ammo" &&
@@ -247,6 +226,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     } else {
       cost = item.system.price.market;
     }
+
+    let purchaseAmount;
     if (!all) {
       // Prepare data for dialog.
       let formData = {
@@ -270,36 +251,69 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       if (!formData) {
         return;
       }
-      const newAmount = parseInt(formData.purchaseAmount, 10);
-      if (newAmount < 1 || newAmount >= inventoryAmount) {
+      purchaseAmount = parseInt(formData.purchaseAmount, 10);
+      if (purchaseAmount < 1 || purchaseAmount >= inventoryAmount) {
         SystemUtils.DisplayMessage(
           "warn",
           SystemUtils.Localize("CPR.dialog.purchasePart.wrongAmountWarning"),
         );
         return;
       }
-      transferredItemData.system.amount = newAmount;
-      cost *= newAmount;
+      cost *= purchaseAmount;
     } else {
       cost *=
         typeof item.system.amount !== "undefined"
           ? parseInt(item.system.amount, 10)
           : 1;
     }
+
+    // The buyer must be able to afford the item before anything on this
+    // container is changed, including uninstalling it from other items.
     const tradePartnerActor = game.actors.get(tradePartnerId);
+    if (
+      !foundry.utils.getProperty(
+        this.actor,
+        `flags.${game.system.id}.items-free`,
+      ) &&
+      tradePartnerActor.system.wealth.value < cost
+    ) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.messages.tradePriceWarn"),
+      );
+      return;
+    }
+
+    // If the purchased item is installed in another item on this container and
+    // will be removed from stock, uninstall it now that the purchase is known
+    // to go through. This scrubs the reference so the other item does not
+    // dangle, and restores any magazine rounds to the item.
+    const removesFromStock =
+      all &&
+      !foundry.utils.getProperty(
+        this.actor,
+        `flags.${game.system.id}.infinite-stock`,
+      );
+    if (removesFromStock && item.system.isInstalled) {
+      await item.uninstall({ skipDialog: true });
+    }
+
+    const transferredItemData = foundry.utils.duplicate(item);
+    if (!all) {
+      transferredItemData.system.amount = purchaseAmount;
+    }
+
+    if (SystemUtils.hasMixin(item.type, "container")) {
+      const cprInstallTree = item.createInstalledObjectData();
+      ContainerUtils.setInstallTreeFlag(transferredItemData, cprInstallTree);
+    }
+
     if (
       !foundry.utils.getProperty(
         this.actor,
         `flags.${game.system.id}.items-free`,
       )
     ) {
-      if (tradePartnerActor.system.wealth.value < cost) {
-        SystemUtils.DisplayMessage(
-          "warn",
-          SystemUtils.Localize("CPR.messages.tradePriceWarn"),
-        );
-        return;
-      }
       const { amount } = transferredItemData.system;
       const username = game.user.name;
       let reason;

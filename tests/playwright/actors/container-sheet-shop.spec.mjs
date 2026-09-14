@@ -538,6 +538,286 @@ test.describe("Shop", () => {
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
+  test("failed purchase of installed ammo leaves the shop's weapon and stock intact", async ({
+    page: game,
+    browser,
+    baseURL,
+  }) => {
+    await enablePlayersCreateInventory(game);
+
+    const characterName = uniqueName("ammo-seller");
+    const characterActorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "character",
+      name: characterName,
+    });
+    let characterSheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: characterActorId,
+    });
+
+    const weaponName = uniqueName("assault-rifle");
+    const ammoName = uniqueName("rifle-ammo");
+    let embeddedWeaponId;
+    let embeddedAmmoId;
+
+    await test.step("give the character a rifle and matching ammo", async () => {
+      ({ sheetId: characterSheetId } = await createInventoryItemViaUI(game, {
+        actorId: characterActorId,
+        sheetId: characterSheetId,
+        itemType: "weapon",
+        itemName: weaponName,
+        data: {
+          system: {
+            weaponType: "assaultRifle",
+            isRanged: true,
+            magazine: { value: 0, max: 30 },
+            installedItems: { allowedTypes: ["ammo"] },
+            ammoVariety: ["rifle"],
+          },
+        },
+      }));
+      ({ sheetId: characterSheetId } = await createInventoryItemViaUI(game, {
+        actorId: characterActorId,
+        sheetId: characterSheetId,
+        itemType: "ammo",
+        itemName: ammoName,
+        data: {
+          system: { variety: "rifle", amount: 50 },
+        },
+      }));
+
+      ({ embeddedWeaponId, embeddedAmmoId } = await game.evaluate(
+        ({ characterActorId, weaponName, ammoName }) => {
+          const actor = game.actors.get(characterActorId);
+          return {
+            embeddedWeaponId: actor.items.find((i) => i.name === weaponName).id,
+            embeddedAmmoId: actor.items.find((i) => i.name === ammoName).id,
+          };
+        },
+        { characterActorId, weaponName, ammoName },
+      ));
+    });
+
+    await test.step("equip the rifle and load 30 rounds", async () => {
+      await equipWeapon(game, {
+        actorSheetId: characterSheetId,
+        actorId: characterActorId,
+        itemId: embeddedWeaponId,
+      });
+
+      const actorSheet = game.locator(`#${characterSheetId}`);
+      await actorSheet.locator('.navtabs-bottom a[data-tab="fight"]').click();
+      await actorSheet
+        .locator(
+          `.bottom-content-section .item-action[data-item-id="${embeddedWeaponId}"][data-action="select-ammo"]`,
+        )
+        .click();
+      const loadDialog = game
+        .locator(".application")
+        .filter({ has: game.locator('select[name="selectedAmmo"]') });
+      await expect(
+        loadDialog.locator('select[name="selectedAmmo"]'),
+      ).toHaveValue(embeddedAmmoId);
+      await loadDialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(loadDialog).toHaveCount(0);
+
+      await game.waitForFunction(
+        ({ characterActorId, weaponId, ammoId }) => {
+          const actor = game.actors.get(characterActorId);
+          return (
+            actor.items.get(weaponId).system.magazine.value === 30 &&
+            actor.items.get(ammoId).system.amount === 20
+          );
+        },
+        {
+          characterActorId,
+          weaponId: embeddedWeaponId,
+          ammoId: embeddedAmmoId,
+        },
+        { timeout: 10000 },
+      );
+    });
+
+    const containerActorId = await createDocumentViaUI(game, {
+      documentTab: "actors",
+      type: "container",
+      name: uniqueName("shop-installed-ammo"),
+    });
+    let sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: containerActorId,
+    });
+    await setActorWealthViaUI(game, containerActorId, 999999);
+
+    await test.step("sell the rifle to the shop", async () => {
+      await sellItemToContainerViaUI(game, browser, baseURL, {
+        containerActorId,
+        characterActorId,
+        itemId: embeddedWeaponId,
+      });
+
+      await game.evaluate(({ id }) => game.actors.get(id).sheet.render(true), {
+        id: containerActorId,
+      });
+      sheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: containerActorId,
+      });
+    });
+
+    const readShopState = () =>
+      game.evaluate(
+        ({ containerActorId, weaponName, ammoName }) => {
+          const actor = game.actors.get(containerActorId);
+          const weapon = actor.items.find((i) => i.name === weaponName);
+          const ammo = actor.items.find((i) => i.name === ammoName);
+          return {
+            hasWeapon: Boolean(weapon),
+            hasAmmo: Boolean(ammo),
+            magazineValue: weapon?.system?.magazine?.value ?? null,
+            ammoAmount: ammo?.system?.amount ?? null,
+            ammoInstalledInWeapon:
+              Boolean(weapon) &&
+              Boolean(ammo) &&
+              weapon.system.installedItems.list.includes(ammo.id),
+          };
+        },
+        { containerActorId, weaponName, ammoName },
+      );
+
+    await test.step("the shop holds the rifle with its empty ammo stack installed", async () => {
+      const state = await readShopState();
+      expect(state.hasWeapon).toBe(true);
+      expect(state.hasAmmo).toBe(true);
+      expect(state.magazineValue).toBe(0);
+      expect(state.ammoAmount).toBe(0);
+      expect(state.ammoInstalledInWeapon).toBe(true);
+    });
+
+    const getAmmoRow = () => {
+      const containerSheet = sheet(game, sheetId);
+      return containerSheet
+        .locator(".collapsible")
+        .filter({ has: game.locator("#gearTab-ammo") })
+        .locator(".item.flexrow")
+        .filter({ hasText: ammoName });
+    };
+
+    await test.step("restock the shop's ammo stack to 50 rounds", async () => {
+      const shopAmmoId = await game.evaluate(
+        ({ containerActorId, ammoName }) =>
+          game.actors
+            .get(containerActorId)
+            .items.find((i) => i.name === ammoName).id,
+        { containerActorId, ammoName },
+      );
+
+      await getAmmoRow().locator(".item-edit").click();
+      const itemSheetId = await openOwnedItemSheet(game, {
+        actorId: containerActorId,
+        itemId: shopAmmoId,
+      });
+      const itemSheet = await openItemSettings(game, itemSheetId);
+      const amountInput = itemSheet.locator('input[name="system.amount"]');
+      await expect(amountInput).toBeVisible();
+      await amountInput.fill("50");
+      await amountInput.press("Tab");
+      await game.waitForFunction(
+        ({ containerActorId, itemId }) =>
+          game.actors.get(containerActorId).items.get(itemId).system.amount ===
+          50,
+        { containerActorId, itemId: shopAmmoId },
+        { timeout: 10000 },
+      );
+      await closeOwnedItemSheet(game, {
+        actorId: containerActorId,
+        itemId: shopAmmoId,
+      });
+
+      const state = await readShopState();
+      expect(state.ammoAmount).toBe(50);
+    });
+
+    const clickPurchaseAllOnAmmoRow = async () => {
+      const ammoRow = getAmmoRow();
+      await expect(ammoRow).toBeVisible();
+      await ammoRow.locator(FIELD.purchaseAll).click();
+    };
+
+    await test.step("a broke buyer cannot purchase the installed ammo", async () => {
+      await setTradePartnerWithWealth(game, sheetId, {
+        partnerName: characterName,
+        wealth: 0,
+      });
+
+      await clickPurchaseAllOnAmmoRow();
+
+      await expect(
+        game.locator(".notification.warning, .notification.error"),
+      ).toBeVisible();
+      await dismissNotifications(game);
+    });
+
+    await test.step("the failed purchase left the shop's weapon and stock untouched", async () => {
+      const state = await readShopState();
+      expect(state.hasWeapon).toBe(true);
+      expect(state.hasAmmo).toBe(true);
+      expect(state.magazineValue).toBe(0);
+      expect(state.ammoAmount).toBe(50);
+      expect(state.ammoInstalledInWeapon).toBe(true);
+
+      const buyerHasAmmo = await game.evaluate(
+        ({ characterActorId, ammoName }) =>
+          game.actors
+            .get(characterActorId)
+            .items.some((i) => i.name === ammoName),
+        { characterActorId, ammoName },
+      );
+      expect(buyerHasAmmo).toBe(false);
+    });
+
+    await test.step("a funded buyer completes the purchase", async () => {
+      await setTradePartnerWithWealth(game, sheetId, {
+        partnerName: characterName,
+        wealth: 5000,
+      });
+
+      await clickPurchaseAllOnAmmoRow();
+
+      await game.waitForFunction(
+        ({ containerActorId, characterActorId, ammoName }) => {
+          const shop = game.actors.get(containerActorId);
+          const buyer = game.actors.get(characterActorId);
+          return (
+            !shop.items.some((i) => i.name === ammoName) &&
+            buyer.items.find((i) => i.name === ammoName)?.system.amount === 50
+          );
+        },
+        { containerActorId, characterActorId, ammoName },
+        { timeout: 10000 },
+      );
+
+      const after = await game.evaluate(
+        ({ containerActorId, characterActorId, weaponName }) => {
+          const shop = game.actors.get(containerActorId);
+          return {
+            shopHasWeapon: shop.items.some((i) => i.name === weaponName),
+            buyerWealth: game.actors.get(characterActorId).system.wealth.value,
+          };
+        },
+        { containerActorId, characterActorId, weaponName },
+      );
+      expect(after.shopHasWeapon).toBe(true);
+      // Ammo is priced per 10 rounds: 50 x (100 / 10) = 500.
+      expect(after.buyerWealth).toBe(4500);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: containerActorId });
+  });
+
   test("purchase without trade partner shows warning", async ({
     page: game,
   }) => {
