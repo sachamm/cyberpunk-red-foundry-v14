@@ -48,45 +48,40 @@ export default class CPRContainerActor extends Actor {
 
     let itemsToCreate = items;
 
-    // Don't add core items.
-    const coreItemIds = itemsToCreate
-      .filter((i) => i.system?.core)
-      .map((i) => i._id);
-    if (coreItemIds.length > 0) {
+    // Don't add core items. Filter by predicate rather than collected ids so
+    // that id-less create payloads don't cause sibling items to be dropped.
+    if (itemsToCreate.some((i) => i.system?.core)) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      itemsToCreate = itemsToCreate.filter((i) => !coreItemIds.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !i.system?.core);
     }
 
     // Role items serve no purpose on containers; discard them so they are
     // not persisted.
-    const roleItemIds = itemsToCreate
-      .filter((i) => i.type === "role")
-      .map((i) => i._id);
-    if (roleItemIds.length > 0) {
+    if (itemsToCreate.some((i) => i.type === "role")) {
       SystemUtils.DisplayMessage(
         "error",
         SystemUtils.Localize("CPR.messages.cannotAddRoleToContainer"),
       );
-      itemsToCreate = itemsToCreate.filter((i) => !roleItemIds.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => i.type !== "role");
     }
 
     // Attempt to stack item before creating it
     const stackedItemReferences = [];
     if (!context.CPRsplitStack) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
-      const dontCreate = [];
+      const dontCreate = new Set();
       for (const doc of itemsToCreate) {
         if (!doc.system) continue;
         const [returnValue] = await this.automaticallyStackItems(doc);
         if (returnValue) {
-          dontCreate.push(doc._id);
+          dontCreate.add(doc);
           // Keep track of the item that we stacked upon, so we can update the parent's
           // references later, if the item that was stacked is meant to be installed.
           stackedItemReferences.push({ id: returnValue._id, system: {} });
         }
       }
       // Don't create items that we should stack.
-      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.has(i));
     }
 
     // Create the items

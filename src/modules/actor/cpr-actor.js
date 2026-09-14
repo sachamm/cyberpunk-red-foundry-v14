@@ -201,32 +201,24 @@ export default class CPRActor extends Actor {
     if (isMigration || !embeddedName === "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
-    // Don't add core items.
+    // Don't add core items. Filter by predicate rather than collected ids so
+    // that id-less create payloads don't cause sibling items to be dropped.
     let itemsToCreate = items;
-    const coreItemIds = itemsToCreate
-      .filter((i) => i.system?.core)
-      .map((i) => i._id);
-    if (coreItemIds.length > 0) {
+    if (itemsToCreate.some((i) => i.system?.core)) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      itemsToCreate = itemsToCreate.filter((i) => !coreItemIds.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !i.system?.core);
     }
 
     // Prevent creating duplicate roles. Allowing it would introduce all kinds of data integrity
     // issues for the user, and potentially block future data migrations for them.
-    const dontCreate = [];
-    const roleDuplicates = itemsToCreate.filter(
-      (doc) =>
-        doc.type === "role" &&
-        this.items.some((i) => i.type === "role" && i.name === doc.name),
-    );
-    if (roleDuplicates.length > 0) {
+    const isRoleDuplicate = (doc) =>
+      doc.type === "role" &&
+      this.items.some((i) => i.type === "role" && i.name === doc.name);
+    if (itemsToCreate.some(isRoleDuplicate)) {
       // Role duplicates were found, so we skip them, and continue with the other items.
       Rules.lawyer(false, "CPR.messages.roleDuplicates");
       // Remove duplicates from the creation set
-      roleDuplicates.forEach((d) => {
-        dontCreate.push(d._id);
-      });
-      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((doc) => !isRoleDuplicate(doc));
     }
 
     // Stack items.
@@ -238,18 +230,19 @@ export default class CPRActor extends Actor {
     const stackedItemReferences = [];
     if (canStack && !context.CPRsplitStack) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
+      const dontCreate = new Set();
       for (const doc of itemsToCreate) {
         if (!doc.system) continue;
         const [returnValue] = await this.automaticallyStackItems(doc);
         if (returnValue) {
-          dontCreate.push(doc._id);
+          dontCreate.add(doc);
           // Keep track of the item that we stacked upon, so we can update the parent's
           // references later, if the item that was stacked is meant to be installed.
           stackedItemReferences.push({ id: returnValue._id, system: {} });
         }
       }
       // Don't create items that we should stack.
-      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.has(i));
     }
 
     // Create the items
