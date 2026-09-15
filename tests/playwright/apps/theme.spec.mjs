@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import {
+  openSidebarTab,
+  uniqueName,
+} from "../../../tools/playwright/ui/index.mjs";
 
 const SYSTEM_ID = "cyberpunk-red-core";
 
@@ -528,6 +532,152 @@ test.describe("CPR theme integration", () => {
       await game.evaluate(async () => {
         if (ui.menu.rendered) await ui.menu.toggle();
       });
+      await restoreSettings(game, original);
+    }
+  });
+
+  test("themes hotbar macro slots and sidebar folder controls", async ({
+    page: game,
+  }) => {
+    const original = await captureSettings(game);
+    const folderName = uniqueName("theme-folder");
+    const macroName = uniqueName("broken-macro");
+    let created;
+    try {
+      created = await game.evaluate(
+        async ({ folderName, macroName }) => {
+          const previousMacroId = game.user.hotbar[1] ?? null;
+          const folder = await Folder.create({
+            name: folderName,
+            type: "Item",
+          });
+          const macro = await Macro.create({
+            name: macroName,
+            type: "script",
+            command: "",
+            img: `systems/${game.system.id}/missing-theme-probe.png`,
+          });
+          await game.user.assignHotbarMacro(macro, 1);
+          await game.settings.set(game.system.id, "themeFoundry", true);
+          return {
+            folderId: folder.id,
+            macroId: macro.id,
+            previousMacroId,
+          };
+        },
+        { folderName, macroName },
+      );
+
+      await openSidebarTab(game, "items");
+      const folderHeader = game.locator(
+        `#items li.folder[data-folder-id="${created.folderId}"] > .folder-header`,
+      );
+      const folderNameElement = folderHeader.locator(".folder-name");
+      const folderGlyph = folderHeader.locator(":scope > i");
+      const folderButtons = folderHeader.locator(".create-button");
+      const macroSlot = game.locator('#hotbar .slot[data-slot="1"]');
+      const macroImage = macroSlot.locator("img.slot-icon");
+      await expect(folderHeader).toBeVisible();
+      await expect(folderButtons).toHaveCount(2);
+      await folderNameElement.click();
+      await expect(folderButtons.first()).toBeVisible();
+      await expect(macroImage).toBeVisible();
+      await game.waitForFunction(() => {
+        const image = document.querySelector(
+          '#hotbar .slot[data-slot="1"] img.slot-icon',
+        );
+        return image?.complete && image.naturalWidth === 0;
+      });
+
+      for (const variant of ["light", "dark"]) {
+        await game.evaluate(
+          async (theme) => game.settings.set(game.system.id, "theme", theme),
+          variant,
+        );
+        await expect(game.locator("html")).toHaveAttribute(
+          "data-cpr-theme",
+          variant,
+        );
+
+        const semantic = await game.evaluate(() => {
+          const probe = document.createElement("span");
+          probe.style.color = "var(--cpr-text-normal)";
+          probe.style.backgroundColor = "var(--cpr-background-border)";
+          probe.style.borderColor = "var(--cpr-text-header)";
+          probe.style.outlineColor = "var(--cpr-text-icon-highlight)";
+          document.body.append(probe);
+          const style = getComputedStyle(probe);
+          const colors = {
+            normal: style.color,
+            border: style.backgroundColor,
+            header: style.borderColor,
+            highlight: style.outlineColor,
+          };
+          probe.remove();
+          return colors;
+        });
+
+        await expect(macroImage).toHaveCSS("color", semantic.normal);
+        await macroSlot.hover();
+        await expect(macroSlot).toHaveCSS("border-color", semantic.border);
+
+        await game.mouse.move(0, 0);
+        await expect(folderNameElement).toHaveCSS("color", semantic.header);
+        await expect(folderGlyph).toHaveCSS("color", semantic.header);
+        for (let index = 0; index < 2; index += 1) {
+          const button = folderButtons.nth(index);
+          await expect(button).toHaveCSS(
+            "background-color",
+            "rgba(0, 0, 0, 0)",
+          );
+          await expect(button).toHaveCSS("border-color", "rgba(0, 0, 0, 0)");
+          await expect(button).toHaveCSS("color", semantic.header);
+          const restingIndicator = await button.evaluate((element) => {
+            const style = getComputedStyle(element, "::after");
+            return {
+              background: style.backgroundColor,
+              color: style.color,
+            };
+          });
+          expect(restingIndicator).toEqual({
+            background: "rgba(0, 0, 0, 0)",
+            color: semantic.header,
+          });
+
+          await folderHeader.hover();
+          await expect(button).toBeVisible();
+          await button.hover();
+          await expect(button).toHaveCSS(
+            "background-color",
+            "rgba(0, 0, 0, 0)",
+          );
+          await expect(button).toHaveCSS("border-color", "rgba(0, 0, 0, 0)");
+          await expect(button).toHaveCSS("color", semantic.highlight);
+          const hoverIndicator = await button.evaluate((element) => {
+            const style = getComputedStyle(element, "::after");
+            return {
+              background: style.backgroundColor,
+              color: style.color,
+            };
+          });
+          expect(hoverIndicator).toEqual({
+            background: "rgba(0, 0, 0, 0)",
+            color: semantic.highlight,
+          });
+          await game.mouse.move(0, 0);
+        }
+      }
+    } finally {
+      if (created) {
+        await game.evaluate(async ({ folderId, macroId, previousMacroId }) => {
+          const previousMacro = previousMacroId
+            ? game.macros.get(previousMacroId)
+            : null;
+          await game.user.assignHotbarMacro(previousMacro, 1);
+          await game.macros.get(macroId)?.delete();
+          await game.folders.get(folderId)?.delete();
+        }, created);
+      }
       await restoreSettings(game, original);
     }
   });

@@ -1653,7 +1653,10 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   #resizeInstalledTags() {
     window.requestAnimationFrame(() => {
       if (this.element)
-        CPRSheetUtils.setCssClassWidth($(this.element), ".type-tag");
+        CPRSheetUtils.setCssClassWidth(
+          this.element,
+          ".cpr-browser-installed .type-tag",
+        );
     });
   }
 

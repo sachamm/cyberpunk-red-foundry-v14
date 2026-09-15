@@ -585,4 +585,127 @@ test.describe("Document browser", () => {
     await header.click();
     await expect(entry.first()).toBeVisible();
   });
+
+  test("sizes installed-item type tags to their longest localized label", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("installed-width");
+    const ammoHostName = `${nameTag} ammo host`;
+    const cyberwareHostName = `${nameTag} cyberware host`;
+    const ammoHostId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: ammoHostName,
+    });
+    await closeDocSheet(game, { collection: "items", id: ammoHostId });
+    const ammoId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "ammo",
+      name: uniqueName("installed-ammo"),
+    });
+    await closeDocSheet(game, { collection: "items", id: ammoId });
+    const cyberwareHostId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "cyberware",
+      name: cyberwareHostName,
+    });
+    await closeDocSheet(game, {
+      collection: "items",
+      id: cyberwareHostId,
+    });
+    const cyberwareId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "cyberware",
+      name: uniqueName("installed-cyberware"),
+    });
+    await closeDocSheet(game, { collection: "items", id: cyberwareId });
+
+    await game.evaluate(
+      async ({ ammoHostId, ammoId, cyberwareHostId, cyberwareId }) => {
+        await game.items
+          .get(ammoHostId)
+          .update({ "system.installedItems.list": [ammoId] });
+        await game.items
+          .get(cyberwareHostId)
+          .update({ "system.installedItems.list": [cyberwareId] });
+      },
+      { ammoHostId, ammoId, cyberwareHostId, cyberwareId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+
+    const ammoHost = documentBrowser.locator(".cpr-browser-entry").filter({
+      has: game.getByText(ammoHostName, { exact: true }),
+    });
+    const cyberwareHost = documentBrowser.locator(".cpr-browser-entry").filter({
+      has: game.getByText(cyberwareHostName, { exact: true }),
+    });
+    await expect(ammoHost).toHaveCount(1);
+    await expect(cyberwareHost).toHaveCount(1);
+    await ammoHost.locator(".cpr-browser-expand").click();
+
+    const typeTags = documentBrowser.locator(
+      ".cpr-browser-installed .type-tag",
+    );
+    await expect(typeTags).toHaveCount(1);
+    await expect(typeTags).toHaveText(["Ammo"]);
+    await expect
+      .poll(async () =>
+        typeTags.first().evaluate((tag) => ({
+          fit: tag.scrollWidth <= tag.clientWidth,
+          styleWidth: tag.style.width,
+        })),
+      )
+      .toMatchObject({ fit: true, styleWidth: expect.stringMatching(/rem$/) });
+    const ammoWidth = await typeTags
+      .first()
+      .evaluate((tag) => tag.getBoundingClientRect().width);
+
+    await cyberwareHost.locator(".cpr-browser-expand").click();
+    await expect(typeTags).toHaveCount(2);
+    await expect(typeTags).toHaveText(["Cyberware", "Ammo"]);
+    await expect
+      .poll(async () =>
+        typeTags.evaluateAll((tags, previousAmmoWidth) => {
+          const widths = tags.map((tag) =>
+            Number(tag.getBoundingClientRect().width.toFixed(2)),
+          );
+          const resizedAmmo = tags.find(
+            (tag) => tag.textContent.trim() === "Ammo",
+          );
+          return {
+            fit: tags.every((tag) => tag.scrollWidth <= tag.clientWidth),
+            resized:
+              resizedAmmo &&
+              resizedAmmo.getBoundingClientRect().width > previousAmmoWidth,
+            sized: tags.every((tag) => tag.style.width !== ""),
+            uniform: new Set(widths).size === 1,
+          };
+        }, ammoWidth),
+      )
+      .toEqual({ fit: true, resized: true, sized: true, uniform: true });
+
+    const expandedWidth = await typeTags
+      .first()
+      .evaluate((tag) => tag.getBoundingClientRect().width);
+    await cyberwareHost.locator(".cpr-browser-expand").click();
+    await expect(typeTags).toHaveCount(1);
+    await expect(typeTags).toHaveText(["Ammo"]);
+    await expect
+      .poll(async () =>
+        typeTags.first().evaluate(
+          (tag, previousWidths) => ({
+            fit: tag.scrollWidth <= tag.clientWidth,
+            restored:
+              Math.abs(
+                tag.getBoundingClientRect().width - previousWidths.ammo,
+              ) < 0.1,
+            shrunk: tag.getBoundingClientRect().width < previousWidths.expanded,
+          }),
+          { ammo: ammoWidth, expanded: expandedWidth },
+        ),
+      )
+      .toEqual({ fit: true, restored: true, shrunk: true });
+  });
 });

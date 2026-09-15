@@ -531,7 +531,7 @@
   flex: 0 0 auto;
   display: flex;
   justify-content: center;
-  width: 3.166rem;
+  white-space: nowrap;
   padding: 0.05rem 0.15rem;
   border-radius: 0.1rem;
   font-size: var(--cpr-font-smallest);
