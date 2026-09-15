@@ -208,6 +208,11 @@ html[data-cpr-theme-foundry] #menu {
  * tokens mapped above. Keep those details in the active CPR palette too. */
 html[data-cpr-theme-foundry] #hotbar #action-bar .slot .slot-icon {
   color: var(--cpr-text-normal);
+  border-radius: 0.5rem;
+}
+
+html[data-cpr-theme-foundry] #hotbar #action-bar .slot .key {
+  border-radius: 0.5rem 0;
 }
 
 html[data-cpr-theme-foundry] #hotbar #action-bar .slot:hover {

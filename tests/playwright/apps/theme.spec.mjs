@@ -620,6 +620,21 @@ test.describe("CPR theme integration", () => {
         await expect(macroImage).toHaveCSS("color", semantic.normal);
         await macroSlot.hover();
         await expect(macroSlot).toHaveCSS("border-color", semantic.border);
+        const hotbarRadii = await macroSlot.evaluate((element) => {
+          const slotStyle = getComputedStyle(element);
+          const imageStyle = getComputedStyle(
+            element.querySelector("img.slot-icon"),
+          );
+          const keyStyle = getComputedStyle(element.querySelector(".key"));
+          return {
+            border: Number.parseFloat(slotStyle.borderTopWidth),
+            image: Number.parseFloat(imageStyle.borderTopRightRadius),
+            key: Number.parseFloat(keyStyle.borderTopLeftRadius),
+            slot: Number.parseFloat(slotStyle.borderTopRightRadius),
+          };
+        });
+        expect(hotbarRadii.image + hotbarRadii.border).toBe(hotbarRadii.slot);
+        expect(hotbarRadii.key + hotbarRadii.border).toBe(hotbarRadii.slot);
 
         await game.mouse.move(0, 0);
         await expect(folderNameElement).toHaveCSS("color", semantic.header);
