@@ -12,11 +12,14 @@ import {
   reopenActorSheetViaUI,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
+import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
 import {
   createContainerWithItem,
   createInventoryItemViaUI,
   FIELD,
   installConsoleErrorHarness,
+  setContainerFlagViaUI,
+  setContainerTypeViaUI,
   sheet,
   waitForActorFields,
 } from "./container-sheet-helpers.mjs";
@@ -381,6 +384,126 @@ test.describe("Common behaviors", () => {
 
       const itemCount = await containerSheet.locator(FIELD.itemName).count();
       expect(itemCount).toBe(2);
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("dragging an item from a container sheet back onto itself does not delete it", async ({
+    page: game,
+  }) => {
+    const { actorId, sheetId, itemId } = await createContainerWithItem(game, {
+      containerName: "same-sheet-drop-container",
+      itemType: "ammo",
+    });
+
+    await test.step("drag the item row onto its own sheet", async () => {
+      const containerSheet = sheet(game, sheetId);
+      const itemRow = containerSheet
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Ammo" });
+      await expect(itemRow).toBeVisible();
+
+      await itemRow.dragTo(containerSheet, { timeout: 5000 }).catch(() => {});
+      await game.mouse.up().catch(() => {});
+    });
+
+    await test.step("no dialog appears and the inventory is unchanged", async () => {
+      await expect(game.locator(".application.dialog")).toHaveCount(0);
+      const itemIds = await game.evaluate(
+        (id) => Array.from(game.actors.get(id).items).map((i) => i.id),
+        actorId,
+      );
+      expect(itemIds).toEqual([itemId]);
+    });
+
+    await test.step("the item is still present after close and reopen", async () => {
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+      const reopenedSheetId = await reopenActorSheetViaUI(game, actorId);
+      const itemRow = sheet(game, reopenedSheetId)
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Ammo" });
+      await expect(itemRow).toBeVisible();
+    });
+
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("a player dropping an item from a container sheet back onto itself does not trigger a self-sell", async ({
+    page: game,
+    browser,
+    baseURL,
+  }) => {
+    const { actorId, itemId } = await createContainerWithItem(game, {
+      containerName: "self-sell-container",
+      itemType: "ammo",
+    });
+
+    await test.step("configure the container for player selling and grant ownership", async () => {
+      await setContainerTypeViaUI(game, actorId, "custom");
+      await setContainerFlagViaUI(game, actorId, "players-sell");
+      const playerId = await game.evaluate(
+        () => game.users.getName("E2E Player")?.id ?? null,
+      );
+      expect(playerId).toBeTruthy();
+      await game.evaluate(
+        async ({ id, playerId }) => {
+          await game.actors.get(id).update({
+            [`ownership.${playerId}`]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+          });
+        },
+        { id: actorId, playerId },
+      );
+    });
+
+    const initialAmount = await game.evaluate(
+      ({ id, itemId }) => game.actors.get(id).items.get(itemId)?.system.amount,
+      { id: actorId, itemId },
+    );
+
+    const { context, page: player } = await openPlayerPage(browser, baseURL);
+    try {
+      await test.step("player drags the container's own item row onto its own sheet", async () => {
+        const playerSheetId = await reopenActorSheetViaUI(player, actorId);
+        const containerSheet = sheet(player, playerSheetId);
+        const itemRow = containerSheet
+          .locator(".item.flexrow")
+          .filter({ hasText: "New Ammo" });
+        await expect(itemRow).toBeVisible();
+
+        await itemRow.dragTo(containerSheet, { timeout: 5000 }).catch(() => {});
+        await player.mouse.up().catch(() => {});
+      });
+
+      await test.step("no sell offer dialog appears", async () => {
+        await player.waitForTimeout(1500);
+        await expect(
+          player.locator(".dialog", { hasText: "offering you" }),
+        ).toHaveCount(0);
+      });
+    } finally {
+      await context.close();
+    }
+
+    await test.step("the item is unchanged after close and reopen", async () => {
+      const itemIds = await game.evaluate(
+        (id) => Array.from(game.actors.get(id).items).map((i) => i.id),
+        actorId,
+      );
+      expect(itemIds).toEqual([itemId]);
+      const amount = await game.evaluate(
+        ({ id, itemId }) =>
+          game.actors.get(id).items.get(itemId)?.system.amount,
+        { id: actorId, itemId },
+      );
+      expect(amount).toBe(initialAmount);
+
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+      const reopenedSheetId = await reopenActorSheetViaUI(game, actorId);
+      const itemRow = sheet(game, reopenedSheetId)
+        .locator(".item.flexrow")
+        .filter({ hasText: "New Ammo" });
+      await expect(itemRow).toBeVisible();
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });

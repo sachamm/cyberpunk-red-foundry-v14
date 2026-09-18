@@ -396,6 +396,9 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       );
       return;
     }
+    if (tradePartnerId === this.actor.id) {
+      return;
+    }
 
     const cprItemData = item.system;
     let cprItemName = item.name;
@@ -577,6 +580,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {Object} event - an object capturing event details
    */
   async _onDrop(event) {
+    const dragData = TextEditor.getDragEventData(event);
+    if (
+      dragData.type === "Item" &&
+      dragData.system?.actorId === this.actor.id
+    ) {
+      return;
+    }
     const containerType = foundry.utils.getProperty(
       this.actor,
       `flags.${game.system.id}.container-type`,
@@ -594,7 +604,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     );
     if (game.user.isGM || playersCanCreate || playersCanSell) {
       if (!game.user.isGM && !playersCanCreate) {
-        const dragData = TextEditor.getDragEventData(event);
         const tradePartnerId = dragData.system.actorId;
         const vendorData = this.actor.system.vendor;
         if (dragData.type === "Item") {
