@@ -21,6 +21,12 @@ export {
 } from "./items.mjs";
 export { openImagePickerViaUI, selectFileViaUI } from "./file-picker.mjs";
 export {
+  openProseMirrorEditor,
+  saveProseMirror,
+  setProseMirrorText,
+  waitForProseMirrorValue,
+} from "./prose-mirror.mjs";
+export {
   DROP_TAB_BY_TYPE,
   activateGearTab,
   createEmbeddedItemViaUI,
