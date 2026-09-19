@@ -179,10 +179,17 @@ export async function dragOwnedItemToActorSheet(
     targetSheetId,
     requireUiDrag = false,
     dropPosition = null,
+    sourceRowLocator = null,
   },
 ) {
-  const gear = await activateGearTab(page, sourceSheetId);
-  const row = await hoverGearRow(gear, itemId);
+  let row;
+  if (sourceRowLocator) {
+    await expect(sourceRowLocator).toBeVisible();
+    row = sourceRowLocator;
+  } else {
+    const gear = await activateGearTab(page, sourceSheetId);
+    row = await hoverGearRow(gear, itemId);
+  }
   const target = page.locator(`#${targetSheetId}`);
   await expect(target).toBeVisible();
 
