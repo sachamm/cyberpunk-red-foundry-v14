@@ -114,6 +114,8 @@ export async function cprFormPrompt({
     ],
     rejectClose: false,
   });
-  // wait() resolves to the confirm callback's return (the data) or null on cancel/dismiss.
-  return result ?? null;
+  // wait() resolves to the confirm callback's return (the data) or null on X/Escape
+  // dismissal, but a clicked button without a callback resolves to its action
+  // identifier — so Cancel arrives as the string "cancel". Map it back to null.
+  return result === "cancel" ? null : (result ?? null);
 }

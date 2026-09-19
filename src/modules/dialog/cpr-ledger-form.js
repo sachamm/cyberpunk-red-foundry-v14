@@ -179,7 +179,7 @@ export default class CPRLedger extends HandlebarsApplicationMixin(
       },
     );
 
-    const choice = await DialogV2.wait({
+    const rawChoice = await DialogV2.wait({
       window: {
         title: SystemUtils.Localize("CPR.dialog.ledgerDeletion.title"),
       },
@@ -212,6 +212,9 @@ export default class CPRLedger extends HandlebarsApplicationMixin(
       ],
       rejectClose: false,
     });
+    // A clicked button without a callback resolves to its action identifier, so
+    // Cancel arrives as the string "cancel" rather than null.
+    const choice = rawChoice === "cancel" ? null : (rawChoice ?? null);
     if (!choice) {
       return;
     }
