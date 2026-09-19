@@ -26,6 +26,7 @@ import {
 } from "./mook-sheet-helpers.mjs";
 
 const GEAR_TYPES = ["ammo", "clothing", "gear", "netarch"];
+const EQUIPPABLE_GEAR = new Set(["clothing", "gear"]);
 
 installConsoleErrorHarness();
 
@@ -50,6 +51,18 @@ test.describe("Special Gear Pane", () => {
         ).toBeTruthy();
       });
     }
+
+    await test.step("the equippable types are auto-equipped on drop", async () => {
+      for (const type of GEAR_TYPES) {
+        if (!EQUIPPABLE_GEAR.has(type)) continue;
+        await game.waitForFunction(
+          ({ actorId, itemId }) =>
+            game.actors.get(actorId).items.get(itemId)?.system?.equipped ===
+            "equipped",
+          { actorId, itemId: listed[type].embeddedId },
+        );
+      }
+    });
 
     await test.step("every type's name appears in the special gear pane on a fresh render", async () => {
       sheetId = await closeAndReopenMookSheet(game, actorId);
@@ -97,6 +110,15 @@ test.describe("Special Gear Pane", () => {
         deckEmbeddedId && programEmbeddedId,
         "both items should be embedded on the mook",
       ).toBeTruthy();
+    });
+
+    await test.step("the dragged cyberdeck is auto-equipped", async () => {
+      await game.waitForFunction(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId)?.system?.equipped ===
+          "equipped",
+        { actorId, itemId: deckEmbeddedId },
+      );
     });
 
     await test.step("the cyberdeck is listed but the program is not", async () => {
@@ -149,6 +171,12 @@ test.describe("Special Gear Pane", () => {
         embeddedId,
         "the drug should be embedded on the mook",
       ).toBeTruthy();
+      await game.waitForFunction(
+        ({ actorId, itemId }) =>
+          game.actors.get(actorId).items.get(itemId)?.system?.equipped ===
+          "equipped",
+        { actorId, itemId: embeddedId },
+      );
 
       sheetId = await closeAndReopenMookSheet(game, actorId);
       const link = game.locator(
