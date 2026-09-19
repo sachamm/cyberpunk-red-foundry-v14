@@ -15,6 +15,8 @@ import {
   MOOK_FIELD,
   chatMessageCount,
   createMookViaUI,
+  openInstallCyberwareDialog,
+  confirmInstallCyberwareDialog,
   waitForNewChatMessage,
   ownedItemIdsByNames,
   closeAndReopenMookSheet,
@@ -499,6 +501,89 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
       expect(order.hasRangedHeader).toBe(true);
       expect(order.rangedIndex).toBeGreaterThanOrEqual(0);
       expect(order.meleeIndex).toBeGreaterThan(order.rangedIndex);
+    });
+  });
+
+  test("an installed cyberware weapon shows up in the fight block's melee list", async ({
+    page: game,
+  }) => {
+    let { actorId, sheetId } = await createMookViaUI(game);
+    const itemName = uniqueName("cyberweapon");
+    const itemId = await createItemViaUI(game, {
+      type: "cyberware",
+      name: itemName,
+    });
+    const itemSheetId = await expectSheetRendered(game, {
+      collection: "items",
+      id: itemId,
+    });
+
+    // A fresh cyberware is foundational and of a non-core type (cyberArm), so it installs
+    // directly on the mook. Marking it a weapon via its real checkbox is what makes it a
+    // fight-block entry; no weaponType or fire mode is required for it to render.
+    await toggleItemCheckbox(game, {
+      sheetId: itemSheetId,
+      itemId,
+      target: "system.isWeapon",
+    });
+    await closeDocSheet(game, { collection: "items", id: itemId });
+
+    const dialog = await openInstallCyberwareDialog(game, {
+      itemId,
+      sheetId,
+      actorId,
+    });
+    await confirmInstallCyberwareDialog(dialog, { humanity: "none" });
+
+    const ids = await ownedItemIdsByNames(game, actorId, [itemName]);
+    const embeddedId = ids[itemName];
+    expect(
+      embeddedId,
+      "the cyberware should be embedded on the mook",
+    ).toBeTruthy();
+    await game.waitForFunction(
+      ({ actorId, itemId }) =>
+        game.actors.get(actorId).items.get(itemId).system.isInstalled === true,
+      { actorId, itemId: embeddedId },
+      { timeout: 10000 },
+    );
+
+    sheetId = await closeAndReopenMookSheet(game, actorId);
+
+    await test.step("the cyberware weapon renders under the Melee section", async () => {
+      const info = await game.evaluate(
+        ({ sheetId, embeddedId }) => {
+          const root = document.getElementById(sheetId);
+          const row = root.querySelector(
+            `.mook-weapon-list .item.weapon-grid[data-item-id="${embeddedId}"]`,
+          );
+          if (!row) return { found: false };
+          let section = null;
+          for (
+            let sib = row.previousElementSibling;
+            sib;
+            sib = sib.previousElementSibling
+          ) {
+            if (sib.classList.contains("items-header")) {
+              section = sib.textContent.trim();
+              break;
+            }
+          }
+          return {
+            found: true,
+            name: row.querySelector(".name")?.textContent.trim() ?? null,
+            section,
+            meleeLabel: game.i18n.localize(
+              "CPR.characterSheet.bottomPane.fight.melee",
+            ),
+          };
+        },
+        { sheetId, embeddedId },
+      );
+
+      expect(info.found).toBe(true);
+      expect(info.name).toBe(itemName);
+      expect(info.section).toBe(info.meleeLabel);
     });
   });
 
