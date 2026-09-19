@@ -12,6 +12,41 @@ import {
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
+// macOS Chromium treats Ctrl+click as a right-click (context menu) and never dispatches
+// `click`, so use Cmd there instead. The click handlers accept both ctrlKey/metaKey.
+export const CTRL_CLICK_MODIFIERS =
+  process.platform === "darwin" ? ["Meta"] : ["Control"];
+
+// The yes/no confirmation dialog used by destructive mook actions (delete, snort,
+// uninstall). Returns the dialog locator; the spec owns every visibility/text/count
+// assertion. Dismiss it with resolveYesNo(dialog, "yes" | "no").
+export function yesNoDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator(".cpr-dialog-message"),
+  });
+}
+
+export async function resolveYesNo(dialog, action) {
+  await dialog.locator(`button[data-action="${action}"]`).click();
+}
+
+// Focus a mook item's name/row element and press Delete to trigger its removal
+// prompt. The spec owns the subsequent dialog assertions and dismissal.
+export async function deleteKeyRemove(page, focusLocator) {
+  await focusLocator.focus();
+  await page.keyboard.press("Delete");
+}
+
+// Wait until an embedded item is gone from the mook after a confirmed removal.
+// `game` inside the callback is Foundry's in-page global.
+export async function waitItemRemoved(page, { actorId, itemId }) {
+  await page.waitForFunction(
+    ({ actorId, itemId }) => !game.actors.get(actorId).items.has(itemId),
+    { actorId, itemId },
+    { timeout: 10000 },
+  );
+}
+
 // Mook sheet selectors. The mook name is a link (`.change-mook-name`), not an
 // input, so the rename dialog's `input[name="name"]` is unambiguous in the DOM.
 export const MOOK_FIELD = {

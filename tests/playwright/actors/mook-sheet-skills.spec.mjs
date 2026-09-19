@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   createItemViaUI,
   expectSheetRendered,
@@ -27,6 +26,7 @@ import {
   cancelMookSkillDialog,
   ownedSkillLevel,
   waitForSkillLevel,
+  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -83,9 +83,7 @@ async function setSkillDisplaySetting(game, value) {
   );
 }
 
-test.beforeEach(async ({ page }) => {
-  await gotoReadyWorld(page);
-});
+installConsoleErrorHarness();
 
 test.describe("Mook Skills", () => {
   test("the bulk skill dialog lists every owned skill and Confirm persists an edit", async ({

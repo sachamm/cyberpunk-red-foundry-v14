@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   openSidebarTab,
@@ -16,11 +15,10 @@ import {
   closeReputationLedger,
   openFacedownRollDialog,
   confirmFacedownRoll,
+  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
-test.beforeEach(async ({ page }) => {
-  await gotoReadyWorld(page);
-});
+installConsoleErrorHarness();
 
 /**
  * Build a fresh mook and raise its reputation through the ledger window, closing

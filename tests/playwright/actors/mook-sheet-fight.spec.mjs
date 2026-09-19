@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   createItemViaUI,
@@ -13,6 +12,7 @@ import {
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  CTRL_CLICK_MODIFIERS,
   chatMessageCount,
   createMookViaUI,
   openInstallCyberwareDialog,
@@ -21,6 +21,11 @@ import {
   ownedItemIdsByNames,
   closeAndReopenMookSheet,
   waitForMookFields,
+  yesNoDialog,
+  resolveYesNo,
+  deleteKeyRemove,
+  waitItemRemoved,
+  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -389,13 +394,11 @@ async function itemNameLinkActions(
   game,
   { actorId, itemId, row, nameKeyword },
 ) {
-  // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
-  // dispatches `click`, so use Cmd there. The handler accepts both ctrlKey/metaKey.
-  const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
-
   await test.step("ctrl-clicking sends the item card to chat", async () => {
     const messagesBefore = await chatMessageCount(game);
-    await row.locator(MOOK_FIELD.itemNameLink).click({ modifiers: modifier });
+    await row
+      .locator(MOOK_FIELD.itemNameLink)
+      .click({ modifiers: CTRL_CLICK_MODIFIERS });
 
     const messageId = await waitForNewChatMessage(game, messagesBefore, {
       requireContent: true,
@@ -452,11 +455,9 @@ async function confirmChangeAmmo(
   await expect(loadDialog).toHaveCount(0, { timeout: 10000 });
 }
 
-test.describe("Mook sheet - Fight Pane (weapons)", () => {
-  test.beforeEach(async ({ page }) => {
-    await gotoReadyWorld(page);
-  });
+installConsoleErrorHarness();
 
+test.describe("Mook sheet - Fight Pane (weapons)", () => {
   test("groups equipped weapons into ranged and melee sections", async ({
     page: game,
   }) => {
@@ -1005,23 +1006,17 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     const id = Object.values(byName)[0];
 
     await test.step("focusing the name and pressing Delete removes it", async () => {
-      await weaponRow(game, sheetId, id)
-        .locator(MOOK_FIELD.itemNameLink)
-        .focus();
-      await game.keyboard.press("Delete");
+      await deleteKeyRemove(
+        game,
+        weaponRow(game, sheetId, id).locator(MOOK_FIELD.itemNameLink),
+      );
 
-      const confirmDialog = game.locator(".cpr-dialog").filter({
-        has: game.locator(".cpr-dialog-message"),
-      });
+      const confirmDialog = yesNoDialog(game);
       await expect(confirmDialog).toBeVisible({ timeout: 10000 });
-      await confirmDialog.locator('button[data-action="yes"]').click();
+      await resolveYesNo(confirmDialog, "yes");
       await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
 
-      await game.waitForFunction(
-        ({ actorId, itemId }) => !game.actors.get(actorId).items.has(itemId),
-        { actorId, itemId: id },
-        { timeout: 10000 },
-      );
+      await waitItemRemoved(game, { actorId, itemId: id });
 
       const freshSheet = await closeAndReopenMookSheet(game, actorId);
       await expect(weaponRow(game, freshSheet, id).first()).toHaveCount(0);
@@ -1030,10 +1025,6 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
 });
 
 test.describe("Mook sheet - Fight Pane (armor)", () => {
-  test.beforeEach(async ({ page }) => {
-    await gotoReadyWorld(page);
-  });
-
   test("displays each armor's location and SP in the fight block", async ({
     page: game,
   }) => {
@@ -1268,23 +1259,17 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
     const id = Object.values(byName)[0];
 
     await test.step("focusing the name and pressing Delete removes it", async () => {
-      await armorRow(game, sheetId, id)
-        .locator(MOOK_FIELD.itemNameLink)
-        .focus();
-      await game.keyboard.press("Delete");
+      await deleteKeyRemove(
+        game,
+        armorRow(game, sheetId, id).locator(MOOK_FIELD.itemNameLink),
+      );
 
-      const confirmDialog = game.locator(".cpr-dialog").filter({
-        has: game.locator(".cpr-dialog-message"),
-      });
+      const confirmDialog = yesNoDialog(game);
       await expect(confirmDialog).toBeVisible({ timeout: 10000 });
-      await confirmDialog.locator('button[data-action="yes"]').click();
+      await resolveYesNo(confirmDialog, "yes");
       await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
 
-      await game.waitForFunction(
-        ({ actorId, itemId }) => !game.actors.get(actorId).items.has(itemId),
-        { actorId, itemId: id },
-        { timeout: 10000 },
-      );
+      await waitItemRemoved(game, { actorId, itemId: id });
 
       const freshSheet = await closeAndReopenMookSheet(game, actorId);
       await expect(armorRow(game, freshSheet, id).first()).toHaveCount(0);

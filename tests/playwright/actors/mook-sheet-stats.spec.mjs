@@ -1,27 +1,25 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   openSidebarTab,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  CTRL_CLICK_MODIFIERS,
   chatMessageCount,
   createMookViaUI,
   waitForNewChatMessage,
   waitForMookFields,
   closeAndReopenMookSheet,
   setMookSheetField,
+  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 async function rollDeathSave(page, sheetId) {
   const before = await chatMessageCount(page);
-  // macOS Chromium treats Ctrl+click as a right-click (context menu) and never dispatches
-  // `click`, so use Cmd there. The roll handler accepts both (`event.ctrlKey || event.metaKey`).
-  const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
   await page
     .locator(`#${sheetId} ${MOOK_FIELD.deathSaveRollable}`)
-    .click({ modifiers: modifier });
+    .click({ modifiers: CTRL_CLICK_MODIFIERS });
   const messageId = await waitForNewChatMessage(page, before);
   const rollClass = await page.evaluate(
     (id) => game.messages.get(id).rolls?.[0]?.constructor?.name ?? null,
@@ -38,9 +36,7 @@ async function rollDeathSave(page, sheetId) {
   return { rollClass, resultTotal, outcome };
 }
 
-test.beforeEach(async ({ page }) => {
-  await gotoReadyWorld(page);
-});
+installConsoleErrorHarness();
 
 test.describe("Stat Pane", () => {
   test("editing a stat in-line persists after close/reopen", async ({

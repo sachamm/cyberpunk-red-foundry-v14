@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   createItemViaUI,
@@ -17,6 +16,7 @@ import {
   createMookViaUI,
   ownedItemIdsByNames,
   closeAndReopenMookSheet,
+  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -35,9 +35,7 @@ const FIGHT_ITEMS = [
   { type: "armor", rowSelector: MOOK_FIELD.armorRow },
 ];
 
-test.beforeEach(async ({ page }) => {
-  await gotoReadyWorld(page);
-});
+installConsoleErrorHarness();
 
 test.describe("Drag and Drop", () => {
   for (const { type, rowSelector } of FIGHT_ITEMS) {

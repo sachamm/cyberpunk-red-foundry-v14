@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   uniqueName,
@@ -13,6 +12,7 @@ import {
   setMookRenameValue,
   confirmMookRename,
   cancelMookRename,
+  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -29,9 +29,7 @@ function nameLink(page, sheetId) {
   return page.locator(`#${sheetId} ${MOOK_FIELD.nameLink}`);
 }
 
-test.beforeEach(async ({ page }) => {
-  await gotoReadyWorld(page);
-});
+installConsoleErrorHarness();
 
 test.describe("Side Pane (Name)", () => {
   test("renames the mook and persists after close/reopen", async ({

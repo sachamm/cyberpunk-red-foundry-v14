@@ -7,6 +7,7 @@ import {
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  CTRL_CLICK_MODIFIERS,
   cancelCriticalInjuryRollDialog,
   chatMessageCount,
   closeAndReopenMookSheet,
@@ -16,6 +17,10 @@ import {
   openCriticalInjuryRollDialog,
   seedCriticalInjuryOnMook,
   waitForNewChatMessage,
+  yesNoDialog,
+  resolveYesNo,
+  deleteKeyRemove,
+  waitItemRemoved,
 } from "./mook-sheet-helpers.mjs";
 
 installConsoleErrorHarness();
@@ -269,17 +274,13 @@ test.describe("Critical Injury Pane", () => {
       ).toBeVisible();
     });
 
-    // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
-    // dispatches `click`, so use Cmd there. The handler accepts both ctrlKey/metaKey.
-    const cardModifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
-
     await test.step("ctrl-clicking the name posts the item card to chat", async () => {
       const messagesBefore = await chatMessageCount(game);
       await game
         .locator(
           `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
         )
-        .click({ modifiers: cardModifier });
+        .click({ modifiers: CTRL_CLICK_MODIFIERS });
 
       const messageId = await waitForNewChatMessage(game, messagesBefore, {
         requireContent: true,
@@ -327,28 +328,22 @@ test.describe("Critical Injury Pane", () => {
     });
 
     await test.step("focusing the name and pressing Delete removes it after confirmation", async () => {
-      await game
-        .locator(
+      await deleteKeyRemove(
+        game,
+        game.locator(
           `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
-        )
-        .focus();
-      await game.keyboard.press("Delete");
+        ),
+      );
 
-      const confirmDialog = game.locator(".cpr-dialog").filter({
-        has: game.locator(".cpr-dialog-message"),
-      });
+      const confirmDialog = yesNoDialog(game);
       await expect(confirmDialog).toBeVisible({ timeout: 10000 });
       await expect(confirmDialog.locator(".cpr-dialog-message")).toContainText(
         itemName,
       );
-      await confirmDialog.locator('button[data-action="yes"]').click();
+      await resolveYesNo(confirmDialog, "yes");
       await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
 
-      await game.waitForFunction(
-        ({ actorId, itemId }) => !game.actors.get(actorId).items.has(itemId),
-        { actorId, itemId: embeddedId },
-        { timeout: 10000 },
-      );
+      await waitItemRemoved(game, { actorId, itemId: embeddedId });
 
       const freshSheet = await closeAndReopenMookSheet(game, actorId);
       await expect(
