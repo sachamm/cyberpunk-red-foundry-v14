@@ -1195,8 +1195,6 @@
   "CPR.mookSheet.deathSave.title": "Test Przeżywalności",
   "CPR.mookSheet.dialog.modNameTitle": "Change a Mook's Name",
   "CPR.mookSheet.dialog.modSkillTitle": "Add or Modify a Mook's Skill",
-  "CPR.mookSheet.image.collapse": "Zwiń obraz",
-  "CPR.mookSheet.image.expand": "Rozwiń obraz",
   "CPR.mookSheet.items.InstalledClickToViewItemReadOnly": "Zainstalowane: Kliknij aby wyświetlić ten przedmiot w trybie tylko do odczytu",
   "CPR.mookSheet.items.clickToViewItem": "Kliknij żeby wyświetlić przedmiot",
   "CPR.mookSheet.items.cyberdeckPrograms": "Programy Cyberdecku",
