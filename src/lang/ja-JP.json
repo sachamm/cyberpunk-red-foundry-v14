@@ -1195,8 +1195,6 @@
   "CPR.mookSheet.deathSave.title": "死亡セーヴ",
   "CPR.mookSheet.dialog.modNameTitle": "ムークの名前を変える",
   "CPR.mookSheet.dialog.modSkillTitle": "ムークのスキルを追加または変更",
-  "CPR.mookSheet.image.collapse": "画像を閉じる",
-  "CPR.mookSheet.image.expand": "画像を展開",
   "CPR.mookSheet.items.InstalledClickToViewItemReadOnly": "インストール済み: 読み取り専用モードでこのアイテムを表示",
   "CPR.mookSheet.items.clickToViewItem": "アイテムを表示",
   "CPR.mookSheet.items.cyberdeckPrograms": "サイバーデッキプログラム",
