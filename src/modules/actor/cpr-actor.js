@@ -11,6 +11,7 @@ import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import { cprConfirm, cprFormPrompt } from "../dialog/cpr-dialog.js";
 import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
+import { planInstalledItemDeletion } from "../item/installed-item-deletion.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -357,9 +358,14 @@ export default class CPRActor extends Actor {
     if (isMigration)
       return super.deleteEmbeddedDocuments(embeddedName, ids, options);
 
+    let idsToDelete = ids;
+    if (embeddedName === "Item") {
+      idsToDelete = planInstalledItemDeletion(this, ids);
+    }
+
     // For every item that we are deleting...
     const uninstallPromises = [];
-    for (const itemId of ids) {
+    for (const itemId of idsToDelete) {
       // Get the item.
       const item = this.getOwnedItem(itemId);
       // Check if item is installed somewhere. Uninstall it first.
@@ -387,7 +393,7 @@ export default class CPRActor extends Actor {
     await Promise.all(uninstallPromises);
 
     // Continue on with deleting the documents (call the Foundry function).
-    return super.deleteEmbeddedDocuments(embeddedName, ids, options);
+    return super.deleteEmbeddedDocuments(embeddedName, idsToDelete, options);
   }
 
   /**

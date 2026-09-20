@@ -2,6 +2,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import { ContainerUtils } from "../item/mixins/cpr-container.js";
+import { planInstalledItemDeletion } from "../item/installed-item-deletion.js";
 
 /**
  * Container actors function like loot boxes, player or party stashes, stores, and
@@ -185,9 +186,14 @@ export default class CPRContainerActor extends Actor {
     if (isMigration)
       return super.deleteEmbeddedDocuments(embeddedName, ids, options);
 
+    let idsToDelete = ids;
+    if (embeddedName === "Item") {
+      idsToDelete = planInstalledItemDeletion(this, ids);
+    }
+
     // For every item that we are deleting...
     const uninstallPromises = [];
-    for (const itemId of ids) {
+    for (const itemId of idsToDelete) {
       // Get the item.
       const item = this.getOwnedItem(itemId);
       // Check if item is installed somewhere. Uninstall it first.
@@ -215,7 +221,7 @@ export default class CPRContainerActor extends Actor {
     await Promise.all(uninstallPromises);
 
     // Continue on with deleting the documents (call the Foundry function).
-    return super.deleteEmbeddedDocuments(embeddedName, ids, options);
+    return super.deleteEmbeddedDocuments(embeddedName, idsToDelete, options);
   }
 
   /**
