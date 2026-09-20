@@ -55,7 +55,7 @@ export async function openItemSettings(page, sheetId) {
 
 export async function setItemField(
   page,
-  { sheetId, itemId, name, path, value },
+  { sheetId, itemId, actorId = null, name, path, value },
 ) {
   const sheet = await openItemSettings(page, sheetId);
   const input = sheet.locator(`input[name="${name}"]`);
@@ -63,9 +63,33 @@ export async function setItemField(
   await input.fill(String(value));
   await input.press("Tab");
   await page.waitForFunction(
-    ({ itemId, path, value }) =>
-      foundry.utils.getProperty(game.items.get(itemId), path) === value,
-    { itemId, path, value },
+    ({ itemId, actorId, path, value }) => {
+      const item = actorId
+        ? game.actors.get(actorId)?.items.get(itemId)
+        : game.items.get(itemId);
+      return foundry.utils.getProperty(item, path) === value;
+    },
+    { itemId, actorId, path, value },
+    { timeout: 10000 },
+  );
+}
+
+export async function toggleItemCheckbox(
+  page,
+  { sheetId, itemId, actorId = null, target, expected },
+) {
+  const sheet = await openItemSettings(page, sheetId);
+  const toggle = sheet.locator(`a.item-checkbox[data-target="${target}"]`);
+  await expect(toggle).toBeVisible();
+  await toggle.click();
+  await page.waitForFunction(
+    ({ itemId, actorId, target, expected }) => {
+      const item = actorId
+        ? game.actors.get(actorId)?.items.get(itemId)
+        : game.items.get(itemId);
+      return foundry.utils.getProperty(item, target) === expected;
+    },
+    { itemId, actorId, target, expected },
     { timeout: 10000 },
   );
 }

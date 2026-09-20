@@ -18,6 +18,7 @@ export {
   reopenItemSheetViaUI,
   setItemField,
   setItemSelected,
+  toggleItemCheckbox,
 } from "./items.mjs";
 export { openImagePickerViaUI, selectFileViaUI } from "./file-picker.mjs";
 export {
