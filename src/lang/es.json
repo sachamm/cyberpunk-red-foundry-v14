@@ -1195,8 +1195,6 @@
   "CPR.mookSheet.deathSave.title": "Salvación contra la muerte",
   "CPR.mookSheet.dialog.modNameTitle": "Cambiar nombre del Tipejo",
   "CPR.mookSheet.dialog.modSkillTitle": "Añadir o modificar la Habilidad de un Tipejo",
-  "CPR.mookSheet.image.collapse": "Colapsar imagen",
-  "CPR.mookSheet.image.expand": "Expandir imagen",
   "CPR.mookSheet.items.InstalledClickToViewItemReadOnly": "Instalado: Haga clic para ver este elemento en modo de sólo lectura",
   "CPR.mookSheet.items.clickToViewItem": "Haz clic para ver el objeto",
   "CPR.mookSheet.items.cyberdeckPrograms": "Programas de Ciberterminal",
