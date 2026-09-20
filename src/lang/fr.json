@@ -1195,8 +1195,6 @@
   "CPR.mookSheet.deathSave.title": "Sauv. mort",
   "CPR.mookSheet.dialog.modNameTitle": "Changer le nom d'un sbire",
   "CPR.mookSheet.dialog.modSkillTitle": "Ajouter ou modifier une compétence d'un sbire",
-  "CPR.mookSheet.image.collapse": "Réduire image",
-  "CPR.mookSheet.image.expand": "Agrandir image",
   "CPR.mookSheet.items.InstalledClickToViewItemReadOnly": "Cliquez pour voir cet objet en mode Lecture Seule",
   "CPR.mookSheet.items.clickToViewItem": "Cliquez pour voir cet objet",
   "CPR.mookSheet.items.cyberdeckPrograms": "Programmes de cyberconsole",
