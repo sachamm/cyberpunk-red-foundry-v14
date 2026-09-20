@@ -1195,8 +1195,6 @@
   "CPR.mookSheet.deathSave.title": "Salva de Morte",
   "CPR.mookSheet.dialog.modNameTitle": "Change a Mook's Name",
   "CPR.mookSheet.dialog.modSkillTitle": "Add or Modify a Mook's Skill",
-  "CPR.mookSheet.image.collapse": "Recolher imagem",
-  "CPR.mookSheet.image.expand": "Expandir imagem",
   "CPR.mookSheet.items.InstalledClickToViewItemReadOnly": "Instalado: Clique para ver este item no modo Somente Leitura",
   "CPR.mookSheet.items.clickToViewItem": "Clique para ver o item",
   "CPR.mookSheet.items.cyberdeckPrograms": "Programas de Console",
