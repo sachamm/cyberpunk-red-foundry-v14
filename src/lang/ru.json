@@ -1195,8 +1195,6 @@
   "CPR.mookSheet.deathSave.title": "Исп. смерти",
   "CPR.mookSheet.dialog.modNameTitle": "Изменить имя фуфела",
   "CPR.mookSheet.dialog.modSkillTitle": "Добавить или изменить навык фуфела",
-  "CPR.mookSheet.image.collapse": "Скрыть изображение",
-  "CPR.mookSheet.image.expand": "Смотреть изображение",
   "CPR.mookSheet.items.InstalledClickToViewItemReadOnly": "Установлено: ЛКМ чтобы просмотреть предмет в режиме только для чтения",
   "CPR.mookSheet.items.clickToViewItem": "ЛКМ чтобы просмотреть предмет",
   "CPR.mookSheet.items.cyberdeckPrograms": "Программы кибердеки",
