@@ -192,6 +192,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {boolean} all - Toggle to purchase all of the items in the stack or just a part of them
    */
   async _purchaseItem(item, all) {
+    if (
+      SystemUtils.hasMixin(item.type, "stackable") &&
+      item.system.amount < 1
+    ) {
+      return;
+    }
+
     let { tradePartnerId } = this;
     if (tradePartnerId === undefined || tradePartnerId === "") {
       if (!game.user.isGM && game.user.character) {
@@ -368,7 +375,12 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
             deleteList.push(installedItem._id);
           }
         }
-        await this.actor.deleteEmbeddedDocuments("Item", deleteList);
+        await this.actor.deleteEmbeddedDocuments("Item", deleteList, {
+          // Preserve the loaded rounds while transferring the weapon.
+          unloadAmmo: false,
+          // The installed-item data was copied to the buyer above.
+          deleteInstalled: true,
+        });
       } else {
         const keepAmount =
           item.system.amount - transferredItemData.system.amount;

@@ -16,6 +16,7 @@ import {
   setItemField,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
+import { setTradePartnerWithWealth } from "./container-sheet-helpers.mjs";
 
 async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
   for (const state of ["carried", "equipped"]) {
@@ -117,10 +118,11 @@ test.setTimeout(180000);
 test("transferring one loaded weapon preserves shared empty ammo used by the others (#1386)", async ({
   page: game,
 }) => {
+  const characterName = uniqueName("shared-ammo-character");
   const characterId = await createDocumentViaUI(game, {
     documentTab: "actors",
     type: "character",
-    name: uniqueName("shared-ammo-character"),
+    name: characterName,
   });
   let characterSheetId = await expectSheetRendered(game, {
     collection: "actors",
@@ -344,56 +346,112 @@ test("transferring one loaded weapon preserves shared empty ammo used by the oth
 
   await closeDocSheet(game, { collection: "actors", id: characterId });
   await closeDocSheet(game, { collection: "actors", id: containerId });
-  characterSheetId = await reopenActorSheetViaUI(game, characterId);
+  await reopenActorSheetViaUI(game, characterId);
+  await closeDocSheet(game, { collection: "actors", id: characterId });
   containerSheetId = await reopenActorSheetViaUI(game, containerId);
-  layout = await placeSheetsSideBySide(game, {
-    leftActorId: containerId,
-    leftSheetId: containerSheetId,
-    rightActorId: characterId,
-    rightSheetId: characterSheetId,
+  await positionActorSheet(game, { actorId: containerId, left: 8, top: 8 });
+
+  await setTradePartnerWithWealth(game, containerSheetId, {
+    partnerName: characterName,
+    wealth: 999999,
   });
+
+  const targetAmmoId = state.targetAmmoId;
+  const remainingContainerWeaponId = state.targetWeaponIds[1];
+  const ammoRows = game.locator(
+    `#${containerSheetId} li.item[data-item-id="${targetAmmoId}"]`,
+  );
+  await expect(ammoRows.first()).toBeVisible();
+  await expect(
+    ammoRows.locator('a.item-action[data-action-type="purchase"]'),
+  ).toHaveCount(0);
+  await expect(
+    ammoRows.locator('a.item-action[data-action-type="purchaseFraction"]'),
+  ).toHaveCount(0);
+
   const sourceRow = game
     .locator(
       `#${containerSheetId} li.item[data-item-id="${state.targetWeaponIds[0]}"]`,
     )
     .first();
-  await dragOwnedItemToActorSheet(game, {
-    sourceActorId: containerId,
-    sourceSheetId: containerSheetId,
-    itemId: state.targetWeaponIds[0],
-    targetActorId: characterId,
-    targetSheetId: characterSheetId,
-    dropPosition: layout.dropPosition,
-    requireUiDrag: true,
-    sourceRowLocator: sourceRow,
-  });
+  await expect(sourceRow).toBeVisible();
+  await sourceRow.locator('a.item-action[data-action-type="purchase"]').click();
 
-  const targetAmmoId = state.targetAmmoId;
-  const remainingContainerWeaponId = state.targetWeaponIds[1];
+  await game.waitForFunction(
+    ({ characterId, containerId, purchasedWeaponId }) =>
+      !game.actors.get(containerId).items.has(purchasedWeaponId) &&
+      game.actors.get(characterId).itemTypes.weapon.length === 2,
+    {
+      characterId,
+      containerId,
+      purchasedWeaponId: state.targetWeaponIds[0],
+    },
+  );
+
   state = await game.evaluate(
-    ({ containerId, targetAmmoId, remainingContainerWeaponId }) => {
+    ({
+      characterId,
+      containerId,
+      targetAmmoId,
+      sourceAmmoId,
+      remainingCharacterWeaponId,
+      remainingContainerWeaponId,
+    }) => {
+      const character = game.actors.get(characterId);
       const container = game.actors.get(containerId);
-      const ammo = container.items.get(targetAmmoId);
-      const weapon = container.items.get(remainingContainerWeaponId);
+      const sourceAmmo = container.items.get(targetAmmoId);
+      const sourceWeapon = container.items.get(remainingContainerWeaponId);
+      const targetAmmo = character.items.get(sourceAmmoId);
+      const purchasedWeapon = character.itemTypes.weapon.find(
+        (weapon) => weapon.id !== remainingCharacterWeaponId,
+      );
+      const purchasedAmmo = character.items.get(
+        purchasedWeapon?.system.installedItems.list[0],
+      );
       return {
-        ammoAmount: ammo?.system.amount,
-        ammoInstalledIn: ammo?.system.installedIn,
-        magazine: weapon?.system.magazine.value,
-        weaponReferences: weapon?.system.installedItems.list,
+        sourceAmmoAmount: sourceAmmo?.system.amount,
+        sourceAmmoInstalledIn: sourceAmmo?.system.installedIn,
+        sourceMagazine: sourceWeapon?.system.magazine.value,
+        sourceWeaponReferences: sourceWeapon?.system.installedItems.list,
+        targetAmmoAmount: targetAmmo?.system.amount,
+        targetAmmoInstalledIn: targetAmmo?.system.installedIn,
+        purchasedWeaponId: purchasedWeapon?.id,
+        purchasedMagazine: purchasedWeapon?.system.magazine.value,
+        purchasedWeaponReferences: purchasedWeapon?.system.installedItems.list,
+        purchasedAmmoId: purchasedAmmo?.id,
+        purchasedAmmoAmount: purchasedAmmo?.system.amount,
+        purchasedAmmoInstalledIn: purchasedAmmo?.system.installedIn,
       };
     },
     {
+      characterId,
       containerId,
       targetAmmoId,
+      sourceAmmoId: ammoId,
+      remainingCharacterWeaponId: weaponIds[2],
       remainingContainerWeaponId,
     },
   );
-  expect(state.ammoAmount, JSON.stringify(state)).toBe(0);
-  expect(state.ammoInstalledIn, JSON.stringify(state)).toEqual([
+  expect(state.sourceAmmoAmount, JSON.stringify(state)).toBe(0);
+  expect(state.sourceAmmoInstalledIn, JSON.stringify(state)).toEqual([
     remainingContainerWeaponId,
   ]);
-  expect(state.magazine, JSON.stringify(state)).toBe(30);
-  expect(state.weaponReferences, JSON.stringify(state)).toEqual([targetAmmoId]);
+  expect(state.sourceMagazine, JSON.stringify(state)).toBe(30);
+  expect(state.sourceWeaponReferences, JSON.stringify(state)).toEqual([
+    targetAmmoId,
+  ]);
+  expect(state.targetAmmoAmount, JSON.stringify(state)).toBe(0);
+  expect(state.targetAmmoInstalledIn, JSON.stringify(state)).toEqual([
+    weaponIds[2],
+  ]);
+  expect(state.purchasedMagazine, JSON.stringify(state)).toBe(30);
+  expect(state.purchasedWeaponReferences, JSON.stringify(state)).toEqual([
+    state.purchasedAmmoId,
+  ]);
+  expect(state.purchasedAmmoAmount, JSON.stringify(state)).toBe(0);
+  expect(state.purchasedAmmoInstalledIn, JSON.stringify(state)).toEqual([
+    state.purchasedWeaponId,
+  ]);
 
   await closeDocSheet(game, { collection: "actors", id: characterId });
   await closeDocSheet(game, { collection: "actors", id: containerId });

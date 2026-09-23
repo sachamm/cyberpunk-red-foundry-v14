@@ -1498,7 +1498,7 @@ test.describe("Shop", () => {
     });
   });
 
-  test("purchasing a generated ammo pile first does not break purchasing its loaded weapon (#1291)", async ({
+  test("a generated empty ammo pile cannot be purchased separately from its loaded weapon (#1291, #1386)", async ({
     page: game,
   }) => {
     const weaponName = uniqueName("loaded-rifle");
@@ -1766,7 +1766,7 @@ test.describe("Shop", () => {
       });
     });
 
-    await test.step("buyer one purchases the generated ammo pile", async () => {
+    await test.step("buyer one cannot purchase the generated empty ammo pile", async () => {
       const buyerOneName = uniqueName("ammo-buyer");
       buyerOneId = await createDocumentViaUI(game, {
         documentTab: "actors",
@@ -1794,21 +1794,28 @@ test.describe("Shop", () => {
         .locator('li.item.flexrow[data-item-category="ammo"]')
         .filter({ hasText: ammoName })
         .locator(FIELD.purchaseAll);
-      await expect(pilePurchase).toHaveCount(1);
-      await pilePurchase.click();
+      await expect(pilePurchase).toHaveCount(0);
 
-      await game.waitForFunction(
-        ({ containerActorId, buyerOneId, ammoName }) => {
+      const state = await game.evaluate(
+        ({ containerActorId, buyerOneId, weaponName, ammoName }) => {
           const container = game.actors.get(containerActorId);
           const buyer = game.actors.get(buyerOneId);
-          return (
-            !container.items.some((i) => i.name === ammoName) &&
-            buyer.items.some((i) => i.name === ammoName)
-          );
+          const weapon = container.items.find((i) => i.name === weaponName);
+          const ammo = container.items.find((i) => i.name === ammoName);
+          return {
+            buyerHasAmmo: buyer.items.some((i) => i.name === ammoName),
+            ammoAmount: ammo?.system.amount,
+            magazine: weapon?.system.magazine.value,
+            referencesAmmo:
+              weapon?.system.installedItems.list.includes(ammo?.id) ?? false,
+          };
         },
-        { containerActorId, buyerOneId, ammoName },
-        { timeout: 10000 },
+        { containerActorId, buyerOneId, weaponName, ammoName },
       );
+      expect(state.buyerHasAmmo, JSON.stringify(state)).toBe(false);
+      expect(state.ammoAmount, JSON.stringify(state)).toBe(0);
+      expect(state.magazine, JSON.stringify(state)).toBe(30);
+      expect(state.referencesAmmo, JSON.stringify(state)).toBe(true);
     });
 
     await test.step("buyer two purchases the weapon", async () => {
@@ -1853,17 +1860,23 @@ test.describe("Shop", () => {
           const weapon = buyer.items.find((i) => i.name === weaponName);
           if (!weapon) return null;
           const list = weapon.system.installedItems.list;
+          const ammo = buyer.items.get(list[0]);
           return {
             installedListLength: list.length,
             referencesResolve: list.every((ref) =>
               buyer.items.some((i) => i.id === ref),
             ),
+            magazine: weapon.system.magazine.value,
+            ammoAmount: ammo?.system.amount,
           };
         },
         { buyerTwoId, weaponName },
       );
       expect(state, "expected the weapon to have been purchased").toBeTruthy();
+      expect(state.installedListLength, JSON.stringify(state)).toBe(1);
       expect(state.referencesResolve, JSON.stringify(state)).toBe(true);
+      expect(state.magazine, JSON.stringify(state)).toBe(30);
+      expect(state.ammoAmount, JSON.stringify(state)).toBe(0);
     });
 
     await closeDocSheet(game, { collection: "actors", id: characterActorId });
