@@ -289,7 +289,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
 
     await this.document.update({
       changes,
-      [`flags.${game.system.id}.changes`]: newFlags,
+      [`flags.${game.system.id}.==changes`]: newFlags,
     });
   }
 
