@@ -43,6 +43,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 ### Bug Fixes
 
+- Preserve shared empty ammo stacks when transferring loaded weapons between actor sheets
 - Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
 - Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
 - Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
@@ -52,6 +53,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - The "Damage Dealt To" damage-application card now shows the target's Token name instead of the Actor name
 - Ctrl-Clicking (or Cmd-Clicking) an item properly sends a card to chat
 - Dragging invalid items (e.g. Roles) to a container actor is handled gracefully instead of throwing dev errors
+- Removed dead code around hiding the mook portrait
+- Fixed some items types throwing dev console errors when dragged to a mook sheet
 
 ### Changes
 
