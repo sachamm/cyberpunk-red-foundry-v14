@@ -12,10 +12,7 @@
           "type": "boolean"
         }
       },
-      "required": [
-        "concealable",
-        "isConcealed"
-      ]
+      "required": ["concealable", "isConcealed"]
     },
     "brand": {
       "type": "string",
@@ -33,6 +30,7 @@
         "Concept Mechanics",
         "Constitutional Arms",
         "Continental Brands",
+        "CyberDude",
         "Cybermatrix",
         "Cyclops International",
         "Darra Polytechnic",
@@ -135,7 +133,5 @@
       ]
     }
   },
-  "required": [
-    "concealable"
-  ]
+  "required": ["concealable"]
 }
