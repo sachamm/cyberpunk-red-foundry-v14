@@ -47,5 +47,13 @@ export {
   dismissNotifications,
   openOwnedItemSheet,
 } from "./sheets.mjs";
+export {
+  createEffectViaUI,
+  closeActiveEffectConfigViaUI,
+  addModViaUI,
+  deleteModViaUI,
+  getEffectRowViaUI,
+  clickEffectActionViaUI,
+} from "./active-effects.mjs";
 export { openNotesEditorViaUI, saveNotesEditorViaUI } from "./editors.mjs";
 export { fakeTokenDocument, openTokenSheet } from "./tokens.mjs";

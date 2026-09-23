@@ -2,14 +2,19 @@ import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   activateGearTab,
+  clickEffectActionViaUI,
+  closeActiveEffectConfigViaUI,
   closeDocSheet,
   closeOwnedItemSheet,
   createActorViaUI,
   createDocumentViaUI,
+  createEffectViaUI,
   createItemViaUI,
   deleteItemViaUI,
+  deleteModViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
+  getEffectRowViaUI,
   hoverGearRow,
   openOwnedItemSheet,
   reopenActorSheetViaUI,
@@ -729,4 +734,432 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     expect(pageErrors).toEqual([]);
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
+});
+
+test("item-owned effects on gear", async ({ page }) => {
+  const pageErrors = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
+
+  let itemId;
+  let effectId;
+  let itemSheet;
+  let aeConfig;
+  let theme;
+
+  await test.step("A1 create gear and its seeded effect", async () => {
+    const name = uniqueName("gear");
+    itemId = await createDocumentViaUI(page, {
+      documentTab: "items",
+      type: "gear",
+      name,
+    });
+    expect(itemId).toBeTruthy();
+
+    itemSheet = page.locator(`#CPRItemSheet-Item-${itemId}`);
+    await expect(itemSheet).toBeVisible();
+    await itemSheet.locator('.navtabs-item [data-tab="item-effects"]').click();
+
+    ({ aeConfig, effectId } = await createEffectViaUI(page, itemSheet, {
+      ownerType: "item",
+      ownerId: itemId,
+    }));
+
+    await expect(aeConfig.locator('input[name="name"]')).toHaveValue(
+      "New Effect",
+    );
+    await expect(aeConfig.locator('input[name="disabled"]')).not.toBeChecked();
+    const origin = await page.evaluate(
+      ({ itemId: id, effectId: eid }) => {
+        const item = game.items.get(id);
+        return { origin: item.effects.get(eid).origin, uuid: item.uuid };
+      },
+      { itemId, effectId },
+    );
+    expect(origin.origin).toBe(origin.uuid);
+    // Item effects expose the transfer field; origin is actor-effects only.
+    await expect(aeConfig.locator('input[name="transfer"]')).toHaveCount(1);
+    await expect(aeConfig.locator('input[name="origin"]')).toHaveCount(0);
+  });
+
+  await test.step("A2 addMod seeds a CPR skill row", async () => {
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    const row = await addModViaUI(aeConfig);
+    await expect(row.locator(".key-cat")).toHaveValue("skill");
+    await expect(row.locator("select.key-key")).toHaveCount(1);
+    await expect(row.locator("input.key-input")).toHaveCount(0);
+    await expect(row.locator('input[name="changes.0.value"]')).toHaveValue("0");
+    await expect(
+      row.locator('input[type="hidden"][name="changes.0.mode"]'),
+    ).toHaveValue("2");
+    await expect(row.locator(".toggle-situational")).toBeEnabled();
+    await expect(row.locator(".toggle-situational")).not.toBeChecked();
+    await expect(row.locator(".toggle-on-by-default")).toBeDisabled();
+    await expect(row.locator(".toggle-on-by-default")).not.toBeChecked();
+  });
+
+  await test.step("A3 the config uses the CPR sheet theme", async () => {
+    // The config is one of CPR's explicitly themed windows. Foundry's native
+    // active-effect grid must not override the custom six-column flex layout.
+    await expect(aeConfig).toHaveClass(/active-effect-sheet/);
+    theme = await aeConfig.evaluate((element) => {
+      const probe = document.createElement("div");
+      probe.style.background = "var(--cpr-background-window)";
+      probe.style.color = "var(--cpr-text-normal)";
+      probe.style.fontFamily = "var(--cpr-font-primary)";
+      probe.style.border = "1px solid var(--cpr-color-medium-grey)";
+      probe.style.outline = "2px solid var(--cpr-text-foundry-hover)";
+      document.body.append(probe);
+      const buttonProbe = document.createElement("div");
+      buttonProbe.style.backgroundColor = "var(--cpr-background-foundry-input)";
+      document.body.append(buttonProbe);
+      const expectedStyle = getComputedStyle(probe);
+      const contentStyle = getComputedStyle(
+        element.querySelector(".window-content"),
+      );
+      const header = element.querySelector(".change-header");
+      const actionHeader = header.querySelector(".change-actions");
+      const changeRow = element.querySelector(".changes-list > li");
+      const actionCell = changeRow.querySelector(".change-actions");
+      const situationalCell = changeRow.querySelector(".situational");
+      const situationalCheckbox = situationalCell.querySelector(
+        'input[type="checkbox"]',
+      );
+      const onByDefaultCell = changeRow.querySelector(".on-by-default");
+      const onByDefaultCheckbox = onByDefaultCell.querySelector(
+        'input[type="checkbox"]',
+      );
+      const windowHeaderButton = element.querySelector(".window-header button");
+      const valueInput = element.querySelector('input[name="changes.0.value"]');
+      const categorySelect = changeRow.querySelector(".key-cat");
+      const valueInputStyle = getComputedStyle(valueInput);
+      const categorySelectStyle = getComputedStyle(categorySelect);
+      const isContained = (child, parent) => {
+        const childRect = child.getBoundingClientRect();
+        const parentRect = parent.getBoundingClientRect();
+        return (
+          childRect.left >= parentRect.left - 1 &&
+          childRect.right <= parentRect.right + 1
+        );
+      };
+      const horizontalCenterOffset = (child, parent) => {
+        const childRect = child.getBoundingClientRect();
+        const parentRect = parent.getBoundingClientRect();
+        const childCenter = (childRect.left + childRect.right) / 2;
+        const parentCenter = (parentRect.left + parentRect.right) / 2;
+        return Math.abs(childCenter - parentCenter);
+      };
+      const result = {
+        backgroundColor: contentStyle.backgroundColor,
+        color: contentStyle.color,
+        fontFamily: contentStyle.fontFamily,
+        expectedBackgroundColor: expectedStyle.backgroundColor,
+        expectedColor: expectedStyle.color,
+        expectedFontFamily: expectedStyle.fontFamily,
+        expectedControlBorderColor: expectedStyle.borderTopColor,
+        expectedFocusOutlineColor: expectedStyle.outlineColor,
+        headerDisplay: getComputedStyle(header).display,
+        rowDisplay: getComputedStyle(changeRow).display,
+        actionHeaderContained: isContained(actionHeader, header),
+        actionCellContained: isContained(actionCell, changeRow),
+        situationalCheckboxCenterOffset: horizontalCenterOffset(
+          situationalCheckbox,
+          situationalCell,
+        ),
+        onByDefaultCheckboxCenterOffset: horizontalCenterOffset(
+          onByDefaultCheckbox,
+          onByDefaultCell,
+        ),
+        windowHeaderButtonBackground:
+          getComputedStyle(windowHeaderButton).backgroundColor,
+        cprButtonBackground: getComputedStyle(buttonProbe).backgroundColor,
+        valueInputBorderColor: valueInputStyle.borderTopColor,
+        valueInputBorderStyle: valueInputStyle.borderTopStyle,
+        valueInputBoxShadow: valueInputStyle.boxShadow,
+        valueInputOutlineStyle: valueInputStyle.outlineStyle,
+        categorySelectBorderColor: categorySelectStyle.borderTopColor,
+        categorySelectBoxShadow: categorySelectStyle.boxShadow,
+      };
+      probe.remove();
+      buttonProbe.remove();
+      return result;
+    });
+    expect(theme.backgroundColor).toBe(theme.expectedBackgroundColor);
+    expect(theme.color).toBe(theme.expectedColor);
+    expect(theme.fontFamily).toBe(theme.expectedFontFamily);
+    expect(theme.headerDisplay).toBe("flex");
+    expect(theme.rowDisplay).toBe("flex");
+    expect(theme.actionHeaderContained).toBe(true);
+    expect(theme.actionCellContained).toBe(true);
+    expect(theme.situationalCheckboxCenterOffset).toBeLessThanOrEqual(1);
+    expect(theme.onByDefaultCheckboxCenterOffset).toBeLessThanOrEqual(1);
+    // Native ApplicationV2 window controls keep Foundry's transparent header
+    // treatment instead of receiving the content-button background.
+    expect(theme.windowHeaderButtonBackground).toBe("rgba(0, 0, 0, 0)");
+    expect(theme.windowHeaderButtonBackground).not.toBe(
+      theme.cprButtonBackground,
+    );
+    expect(theme.valueInputBorderStyle).toBe("solid");
+    expect(theme.valueInputBorderColor).toBe(theme.expectedControlBorderColor);
+    expect(theme.valueInputBoxShadow).toBe("none");
+    expect(theme.valueInputOutlineStyle).toBe("none");
+    expect(theme.categorySelectBorderColor).toBe(
+      theme.expectedControlBorderColor,
+    );
+    expect(theme.categorySelectBoxShadow).toBe("none");
+  });
+
+  await test.step("A4 switching category to combat swaps the key select", async () => {
+    const row = aeConfig.locator(".changes-list > li").first();
+    await row.locator(".key-cat").selectOption("combat");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.0") === "combat",
+      { itemId, effectId },
+    );
+    await row.locator("select.key-key").selectOption("bonuses.maxHp");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items.get(id).effects.get(eid).changes[0].key === "bonuses.maxHp",
+      { itemId, effectId },
+    );
+  });
+
+  await test.step("A5 an already-used key is disabled in other rows", async () => {
+    const row = await addModViaUI(aeConfig);
+    await row.locator(".key-cat").selectOption("combat");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.1") === "combat",
+      { itemId, effectId },
+    );
+    await expect(
+      row.locator('select.key-key option[value="bonuses.maxHp"]'),
+    ).toBeDisabled();
+    await deleteModViaUI(aeConfig, 1);
+  });
+
+  await test.step("A6 value edits force-submit on blur", async () => {
+    const valueInput = aeConfig.locator('input[name="changes.0.value"]');
+    await valueInput.fill("3");
+    await expect(valueInput).toHaveCSS(
+      "outline-color",
+      theme.expectedFocusOutlineColor,
+    );
+    const focusedInputStyle = await valueInput.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        outlineColor: style.outlineColor,
+        outlineStyle: style.outlineStyle,
+        outlineWidth: style.outlineWidth,
+      };
+    });
+    expect(focusedInputStyle.outlineColor).toBe(
+      theme.expectedFocusOutlineColor,
+    );
+    expect(focusedInputStyle.outlineStyle).toBe("solid");
+    expect(focusedInputStyle.outlineWidth).toBe("2px");
+    await valueInput.press("Tab");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items.get(id).effects.get(eid).changes[0].value === "3",
+      { itemId, effectId },
+    );
+  });
+
+  await test.step("A7 the item summary shows the configured bonus", async () => {
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    const row = await getEffectRowViaUI(itemSheet, "New Effect");
+    await expect(row.first()).toContainText("Max Hit Points");
+    await expect(row.first()).toContainText("+3");
+    // Not situational yet: no situational glyphs.
+    await expect(row.locator("i.fa-circle-dot")).toHaveCount(0);
+    await expect(row.locator("i.fa-circle")).toHaveCount(0);
+  });
+
+  await test.step("A8 world skills appear in the skill key options", async () => {
+    const skillName = uniqueName("skill");
+    const skillId = await createDocumentViaUI(page, {
+      documentTab: "items",
+      type: "skill",
+      name: skillName,
+    });
+    await closeDocSheet(page, { collection: "items", id: skillId });
+
+    // Reopen the config so the key options rebuild with the new world skill.
+    await clickEffectActionViaUI(
+      await getEffectRowViaUI(itemSheet, "New Effect"),
+      "edit",
+    );
+    await expect(aeConfig).toBeVisible();
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+
+    const row = await addModViaUI(aeConfig);
+    const skillOption = row.locator("select.key-key option", {
+      hasText: skillName,
+    });
+    await expect(skillOption).toHaveCount(1);
+    const skillKey = await skillOption.getAttribute("value");
+    expect(skillKey).toMatch(/^bonuses\./);
+    await row.locator("select.key-key").selectOption(skillKey);
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid, key }) =>
+        game.items.get(id).effects.get(eid).changes[1].key === key,
+      { itemId, effectId, key: skillKey },
+    );
+
+    // Restore the single-mod state for the following steps.
+    await deleteModViaUI(aeConfig, 1);
+  });
+
+  await test.step("A9 situational and on-by-default persist across reopens", async () => {
+    const row = aeConfig.locator(".changes-list > li").first();
+    await row.locator(".toggle-situational").check();
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.situational.0.isSituational") ===
+        true,
+      { itemId, effectId },
+    );
+    // Checking situational enables on-by-default on the fresh render.
+    await expect(row.locator(".toggle-on-by-default")).toBeEnabled();
+    await row.locator(".toggle-on-by-default").check();
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.situational.0.onByDefault") ===
+        true,
+      { itemId, effectId },
+    );
+
+    // Fresh-render guard: close and reopen the config from the summary.
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    await clickEffectActionViaUI(
+      await getEffectRowViaUI(itemSheet, "New Effect"),
+      "edit",
+    );
+    await expect(aeConfig).toBeVisible();
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    const reopened = aeConfig.locator(".changes-list > li").first();
+    await expect(reopened.locator(".toggle-situational")).toBeChecked();
+    await expect(reopened.locator(".toggle-on-by-default")).toBeChecked();
+
+    // The item summary marks an on-by-default situational bonus.
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    const effectRow = await getEffectRowViaUI(itemSheet, "New Effect");
+    await expect(effectRow.locator("i.fa-circle-dot")).toHaveCount(1);
+  });
+
+  await test.step("A10 deleting a middle mod reindexes the flags", async () => {
+    await clickEffectActionViaUI(
+      await getEffectRowViaUI(itemSheet, "New Effect"),
+      "edit",
+    );
+    await expect(aeConfig).toBeVisible();
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+
+    const middle = await addModViaUI(aeConfig);
+    await middle.locator(".key-cat").selectOption("custom");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.1") === "custom",
+      { itemId, effectId },
+    );
+    const last = await addModViaUI(aeConfig);
+    await last.locator(".key-cat").selectOption("combat");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.2") === "combat",
+      { itemId, effectId },
+    );
+    await last.locator("select.key-key").selectOption("bonuses.initiative");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items.get(id).effects.get(eid).changes[2].key ===
+        "bonuses.initiative",
+      { itemId, effectId },
+    );
+    await last.locator(".toggle-situational").check();
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.situational.2.isSituational") ===
+        true,
+      { itemId, effectId },
+    );
+
+    await deleteModViaUI(aeConfig, 1);
+
+    const flags = await page.evaluate(
+      ({ itemId: id, effectId: eid }) => {
+        const effect = game.items.get(id).effects.get(eid);
+        return {
+          cats: effect.getFlag(game.system.id, "changes.cats"),
+          situational: effect.getFlag(game.system.id, "changes.situational"),
+          keys: effect.changes.map((change) => change.key),
+        };
+      },
+      { itemId, effectId },
+    );
+    expect(flags.keys).toEqual(["bonuses.maxHp", "bonuses.initiative"]);
+    expect(flags.cats).toEqual({ 0: "combat", 1: "combat" });
+    expect(flags.situational).toEqual({
+      0: { isSituational: true, onByDefault: true },
+      1: { isSituational: true, onByDefault: false },
+    });
+
+    // The surviving situational mod renders checked at its new index.
+    const rows = aeConfig.locator(".changes-list > li");
+    await expect(rows).toHaveCount(2);
+    await expect(rows.nth(1).locator(".toggle-situational")).toBeChecked();
+    await expect(
+      rows.nth(1).locator(".toggle-on-by-default"),
+    ).not.toBeChecked();
+  });
+
+  await test.step("A11 copying and deleting effects from the item summary", async () => {
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    const rows = await getEffectRowViaUI(itemSheet, "New Effect");
+    await expect(rows).toHaveCount(1);
+
+    await clickEffectActionViaUI(rows.first(), "copy");
+    await expect(rows).toHaveCount(2);
+
+    const [original, copy] = await page.evaluate(
+      ({ itemId: id }) =>
+        game.items.get(id).effects.contents.map((effect) => ({
+          changes: effect.changes,
+          flags: effect.getFlag(game.system.id, "changes"),
+          disabled: effect.disabled,
+        })),
+      { itemId },
+    );
+    expect(copy).toEqual(original);
+
+    await clickEffectActionViaUI(rows.nth(0), "delete");
+    await expect(rows).toHaveCount(1);
+    await clickEffectActionViaUI(rows.first(), "delete");
+    await expect(rows).toHaveCount(0);
+  });
+
+  expect(pageErrors).toEqual([]);
+  await closeDocSheet(page, { collection: "items", id: itemId });
 });
