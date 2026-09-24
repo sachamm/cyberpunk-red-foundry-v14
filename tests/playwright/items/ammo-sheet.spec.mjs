@@ -98,6 +98,9 @@ test.describe("Ammo item sheet (#1330)", () => {
       "Rifle Ammo",
     );
     await expect(sheet.locator(".item-header-price")).toContainText("500");
+    await expect(sheet.locator(".item-header-price-category")).toHaveText(
+      "(Expensive)",
+    );
     await expect(sheet.locator(".item-header-chips")).toContainText(
       "Ablation 2",
     );
@@ -111,6 +114,12 @@ test.describe("Ammo item sheet (#1330)", () => {
     );
     await expect(reopened.locator('input[name="system.brand"]')).toHaveValue(
       "Militech",
+    );
+    await expect(
+      reopened.locator('input[name="system.price.market"]'),
+    ).toHaveValue("500");
+    await expect(reopened.locator(".item-header-price-category")).toHaveText(
+      "(Expensive)",
     );
     await expect(reopened.locator('select[name="system.type"]')).toHaveValue(
       "armorPiercing",
