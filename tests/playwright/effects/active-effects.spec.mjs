@@ -33,6 +33,19 @@ async function cycleEquipState(page, { actorSheetId, actorId, itemId, state }) {
   );
 }
 
+// The yes/no confirmation dialog shown by destructive actions (e.g. deleting an
+// effect while deleteItemConfirmation is on). Returns the dialog locator; the
+// spec owns every visibility/text assertion. Dismiss it with resolveYesNo.
+function yesNoDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator(".cpr-dialog-message"),
+  });
+}
+
+async function resolveYesNo(dialog, action) {
+  await dialog.locator(`button[data-action="${action}"]`).click();
+}
+
 /*
  * The Active Effect config sheet (CPRActiveEffectSheet) replaces Foundry's generic
  * "Changes" tab with CPR's modifier UI: a category select + a category-aware key
@@ -311,40 +324,6 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
 
     expect(pageErrors).toEqual([]);
 
-    await closeDocSheet(game, { collection: "actors", id: actorId });
-  });
-
-  test("adds a CPR modifier to an actor effect without falling back to Foundry's editor", async ({
-    page: game,
-  }) => {
-    const actorId = await createDocumentViaUI(game, {
-      documentTab: "actors",
-      type: "character",
-      name: uniqueName("character"),
-    });
-    const actorSheetId = await expectSheetRendered(game, {
-      collection: "actors",
-      id: actorId,
-    });
-    const actorSheet = game.locator(`#${actorSheetId}`);
-    await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
-    await actorSheet
-      .locator('.effects-tab.active .effect-control[data-action="create"]')
-      .click();
-
-    const aeConfig = game.locator(".application.active-effect-config");
-    await expect(aeConfig).toBeVisible();
-    await aeConfig.locator('nav [data-tab="changes"]').click();
-    await aeConfig.locator('[data-action="addMod"]').click();
-
-    const row = aeConfig.locator(".changes-list > li").first();
-    await expect(row.locator(".effect-key-category select")).toBeVisible();
-    await expect(row.locator(".key-key, .key-input")).toHaveCount(1);
-    await expect(
-      aeConfig.locator('input[name="changes.0.priority"]'),
-    ).toHaveCount(0);
-
-    await aeConfig.locator('[data-action="close"]').click();
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
@@ -1163,4 +1142,439 @@ test("item-owned effects on gear", async ({ page }) => {
 
   expect(pageErrors).toEqual([]);
   await closeDocSheet(page, { collection: "items", id: itemId });
+});
+
+test("actor-owned effects on a character", async ({ page }) => {
+  const pageErrors = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
+  const consoleErrors = [];
+  page.on("console", (msg) => {
+    if (msg.type() === "error") consoleErrors.push(msg.text());
+  });
+
+  let actorId;
+  let actorSheetId;
+  let actorSheet;
+  let effectId;
+  let aeConfig;
+
+  await test.step("B1 create character and its effect", async () => {
+    actorId = await createDocumentViaUI(page, {
+      documentTab: "actors",
+      type: "character",
+      name: uniqueName("character"),
+    });
+    expect(actorId).toBeTruthy();
+
+    actorSheetId = await expectSheetRendered(page, {
+      collection: "actors",
+      id: actorId,
+    });
+    actorSheet = page.locator(`#${actorSheetId}`);
+    await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
+
+    ({ aeConfig, effectId } = await createEffectViaUI(page, actorSheet, {
+      ownerType: "actor",
+      ownerId: actorId,
+    }));
+
+    await expect(aeConfig.locator('input[name="name"]')).toHaveValue(
+      "New Effect",
+    );
+    await expect(aeConfig.locator('input[name="disabled"]')).not.toBeChecked();
+    // Actor effects expose the (read-only) origin field; transfer is item-only.
+    await expect(aeConfig.locator('input[name="origin"]')).toHaveCount(1);
+    await expect(aeConfig.locator('input[name="transfer"]')).toHaveCount(0);
+  });
+
+  await test.step("B2 addMod seeds a CPR row, not Foundry's changes grid", async () => {
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    const row = await addModViaUI(aeConfig);
+    await expect(row.locator(".key-cat")).toHaveValue("skill");
+    await expect(row.locator("select.key-key")).toHaveCount(1);
+    await expect(row.locator("input.key-input")).toHaveCount(0);
+    // Foundry's native grid exposes a per-row priority input; CPR's does not.
+    await expect(
+      aeConfig.locator('input[name="changes.0.priority"]'),
+    ).toHaveCount(0);
+  });
+
+  await test.step("B3 skill key options list owned skills only", async () => {
+    const worldSkillName = uniqueName("skill");
+    const worldSkillId = await createDocumentViaUI(page, {
+      documentTab: "items",
+      type: "skill",
+      name: worldSkillName,
+    });
+    await closeDocSheet(page, { collection: "items", id: worldSkillId });
+
+    const ownedSkillName = uniqueName("skill");
+    const ownedSkillId = await createDocumentViaUI(page, {
+      documentTab: "items",
+      type: "skill",
+      name: ownedSkillName,
+    });
+    await closeDocSheet(page, { collection: "items", id: ownedSkillId });
+    await dragItemToActorSheet(page, {
+      itemId: ownedSkillId,
+      sheetId: actorSheetId,
+      actorId,
+    });
+    await page.waitForFunction(
+      ({ actorId: aid, name: skillName }) =>
+        !!game.actors.get(aid).items.find((item) => item.name === skillName),
+      { actorId, name: ownedSkillName },
+    );
+
+    // Reopen the config so the key options rebuild with the owned skill.
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    await clickEffectActionViaUI(
+      await getEffectRowViaUI(actorSheet, "New Effect"),
+      "edit",
+    );
+    await expect(aeConfig).toBeVisible();
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+
+    const row = aeConfig.locator(".changes-list > li").first();
+    const ownedOption = row.locator("select.key-key option", {
+      hasText: ownedSkillName,
+    });
+    await expect(ownedOption).toHaveCount(1);
+    const ownedKey = await ownedOption.getAttribute("value");
+    expect(ownedKey).toMatch(/^bonuses\./);
+    // A world skill the character does not own is not an option.
+    await expect(
+      row.locator("select.key-key option", { hasText: worldSkillName }),
+    ).toHaveCount(0);
+
+    await row.locator("select.key-key").selectOption(ownedKey);
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid, key }) =>
+        game.actors.get(aid).effects.get(eid).changes[0].key === key,
+      { actorId, effectId, key: ownedKey },
+    );
+  });
+
+  await test.step("B4 the stat category exposes the mode select", async () => {
+    const row = await addModViaUI(aeConfig);
+    await row.locator(".key-cat").selectOption("stat");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors
+          .get(aid)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.1") === "stat",
+      { actorId, effectId },
+    );
+
+    const modeSelect = row.locator('select[name="changes.1.mode"]');
+    await expect(modeSelect).toBeVisible();
+    await expect(modeSelect).toHaveValue("2");
+    for (const label of [
+      "Multiply",
+      "Add / Subtract",
+      "Override if Lower",
+      "Override if Higher",
+      "Override",
+    ]) {
+      await expect(
+        modeSelect.getByRole("option", { name: label, exact: true }),
+      ).toHaveCount(1);
+    }
+    // Stats cannot be situational, so both toggles are disabled.
+    await expect(row.locator(".toggle-situational")).toBeDisabled();
+    await expect(row.locator(".toggle-on-by-default")).toBeDisabled();
+
+    await row.locator("select.key-key").selectOption("system.stats.body.value");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).changes[1].key ===
+        "system.stats.body.value",
+      { actorId, effectId },
+    );
+  });
+
+  const setStatMod = async ({ mode, value }) => {
+    const row = aeConfig.locator('.changes-list > li[data-index="1"]');
+    if (mode) {
+      await row.locator('select[name="changes.1.mode"]').selectOption(mode);
+    }
+    const valueInput = row.locator('input[name="changes.1.value"]');
+    await valueInput.fill(value);
+    await valueInput.press("Tab");
+  };
+
+  const expectBodyValue = async (expected) => {
+    await page.waitForFunction(
+      ({ actorId: aid, expected: body }) =>
+        game.actors.get(aid).system.stats.body.value === body,
+      { actorId, expected },
+    );
+    await expect(
+      actorSheet.locator('input[name="system.stats.body.value"]'),
+    ).toHaveValue(String(expected));
+  };
+
+  await test.step("B5 multiply scales the stat", async () => {
+    await setStatMod({ mode: "1", value: "2" });
+    await expectBodyValue(12); // BODY 6 x 2
+  });
+
+  await test.step("B6 override replaces the stat", async () => {
+    await setStatMod({ mode: "5", value: "9" });
+    await expectBodyValue(9);
+  });
+
+  await test.step("B7 lowerOf only applies when lower", async () => {
+    await setStatMod({ mode: "3", value: "4" });
+    await expectBodyValue(4); // min(6, 4)
+    await setStatMod({ value: "8" });
+    await expectBodyValue(6); // min(6, 8) keeps the base
+  });
+
+  await test.step("B8 higherOf only applies when higher", async () => {
+    await setStatMod({ mode: "4", value: "8" });
+    await expectBodyValue(8); // max(6, 8)
+    await setStatMod({ value: "4" });
+    await expectBodyValue(6); // max(6, 4) keeps the base
+  });
+
+  await test.step("B9 a custom dotted path targets another stat", async () => {
+    const row = await addModViaUI(aeConfig);
+    await row.locator(".key-cat").selectOption("custom");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors
+          .get(aid)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.2") === "custom",
+      { actorId, effectId },
+    );
+
+    // Set the value before the key: each force-submit blur re-renders the row, so
+    // persist the value first while the row is stable rather than chasing it across
+    // the key's re-render.
+    const valueInput = row.locator('input[name="changes.2.value"]');
+    await expect(valueInput).toBeVisible();
+    await valueInput.fill("3");
+    await valueInput.press("Tab");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).changes[2].value === "3",
+      { actorId, effectId },
+    );
+
+    const keyInput = row.locator("input.key-input");
+    await expect(keyInput).toHaveCount(1);
+    await keyInput.fill("system.stats.dex.value");
+    // Custom keys are force-submit text inputs: blur persists (and re-renders)
+    // without closing the config, unlike a native Enter form submission.
+    await keyInput.press("Tab");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).changes[2].key ===
+        "system.stats.dex.value",
+      { actorId, effectId },
+    );
+
+    // Custom rows are fixed to Add / Subtract: DEX 6 + 3.
+    await page.waitForFunction(
+      ({ actorId: aid }) => game.actors.get(aid).system.stats.dex.value === 9,
+      { actorId },
+    );
+    // Custom rows are fixed to Add / Subtract: DEX 6 + 3.
+    await expect(
+      actorSheet.locator('input[name="system.stats.dex.value"]'),
+    ).toHaveValue("9");
+  });
+
+  await test.step("B10 situational flags persist across reopens", async () => {
+    const row = await addModViaUI(aeConfig);
+    await row.locator(".key-cat").selectOption("combat");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors
+          .get(aid)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.3") === "combat",
+      { actorId, effectId },
+    );
+    await row.locator("select.key-key").selectOption("bonuses.maxHp");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).changes[3].key ===
+        "bonuses.maxHp",
+      { actorId, effectId },
+    );
+    const valueInput = row.locator('input[name="changes.3.value"]');
+    await valueInput.fill("2");
+    await valueInput.press("Tab");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).changes[3].value === "2",
+      { actorId, effectId },
+    );
+
+    const modRow = aeConfig.locator('.changes-list > li[data-index="3"]');
+    await modRow.locator(".toggle-situational").check();
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors
+          .get(aid)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.situational.3.isSituational") ===
+        true,
+      { actorId, effectId },
+    );
+    await modRow.locator(".toggle-on-by-default").check();
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors
+          .get(aid)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.situational.3.onByDefault") ===
+        true,
+      { actorId, effectId },
+    );
+
+    // Fresh-render guard: close and reopen the config from the summary. The
+    // effect now has permanent and situational mods, so it appears in both
+    // sections; either row opens the same config.
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    const rows = await getEffectRowViaUI(actorSheet, "New Effect");
+    await expect(rows).toHaveCount(2);
+    await clickEffectActionViaUI(rows.first(), "edit");
+    await expect(aeConfig).toBeVisible();
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    const reopened = aeConfig.locator('.changes-list > li[data-index="3"]');
+    await expect(reopened.locator(".toggle-situational")).toBeChecked();
+    await expect(reopened.locator(".toggle-on-by-default")).toBeChecked();
+  });
+
+  await test.step("B11 the summary splits mods into sections", async () => {
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+
+    // The effect has both permanent and situational mods, so it appears in
+    // both sections; each row shows only that section's mods.
+    const rows = await getEffectRowViaUI(actorSheet, "New Effect");
+    await expect(rows).toHaveCount(2);
+
+    const situationalRow = rows
+      .filter({ has: page.locator("i.fas.fa-circle-question") })
+      .first();
+    await expect(situationalRow).toContainText("Max Hit Points");
+    await expect(situationalRow).toContainText("+2");
+    await expect(
+      situationalRow.locator("i.fas.fa-circle-question"),
+    ).toHaveCount(1);
+    await expect(situationalRow).not.toContainText("system.stats.dex.value");
+
+    const permanentRow = rows
+      .filter({ hasNot: page.locator("i.fas.fa-circle-question") })
+      .first();
+    await expect(permanentRow).toContainText("system.stats.dex.value");
+    await expect(permanentRow).toContainText("+3");
+    await expect(permanentRow).not.toContainText("Max Hit Points");
+
+    await expect(
+      actorSheet.locator('li[data-effect-type="situational"]'),
+    ).toContainText("Situational Effects");
+    await expect(
+      actorSheet.locator('li[data-effect-type="permanent"]'),
+    ).toContainText("Permanent Effects");
+  });
+
+  await test.step("B12 the toggle disables and re-enables the effect", async () => {
+    const situationalRow = (await getEffectRowViaUI(actorSheet, "New Effect"))
+      .filter({ has: page.locator("i.fas.fa-circle-question") })
+      .first();
+    await clickEffectActionViaUI(situationalRow, "toggle");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).disabled === true,
+      { actorId, effectId },
+    );
+
+    // Disabled effects move to the Inactive section with an empty circle.
+    const rows = await getEffectRowViaUI(actorSheet, "New Effect");
+    await expect(rows).toHaveCount(1);
+    await expect(rows.first().locator("i.far.fa-circle")).toHaveCount(1);
+    await expect(rows.first().locator("i.far.fa-circle-check")).toHaveCount(0);
+    await expect(
+      actorSheet.locator('li[data-effect-type="inactive"]'),
+    ).toContainText("Inactive Effects");
+
+    // Toggling from the inactive row re-enables: allApplicableEffects() still
+    // yields disabled effects, so manageEffect can find it by uuid.
+    await clickEffectActionViaUI(rows.first(), "toggle");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).disabled === false,
+      { actorId, effectId },
+    );
+    const restored = await getEffectRowViaUI(actorSheet, "New Effect");
+    await expect(restored).toHaveCount(2);
+    await expect(restored.locator("i.far.fa-circle-check")).toHaveCount(2);
+  });
+
+  await test.step("B13 copying and deleting effects from the actor summary", async () => {
+    const rows = await getEffectRowViaUI(actorSheet, "New Effect");
+    await expect(rows).toHaveCount(2);
+
+    await clickEffectActionViaUI(rows.first(), "copy");
+    await page.waitForFunction(
+      ({ actorId: aid }) => game.actors.get(aid).effects.contents.length === 2,
+      { actorId },
+    );
+    const effects = await page.evaluate(
+      ({ actorId: aid }) =>
+        game.actors.get(aid).effects.contents.map((effect) => ({
+          changes: effect.changes,
+          flags: effect.getFlag(game.system.id, "changes"),
+          disabled: effect.disabled,
+        })),
+      { actorId },
+    );
+    expect(effects).toHaveLength(2);
+    // The copy keeps the original's name and data.
+    expect(effects[1]).toEqual(effects[0]);
+    const copiedRows = await getEffectRowViaUI(actorSheet, "New Effect");
+    await expect(copiedRows).toHaveCount(4);
+
+    // Deleting prompts for confirmation (deleteItemConfirmation defaults on).
+    await clickEffectActionViaUI(copiedRows.first(), "delete");
+    const dialog = yesNoDialog(page);
+    await expect(dialog).toBeVisible();
+    await resolveYesNo(dialog, "yes");
+    await expect(dialog).toHaveCount(0);
+    await page.waitForFunction(
+      ({ actorId: aid }) => game.actors.get(aid).effects.contents.length === 1,
+      { actorId },
+    );
+
+    const remaining = await getEffectRowViaUI(actorSheet, "New Effect");
+    await expect(remaining).toHaveCount(2);
+    await clickEffectActionViaUI(remaining.first(), "delete");
+    const secondDialog = yesNoDialog(page);
+    await expect(secondDialog).toBeVisible();
+    await resolveYesNo(secondDialog, "yes");
+    await expect(secondDialog).toHaveCount(0);
+
+    await expect(
+      actorSheet
+        .locator(".effects-list li.effect")
+        .filter({ hasText: "New Effect" }),
+    ).toHaveCount(0);
+    const effectCount = await page.evaluate(
+      ({ actorId: aid }) => game.actors.get(aid).effects.contents.length,
+      { actorId },
+    );
+    expect(effectCount).toBe(0);
+  });
+
+  expect(pageErrors).toEqual([]);
+  // Silent rejections (e.g. a failed embedded-document create) only surface as
+  // console errors, so guard against those too.
+  expect(consoleErrors).toEqual([]);
+  await closeDocSheet(page, { collection: "actors", id: actorId });
 });
