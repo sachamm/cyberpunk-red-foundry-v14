@@ -40,6 +40,17 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   };
 
   /**
+   * Core's handler updates the per-row priority placeholder when a mode select
+   * changes. That input only exists in Foundry's native changes grid; CPR rows
+   * have no priority input, so skip it entirely (the base class adds nothing
+   * else: this sheet does not use submitOnChange).
+   *
+   * @override
+   */
+  // eslint-disable-next-line class-methods-use-this
+  _onChangeForm() {}
+
+  /**
    * Build the per-change CPRMod list (with category-aware key inputs) for the
    * `changes` part. Other parts use the core context unchanged.
    *
@@ -76,7 +87,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
             name,
             value,
           });
-          textInput.classList.add("key-input");
+          textInput.classList.add("key-input", "force-submit");
           change.keyInput = new Handlebars.SafeString(textInput.outerHTML);
           break;
         }
@@ -300,7 +311,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @returns {Array<object>} sorted option configs of skill keys to names
    */
   static getSkillOptionConfigs(effect) {
-    const skillMap = CPR.activeEffectKeys.skill;
+    const skillMap = { ...CPR.activeEffectKeys.skill };
     let skillList = [];
     if (effect.parent.documentName === "Item") {
       skillList = game.items.filter((i) => i.type === "skill");

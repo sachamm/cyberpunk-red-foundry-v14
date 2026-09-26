@@ -44,7 +44,7 @@ export default class CPRContainerActor extends Actor {
     items,
     context = { createInstalled: true },
   ) {
-    if (!embeddedName === "Item")
+    if (embeddedName !== "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
     let itemsToCreate = items;

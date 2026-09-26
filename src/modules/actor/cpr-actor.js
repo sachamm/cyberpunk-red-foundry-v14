@@ -199,7 +199,7 @@ export default class CPRActor extends Actor {
     const isMigration = !!(
       typeof context !== "undefined" && context.cprIsMigrating
     );
-    if (isMigration || !embeddedName === "Item")
+    if (isMigration || embeddedName !== "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
     // Don't add core items. Filter by predicate rather than collected ids so

@@ -900,7 +900,7 @@ export default function registerHandlebarsHelpers() {
     const sourceDoc = doc instanceof CPRActiveEffect ? doc.parent : doc;
     if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
-      const skillMap = CPR.activeEffectKeys.skill;
+      const skillMap = { ...CPR.activeEffectKeys.skill };
       let skillList;
       if (sourceDoc.isOwned) {
         skillList = sourceDoc.parent.items.filter((i) => i.type === "skill");
