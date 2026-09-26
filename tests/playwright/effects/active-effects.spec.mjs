@@ -33,9 +33,6 @@ async function cycleEquipState(page, { actorSheetId, actorId, itemId, state }) {
   );
 }
 
-// The yes/no confirmation dialog shown by destructive actions (e.g. deleting an
-// effect while deleteItemConfirmation is on). Returns the dialog locator; the
-// spec owns every visibility/text assertion. Dismiss it with resolveYesNo.
 function yesNoDialog(page) {
   return page.locator(".cpr-dialog").filter({
     has: page.locator(".cpr-dialog-message"),
@@ -46,14 +43,6 @@ async function resolveYesNo(dialog, action) {
   await dialog.locator(`button[data-action="${action}"]`).click();
 }
 
-/*
- * The Active Effect config sheet (CPRActiveEffectSheet) replaces Foundry's generic
- * "Changes" tab with CPR's modifier UI: a category select + a category-aware key
- * input, plus situational / on-by-default toggles. Drive the real UI to add a
- * modifier, apply it from an equipped item, and assert the CPR theme/layout. This
- * guards against both the sheet falling back to Foundry's default changes editor
- * and the carried/equipped usage flow being lost during the V2 migration.
- */
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
@@ -73,29 +62,22 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     });
     expect(itemId).toBeTruthy();
 
-    // The gear sheet opens on creation; open its Effects tab and add an effect.
     const itemSheet = game.locator(`#CPRItemSheet-Item-${itemId}`);
     await expect(itemSheet).toBeVisible();
     await itemSheet.locator('.navtabs-item [data-tab="item-effects"]').click();
     await itemSheet.locator('.effect-control[data-action="create"]').click();
 
-    // Creating the effect opens its config (an ApplicationV2 active-effect-config).
     const aeConfig = game.locator(".application.active-effect-config");
     await expect(aeConfig).toBeVisible();
 
-    // Switch to the CPR Changes tab and add a modifier.
     await aeConfig.locator('nav [data-tab="changes"]').click();
     await aeConfig.locator('[data-action="addMod"]').click();
 
-    // The CPR row exposes a key-category select and a category-aware key input —
-    // not Foundry's raw "Attribute Key" text field.
     const row = aeConfig.locator(".changes-list > li").first();
     await expect(row).toBeVisible();
     await expect(row.locator(".effect-key-category select")).toBeVisible();
     await expect(row.locator(".key-key, .key-input")).toHaveCount(1);
 
-    // The config is one of CPR's explicitly themed windows. Foundry's native
-    // active-effect grid must not override the custom six-column flex layout.
     await expect(aeConfig).toHaveClass(/active-effect-sheet/);
     const theme = await aeConfig.evaluate((element) => {
       const probe = document.createElement("div");
@@ -188,8 +170,6 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     expect(theme.actionCellContained).toBe(true);
     expect(theme.situationalCheckboxCenterOffset).toBeLessThanOrEqual(1);
     expect(theme.onByDefaultCheckboxCenterOffset).toBeLessThanOrEqual(1);
-    // Native ApplicationV2 window controls keep Foundry's transparent header
-    // treatment instead of receiving the content-button background.
     expect(theme.windowHeaderButtonBackground).toBe("rgba(0, 0, 0, 0)");
     expect(theme.windowHeaderButtonBackground).not.toBe(
       theme.cprButtonBackground,
@@ -249,8 +229,6 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       { itemId, effectId },
     );
 
-    // Item effects still expose the CPR usage choices and persist carried /
-    // equipped selection through the ApplicationV2 item sheet.
     await aeConfig.locator('[data-action="close"]').click();
     const usage = itemSheet.locator('select[name="system.usage"]');
     await expect(usage).toBeVisible();
@@ -267,8 +245,6 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       itemId,
     );
 
-    // Once the item is owned by an actor, its effect remains suppressed while
-    // owned/carried and becomes applicable only when the item is equipped.
     const actorId = await createDocumentViaUI(game, {
       documentTab: "actors",
       type: "character",
@@ -756,7 +732,6 @@ test("item-owned effects on gear", async ({ page }) => {
       { itemId, effectId },
     );
     expect(origin.origin).toBe(origin.uuid);
-    // Item effects expose the transfer field; origin is actor-effects only.
     await expect(aeConfig.locator('input[name="transfer"]')).toHaveCount(1);
     await expect(aeConfig.locator('input[name="origin"]')).toHaveCount(0);
   });
@@ -778,8 +753,6 @@ test("item-owned effects on gear", async ({ page }) => {
   });
 
   await test.step("A3 the config uses the CPR sheet theme", async () => {
-    // The config is one of CPR's explicitly themed windows. Foundry's native
-    // active-effect grid must not override the custom six-column flex layout.
     await expect(aeConfig).toHaveClass(/active-effect-sheet/);
     theme = await aeConfig.evaluate((element) => {
       const probe = document.createElement("div");
@@ -872,8 +845,6 @@ test("item-owned effects on gear", async ({ page }) => {
     expect(theme.actionCellContained).toBe(true);
     expect(theme.situationalCheckboxCenterOffset).toBeLessThanOrEqual(1);
     expect(theme.onByDefaultCheckboxCenterOffset).toBeLessThanOrEqual(1);
-    // Native ApplicationV2 window controls keep Foundry's transparent header
-    // treatment instead of receiving the content-button background.
     expect(theme.windowHeaderButtonBackground).toBe("rgba(0, 0, 0, 0)");
     expect(theme.windowHeaderButtonBackground).not.toBe(
       theme.cprButtonBackground,
@@ -957,7 +928,6 @@ test("item-owned effects on gear", async ({ page }) => {
     const row = await getEffectRowViaUI(itemSheet, "New Effect");
     await expect(row.first()).toContainText("Max Hit Points");
     await expect(row.first()).toContainText("+3");
-    // Not situational yet: no situational glyphs.
     await expect(row.locator("i.fa-circle-dot")).toHaveCount(0);
     await expect(row.locator("i.fa-circle")).toHaveCount(0);
   });
@@ -971,7 +941,6 @@ test("item-owned effects on gear", async ({ page }) => {
     });
     await closeDocSheet(page, { collection: "items", id: skillId });
 
-    // Reopen the config so the key options rebuild with the new world skill.
     await clickEffectActionViaUI(
       await getEffectRowViaUI(itemSheet, "New Effect"),
       "edit",
@@ -993,7 +962,6 @@ test("item-owned effects on gear", async ({ page }) => {
       { itemId, effectId, key: skillKey },
     );
 
-    // Restore the single-mod state for the following steps.
     await deleteModViaUI(aeConfig, 1);
   });
 
@@ -1009,7 +977,6 @@ test("item-owned effects on gear", async ({ page }) => {
         true,
       { itemId, effectId },
     );
-    // Checking situational enables on-by-default on the fresh render.
     await expect(row.locator(".toggle-on-by-default")).toBeEnabled();
     await row.locator(".toggle-on-by-default").check();
     await page.waitForFunction(
@@ -1022,7 +989,6 @@ test("item-owned effects on gear", async ({ page }) => {
       { itemId, effectId },
     );
 
-    // Fresh-render guard: close and reopen the config from the summary.
     await closeActiveEffectConfigViaUI(page, aeConfig);
     await clickEffectActionViaUI(
       await getEffectRowViaUI(itemSheet, "New Effect"),
@@ -1034,7 +1000,6 @@ test("item-owned effects on gear", async ({ page }) => {
     await expect(reopened.locator(".toggle-situational")).toBeChecked();
     await expect(reopened.locator(".toggle-on-by-default")).toBeChecked();
 
-    // The item summary marks an on-by-default situational bonus.
     await closeActiveEffectConfigViaUI(page, aeConfig);
     const effectRow = await getEffectRowViaUI(itemSheet, "New Effect");
     await expect(effectRow.locator("i.fa-circle-dot")).toHaveCount(1);
@@ -1106,7 +1071,6 @@ test("item-owned effects on gear", async ({ page }) => {
       1: { isSituational: true, onByDefault: false },
     });
 
-    // The surviving situational mod renders checked at its new index.
     const rows = aeConfig.locator(".changes-list > li");
     await expect(rows).toHaveCount(2);
     await expect(rows.nth(1).locator(".toggle-situational")).toBeChecked();
@@ -1182,7 +1146,6 @@ test("actor-owned effects on a character", async ({ page }) => {
       "New Effect",
     );
     await expect(aeConfig.locator('input[name="disabled"]')).not.toBeChecked();
-    // Actor effects expose the (read-only) origin field; transfer is item-only.
     await expect(aeConfig.locator('input[name="origin"]')).toHaveCount(1);
     await expect(aeConfig.locator('input[name="transfer"]')).toHaveCount(0);
   });
@@ -1193,7 +1156,6 @@ test("actor-owned effects on a character", async ({ page }) => {
     await expect(row.locator(".key-cat")).toHaveValue("skill");
     await expect(row.locator("select.key-key")).toHaveCount(1);
     await expect(row.locator("input.key-input")).toHaveCount(0);
-    // Foundry's native grid exposes a per-row priority input; CPR's does not.
     await expect(
       aeConfig.locator('input[name="changes.0.priority"]'),
     ).toHaveCount(0);
@@ -1226,7 +1188,6 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, name: ownedSkillName },
     );
 
-    // Reopen the config so the key options rebuild with the owned skill.
     await closeActiveEffectConfigViaUI(page, aeConfig);
     await clickEffectActionViaUI(
       await getEffectRowViaUI(actorSheet, "New Effect"),
@@ -1242,7 +1203,6 @@ test("actor-owned effects on a character", async ({ page }) => {
     await expect(ownedOption).toHaveCount(1);
     const ownedKey = await ownedOption.getAttribute("value");
     expect(ownedKey).toMatch(/^bonuses\./);
-    // A world skill the character does not own is not an option.
     await expect(
       row.locator("select.key-key option", { hasText: worldSkillName }),
     ).toHaveCount(0);
@@ -1281,7 +1241,6 @@ test("actor-owned effects on a character", async ({ page }) => {
         modeSelect.getByRole("option", { name: label, exact: true }),
       ).toHaveCount(1);
     }
-    // Stats cannot be situational, so both toggles are disabled.
     await expect(row.locator(".toggle-situational")).toBeDisabled();
     await expect(row.locator(".toggle-on-by-default")).toBeDisabled();
 
@@ -1351,9 +1310,6 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, effectId },
     );
 
-    // Set the value before the key: each force-submit blur re-renders the row, so
-    // persist the value first while the row is stable rather than chasing it across
-    // the key's re-render.
     const valueInput = row.locator('input[name="changes.2.value"]');
     await expect(valueInput).toBeVisible();
     await valueInput.fill("3");
@@ -1367,8 +1323,6 @@ test("actor-owned effects on a character", async ({ page }) => {
     const keyInput = row.locator("input.key-input");
     await expect(keyInput).toHaveCount(1);
     await keyInput.fill("system.stats.dex.value");
-    // Custom keys are force-submit text inputs: blur persists (and re-renders)
-    // without closing the config, unlike a native Enter form submission.
     await keyInput.press("Tab");
     await page.waitForFunction(
       ({ actorId: aid, effectId: eid }) =>
@@ -1377,12 +1331,10 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, effectId },
     );
 
-    // Custom rows are fixed to Add / Subtract: DEX 6 + 3.
     await page.waitForFunction(
       ({ actorId: aid }) => game.actors.get(aid).system.stats.dex.value === 9,
       { actorId },
     );
-    // Custom rows are fixed to Add / Subtract: DEX 6 + 3.
     await expect(
       actorSheet.locator('input[name="system.stats.dex.value"]'),
     ).toHaveValue("9");
@@ -1437,9 +1389,6 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, effectId },
     );
 
-    // Fresh-render guard: close and reopen the config from the summary. The
-    // effect now has permanent and situational mods, so it appears in both
-    // sections; either row opens the same config.
     await closeActiveEffectConfigViaUI(page, aeConfig);
     const rows = await getEffectRowViaUI(actorSheet, "New Effect");
     await expect(rows).toHaveCount(2);
@@ -1454,8 +1403,6 @@ test("actor-owned effects on a character", async ({ page }) => {
   await test.step("B11 the summary splits mods into sections", async () => {
     await closeActiveEffectConfigViaUI(page, aeConfig);
 
-    // The effect has both permanent and situational mods, so it appears in
-    // both sections; each row shows only that section's mods.
     const rows = await getEffectRowViaUI(actorSheet, "New Effect");
     await expect(rows).toHaveCount(2);
 
@@ -1495,7 +1442,6 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, effectId },
     );
 
-    // Disabled effects move to the Inactive section with an empty circle.
     const rows = await getEffectRowViaUI(actorSheet, "New Effect");
     await expect(rows).toHaveCount(1);
     await expect(rows.first().locator("i.far.fa-circle")).toHaveCount(1);
@@ -1504,8 +1450,6 @@ test("actor-owned effects on a character", async ({ page }) => {
       actorSheet.locator('li[data-effect-type="inactive"]'),
     ).toContainText("Inactive Effects");
 
-    // Toggling from the inactive row re-enables: allApplicableEffects() still
-    // yields disabled effects, so manageEffect can find it by uuid.
     await clickEffectActionViaUI(rows.first(), "toggle");
     await page.waitForFunction(
       ({ actorId: aid, effectId: eid }) =>
@@ -1536,12 +1480,10 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId },
     );
     expect(effects).toHaveLength(2);
-    // The copy keeps the original's name and data.
     expect(effects[1]).toEqual(effects[0]);
     const copiedRows = await getEffectRowViaUI(actorSheet, "New Effect");
     await expect(copiedRows).toHaveCount(4);
 
-    // Deleting prompts for confirmation (deleteItemConfirmation defaults on).
     await clickEffectActionViaUI(copiedRows.first(), "delete");
     const dialog = yesNoDialog(page);
     await expect(dialog).toBeVisible();
@@ -1573,8 +1515,230 @@ test("actor-owned effects on a character", async ({ page }) => {
   });
 
   expect(pageErrors).toEqual([]);
-  // Silent rejections (e.g. a failed embedded-document create) only surface as
-  // console errors, so guard against those too.
   expect(consoleErrors).toEqual([]);
+  await closeDocSheet(page, { collection: "actors", id: actorId });
+});
+
+test("usage-sensitive effects on gear and a drug", async ({ page }) => {
+  const pageErrors = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
+  const consoleErrors = [];
+  page.on("console", (msg) => {
+    if (msg.type() === "error") consoleErrors.push(msg.text());
+  });
+
+  let gearName;
+  let gearId;
+  let gearSheet;
+  let effectId;
+  let aeConfig;
+  let actorId;
+  let actorSheetId;
+  let drugId;
+  let drugSheet;
+
+  await test.step("C1 the usage select appears only once an effect exists", async () => {
+    gearName = uniqueName("gear");
+    gearId = await createDocumentViaUI(page, {
+      documentTab: "items",
+      type: "gear",
+      name: gearName,
+    });
+    expect(gearId).toBeTruthy();
+
+    gearSheet = page.locator(`#CPRItemSheet-Item-${gearId}`);
+    await expect(gearSheet).toBeVisible();
+    await gearSheet.locator('.navtabs-item [data-tab="item-effects"]').click();
+
+    await expect(gearSheet.locator('select[name="system.usage"]')).toHaveCount(
+      0,
+    );
+
+    ({ aeConfig, effectId } = await createEffectViaUI(page, gearSheet, {
+      ownerType: "item",
+      ownerId: gearId,
+    }));
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    const row = await addModViaUI(aeConfig);
+    await row.locator(".key-cat").selectOption("combat");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items
+          .get(id)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.cats.0") === "combat",
+      { itemId: gearId, effectId },
+    );
+    await row.locator("select.key-key").selectOption("bonuses.maxHp");
+    const valueInput = row.locator('input[name="changes.0.value"]');
+    await valueInput.fill("2");
+    await valueInput.press("Tab");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items.get(id).effects.get(eid).changes[0].value === "2",
+      { itemId: gearId, effectId },
+    );
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+
+    const usage = gearSheet.locator('select[name="system.usage"]');
+    await expect(usage).toBeVisible();
+    for (const value of ["toggled", "carried", "equipped"]) {
+      await expect(usage.locator(`option[value="${value}"]`)).toHaveCount(1);
+    }
+    await expect(usage).toHaveValue("toggled");
+
+    const effectRow = (
+      await getEffectRowViaUI(gearSheet, "New Effect")
+    ).first();
+    await expect(
+      effectRow.locator(
+        "a.effect-control[data-action='toggle'] i.far.fa-circle-check",
+      ),
+    ).toHaveCount(1);
+  });
+
+  await test.step("C2 the toggle disables and re-enables the effect", async () => {
+    const row = (await getEffectRowViaUI(gearSheet, "New Effect")).first();
+    await clickEffectActionViaUI(row, "toggle");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items.get(id).effects.get(eid).disabled === true,
+      { itemId: gearId, effectId },
+    );
+    const disabledRow = (
+      await getEffectRowViaUI(gearSheet, "New Effect")
+    ).first();
+    await expect(disabledRow.locator("i.far.fa-circle")).toHaveCount(1);
+    await expect(disabledRow.locator("i.far.fa-circle-check")).toHaveCount(0);
+
+    await clickEffectActionViaUI(disabledRow, "toggle");
+    await page.waitForFunction(
+      ({ itemId: id, effectId: eid }) =>
+        game.items.get(id).effects.get(eid).disabled === false,
+      { itemId: gearId, effectId },
+    );
+    const restored = (await getEffectRowViaUI(gearSheet, "New Effect")).first();
+    await expect(restored.locator("i.far.fa-circle-check")).toHaveCount(1);
+  });
+
+  await test.step("C3 carried suppresses the bonus, equipped applies it", async () => {
+    const usage = gearSheet.locator('select[name="system.usage"]');
+    await usage.selectOption("carried");
+    await page.waitForFunction(
+      (id) => game.items.get(id).system.usage === "carried",
+      gearId,
+    );
+    await usage.selectOption("equipped");
+    await page.waitForFunction(
+      (id) => game.items.get(id).system.usage === "equipped",
+      gearId,
+    );
+
+    actorId = await createDocumentViaUI(page, {
+      documentTab: "actors",
+      type: "character",
+      name: uniqueName("character"),
+    });
+    expect(actorId).toBeTruthy();
+    actorSheetId = await expectSheetRendered(page, {
+      collection: "actors",
+      id: actorId,
+    });
+    await closeDocSheet(page, { collection: "items", id: gearId });
+    await dragItemToActorSheet(page, {
+      itemId: gearId,
+      sheetId: actorSheetId,
+      actorId,
+    });
+    const embeddedGearId = await page.evaluate(
+      ({ actorId: aid, name }) =>
+        game.actors.get(aid).items.find((item) => item.name === name).id,
+      { actorId, name: gearName },
+    );
+
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).effects.contents[0].system
+          .isSuppressed === true && game.actors.get(aid).bonuses.maxHp === 0,
+      { actorId, itemId: embeddedGearId },
+    );
+
+    await cycleEquipState(page, {
+      actorSheetId,
+      actorId,
+      itemId: embeddedGearId,
+      state: "carried",
+    });
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).effects.contents[0].system
+          .isSuppressed === true && game.actors.get(aid).bonuses.maxHp === 0,
+      { actorId, itemId: embeddedGearId },
+    );
+
+    await cycleEquipState(page, {
+      actorSheetId,
+      actorId,
+      itemId: embeddedGearId,
+      state: "equipped",
+    });
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).effects.contents[0].system
+          .isSuppressed === false && game.actors.get(aid).bonuses.maxHp === 2,
+      { actorId, itemId: embeddedGearId },
+    );
+  });
+
+  await test.step("C4 snorting a drug disables its effects", async () => {
+    const drugName = uniqueName("drug");
+    drugId = await createDocumentViaUI(page, {
+      documentTab: "items",
+      type: "drug",
+      name: drugName,
+    });
+    expect(drugId).toBeTruthy();
+
+    drugSheet = page.locator(`#CPRItemSheet-Item-${drugId}`);
+    await expect(drugSheet).toBeVisible();
+    await drugSheet.locator('.navtabs-item [data-tab="item-effects"]').click();
+
+    ({ aeConfig } = await createEffectViaUI(page, drugSheet, {
+      ownerType: "item",
+      ownerId: drugId,
+    }));
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+
+    const usage = drugSheet.locator('select[name="system.usage"]');
+    await expect(usage).toBeVisible();
+    await usage.selectOption("snorted");
+    await page.waitForFunction(
+      (id) => game.items.get(id).system.usage === "snorted",
+      drugId,
+    );
+    await page.waitForFunction(
+      (id) =>
+        game.items.get(id).effects.contents.every((ae) => ae.disabled === true),
+      drugId,
+    );
+
+    const consumed = drugSheet.locator('select[name="system.consumed"]');
+    await expect(consumed).toBeVisible();
+    await expect(
+      consumed.locator("option", { hasText: "New Effect" }),
+    ).toHaveCount(1);
+
+    await clickEffectActionViaUI(
+      (await getEffectRowViaUI(drugSheet, "New Effect")).first(),
+      "edit",
+    );
+    await expect(aeConfig).toBeVisible();
+    await expect(aeConfig.locator('input[name="disabled"]')).toBeChecked();
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+  });
+
+  expect(pageErrors).toEqual([]);
+  expect(consoleErrors).toEqual([]);
+  await closeDocSheet(page, { collection: "items", id: drugId });
   await closeDocSheet(page, { collection: "actors", id: actorId });
 });
