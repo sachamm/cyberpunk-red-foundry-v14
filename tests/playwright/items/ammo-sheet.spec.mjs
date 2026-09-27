@@ -33,7 +33,7 @@ test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
 
-test.describe("Ammo item sheet (#1330)", () => {
+test.describe("Ammo item sheet", () => {
   test("edits ammo settings and refreshes the derived header", async ({
     page: game,
   }) => {
