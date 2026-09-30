@@ -289,15 +289,28 @@ test("Import All Content rebuilds installed items and preserves them on folder e
     await expect
       .poll(() =>
         page.evaluate(
-          ({ originalId, malorianName }) =>
-            game.items.filter(
+          ({ originalId, malorianName }) => {
+            const copies = game.items.filter(
               (item) =>
                 item.id !== originalId && item.name.includes(malorianName),
-            ).length,
+            );
+            const installedIds = copies[0]?.system.installedItems.list ?? [];
+            return {
+              copyCount: copies.length,
+              installedItemCount: installedIds.length,
+              installedReferencesResolved: installedIds.every((id) =>
+                game.items.has(id),
+              ),
+            };
+          },
           { originalId: importedWeaponId, malorianName: MALORIAN_NAME },
         ),
       )
-      .toBe(1);
+      .toEqual({
+        copyCount: 1,
+        installedItemCount: 1,
+        installedReferencesResolved: true,
+      });
 
     const duplicated = await page.evaluate(
       ({ originalId, malorianName }) => {
