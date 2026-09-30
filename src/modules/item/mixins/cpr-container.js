@@ -315,10 +315,8 @@ const Container = function Container() {
   /**
    * This will install items into this *world* item. When world items are installed, a copy should be made of every nested
    * installed item, and the `installedItems.list` should be updated. This way, world items can work as a sort of 'infinite-stack'.
-   * In other words, you can keep installing new copies of items from the same world item. That is why it is necessary to break
-   * out the logic of installation into world items specifically. The reason that you dont see recursion in this function, is
-   * because it gets called from the `createItem` hook. Every new item that is created calls the hook (which then calls this
-   * function, and so on), and thus the recursion is actually embedded in the hook. It really is recursive, just invisibly so.
+   * In other words, you can keep installing new copies of items from the same world item. Nested installed items are handled by
+   * the explicit recursive call below, so document creation skips its normal installed-item processing in this path.
    *
    * @recursive
    * @param {Array} itemList - Array of Item Objects to be installed
@@ -330,7 +328,9 @@ const Container = function Container() {
     installedItems,
   ) {
     // Create duplicates of all installed items in the world.
-    const newItems = await Item.createDocuments(itemList);
+    const newItems = await Item.createDocuments(itemList, {
+      cprSkipInstalledProcessing: true,
+    });
     const newItemIDs = newItems.map((i) => i.id);
 
     // Create the new install list: get the current install list (currentInstalledIDs),
@@ -617,11 +617,12 @@ const Container = function Container() {
     // Create the item from the object data.
     const newItems = await Item.createDocuments(
       ContainerUtils.getInstallTreeFlag(this),
+      { cprSkipInstalledProcessing: true },
     );
     for (const newItem of newItems) {
       newInstalledList.push(newItem.id);
       if (recursive && ContainerUtils.getInstallTreeFlag(newItem)) {
-        newItem.importInstalledToWorld(recursive);
+        await newItem.importInstalledToWorld(recursive);
       }
     }
 

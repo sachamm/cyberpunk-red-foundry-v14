@@ -24,46 +24,45 @@ import Container, { ContainerUtils } from "./mixins/cpr-container.js";
  */
 export default class CPRItem extends Item {
   /**
-   * We override this function to create container items that have items installed in them.
+   * Create items and rebuild installed-item references for newly created world items.
+   *
+   * Foundry's single-document creation delegates to this bulk method, as do
+   * compendium imports. Handling installed items here keeps both paths aligned.
    *
    * @override
-   * @param {Object} data - raw data from which the Item is created
-   * @param {Object} options options (from Foundry) to the Item creation process
+   * @param {Object[]} data - Raw data from which the Items are created
+   * @param {Object} operation - Options for the Item creation operation
+   * @param {Boolean} operation.cprSkipInstalledProcessing - Skip installed-item reconstruction handled by the caller
+   * @returns {Promise<CPRItem[]>} The created Items
    */
-  static async create(data, options) {
-    const item = await super.create(data, options);
-    // Early return if has no installed items.
-    if (!item.system.hasInstalled) return;
+  static async createDocuments(data = [], operation = {}) {
+    const items = await super.createDocuments(data, operation);
+    if (operation.cprSkipInstalledProcessing) return items;
 
-    // If this item is being imported into the world,
-    // and it has embedded installed item data in its flags.
-    if (!item.parent && ContainerUtils.getInstallTreeFlag(item)) {
-      // Convert the embedded data into other world items and update
-      // the original item's `system.installedItems.list` to point to them.
-      await item.importInstalledToWorld(true);
-    }
+    for (const item of items) {
+      // Embedded items have their installed data handled by their owning Actor.
+      // Compendium items keep their install tree serialized until world import.
+      if (item.parent || item.pack) continue;
 
-    // If a world item is being created and has installed items, lets
-    // duplicate those installed items and reinstall them so that each
-    // world item has unique items installed into it.
-    else if (
-      !item.parent &&
-      item.system.hasInstalled &&
-      !ContainerUtils.getInstallTreeFlag(item)
-    ) {
-      const installedItemList = (
-        await Promise.all(
-          item.system.installedItems.list.map(async (id) => game.items.get(id)),
-        )
-      ).filter(Boolean);
-      // Reset the new item's install list and used slots.
+      const installTree = ContainerUtils.getInstallTreeFlag(item);
+      if (installTree) {
+        await item.importInstalledToWorld(true);
+        continue;
+      }
+      if (!item.system.hasInstalled) continue;
+
+      // World item templates can reference existing installed world items. Make
+      // unique copies so each created parent owns its own installed-item tree.
+      const installedItemList = item.system.installedItems.list
+        .map((id) => game.items.get(id))
+        .filter(Boolean);
       await item.update({
         "system.installedItems": { list: [], usedSlots: 0 },
       });
-      item.installItems(installedItemList);
+      await item.installItems(installedItemList);
     }
 
-    return item;
+    return items;
   }
 
   /**
