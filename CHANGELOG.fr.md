@@ -50,6 +50,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
 - Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
+- Fix Import All Content breaking items with pre-installed upgrades
 - The "Damage Dealt To" damage-application card now shows the target's Token name instead of the Actor name
 - Ctrl-Clicking (or Cmd-Clicking) an item properly sends a card to chat
 - Dragging invalid items (e.g. Roles) to a container actor is handled gracefully instead of throwing dev errors
