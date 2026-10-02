@@ -5,19 +5,51 @@ This file provides guidance to Agents when working with code in this repository.
 ## What this is
 
 A [Foundry VTT](https://foundryvtt.com) **game system** implementing the Cyberpunk RED core rules. It runs
-inside Foundry's browser client. There is no standalone runtime code only executes inside a live Foundry world.
+inside Foundry's browser client; there is no standalone runtime.
 
 ## Rules
 
 - **Markdown**: after creating or editing any `.md` file (docs, specs, plans, skill `SKILL.md` files
   included), format and lint it before treating it as done — `npx prettier --write <file>` then
   `npx markdownlint --fix <file>`, hand-fixing anything left. See `.claude/skills/markdown/SKILL.md`.
-- **gulp/build system**: The gulp based build system is vendored using git submodule, never edit files
-  in `gulp/`. See the repos section for meore details of how to find the build system repo.
+- **gulp/build system**: The gulp-based build system is vendored using `git subtree`; never edit files
+  in `gulp/`. See the repos section for details on finding the build-system repository.
+
+## Engineering workflow
+
+Use this lifecycle for substantive changes. Routine, obvious edits do not need planning ceremony, but they still
+need appropriate verification and a final diff review.
+
+1. **Establish the contract**: Treat an issue as the desired outcome and acceptance criteria, not an infallible
+   implementation specification. Confirm the exact user-visible behavior, reproduction path, and boundaries.
+2. **Investigate before editing**: Find the components that own the behavior, their call and data paths, existing
+   abstractions, analogous implementations, tests, fixtures, schemas, configuration, and recent related changes.
+   Consult authoritative Foundry or dependency source when external behavior matters.
+3. **Challenge the approach**: Ask what facts could make the proposed solution wrong. Check the relevant Foundry
+   versions, persisted-data and migration concerns, lifecycle ordering, public APIs, and module consumers. Follow
+   repository evidence over an issue's suggested implementation, and explain material deviations.
+4. **Plan when needed**: For a nontrivial change, record a concise approach, affected components, important
+   assumptions, compatibility concerns, and verification strategy before editing.
+5. **Integrate, do not patch around**: Prefer established extension points and shared abstractions. Avoid duplicate
+   mechanisms, unnecessary monkey-patching, brittle implementation coupling, and fixes that only cover the
+   demonstrated example.
+6. **Verify mechanically**: Run the smallest sufficient combination of unit, browser, build, lint, formatting,
+   schema, migration, and targeted reproduction checks. Add regression coverage where practical, and never claim
+   a check that was not run.
+7. **Review and repair**: After verification, review the final diff as if it were someone else's merge request.
+   Look for incorrect assumptions, incomplete coverage, compatibility and lifecycle problems, weak error handling,
+   unnecessary complexity, accidental scope, stale documentation, and tests that prove only the happy path. Fix
+   real problems found and rerun the affected checks.
+8. **Report evidence**: Leave the repository reviewable and state what changed, why the approach fits the
+   architecture, what was verified, and what remains uncertain or requires human judgment. Distinguish facts
+   established by code, tests, or authoritative documentation from inference.
+
+Fix related problems only when they are necessary for the requested behavior to be correct. Track important
+unrelated findings separately rather than silently expanding the change.
 
 ## Repos
 
-All our repos are hosted on gitlab.com, to interact with them use either the GitLab MCP or the glab cli tool,
+All our repos are hosted on GitLab.com. To interact with them, use either the GitLab MCP or the `glab` CLI tool;
 never attempt to use fetch/webfetch/playwright to interact with GitLab.
 
 - **core/system** - This repo. Gitlab project: `cyberpunk-red-team/fvtt-cyberpunk-red-core`
@@ -25,16 +57,16 @@ never attempt to use fetch/webfetch/playwright to interact with GitLab.
   Gitlab project: `cyberpunk-red-team/fvtt-cyberpunk-red-dlc`
 - **build** - The shared git repo used by core/dlc, vendored via `git subtree`. Never edit files in
   `gulp/` directly. Gitlab project: `cyberpunk-red-team/cprc-build`
-- **cicd** - The shared cicd system used by core/dlc, no vendored, called using gitlab's remote workflows.
+- **cicd** - The shared CI/CD system used by core/dlc, not vendored, called using GitLab's remote workflows.
   Gitlab project: `cyberpunk-red-team/cprc-cicd`
 - **templates** - The shared issue/mr templates used by the project. Always read these before making a
   Work Item/Issue or Merge Request, selecting the best template for the work. Gitlab project: `cyberpunk-red-team/templates`
 
 ### Discovering local repos
 
-As this project is made up of the multiple repos described and the project is worked on by multiple developers
-we have a `foundryconfig.json` within this is the key `repos` with a subkey for each repo, if you need to discover
-a repo's local checkout location, read the json file and the keys under `repos`, eg: `repos.dlc`.
+Because this project is made up of multiple repositories and is worked on by multiple developers, local checkout
+locations are stored in `foundryconfig.json`. Read the keys under `repos`, such as `repos.dlc`, instead of assuming
+that repositories are adjacent.
 
 ## System Architecture
 
@@ -77,7 +109,7 @@ run by `MigrationRunner`. Any change to persisted actor/item data shape needs a 
 Source of truth is **per-entry YAML** (`src/packs/{core,other,internal}/…/*.yaml`). `npx gulp build` compiles
 them into LevelDB packs in `dist/`; `npm run extractPacks` goes the other way (compiled → YAML) and also
 regenerates Babele translation mappings. Edit the YAML, never the compiled packs. If you make changes to a YAML
-fragment you must stop Foundry to rebuild as founry locks the LevelDB when in use.
+fragment you must stop Foundry before rebuilding because Foundry locks the LevelDB while it is in use.
 
 ### Localization
 
