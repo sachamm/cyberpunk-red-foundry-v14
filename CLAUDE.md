@@ -15,37 +15,27 @@ inside Foundry's browser client; there is no standalone runtime.
 - **gulp/build system**: The gulp-based build system is vendored using `git subtree`; never edit files
   in `gulp/`. See the repos section for details on finding the build-system repository.
 
-## Engineering workflow
+## Project change checklist
 
-Use this lifecycle for substantive changes. Routine, obvious edits do not need planning ceremony, but they still
-need appropriate verification and a final diff review.
+Before marking a change ready for review:
 
-1. **Establish the contract**: Treat an issue as the desired outcome and acceptance criteria, not an infallible
-   implementation specification. Confirm the exact user-visible behavior, reproduction path, and boundaries.
-2. **Investigate before editing**: Find the components that own the behavior, their call and data paths, existing
-   abstractions, analogous implementations, tests, fixtures, schemas, configuration, and recent related changes.
-   Consult authoritative Foundry or dependency source when external behavior matters.
-3. **Challenge the approach**: Ask what facts could make the proposed solution wrong. Check the relevant Foundry
-   versions, persisted-data and migration concerns, lifecycle ordering, public APIs, and module consumers. Follow
-   repository evidence over an issue's suggested implementation, and explain material deviations.
-4. **Plan when needed**: For a nontrivial change, record a concise approach, affected components, important
-   assumptions, compatibility concerns, and verification strategy before editing.
-5. **Integrate, do not patch around**: Prefer established extension points and shared abstractions. Avoid duplicate
-   mechanisms, unnecessary monkey-patching, brittle implementation coupling, and fixes that only cover the
-   demonstrated example.
-6. **Verify mechanically**: Run the smallest sufficient combination of unit, browser, build, lint, formatting,
-   schema, migration, and targeted reproduction checks. Add regression coverage where practical, and never claim
-   a check that was not run.
-7. **Review and repair**: After verification, review the final diff as if it were someone else's merge request.
-   Look for incorrect assumptions, incomplete coverage, compatibility and lifecycle problems, weak error handling,
-   unnecessary complexity, accidental scope, stale documentation, and tests that prove only the happy path. Fix
-   real problems found and rerun the affected checks.
-8. **Report evidence**: Leave the repository reviewable and state what changed, why the approach fits the
-   architecture, what was verified, and what remains uncertain or requires human judgment. Distinguish facts
-   established by code, tests, or authoritative documentation from inference.
-
-Fix related problems only when they are necessary for the requested behavior to be correct. Track important
-unrelated findings separately rather than silently expanding the change.
+- Change the owning source: runtime code under `src/`, compendium content under `src/packs/`, and shared build code
+  in `cprc-build` rather than the vendored `gulp/` copy.
+- Follow the existing data-model, document, sheet, hook, and localization patterns. If an issue suggests a different
+  implementation, explain why the merge request follows the repository's established architecture instead.
+- Add coverage at the appropriate tier described below. Bug coverage should exercise the reported path and, where
+  practical, demonstrate the failure without the fix. If meaningful automation is not practical, identify the
+  remaining manual check in the merge request.
+- Run the checks relevant to the changed files: `npm run lint`, `npm run prettier`, and `npm run test:unit` for
+  JavaScript; `npm run test:playwright` for live Foundry behavior; `npm run stylelint` for CSS; and `npm run build`
+  for changes affecting packs, templates, styles, images, or other built output. Do not report checks that were not
+  run.
+- Keep persisted data changes synchronized across the DataModel, `template.json`, generated schemas, migrations,
+  and pack YAML as applicable. Review generated changes rather than accepting them blindly.
+- Add user-facing text to `src/lang/en.json`, and update `CHANGELOG.md` when the issue labels and release visibility
+  require it.
+- Inspect the final diff for unrelated edits, debugging artifacts, stale comments, and unintended generated files.
+  Use the current merge-request template and list the exact validation performed and anything left unverified.
 
 ## Repos
 
