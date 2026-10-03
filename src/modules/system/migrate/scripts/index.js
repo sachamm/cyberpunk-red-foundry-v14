@@ -21,3 +21,4 @@ export { default as IgnoredByBrowserLootBoxes } from "./043-ignored-by-browser.j
 export { default as SourceToSources } from "./044-source-to-sources.js";
 export { default as RelinkCyberwareIcons } from "./045-relink-cyberweapon-icons.js";
 export { default as RelinkDlcContent } from "./046-relink-dlc-content.js";
+export { default as UpdateRoleIcons } from "./047-update-role-icons.js";
