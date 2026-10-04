@@ -16,7 +16,7 @@
           <a class="toggle-situational-mod" data-action="toggleSituationalMod" data-mod-id="{{mod.id}}">
             <li class="situational-mod-item flexrow {{#if (cprObjectListContains ../rollData.mods "id" mod.id) }}mod-selected{{/if }}">
               <div class="situational-mod-name text-nowrap text-semi">
-                {{mod.source}} ({{cprGetChangeNameByKey false mod.category mod.key}}):
+                {{mod.source}} ({{cprGetChangeNameByKey ../actor mod.category mod.key}}):
               </div>
               <div class="situational-mod-value text-nowrap text-center">
                 {{cprEffectModMode mod.changeMode mod.value}}

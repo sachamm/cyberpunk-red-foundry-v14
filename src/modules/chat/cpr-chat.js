@@ -66,6 +66,20 @@ export default class CPRChat {
       cprRoll.criticalCard = false;
     }
 
+    let actor;
+    if (cprRoll.entityData !== undefined && cprRoll.entityData !== null) {
+      const actorId = cprRoll.entityData.actor;
+      const tokenId = cprRoll.entityData.token;
+      if (tokenId) {
+        actor = Object.keys(game.actors.tokens).includes(tokenId)
+          ? game.actors.tokens[tokenId]
+          : game.actors.find((a) => a.id === actorId);
+      } else {
+        [actor] = game.actors.filter((a) => a.id === actorId);
+      }
+    }
+    cprRoll.actor = actor;
+
     // Render Foundry's native dice (formula, total, tooltip) once, and inject it into the bespoke card
     // via `{{{diceHTML}}}`. Every roll card keeps its CPR chrome (title, mod breakdown, apply-damage,
     // crit flavor) but shows real dice — replacing the old per-die SVG image blocks. CPRTableRoll wraps
@@ -95,16 +109,6 @@ export default class CPRChat {
       }
 
       if (cprRoll.entityData !== undefined && cprRoll.entityData !== null) {
-        let actor;
-        const actorId = cprRoll.entityData.actor;
-        const tokenId = cprRoll.entityData.token;
-        if (tokenId) {
-          actor = Object.keys(game.actors.tokens).includes(tokenId)
-            ? game.actors.tokens[tokenId]
-            : game.actors.find((a) => a.id === actorId);
-        } else {
-          [actor] = game.actors.filter((a) => a.id === actorId);
-        }
         // Resolve a full speaker via getSpeaker so the message carries the
         // scene/token IDs, not just the actor. A synthetic token-actor
         // (`actor.isToken`) routes getSpeaker to its TokenDocument, filling in

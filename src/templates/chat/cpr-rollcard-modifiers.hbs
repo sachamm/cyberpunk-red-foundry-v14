@@ -3,7 +3,7 @@
        {{#each mods as |mod| }}
          {{localize mod.source }}
          {{#if mod.key}}
-           ({{cprGetChangeNameByKey false mod.category mod.key }})
+           ({{cprGetChangeNameByKey ../actor mod.category mod.key }})
          {{/if }}: {{numberFormat mod.value sign=true }}
          <br/>
        {{/each}}

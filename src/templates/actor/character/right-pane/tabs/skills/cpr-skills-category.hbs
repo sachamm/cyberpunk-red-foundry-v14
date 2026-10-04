@@ -73,7 +73,7 @@
             {{#if (cprGetSkillModInfo skill.name ../actor "modList" keepSituational=true) }}
               data-tooltip="
                 {{#each (cprGetSkillModInfo skill.name ../actor "modList" keepSituational=true) as |mod| }}
-                  {{mod.source }} ({{cprGetChangeNameByKey false mod.category mod.key }}): {{cprEffectModMode mod.changeMode mod.value }} {{~#if mod.isSituational }}*{{/if}}
+                  {{mod.source }} ({{cprGetChangeNameByKey ../actor mod.category mod.key }}): {{cprEffectModMode mod.changeMode mod.value }} {{~#if mod.isSituational }}*{{/if}}
                   {{#unless @last }}
                     <br/>
                   {{/unless}}

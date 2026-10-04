@@ -578,4 +578,155 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
+
+  /*
+   * Effect modifier names for non-core (custom) skills used to render as "???"
+   * in every UI that passed `false` as the document to cprGetChangeNameByKey:
+   * the character sheet's skill/role mod tooltips, the roll dialog's modifier
+   * lists, and the chat roll card. Those sites now pass the acting actor (or
+   * the owning item), so names resolve against world skills plus the actor's
+   * own skills. This test drives one custom skill through all of those surfaces.
+   */
+  test("a custom skill's name resolves in sheet tooltips and roll output", async ({
+    page: game,
+  }) => {
+    const pageErrors = [];
+    game.on("pageerror", (error) => pageErrors.push(error.message));
+
+    const skillName = uniqueName("skill");
+    let actorId;
+    let actorSheetId;
+
+    await test.step("create a world skill and give it to a character", async () => {
+      const skillId = await createItemViaUI(game, {
+        type: "skill",
+        name: skillName,
+      });
+      expect(skillId).toBeTruthy();
+
+      actorId = await createActorViaUI(game, {
+        type: "character",
+        name: uniqueName("character"),
+      });
+      actorSheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: actorId,
+      });
+      await dragItemToActorSheet(game, {
+        itemId: skillId,
+        sheetId: actorSheetId,
+        actorId,
+      });
+    });
+
+    await test.step("add a situational on-by-default modifier for the skill", async () => {
+      const actorSheet = game.locator(`#${actorSheetId}`);
+      await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
+      await actorSheet
+        .locator(".effects-tab.active .effect-control[data-action='create']")
+        .click();
+
+      const aeConfig = game.locator(".application.active-effect-config");
+      await expect(aeConfig).toBeVisible();
+      await aeConfig.locator('nav [data-tab="changes"]').click();
+      await aeConfig.locator('[data-action="addMod"]').click();
+
+      const row = aeConfig.locator(".changes-list > li").first();
+      await expect(row).toBeVisible();
+      const options = await row
+        .locator(".key-key option")
+        .evaluateAll((options) =>
+          options.map((option) => ({
+            value: option.value,
+            label: option.textContent,
+          })),
+        );
+      const skillKey = options.find((o) => o.label === skillName)?.value;
+      expect(skillKey).toMatch(/^bonuses\./);
+
+      await row.locator(".key-key").selectOption(skillKey);
+      await row.locator(".change-value input").fill("2");
+      await row.locator(".toggle-situational").check();
+      await row.locator(".toggle-on-by-default").check();
+      await game.waitForFunction((aid) => {
+        const effect = game.actors.get(aid).effects.contents[0];
+        return (
+          effect.changes[0].key.startsWith("bonuses.") &&
+          effect.changes[0].value === "2" &&
+          effect.getFlag(
+            game.system.id,
+            "changes.situational.0.isSituational",
+          ) &&
+          effect.getFlag(game.system.id, "changes.situational.0.onByDefault")
+        );
+      }, actorId);
+
+      await aeConfig.locator('[data-action="close"]').click();
+      await expect(aeConfig).toBeHidden();
+    });
+
+    const skillRow = () =>
+      game.locator(`#${actorSheetId}`).locator("li.item", {
+        has: game.locator(
+          `a.rollable[data-roll-type="skill"][data-roll-title="${skillName}"]`,
+        ),
+      });
+
+    await test.step("the skills tab tooltip shows the skill name, not ???", async () => {
+      const actorSheet = game.locator(`#${actorSheetId}`);
+      await actorSheet.locator('.navtabs-right [data-tab="skills"]').click();
+
+      const row = await skillRow();
+      await expect(row).toBeVisible();
+      const tooltip = await row
+        .locator(".skill-mod-value span")
+        .getAttribute("data-tooltip");
+      expect(tooltip).toContain(skillName);
+      expect(tooltip).not.toContain("???");
+    });
+
+    await test.step("the roll dialog lists the skill name in both mod sections", async () => {
+      const messagesBefore = await game.evaluate(() => game.messages.size);
+      await (await skillRow()).locator("a.rollable").click();
+
+      const dialog = game
+        .locator(".application")
+        .filter({ has: game.locator('input[name="luck"]') });
+      await expect(dialog).toBeVisible();
+
+      await expect(
+        dialog.locator(".situational-mod-name").filter({ hasText: skillName }),
+      ).toBeVisible();
+
+      const allModsTooltip = await dialog
+        .locator(".total-mods .dialog-item-input")
+        .getAttribute("data-tooltip");
+      expect(allModsTooltip).toContain(`(${skillName})`);
+
+      const confirm = dialog.locator(
+        'button.cpr-dialog-button[data-action="confirm"]',
+      );
+      await expect(async () => {
+        await confirm.click();
+        await expect(dialog).toHaveCount(0, { timeout: 2000 });
+      }).toPass({ timeout: 20000 });
+
+      await game.waitForFunction(
+        (before) => game.messages.size > before,
+        messagesBefore,
+        { timeout: 10000 },
+      );
+    });
+
+    await test.step("the chat roll card resolves the skill name", async () => {
+      const content = await game.evaluate(
+        () => game.messages.contents.at(-1).content,
+      );
+      expect(content).toContain(`(${skillName})`);
+      expect(content).not.toContain("???");
+    });
+
+    expect(pageErrors).toEqual([]);
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
 });
