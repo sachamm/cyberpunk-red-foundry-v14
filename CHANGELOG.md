@@ -58,7 +58,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Removed dead code around hiding the mook portrait
 - Fixed some items types throwing dev console errors when dragged to a mook sheet
 - Fixed duplicating Active Effects on character sheets
-- When editing modifiers in an Active Effect, skills in the world list will not appear. They must be owned.
+- Active Effect skill modifiers offer unowned world skills and the owner's skills on owned items, and resolve names for skills embedded only on an actor
 - Hitting enter when editing a custom Active Effect key no longer closes the sheet
 - Changing a mode for a skill modifier does not throw console errors
 

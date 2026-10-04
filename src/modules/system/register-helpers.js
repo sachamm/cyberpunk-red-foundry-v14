@@ -897,15 +897,23 @@ export default function registerHandlebarsHelpers() {
       return SystemUtils.Localize(CPR.activeEffectKeys[cat][key]);
     }
 
-    const sourceDoc = doc instanceof CPRActiveEffect ? doc.parent : doc;
+    let sourceDoc = doc instanceof CPRActiveEffect ? doc.parent : doc;
     if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
+    // The actor effects tab passes a simplified plain object, not the effect
+    // document - recover the real parent (actor or item) from its uuid.
+    if (!sourceDoc.documentName && sourceDoc.uuid) {
+      const effect = fromUuidSync(sourceDoc.uuid);
+      if (effect?.parent) sourceDoc = effect.parent;
+    }
     if (cat === "skill") {
       const skillMap = { ...CPR.activeEffectKeys.skill };
-      let skillList;
-      if (sourceDoc.isOwned) {
-        skillList = sourceDoc.parent.items.filter((i) => i.type === "skill");
-      } else {
-        skillList = game.items.filter((i) => i.type === "skill");
+      const skillList = [...game.items.filter((i) => i.type === "skill")];
+      if (sourceDoc.documentName === "Item" && sourceDoc.isOwned) {
+        skillList.push(
+          ...sourceDoc.parent.items.filter((i) => i.type === "skill"),
+        );
+      } else if (sourceDoc.documentName === "Actor") {
+        skillList.push(...sourceDoc.items.filter((i) => i.type === "skill"));
       }
       for (const skill of skillList) {
         skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] =

@@ -2,12 +2,18 @@ import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   activateGearTab,
-  createDocumentViaUI,
-  uniqueName,
   closeDocSheet,
+  closeOwnedItemSheet,
+  createActorViaUI,
+  createDocumentViaUI,
+  createItemViaUI,
+  deleteItemViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
   hoverGearRow,
+  openOwnedItemSheet,
+  reopenActorSheetViaUI,
+  uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
 async function cycleEquipState(page, { actorSheetId, actorId, itemId, state }) {
@@ -333,6 +339,243 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     ).toHaveCount(0);
 
     await aeConfig.locator('[data-action="close"]').click();
+    await closeDocSheet(game, { collection: "actors", id: actorId });
+  });
+
+  test("offers owned and unowned world skills as modifier keys without polluting the core skill list", async ({
+    page: game,
+  }) => {
+    const ownedSkillName = uniqueName("skill");
+    const worldSkillName = uniqueName("skill");
+    let actorId;
+    let actorSheetId;
+    let ownedSkillId;
+    let otherId;
+
+    await test.step("create two world skills and give one to a character", async () => {
+      ownedSkillId = await createItemViaUI(game, {
+        type: "skill",
+        name: ownedSkillName,
+      });
+      const worldSkillId = await createItemViaUI(game, {
+        type: "skill",
+        name: worldSkillName,
+      });
+      expect(ownedSkillId).toBeTruthy();
+      expect(worldSkillId).toBeTruthy();
+
+      actorId = await createActorViaUI(game, {
+        type: "character",
+        name: uniqueName("character"),
+      });
+      actorSheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: actorId,
+      });
+      await dragItemToActorSheet(game, {
+        itemId: ownedSkillId,
+        sheetId: actorSheetId,
+        actorId,
+      });
+    });
+
+    const readKeyOptions = (row) =>
+      row.locator(".key-key option").evaluateAll((options) =>
+        options.map((option) => ({
+          value: option.value,
+          label: option.textContent,
+        })),
+      );
+
+    await test.step("an actor effect lists owned and unowned world skills", async () => {
+      const actorSheet = game.locator(`#${actorSheetId}`);
+      await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
+      await actorSheet
+        .locator(".effects-tab.active .effect-control[data-action='create']")
+        .click();
+
+      const aeConfig = game.locator(".application.active-effect-config");
+      await expect(aeConfig).toBeVisible();
+      await aeConfig.locator('nav [data-tab="changes"]').click();
+      await aeConfig.locator('[data-action="addMod"]').click();
+
+      const row = aeConfig.locator(".changes-list > li").first();
+      await expect(row).toBeVisible();
+      const options = await readKeyOptions(row);
+      expect(options.some((o) => o.label === ownedSkillName)).toBe(true);
+      expect(options.some((o) => o.label === worldSkillName)).toBe(true);
+      expect(options.some((o) => o.label === "Archery")).toBe(true);
+    });
+
+    await test.step("selecting an unowned skill persists and renders its name", async () => {
+      const aeConfig = game.locator(".application.active-effect-config");
+      const row = aeConfig.locator(".changes-list > li").first();
+      const options = await readKeyOptions(row);
+      const worldSkillKey = options.find(
+        (o) => o.label === worldSkillName,
+      ).value;
+      expect(worldSkillKey).toMatch(/^bonuses\./);
+
+      const effectId = await game.evaluate(
+        (id) => game.actors.get(id).effects.contents[0].id,
+        actorId,
+      );
+      await row.locator(".key-key").selectOption(worldSkillKey);
+      await game.waitForFunction(
+        ({ id: aid, effectId: eid, key }) =>
+          game.actors.get(aid).effects.get(eid).changes[0].key === key,
+        { id: actorId, effectId, key: worldSkillKey },
+      );
+
+      await aeConfig.locator('[data-action="close"]').click();
+      await expect(aeConfig).toBeHidden();
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+      actorSheetId = await reopenActorSheetViaUI(game, actorId);
+
+      const freshSheet = game.locator(`#${actorSheetId}`);
+      await freshSheet.locator('.navtabs-right [data-tab="effects"]').click();
+      await expect(
+        freshSheet
+          .locator(".effects-tab li.effect .text-pill")
+          .filter({ hasText: worldSkillName }),
+      ).toBeVisible();
+    });
+
+    await test.step("an owned item effect lists the owner's and world skills", async () => {
+      const gearName = uniqueName("gear");
+      const gearId = await createItemViaUI(game, {
+        type: "gear",
+        name: gearName,
+      });
+      expect(gearId).toBeTruthy();
+      await closeDocSheet(game, { collection: "items", id: gearId });
+
+      await dragItemToActorSheet(game, {
+        itemId: gearId,
+        sheetId: actorSheetId,
+        actorId,
+      });
+      const ownedGearId = await game.evaluate(
+        ({ id: aid, name }) =>
+          game.actors.get(aid).items.find((item) => item.name === name).id,
+        { id: actorId, name: gearName },
+      );
+
+      const gear = await activateGearTab(game, actorSheetId);
+      const gearRow = await hoverGearRow(gear, ownedGearId);
+      await gearRow.locator(".item-edit").click();
+      const itemSheetId = await openOwnedItemSheet(game, {
+        actorId,
+        itemId: ownedGearId,
+      });
+
+      const itemSheet = game.locator(`#${itemSheetId}`);
+      await itemSheet
+        .locator('.navtabs-item [data-tab="item-effects"]')
+        .click();
+      await itemSheet.locator('.effect-control[data-action="create"]').click();
+
+      const aeConfig = game.locator(".application.active-effect-config");
+      await expect(aeConfig).toBeVisible();
+      await aeConfig.locator('nav [data-tab="changes"]').click();
+      await aeConfig.locator('[data-action="addMod"]').click();
+
+      const modRow = aeConfig.locator(".changes-list > li").first();
+      await expect(modRow).toBeVisible();
+      const options = await readKeyOptions(modRow);
+      expect(options.some((o) => o.label === ownedSkillName)).toBe(true);
+      expect(options.some((o) => o.label === worldSkillName)).toBe(true);
+
+      await aeConfig.locator('[data-action="close"]').click();
+      await expect(aeConfig).toBeHidden();
+      await closeOwnedItemSheet(game, { actorId, itemId: ownedGearId });
+    });
+
+    await test.step("deleting the world skill leaves only the owner's copy visible", async () => {
+      await deleteItemViaUI(game, ownedSkillId);
+
+      const stillOwned = await game.evaluate(
+        ({ id: aid, name }) =>
+          game.actors.get(aid).items.some((item) => item.name === name),
+        { id: actorId, name: ownedSkillName },
+      );
+      expect(stillOwned).toBe(true);
+
+      otherId = await createActorViaUI(game, {
+        type: "character",
+        name: uniqueName("character"),
+      });
+      const otherSheetId = await expectSheetRendered(game, {
+        collection: "actors",
+        id: otherId,
+      });
+      const otherSheet = game.locator(`#${otherSheetId}`);
+      await otherSheet.locator('.navtabs-right [data-tab="effects"]').click();
+      await otherSheet
+        .locator(".effects-tab.active .effect-control[data-action='create']")
+        .click();
+
+      const aeConfig = game.locator(".application.active-effect-config");
+      await expect(aeConfig).toBeVisible();
+      await aeConfig.locator('nav [data-tab="changes"]').click();
+      await aeConfig.locator('[data-action="addMod"]').click();
+
+      const modRow = aeConfig.locator(".changes-list > li").first();
+      await expect(modRow).toBeVisible();
+      const options = await readKeyOptions(modRow);
+      expect(options.some((o) => o.label === worldSkillName)).toBe(true);
+      expect(options.some((o) => o.label === ownedSkillName)).toBe(false);
+
+      await aeConfig.locator('[data-action="close"]').click();
+      await expect(aeConfig).toBeHidden();
+    });
+
+    await test.step("the owner's embedded-only skill is offered and its name resolves", async () => {
+      await closeDocSheet(game, { collection: "actors", id: otherId });
+      const actorSheet = game.locator(`#${actorSheetId}`);
+      await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
+      await actorSheet
+        .locator(".effects-tab.active .effect-control[data-action='create']")
+        .click();
+
+      const aeConfig = game.locator(".application.active-effect-config");
+      await expect(aeConfig).toBeVisible();
+      await aeConfig.locator('nav [data-tab="changes"]').click();
+      await aeConfig.locator('[data-action="addMod"]').click();
+
+      const row = aeConfig.locator(".changes-list > li").first();
+      await expect(row).toBeVisible();
+      const options = await readKeyOptions(row);
+      expect(options.some((o) => o.label === ownedSkillName)).toBe(true);
+      const ownedSkillKey = options.find(
+        (o) => o.label === ownedSkillName,
+      ).value;
+
+      const effectId = await game.evaluate(
+        (id) => game.actors.get(id).effects.contents.at(-1).id,
+        actorId,
+      );
+      await row.locator(".key-key").selectOption(ownedSkillKey);
+      await game.waitForFunction(
+        ({ id: aid, effectId: eid, key }) =>
+          game.actors.get(aid).effects.get(eid).changes[0].key === key,
+        { id: actorId, effectId, key: ownedSkillKey },
+      );
+
+      await aeConfig.locator('[data-action="close"]').click();
+      await expect(aeConfig).toBeHidden();
+      await closeDocSheet(game, { collection: "actors", id: actorId });
+      actorSheetId = await reopenActorSheetViaUI(game, actorId);
+
+      const freshSheet = game.locator(`#${actorSheetId}`);
+      await freshSheet.locator('.navtabs-right [data-tab="effects"]').click();
+      await expect(
+        freshSheet
+          .locator(".effects-tab li.effect .text-pill")
+          .filter({ hasText: ownedSkillName }),
+      ).toBeVisible();
+    });
+
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 });

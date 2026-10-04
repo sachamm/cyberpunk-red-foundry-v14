@@ -312,12 +312,13 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    */
   static getSkillOptionConfigs(effect) {
     const skillMap = { ...CPR.activeEffectKeys.skill };
-    let skillList = [];
-    if (effect.parent.documentName === "Item") {
-      skillList = game.items.filter((i) => i.type === "skill");
+    const skillList = [...game.items.filter((i) => i.type === "skill")];
+    if (effect.parent.documentName === "Item" && effect.parent.isOwned) {
+      skillList.push(
+        ...effect.parent.parent.items.filter((i) => i.type === "skill"),
+      );
     } else if (effect.parent.documentName === "Actor") {
-      const actor = effect.parent;
-      skillList = actor.items.filter((i) => i.type === "skill");
+      skillList.push(...effect.parent.items.filter((i) => i.type === "skill"));
     }
 
     for (const skill of skillList) {

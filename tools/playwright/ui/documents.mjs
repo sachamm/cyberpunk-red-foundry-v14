@@ -58,12 +58,11 @@ async function deleteDirectoryEntryViaUI(page, { documentTab, id }) {
   await expect(entry).toBeVisible();
   await clearNotifications(page);
   await entry.click({ button: "right" });
-  const menu = page.locator("#context-menu");
-  await expect(menu).toBeVisible();
-  await clickThroughOverlays(
-    page,
-    menu.locator('[data-action="delete"], .delete').first(),
-  );
+  const deleteItem = page.locator("#context-menu .context-item", {
+    hasText: "Delete",
+  });
+  await expect(deleteItem).toBeVisible();
+  await clickThroughOverlays(page, deleteItem);
   const dialog = page
     .locator(".application.dialog")
     .filter({ hasText: /Delete|Remove/ });
