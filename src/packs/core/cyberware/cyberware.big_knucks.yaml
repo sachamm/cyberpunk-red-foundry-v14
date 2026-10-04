@@ -69,6 +69,6 @@ system:
   unarmedAutomaticCalculation: true
   usage: toggled
   usesType: magazine
-  weaponSkill: Brawling
+  weaponSkill: Melee Weapon
   weaponType: medMelee
 type: cyberware

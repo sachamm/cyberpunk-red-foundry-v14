@@ -62,6 +62,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Skill modifier names from Active Effects now resolve in roll dialogs, chat roll cards, and character sheet tooltips instead of showing ???
 - Hitting enter when editing a custom Active Effect key no longer closes the sheet
 - Changing a mode for a skill modifier does not throw console errors
+- Big Knucks cyberware has been corrected to use Melee Weapon Skill
 
 ### Changes
 
