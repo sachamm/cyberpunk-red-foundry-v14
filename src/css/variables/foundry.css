@@ -32,7 +32,7 @@
   );
   --content-link-background: var(--cpr-background-content-link);
   --content-link-border-color: var(--cpr-background-chat-border);
-  --content-link-icon-color: var(--cpr-text-content-link-icon);
+  --content-link-icon-color: var(--cpr-text-foundry-hint);
   --content-link-text-color: var(--cpr-text-normal);
   --table-background-color: var(--cpr-background-box);
   --table-header-bg-color: var(--cpr-background-header);
