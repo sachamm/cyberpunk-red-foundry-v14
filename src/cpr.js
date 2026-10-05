@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 // Object imports
 import CPRActiveEffect from "./modules/cpr-active-effect.js";
 import CPRActiveEffectSheet from "./modules/cpr-active-effect-sheet.js";
@@ -156,6 +155,9 @@ Hooks.once("init", async () => {
   CONFIG.Actor.dataModels.container = ContainerDataModel;
   CONFIG.Actor.dataModels.demon = DemonDataModel;
   CONFIG.Actor.dataModels.mook = MookDataModel;
+
+  // Register a default CPR Turn Marker
+  CONFIG.Combat.fallbackTurnMarker = `systems/${game.system.id}/icons/hud/turn-marker.svg`;
 
   // Register Item data models.
   CONFIG.Item.dataModels.ammo = AmmoDataModel;
