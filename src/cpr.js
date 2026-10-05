@@ -157,7 +157,7 @@ Hooks.once("init", async () => {
   CONFIG.Actor.dataModels.mook = MookDataModel;
 
   // Register a default CPR Turn Marker
-  CONFIG.Combat.fallbackTurnMarker = `systems/${game.system.id}/icons/hud/turn-marker.svg`;
+  CONFIG.Combat.fallbackTurnMarker = `systems/${game.system.id}/icons/hud/turn-marker_default.svg`;
 
   // Register Item data models.
   CONFIG.Item.dataModels.ammo = AmmoDataModel;
