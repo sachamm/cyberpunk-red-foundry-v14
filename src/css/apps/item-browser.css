@@ -612,6 +612,7 @@
 .cpr-browser-compendia-group-toggle {
   flex: 0 0 auto;
   margin: 0;
+  font-size: var(--checkbox-size);
 }
 
 .cpr-browser-compendia-group-name {

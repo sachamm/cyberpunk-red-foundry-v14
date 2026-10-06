@@ -130,16 +130,6 @@ html[data-cpr-theme="light"] :is(.cpr-migration-dialog, #compendia-config) a {
   color: var(--cpr-color-red);
 }
 
-[data-cpr-theme="dark"] :is(.cpr-migration-dialog, #compendia-config) {
-  input[type="checkbox"]::before {
-    color: var(--cpr-color-light-grey);
-  }
-
-  input[type="checkbox"]:checked::before {
-    color: var(--cpr-color-faded-black);
-  }
-}
-
 /*
  * Prosemirror Overrides
  *

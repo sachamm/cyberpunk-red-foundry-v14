@@ -91,7 +91,7 @@
   input[type="radio"] {
     --checkbox-background-color: var(--cpr-checkbox-unchecked-color);
     --checkbox-checked-color: var(--cpr-background-toggle-checked);
-    --checkbox-checkmark-color: var(--cpr-text-normal);
+    --checkbox-checkmark-color: var(--cpr-color-white);
     --checkbox-disabled-color: var(--cpr-checkbox-disabled-color);
   }
 
