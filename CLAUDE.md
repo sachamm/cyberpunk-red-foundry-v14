@@ -26,13 +26,16 @@ inside Foundry's browser client. There is no standalone runtime code only execut
 1. Scope and ownership
    - [ ] `git diff HEAD --name-status` contains only files needed for this change; no local config, temporary files,
          debug artifacts, or unrelated formatting.
-   - [ ] No hand edits to vendored code or compiled output; any generated source changes are intentional and reviewed.
+   - [ ] No hand edits to vendored code or the CSS bundle and compiled packs under `dist/`; any generated source
+         changes are intentional and reviewed.
    - [ ] The change follows the boundaries in [System Architecture](#system-architecture) and reuses existing
          helpers. Any deliberate deviation is explained in the affected file and commit body.
 2. Data and user-facing changes
-   - [ ] Required source-of-truth updates are included, with a migration for existing-world data when needed.
-   - [ ] New user-facing text follows [Localization](#localization); changelog entries match the issue's labels and
-         whether the change affects released behavior.
+   - [ ] Affected data definitions are updated as described in
+         [Data models vs. behaviour](#data-models-vs-behaviour-two-parallel-mixin-systems), with a migration for
+         existing-world data when needed.
+   - [ ] New user-facing text follows [Localization](#localization).
+   - [ ] Changelog entries match the issue's labels and whether the change affects released behavior.
 3. Regression evidence
    - [ ] Bug tests exercise the reported reproduction path; feature tests prove the user-visible outcome, using the
          appropriate tier in [Testing](#testing).
