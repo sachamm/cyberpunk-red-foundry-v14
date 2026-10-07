@@ -5,7 +5,7 @@ This file provides guidance to Agents when working with code in this repository.
 ## What this is
 
 A [Foundry VTT](https://foundryvtt.com) **game system** implementing the Cyberpunk RED core rules. It runs
-inside Foundry's browser client; there is no standalone runtime.
+inside Foundry's browser client. There is no standalone runtime code only executes inside a live Foundry world.
 
 ## Rules
 
@@ -15,31 +15,37 @@ inside Foundry's browser client; there is no standalone runtime.
 - **gulp/build system**: The gulp-based build system is vendored using `git subtree`; never edit files
   in `gulp/`. See the repos section for details on finding the build-system repository.
 
-## Project change checklist
+## Commit structure
 
-Before marking a change ready for review:
+- One logical change per commit; keep each commit small enough to review independently. Do not combine unrelated
+  work or retain exploratory fixes and reversals.
+- Add regression tests in a separate sibling commit immediately before the behavior change they cover.
 
-- Change the owning source: runtime code under `src/`, compendium content under `src/packs/`, and shared build code
-  in `cprc-build` rather than the vendored `gulp/` copy.
-- Follow the existing data-model, document, sheet, hook, and localization patterns. If an issue suggests a different
-  implementation, explain why the merge request follows the repository's established architecture instead.
-- Add coverage at the appropriate tier described below. Bug coverage should exercise the reported path and, where
-  practical, demonstrate the failure without the fix. If meaningful automation is not practical, identify the
-  remaining manual check in the merge request.
-- Run the checks relevant to the changed files: `npm run lint`, `npm run prettier`, and `npm run test:unit` for
-  JavaScript; `npm run test:playwright` for live Foundry behavior; `npm run stylelint` for CSS; and `npm run build`
-  for changes affecting packs, templates, styles, images, or other built output. Do not report checks that were not
-  run.
-- Keep persisted data changes synchronized across the DataModel, `template.json`, generated schemas, migrations,
-  and pack YAML as applicable. Review generated changes rather than accepting them blindly.
-- Add user-facing text to `src/lang/en.json`, and update `CHANGELOG.md` when the issue labels and release visibility
-  require it.
-- Inspect the final diff for unrelated edits, debugging artifacts, stale comments, and unintended generated files.
-  Use the current merge-request template and list the exact validation performed and anything left unverified.
+## Pre-commit checklist
+
+1. Scope and ownership
+   - [ ] `git diff HEAD --name-status` contains only files needed for this change; no local config, temporary files,
+         debug artifacts, or unrelated formatting.
+   - [ ] No hand edits to vendored code or compiled output; any generated source changes are intentional and reviewed.
+   - [ ] The change follows the boundaries in [System Architecture](#system-architecture) and reuses existing
+         helpers. Any deliberate deviation is explained in the affected file and commit body.
+2. Data and user-facing changes
+   - [ ] Required source-of-truth updates are included, with a migration for existing-world data when needed.
+   - [ ] New user-facing text follows [Localization](#localization); changelog entries match the issue's labels and
+         whether the change affects released behavior.
+3. Regression evidence
+   - [ ] Bug tests exercise the reported reproduction path; feature tests prove the user-visible outcome, using the
+         appropriate tier in [Testing](#testing).
+   - [ ] If automated coverage is not practical, the commit body explains why and records the manual
+         screen/action/result checked, or explicitly states what remains unverified.
+4. Validation and final diff
+   - [ ] Relevant tests and language-specific formatting/lint checks pass; affected built output has been checked.
+   - [ ] The commit body records the checks actually run and any remaining validation gaps.
+   - [ ] The staged diff is one focused change, with comments and error messages matching the implemented behavior.
 
 ## Repos
 
-All our repos are hosted on GitLab.com. To interact with them, use either the GitLab MCP or the `glab` CLI tool;
+All our repos are hosted on gitlab.com, to interact with them use either the GitLab MCP or the glab cli tool,
 never attempt to use fetch/webfetch/playwright to interact with GitLab.
 
 - **core/system** - This repo. Gitlab project: `cyberpunk-red-team/fvtt-cyberpunk-red-core`
@@ -47,16 +53,16 @@ never attempt to use fetch/webfetch/playwright to interact with GitLab.
   Gitlab project: `cyberpunk-red-team/fvtt-cyberpunk-red-dlc`
 - **build** - The shared git repo used by core/dlc, vendored via `git subtree`. Never edit files in
   `gulp/` directly. Gitlab project: `cyberpunk-red-team/cprc-build`
-- **cicd** - The shared CI/CD system used by core/dlc, not vendored, called using GitLab's remote workflows.
+- **cicd** - The shared cicd system used by core/dlc, no vendored, called using gitlab's remote workflows.
   Gitlab project: `cyberpunk-red-team/cprc-cicd`
 - **templates** - The shared issue/mr templates used by the project. Always read these before making a
   Work Item/Issue or Merge Request, selecting the best template for the work. Gitlab project: `cyberpunk-red-team/templates`
 
 ### Discovering local repos
 
-Because this project is made up of multiple repositories and is worked on by multiple developers, local checkout
-locations are stored in `foundryconfig.json`. Read the keys under `repos`, such as `repos.dlc`, instead of assuming
-that repositories are adjacent.
+As this project is made up of the multiple repos described and the project is worked on by multiple developers
+we have a `foundryconfig.json` within this is the key `repos` with a subkey for each repo, if you need to discover
+a repo's local checkout location, read the json file and the keys under `repos`, eg: `repos.dlc`.
 
 ## System Architecture
 
@@ -99,7 +105,7 @@ run by `MigrationRunner`. Any change to persisted actor/item data shape needs a 
 Source of truth is **per-entry YAML** (`src/packs/{core,other,internal}/…/*.yaml`). `npx gulp build` compiles
 them into LevelDB packs in `dist/`; `npm run extractPacks` goes the other way (compiled → YAML) and also
 regenerates Babele translation mappings. Edit the YAML, never the compiled packs. If you make changes to a YAML
-fragment you must stop Foundry before rebuilding because Foundry locks the LevelDB while it is in use.
+fragment you must stop Foundry to rebuild as founry locks the LevelDB when in use.
 
 ### Localization
 
