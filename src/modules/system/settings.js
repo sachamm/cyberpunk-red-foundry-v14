@@ -43,6 +43,28 @@ const registerSystemSettings = () => {
     },
   });
 
+  game.settings.register(game.system.id, "tokenMarker", {
+    name: "CPR.settings.tokenMarker.title",
+    hint: "CPR.settings.tokenMarker.hint",
+    scope: "world",
+    config: true,
+    type: String,
+    choices: {
+      default: "CPR.settings.tokenMarker.default",
+      "no-graphic": "CPR.settings.tokenMarker.noGraphic",
+      "no-shade": "CPR.settings.tokenMarker.noShade",
+      "no-center": "CPR.settings.tokenMarker.noCenter",
+    },
+    default: "default",
+    onChange: (value) => {
+      LOGGER.log(`Changed system turn marker: ${value}`);
+      CONFIG.Combat.fallbackTurnMarker = `systems/${game.system.id}/icons/hud/turn-marker_${value}.svg`;
+      if (canvas.ready) {
+        canvas.draw();
+      }
+    },
+  });
+
   game.settings.register(game.system.id, "enablePauseAnimation", {
     name: "CPR.settings.enablePauseAnimation.name",
     hint: "CPR.settings.enablePauseAnimation.hint",

@@ -156,9 +156,6 @@ Hooks.once("init", async () => {
   CONFIG.Actor.dataModels.demon = DemonDataModel;
   CONFIG.Actor.dataModels.mook = MookDataModel;
 
-  // Register a default CPR Turn Marker
-  CONFIG.Combat.fallbackTurnMarker = `systems/${game.system.id}/icons/hud/turn-marker_default.svg`;
-
   // Register Item data models.
   CONFIG.Item.dataModels.ammo = AmmoDataModel;
   CONFIG.Item.dataModels.armor = ArmorDataModel;
@@ -305,6 +302,9 @@ Hooks.once("init", async () => {
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
   registerSystemSettings();
+
+  // Register a default CPR Turn Marker based on the user's selection after system settings have been loaded.
+  CONFIG.Combat.fallbackTurnMarker = `systems/${game.system.id}/icons/hud/turn-marker_${game.settings.get(game.system.id, "tokenMarker")}.svg`;
 
   // This MUST occur after templates, helpers, and system settings are loaded or registered.
   MigrationRunner.instantiate();
