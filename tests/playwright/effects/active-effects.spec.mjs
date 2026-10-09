@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   addModViaUI,
   activateGearTab,
@@ -21,6 +20,9 @@ import {
   reopenActorSheetViaUI,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
+import { installConsoleErrorHarness } from "./active-effects-helpers.mjs";
+
+installConsoleErrorHarness();
 
 async function cycleEquipState(page, { actorSheetId, actorId, itemId, state }) {
   const gear = await activateGearTab(page, actorSheetId);
@@ -43,17 +45,10 @@ async function resolveYesNo(dialog, action) {
   await dialog.locator(`button[data-action="${action}"]`).click();
 }
 
-test.beforeEach(async ({ page }) => {
-  await gotoReadyWorld(page);
-});
-
 test.describe("Active Effect sheet (ApplicationV2)", () => {
   test("adds a CPR modifier and uses the CPR sheet theme", async ({
     page: game,
   }) => {
-    const pageErrors = [];
-    game.on("pageerror", (error) => pageErrors.push(error.message));
-
     const name = uniqueName("gear");
     const itemId = await createDocumentViaUI(game, {
       documentTab: "items",
@@ -298,8 +293,6 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       { actorId, itemId: embeddedItemId },
     );
 
-    expect(pageErrors).toEqual([]);
-
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
@@ -543,9 +536,6 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
   test("a custom skill's name resolves in sheet tooltips and roll output", async ({
     page: game,
   }) => {
-    const pageErrors = [];
-    game.on("pageerror", (error) => pageErrors.push(error.message));
-
     const skillName = uniqueName("skill");
     let actorId;
     let actorSheetId;
@@ -679,15 +669,11 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       expect(content).not.toContain("???");
     });
 
-    expect(pageErrors).toEqual([]);
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 });
 
 test("item-owned effects on gear", async ({ page }) => {
-  const pageErrors = [];
-  page.on("pageerror", (error) => pageErrors.push(error.message));
-
   let itemId;
   let effectId;
   let itemSheet;
@@ -971,18 +957,10 @@ test("item-owned effects on gear", async ({ page }) => {
     await expect(rows).toHaveCount(0);
   });
 
-  expect(pageErrors).toEqual([]);
   await closeDocSheet(page, { collection: "items", id: itemId });
 });
 
 test("actor-owned effects on a character", async ({ page }) => {
-  const pageErrors = [];
-  page.on("pageerror", (error) => pageErrors.push(error.message));
-  const consoleErrors = [];
-  page.on("console", (msg) => {
-    if (msg.type() === "error") consoleErrors.push(msg.text());
-  });
-
   let actorId;
   let actorSheetId;
   let actorSheet;
@@ -1370,19 +1348,10 @@ test("actor-owned effects on a character", async ({ page }) => {
     expect(effectCount).toBe(0);
   });
 
-  expect(pageErrors).toEqual([]);
-  expect(consoleErrors).toEqual([]);
   await closeDocSheet(page, { collection: "actors", id: actorId });
 });
 
 test("usage-sensitive effects on gear and a drug", async ({ page }) => {
-  const pageErrors = [];
-  page.on("pageerror", (error) => pageErrors.push(error.message));
-  const consoleErrors = [];
-  page.on("console", (msg) => {
-    if (msg.type() === "error") consoleErrors.push(msg.text());
-  });
-
   let gearName;
   let gearId;
   let gearSheet;
@@ -1593,8 +1562,6 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
     await closeActiveEffectConfigViaUI(page, aeConfig);
   });
 
-  expect(pageErrors).toEqual([]);
-  expect(consoleErrors).toEqual([]);
   await closeDocSheet(page, { collection: "items", id: drugId });
   await closeDocSheet(page, { collection: "actors", id: actorId });
 });
