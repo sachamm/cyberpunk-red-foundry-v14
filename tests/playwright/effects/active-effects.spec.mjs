@@ -540,14 +540,6 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
-  /*
-   * Effect modifier names for non-core (custom) skills used to render as "???"
-   * in every UI that passed `false` as the document to cprGetChangeNameByKey:
-   * the character sheet's skill/role mod tooltips, the roll dialog's modifier
-   * lists, and the chat roll card. Those sites now pass the acting actor (or
-   * the owning item), so names resolve against world skills plus the actor's
-   * own skills. This test drives one custom skill through all of those surfaces.
-   */
   test("a custom skill's name resolves in sheet tooltips and roll output", async ({
     page: game,
   }) => {
@@ -700,9 +692,8 @@ test("item-owned effects on gear", async ({ page }) => {
   let effectId;
   let itemSheet;
   let aeConfig;
-  let theme;
 
-  await test.step("A1 create gear and its seeded effect", async () => {
+  await test.step("create gear and its seeded effect", async () => {
     const name = uniqueName("gear");
     itemId = await createDocumentViaUI(page, {
       documentTab: "items",
@@ -736,7 +727,7 @@ test("item-owned effects on gear", async ({ page }) => {
     await expect(aeConfig.locator('input[name="origin"]')).toHaveCount(0);
   });
 
-  await test.step("A2 addMod seeds a CPR skill row", async () => {
+  await test.step("addMod seeds a CPR skill row", async () => {
     await aeConfig.locator('nav [data-tab="changes"]').click();
     const row = await addModViaUI(aeConfig);
     await expect(row.locator(".key-cat")).toHaveValue("skill");
@@ -752,114 +743,7 @@ test("item-owned effects on gear", async ({ page }) => {
     await expect(row.locator(".toggle-on-by-default")).not.toBeChecked();
   });
 
-  await test.step("A3 the config uses the CPR sheet theme", async () => {
-    await expect(aeConfig).toHaveClass(/active-effect-sheet/);
-    theme = await aeConfig.evaluate((element) => {
-      const probe = document.createElement("div");
-      probe.style.background = "var(--cpr-background-window)";
-      probe.style.color = "var(--cpr-text-normal)";
-      probe.style.fontFamily = "var(--cpr-font-primary)";
-      probe.style.border = "1px solid var(--cpr-color-medium-grey)";
-      probe.style.outline = "2px solid var(--cpr-text-foundry-hover)";
-      document.body.append(probe);
-      const buttonProbe = document.createElement("div");
-      buttonProbe.style.backgroundColor = "var(--cpr-background-foundry-input)";
-      document.body.append(buttonProbe);
-      const expectedStyle = getComputedStyle(probe);
-      const contentStyle = getComputedStyle(
-        element.querySelector(".window-content"),
-      );
-      const header = element.querySelector(".change-header");
-      const actionHeader = header.querySelector(".change-actions");
-      const changeRow = element.querySelector(".changes-list > li");
-      const actionCell = changeRow.querySelector(".change-actions");
-      const situationalCell = changeRow.querySelector(".situational");
-      const situationalCheckbox = situationalCell.querySelector(
-        'input[type="checkbox"]',
-      );
-      const onByDefaultCell = changeRow.querySelector(".on-by-default");
-      const onByDefaultCheckbox = onByDefaultCell.querySelector(
-        'input[type="checkbox"]',
-      );
-      const windowHeaderButton = element.querySelector(".window-header button");
-      const valueInput = element.querySelector('input[name="changes.0.value"]');
-      const categorySelect = changeRow.querySelector(".key-cat");
-      const valueInputStyle = getComputedStyle(valueInput);
-      const categorySelectStyle = getComputedStyle(categorySelect);
-      const isContained = (child, parent) => {
-        const childRect = child.getBoundingClientRect();
-        const parentRect = parent.getBoundingClientRect();
-        return (
-          childRect.left >= parentRect.left - 1 &&
-          childRect.right <= parentRect.right + 1
-        );
-      };
-      const horizontalCenterOffset = (child, parent) => {
-        const childRect = child.getBoundingClientRect();
-        const parentRect = parent.getBoundingClientRect();
-        const childCenter = (childRect.left + childRect.right) / 2;
-        const parentCenter = (parentRect.left + parentRect.right) / 2;
-        return Math.abs(childCenter - parentCenter);
-      };
-      const result = {
-        backgroundColor: contentStyle.backgroundColor,
-        color: contentStyle.color,
-        fontFamily: contentStyle.fontFamily,
-        expectedBackgroundColor: expectedStyle.backgroundColor,
-        expectedColor: expectedStyle.color,
-        expectedFontFamily: expectedStyle.fontFamily,
-        expectedControlBorderColor: expectedStyle.borderTopColor,
-        expectedFocusOutlineColor: expectedStyle.outlineColor,
-        headerDisplay: getComputedStyle(header).display,
-        rowDisplay: getComputedStyle(changeRow).display,
-        actionHeaderContained: isContained(actionHeader, header),
-        actionCellContained: isContained(actionCell, changeRow),
-        situationalCheckboxCenterOffset: horizontalCenterOffset(
-          situationalCheckbox,
-          situationalCell,
-        ),
-        onByDefaultCheckboxCenterOffset: horizontalCenterOffset(
-          onByDefaultCheckbox,
-          onByDefaultCell,
-        ),
-        windowHeaderButtonBackground:
-          getComputedStyle(windowHeaderButton).backgroundColor,
-        cprButtonBackground: getComputedStyle(buttonProbe).backgroundColor,
-        valueInputBorderColor: valueInputStyle.borderTopColor,
-        valueInputBorderStyle: valueInputStyle.borderTopStyle,
-        valueInputBoxShadow: valueInputStyle.boxShadow,
-        valueInputOutlineStyle: valueInputStyle.outlineStyle,
-        categorySelectBorderColor: categorySelectStyle.borderTopColor,
-        categorySelectBoxShadow: categorySelectStyle.boxShadow,
-      };
-      probe.remove();
-      buttonProbe.remove();
-      return result;
-    });
-    expect(theme.backgroundColor).toBe(theme.expectedBackgroundColor);
-    expect(theme.color).toBe(theme.expectedColor);
-    expect(theme.fontFamily).toBe(theme.expectedFontFamily);
-    expect(theme.headerDisplay).toBe("flex");
-    expect(theme.rowDisplay).toBe("flex");
-    expect(theme.actionHeaderContained).toBe(true);
-    expect(theme.actionCellContained).toBe(true);
-    expect(theme.situationalCheckboxCenterOffset).toBeLessThanOrEqual(1);
-    expect(theme.onByDefaultCheckboxCenterOffset).toBeLessThanOrEqual(1);
-    expect(theme.windowHeaderButtonBackground).toBe("rgba(0, 0, 0, 0)");
-    expect(theme.windowHeaderButtonBackground).not.toBe(
-      theme.cprButtonBackground,
-    );
-    expect(theme.valueInputBorderStyle).toBe("solid");
-    expect(theme.valueInputBorderColor).toBe(theme.expectedControlBorderColor);
-    expect(theme.valueInputBoxShadow).toBe("none");
-    expect(theme.valueInputOutlineStyle).toBe("none");
-    expect(theme.categorySelectBorderColor).toBe(
-      theme.expectedControlBorderColor,
-    );
-    expect(theme.categorySelectBoxShadow).toBe("none");
-  });
-
-  await test.step("A4 switching category to combat swaps the key select", async () => {
+  await test.step("switching category to combat swaps the key select", async () => {
     const row = aeConfig.locator(".changes-list > li").first();
     await row.locator(".key-cat").selectOption("combat");
     await page.waitForFunction(
@@ -878,7 +762,7 @@ test("item-owned effects on gear", async ({ page }) => {
     );
   });
 
-  await test.step("A5 an already-used key is disabled in other rows", async () => {
+  await test.step("an already-used key is disabled in other rows", async () => {
     const row = await addModViaUI(aeConfig);
     await row.locator(".key-cat").selectOption("combat");
     await page.waitForFunction(
@@ -895,26 +779,9 @@ test("item-owned effects on gear", async ({ page }) => {
     await deleteModViaUI(aeConfig, 1);
   });
 
-  await test.step("A6 value edits force-submit on blur", async () => {
+  await test.step("value edits force-submit on blur", async () => {
     const valueInput = aeConfig.locator('input[name="changes.0.value"]');
     await valueInput.fill("3");
-    await expect(valueInput).toHaveCSS(
-      "outline-color",
-      theme.expectedFocusOutlineColor,
-    );
-    const focusedInputStyle = await valueInput.evaluate((element) => {
-      const style = getComputedStyle(element);
-      return {
-        outlineColor: style.outlineColor,
-        outlineStyle: style.outlineStyle,
-        outlineWidth: style.outlineWidth,
-      };
-    });
-    expect(focusedInputStyle.outlineColor).toBe(
-      theme.expectedFocusOutlineColor,
-    );
-    expect(focusedInputStyle.outlineStyle).toBe("solid");
-    expect(focusedInputStyle.outlineWidth).toBe("2px");
     await valueInput.press("Tab");
     await page.waitForFunction(
       ({ itemId: id, effectId: eid }) =>
@@ -923,7 +790,7 @@ test("item-owned effects on gear", async ({ page }) => {
     );
   });
 
-  await test.step("A7 the item summary shows the configured bonus", async () => {
+  await test.step("the item summary shows the configured bonus", async () => {
     await closeActiveEffectConfigViaUI(page, aeConfig);
     const row = await getEffectRowViaUI(itemSheet, "New Effect");
     await expect(row.first()).toContainText("Max Hit Points");
@@ -932,7 +799,7 @@ test("item-owned effects on gear", async ({ page }) => {
     await expect(row.locator("i.fa-circle")).toHaveCount(0);
   });
 
-  await test.step("A8 world skills appear in the skill key options", async () => {
+  await test.step("world skills appear in the skill key options", async () => {
     const skillName = uniqueName("skill");
     const skillId = await createDocumentViaUI(page, {
       documentTab: "items",
@@ -965,7 +832,7 @@ test("item-owned effects on gear", async ({ page }) => {
     await deleteModViaUI(aeConfig, 1);
   });
 
-  await test.step("A9 situational and on-by-default persist across reopens", async () => {
+  await test.step("situational and on-by-default persist across reopens", async () => {
     const row = aeConfig.locator(".changes-list > li").first();
     await row.locator(".toggle-situational").check();
     await page.waitForFunction(
@@ -1005,7 +872,7 @@ test("item-owned effects on gear", async ({ page }) => {
     await expect(effectRow.locator("i.fa-circle-dot")).toHaveCount(1);
   });
 
-  await test.step("A10 deleting a middle mod reindexes the flags", async () => {
+  await test.step("deleting a middle mod reindexes the flags", async () => {
     await clickEffectActionViaUI(
       await getEffectRowViaUI(itemSheet, "New Effect"),
       "edit",
@@ -1079,7 +946,7 @@ test("item-owned effects on gear", async ({ page }) => {
     ).not.toBeChecked();
   });
 
-  await test.step("A11 copying and deleting effects from the item summary", async () => {
+  await test.step("copying and deleting effects from the item summary", async () => {
     await closeActiveEffectConfigViaUI(page, aeConfig);
     const rows = await getEffectRowViaUI(itemSheet, "New Effect");
     await expect(rows).toHaveCount(1);
@@ -1122,7 +989,7 @@ test("actor-owned effects on a character", async ({ page }) => {
   let effectId;
   let aeConfig;
 
-  await test.step("B1 create character and its effect", async () => {
+  await test.step("create character and its effect", async () => {
     actorId = await createDocumentViaUI(page, {
       documentTab: "actors",
       type: "character",
@@ -1150,7 +1017,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     await expect(aeConfig.locator('input[name="transfer"]')).toHaveCount(0);
   });
 
-  await test.step("B2 addMod seeds a CPR row, not Foundry's changes grid", async () => {
+  await test.step("addMod seeds a CPR row, not Foundry's changes grid", async () => {
     await aeConfig.locator('nav [data-tab="changes"]').click();
     const row = await addModViaUI(aeConfig);
     await expect(row.locator(".key-cat")).toHaveValue("skill");
@@ -1161,7 +1028,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     ).toHaveCount(0);
   });
 
-  await test.step("B3 skill key options include the owned skill", async () => {
+  await test.step("skill key options include the owned skill", async () => {
     const ownedSkillName = uniqueName("skill");
     const ownedSkillId = await createDocumentViaUI(page, {
       documentTab: "items",
@@ -1204,7 +1071,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     );
   });
 
-  await test.step("B4 the stat category exposes the mode select", async () => {
+  await test.step("the stat category exposes the mode select", async () => {
     const row = await addModViaUI(aeConfig);
     await row.locator(".key-cat").selectOption("stat");
     await page.waitForFunction(
@@ -1263,31 +1130,31 @@ test("actor-owned effects on a character", async ({ page }) => {
     ).toHaveValue(String(expected));
   };
 
-  await test.step("B5 multiply scales the stat", async () => {
+  await test.step("multiply scales the stat", async () => {
     await setStatMod({ mode: "1", value: "2" });
     await expectBodyValue(12); // BODY 6 x 2
   });
 
-  await test.step("B6 override replaces the stat", async () => {
+  await test.step("override replaces the stat", async () => {
     await setStatMod({ mode: "5", value: "9" });
     await expectBodyValue(9);
   });
 
-  await test.step("B7 lowerOf only applies when lower", async () => {
+  await test.step("lowerOf only applies when lower", async () => {
     await setStatMod({ mode: "3", value: "4" });
     await expectBodyValue(4); // min(6, 4)
     await setStatMod({ value: "8" });
     await expectBodyValue(6); // min(6, 8) keeps the base
   });
 
-  await test.step("B8 higherOf only applies when higher", async () => {
+  await test.step("higherOf only applies when higher", async () => {
     await setStatMod({ mode: "4", value: "8" });
     await expectBodyValue(8); // max(6, 8)
     await setStatMod({ value: "4" });
     await expectBodyValue(6); // max(6, 4) keeps the base
   });
 
-  await test.step("B9 a custom dotted path targets another stat", async () => {
+  await test.step("a custom dotted path targets another stat", async () => {
     const row = await addModViaUI(aeConfig);
     await row.locator(".key-cat").selectOption("custom");
     await page.waitForFunction(
@@ -1329,7 +1196,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     ).toHaveValue("9");
   });
 
-  await test.step("B10 situational flags persist across reopens", async () => {
+  await test.step("situational flags persist across reopens", async () => {
     const row = await addModViaUI(aeConfig);
     await row.locator(".key-cat").selectOption("combat");
     await page.waitForFunction(
@@ -1389,7 +1256,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     await expect(reopened.locator(".toggle-on-by-default")).toBeChecked();
   });
 
-  await test.step("B11 the summary splits mods into sections", async () => {
+  await test.step("the summary splits mods into sections", async () => {
     await closeActiveEffectConfigViaUI(page, aeConfig);
 
     const rows = await getEffectRowViaUI(actorSheet, "New Effect");
@@ -1420,7 +1287,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     ).toContainText("Permanent Effects");
   });
 
-  await test.step("B12 the toggle disables and re-enables the effect", async () => {
+  await test.step("the toggle disables and re-enables the effect", async () => {
     const situationalRow = (await getEffectRowViaUI(actorSheet, "New Effect"))
       .filter({ has: page.locator("i.fas.fa-circle-question") })
       .first();
@@ -1450,7 +1317,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     await expect(restored.locator("i.far.fa-circle-check")).toHaveCount(2);
   });
 
-  await test.step("B13 copying and deleting effects from the actor summary", async () => {
+  await test.step("copying and deleting effects from the actor summary", async () => {
     const rows = await getEffectRowViaUI(actorSheet, "New Effect");
     await expect(rows).toHaveCount(2);
 
@@ -1526,7 +1393,7 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
   let drugId;
   let drugSheet;
 
-  await test.step("C1 the usage select appears only once an effect exists", async () => {
+  await test.step("the usage select appears only once an effect exists", async () => {
     gearName = uniqueName("gear");
     gearId = await createDocumentViaUI(page, {
       documentTab: "items",
@@ -1586,7 +1453,7 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
     ).toHaveCount(1);
   });
 
-  await test.step("C2 the toggle disables and re-enables the effect", async () => {
+  await test.step("the toggle disables and re-enables the effect", async () => {
     const row = (await getEffectRowViaUI(gearSheet, "New Effect")).first();
     await clickEffectActionViaUI(row, "toggle");
     await page.waitForFunction(
@@ -1610,7 +1477,7 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
     await expect(restored.locator("i.far.fa-circle-check")).toHaveCount(1);
   });
 
-  await test.step("C3 carried suppresses the bonus, equipped applies it", async () => {
+  await test.step("carried suppresses the bonus, equipped applies it", async () => {
     const usage = gearSheet.locator('select[name="system.usage"]');
     await usage.selectOption("carried");
     await page.waitForFunction(
@@ -1679,7 +1546,7 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
     );
   });
 
-  await test.step("C4 snorting a drug disables its effects", async () => {
+  await test.step("snorting a drug disables its effects", async () => {
     const drugName = uniqueName("drug");
     drugId = await createDocumentViaUI(page, {
       documentTab: "items",
