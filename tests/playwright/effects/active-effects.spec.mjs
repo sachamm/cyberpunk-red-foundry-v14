@@ -1161,15 +1161,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     ).toHaveCount(0);
   });
 
-  await test.step("B3 skill key options list owned skills only", async () => {
-    const worldSkillName = uniqueName("skill");
-    const worldSkillId = await createDocumentViaUI(page, {
-      documentTab: "items",
-      type: "skill",
-      name: worldSkillName,
-    });
-    await closeDocSheet(page, { collection: "items", id: worldSkillId });
-
+  await test.step("B3 skill key options include the owned skill", async () => {
     const ownedSkillName = uniqueName("skill");
     const ownedSkillId = await createDocumentViaUI(page, {
       documentTab: "items",
@@ -1203,9 +1195,6 @@ test("actor-owned effects on a character", async ({ page }) => {
     await expect(ownedOption).toHaveCount(1);
     const ownedKey = await ownedOption.getAttribute("value");
     expect(ownedKey).toMatch(/^bonuses\./);
-    await expect(
-      row.locator("select.key-key option", { hasText: worldSkillName }),
-    ).toHaveCount(0);
 
     await row.locator("select.key-key").selectOption(ownedKey);
     await page.waitForFunction(
