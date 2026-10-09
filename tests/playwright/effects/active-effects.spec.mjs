@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  addModViaUI,
   activateGearTab,
   clickEffectActionViaUI,
   closeActiveEffectConfigViaUI,
