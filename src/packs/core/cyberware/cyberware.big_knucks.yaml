@@ -40,6 +40,7 @@ system:
     static: 3
   ignoreArmorPercent: 50
   ignoreBelowSP: 0
+  ignoredByBrowser: false
   installLocation: clinic
   installedItems:
     allowed: false
@@ -62,11 +63,12 @@ system:
   revealed: true
   rof: 2
   size: 1
+  source: null
   sources:
     - book: Cyberpunk RED
       page: 364
   type: cyberArm
-  unarmedAutomaticCalculation: true
+  unarmedAutomaticCalculation: false
   usage: toggled
   usesType: magazine
   weaponSkill: Melee Weapon
