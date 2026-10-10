@@ -7,6 +7,7 @@
 ### Action Needed
 
 - The `/red` chat command has been removed. Use the `red` die modifier instead — e.g. `/r 1d10red`
+- `Big Knucks` now use `Melee Weapon` as their skill (not `Brawling`), we have intentionally not updated `Big Knucks` weapons on character/in world to avoid unexpected changes. GMs are advised to discuss the changes with players before manually correcting this error on actor sheets or replacing the item.
 
 #### Weapons & Ammo That Cannot Crit
 
@@ -62,6 +63,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Skill modifier names from Active Effects now resolve in roll dialogs, chat roll cards, and character sheet tooltips instead of showing ???
 - Hitting enter when editing a custom Active Effect key no longer closes the sheet
 - Changing a mode for a skill modifier does not throw console errors
+- The `Big Knucks` cyberware item has been corrected in the compendium to use `Melee Weapon` Skill
 
 ### Changes
 
