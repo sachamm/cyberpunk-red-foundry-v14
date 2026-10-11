@@ -59,8 +59,11 @@ export async function createCharacterViaUI(
 export async function setCharacterField(page, sheetId, selector, value) {
   const input = page.locator(`#${sheetId} ${selector}`);
   await expect(input).toBeVisible();
-  await input.fill(String(value));
-  await input.press("Tab");
+  await input.evaluate((element, nextValue) => {
+    element.value = nextValue;
+    element.dispatchEvent(new Event("input", { bubbles: true }));
+    element.dispatchEvent(new Event("change", { bubbles: true }));
+  }, String(value));
 }
 
 export async function closeAndReopenCharacterSheet(page, actorId) {
@@ -124,14 +127,17 @@ export async function closeLedgerWindow(page) {
   await expect(ledger).toBeHidden();
 }
 
-export async function addRoleToCharacter(
-  page,
-  { actorId, sheetId, name = uniqueName("role") },
-) {
+export async function createRoleItemViaUI(page, name = uniqueName("role")) {
   const itemId = await createItemViaUI(page, { type: "role", name });
   await closeDocSheet(page, { collection: "items", id: itemId });
-  await dragItemToActorSheet(page, { itemId, sheetId, actorId });
   return { itemId, name };
+}
+
+export async function dragRoleItemToCharacter(
+  page,
+  { actorId, sheetId, itemId },
+) {
+  await dragItemToActorSheet(page, { itemId, sheetId, actorId });
 }
 
 export async function chatMessageCount(page) {
