@@ -59,11 +59,8 @@ export async function createCharacterViaUI(
 export async function setCharacterField(page, sheetId, selector, value) {
   const input = page.locator(`#${sheetId} ${selector}`);
   await expect(input).toBeVisible();
-  await input.evaluate((element, nextValue) => {
-    element.value = nextValue;
-    element.dispatchEvent(new Event("input", { bubbles: true }));
-    element.dispatchEvent(new Event("change", { bubbles: true }));
-  }, String(value));
+  await input.fill(String(value));
+  await input.press("Tab");
 }
 
 export async function closeAndReopenCharacterSheet(page, actorId) {

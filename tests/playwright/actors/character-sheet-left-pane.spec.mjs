@@ -119,6 +119,7 @@ test.describe("Character sheet — left pane", () => {
         CHARACTER_FIELD.nameInput,
         newName,
       );
+      await waitForCharacterFields(page, actorId, { name: newName });
       await setCharacterField(
         page,
         sheetId,
@@ -126,7 +127,6 @@ test.describe("Character sheet — left pane", () => {
         newRole,
       );
       await waitForCharacterFields(page, actorId, {
-        name: newName,
         "system.roleInfo.activeRole": newRole,
       });
       sheetId = await closeAndReopenCharacterSheet(page, actorId);
@@ -160,6 +160,9 @@ test.describe("Character sheet — left pane", () => {
 
     await test.step("recalculating HP from a full current value raises both to the stat total", async () => {
       await setCharacterField(page, sheetId, CHARACTER_FIELD.hpValueInput, 40);
+      await waitForCharacterFields(page, actorId, {
+        "system.derivedStats.hp.value": 40,
+      });
       await setCharacterField(page, sheetId, statValueInput("will"), 8);
       await waitForCharacterFields(page, actorId, {
         "system.derivedStats.hp.value": 40,
@@ -181,6 +184,9 @@ test.describe("Character sheet — left pane", () => {
 
     await test.step("recalculating HP from a wounded current value raises only the max and marks hardened", async () => {
       await setCharacterField(page, sheetId, CHARACTER_FIELD.hpValueInput, 30);
+      await waitForCharacterFields(page, actorId, {
+        "system.derivedStats.hp.value": 30,
+      });
       await setCharacterField(page, sheetId, statValueInput("body"), 8);
       await waitForCharacterFields(page, actorId, {
         "system.derivedStats.hp.value": 30,
@@ -233,6 +239,9 @@ test.describe("Character sheet — left pane", () => {
 
     await test.step("HP current and max edits persist", async () => {
       await setCharacterField(page, sheetId, CHARACTER_FIELD.hpValueInput, 35);
+      await waitForCharacterFields(page, actorId, {
+        "system.derivedStats.hp.value": 35,
+      });
       await setCharacterField(page, sheetId, CHARACTER_FIELD.hpMaxInput, 60);
       await waitForCharacterFields(page, actorId, {
         "system.derivedStats.hp.value": 35,
@@ -264,8 +273,20 @@ test.describe("Character sheet — left pane", () => {
 
     await test.step("LUCK and EMP value/max pairs persist", async () => {
       await setCharacterField(page, sheetId, statValueInput("luck"), 3);
+      await waitForCharacterFields(page, actorId, {
+        "system.stats.luck.value": 3,
+      });
       await setCharacterField(page, sheetId, statMaxInput("luck"), 7);
+      await waitForCharacterFields(page, actorId, {
+        "system.stats.luck.value": 3,
+        "system.stats.luck.max": 7,
+      });
       await setCharacterField(page, sheetId, statValueInput("emp"), 4);
+      await waitForCharacterFields(page, actorId, {
+        "system.stats.luck.value": 3,
+        "system.stats.luck.max": 7,
+        "system.stats.emp.value": 4,
+      });
       await setCharacterField(page, sheetId, statMaxInput("emp"), 9);
       await waitForCharacterFields(page, actorId, {
         "system.stats.luck.value": 3,
