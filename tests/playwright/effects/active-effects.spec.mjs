@@ -1014,6 +1014,7 @@ test("actor-owned effects on a character", async ({ page }) => {
       name: ownedSkillName,
     });
     await closeDocSheet(page, { collection: "items", id: ownedSkillId });
+    await closeActiveEffectConfigViaUI(page, aeConfig);
     await dragItemToActorSheet(page, {
       itemId: ownedSkillId,
       sheetId: actorSheetId,
@@ -1025,7 +1026,6 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, name: ownedSkillName },
     );
 
-    await closeActiveEffectConfigViaUI(page, aeConfig);
     await clickEffectActionViaUI(
       await getEffectRowViaUI(actorSheet, "New Effect"),
       "edit",
