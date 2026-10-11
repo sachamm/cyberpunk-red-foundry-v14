@@ -1359,6 +1359,7 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
   let aeConfig;
   let actorId;
   let actorSheetId;
+  let embeddedGearId;
   let drugId;
   let drugSheet;
 
@@ -1475,7 +1476,7 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
       sheetId: actorSheetId,
       actorId,
     });
-    const embeddedGearId = await page.evaluate(
+    embeddedGearId = await page.evaluate(
       ({ actorId: aid, name }) =>
         game.actors.get(aid).items.find((item) => item.name === name).id,
       { actorId, name: gearName },
@@ -1506,6 +1507,100 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
       actorId,
       itemId: embeddedGearId,
       state: "equipped",
+    });
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).effects.contents[0].system
+          .isSuppressed === false && game.actors.get(aid).bonuses.maxHp === 2,
+      { actorId, itemId: embeddedGearId },
+    );
+  });
+
+  await test.step("usage carried enables the bonus when carried or equipped, not when owned", async () => {
+    const gear = await activateGearTab(page, actorSheetId);
+    const gearRow = await hoverGearRow(gear, embeddedGearId);
+    await gearRow.locator(".item-edit").click();
+    const itemSheetId = await openOwnedItemSheet(page, {
+      actorId,
+      itemId: embeddedGearId,
+    });
+
+    const ownedSheet = page.locator(`#${itemSheetId}`);
+    await ownedSheet.locator('.navtabs-item [data-tab="item-effects"]').click();
+    const usage = ownedSheet.locator('select[name="system.usage"]');
+    await usage.selectOption("carried");
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).system.usage === "carried",
+      { actorId, itemId: embeddedGearId },
+    );
+    await closeOwnedItemSheet(page, { actorId, itemId: embeddedGearId });
+
+    await cycleEquipState(page, {
+      actorSheetId,
+      actorId,
+      itemId: embeddedGearId,
+      state: "owned",
+    });
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).effects.contents[0].system
+          .isSuppressed === true && game.actors.get(aid).bonuses.maxHp === 0,
+      { actorId, itemId: embeddedGearId },
+    );
+
+    await cycleEquipState(page, {
+      actorSheetId,
+      actorId,
+      itemId: embeddedGearId,
+      state: "carried",
+    });
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).effects.contents[0].system
+          .isSuppressed === false && game.actors.get(aid).bonuses.maxHp === 2,
+      { actorId, itemId: embeddedGearId },
+    );
+
+    await cycleEquipState(page, {
+      actorSheetId,
+      actorId,
+      itemId: embeddedGearId,
+      state: "equipped",
+    });
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).effects.contents[0].system
+          .isSuppressed === false && game.actors.get(aid).bonuses.maxHp === 2,
+      { actorId, itemId: embeddedGearId },
+    );
+  });
+
+  await test.step("usage always applies the bonus regardless of equip state", async () => {
+    const gear = await activateGearTab(page, actorSheetId);
+    const gearRow = await hoverGearRow(gear, embeddedGearId);
+    await gearRow.locator(".item-edit").click();
+    const itemSheetId = await openOwnedItemSheet(page, {
+      actorId,
+      itemId: embeddedGearId,
+    });
+
+    const ownedSheet = page.locator(`#${itemSheetId}`);
+    await ownedSheet.locator('.navtabs-item [data-tab="item-effects"]').click();
+    const usage = ownedSheet.locator('select[name="system.usage"]');
+    await usage.selectOption("always");
+    await page.waitForFunction(
+      ({ actorId: aid, itemId: iid }) =>
+        game.actors.get(aid).items.get(iid).system.usage === "always",
+      { actorId, itemId: embeddedGearId },
+    );
+    await closeOwnedItemSheet(page, { actorId, itemId: embeddedGearId });
+
+    await cycleEquipState(page, {
+      actorSheetId,
+      actorId,
+      itemId: embeddedGearId,
+      state: "owned",
     });
     await page.waitForFunction(
       ({ actorId: aid, itemId: iid }) =>
