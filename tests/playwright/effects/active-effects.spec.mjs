@@ -1049,15 +1049,46 @@ test("actor-owned effects on a character", async ({ page }) => {
     );
   });
 
-  await test.step("the stat category exposes the mode select", async () => {
+  await test.step("the stat category exposes the mode select and clears situational flags", async () => {
     const row = await addModViaUI(aeConfig);
-    await row.locator(".key-cat").selectOption("stat");
+    await row.locator(".toggle-situational").check();
     await page.waitForFunction(
       ({ actorId: aid, effectId: eid }) =>
         game.actors
           .get(aid)
           .effects.get(eid)
-          .getFlag(game.system.id, "changes.cats.1") === "stat",
+          .getFlag(game.system.id, "changes.situational.1.isSituational") ===
+        true,
+      { actorId, effectId },
+    );
+    await expect(row.locator(".toggle-on-by-default")).toBeEnabled();
+    await row.locator(".toggle-on-by-default").check();
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors
+          .get(aid)
+          .effects.get(eid)
+          .getFlag(game.system.id, "changes.situational.1.onByDefault") ===
+        true,
+      { actorId, effectId },
+    );
+
+    await row.locator(".key-cat").selectOption("stat");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) => {
+        const effect = game.actors.get(aid).effects.get(eid);
+        return (
+          effect.getFlag(game.system.id, "changes.cats.1") === "stat" &&
+          effect.getFlag(
+            game.system.id,
+            "changes.situational.1.isSituational",
+          ) === false &&
+          effect.getFlag(
+            game.system.id,
+            "changes.situational.1.onByDefault",
+          ) === false
+        );
+      },
       { actorId, effectId },
     );
 
@@ -1085,6 +1116,19 @@ test("actor-owned effects on a character", async ({ page }) => {
         "system.stats.body.value",
       { actorId, effectId },
     );
+
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    await clickEffectActionViaUI(
+      await getEffectRowViaUI(actorSheet, "New Effect"),
+      "edit",
+    );
+    await expect(aeConfig).toBeVisible();
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    const reopened = aeConfig.locator('.changes-list > li[data-index="1"]');
+    await expect(reopened.locator(".toggle-situational")).toBeDisabled();
+    await expect(reopened.locator(".toggle-situational")).not.toBeChecked();
+    await expect(reopened.locator(".toggle-on-by-default")).toBeDisabled();
+    await expect(reopened.locator(".toggle-on-by-default")).not.toBeChecked();
   });
 
   const setStatMod = async ({ mode, value }) => {
