@@ -7,6 +7,8 @@ import {
   dragItemToActorSheet,
   expectSheetRendered,
   reopenActorSheetViaUI,
+  setItemField,
+  setItemSelected,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -180,6 +182,155 @@ export async function confirmRollDialog(dialog) {
     await confirm.click();
     await expect(dialog).toHaveCount(0, { timeout: 2000 });
   }).toPass({ timeout: 20000 });
+}
+
+// Skills tab selectors. Rows are located through their rollable name link; the
+// category blocks live in two columns (categories before "f" render left, the
+// rest right). A fresh character owns 63 seeded skills from the internal pack.
+export const SKILL_FIELD = {
+  rollable: (name) =>
+    `a.rollable[data-roll-type="skill"][data-roll-title="${name}"]`,
+  statPill: ".item-name .text-pill",
+  levelInput: 'input.number.skill-input[data-item-prop="system.level"]',
+  base: ".skill-base",
+  modValue: ".skill-mod-value span",
+  favoriteGlyph: 'a.item-action[data-action-type="favorite"]',
+  editGlyph: "a.item-edit.skill-custom",
+  deleteGlyph: 'a.item-action.skill-custom[data-action-type="delete"]',
+};
+
+// One skill row on the character sheet, located by its rollable name link.
+export function characterSkillRow(page, sheetId, name) {
+  return page.locator(`#${sheetId} li.item`, {
+    has: page.locator(SKILL_FIELD.rollable(name)),
+  });
+}
+
+// The collapsible block (header + rows) of one skill category in a column.
+export function skillCategorySection(page, sheetId, column, category) {
+  const list =
+    column === "left" ? "ol.left-pane-skills" : "ol.right-pane-skills";
+  return page.locator(`#${sheetId} ${list} .collapsible`, {
+    has: page.locator(`#skillTab-${category}`),
+  });
+}
+
+// The chevron header that collapses/expands a whole skill category.
+export function skillCategoryHeader(page, sheetId, category) {
+  return page.locator(`#${sheetId} .expand-button#skillTab-${category}`);
+}
+
+// The eye glyph that toggles a category between all skills and favorites only.
+export function skillCategoryEyeToggle(page, sheetId, category) {
+  return page.locator(`#${sheetId} #skillTab-${category}-showFavorites`);
+}
+
+// Create a world skill item via its settings sheet (stat/category/level/
+// difficulty), close it, and drag it onto the rendered character sheet; returns
+// the name and embedded id. Skills are not equippable, so the drop just embeds
+// the item.
+export async function addSkillToCharacter(
+  page,
+  {
+    actorId,
+    sheetId,
+    name = uniqueName("skill"),
+    stat,
+    category,
+    level,
+    difficulty,
+  },
+) {
+  const itemId = await createItemViaUI(page, { type: "skill", name });
+  const itemSheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+  if (stat) {
+    await setItemSelected(page, {
+      sheetId: itemSheetId,
+      itemId,
+      name: "system.stat",
+      value: stat,
+    });
+  }
+  if (category) {
+    await setItemSelected(page, {
+      sheetId: itemSheetId,
+      itemId,
+      name: "system.category",
+      value: category,
+    });
+  }
+  if (level !== undefined) {
+    await setItemField(page, {
+      sheetId: itemSheetId,
+      itemId,
+      name: "system.level",
+      path: "system.level",
+      value: level,
+    });
+  }
+  if (difficulty) {
+    await setItemSelected(page, {
+      sheetId: itemSheetId,
+      itemId,
+      name: "system.difficulty",
+      value: difficulty,
+    });
+  }
+  await closeDocSheet(page, { collection: "items", id: itemId });
+  await dragItemToActorSheet(page, { itemId, sheetId, actorId });
+  return { name, embeddedId: await ownedSkillEmbeddedId(page, actorId, name) };
+}
+
+// Read the embedded id of an owned skill by name (read-only supporting
+// evidence; null if the character does not own a skill with that name).
+export async function ownedSkillEmbeddedId(page, actorId, name) {
+  return page.evaluate(
+    ({ actorId, name }) =>
+      game.actors.get(actorId).itemTypes.skill.find((s) => s.name === name)
+        ?.id ?? null,
+    { actorId, name },
+  );
+}
+
+// Wait until an owned skill's persisted level equals the expected value (the
+// proof that an inline edit landed on the document).
+export async function waitForSkillLevel(page, actorId, name, level) {
+  await page.waitForFunction(
+    ({ actorId, name, level }) => {
+      const skill = game.actors
+        .get(actorId)
+        .itemTypes.skill.find((s) => s.name === name);
+      return skill && skill.system.level === level;
+    },
+    { actorId, name, level },
+    { timeout: 10000 },
+  );
+}
+
+// Wait until an owned skill is gone from the character after a confirmed delete.
+export async function waitForSkillRemoved(page, actorId, name) {
+  await page.waitForFunction(
+    ({ actorId, name }) =>
+      !game.actors.get(actorId).itemTypes.skill.some((s) => s.name === name),
+    { actorId, name },
+    { timeout: 10000 },
+  );
+}
+
+// The yes/no confirmation dialog used by destructive sheet actions (delete
+// skill). Returns the dialog locator; the spec owns every visibility/text/count
+// assertion. Dismiss it with resolveYesNo(dialog, "yes" | "no").
+export function yesNoDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator(".cpr-dialog-message"),
+  });
+}
+
+export async function resolveYesNo(dialog, action) {
+  await dialog.locator(`button[data-action="${action}"]`).click();
 }
 
 export function installConsoleErrorHarness() {
