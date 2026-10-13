@@ -548,14 +548,70 @@ test.describe("Character sheet — skills", () => {
     await closeDocSheet(page, { collection: "actors", id: actorId });
   });
 
-  test("a skill-modifying effect persists and is shown against its skill", async ({
+  test("skill-modifying effects persist, with permanent MODs visible and situational MODs in the tooltip", async ({
     page,
   }) => {
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
     let skill;
     let freshSheet = sheetId;
-    await test.step("a dragged INT awareness skill at level 0 shows an empty MOD column", async () => {
+
+    const createSkillModEffect = async ({ situational = false } = {}) => {
+      const sheet = page.locator(`#${freshSheet}`);
+      await sheet.locator('.navtabs-right [data-tab="effects"]').click();
+      const { aeConfig, effectId } = await createEffectViaUI(page, sheet, {
+        ownerType: "actor",
+        ownerId: actorId,
+      });
+
+      await aeConfig.locator('nav [data-tab="changes"]').click();
+      const row = await addModViaUI(aeConfig);
+      const skillKey = await row
+        .locator(".key-key option", { hasText: skill.name })
+        .getAttribute("value");
+
+      await row.locator(".key-key").selectOption(skillKey);
+      await row.locator(".change-value input").fill("2");
+      await row.locator(".change-value input").dispatchEvent("change");
+      if (situational) {
+        await row.locator(".toggle-situational").check();
+        await row.locator(".toggle-on-by-default").check();
+      }
+
+      await page.waitForFunction(
+        ({ aid, eid, key, isSituational }) => {
+          const effect = game.actors.get(aid)?.effects?.get(eid);
+          const change = effect?.changes?.[0];
+          if (!effect || !change) return false;
+          const hasSituationalFlag = Boolean(
+            effect.getFlag(
+              game.system.id,
+              "changes.situational.0.isSituational",
+            ),
+          );
+          const hasOnByDefaultFlag = Boolean(
+            effect.getFlag(game.system.id, "changes.situational.0.onByDefault"),
+          );
+          return (
+            change.key === key &&
+            change.value === "2" &&
+            hasSituationalFlag === isSituational &&
+            hasOnByDefaultFlag === isSituational
+          );
+        },
+        {
+          aid: actorId,
+          eid: effectId,
+          key: skillKey,
+          isSituational: situational,
+        },
+      );
+      await closeActiveEffectConfigViaUI(page, aeConfig);
+
+      return { skillKey };
+    };
+
+    await test.step("a dragged INT awareness skill at level 0 shows an 0 in the MOD column", async () => {
       skill = await addSkillToCharacter(page, {
         actorId,
         sheetId,
@@ -571,64 +627,55 @@ test.describe("Character sheet — skills", () => {
       await expect(row.locator(SKILL_FIELD.base)).toHaveText("6");
     });
 
-    await test.step("a +2 situational skill effect persists with the right key and value", async () => {
-      const sheet = page.locator(`#${freshSheet}`);
-      await sheet.locator('.navtabs-right [data-tab="effects"]').click();
-      const { aeConfig, effectId } = await createEffectViaUI(page, sheet, {
-        ownerType: "actor",
-        ownerId: actorId,
-      });
-
-      await aeConfig.locator('nav [data-tab="changes"]').click();
-      const row = await addModViaUI(aeConfig);
-      const skillKey = await row
-        .locator(".key-key option", { hasText: skill.name })
-        .getAttribute("value");
+    await test.step("a +2 permanent skill effect persists and shows in the MOD field", async () => {
+      const { skillKey } = await createSkillModEffect();
       expect(skillKey).toMatch(/^bonuses\./);
 
-      await row.locator(".key-key").selectOption(skillKey);
-      await row.locator(".change-value input").fill("2");
-      await row.locator(".toggle-situational").check();
-      await row.locator(".toggle-on-by-default").check();
-      await page.waitForFunction(
-        ({ aid, eid, key }) => {
-          const effect = game.actors.get(aid)?.effects?.get(eid);
-          const change = effect?.changes?.[0];
-          if (!effect || !change) return false;
-          return (
-            change.key === key &&
-            change.value === "2" &&
-            effect.getFlag(
-              game.system.id,
-              "changes.situational.0.isSituational",
-            ) &&
-            effect.getFlag(game.system.id, "changes.situational.0.onByDefault")
-          );
-        },
-        { aid: actorId, eid: effectId, key: skillKey },
-      );
-      await closeActiveEffectConfigViaUI(page, aeConfig);
-    });
-
-    await test.step("the skills tab shows the effect against the skill", async () => {
       await page
         .locator(`#${freshSheet}`)
         .locator('.navtabs-right [data-tab="skills"]')
         .click();
-      const skillRow = characterSkillRow(page, freshSheet, skill.name);
-      const tooltip = await skillRow
-        .locator(SKILL_FIELD.modValue)
-        .getAttribute("data-tooltip");
-      expect(tooltip).toContain(skill.name);
-    });
-
-    await test.step("the effect persists on a fresh render", async () => {
-      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
       const row = characterSkillRow(page, freshSheet, skill.name);
+      await expect(row.locator(SKILL_FIELD.modValue)).toHaveText("2");
+      await expect(row.locator(SKILL_FIELD.base)).toHaveText("8");
       const tooltip = await row
         .locator(SKILL_FIELD.modValue)
         .getAttribute("data-tooltip");
       expect(tooltip).toContain(skill.name);
+      expect(tooltip).toContain("+2");
+      expect(tooltip).not.toContain("*");
+    });
+
+    await test.step("a +2 situational skill effect persists with the right key and value", async () => {
+      const { skillKey } = await createSkillModEffect({ situational: true });
+      expect(skillKey).toMatch(/^bonuses\./);
+    });
+
+    await test.step("the skills tab shows the permanent MOD value and the situational tooltip marker", async () => {
+      await page
+        .locator(`#${freshSheet}`)
+        .locator('.navtabs-right [data-tab="skills"]')
+        .click();
+      const row = characterSkillRow(page, freshSheet, skill.name);
+      await expect(row.locator(SKILL_FIELD.modValue)).toHaveText("2");
+      await expect(row.locator(SKILL_FIELD.base)).toHaveText("8");
+      const tooltip = await row
+        .locator(SKILL_FIELD.modValue)
+        .getAttribute("data-tooltip");
+      expect(tooltip).toContain(skill.name);
+      expect(tooltip).toContain("+2*");
+    });
+
+    await test.step("both effects persist on a fresh render", async () => {
+      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      const row = characterSkillRow(page, freshSheet, skill.name);
+      await expect(row.locator(SKILL_FIELD.modValue)).toHaveText("2");
+      await expect(row.locator(SKILL_FIELD.base)).toHaveText("8");
+      const tooltip = await row
+        .locator(SKILL_FIELD.modValue)
+        .getAttribute("data-tooltip");
+      expect(tooltip).toContain(skill.name);
+      expect(tooltip).toContain("+2*");
     });
 
     await closeDocSheet(page, { collection: "actors", id: actorId });
