@@ -184,6 +184,37 @@ export async function confirmRollDialog(dialog) {
   }).toPass({ timeout: 20000 });
 }
 
+// The skill roll verify dialog, opened by a plain click on a skill's rollable
+// link. Returns the dialog locator; the spec owns every visibility/field/count
+// assertion and the dismissal.
+export function skillRollDialog(page) {
+  return page.locator(".application").filter({
+    has: page.locator('input[name="skillValue"]'),
+  });
+}
+
+// The chat message card for a posted roll, located by its message id.
+export function chatRollCard(page, messageId) {
+  return page.locator(`#chat .chat-message[data-message-id="${messageId}"]`);
+}
+
+// The numeric total shown on a roll card (.d10-number-div span.clickable).
+export async function rollCardTotal(card) {
+  const text = await card
+    .locator(".d10-number-div span.clickable")
+    .textContent();
+  return Number(text);
+}
+
+// Sum of the first dice term's results for a chat message (the raw dice total,
+// before stat/level mods are added on top).
+export async function rollDiceSum(page, messageId) {
+  return page.evaluate((id) => {
+    const term = game.messages.get(id).rolls?.[0]?.dice?.[0];
+    return term?.results.reduce((t, r) => t + (r.count ?? r.result), 0) ?? 0;
+  }, messageId);
+}
+
 // Skills tab selectors. Rows are located through their rollable name link; the
 // category blocks live in two columns (categories before "f" render left, the
 // rest right). A fresh character owns 63 seeded skills from the internal pack.

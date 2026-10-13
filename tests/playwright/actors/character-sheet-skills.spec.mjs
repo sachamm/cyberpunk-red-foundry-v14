@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
 import {
+  addModViaUI,
+  closeActiveEffectConfigViaUI,
   closeDocSheet,
+  createEffectViaUI,
   openSidebarTab,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
@@ -9,12 +12,19 @@ import {
   addSkillToCharacter,
   characterSkillRow,
   chatMessageCount,
+  chatRollCard,
   closeAndReopenCharacterSheet,
+  confirmRollDialog,
   createCharacterViaUI,
   installConsoleErrorHarness,
   resolveYesNo,
+  rollCardTotal,
+  rollDiceSum,
+  setStatRollLuck,
   skillCategoryHeader,
   skillCategorySection,
+  skillRollDialog,
+  waitForCharacterFields,
   waitForNewChatMessage,
   waitForSkillLevel,
   waitForSkillRemoved,
@@ -27,13 +37,6 @@ import {
  * are world items created via their settings sheet and dragged onto the actor.
  * The base column is level + active mods + stat value; all stats default to 6.
  */
-
-async function rollDiceSum(page, messageId) {
-  return page.evaluate((id) => {
-    const term = game.messages.get(id).rolls?.[0]?.dice?.[0];
-    return term?.results.reduce((t, r) => t + (r.count ?? r.result), 0) ?? 0;
-  }, messageId);
-}
 
 installConsoleErrorHarness();
 
@@ -156,15 +159,11 @@ test.describe("Character sheet — skills", () => {
         requireRoll: true,
       });
       await openSidebarTab(page, "chat");
-      const card = page.locator(
-        `#chat .chat-message[data-message-id="${messageId}"]`,
-      );
+      const card = chatRollCard(page, messageId);
       await expect(card).toBeVisible({ timeout: 10000 });
       await expect(card.locator(".rollcard-top")).toContainText(skill.name);
 
-      const total = Number(
-        await card.locator(".d10-number-div span.clickable").textContent(),
-      );
+      const total = await rollCardTotal(card);
       const diceSum = await rollDiceSum(page, messageId);
       expect(
         total,
@@ -191,10 +190,7 @@ test.describe("Character sheet — skills", () => {
       messageId = await waitForNewChatMessage(page, messagesBefore, {
         requireRoll: true,
       });
-      const dialog = page.locator(".application").filter({
-        has: page.locator('input[name="skillValue"]'),
-      });
-      await expect(dialog).toHaveCount(0);
+      await expect(skillRollDialog(page)).toHaveCount(0);
     });
 
     await test.step("the card is a skill roll attributed to the actor", async () => {
@@ -205,21 +201,15 @@ test.describe("Character sheet — skills", () => {
       expect(rollClass).toBe("CPRSkillRoll");
 
       await openSidebarTab(page, "chat");
-      const card = page.locator(
-        `#chat .chat-message[data-message-id="${messageId}"]`,
-      );
+      const card = chatRollCard(page, messageId);
       await expect(card).toBeVisible({ timeout: 10000 });
       await expect(card.locator(".rollcard-top")).toContainText("Handgun");
       await expect(card.locator(".rollcard-top")).toContainText("Skill");
     });
 
     await test.step("the total is the dice plus REF (level 0)", async () => {
-      const card = page.locator(
-        `#chat .chat-message[data-message-id="${messageId}"]`,
-      );
-      const total = Number(
-        await card.locator(".d10-number-div span.clickable").textContent(),
-      );
+      const card = chatRollCard(page, messageId);
+      const total = await rollCardTotal(card);
       const diceSum = await rollDiceSum(page, messageId);
       expect(total, `total ${total} should equal dice ${diceSum} + REF 6`).toBe(
         diceSum + 6,
@@ -241,9 +231,7 @@ test.describe("Character sheet — skills", () => {
       await expect(row).toHaveCount(1);
       await row.locator(SKILL_FIELD.rollable("Perception")).click();
 
-      dialog = page.locator(".application").filter({
-        has: page.locator('input[name="skillValue"]'),
-      });
+      dialog = skillRollDialog(page);
       await expect(dialog).toBeVisible({ timeout: 10000 });
       const statInput = dialog.locator('input[name="statValue"]');
       await expect(statInput).toBeDisabled();
@@ -260,6 +248,92 @@ test.describe("Character sheet — skills", () => {
         .click();
       await expect(dialog).toHaveCount(0, { timeout: 5000 });
       expect(await chatMessageCount(page)).toBe(messagesBefore);
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
+  test("confirming the verify dialog posts a skill roll, and LUCK is consumed on a second roll", async ({
+    page,
+  }) => {
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    const messagesBefore = await chatMessageCount(page);
+    const luckBefore = await page.evaluate(
+      (id) => game.actors.get(id).system.stats.luck.value,
+      actorId,
+    );
+    expect(luckBefore).toBeGreaterThanOrEqual(2);
+
+    let dialog;
+    await test.step("a plain click on Perception opens the verify dialog with LUCK at zero", async () => {
+      const row = characterSkillRow(page, sheetId, "Perception");
+      await expect(row).toHaveCount(1);
+      await row.locator(SKILL_FIELD.rollable("Perception")).click();
+
+      dialog = skillRollDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 10000 });
+      await expect(dialog.locator('input[name="luck"]')).toHaveValue("0");
+    });
+
+    let messageId;
+    await test.step("confirming without LUCK posts a dice + INT + level roll and leaves LUCK unchanged", async () => {
+      await confirmRollDialog(dialog);
+      messageId = await waitForNewChatMessage(page, messagesBefore, {
+        requireRoll: true,
+      });
+      const rollClass = await page.evaluate(
+        (id) => game.messages.get(id).rolls?.[0]?.constructor?.name ?? null,
+        messageId,
+      );
+      expect(rollClass).toBe("CPRSkillRoll");
+
+      await openSidebarTab(page, "chat");
+      const card = chatRollCard(page, messageId);
+      await expect(card).toBeVisible({ timeout: 10000 });
+      await expect(card.locator(".rollcard-top")).toContainText("Perception");
+
+      const total = await rollCardTotal(card);
+      const diceSum = await rollDiceSum(page, messageId);
+      expect(
+        total,
+        `total ${total} should equal dice ${diceSum} + INT 6 + level 2`,
+      ).toBe(diceSum + 8);
+      await waitForCharacterFields(page, actorId, {
+        "system.stats.luck.value": luckBefore,
+      });
+    });
+
+    await test.step("a second confirmed roll with LUCK 2 adds the LUCK and consumes it", async () => {
+      await openSidebarTab(page, "actors");
+      const messagesBeforeSecond = await chatMessageCount(page);
+      await characterSkillRow(page, sheetId, "Perception")
+        .locator(SKILL_FIELD.rollable("Perception"))
+        .click();
+
+      dialog = skillRollDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 10000 });
+      await setStatRollLuck(dialog, 2);
+      await confirmRollDialog(dialog);
+
+      const secondMessageId = await waitForNewChatMessage(
+        page,
+        messagesBeforeSecond,
+        { requireRoll: true },
+      );
+      await openSidebarTab(page, "chat");
+      const card = chatRollCard(page, secondMessageId);
+      await expect(card).toBeVisible({ timeout: 10000 });
+      await expect(card.locator(".rollcard-top")).toContainText("Perception");
+
+      const total = await rollCardTotal(card);
+      const diceSum = await rollDiceSum(page, secondMessageId);
+      expect(
+        total,
+        `total ${total} should equal dice ${diceSum} + INT 6 + level 2 + LUCK 2`,
+      ).toBe(diceSum + 10);
+      await waitForCharacterFields(page, actorId, {
+        "system.stats.luck.value": luckBefore - 2,
+      });
     });
 
     await closeDocSheet(page, { collection: "actors", id: actorId });
@@ -312,45 +386,94 @@ test.describe("Character sheet — skills", () => {
     await closeDocSheet(page, { collection: "actors", id: actorId });
   });
 
-  test("the category chevron collapses and expands, and the state persists", async ({
+  test("the category +/- glyph collapses/expands and keeps pinned skills visible", async ({
     page,
   }) => {
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    let skill;
+    let pinnedSkill;
+    let unpinnedSkill;
     let freshSheet = sheetId;
-    await test.step("a dragged body skill renders under its expanded header", async () => {
-      skill = await addSkillToCharacter(page, {
+    await test.step("two dragged body skills render under the expanded header", async () => {
+      pinnedSkill = await addSkillToCharacter(page, {
         actorId,
         sheetId,
         stat: "body",
         category: "bodySkills",
       });
-      const row = characterSkillRow(page, freshSheet, skill.name);
-      await expect(row).toHaveCount(1);
-      await expect(row).toBeVisible();
+      unpinnedSkill = await addSkillToCharacter(page, {
+        actorId,
+        sheetId,
+        stat: "body",
+        category: "bodySkills",
+      });
+
+      const header = skillCategoryHeader(page, freshSheet, "bodySkills");
+      await expect(header.locator("i.fa-minus.expand-icon")).toBeVisible();
+      await expect(header.locator("i.fa-plus.collapse-icon")).toBeHidden();
+      for (const skill of [pinnedSkill, unpinnedSkill]) {
+        const row = characterSkillRow(page, freshSheet, skill.name);
+        await expect(row).toHaveCount(1);
+        await expect(row).toBeVisible();
+      }
     });
 
-    await test.step("collapsing the category hides its rows", async () => {
-      await skillCategoryHeader(page, freshSheet, "bodySkills").click();
+    await test.step("pinning one skill leaves the other unpinned", async () => {
+      const pinnedRow = characterSkillRow(page, freshSheet, pinnedSkill.name);
+      await pinnedRow.locator(SKILL_FIELD.favoriteGlyph).click();
+      await expect(pinnedRow.locator("i.fa-thumbtack.pinned")).toHaveCount(1);
+      await expect(pinnedRow).toHaveClass(/favorite/);
+
+      const unpinnedRow = characterSkillRow(
+        page,
+        freshSheet,
+        unpinnedSkill.name,
+      );
+      await expect(unpinnedRow.locator("i.fa-thumbtack.unpinned")).toHaveCount(
+        1,
+      );
+    });
+
+    await test.step("collapsing hides the unpinned skill but keeps the pinned skill visible", async () => {
+      const header = skillCategoryHeader(page, freshSheet, "bodySkills");
+      await header.click();
+      await expect(header.locator("i.fa-plus.collapse-icon")).toBeVisible();
+      await expect(header.locator("i.fa-minus.expand-icon")).toBeHidden();
+
       await expect(
-        characterSkillRow(page, freshSheet, skill.name),
+        characterSkillRow(page, freshSheet, unpinnedSkill.name),
       ).toBeHidden();
-    });
-
-    await test.step("expanding brings the rows back", async () => {
-      await skillCategoryHeader(page, freshSheet, "bodySkills").click();
       await expect(
-        characterSkillRow(page, freshSheet, skill.name),
+        characterSkillRow(page, freshSheet, pinnedSkill.name),
       ).toBeVisible();
     });
 
-    await test.step("the collapsed state persists on a fresh render", async () => {
+    await test.step("expanding brings both skills back", async () => {
+      const header = skillCategoryHeader(page, freshSheet, "bodySkills");
+      await header.click();
+      await expect(header.locator("i.fa-minus.expand-icon")).toBeVisible();
+      await expect(header.locator("i.fa-plus.collapse-icon")).toBeHidden();
+
+      for (const skill of [pinnedSkill, unpinnedSkill]) {
+        await expect(
+          characterSkillRow(page, freshSheet, skill.name),
+        ).toBeVisible();
+      }
+    });
+
+    await test.step("the collapsed state and pinned exception persist on a fresh render", async () => {
       await skillCategoryHeader(page, freshSheet, "bodySkills").click();
       freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+
+      const header = skillCategoryHeader(page, freshSheet, "bodySkills");
+      await expect(header.locator("i.fa-plus.collapse-icon")).toBeVisible();
+      await expect(header.locator("i.fa-minus.expand-icon")).toBeHidden();
       await expect(
-        characterSkillRow(page, freshSheet, skill.name),
+        characterSkillRow(page, freshSheet, unpinnedSkill.name),
       ).toBeHidden();
+      await expect(
+        characterSkillRow(page, freshSheet, pinnedSkill.name),
+      ).toBeVisible();
     });
 
     await closeDocSheet(page, { collection: "actors", id: actorId });
@@ -451,26 +574,16 @@ test.describe("Character sheet — skills", () => {
     await test.step("a +2 situational skill effect persists with the right key and value", async () => {
       const sheet = page.locator(`#${freshSheet}`);
       await sheet.locator('.navtabs-right [data-tab="effects"]').click();
-      await sheet
-        .locator(".effects-tab.active .effect-control[data-action='create']")
-        .click();
+      const { aeConfig, effectId } = await createEffectViaUI(page, sheet, {
+        ownerType: "actor",
+        ownerId: actorId,
+      });
 
-      const aeConfig = page.locator(".application.active-effect-config");
-      await expect(aeConfig).toBeVisible();
       await aeConfig.locator('nav [data-tab="changes"]').click();
-      await aeConfig.locator('[data-action="addMod"]').click();
-
-      const row = aeConfig.locator(".changes-list > li").first();
-      await expect(row).toBeVisible();
-      const options = await row
-        .locator(".key-key option")
-        .evaluateAll((options) =>
-          options.map((option) => ({
-            value: option.value,
-            label: option.textContent,
-          })),
-        );
-      const skillKey = options.find((o) => o.label === skill.name)?.value;
+      const row = await addModViaUI(aeConfig);
+      const skillKey = await row
+        .locator(".key-key option", { hasText: skill.name })
+        .getAttribute("value");
       expect(skillKey).toMatch(/^bonuses\./);
 
       await row.locator(".key-key").selectOption(skillKey);
@@ -478,8 +591,8 @@ test.describe("Character sheet — skills", () => {
       await row.locator(".toggle-situational").check();
       await row.locator(".toggle-on-by-default").check();
       await page.waitForFunction(
-        ({ aid, key }) => {
-          const effect = game.actors.get(aid)?.effects?.contents?.[0];
+        ({ aid, eid, key }) => {
+          const effect = game.actors.get(aid)?.effects?.get(eid);
           const change = effect?.changes?.[0];
           if (!effect || !change) return false;
           return (
@@ -492,10 +605,9 @@ test.describe("Character sheet — skills", () => {
             effect.getFlag(game.system.id, "changes.situational.0.onByDefault")
           );
         },
-        { aid: actorId, key: skillKey },
+        { aid: actorId, eid: effectId, key: skillKey },
       );
-      await aeConfig.locator('[data-action="close"]').click();
-      await expect(aeConfig).toHaveCount(0);
+      await closeActiveEffectConfigViaUI(page, aeConfig);
     });
 
     await test.step("the skills tab shows the effect against the skill", async () => {
