@@ -24,6 +24,7 @@ import {
   skillCategoryHeader,
   skillCategorySection,
   skillRollDialog,
+  statValueInput,
   waitForCharacterFields,
   waitForNewChatMessage,
   waitForSkillLevel,
@@ -256,7 +257,7 @@ test.describe("Character sheet — skills", () => {
   test("confirming the verify dialog posts a skill roll, and LUCK is consumed on a second roll", async ({
     page,
   }) => {
-    const { actorId, sheetId } = await createCharacterViaUI(page);
+    let { actorId, sheetId } = await createCharacterViaUI(page);
     const messagesBefore = await chatMessageCount(page);
     const luckBefore = await page.evaluate(
       (id) => game.actors.get(id).system.stats.luck.value,
@@ -334,6 +335,20 @@ test.describe("Character sheet — skills", () => {
       await waitForCharacterFields(page, actorId, {
         "system.stats.luck.value": luckBefore - 2,
       });
+    });
+
+    await test.step("the sheet shows the spent LUCK, live and after reopening", async () => {
+      // The still-open sheet must reflect the spend in place; asserting only the
+      // actor value would let a stale input pass.
+      await expect(
+        page.locator(`#${sheetId} ${statValueInput("luck")}`),
+      ).toHaveValue(String(luckBefore - 2));
+
+      // A fresh render from the document must agree.
+      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      await expect(
+        page.locator(`#${sheetId} ${statValueInput("luck")}`),
+      ).toHaveValue(String(luckBefore - 2));
     });
 
     await closeDocSheet(page, { collection: "actors", id: actorId });
