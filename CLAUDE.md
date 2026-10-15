@@ -39,11 +39,12 @@ inside Foundry's browser client. There is no standalone runtime code only execut
 3. Regression evidence
    - [ ] Bug tests exercise the reported reproduction path; feature tests prove the user-visible outcome, using the
          appropriate tier in [Testing](#testing).
-   - [ ] If automated coverage is not practical, the commit body explains why and records the manual
+   - [ ] If automated coverage is not practical, the MR description explains why and records the manual
          screen/action/result checked, or explicitly states what remains unverified.
 4. Validation and final diff
    - [ ] Relevant tests and language-specific formatting/lint checks pass; affected built output has been checked.
-   - [ ] The commit body records the checks actually run and any remaining validation gaps.
+   - [ ] The MR's `Steps to Test` describes manual verification; `Additional Notes` records checks actually run and
+         any remaining validation gaps.
    - [ ] The staged diff is one focused change, with comments and error messages matching the implemented behavior.
 
 ## Repos
