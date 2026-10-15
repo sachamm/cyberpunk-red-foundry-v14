@@ -208,7 +208,7 @@ test.describe("Character sheet — left pane", () => {
       await assertHardenedOverlay(page, sheetId);
     });
 
-    await test.step("recalculating humanity from EMP max 5 sets 50/50", async () => {
+    await test.step("one humanity recalculation sets 50/50 and EMP 5/5", async () => {
       await setCharacterField(page, sheetId, statMaxInput("emp"), 5);
       await waitForCharacterFields(page, actorId, {
         "system.stats.emp.max": 5,
@@ -216,13 +216,14 @@ test.describe("Character sheet — left pane", () => {
       await page
         .locator(`#${sheetId} ${CHARACTER_FIELD.calculateHumanity}`)
         .click();
-      // emp.value is deliberately not asserted: setMaxHumanity() derives it
-      // from the stale pre-update humanity value (bug tracked separately).
       await waitForCharacterFields(page, actorId, {
         "system.derivedStats.humanity.value": 50,
         "system.derivedStats.humanity.max": 50,
         "system.stats.emp.max": 5,
       });
+      await expect
+        .soft(page.locator(`#${sheetId} ${statValueInput("emp")}`))
+        .toHaveValue("5");
       sheetId = await closeAndReopenCharacterSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.humanityValueInput}`))
@@ -233,7 +234,122 @@ test.describe("Character sheet — left pane", () => {
       await expect
         .soft(page.locator(`#${sheetId} ${statMaxInput("emp")}`))
         .toHaveValue("5");
+      await expect
+        .soft(page.locator(`#${sheetId} ${statValueInput("emp")}`))
+        .toHaveValue("5");
     });
+
+    await test.step("recalculating humanity again leaves Humanity and EMP unchanged", async () => {
+      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      await page
+        .locator(`#${sheetId} ${CHARACTER_FIELD.calculateHumanity}`)
+        .click();
+      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      for (const [selector, value] of [
+        [CHARACTER_FIELD.humanityValueInput, "50"],
+        [CHARACTER_FIELD.humanityMaxInput, "50"],
+        [statValueInput("emp"), "5"],
+        [statMaxInput("emp"), "5"],
+      ]) {
+        await expect
+          .soft(page.locator(`#${sheetId} ${selector}`))
+          .toHaveValue(value);
+      }
+    });
+
+    for (const { label, humanity, empMax, expectedHumanity, expectedEmp } of [
+      {
+        label: "depleted Humanity below the new maximum",
+        humanity: 37,
+        empMax: 5,
+        expectedHumanity: 37,
+        expectedEmp: 3,
+      },
+      {
+        label: "depleted Humanity above the new maximum",
+        humanity: 59,
+        empMax: 4,
+        expectedHumanity: 40,
+        expectedEmp: 4,
+      },
+      {
+        label: "raising the maximum without healing",
+        humanity: 60,
+        empMax: 7,
+        expectedHumanity: 60,
+        expectedEmp: 6,
+      },
+      {
+        label: "an unchanged maximum with depleted Humanity",
+        humanity: 37,
+        empMax: 6,
+        expectedHumanity: 37,
+        expectedEmp: 3,
+      },
+      {
+        label: "zero Humanity",
+        humanity: 0,
+        empMax: 5,
+        expectedHumanity: 0,
+        expectedEmp: 0,
+      },
+      {
+        label: "negative Humanity",
+        humanity: -1,
+        empMax: 5,
+        expectedHumanity: -1,
+        expectedEmp: -1,
+      },
+      {
+        label: "lowering the maximum to zero",
+        humanity: 60,
+        empMax: 0,
+        expectedHumanity: 0,
+        expectedEmp: 0,
+      },
+    ]) {
+      await test.step(`humanity recalculation handles ${label}`, async () => {
+        sheetId = await closeAndReopenCharacterSheet(page, actorId);
+        for (const [selector, path, value] of [
+          [
+            CHARACTER_FIELD.humanityMaxInput,
+            "system.derivedStats.humanity.max",
+            60,
+          ],
+          [
+            CHARACTER_FIELD.humanityValueInput,
+            "system.derivedStats.humanity.value",
+            humanity,
+          ],
+          [statValueInput("emp"), "system.stats.emp.value", 6],
+          [statMaxInput("emp"), "system.stats.emp.max", empMax],
+        ]) {
+          await setCharacterField(page, sheetId, selector, value);
+          await waitForCharacterFields(page, actorId, { [path]: value });
+        }
+        await page
+          .locator(`#${sheetId} ${CHARACTER_FIELD.calculateHumanity}`)
+          .click();
+        await waitForCharacterFields(page, actorId, {
+          "system.derivedStats.humanity.max": empMax * 10,
+          "system.derivedStats.humanity.value": expectedHumanity,
+        });
+        await expect
+          .soft(page.locator(`#${sheetId} ${statValueInput("emp")}`))
+          .toHaveValue(String(expectedEmp));
+        sheetId = await closeAndReopenCharacterSheet(page, actorId);
+        for (const [selector, value] of [
+          [CHARACTER_FIELD.humanityValueInput, expectedHumanity],
+          [CHARACTER_FIELD.humanityMaxInput, empMax * 10],
+          [statValueInput("emp"), expectedEmp],
+          [statMaxInput("emp"), empMax],
+        ]) {
+          await expect
+            .soft(page.locator(`#${sheetId} ${selector}`))
+            .toHaveValue(String(value));
+        }
+      });
+    }
 
     await test.step("HP current and max edits persist", async () => {
       await setCharacterField(page, sheetId, CHARACTER_FIELD.hpValueInput, 35);
