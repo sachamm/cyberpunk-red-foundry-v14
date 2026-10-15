@@ -1888,16 +1888,17 @@ export default class CPRActor extends Actor {
   async setMaxHumanity() {
     const maxHumanity = this._calcMaxHumanity();
     const { humanity } = this.system.derivedStats;
+    const empValue = Math.floor(Math.min(humanity.value, maxHumanity) / 10);
     if (humanity.max === humanity.value && maxHumanity < humanity.max) {
       await this.update({
         "system.derivedStats.humanity.max": maxHumanity,
         "system.derivedStats.humanity.value": maxHumanity,
-        "system.stats.emp.value": Math.floor(humanity.value / 10),
+        "system.stats.emp.value": empValue,
       });
     } else {
       await this.update({
         "system.derivedStats.humanity.max": maxHumanity,
-        "system.stats.emp.value": Math.floor(humanity.value / 10),
+        "system.stats.emp.value": empValue,
       });
     }
   }
