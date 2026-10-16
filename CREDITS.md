@@ -292,7 +292,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/compendium/gear/drum_syntheziser.svg` remixed from [Piter Kidanchuk](https://www.shutterstock.com/g/Piter+Kidanchuk) via [Shutterstock](https://www.shutterstock.com)
 - `src/icons/compendium/gear/duct_tape.svg` by [Adhesive Tape](https://www.svgrepo.com/svg/46986/adhesive-tape)
 - `src/icons/compendium/gear/electric_guitar.svg` remixed from [Electric Guitar](https://www.svgrepo.com/svg/1816/triangular-guitar-silhouette)
-- `src/icons/compendium/gear/flashlight.svg` remixed from []()
+- `src/icons/compendium/gear/flashlight.svg` remixed from [flashlight](https://thenounproject.com/icon/flashlight-7434008/)
 - `src/icons/compendium/gear/foodstick.svg` remixed from [Food Pet Shop](https://www.svgrepo.com/svg/256438/food-pet-shop)
 - `src/icons/compendium/gear/glow_paint.svg` remixed from [Spray](https://game-icons.net/1x1/lorc/spray.html)
 - `src/icons/compendium/gear/glowstick.svg` by [Damion](https://thenounproject.com/term/glow-stick/16239/)
