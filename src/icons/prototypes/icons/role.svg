@@ -4,7 +4,7 @@
    viewBox="0 0 512 512"
    version="1.1"
    id="svg2"
-   sodipodi:docname="roll-template.svg"
+   sodipodi:docname="role.svg"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -89,9 +89,10 @@
        sodipodi:nodetypes="ssssssssssssssccccc" />
     <path
        id="path12"
-       style="display:none;fill:#3a3f5e;fill-rule:evenodd;stroke-width:4.04788"
-       d="m 96,225.56923 h 384 v 208 H 96 Z"
+       style="display:none;fill:#3a3f5e;fill-rule:evenodd;stroke-width:2.97916"
+       d="m 152,225.56923 h 208 v 208 H 152 Z"
        sodipodi:nodetypes="ccccc"
-       inkscape:label="Height: 208" />
+       inkscape:label="Height: 208"
+       sodipodi:insensitive="true" />
   </g>
 </svg>
