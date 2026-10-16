@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  activateGearTab,
   closeDocSheet,
   createActorViaUI,
   createItemViaUI,
@@ -368,8 +369,12 @@ export function installConsoleErrorHarness() {
   test.beforeEach(async ({ page }) => {
     page.consoleErrors = [];
     page.expectedConsoleErrors = [];
+    // Warnings are captured but never fail a test: Foundry emits routine
+    // deprecation warnings, so specs that care opt in by polling for exact text.
+    page.consoleWarnings = [];
     page.on("console", (msg) => {
       if (msg.type() === "error") page.consoleErrors.push(msg.text());
+      else if (msg.type() === "warning") page.consoleWarnings.push(msg.text());
     });
     page.on("pageerror", (err) => {
       page.consoleErrors.push(`uncaught exception: ${err.message}`);
@@ -388,4 +393,80 @@ export function installConsoleErrorHarness() {
       `console errors during test:\n${unexpected.join("\n")}`,
     ).toEqual([]);
   });
+}
+
+/**
+ * Locator for a single gear row on a character sheet by its owned item id.
+ */
+export function gearRow(page, sheetId, itemId) {
+  return page.locator(`#${sheetId} li.item[data-item-id="${itemId}"]`);
+}
+
+/**
+ * Locator for a gear category's header span (the clickable toggle that
+ * collapses/expands the category). `type` is an inventory category key such as
+ * "weapon", "drug", "gear".
+ */
+export function gearCategoryHeader(page, sheetId, type) {
+  return page.locator(`#${sheetId} .expand-button#gearTab-${type}`);
+}
+
+/**
+ * Open the Gear tab of a character sheet and return its active content wrapper.
+ */
+export async function openGearTab(page, sheetId) {
+  return activateGearTab(page, sheetId);
+}
+
+/**
+ * Locator for the icon inside a gear row's equip glyph showing its current
+ * state: "owned" (circle-notch), "carried" (suitcase), or "equipped" (hand).
+ */
+export function equipStateIcon(row, state) {
+  const icons = {
+    owned: "i.fa-circle-notch",
+    carried: "i.fa-suitcase",
+    equipped: "i.fa-hand",
+  };
+  return row.locator(`a.equip ${icons[state]}`);
+}
+
+/**
+ * Locator for the manage-upgrades (select installable items) dialog.
+ */
+export function manageUpgradesDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator('input[name="selectedItems"]'),
+  });
+}
+
+/**
+ * Install an owned upgrade into a container item through the manage-upgrades
+ * dialog on the parent's gear row: open it, check the upgrade's checkbox, and
+ * confirm. Waits until the parent's installed list contains the upgrade.
+ */
+export async function installUpgradeViaUI(
+  page,
+  { sheetId, actorId, itemId, upgradeId },
+) {
+  const row = gearRow(page, sheetId, itemId);
+  await row.locator('a[data-action-type="manage-upgrades"]').click();
+  const dialog = manageUpgradesDialog(page);
+  await expect(dialog).toBeVisible({ timeout: 5000 });
+  await dialog
+    .locator(`input[name="selectedItems"][value="${upgradeId}"]`)
+    .check();
+  await dialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+  await expect(dialog).toHaveCount(0, { timeout: 5000 });
+  await page.waitForFunction(
+    ({ actorId, itemId, upgradeId }) =>
+      game.actors
+        .get(actorId)
+        .items.get(itemId)
+        .system.installedItems.list.includes(upgradeId),
+    { actorId, itemId, upgradeId },
+    { timeout: 10000 },
+  );
 }
