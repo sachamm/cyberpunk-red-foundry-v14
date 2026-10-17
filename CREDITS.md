@@ -6,6 +6,13 @@ This game system is the product of the CPR System Dev Team, made possible by thi
 
 This game system (including items provided in the compendium) contains unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
+### Creative Commons 3.0
+
+- The icons used by our compendiums are provided by:
+  - Lorc, Delapouite, Skoll, sbed, John Colburn, et al [Game Icons](https://game-icons.net) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
+  - various creators at [SVG Repo](https://www.svgrepo.com/) under Public Domain, Open Source and Creative Commons licenses
+  - various creators at [The Noun Project](https://thenounproject.com/) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
+
 ## Code
 
 - Some of our chat message code was inspired from the [Chat Message Accessibility Indicators module](https://github.com/schultzcole/FVTT-Chat-Message-Accessibility-Indicators)
@@ -31,8 +38,6 @@ This game system (including items provided in the compendium) contains unofficia
   - [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
 
 ## src/icons/
-
-- Default icons for compendia provided by Lorc, Delapouite, Skoll, sbed, John Colburn, et al [Game Icons](https://game-icons.net) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
 
 - `src/icons/chip-skill.png` provided by Darin Sorrentino
 - `src/icons/cpr-icons.svg` provided by Darin Sorrentino
