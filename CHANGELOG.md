@@ -65,6 +65,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Hitting enter when editing a custom Active Effect key no longer closes the sheet
 - Changing a mode for a skill modifier does not throw console errors
 - The `Big Knucks` cyberware item has been corrected in the compendium to use `Melee Weapon` Skill
+- Corrected spelling for `systems/cyberpunk-red-core/icons/compendium/cyberware/tactile_boost.svg` & `systems/cyberpunk-red-core/icons/compendium/gear/chemical_analyzer.svg`
 
 ### Changes
 
@@ -80,6 +81,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Dragging a duplicate role (by name) is intentionally prevented and shows a warning
 - Removed duplicate cyberware icons from `src/icons/cyberweapons`
 - Unique icons have been created for each role
+- Updated `CREDITS.md` with attribution for all system assets
 
 ### Plumbing
 
