@@ -439,14 +439,14 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/compendium/upgrades/av_4_engine_upgrade.svg` remixed from [Turbine](https://game-icons.net/1x1/delapouite/turbine.html)
 - `src/icons/compendium/upgrades/backup_drive.svg` derived from prototype and [HDD](https://www.svgrepo.com/svg/144727/hdd)
 - `src/icons/compendium/upgrades/bayonet.svg` remixed from [Bayonet](https://game-icons.net/1x1/skoll/bayonet.html)
-- `src/icons/compendium/upgrades/bulletproof_glass.svg` provided by Wombat Combat
-- `src/icons/compendium/upgrades/combat_plow.svg` provided by Wombat Combat
+- `src/icons/compendium/upgrades/bulletproof_glass.svg` remixed from [Wiper Windshield](https://www.svgrepo.com/svg/232201/wiper-windshield) & [Bullet Impacts](https://www.svgrepo.com/svg/321922/bullet-impacts)
+- `src/icons/compendium/upgrades/combat_plow.svg` remixed from [Snow Plow Truk](https://thenounproject.com/icon/snow-plow-truck-8309808/)
 - `src/icons/compendium/upgrades/communications_center.svg` remixed from [Radar Dish](https://game-icons.net/1x1/lorc/radar-dish.html)
 - `src/icons/compendium/upgrades/deployable_spike_strip.svg` remixed from [Spiky Pit](https://game-icons.net/1x1/delapouite/spiky-pit.html)
 - `src/icons/compendium/upgrades/dna_lock.svg` derived from prototype and [Combination Lock](https://game-icons.net/1x1/skoll/combination-lock.html) and [DNA 2](https://game-icons.net/1x1/lorc/dna2.html)
 - `src/icons/compendium/upgrades/enhanced_interface_plug_integration.svg` remixed from [Plug Charging SVG Vector](https://www.svgrepo.com/svg/292678/plug-charging)
 - `src/icons/compendium/upgrades/generic_drum_magazine.svg` remixed from [Target SVG Vector](https://www.svgrepo.com/svg/513461/target)
-- `src/icons/compendium/upgrades/generic_extended_magazine.svg` provided by Wombat Combat
+- `src/icons/compendium/upgrades/generic_extended_magazine.svg` remixed from [Machine Gun Magazine](https://game-icons.net/1x1/delapouite/machine-gun-magazine.html)
 - `src/icons/compendium/upgrades/grenade_launcher_underbarrel.svg` remixed from [Cannon Ball](https://game-icons.net/1x1/lorc/cannon-ball.html)
 - `src/icons/compendium/upgrades/hardened_circuitry.svg` derived from prototype and [CPU](https://game-icons.net/1x1/delapouite/cpu.html) and [Shield](https://game-icons.net/1x1/sbed/shield.html)
 - `src/icons/compendium/upgrades/heavy_chasis.svg` remixed from [Car Travel SVG Vector](https://www.svgrepo.com/svg/390412/car-travel) and [Weight Hanging SVG Vector](https://www.svgrepo.com/svg/352684/weight-hanging)
@@ -457,7 +457,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/compendium/upgrades/krash_barrier.svg` derived from prototype and [Barrier](https://www.svgrepo.com/svg/203555/barrier)
 - `src/icons/compendium/upgrades/nos.svg` remixed from [Cannister](https://www.svgrepo.com/svg/320509/cannister)
 - `src/icons/compendium/upgrades/onboard_machine_gun.svg` remixed from [minigun](https://game-icons.net/1x1/lorc/minigun.html)
-- `src/icons/compendium/upgrades/onboard_melee_weapon.svg` provided by Wombat Combat
+- `src/icons/compendium/upgrades/onboard_melee_weapon.svg` remixed from [Coiled Nail](https://www.svgrepo.com/svg/322069/coiled-nail)
 - `src/icons/compendium/upgrades/onboard_rocket_pod.svg` remixed from [Missile Pod](https://game-icons.net/1x1/lorc/missile-pod.html)
 - `src/icons/compendium/upgrades/range_upgrade.svg` derived from prototype and [WiFi](https://www.svgrepo.com/svg/10334/wifi)
 - `src/icons/compendium/upgrades/seating_upgrade.svg` remixed from [Car Seat](https://game-icons.net/1x1/delapouite/car-seat.html)
