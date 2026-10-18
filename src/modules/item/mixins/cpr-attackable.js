@@ -275,7 +275,25 @@ const Attackable = function Attackable() {
     const cprWeaponData = this.system;
     const rollName = this.name;
     const { weaponType } = cprWeaponData;
-    const damage = this.getWeaponDamage();
+    let damage = this.getWeaponDamage();
+
+    // Resolve damage upgrades before the roll is constructed: an override replaces the base damage
+    // formula outright (mirroring how the attackmod path suppresses the base value when overridden),
+    // and CPRDamageRoll.create fixes the formula at construction time, so it must be folded in here.
+    // With no override present, `relevantUpgradeMods` holds the modifier upgrades, which are added
+    // to the roll as mods below.
+    let relevantUpgradeMods = [];
+    if (SystemUtils.hasMixin(this.type, "upgradable")) {
+      relevantUpgradeMods = this.getAllUpgradeMods("damage").filter(
+        (m) => (m.isSituational && m.onByDefault) || !m.isSituational,
+      );
+      const overrideMod = relevantUpgradeMods.find(
+        (m) => m.type === "override",
+      );
+      if (overrideMod?.value) {
+        damage = `${overrideMod.value}`;
+      }
+    }
 
     // Resolve the damage-critical config: when the loaded ammo's crit override is enabled, the ammo's
     // crit values replace the weapon's own damageCrit; otherwise the weapon's config is used, defaulting
@@ -369,21 +387,9 @@ const Attackable = function Attackable() {
     );
     cprRoll.addMod(roleMods);
 
-    if (SystemUtils.hasMixin(this.type, "upgradable")) {
-      // Mod from item upgrades that affect damage.
-      const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter(
-        (m) => (m.isSituational && m.onByDefault) || !m.isSituational,
-      );
-
-      // If there are no mods of type "override", add the mods. Otherwise, set roll formula appropriately.
-      if (relevantUpgradeMods.length > 0) {
-        if (relevantUpgradeMods.some((m) => !(m.type === "override"))) {
-          cprRoll.addMod(relevantUpgradeMods);
-        } else {
-          cprRoll.formula = "0d6";
-        }
-      }
-    }
+    // Modifier-type damage upgrades stack onto the base formula; an override was already folded
+    // into `damage` above, before the roll's formula was fixed at construction.
+    cprRoll.addMod(relevantUpgradeMods.filter((m) => m.type !== "override"));
 
     const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.

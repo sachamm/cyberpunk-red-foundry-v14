@@ -51,6 +51,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
 - Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
+- Weapon damage override upgrades now replace the base damage formula on damage rolls
 - Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
 - Fix Import All Content breaking items with pre-installed upgrades
