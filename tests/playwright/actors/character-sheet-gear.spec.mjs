@@ -1,10 +1,17 @@
 import { test, expect } from "@playwright/test";
-import { closeDocSheet } from "../../../tools/playwright/ui/index.mjs";
+import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
+import {
+  closeDocSheet,
+  closeOwnedItemSheet,
+  openOwnedItemSheet,
+  reopenActorSheetViaUI,
+} from "../../../tools/playwright/ui/index.mjs";
 import {
   createInventoryItemViaUI,
   enablePlayersCreateInventory,
 } from "./container-sheet-helpers.mjs";
 import {
+  CTRL_CLICK_MODIFIERS,
   closeAndReopenCharacterSheet,
   createCharacterViaUI,
   equipStateIcon,
@@ -15,6 +22,7 @@ import {
   manageUpgradesDialog,
   openGearTab,
   resolveYesNo,
+  selectAmmoDialog,
   yesNoDialog,
 } from "./character-sheet-helpers.mjs";
 
@@ -535,7 +543,8 @@ test.describe("Character sheet — Gear", () => {
       // normalize both to "" — the meaningful part is that no armor is tracked.
       const tracked = await page.evaluate(
         ({ aid }) => {
-          const armor = game.actors.get(aid).system.externalData.currentArmorBody;
+          const armor =
+            game.actors.get(aid).system.externalData.currentArmorBody;
           return {
             id: armor.id ?? "",
             value: armor.value,
@@ -589,11 +598,7 @@ test.describe("Character sheet — Gear", () => {
         ({ aid, iid }) => {
           const armor =
             game.actors.get(aid).system.externalData.currentArmorBody;
-          return (
-            armor.id !== iid &&
-            armor.value === 0 &&
-            armor.max === 0
-          );
+          return armor.id !== iid && armor.value === 0 && armor.max === 0;
         },
         { aid: actorId, iid: itemId },
         { timeout: 5000 },
@@ -886,5 +891,861 @@ test.describe("Character sheet — Gear", () => {
     });
 
     await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
+  test("G13: the change-ammo dialog lists only compatible ammo and unloading returns rounds", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    const weapon = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "weapon",
+      itemName: "Ammo Weapon",
+      data: {
+        system: {
+          isRanged: true,
+          ammoVariety: ["medPistol", "heavyPistol"],
+          magazine: { max: 6 },
+          // A fresh weapon only accepts upgrades; ranged weapons also accept
+          // ammo (see the item sheet's Manage Installable Types dialog).
+          installedItems: { allowedTypes: ["itemUpgrade", "ammo"] },
+        },
+      },
+    });
+    const nines = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: weapon.sheetId,
+      itemType: "ammo",
+      itemName: "Nines",
+      data: { system: { variety: "medPistol", amount: 5 } },
+    });
+    const fortyFives = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: nines.sheetId,
+      itemType: "ammo",
+      itemName: "Forty-Fives",
+      data: { system: { variety: "heavyPistol", amount: 8 } },
+    });
+    // Rifle-variety ammo the weapon cannot use.
+    await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: fortyFives.sheetId,
+      itemType: "ammo",
+      itemName: "Magnums",
+      data: { system: { variety: "rifle", amount: 2 } },
+    });
+    let freshSheet = fortyFives.sheetId;
+
+    await test.step("the change-ammo glyph opens a dialog listing only compatible ammo", async () => {
+      const row = gearRow(page, freshSheet, weapon.itemId);
+      await row.locator('a.item-action[data-action="select-ammo"]').click();
+      const dialog = selectAmmoDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 5000 });
+
+      // Only the two compatible stacks are offered, each with its size; the
+      // incompatible rifle ammo is not listed.
+      const options = dialog.locator('select[name="selectedAmmo"] option');
+      await expect(options).toHaveCount(2);
+      const labels = await options.allTextContents();
+      expect(labels.some((l) => /Nines.*\[x5\]/.test(l))).toBe(true);
+      expect(labels.some((l) => /Forty-Fives.*\[x8\]/.test(l))).toBe(true);
+      expect(labels.some((l) => l.includes("Magnums"))).toBe(false);
+
+      await dialog
+        .locator('select[name="selectedAmmo"]')
+        .selectOption({ value: fortyFives.itemId });
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 5000 });
+    });
+
+    await test.step("confirming installs the ammo and fills the magazine", async () => {
+      // The clip holds 6 and the stack has 8 rounds, so the magazine ends up
+      // full with 2 rounds left in the stack.
+      await page.waitForFunction(
+        ({ aid, wid, ammoId }) => {
+          const weapon = game.actors.get(aid).items.get(wid);
+          return (
+            weapon.system.installedItems.list.includes(ammoId) &&
+            weapon.system.magazine.value === 6 &&
+            game.actors.get(aid).items.get(ammoId).system.amount === 2
+          );
+        },
+        { aid: actorId, wid: weapon.itemId, ammoId: fortyFives.itemId },
+        { timeout: 10000 },
+      );
+
+      const afterSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = afterSheet;
+      await expect(
+        gearRow(page, freshSheet, weapon.itemId).locator(".gear-amount"),
+      ).toHaveText("6/6");
+    });
+
+    await test.step("a fresh render offers to unload the loaded ammo and defaults to it", async () => {
+      const row = gearRow(page, freshSheet, weapon.itemId);
+      await row.locator('a.item-action[data-action="select-ammo"]').click();
+      const dialog = selectAmmoDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 5000 });
+
+      // With ammo loaded an "Unload Weapon" option leads the list and the
+      // loaded stack is the default selection.
+      const options = dialog.locator('select[name="selectedAmmo"] option');
+      await expect(options).toHaveCount(3);
+      // The "Unload Weapon" option leads the list; its empty value is what
+      // confirms an unload (the select's own value drives the behaviour).
+      await expect(options.first()).toHaveText("Unload Weapon");
+      expect(await options.first().getAttribute("value")).toBe("");
+      await expect(dialog.locator('select[name="selectedAmmo"]')).toHaveValue(
+        fortyFives.itemId,
+      );
+
+      await dialog
+        .locator('select[name="selectedAmmo"]')
+        .selectOption({ value: "" });
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 5000 });
+
+      // Unloading returns the rounds to the stack and empties the magazine.
+      await page.waitForFunction(
+        ({ aid, wid, ammoId }) => {
+          const weapon = game.actors.get(aid).items.get(wid);
+          return (
+            weapon.system.installedItems.list.length === 0 &&
+            weapon.system.magazine.value === 0 &&
+            game.actors.get(aid).items.get(ammoId).system.amount === 8
+          );
+        },
+        { aid: actorId, wid: weapon.itemId, ammoId: fortyFives.itemId },
+        { timeout: 10000 },
+      );
+
+      const afterSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = afterSheet;
+      await expect(
+        gearRow(page, freshSheet, weapon.itemId).locator(".gear-amount"),
+      ).toHaveText("");
+    });
+
+    await test.step("a weapon with no compatible owned ammo warns instead of opening a dialog", async () => {
+      const rocketWeapon = await createInventoryItemViaUI(page, {
+        actorId,
+        sheetId: freshSheet,
+        itemType: "weapon",
+        itemName: "Rocket Weapon",
+        data: {
+          system: {
+            isRanged: true,
+            ammoVariety: ["rocket"],
+            installedItems: { allowedTypes: ["itemUpgrade", "ammo"] },
+          },
+        },
+      });
+      const row = gearRow(page, rocketWeapon.sheetId, rocketWeapon.itemId);
+      await row.locator('a.item-action[data-action="select-ammo"]').click();
+
+      await expect
+        .poll(
+          () =>
+            page.consoleWarnings.some((t) => /no ammo for that weapon/.test(t)),
+          { timeout: 5000 },
+        )
+        .toBe(true);
+      await expect(selectAmmoDialog(page)).toHaveCount(0);
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
+  test("G12: reloading a weapon fills its magazine from the loaded ammo", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    const weapon = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "weapon",
+      itemName: "Reload Weapon",
+      data: {
+        system: {
+          isRanged: true,
+          ammoVariety: ["medPistol"],
+          magazine: { max: 6 },
+          installedItems: { allowedTypes: ["itemUpgrade", "ammo"] },
+        },
+      },
+    });
+    const nines = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: weapon.sheetId,
+      itemType: "ammo",
+      itemName: "Nines",
+      data: { system: { variety: "medPistol", amount: 4 } },
+    });
+    let freshSheet = nines.sheetId;
+
+    await test.step("with nothing loaded the reload glyph opens the select-ammo dialog", async () => {
+      const row = gearRow(page, freshSheet, weapon.itemId);
+      const glyph = row.locator('a.item-action[data-action="reload-ammo"]');
+      await expect(glyph).toBeVisible();
+      await glyph.click();
+
+      const dialog = selectAmmoDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 5000 });
+      // Nothing is loaded, so no "Unload Weapon" option is offered.
+      const options = dialog.locator('select[name="selectedAmmo"] option');
+      await expect(options).toHaveCount(1);
+      const labels = await options.allTextContents();
+      expect(labels.some((l) => /Nines.*\[x4\]/.test(l))).toBe(true);
+
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 5000 });
+    });
+
+    await test.step("confirming loads the ammo and partially fills the magazine", async () => {
+      // The clip holds 6 but the stack only has 4 rounds, so the magazine
+      // ends up 4/6 with an empty stack.
+      await page.waitForFunction(
+        ({ aid, wid, ammoId }) => {
+          const weapon = game.actors.get(aid).items.get(wid);
+          return (
+            weapon.system.installedItems.list.includes(ammoId) &&
+            weapon.system.magazine.value === 4 &&
+            game.actors.get(aid).items.get(ammoId).system.amount === 0
+          );
+        },
+        { aid: actorId, wid: weapon.itemId, ammoId: nines.itemId },
+        { timeout: 10000 },
+      );
+
+      const afterSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = afterSheet;
+      await expect(
+        gearRow(page, freshSheet, weapon.itemId).locator(".gear-amount"),
+      ).toHaveText("4/6");
+    });
+
+    await test.step("reloading with an empty clip warns and changes nothing", async () => {
+      const glyph = gearRow(page, freshSheet, weapon.itemId).locator(
+        'a.item-action[data-action="reload-ammo"]',
+      );
+      await expect(glyph).toBeVisible();
+      await glyph.click();
+
+      await expect
+        .poll(() => page.consoleWarnings.some((t) => /out of ammo/.test(t)), {
+          timeout: 5000,
+        })
+        .toBe(true);
+      await expect(selectAmmoDialog(page)).toHaveCount(0);
+
+      const state = await page.evaluate(
+        ({ aid, wid, ammoId }) => ({
+          magazineValue: game.actors.get(aid).items.get(wid).system.magazine
+            .value,
+          amount: game.actors.get(aid).items.get(ammoId).system.amount,
+        }),
+        { aid: actorId, wid: weapon.itemId, ammoId: nines.itemId },
+      );
+      expect(state).toEqual({ magazineValue: 4, amount: 0 });
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
+  test("G14: splitting a stack divides it into two rows and invalid amounts warn", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    const drug = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "drug",
+      itemName: "Split Drug",
+      data: { system: { amount: 5 } },
+    });
+    let freshSheet = drug.sheetId;
+
+    const splitDialog = page.locator(".cpr-dialog").filter({
+      has: page.locator('input[name="splitAmount"]'),
+    });
+
+    await test.step("the split glyph opens a dialog prefilled with half the stack", async () => {
+      const row = gearRow(page, freshSheet, drug.itemId);
+      const glyph = row.locator('a.item-action[data-action-type="split"]');
+      await expect(glyph).toBeVisible();
+      await glyph.click();
+
+      await expect(splitDialog).toBeVisible({ timeout: 5000 });
+      await expect(splitDialog.locator(".dialog-header")).toHaveText(
+        "You currently own 5 of Split Drug.",
+      );
+      await expect(
+        splitDialog.locator('input[name="splitAmount"]'),
+      ).toHaveValue("3");
+    });
+
+    await test.step("splitting off 2 leaves a stack of 3 and creates a stack of 2", async () => {
+      await splitDialog.locator('input[name="splitAmount"]').fill("2");
+      await splitDialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(splitDialog).toHaveCount(0, { timeout: 5000 });
+
+      const otherId = await page
+        .waitForFunction(
+          ({ aid, originalId }) => {
+            const other = game.actors
+              .get(aid)
+              .itemTypes.drug.find((d) => d.id !== originalId);
+            return other?.id ?? null;
+          },
+          { aid: actorId, originalId: drug.itemId },
+          { timeout: 10000 },
+        )
+        .then((handle) => handle.jsonValue());
+
+      const state = await page.evaluate(
+        ({ aid, originalId, otherId }) => ({
+          original: game.actors.get(aid).items.get(originalId).system.amount,
+          other: game.actors.get(aid).items.get(otherId).system.amount,
+          otherName: game.actors.get(aid).items.get(otherId).name,
+        }),
+        { aid: actorId, originalId: drug.itemId, otherId },
+      );
+      expect(state).toEqual({
+        original: 3,
+        other: 2,
+        otherName: "Split Drug",
+      });
+
+      const afterSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = afterSheet;
+      const rows = page
+        .locator(`#${freshSheet} li.item[data-item-category="drug"]`)
+        .filter({ hasText: "Split Drug" });
+      await expect(rows).toHaveCount(2);
+      const inputs = rows.locator("input.gear-amount-input");
+      const values = (
+        await Promise.all([0, 1].map((i) => inputs.nth(i).inputValue()))
+      ).sort();
+      expect(values).toEqual(["2", "3"]);
+    });
+
+    await test.step("splitting off 0 warns and leaves both stacks unchanged", async () => {
+      const row = gearRow(page, freshSheet, drug.itemId);
+      await row.locator('a.item-action[data-action-type="split"]').click();
+      await expect(splitDialog).toBeVisible({ timeout: 5000 });
+
+      await splitDialog.locator('input[name="splitAmount"]').fill("0");
+      await splitDialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(splitDialog).toHaveCount(0, { timeout: 5000 });
+
+      await expect
+        .poll(
+          () =>
+            page.consoleWarnings.some((t) =>
+              /You cannot split 0 of 3 from Split Drug\./.test(t),
+            ),
+          { timeout: 5000 },
+        )
+        .toBe(true);
+
+      const amounts = await page.evaluate(
+        (aid) =>
+          Array.from(game.actors.get(aid).itemTypes.drug)
+            .map((d) => d.system.amount)
+            .sort((a, b) => a - b),
+        actorId,
+      );
+      expect(amounts).toEqual([2, 3]);
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
+  test("G15: snorting a drug enables its active effect, decrements the amount, and logs it", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    let freshSheet = sheetId;
+    // The ephemeral test world exposes no compendium packs to the client, so
+    // build the equivalent of the core Drugs "Stim" entry through the UI: a
+    // drug named Stim with one active effect also named Stim. Choosing the
+    // "snorted" usage keeps the effect disabled until it is consumed.
+    let stimId;
+
+    // Item effects transfer to the owning character by default, so the
+    // drug's effect is visible on the actor as soon as it exists. It stays
+    // inactive while disabled and applies once snorting re-enables it.
+    const effectState = () =>
+      page.evaluate(
+        ({ aid, iid }) => {
+          const actor = game.actors.get(aid);
+          const itemEffect =
+            actor.items.get(iid).effects.find((e) => e.name === "Stim")
+              ?.disabled ?? null;
+          const actorEffect = [...actor.allApplicableEffects()].find(
+            (e) => e.name === "Stim",
+          );
+          return {
+            itemEffect,
+            actorActive: actorEffect ? actorEffect.active : null,
+          };
+        },
+        { aid: actorId, iid: stimId },
+      );
+
+    await test.step("creating a snorted-usage drug with an active effect adds it to the character", async () => {
+      const created = await createInventoryItemViaUI(page, {
+        actorId,
+        sheetId: freshSheet,
+        itemType: "drug",
+        itemName: "Stim",
+      });
+      stimId = created.itemId;
+      freshSheet = created.sheetId;
+
+      // Reopen the item's sheet and give it an active effect.
+      await gearRow(page, freshSheet, stimId).locator("a.item-edit").click();
+      const itemSheetId = await openOwnedItemSheet(page, {
+        actorId,
+        itemId: stimId,
+      });
+      const itemSheet = page.locator(`#${itemSheetId}`);
+      await itemSheet.locator('a.tab-label[data-tab="item-effects"]').click();
+
+      // "Create Effect" adds the effect and opens its editor. The core
+      // editor does not submit on text changes, so rename it and click
+      // Submit; submitting closes the editor.
+      await itemSheet.locator('a.effect-control[data-action="create"]').click();
+      const effectSheet = page.locator(".active-effect-config");
+      await expect(effectSheet).toBeVisible({ timeout: 10000 });
+      await effectSheet.locator('input[name="name"]').fill("Stim");
+      await effectSheet.locator('button[type="submit"]').click();
+      await expect(effectSheet).toBeHidden({ timeout: 10000 });
+
+      // With an effect on the item, the usage select appears. Choosing
+      // "snorted" disables the effect; players should not gain effects
+      // merely by touching the drug.
+      const usageSelect = itemSheet.locator('select[name="system.usage"]');
+      await expect(usageSelect).toBeVisible({ timeout: 10000 });
+      await usageSelect.selectOption("snorted");
+      await page.waitForFunction(
+        ({ aid, iid }) => {
+          const item = game.actors.get(aid).items.get(iid);
+          return (
+            item.system.usage === "snorted" &&
+            item.effects.find((e) => e.name === "Stim")?.disabled === true
+          );
+        },
+        { aid: actorId, iid: stimId },
+        { timeout: 10000 },
+      );
+
+      // The consumed select only appears for snorted drugs; point it at the
+      // effect so snorting enables exactly that one.
+      const consumedSelect = itemSheet.locator(
+        'select[name="system.consumed"]',
+      );
+      await expect(consumedSelect).toBeVisible({ timeout: 10000 });
+      await consumedSelect.selectOption("Stim");
+      await page.waitForFunction(
+        ({ aid, iid }) =>
+          game.actors.get(aid).items.get(iid).system.consumed === "Stim",
+        { aid: actorId, iid: stimId },
+        { timeout: 10000 },
+      );
+
+      await closeOwnedItemSheet(page, { actorId, itemId: stimId });
+      await openGearTab(page, freshSheet);
+      const input = gearRow(page, freshSheet, stimId).locator(
+        "input.gear-amount-input",
+      );
+      // New items start at amount 1, like the compendium entry did.
+      await expect(input).toHaveValue("1");
+
+      // The effect exists on the item (disabled) and is transferred to the
+      // character, but stays inactive until the drug is consumed.
+      expect(await effectState()).toEqual({
+        itemEffect: true,
+        actorActive: false,
+      });
+    });
+
+    await test.step("setting the amount to 3 persists", async () => {
+      const input = gearRow(page, freshSheet, stimId).locator(
+        "input.gear-amount-input",
+      );
+      await input.fill("3");
+      await input.press("Tab");
+      await page.waitForFunction(
+        ({ aid, iid }) =>
+          game.actors.get(aid).items.get(iid).system.amount === 3,
+        { aid: actorId, iid: stimId },
+        { timeout: 5000 },
+      );
+    });
+
+    await test.step("snorting confirms, enables the drug's active effect, and decrements the amount", async () => {
+      const row = gearRow(page, freshSheet, stimId);
+      await row.locator('a.item-action[data-action-type="snort"]').click();
+      const dialog = yesNoDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 5000 });
+      await expect(dialog.locator(".cpr-dialog-message")).toContainText(
+        "Are you sure you want to consume",
+      );
+
+      await resolveYesNo(dialog, "yes");
+      await expect(dialog).toHaveCount(0, { timeout: 5000 });
+
+      await page.waitForFunction(
+        ({ aid, iid }) =>
+          game.actors.get(aid).items.get(iid).system.amount === 2,
+        { aid: actorId, iid: stimId },
+        { timeout: 10000 },
+      );
+
+      // Snorting re-enables the item's active effect, which then applies to
+      // the character; the consumption is logged to the console.
+      expect(await effectState()).toEqual({
+        itemEffect: false,
+        actorActive: true,
+      });
+      await expect
+        .poll(
+          () =>
+            page.consoleLogs.some((t) =>
+              /CPR LOG \| Stim\s+consumed\. Make it count!/.test(t),
+            ),
+          { timeout: 5000 },
+        )
+        .toBe(true);
+    });
+
+    await test.step("on a fresh render the amount and the enabled effect persist", async () => {
+      const afterSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = afterSheet;
+      await openGearTab(page, freshSheet);
+      await expect(
+        gearRow(page, freshSheet, stimId).locator("input.gear-amount-input"),
+      ).toHaveValue("2");
+      expect(await effectState()).toEqual({
+        itemEffect: false,
+        actorActive: true,
+      });
+    });
+
+    await test.step("declining the confirmation leaves the drug untouched", async () => {
+      const row = gearRow(page, freshSheet, stimId);
+      await row.locator('a.item-action[data-action-type="snort"]').click();
+      const dialog = yesNoDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 5000 });
+
+      await resolveYesNo(dialog, "no");
+      await expect(dialog).toHaveCount(0, { timeout: 5000 });
+
+      const amount = await page.evaluate(
+        ({ aid, iid }) => game.actors.get(aid).items.get(iid).system.amount,
+        { aid: actorId, iid: stimId },
+      );
+      expect(amount).toBe(2);
+      // No second consumption was logged.
+      const consumedLines = page.consoleLogs.filter((t) =>
+        /consumed\. Make it count!/.test(t),
+      );
+      expect(consumedLines.length).toBe(1);
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
+  test("G18: clicking an item name opens its sheet; ctrl-click posts a chat card", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    const weapon = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "weapon",
+      itemName: "Card Weapon",
+    });
+    let freshSheet = weapon.sheetId;
+
+    await test.step("clicking the name opens the item's sheet", async () => {
+      await gearRow(page, freshSheet, weapon.itemId)
+        .locator("a.name.item-edit")
+        .click();
+      const itemSheetId = await openOwnedItemSheet(page, {
+        actorId,
+        itemId: weapon.itemId,
+      });
+      expect(itemSheetId).toBeTruthy();
+      await closeOwnedItemSheet(page, { actorId, itemId: weapon.itemId });
+    });
+
+    await test.step("ctrl-click posts a chat card and does not open the sheet", async () => {
+      const messageCount = await page.evaluate(() => game.messages.size);
+      await gearRow(page, freshSheet, weapon.itemId)
+        .locator("a.name.item-edit")
+        .click({ modifiers: CTRL_CLICK_MODIFIERS });
+
+      // The card is a chat message carrying the item's name.
+      const cardId = await page
+        .waitForFunction(
+          ({ count, name }) => {
+            if (game.messages.size <= count) return null;
+            const msg = game.messages.contents.at(-1);
+            const el = document.createElement("div");
+            el.innerHTML = msg.content;
+            const cardName = el
+              .querySelector(".item-card-name")
+              ?.textContent?.trim();
+            return cardName === name ? msg.id : null;
+          },
+          { count: messageCount, name: "Card Weapon" },
+          { timeout: 10000 },
+        )
+        .then((handle) => handle.jsonValue());
+      expect(cardId).toBeTruthy();
+
+      // No sheet was opened by the ctrl-click.
+      const rendered = await page.evaluate(
+        ({ aid, iid }) => game.actors.get(aid).items.get(iid).sheet.rendered,
+        { aid: actorId, iid: weapon.itemId },
+      );
+      expect(rendered).toBe(false);
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
+  test("G19: each category's extra column shows its type-specific data", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    const netarch = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "netarch",
+      itemName: "Test Netarch",
+      data: {
+        system: {
+          floors: [
+            {
+              blackice: "--",
+              branch: "a",
+              content: "CPR.netArchitecture.floor.options.password",
+              description: "",
+              dv: "N/A",
+              floor: "1",
+              index: 0,
+            },
+            {
+              blackice: "--",
+              branch: "b",
+              content: "CPR.netArchitecture.floor.options.file",
+              description: "",
+              dv: "5",
+              floor: "2",
+              index: 1,
+            },
+          ],
+        },
+      },
+    });
+    const vehicle = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: netarch.sheetId,
+      itemType: "vehicle",
+      itemName: "Test Vehicle",
+      data: { system: { seats: 6, sdp: 75, speedCombat: 40 } },
+    });
+    const deck = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: vehicle.sheetId,
+      itemType: "cyberdeck",
+      itemName: "Test Deck",
+      data: { system: { installedItems: { slots: 3 } } },
+    });
+    const program = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: deck.sheetId,
+      itemType: "program",
+      itemName: "Test Program",
+    });
+    let freshSheet = program.sheetId;
+
+    // Top-level rows of the Programs category. Nested installs live in a
+    // .sub-list under their parent row, outside this section's wrapper.
+    const programSectionRows = (sid) =>
+      page
+        .locator(`#${sid} .collapsible`)
+        .filter({ has: page.locator("#gearTab-program") })
+        .locator('li.item[data-item-category="program"]');
+
+    await test.step("the netarch row shows its floor count", async () => {
+      await expect(
+        gearRow(page, freshSheet, netarch.itemId).locator(
+          ".gear-amount .gear-amount-value",
+        ),
+      ).toHaveText("x 2");
+    });
+
+    await test.step("the vehicle row shows seats, SDP and combat speed", async () => {
+      const data = gearRow(page, freshSheet, vehicle.itemId).locator(
+        ".gear-data",
+      );
+      await expect(data).toContainText("Seats: 6");
+      await expect(data).toContainText("SDP: 75");
+      await expect(data).toContainText("Combat Speed: 40");
+    });
+
+    await test.step("the cyberdeck row shows its slot count", async () => {
+      await expect(
+        gearRow(page, freshSheet, deck.itemId).locator(".gear-amount"),
+      ).toHaveText("3");
+    });
+
+    await test.step("installing a program removes it from the Programs section and nests it under the deck", async () => {
+      // Uninstalled, the program has its own row in the Programs section.
+      await expect(programSectionRows(freshSheet)).toHaveCount(1);
+
+      await gearRow(page, freshSheet, deck.itemId)
+        .locator('a[data-action-type="manage-programs"]')
+        .click();
+      const dialog = manageUpgradesDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 5000 });
+      const checkbox = dialog.locator(
+        `input[name="selectedItems"][value="${program.itemId}"]`,
+      );
+      await expect(checkbox).toBeVisible();
+      await checkbox.check();
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 5000 });
+
+      const afterSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = afterSheet;
+      // The Programs section no longer lists the program...
+      await expect(programSectionRows(freshSheet)).toHaveCount(0);
+      // ...it renders nested under its cyberdeck instead.
+      const nested = page.locator(
+        `#${freshSheet} .sub-list[data-items-wrapper-for-parent="${deck.itemId}"] li[data-item-id="${program.itemId}"]`,
+      );
+      await expect(nested).toHaveCount(1);
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+});
+
+test.describe("Character sheet — Gear (player read-only boundary)", () => {
+  test("a LIMITED-permission player sees the gear tab without working controls", async ({
+    page: game,
+    browser,
+    baseURL,
+  }) => {
+    await enablePlayersCreateInventory(game);
+    const { actorId, sheetId } = await createCharacterViaUI(game);
+    const weapon = await createInventoryItemViaUI(game, {
+      actorId,
+      sheetId,
+      itemType: "weapon",
+      itemName: "Boundary Weapon",
+    });
+    const drug = await createInventoryItemViaUI(game, {
+      actorId,
+      sheetId: weapon.sheetId,
+      itemType: "drug",
+      itemName: "Boundary Drug",
+    });
+
+    await test.step("the GM grants the harness player LIMITED ownership", async () => {
+      const playerId = await game.evaluate(
+        () => game.users.getName("E2E Player")?.id ?? null,
+      );
+      expect(playerId, "the harness player should exist").toBeTruthy();
+      await game.evaluate(
+        async ({ actorId, playerId }) => {
+          const actor = game.actors.get(actorId);
+          await actor.update({
+            [`ownership.${playerId}`]: CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED,
+          });
+        },
+        { actorId, playerId },
+      );
+    });
+
+    const { context, page: player } = await openPlayerPage(browser, baseURL);
+    try {
+      let playerSheet;
+      await test.step("the player opens the character's gear tab", async () => {
+        playerSheet = await reopenActorSheetViaUI(player, actorId);
+        await openGearTab(player, playerSheet);
+        // Both rows render for the LIMITED viewer.
+        await expect(gearRow(player, playerSheet, weapon.itemId)).toBeVisible();
+        await expect(gearRow(player, playerSheet, drug.itemId)).toBeVisible();
+      });
+
+      await test.step("the inline amount input is disabled", async () => {
+        await expect(
+          gearRow(player, playerSheet, drug.itemId).locator(
+            "input.gear-amount-input",
+          ),
+        ).toBeDisabled();
+      });
+
+      await test.step("clicking an item name does nothing", async () => {
+        const messageCount = await player.evaluate(() => game.messages.size);
+        await gearRow(player, playerSheet, weapon.itemId)
+          .locator("a.name.item-edit")
+          .click();
+        // The .item-edit handler is only registered on editable sheets: no
+        // item sheet opens and no chat card is posted.
+        const state = await player.evaluate(
+          ({ aid, iid }) => ({
+            rendered: game.actors.get(aid).items.get(iid).sheet.rendered,
+            messages: game.messages.size,
+          }),
+          { aid: actorId, iid: weapon.itemId },
+        );
+        expect(state.rendered).toBe(false);
+        expect(state.messages).toBe(messageCount);
+      });
+
+      await test.step("the action glyphs still render (documenting current behaviour)", async () => {
+        // The gear row templates do not gate the action glyphs on editability:
+        // they render for a LIMITED viewer too (possible bug, chase separately
+        // — see the tracker note). Clicking one is left untested on purpose —
+        // the server rejects the update and the rejection surfaces as an
+        // uncaught promise error in the page console.
+        const weaponRow = gearRow(player, playerSheet, weapon.itemId);
+        await expect(weaponRow.locator("a.equip")).toBeVisible();
+        await expect(
+          weaponRow.locator('a.item-action[data-action-type="delete"]'),
+        ).toBeVisible();
+        await expect(
+          weaponRow.locator('a.item-action[data-action-type="favorite"]'),
+        ).toBeVisible();
+      });
+    } finally {
+      await context.close();
+    }
   });
 });

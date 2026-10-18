@@ -372,9 +372,12 @@ export function installConsoleErrorHarness() {
     // Warnings are captured but never fail a test: Foundry emits routine
     // deprecation warnings, so specs that care opt in by polling for exact text.
     page.consoleWarnings = [];
+    // Log-level lines (CPR LOG | ...) are likewise opt-in evidence.
+    page.consoleLogs = [];
     page.on("console", (msg) => {
       if (msg.type() === "error") page.consoleErrors.push(msg.text());
       else if (msg.type() === "warning") page.consoleWarnings.push(msg.text());
+      else if (msg.type() === "log") page.consoleLogs.push(msg.text());
     });
     page.on("pageerror", (err) => {
       page.consoleErrors.push(`uncaught exception: ${err.message}`);
@@ -437,6 +440,17 @@ export function equipStateIcon(row, state) {
 export function manageUpgradesDialog(page) {
   return page.locator(".cpr-dialog").filter({
     has: page.locator('input[name="selectedItems"]'),
+  });
+}
+
+/**
+ * Locator for the select-ammo dialog opened by a weapon's reload or
+ * change-ammo glyph. Returns the dialog locator; the spec owns every
+ * visibility/text/count assertion and the dismissal.
+ */
+export function selectAmmoDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator('select[name="selectedAmmo"]'),
   });
 }
 
