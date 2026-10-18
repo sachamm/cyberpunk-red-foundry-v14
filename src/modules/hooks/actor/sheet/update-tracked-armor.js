@@ -11,17 +11,25 @@ const updateTrackedArmor = () => {
     // Only run if updateData exists
     if (updateData?.system == null) return;
 
-    // Only run if the armor is tracked
-    if (doc.type === "armor" && doc.system.isTracked) {
-      const actor = game.actors.get(doc.parent._id);
-      // Check the updateData to only fire when the relevant fields are editied
-      if ("headLocation" in updateData.system) {
+    if (doc.type === "armor" && doc.isEmbedded) {
+      const actor = doc.actor;
+      const tracked = actor.system.externalData;
+      if (
+        "headLocation" in updateData.system &&
+        tracked?.currentArmorHead?.id === doc.id
+      ) {
         actor.updateTrackedArmor("head", doc._id);
       }
-      if ("bodyLocation" in updateData.system) {
+      if (
+        "bodyLocation" in updateData.system &&
+        tracked?.currentArmorBody?.id === doc.id
+      ) {
         actor.updateTrackedArmor("body", doc._id);
       }
-      if ("shieldHitPoints" in updateData.system) {
+      if (
+        "shieldHitPoints" in updateData.system &&
+        tracked?.currentArmorShield?.id === doc.id
+      ) {
         actor.updateTrackedArmor("shield", doc._id);
       }
     }
