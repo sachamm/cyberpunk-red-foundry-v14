@@ -1,11 +1,16 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  chatMessageCount,
+  closeAndReopenActorSheet,
+  closeDocSheet,
   createDocumentViaUI,
   expectSheetRendered,
-  reopenActorSheetViaUI,
-  closeDocSheet,
+  setSheetField,
+  sheet,
   uniqueName,
+  waitForActorFields,
+  waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 
 const FIELD = {
@@ -25,38 +30,9 @@ const FIELD = {
   statRollPer: 'a.rollable[data-roll-type="stat"][data-roll-title="per"]',
 };
 
-function sheet(page, sheetId) {
-  return page.locator(`#${sheetId}`);
-}
-
-async function waitForActorFields(page, actorId, expected) {
-  await page.waitForFunction(
-    ({ actorId, expected }) => {
-      const actor = game.actors.get(actorId);
-      if (!actor) return false;
-      return Object.entries(expected).every(
-        ([path, value]) => foundry.utils.getProperty(actor, path) === value,
-      );
-    },
-    { actorId, expected },
-    { timeout: 10000 },
-  );
-}
-
-async function setInputField(page, sheetId, selector, value) {
-  const input = sheet(page, sheetId).locator(selector);
-  await input.fill(String(value));
-  await input.blur();
-}
-
 async function setSelectField(page, sheetId, selector, value) {
   const select = sheet(page, sheetId).locator(selector);
   await select.selectOption(value);
-}
-
-async function closeAndReopenActorSheet(page, actorId) {
-  await closeDocSheet(page, { collection: "actors", id: actorId });
-  return reopenActorSheetViaUI(page, actorId);
 }
 
 async function clearNotifications(page) {
@@ -128,7 +104,7 @@ test.describe("Black ICE world actor sheet", () => {
     });
 
     await test.step("identity edits persist after close and reopen", async () => {
-      await setInputField(game, sheetId, FIELD.name, editedName);
+      await setSheetField(game, sheetId, FIELD.name, editedName);
       await waitForActorFields(game, actorId, { name: editedName });
 
       await setSelectField(game, sheetId, FIELD.class, "antiprogram");
@@ -136,7 +112,7 @@ test.describe("Black ICE world actor sheet", () => {
         "system.class": "antiprogram",
       });
 
-      await setInputField(game, sheetId, FIELD.cost, 777);
+      await setSheetField(game, sheetId, FIELD.cost, 777);
       await waitForActorFields(game, actorId, {
         "system.cost": 777,
       });
@@ -150,16 +126,16 @@ test.describe("Black ICE world actor sheet", () => {
     });
 
     await test.step("stat edits persist after close and reopen", async () => {
-      await setInputField(game, sheetId, FIELD.per, 8);
+      await setSheetField(game, sheetId, FIELD.per, 8);
       await waitForActorFields(game, actorId, { "system.stats.per": 8 });
 
-      await setInputField(game, sheetId, FIELD.spd, 9);
+      await setSheetField(game, sheetId, FIELD.spd, 9);
       await waitForActorFields(game, actorId, { "system.stats.spd": 9 });
 
-      await setInputField(game, sheetId, FIELD.atk, 10);
+      await setSheetField(game, sheetId, FIELD.atk, 10);
       await waitForActorFields(game, actorId, { "system.stats.atk": 10 });
 
-      await setInputField(game, sheetId, FIELD.def, 11);
+      await setSheetField(game, sheetId, FIELD.def, 11);
       await waitForActorFields(game, actorId, { "system.stats.def": 11 });
 
       sheetId = await closeAndReopenActorSheet(game, actorId);
@@ -172,12 +148,12 @@ test.describe("Black ICE world actor sheet", () => {
     });
 
     await test.step("REZ edits persist after close and reopen", async () => {
-      await setInputField(game, sheetId, FIELD.rezValue, 6);
+      await setSheetField(game, sheetId, FIELD.rezValue, 6);
       await waitForActorFields(game, actorId, {
         "system.stats.rez.value": 6,
       });
 
-      await setInputField(game, sheetId, FIELD.rezMax, 12);
+      await setSheetField(game, sheetId, FIELD.rezMax, 12);
       await waitForActorFields(game, actorId, {
         "system.stats.rez.max": 12,
       });
@@ -202,7 +178,7 @@ test.describe("Black ICE world actor sheet", () => {
 
     await test.step("a stat roll opens the Black ICE net-roll dialog and posts a chat card", async () => {
       const actorSheet = sheet(game, sheetId);
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
 
       await actorSheet.locator(FIELD.statRollPer).click();
 
@@ -221,23 +197,17 @@ test.describe("Black ICE world actor sheet", () => {
         await expect(dialog).toHaveCount(0, { timeout: 2000 });
       }).toPass({ timeout: 20000 });
 
-      await game.waitForFunction(
-        (before) => game.messages.size > before,
-        messagesBefore,
-        {
-          timeout: 10000,
-        },
-      );
+      const messageId = await waitForNewChatMessage(game, messagesBefore);
 
-      const lastMessage = await game.evaluate(() => {
-        const msg = game.messages.contents.at(-1);
+      const lastMessage = await game.evaluate((id) => {
+        const msg = game.messages.get(id);
         const doc = document.implementation.createHTMLDocument("");
         doc.body.innerHTML = msg?.content ?? "";
         return {
           text: doc.body.textContent ?? "",
           rollCount: msg?.rolls?.length ?? 0,
         };
-      });
+      }, messageId);
       expect(lastMessage.rollCount).toBe(1);
       expect(lastMessage.text).toContain("PER");
       expect(lastMessage.text).toContain("Black ICE");

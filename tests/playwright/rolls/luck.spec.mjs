@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  chatMessageCount,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
@@ -63,7 +64,7 @@ test.describe("LUCK spend validation", () => {
       'button.cpr-dialog-button[data-action="confirm"]',
     );
 
-    const messagesBefore = await game.evaluate(() => game.messages.size);
+    const messagesBefore = await chatMessageCount(game);
 
     // Collect console output to assert on the warning deterministically; the
     // toast is transient, but DisplayMessage also logs the message via LOGGER.

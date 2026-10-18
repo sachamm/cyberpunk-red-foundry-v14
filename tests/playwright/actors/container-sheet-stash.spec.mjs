@@ -1,23 +1,23 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
   activateGearTab,
   closeDocSheet,
   createDocumentViaUI,
+  createInventoryItemViaUI,
   dragOwnedItemToActorSheet,
+  enablePlayersCreateInventory,
   expectSheetRendered,
   positionActorSheet,
   reopenActorSheetViaUI,
+  sheet,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
-  createInventoryItemViaUI,
   createStashWithItem,
-  enablePlayersCreateInventory,
-  installConsoleErrorHarness,
   purchaseAllViaUI,
   setActorWealthViaUI,
   setContainerTypeViaUI,
-  sheet,
   setTradePartnerWithWealth,
 } from "./container-sheet-helpers.mjs";
 

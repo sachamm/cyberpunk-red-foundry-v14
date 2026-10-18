@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
@@ -9,10 +10,7 @@ import {
   uniqueName,
   waitForProseMirrorValue,
 } from "../../../tools/playwright/ui/index.mjs";
-import {
-  createMookViaUI,
-  installConsoleErrorHarness,
-} from "./mook-sheet-helpers.mjs";
+import { createMookViaUI } from "./mook-sheet-helpers.mjs";
 
 installConsoleErrorHarness();
 

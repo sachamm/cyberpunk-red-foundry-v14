@@ -1,11 +1,14 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import { gotoReadyWorld } from "./world.mjs";
 
 /**
- * Register the console-error harness shared by all active effect specs.
+ * Register the console-error harness shared by all specs.
  * beforeEach navigates to the ready world and collects console errors;
  * afterEach fails the test on any uncaught exception or console error not
  * registered as expected via page.expectedConsoleErrors.
+ * Warnings are captured but never fail a test: Foundry emits routine
+ * deprecation warnings, so specs that care opt in by polling for exact text.
+ * Log-level lines (CPR LOG | ...) are likewise opt-in evidence.
  */
 export function installConsoleErrorHarness() {
   test.beforeEach(async ({ page }) => {
@@ -14,8 +17,12 @@ export function installConsoleErrorHarness() {
     // DisplayMessage("error")) register a matching RegExp here so afterEach
     // ignores exactly those messages. Uncaught exceptions always fail.
     page.expectedConsoleErrors = [];
+    page.consoleWarnings = [];
+    page.consoleLogs = [];
     page.on("console", (msg) => {
       if (msg.type() === "error") page.consoleErrors.push(msg.text());
+      else if (msg.type() === "warning") page.consoleWarnings.push(msg.text());
+      else if (msg.type() === "log") page.consoleLogs.push(msg.text());
     });
     page.on("pageerror", (err) => {
       page.consoleErrors.push(`uncaught exception: ${err.message}`);

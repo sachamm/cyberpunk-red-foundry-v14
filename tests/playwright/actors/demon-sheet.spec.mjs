@@ -1,11 +1,16 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  chatMessageCount,
+  closeAndReopenActorSheet,
+  closeDocSheet,
   createDocumentViaUI,
   expectSheetRendered,
-  reopenActorSheetViaUI,
-  closeDocSheet,
+  setSheetField,
+  sheet,
   uniqueName,
+  waitForActorFields,
+  waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 
 const FIELD = {
@@ -20,35 +25,6 @@ const FIELD = {
     'a.rollable[data-action="roll"][data-roll-title="combatNumber"]',
   notesEditor: "prose-mirror",
 };
-
-function sheet(page, sheetId) {
-  return page.locator(`#${sheetId}`);
-}
-
-async function waitForActorFields(page, actorId, expected) {
-  await page.waitForFunction(
-    ({ actorId, expected }) => {
-      const actor = game.actors.get(actorId);
-      if (!actor) return false;
-      return Object.entries(expected).every(
-        ([path, value]) => foundry.utils.getProperty(actor, path) === value,
-      );
-    },
-    { actorId, expected },
-    { timeout: 10000 },
-  );
-}
-
-async function setInputField(page, sheetId, selector, value) {
-  const input = sheet(page, sheetId).locator(selector);
-  await input.fill(String(value));
-  await input.blur();
-}
-
-async function closeAndReopenActorSheet(page, actorId) {
-  await closeDocSheet(page, { collection: "actors", id: actorId });
-  return reopenActorSheetViaUI(page, actorId);
-}
 
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
@@ -118,30 +94,30 @@ test.describe("Demon actor sheet", () => {
     await test.step("identity and stat edits persist after close and reopen", async () => {
       const editedName = uniqueName("demon-edited");
 
-      await setInputField(game, sheetId, FIELD.name, editedName);
+      await setSheetField(game, sheetId, FIELD.name, editedName);
       await waitForActorFields(game, actorId, { name: editedName });
 
-      await setInputField(game, sheetId, FIELD.rezValue, 7);
+      await setSheetField(game, sheetId, FIELD.rezValue, 7);
       await waitForActorFields(game, actorId, {
         "system.stats.rez.value": 7,
       });
 
-      await setInputField(game, sheetId, FIELD.rezMax, 15);
+      await setSheetField(game, sheetId, FIELD.rezMax, 15);
       await waitForActorFields(game, actorId, {
         "system.stats.rez.max": 15,
       });
 
-      await setInputField(game, sheetId, FIELD.interface, 5);
+      await setSheetField(game, sheetId, FIELD.interface, 5);
       await waitForActorFields(game, actorId, {
         "system.stats.interface": 5,
       });
 
-      await setInputField(game, sheetId, FIELD.actions, 3);
+      await setSheetField(game, sheetId, FIELD.actions, 3);
       await waitForActorFields(game, actorId, {
         "system.stats.actions": 3,
       });
 
-      await setInputField(game, sheetId, FIELD.combatNumber, 12);
+      await setSheetField(game, sheetId, FIELD.combatNumber, 12);
       await waitForActorFields(game, actorId, {
         "system.stats.combatNumber": 12,
       });
@@ -164,7 +140,7 @@ test.describe("Demon actor sheet", () => {
 
     await test.step("Interface stat roll opens dialog, confirms, and posts chat card", async () => {
       const demonSheet = sheet(game, sheetId);
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
 
       await demonSheet.locator(FIELD.rollInterface).click();
 
@@ -183,21 +159,17 @@ test.describe("Demon actor sheet", () => {
         await expect(dialog).toHaveCount(0, { timeout: 2000 });
       }).toPass({ timeout: 20000 });
 
-      await game.waitForFunction(
-        (before) => game.messages.size > before,
-        messagesBefore,
-        { timeout: 10000 },
-      );
+      const messageId = await waitForNewChatMessage(game, messagesBefore);
 
-      const lastMessage = await game.evaluate(() => {
-        const msg = game.messages.contents.at(-1);
+      const lastMessage = await game.evaluate((id) => {
+        const msg = game.messages.get(id);
         const doc = document.implementation.createHTMLDocument("");
         doc.body.innerHTML = msg?.content ?? "";
         return {
           text: doc.body.textContent ?? "",
           rollCount: msg?.rolls?.length ?? 0,
         };
-      });
+      }, messageId);
       expect(lastMessage.rollCount).toBe(1);
       expect(lastMessage.text).toContain("Interface");
       // Card shows stat name from rollTitle; program class "demon" is not in programClassList config
@@ -211,7 +183,7 @@ test.describe("Demon actor sheet", () => {
       }, actorId);
       expect(sheetId).toBeTruthy();
       const demonSheet = sheet(game, sheetId);
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
 
       await demonSheet.locator(FIELD.rollCombatNumber).click();
 

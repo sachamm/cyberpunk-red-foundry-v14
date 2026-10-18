@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  closeAndReopenActorSheet,
   closeDocSheet,
   createItemViaUI,
   dragItemToActorSheet,
@@ -16,8 +18,6 @@ import {
   MOOK_FIELD,
   createMookViaUI,
   ownedItemIdsByNames,
-  closeAndReopenMookSheet,
-  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -30,7 +30,6 @@ import {
  * mook-sheet-fight.spec.mjs.
  */
 
-// Fight-pane equippables and the row selector where each renders once equipped.
 const FIGHT_ITEMS = [
   { type: "weapon", rowSelector: MOOK_FIELD.weaponRow },
   { type: "armor", rowSelector: MOOK_FIELD.armorRow },
@@ -47,7 +46,6 @@ test.describe("Drag and Drop", () => {
 
       const itemName = uniqueName(type);
       const itemId = await createItemViaUI(game, { type, name: itemName });
-      // Close the item's sheet so it does not cover the drop target.
       await closeDocSheet(game, { collection: "items", id: itemId });
 
       await test.step(`dragging the ${type} onto the mook embeds it`, async () => {
@@ -62,7 +60,7 @@ test.describe("Drag and Drop", () => {
       ).toBeTruthy();
 
       await test.step(`the ${type} renders in the fight pane on a fresh render`, async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await expect(
           game.locator(
             `#${sheetId} ${rowSelector}[data-item-id="${embeddedId}"]`,
@@ -73,7 +71,6 @@ test.describe("Drag and Drop", () => {
   }
 });
 
-// Amount of the separate spare ammo pile that must survive the transfer untouched.
 const SPARE_AMMO = 50;
 
 async function toggleItemCheckbox(
@@ -90,9 +87,6 @@ async function toggleItemCheckbox(
   );
 }
 
-// Create a ranged heavyPistol that can hold + load ammo: set its type and magazine, add
-// "ammo" (and keep "itemUpgrade") to its installable types, and mark a compatible ammo
-// variety. Without those the change-ammo dialog has no valid ammo to offer.
 async function createLoadableWeapon(page, { name }) {
   const weaponType = "heavyPistol";
   const itemId = await createItemViaUI(page, { type: "weapon", name });
@@ -167,7 +161,6 @@ async function createLoadableWeapon(page, { name }) {
   return itemId;
 }
 
-// Install an embedded upgrade into a named weapon from the mook's Special Gear pane.
 async function installUpgradeOnMook(
   page,
   { sheetId, actorId, upgradeEmbeddedId, weaponName },
@@ -197,7 +190,6 @@ async function installUpgradeOnMook(
   );
 }
 
-// Load a full magazine into an equipped weapon via the fight-block change-ammo action.
 async function loadWeaponAmmo(page, { sheetId, weaponEmbeddedId }) {
   await page
     .locator(
@@ -215,8 +207,6 @@ async function loadWeaponAmmo(page, { sheetId, weaponEmbeddedId }) {
 }
 
 test.describe("Drag off / transfer", () => {
-  // Only a single level of installed items is exercised here. Multi-level (nested)
-  // install trees are a known bug and deliberately out of scope for this spec.
   test("dragging an equipped, loaded, upgraded weapon to another mook transfers it with its upgrade and keeps it loaded", async ({
     page: game,
   }) => {
@@ -297,7 +287,7 @@ test.describe("Drag off / transfer", () => {
         "the weapon and upgrade should be embedded on the mook",
       ).toBeTruthy();
 
-      sourceSheetId = await closeAndReopenMookSheet(game, source.actorId);
+      sourceSheetId = await closeAndReopenActorSheet(game, source.actorId);
       await installUpgradeOnMook(game, {
         sheetId: sourceSheetId,
         actorId: source.actorId,
@@ -323,10 +313,8 @@ test.describe("Drag off / transfer", () => {
       ).toBeGreaterThan(0);
     });
 
-    // Reopen the target first so the source sheet sits in front; then park them at
-    // opposite edges so a strip of the target stays visible to receive the drop.
-    const targetSheetId = await closeAndReopenMookSheet(game, target.actorId);
-    sourceSheetId = await closeAndReopenMookSheet(game, source.actorId);
+    const targetSheetId = await closeAndReopenActorSheet(game, target.actorId);
+    sourceSheetId = await closeAndReopenActorSheet(game, source.actorId);
     const [sourceBox, targetBox] = await Promise.all([
       game.locator(`#${sourceSheetId}`).boundingBox(),
       game.locator(`#${targetSheetId}`).boundingBox(),
@@ -418,11 +406,6 @@ test.describe("Drag off / transfer", () => {
 });
 
 test.describe("Cyberware drag failure", () => {
-  // A fresh mook ships with exactly three foundational (core) cyberware: external,
-  // fashion, and internal. Dragging a non-foundational piece of any other type cannot
-  // be installed — installCyberware's guard fires before any dialog, so
-  // handleMookDraggedItem warns the user and deletes the item again rather than leave
-  // an un-installable piece on the sheet.
   test("dragging unsatisfiable cyberware onto a mook warns and removes it", async ({
     page: game,
   }) => {
@@ -438,8 +421,6 @@ test.describe("Cyberware drag failure", () => {
       id: itemId,
     });
 
-    // Make it unsatisfiable: a type with no core on a fresh mook (cyberEye) and
-    // non-foundational, so the guard fires before any install dialog can appear.
     await setItemSelected(game, {
       sheetId: itemSheetId,
       itemId,
@@ -454,8 +435,7 @@ test.describe("Cyberware drag failure", () => {
     });
     await closeDocSheet(game, { collection: "items", id: itemId });
 
-    let sheetId = await closeAndReopenMookSheet(game, actorId);
-
+    let sheetId = await closeAndReopenActorSheet(game, actorId);
     await test.step("dragging the cyberware warns and leaves no item or install dialog after reopening", async () => {
       await openSidebarTab(game, "items");
       const entry = game.locator(`#items [data-entry-id="${itemId}"]`);
@@ -467,8 +447,6 @@ test.describe("Cyberware drag failure", () => {
       await expect(mookSheet).toBeVisible();
       await expect(warning).toHaveCount(0);
 
-      // Observe the transient warning during the drag; a rejected item need not
-      // survive long enough for the successful-drop helper to observe it.
       await Promise.all([
         expect(warning).toBeVisible(),
         entry.dragTo(mookSheet, { timeout: 5000 }),
@@ -486,7 +464,7 @@ test.describe("Cyberware drag failure", () => {
         }),
       ).toHaveCount(0);
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game
           .locator(`#${sheetId} ${MOOK_FIELD.cyberwareItem}`)

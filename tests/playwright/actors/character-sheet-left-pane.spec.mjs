@@ -1,29 +1,29 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
-  closeDocSheet,
-  openSidebarTab,
-} from "../../../tools/playwright/ui/index.mjs";
-import {
-  CHARACTER_FIELD,
   CTRL_CLICK_MODIFIERS,
   applyLedgerChange,
   chatMessageCount,
-  closeAndReopenCharacterSheet,
+  closeAndReopenActorSheet,
+  closeDocSheet,
   closeLedgerWindow,
+  openLedgerWindow,
+  openSidebarTab,
+  setSheetField,
+  waitForActorFields,
+  waitForNewChatMessage,
+} from "../../../tools/playwright/ui/index.mjs";
+import {
+  CHARACTER_FIELD,
   confirmRollDialog,
   createCharacterViaUI,
   createRoleItemViaUI,
   dragRoleItemToCharacter,
-  installConsoleErrorHarness,
-  openLedgerWindow,
   openStatRollDialog,
-  setCharacterField,
   setStatRollLuck,
   statMaxInput,
   statRollable,
   statValueInput,
-  waitForCharacterFields,
-  waitForNewChatMessage,
 } from "./character-sheet-helpers.mjs";
 
 async function assertWoundState(page, sheetId, state) {
@@ -113,23 +113,13 @@ test.describe("Character sheet — left pane", () => {
     });
 
     await test.step("name and role text edits persist", async () => {
-      await setCharacterField(
-        page,
-        sheetId,
-        CHARACTER_FIELD.nameInput,
-        newName,
-      );
-      await waitForCharacterFields(page, actorId, { name: newName });
-      await setCharacterField(
-        page,
-        sheetId,
-        CHARACTER_FIELD.roleInput,
-        newRole,
-      );
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, CHARACTER_FIELD.nameInput, newName);
+      await waitForActorFields(page, actorId, { name: newName });
+      await setSheetField(page, sheetId, CHARACTER_FIELD.roleInput, newRole);
+      await waitForActorFields(page, actorId, {
         "system.roleInfo.activeRole": newRole,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.nameInput}`))
         .toHaveValue(newName);
@@ -144,36 +134,31 @@ test.describe("Character sheet — left pane", () => {
       { state: "mortallyWounded", hp: 0 },
     ]) {
       await test.step(`at HP ${hp} the wound state is ${state}`, async () => {
-        await setCharacterField(
-          page,
-          sheetId,
-          CHARACTER_FIELD.hpValueInput,
-          hp,
-        );
-        await waitForCharacterFields(page, actorId, {
+        await setSheetField(page, sheetId, CHARACTER_FIELD.hpValueInput, hp);
+        await waitForActorFields(page, actorId, {
           "system.derivedStats.hp.value": hp,
         });
-        sheetId = await closeAndReopenCharacterSheet(page, actorId);
+        sheetId = await closeAndReopenActorSheet(page, actorId);
         await assertWoundState(page, sheetId, state);
       });
     }
 
     await test.step("recalculating HP from a full current value raises both to the stat total", async () => {
-      await setCharacterField(page, sheetId, CHARACTER_FIELD.hpValueInput, 40);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, CHARACTER_FIELD.hpValueInput, 40);
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 40,
       });
-      await setCharacterField(page, sheetId, statValueInput("will"), 8);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, statValueInput("will"), 8);
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 40,
         "system.stats.will.value": 8,
       });
       await page.locator(`#${sheetId} ${CHARACTER_FIELD.calculateHp}`).click();
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 45,
         "system.derivedStats.hp.max": 45,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.hpValueInput}`))
         .toHaveValue("45");
@@ -183,22 +168,22 @@ test.describe("Character sheet — left pane", () => {
     });
 
     await test.step("recalculating HP from a wounded current value raises only the max and marks hardened", async () => {
-      await setCharacterField(page, sheetId, CHARACTER_FIELD.hpValueInput, 30);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, CHARACTER_FIELD.hpValueInput, 30);
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 30,
       });
-      await setCharacterField(page, sheetId, statValueInput("body"), 8);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, statValueInput("body"), 8);
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 30,
         "system.stats.body.value": 8,
       });
       await page.locator(`#${sheetId} ${CHARACTER_FIELD.calculateHp}`).click();
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 30,
         "system.derivedStats.hp.max": 50,
         "system.derivedStats.isHardened.value": true,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.hpValueInput}`))
         .toHaveValue("30");
@@ -209,14 +194,14 @@ test.describe("Character sheet — left pane", () => {
     });
 
     await test.step("one humanity recalculation sets 50/50 and EMP 5/5", async () => {
-      await setCharacterField(page, sheetId, statMaxInput("emp"), 5);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, statMaxInput("emp"), 5);
+      await waitForActorFields(page, actorId, {
         "system.stats.emp.max": 5,
       });
       await page
         .locator(`#${sheetId} ${CHARACTER_FIELD.calculateHumanity}`)
         .click();
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.humanity.value": 50,
         "system.derivedStats.humanity.max": 50,
         "system.stats.emp.max": 5,
@@ -224,7 +209,7 @@ test.describe("Character sheet — left pane", () => {
       await expect
         .soft(page.locator(`#${sheetId} ${statValueInput("emp")}`))
         .toHaveValue("5");
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.humanityValueInput}`))
         .toHaveValue("50");
@@ -240,11 +225,11 @@ test.describe("Character sheet — left pane", () => {
     });
 
     await test.step("recalculating humanity again leaves Humanity and EMP unchanged", async () => {
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await page
         .locator(`#${sheetId} ${CHARACTER_FIELD.calculateHumanity}`)
         .click();
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       for (const [selector, value] of [
         [CHARACTER_FIELD.humanityValueInput, "50"],
         [CHARACTER_FIELD.humanityMaxInput, "50"],
@@ -309,7 +294,7 @@ test.describe("Character sheet — left pane", () => {
       },
     ]) {
       await test.step(`humanity recalculation handles ${label}`, async () => {
-        sheetId = await closeAndReopenCharacterSheet(page, actorId);
+        sheetId = await closeAndReopenActorSheet(page, actorId);
         for (const [selector, path, value] of [
           [
             CHARACTER_FIELD.humanityMaxInput,
@@ -324,20 +309,20 @@ test.describe("Character sheet — left pane", () => {
           [statValueInput("emp"), "system.stats.emp.value", 6],
           [statMaxInput("emp"), "system.stats.emp.max", empMax],
         ]) {
-          await setCharacterField(page, sheetId, selector, value);
-          await waitForCharacterFields(page, actorId, { [path]: value });
+          await setSheetField(page, sheetId, selector, value);
+          await waitForActorFields(page, actorId, { [path]: value });
         }
         await page
           .locator(`#${sheetId} ${CHARACTER_FIELD.calculateHumanity}`)
           .click();
-        await waitForCharacterFields(page, actorId, {
+        await waitForActorFields(page, actorId, {
           "system.derivedStats.humanity.max": empMax * 10,
           "system.derivedStats.humanity.value": expectedHumanity,
         });
         await expect
           .soft(page.locator(`#${sheetId} ${statValueInput("emp")}`))
           .toHaveValue(String(expectedEmp));
-        sheetId = await closeAndReopenCharacterSheet(page, actorId);
+        sheetId = await closeAndReopenActorSheet(page, actorId);
         for (const [selector, value] of [
           [CHARACTER_FIELD.humanityValueInput, expectedHumanity],
           [CHARACTER_FIELD.humanityMaxInput, empMax * 10],
@@ -352,16 +337,16 @@ test.describe("Character sheet — left pane", () => {
     }
 
     await test.step("HP current and max edits persist", async () => {
-      await setCharacterField(page, sheetId, CHARACTER_FIELD.hpValueInput, 35);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, CHARACTER_FIELD.hpValueInput, 35);
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 35,
       });
-      await setCharacterField(page, sheetId, CHARACTER_FIELD.hpMaxInput, 60);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, CHARACTER_FIELD.hpMaxInput, 60);
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 35,
         "system.derivedStats.hp.max": 60,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.hpValueInput}`))
         .toHaveValue("35");
@@ -371,12 +356,12 @@ test.describe("Character sheet — left pane", () => {
     });
 
     await test.step("lowering HP max below current clamps the current down", async () => {
-      await setCharacterField(page, sheetId, CHARACTER_FIELD.hpMaxInput, 30);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, CHARACTER_FIELD.hpMaxInput, 30);
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.hp.value": 30,
         "system.derivedStats.hp.max": 30,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.hpValueInput}`))
         .toHaveValue("30");
@@ -386,29 +371,29 @@ test.describe("Character sheet — left pane", () => {
     });
 
     await test.step("LUCK and EMP value/max pairs persist", async () => {
-      await setCharacterField(page, sheetId, statValueInput("luck"), 3);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, statValueInput("luck"), 3);
+      await waitForActorFields(page, actorId, {
         "system.stats.luck.value": 3,
       });
-      await setCharacterField(page, sheetId, statMaxInput("luck"), 7);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, statMaxInput("luck"), 7);
+      await waitForActorFields(page, actorId, {
         "system.stats.luck.value": 3,
         "system.stats.luck.max": 7,
       });
-      await setCharacterField(page, sheetId, statValueInput("emp"), 4);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, statValueInput("emp"), 4);
+      await waitForActorFields(page, actorId, {
         "system.stats.luck.value": 3,
         "system.stats.luck.max": 7,
         "system.stats.emp.value": 4,
       });
-      await setCharacterField(page, sheetId, statMaxInput("emp"), 9);
-      await waitForCharacterFields(page, actorId, {
+      await setSheetField(page, sheetId, statMaxInput("emp"), 9);
+      await waitForActorFields(page, actorId, {
         "system.stats.luck.value": 3,
         "system.stats.luck.max": 7,
         "system.stats.emp.value": 4,
         "system.stats.emp.max": 9,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${statValueInput("luck")}`))
         .toHaveValue("3");
@@ -433,7 +418,7 @@ test.describe("Character sheet — left pane", () => {
       await page
         .locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveIncrease}`)
         .click();
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.deathSave.penalty": 1,
       });
       await expect
@@ -443,14 +428,14 @@ test.describe("Character sheet — left pane", () => {
       await page
         .locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveIncrease}`)
         .click();
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.deathSave.penalty": 2,
       });
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveValue}`))
         .toHaveText("2");
 
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveValue}`))
         .toHaveText("2");
@@ -460,14 +445,14 @@ test.describe("Character sheet — left pane", () => {
       await page
         .locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveReset}`)
         .click();
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.derivedStats.deathSave.penalty": 0,
       });
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveValue}`))
         .toHaveText("0");
 
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveValue}`))
         .toHaveText("0");
@@ -482,7 +467,7 @@ test.describe("Character sheet — left pane", () => {
         expect(failure.actor).toBe(actorId);
         expect(failure.resultTotal).toBe(6);
         expect(failure.outcome).toBe("failure");
-        await waitForCharacterFields(page, actorId, {
+        await waitForActorFields(page, actorId, {
           "system.derivedStats.deathSave.penalty": 0,
         });
 
@@ -491,14 +476,14 @@ test.describe("Character sheet — left pane", () => {
         expect(success.actor).toBe(actorId);
         expect(success.resultTotal).toBe(5);
         expect(success.outcome).toBe("success");
-        await waitForCharacterFields(page, actorId, {
+        await waitForActorFields(page, actorId, {
           "system.derivedStats.deathSave.penalty": 1,
         });
       } finally {
         await restoreDice(page);
       }
 
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveValue}`))
         .toHaveText("1");
@@ -566,7 +551,7 @@ test.describe("Character sheet — left pane", () => {
         .toHaveText("5");
 
       await closeLedgerWindow(page);
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       const reopenedLedger = await openLedgerWindow(
         page,
         sheetId,
@@ -663,10 +648,10 @@ test.describe("Character sheet — left pane", () => {
       expect(message.rolls).toBe(1);
       expect(message.actor).toBe(actorId);
 
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.stats.luck.value": 4,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${statValueInput("luck")}`))
         .toHaveValue("4");
@@ -710,10 +695,10 @@ test.describe("Character sheet — left pane", () => {
         sheetId,
         itemId: firstRole.itemId,
       });
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.roleInfo.activeRole": firstRole.name,
       });
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.roleInput}`))
         .toHaveValue(firstRole.name);
@@ -741,7 +726,7 @@ test.describe("Character sheet — left pane", () => {
         { id: actorId, expectedRole: firstRole.name },
         { timeout: 10000 },
       );
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect
         .soft(page.locator(`#${sheetId} ${CHARACTER_FIELD.roleInput}`))
         .toHaveValue(firstRole.name);

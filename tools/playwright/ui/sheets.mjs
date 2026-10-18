@@ -1,5 +1,27 @@
 import { expect } from "@playwright/test";
 
+// macOS Chromium treats Ctrl+click as a right-click (context menu) and never
+// dispatches `click`, so use Cmd there instead. The click handlers accept both
+// ctrlKey/metaKey.
+export const CTRL_CLICK_MODIFIERS =
+  process.platform === "darwin" ? ["Meta"] : ["Control"];
+
+// Locator for a rendered sheet's root element by its element id.
+export function sheet(page, sheetId) {
+  return page.locator(`#${sheetId}`);
+}
+
+// Fill an input on a rendered sheet (given as a full CSS selector) and commit
+// it by blurring (Tab). AppV2 sheets persist per-field on change/blur, so the
+// blur is the whole save action. The spec owns all waits/assertions on the
+// resulting persisted state.
+export async function setSheetField(page, sheetId, selector, value) {
+  const input = page.locator(`#${sheetId} ${selector}`);
+  await expect(input).toBeVisible();
+  await input.fill(String(value));
+  await input.press("Tab");
+}
+
 export async function resizeSheetViaUI(page, sheet, { width, height }) {
   const handle = await sheet.locator(".window-resize-handle").boundingBox();
   const bounds = await sheet.boundingBox();

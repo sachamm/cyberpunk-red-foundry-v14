@@ -1,21 +1,21 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  applyLedgerChange,
+  chatMessageCount,
+  closeAndReopenActorSheet,
   closeDocSheet,
-  openSidebarTab,
+  closeLedgerWindow,
   dismissNotifications,
+  openLedgerWindow,
+  openSidebarTab,
+  waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
-  chatMessageCount,
-  createMookViaUI,
-  waitForNewChatMessage,
-  closeAndReopenMookSheet,
-  openReputationLedger,
-  modifyReputationViaLedger,
-  closeReputationLedger,
-  openFacedownRollDialog,
   confirmFacedownRoll,
-  installConsoleErrorHarness,
+  createMookViaUI,
+  openFacedownRollDialog,
 } from "./mook-sheet-helpers.mjs";
 
 installConsoleErrorHarness();
@@ -26,9 +26,16 @@ installConsoleErrorHarness();
  */
 async function createMookWithReputation(game, value) {
   const { actorId, sheetId } = await createMookViaUI(game);
-  await openReputationLedger(game, sheetId);
-  await modifyReputationViaLedger(game, actorId, "add", value, "Test setup");
-  await closeReputationLedger(game);
+  await openLedgerWindow(game, sheetId, MOOK_FIELD.reputationLedgerIcon);
+  await applyLedgerChange(
+    game,
+    actorId,
+    "system.reputation.value",
+    "add",
+    value,
+    "Test setup",
+  );
+  await closeLedgerWindow(game);
   return { actorId, sheetId };
 }
 
@@ -61,7 +68,11 @@ test.describe("Reputation", () => {
   }) => {
     const { actorId, sheetId } = await createMookViaUI(game);
     const gmName = await game.evaluate(() => game.user.name);
-    const ledger = await openReputationLedger(game, sheetId);
+    const ledger = await openLedgerWindow(
+      game,
+      sheetId,
+      MOOK_FIELD.reputationLedgerIcon,
+    );
 
     await test.step("a fresh reputation ledger shows a total of 0 and no history", async () => {
       await expect(ledger.locator(".ledger-info")).toContainText("Reputation");
@@ -69,7 +80,14 @@ test.describe("Reputation", () => {
     });
 
     await test.step("adding 5 raises the total to 5 and records the increase", async () => {
-      await modifyReputationViaLedger(game, actorId, "add", 5, "Test setup");
+      await applyLedgerChange(
+        game,
+        actorId,
+        "system.reputation.value",
+        "add",
+        5,
+        "Test setup",
+      );
       await expect(ledger.locator(".ledger-info > div:last-child")).toHaveText(
         "5",
       );
@@ -84,9 +102,10 @@ test.describe("Reputation", () => {
     });
 
     await test.step("subtracting 2 lowers the total to 3 and records the decrease", async () => {
-      await modifyReputationViaLedger(
+      await applyLedgerChange(
         game,
         actorId,
+        "system.reputation.value",
         "subtract",
         2,
         "Test setup",
@@ -102,7 +121,14 @@ test.describe("Reputation", () => {
     });
 
     await test.step("setting 10 replaces the total and records the set", async () => {
-      await modifyReputationViaLedger(game, actorId, "set", 10, "Test setup");
+      await applyLedgerChange(
+        game,
+        actorId,
+        "system.reputation.value",
+        "set",
+        10,
+        "Test setup",
+      );
       await expect(ledger.locator(".ledger-info > div:last-child")).toHaveText(
         "10",
       );
@@ -113,7 +139,7 @@ test.describe("Reputation", () => {
       );
     });
 
-    await closeReputationLedger(game);
+    await closeLedgerWindow(game);
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
@@ -121,23 +147,34 @@ test.describe("Reputation", () => {
     page: game,
   }) => {
     const { actorId, sheetId } = await createMookViaUI(game);
-    await openReputationLedger(game, sheetId);
+    await openLedgerWindow(game, sheetId, MOOK_FIELD.reputationLedgerIcon);
 
     await test.step("adding reputation through the ledger persists it on the actor", async () => {
-      await modifyReputationViaLedger(game, actorId, "add", 10, "Test setup");
-      await closeReputationLedger(game);
+      await applyLedgerChange(
+        game,
+        actorId,
+        "system.reputation.value",
+        "add",
+        10,
+        "Test setup",
+      );
+      await closeLedgerWindow(game);
     });
 
     let reopenedSheetId = sheetId;
     await test.step("the header shows the new total on a fresh sheet render", async () => {
-      reopenedSheetId = await closeAndReopenMookSheet(game, actorId);
+      reopenedSheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${reopenedSheetId} ${MOOK_FIELD.facedownRollable}`),
       ).toContainText("Reputation: 10");
     });
 
     await test.step("the ledger window still shows the total and its history", async () => {
-      const reopenedLedger = await openReputationLedger(game, reopenedSheetId);
+      const reopenedLedger = await openLedgerWindow(
+        game,
+        reopenedSheetId,
+        MOOK_FIELD.reputationLedgerIcon,
+      );
       await expect(
         reopenedLedger.locator(".ledger-info > div:last-child"),
       ).toHaveText("10");
@@ -146,7 +183,7 @@ test.describe("Reputation", () => {
       await expect(rows.first().locator(".ledger-transaction")).toHaveText(
         "Increased by 10 to 10",
       );
-      await closeReputationLedger(game);
+      await closeLedgerWindow(game);
     });
 
     await closeDocSheet(game, { collection: "actors", id: actorId });
@@ -156,19 +193,31 @@ test.describe("Reputation", () => {
     page: game,
   }) => {
     const { actorId, sheetId } = await createMookViaUI(game);
-    const ledger = await openReputationLedger(game, sheetId);
+    const ledger = await openLedgerWindow(
+      game,
+      sheetId,
+      MOOK_FIELD.reputationLedgerIcon,
+    );
 
     await test.step("subtracting below zero shows a warning banner", async () => {
-      await modifyReputationViaLedger(game, actorId, "add", 3, "Test setup");
+      await applyLedgerChange(
+        game,
+        actorId,
+        "system.reputation.value",
+        "add",
+        3,
+        "Test setup",
+      );
       const needle = "You lost more Reputation than you have";
       const localizedWarning = await game.evaluate(() =>
         game.i18n.localize("CPR.messages.warningNotEnoughReputation"),
       );
       expect(localizedWarning).toContain(needle);
 
-      await modifyReputationViaLedger(
+      await applyLedgerChange(
         game,
         actorId,
+        "system.reputation.value",
         "subtract",
         5,
         "Test setup",
@@ -191,7 +240,7 @@ test.describe("Reputation", () => {
       await dismissNotifications(game);
     });
 
-    await closeReputationLedger(game);
+    await closeLedgerWindow(game);
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 

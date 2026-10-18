@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  closeAndReopenActorSheet,
   closeDocSheet,
   openProseMirrorEditor,
   saveProseMirror,
@@ -7,11 +9,7 @@ import {
   uniqueName,
   waitForProseMirrorValue,
 } from "../../../tools/playwright/ui/index.mjs";
-import {
-  closeAndReopenMookSheet,
-  createMookViaUI,
-  installConsoleErrorHarness,
-} from "./mook-sheet-helpers.mjs";
+import { createMookViaUI } from "./mook-sheet-helpers.mjs";
 
 installConsoleErrorHarness();
 
@@ -49,7 +47,7 @@ test.describe("Notes Pane", () => {
       const pane = game.locator(`#${sheetId} ${NOTES_PANE}`);
       await expect(pane).toContainText(noteText);
 
-      const newSheetId = await closeAndReopenMookSheet(game, actorId);
+      const newSheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(game.locator(`#${newSheetId} ${NOTES_PANE}`)).toContainText(
         noteText,
       );

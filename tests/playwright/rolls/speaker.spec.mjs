@@ -1,10 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  chatMessageCount,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
   uniqueName,
+  waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 
 /*
@@ -42,7 +44,7 @@ test.describe("chat speaker on rolls", () => {
       id: actorId,
     });
 
-    const messagesBefore = await game.evaluate(() => game.messages.size);
+    const messagesBefore = await chatMessageCount(game);
 
     // Roll a stat through the real UI and confirm the verify dialog.
     await game
@@ -61,22 +63,21 @@ test.describe("chat speaker on rolls", () => {
       await expect(dialog).toHaveCount(0, { timeout: 2000 });
     }).toPass({ timeout: 20000 });
 
-    await game.waitForFunction(
-      (before) => game.messages.size > before,
-      messagesBefore,
-      { timeout: 10000 },
-    );
+    const messageId = await waitForNewChatMessage(game, messagesBefore);
 
-    const message = await game.evaluate((id) => {
-      const msg = game.messages.contents.at(-1);
-      const actor = game.actors.get(id);
-      return {
-        speaker: msg.speaker,
-        actorIsString: typeof msg.speaker.actor === "string",
-        rolls: msg.rolls.length,
-        actorName: actor.name,
-      };
-    }, actorId);
+    const message = await game.evaluate(
+      ({ aid, mid }) => {
+        const msg = game.messages.get(mid);
+        const actor = game.actors.get(aid);
+        return {
+          speaker: msg.speaker,
+          actorIsString: typeof msg.speaker.actor === "string",
+          rolls: msg.rolls.length,
+          actorName: actor.name,
+        };
+      },
+      { aid: actorId, mid: messageId },
+    );
 
     // Speaker points at the acting actor by id (a string, not the object the old
     // code stored) and aliases to its name; a native roll is attached.

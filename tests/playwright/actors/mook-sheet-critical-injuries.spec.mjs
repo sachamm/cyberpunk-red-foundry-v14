@@ -1,25 +1,25 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  CTRL_CLICK_MODIFIERS,
+  chatMessageCount,
+  closeAndReopenActorSheet,
   closeOwnedItemSheet,
   openOwnedItemSheet,
   openSidebarTab,
+  resolveYesNo,
   uniqueName,
+  waitForNewChatMessage,
+  yesNoDialog,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
-  CTRL_CLICK_MODIFIERS,
   cancelCriticalInjuryRollDialog,
-  chatMessageCount,
-  closeAndReopenMookSheet,
   confirmCriticalInjuryRoll,
   createMookViaUI,
-  installConsoleErrorHarness,
+  deleteKeyRemove,
   openCriticalInjuryRollDialog,
   seedCriticalInjuryOnMook,
-  waitForNewChatMessage,
-  yesNoDialog,
-  resolveYesNo,
-  deleteKeyRemove,
   waitItemRemoved,
 } from "./mook-sheet-helpers.mjs";
 
@@ -82,7 +82,7 @@ test.describe("Critical Injury Pane", () => {
     });
 
     await test.step("a fresh render lists the injury in the critical injuries pane", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
       );
@@ -120,7 +120,7 @@ test.describe("Critical Injury Pane", () => {
     });
 
     await test.step("a fresh render lists them comma-separated with a location icon each", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const bodyLink = game.locator(
         `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${bodyEmbeddedId}"]`,
       );
@@ -158,7 +158,7 @@ test.describe("Critical Injury Pane", () => {
     });
 
     await test.step("a fresh render bolds the injury's name", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
       );
@@ -190,7 +190,7 @@ test.describe("Critical Injury Pane", () => {
     });
 
     await test.step("a fresh render shows the death-save value increased by one", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const deathSaveValue = game.locator(
         `#${sheetId} ${MOOK_FIELD.deathSaveValue}`,
       );
@@ -223,7 +223,7 @@ test.describe("Critical Injury Pane", () => {
         "the critical injury should be embedded on the mook",
       ).toBeTruthy();
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(
           `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
@@ -266,7 +266,7 @@ test.describe("Critical Injury Pane", () => {
         "the critical injury should be embedded on the mook",
       ).toBeTruthy();
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(
           `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
@@ -320,7 +320,7 @@ test.describe("Critical Injury Pane", () => {
         "the critical injury should be embedded on the mook",
       ).toBeTruthy();
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
       );
@@ -345,7 +345,7 @@ test.describe("Critical Injury Pane", () => {
 
       await waitItemRemoved(game, { actorId, itemId: embeddedId });
 
-      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      const freshSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(
           `#${freshSheet} ${MOOK_FIELD.criticalInjuryItem}[data-item-id="${embeddedId}"]`,
@@ -411,7 +411,7 @@ test.describe("Critical Injury Roll", () => {
     await expect(injuryLink).toHaveText(/./);
     const injuryName = await injuryLink.innerText();
 
-    sheetId = await closeAndReopenMookSheet(game, actorId);
+    sheetId = await closeAndReopenActorSheet(game, actorId);
     const listItem = game.locator(
       `#${sheetId} ${MOOK_FIELD.criticalInjuryItem}`,
     );
@@ -432,7 +432,7 @@ test.describe("Critical Injury Roll", () => {
     await expect(
       game.locator(`#${sheetId} ${MOOK_FIELD.criticalInjuryItem}`),
     ).toHaveCount(1, { timeout: 30000 });
-    sheetId = await closeAndReopenMookSheet(game, actorId);
+    sheetId = await closeAndReopenActorSheet(game, actorId);
     await expect(
       game.locator(`#${sheetId} ${MOOK_FIELD.criticalInjuryItem}`),
     ).toHaveCount(1);
@@ -444,7 +444,7 @@ test.describe("Critical Injury Roll", () => {
     await expect(
       game.locator(`#${sheetId} ${MOOK_FIELD.criticalInjuryItem}`),
     ).toHaveCount(2, { timeout: 30000 });
-    sheetId = await closeAndReopenMookSheet(game, actorId);
+    sheetId = await closeAndReopenActorSheet(game, actorId);
     await expect(
       game.locator(`#${sheetId} ${MOOK_FIELD.criticalInjuryItem}`),
     ).toHaveCount(2);

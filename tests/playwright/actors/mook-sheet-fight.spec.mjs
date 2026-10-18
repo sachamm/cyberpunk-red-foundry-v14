@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  CTRL_CLICK_MODIFIERS,
+  chatMessageCount,
+  closeAndReopenActorSheet,
   closeDocSheet,
   createItemViaUI,
   dismissNotifications,
@@ -7,25 +11,21 @@ import {
   expectSheetRendered,
   openItemSettings,
   openSidebarTab,
+  resolveYesNo,
   setItemField,
   uniqueName,
+  waitForActorFields,
+  waitForNewChatMessage,
+  yesNoDialog,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
-  CTRL_CLICK_MODIFIERS,
-  chatMessageCount,
-  createMookViaUI,
-  openInstallCyberwareDialog,
   confirmInstallCyberwareDialog,
-  waitForNewChatMessage,
-  ownedItemIdsByNames,
-  closeAndReopenMookSheet,
-  waitForMookFields,
-  yesNoDialog,
-  resolveYesNo,
+  createMookViaUI,
   deleteKeyRemove,
+  openInstallCyberwareDialog,
+  ownedItemIdsByNames,
   waitItemRemoved,
-  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -145,7 +145,7 @@ async function setupMookWithWeapons(page, weaponSpecs) {
     weaponSpecs.map((s) => s.name),
   );
 
-  sheetId = await closeAndReopenMookSheet(page, actorId);
+  sheetId = await closeAndReopenActorSheet(page, actorId);
   return { actorId, sheetId, byName };
 }
 
@@ -257,7 +257,7 @@ async function setupMookWithLoadableWeapon(page) {
     await dragItemToActorSheet(page, { itemId, sheetId, actorId });
   }
 
-  sheetId = await closeAndReopenMookSheet(page, actorId);
+  sheetId = await closeAndReopenActorSheet(page, actorId);
   return { actorId, sheetId, weaponId, ammoId };
 }
 
@@ -332,7 +332,7 @@ async function setupMookWithArmors(page, armorSpecs) {
     armorSpecs.map((s) => s.name),
   );
 
-  sheetId = await closeAndReopenMookSheet(page, actorId);
+  sheetId = await closeAndReopenActorSheet(page, actorId);
   return { actorId, sheetId, byName };
 }
 
@@ -549,7 +549,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
       { timeout: 10000 },
     );
 
-    sheetId = await closeAndReopenMookSheet(game, actorId);
+    sheetId = await closeAndReopenActorSheet(game, actorId);
 
     await test.step("the cyberware weapon renders under the Melee section", async () => {
       const info = await game.evaluate(
@@ -892,7 +892,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     });
 
     await test.step("a fresh render shows the loaded magazine", async () => {
-      const freshSheetId = await closeAndReopenMookSheet(game, actorId);
+      const freshSheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(weaponRow(game, freshSheetId, weaponId)).toContainText(
         "8 / 8",
       );
@@ -935,7 +935,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
     });
 
     await test.step("a fresh render reads Unloaded again", async () => {
-      const freshSheetId = await closeAndReopenMookSheet(game, actorId);
+      const freshSheetId = await closeAndReopenActorSheet(game, actorId);
       const unloaded = await game.evaluate(() =>
         game.i18n.localize("CPR.mookSheet.items.unloaded"),
       );
@@ -1018,7 +1018,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
 
       await waitItemRemoved(game, { actorId, itemId: id });
 
-      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      const freshSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(weaponRow(game, freshSheet, id).first()).toHaveCount(0);
     });
   });
@@ -1114,7 +1114,7 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
         { timeout: 10000 },
       );
 
-      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      currentSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(
         armorRow(game, currentSheet, id).locator(".armor-1-stats"),
       ).toHaveText("6/7");
@@ -1134,7 +1134,7 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
         { timeout: 10000 },
       );
 
-      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      currentSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(
         armorRow(game, currentSheet, id).locator(".armor-1-stats"),
       ).toHaveText("5/7");
@@ -1172,11 +1172,11 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
       await armorRow(game, currentSheet, jacketId)
         .locator('a.armor-current-untrack[data-location="body"]')
         .click();
-      await waitForMookFields(game, actorId, {
+      await waitForActorFields(game, actorId, {
         "system.externalData.currentArmorBody.id": jacketId,
       });
 
-      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      currentSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(
         armorRow(game, currentSheet, jacketId).locator(
           'a.armor-current-track[data-location="body"]',
@@ -1203,11 +1203,11 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
       await armorRow(game, currentSheet, vestId)
         .locator('a.armor-current-untrack[data-location="body"]')
         .click();
-      await waitForMookFields(game, actorId, {
+      await waitForActorFields(game, actorId, {
         "system.externalData.currentArmorBody.id": vestId,
       });
 
-      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      currentSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(
         armorRow(game, currentSheet, vestId).locator(
           'a.armor-current-track[data-location="body"]',
@@ -1234,12 +1234,12 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
       await armorRow(game, currentSheet, vestId)
         .locator('a.armor-current-track[data-location="body"]')
         .click();
-      await waitForMookFields(game, actorId, {
+      await waitForActorFields(game, actorId, {
         "system.externalData.currentArmorBody.id": null,
         "system.externalData.currentArmorBody.value": 0,
       });
 
-      currentSheet = await closeAndReopenMookSheet(game, actorId);
+      currentSheet = await closeAndReopenActorSheet(game, actorId);
       for (const id of [jacketId, vestId]) {
         const row = armorRow(game, currentSheet, id);
         await expect(
@@ -1271,7 +1271,7 @@ test.describe("Mook sheet - Fight Pane (armor)", () => {
 
       await waitItemRemoved(game, { actorId, itemId: id });
 
-      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      const freshSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(armorRow(game, freshSheet, id).first()).toHaveCount(0);
     });
   });

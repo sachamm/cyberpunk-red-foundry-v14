@@ -7,9 +7,12 @@ export {
 } from "./documents.mjs";
 export {
   ACTOR_TYPES,
+  closeAndReopenActorSheet,
   createActorViaUI,
   positionActorSheet,
   reopenActorSheetViaUI,
+  waitForActorFields,
+  waitForSkillLevel,
 } from "./actors.mjs";
 export {
   ITEM_TYPES,
@@ -31,15 +34,20 @@ export {
   DROP_TAB_BY_TYPE,
   activateGearTab,
   createEmbeddedItemViaUI,
+  createInventoryItemViaUI,
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
+  enablePlayersCreateInventory,
   hoverGearRow,
   installUpgrade,
 } from "./embedded-items.mjs";
 export {
+  CTRL_CLICK_MODIFIERS,
   captureSheet,
   closeDocSheet,
   expectSheetRendered,
+  sheet,
+  setSheetField,
   waitForSheetReplacement,
   resizeSheetViaUI,
   changeActorSheetViaUI,
@@ -47,6 +55,13 @@ export {
   dismissNotifications,
   openOwnedItemSheet,
 } from "./sheets.mjs";
+export { chatMessageCount, waitForNewChatMessage } from "./chat.mjs";
+export { yesNoDialog, resolveYesNo } from "./dialogs.mjs";
+export {
+  applyLedgerChange,
+  closeLedgerWindow,
+  openLedgerWindow,
+} from "./ledger.mjs";
 export {
   createEffectViaUI,
   closeActiveEffectConfigViaUI,

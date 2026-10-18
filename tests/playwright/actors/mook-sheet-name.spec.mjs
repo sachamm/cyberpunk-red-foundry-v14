@@ -1,18 +1,18 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  closeAndReopenActorSheet,
   closeDocSheet,
   uniqueName,
+  waitForActorFields,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
+  cancelMookRename,
+  confirmMookRename,
   createMookViaUI,
-  waitForMookFields,
-  closeAndReopenMookSheet,
   openMookRenameDialog,
   setMookRenameValue,
-  confirmMookRename,
-  cancelMookRename,
-  installConsoleErrorHarness,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -56,10 +56,10 @@ test.describe("Side Pane (Name)", () => {
       await confirmMookRename(dialog);
 
       // Supporting evidence: the actor document's name was updated.
-      await waitForMookFields(game, actorId, { name: newName });
+      await waitForActorFields(game, actorId, { name: newName });
 
       // Hard reopen -> prove it on the fresh render (visible proof).
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(nameLink(game, sheetId)).toHaveText(newName);
     });
 
@@ -90,7 +90,7 @@ test.describe("Side Pane (Name)", () => {
     });
 
     // Supporting evidence: the actor document was never updated.
-    await waitForMookFields(game, actorId, { name: initialName });
+    await waitForActorFields(game, actorId, { name: initialName });
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 });

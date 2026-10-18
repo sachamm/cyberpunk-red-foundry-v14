@@ -1,5 +1,4 @@
-import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import { expect } from "@playwright/test";
 import {
   closeDocSheet,
   createActorViaUI,
@@ -7,28 +6,9 @@ import {
   dragItemToActorSheet,
   expectSheetRendered,
   openItemSettings,
-  reopenActorSheetViaUI,
   setItemSelected,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
-
-// macOS Chromium treats Ctrl+click as a right-click (context menu) and never dispatches
-// `click`, so use Cmd there instead. The click handlers accept both ctrlKey/metaKey.
-export const CTRL_CLICK_MODIFIERS =
-  process.platform === "darwin" ? ["Meta"] : ["Control"];
-
-// The yes/no confirmation dialog used by destructive mook actions (delete, snort,
-// uninstall). Returns the dialog locator; the spec owns every visibility/text/count
-// assertion. Dismiss it with resolveYesNo(dialog, "yes" | "no").
-export function yesNoDialog(page) {
-  return page.locator(".cpr-dialog").filter({
-    has: page.locator(".cpr-dialog-message"),
-  });
-}
-
-export async function resolveYesNo(dialog, action) {
-  await dialog.locator(`button[data-action="${action}"]`).click();
-}
 
 // Focus a mook item's name/row element and press Delete to trigger its removal
 // prompt. The spec owns the subsequent dialog assertions and dismissal.
@@ -104,28 +84,6 @@ export const MOOK_FIELD = {
   criticalInjuryTableSelect: 'select[name="currentTable"]',
 };
 
-// Wait until the mook actor's persisted fields match `expected` (path -> value).
-export async function waitForMookFields(page, actorId, expected) {
-  await page.waitForFunction(
-    ({ actorId, expected }) => {
-      const actor = game.actors.get(actorId);
-      if (!actor) return false;
-      return Object.entries(expected).every(
-        ([path, value]) => foundry.utils.getProperty(actor, path) === value,
-      );
-    },
-    { actorId, expected },
-    { timeout: 10000 },
-  );
-}
-
-// Close a rendered mook sheet and reopen it fresh via the sidebar, returning the
-// new element id. The hard-reopen guard used after any mutating step.
-export async function closeAndReopenMookSheet(page, actorId) {
-  await closeDocSheet(page, { collection: "actors", id: actorId });
-  return reopenActorSheetViaUI(page, actorId);
-}
-
 // Create a mook via the actor directory and wait for its sheet to render; returns
 // { actorId, sheetId }. The standard setup for every mook spec. Pass an explicit
 // name when a test must assert against it (the rename tests do).
@@ -167,63 +125,6 @@ export async function confirmMookRename(dialog) {
 export async function cancelMookRename(dialog) {
   await dialog.locator(MOOK_FIELD.dialogCancel).click();
   await expect(dialog).toHaveCount(0, { timeout: 5000 });
-}
-
-// Fill an input on the rendered mook sheet (given as a full CSS selector, e.g.
-// MOOK_FIELD.bodyStatInput) and commit it by blurring (Tab). AppV2 sheets persist
-// per-field on change/blur, so the blur is the whole save action. The spec owns all
-// waits/assertions on the resulting persisted state.
-export async function setMookSheetField(page, sheetId, selector, value) {
-  const input = page.locator(`#${sheetId} ${selector}`);
-  await expect(input).toBeVisible();
-  await input.fill(String(value));
-  await input.press("Tab");
-}
-
-// Open the reputation ledger window from a rendered mook sheet; returns a locator
-// scoped to that window. Only waits for the window surface; the spec owns all
-// assertions on the total, history rows, and controls.
-export async function openReputationLedger(page, sheetId) {
-  await page.locator(`#${sheetId} ${MOOK_FIELD.reputationLedgerIcon}`).click();
-  const ledger = page.locator(".application.ledger");
-  await expect(ledger).toBeVisible();
-  return ledger;
-}
-
-// Apply an add / subtract / set change in an open reputation ledger window and wait
-// for the new total to persist on the actor (the window re-renders in place from it).
-export async function modifyReputationViaLedger(
-  page,
-  actorId,
-  action,
-  value,
-  reason,
-) {
-  const before = await page.evaluate(
-    (id) => game.actors.get(id)?.system?.reputation?.value,
-    actorId,
-  );
-  const expected =
-    action === "add"
-      ? before + value
-      : action === "subtract"
-        ? before - value
-        : value;
-
-  const ledger = page.locator(".application.ledger");
-  await ledger.locator('input[name="modifyValue"]').fill(String(value));
-  await ledger.locator('input[name="reason"]').fill(reason);
-  await ledger.locator(`.ledger-edit-button[data-action="${action}"]`).click();
-  await waitForMookFields(page, actorId, {
-    "system.reputation.value": expected,
-  });
-}
-
-// Close the reputation ledger window via its header close button.
-export async function closeReputationLedger(page) {
-  const ledger = page.locator(".application.ledger");
-  await ledger.locator('button[data-action="close"]').click();
-  await expect(ledger).toBeHidden();
 }
 
 // Click the mook's facedown rollable and wait for the verify dialog; returns a
@@ -290,51 +191,6 @@ export async function ownedSkillLevel(page, actorId, name) {
       game.actors.get(actorId).itemTypes.skill.find((s) => s.name === name)
         ?.system.level ?? null,
     { actorId, name },
-  );
-}
-
-// Wait until an owned skill's persisted level equals the expected value (the
-// proof that a dialog edit or Delete-key reset actually landed on the document).
-export async function waitForSkillLevel(page, actorId, name, level) {
-  await page.waitForFunction(
-    ({ actorId, name, level }) => {
-      const skill = game.actors
-        .get(actorId)
-        .itemTypes.skill.find((s) => s.name === name);
-      return skill && skill.system.level === level;
-    },
-    { actorId, name, level },
-    { timeout: 10000 },
-  );
-}
-
-// Snapshot the chat log size; pair with waitForNewChatMessage to detect a message
-// posted by an action taken in between.
-export async function chatMessageCount(page) {
-  return page.evaluate(() => game.messages.size);
-}
-
-// After the caller triggers an action, wait for a new chat message and return its
-// id. With requireRoll, waits until the newest message carries at least one roll
-// (roll actions post their roll on the message); with requireContent, until it
-// carries content (item cards post to chat as plain messages). Read-only; specs
-// own all card assertions.
-export async function waitForNewChatMessage(
-  page,
-  before,
-  { requireRoll = false, requireContent = false, timeout = 10000 } = {},
-) {
-  return page.waitForFunction(
-    ({ before, requireRoll, requireContent }) => {
-      if (game.messages.size <= before) return false;
-      const msg = game.messages.contents.at(-1);
-      if (!msg) return false;
-      if (requireRoll && !msg.rolls.length) return false;
-      if (requireContent && !msg.content) return false;
-      return msg.id;
-    },
-    { before, requireRoll, requireContent },
-    { timeout },
   );
 }
 
@@ -469,39 +325,4 @@ export async function confirmCriticalInjuryRoll(dialog, { table } = {}) {
 export async function cancelCriticalInjuryRollDialog(dialog) {
   await dialog.locator(MOOK_FIELD.dialogCancel).click();
   await expect(dialog).toHaveCount(0, { timeout: 10000 });
-}
-
-/**
- * Register the console-error harness shared by all mook sheet specs.
- * beforeEach navigates to the ready world and collects console errors;
- * afterEach fails the test on any uncaught exception or console error not
- * registered as expected via page.expectedConsoleErrors.
- */
-export function installConsoleErrorHarness() {
-  test.beforeEach(async ({ page }) => {
-    page.consoleErrors = [];
-    // Tests that intentionally trigger a console error (e.g. via
-    // DisplayMessage("error")) register a matching RegExp here so afterEach
-    // ignores exactly those messages. Uncaught exceptions always fail.
-    page.expectedConsoleErrors = [];
-    page.on("console", (msg) => {
-      if (msg.type() === "error") page.consoleErrors.push(msg.text());
-    });
-    page.on("pageerror", (err) => {
-      page.consoleErrors.push(`uncaught exception: ${err.message}`);
-    });
-    await gotoReadyWorld(page);
-  });
-
-  test.afterEach(async ({ page }) => {
-    const unexpected = page.consoleErrors.filter(
-      (text) =>
-        text.startsWith("uncaught exception:") ||
-        !page.expectedConsoleErrors.some((re) => re.test(text)),
-    );
-    expect(
-      unexpected,
-      `console errors during test:\n${unexpected.join("\n")}`,
-    ).toEqual([]);
-  });
 }

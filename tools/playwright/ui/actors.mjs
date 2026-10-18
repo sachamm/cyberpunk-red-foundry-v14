@@ -1,5 +1,6 @@
 import { expect } from "@playwright/test";
 import { createDocumentViaUI } from "./documents.mjs";
+import { closeDocSheet } from "./sheets.mjs";
 import { openSidebarTab } from "./sidebar.mjs";
 
 export const ACTOR_TYPES = [
@@ -33,6 +34,43 @@ export async function reopenActorSheetViaUI(page, actorId) {
   expect(elementId).toBeTruthy();
   await expect(page.locator(`#${elementId}`)).toBeVisible();
   return elementId;
+}
+
+// Wait until an actor's persisted fields match `expected` (path -> value).
+export async function waitForActorFields(page, actorId, expected) {
+  await page.waitForFunction(
+    ({ actorId, expected }) => {
+      const actor = game.actors.get(actorId);
+      if (!actor) return false;
+      return Object.entries(expected).every(
+        ([path, value]) => foundry.utils.getProperty(actor, path) === value,
+      );
+    },
+    { actorId, expected },
+    { timeout: 10000 },
+  );
+}
+
+// Close a rendered actor sheet and reopen it fresh via the sidebar, returning
+// the new element id. The hard-reopen guard used after any mutating step.
+export async function closeAndReopenActorSheet(page, actorId) {
+  await closeDocSheet(page, { collection: "actors", id: actorId });
+  return reopenActorSheetViaUI(page, actorId);
+}
+
+// Wait until an owned skill's persisted level equals the expected value (the
+// proof that a dialog edit or inline change actually landed on the document).
+export async function waitForSkillLevel(page, actorId, name, level) {
+  await page.waitForFunction(
+    ({ actorId, name, level }) => {
+      const skill = game.actors
+        .get(actorId)
+        .itemTypes.skill.find((s) => s.name === name);
+      return skill && skill.system.level === level;
+    },
+    { actorId, name, level },
+    { timeout: 10000 },
+  );
 }
 
 // Reposition a rendered actor sheet's window frame. Foundry cascades new

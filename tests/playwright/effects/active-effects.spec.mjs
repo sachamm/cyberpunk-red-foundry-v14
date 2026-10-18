@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import {
   addModViaUI,
   activateGearTab,
+  chatMessageCount,
   clickEffectActionViaUI,
   closeActiveEffectConfigViaUI,
   closeDocSheet,
@@ -18,9 +19,12 @@ import {
   hoverGearRow,
   openOwnedItemSheet,
   reopenActorSheetViaUI,
+  resolveYesNo,
   uniqueName,
+  waitForNewChatMessage,
+  yesNoDialog,
 } from "../../../tools/playwright/ui/index.mjs";
-import { installConsoleErrorHarness } from "./active-effects-helpers.mjs";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 
 installConsoleErrorHarness();
 
@@ -33,16 +37,6 @@ async function cycleEquipState(page, { actorSheetId, actorId, itemId, state }) {
       game.actors.get(aid).items.get(iid).system.equipped === expected,
     { actorId, itemId, state },
   );
-}
-
-function yesNoDialog(page) {
-  return page.locator(".cpr-dialog").filter({
-    has: page.locator(".cpr-dialog-message"),
-  });
-}
-
-async function resolveYesNo(dialog, action) {
-  await dialog.locator(`button[data-action="${action}"]`).click();
 }
 
 test.describe("Active Effect sheet (ApplicationV2)", () => {
@@ -628,8 +622,10 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       expect(tooltip).not.toContain("???");
     });
 
+    let messageId = null;
+
     await test.step("the roll dialog lists the skill name in both mod sections", async () => {
-      const messagesBefore = await game.evaluate(() => game.messages.size);
+      const messagesBefore = await chatMessageCount(game);
       await (await skillRow()).locator("a.rollable").click();
 
       const dialog = game
@@ -654,16 +650,13 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
         await expect(dialog).toHaveCount(0, { timeout: 2000 });
       }).toPass({ timeout: 20000 });
 
-      await game.waitForFunction(
-        (before) => game.messages.size > before,
-        messagesBefore,
-        { timeout: 10000 },
-      );
+      messageId = await waitForNewChatMessage(game, messagesBefore);
     });
 
     await test.step("the chat roll card resolves the skill name", async () => {
       const content = await game.evaluate(
-        () => game.messages.contents.at(-1).content,
+        (id) => game.messages.get(id).content,
+        messageId,
       );
       expect(content).toContain(`(${skillName})`);
       expect(content).not.toContain("???");

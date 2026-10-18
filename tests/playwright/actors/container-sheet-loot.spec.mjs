@@ -1,17 +1,17 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
   closeDocSheet,
   createDocumentViaUI,
   expectSheetRendered,
   openTokenSheet,
+  sheet,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   createContainerWithItem,
   FIELD,
-  installConsoleErrorHarness,
   setContainerTypeViaUI,
-  sheet,
 } from "./container-sheet-helpers.mjs";
 
 installConsoleErrorHarness();

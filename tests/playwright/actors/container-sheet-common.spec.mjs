@@ -1,8 +1,13 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
+import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
 import {
+  CTRL_CLICK_MODIFIERS,
+  chatMessageCount,
   closeDocSheet,
   closeOwnedItemSheet,
   createDocumentViaUI,
+  createInventoryItemViaUI,
   createItemViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
@@ -10,18 +15,16 @@ import {
   openOwnedItemSheet,
   openSidebarTab,
   reopenActorSheetViaUI,
+  sheet,
   uniqueName,
+  waitForActorFields,
+  waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
-import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
 import {
   createContainerWithItem,
-  createInventoryItemViaUI,
   FIELD,
-  installConsoleErrorHarness,
   setContainerFlagViaUI,
   setContainerTypeViaUI,
-  sheet,
-  waitForActorFields,
 } from "./container-sheet-helpers.mjs";
 
 installConsoleErrorHarness();
@@ -316,8 +319,6 @@ test.describe("Common behaviors", () => {
   test("ctrl-clicking an item name posts an item card to the chat log", async ({
     page: game,
   }) => {
-    const cardModifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
-
     const { actorId, sheetId } = await createContainerWithItem(game, {
       containerName: "item-card-container",
       itemType: "gear",
@@ -335,12 +336,10 @@ test.describe("Common behaviors", () => {
         .locator(FIELD.itemName);
       await expect(itemEditLink).toBeVisible();
 
-      const before = await game.evaluate(() => game.messages.size);
-      await itemEditLink.click({ modifiers: cardModifier });
+      const before = await chatMessageCount(game);
+      await itemEditLink.click({ modifiers: CTRL_CLICK_MODIFIERS });
 
-      await game.waitForFunction((n) => game.messages.size > n, before, {
-        timeout: 10000,
-      });
+      await waitForNewChatMessage(game, before);
 
       const card = game
         .locator("#chat .chat-message")

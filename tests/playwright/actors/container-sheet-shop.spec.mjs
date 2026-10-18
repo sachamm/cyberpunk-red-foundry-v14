@@ -1,38 +1,38 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
   activateGearTab,
   closeDocSheet,
   closeOwnedItemSheet,
   createDocumentViaUI,
+  createInventoryItemViaUI,
   createItemViaUI,
   dismissNotifications,
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
+  enablePlayersCreateInventory,
   expectSheetRendered,
   openItemSettings,
   openOwnedItemSheet,
   positionActorSheet,
   reopenActorSheetViaUI,
   setItemField,
+  sheet,
   uniqueName,
+  waitForActorFields,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   configureContainerVendorViaUI,
   createContainerWithItem,
-  createInventoryItemViaUI,
-  enablePlayersCreateInventory,
   equipWeapon,
   FIELD,
-  installConsoleErrorHarness,
   purchaseAllViaUI,
   purchasePartViaUI,
   sellItemToContainerViaUI,
+  setActorWealthViaUI,
   setContainerFlagViaUI,
   setContainerTypeViaUI,
-  setActorWealthViaUI,
-  sheet,
   setTradePartnerWithWealth,
-  waitForActorFields,
 } from "./container-sheet-helpers.mjs";
 
 installConsoleErrorHarness();

@@ -1,19 +1,16 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
-  closeDocSheet,
-  openSidebarTab,
-} from "../../../tools/playwright/ui/index.mjs";
-import {
-  MOOK_FIELD,
   CTRL_CLICK_MODIFIERS,
   chatMessageCount,
-  createMookViaUI,
+  closeAndReopenActorSheet,
+  closeDocSheet,
+  openSidebarTab,
+  setSheetField,
+  waitForActorFields,
   waitForNewChatMessage,
-  waitForMookFields,
-  closeAndReopenMookSheet,
-  setMookSheetField,
-  installConsoleErrorHarness,
-} from "./mook-sheet-helpers.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
+import { MOOK_FIELD, createMookViaUI } from "./mook-sheet-helpers.mjs";
 
 async function rollDeathSave(page, sheetId) {
   const before = await chatMessageCount(page);
@@ -45,12 +42,14 @@ test.describe("Stat Pane", () => {
     let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("setting BODY in-line commits the new value", async () => {
-      await setMookSheetField(game, sheetId, MOOK_FIELD.bodyStatInput, 12);
-      await waitForMookFields(game, actorId, { "system.stats.body.value": 12 });
+      await setSheetField(game, sheetId, MOOK_FIELD.bodyStatInput, 12);
+      await waitForActorFields(game, actorId, {
+        "system.stats.body.value": 12,
+      });
     });
 
     await test.step("the new value is on a fresh render", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.bodyStatInput}`),
       ).toHaveValue("12");
@@ -65,19 +64,19 @@ test.describe("Stat Pane", () => {
     let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("setting current and max to different values commits both", async () => {
-      await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, 35);
-      await waitForMookFields(game, actorId, {
+      await setSheetField(game, sheetId, MOOK_FIELD.hpValueInput, 35);
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.hp.value": 35,
       });
-      await setMookSheetField(game, sheetId, MOOK_FIELD.hpMaxInput, 60);
-      await waitForMookFields(game, actorId, {
+      await setSheetField(game, sheetId, MOOK_FIELD.hpMaxInput, 60);
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.hp.value": 35,
         "system.derivedStats.hp.max": 60,
       });
     });
 
     await test.step("both distinct values are on a fresh render", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.hpValueInput}`),
       ).toHaveValue("35");
@@ -93,15 +92,15 @@ test.describe("Stat Pane", () => {
     let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("setting current above max clamps it down to max", async () => {
-      await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, 70);
-      await waitForMookFields(game, actorId, {
+      await setSheetField(game, sheetId, MOOK_FIELD.hpValueInput, 70);
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.hp.value": 40,
         "system.derivedStats.hp.max": 40,
       });
     });
 
     await test.step("the clamped value is on a fresh render", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.hpValueInput}`),
       ).toHaveValue("40");
@@ -119,15 +118,15 @@ test.describe("Stat Pane", () => {
     let { actorId, sheetId } = await createMookViaUI(game);
 
     await test.step("lowering max under the current value pulls current down to it", async () => {
-      await setMookSheetField(game, sheetId, MOOK_FIELD.hpMaxInput, 30);
-      await waitForMookFields(game, actorId, {
+      await setSheetField(game, sheetId, MOOK_FIELD.hpMaxInput, 30);
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.hp.value": 30,
         "system.derivedStats.hp.max": 30,
       });
     });
 
     await test.step("the reduced current and max are on a fresh render", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.hpValueInput}`),
       ).toHaveValue("30");
@@ -209,11 +208,11 @@ test.describe("Stat Pane", () => {
       { label: "Mortally Wounded", hp: 0 },
     ]) {
       await test.step(`at HP ${hp} the wound state reads "${label}"`, async () => {
-        await setMookSheetField(game, sheetId, MOOK_FIELD.hpValueInput, hp);
-        await waitForMookFields(game, actorId, {
+        await setSheetField(game, sheetId, MOOK_FIELD.hpValueInput, hp);
+        await waitForActorFields(game, actorId, {
           "system.derivedStats.hp.value": hp,
         });
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await expect(
           game.locator(`#${sheetId} ${MOOK_FIELD.woundStateStat}`),
         ).toHaveText(label);
@@ -230,7 +229,7 @@ test.describe("Stat Pane", () => {
 
     await test.step("each increase click adds one to the penalty and display", async () => {
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
-      await waitForMookFields(game, actorId, {
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 1,
       });
       await expect(
@@ -238,7 +237,7 @@ test.describe("Stat Pane", () => {
       ).toHaveText("1");
 
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
-      await waitForMookFields(game, actorId, {
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 2,
       });
       await expect(
@@ -247,7 +246,7 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("the increased value is on a fresh render", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
       ).toHaveText("2");
@@ -263,12 +262,12 @@ test.describe("Stat Pane", () => {
 
     await test.step("increasing then clicking the value resets the penalty to zero", async () => {
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveIncrease}`).click();
-      await waitForMookFields(game, actorId, {
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 1,
       });
 
       await game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`).click();
-      await waitForMookFields(game, actorId, {
+      await waitForActorFields(game, actorId, {
         "system.derivedStats.deathSave.penalty": 0,
       });
       await expect(
@@ -277,7 +276,7 @@ test.describe("Stat Pane", () => {
     });
 
     await test.step("the reset value is on a fresh render", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${sheetId} ${MOOK_FIELD.deathSaveValue}`),
       ).toHaveText("0");

@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  CTRL_CLICK_MODIFIERS,
+  chatMessageCount,
+  closeAndReopenActorSheet,
   closeDocSheet,
   closeOwnedItemSheet,
   createItemViaUI,
@@ -8,25 +12,21 @@ import {
   expectSheetRendered,
   openItemSettings,
   openSidebarTab,
+  resolveYesNo,
   setItemField,
   setItemSelected,
   uniqueName,
+  waitForNewChatMessage,
+  yesNoDialog,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
-  CTRL_CLICK_MODIFIERS,
-  chatMessageCount,
   confirmInstallCyberwareDialog,
-  createMookViaUI,
   coreFoundationalId,
-  installConsoleErrorHarness,
+  createMookViaUI,
+  deleteKeyRemove,
   openInstallCyberwareDialog,
   ownedItemIdsByNames,
-  closeAndReopenMookSheet,
-  waitForNewChatMessage,
-  yesNoDialog,
-  resolveYesNo,
-  deleteKeyRemove,
   waitItemRemoved,
 } from "./mook-sheet-helpers.mjs";
 
@@ -70,7 +70,7 @@ test.describe("Special Gear Pane", () => {
     });
 
     await test.step("every type's name appears in the special gear pane on a fresh render", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       for (const type of GEAR_TYPES) {
         const link = game.locator(
           `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${listed[type].embeddedId}"]`,
@@ -127,7 +127,7 @@ test.describe("Special Gear Pane", () => {
     });
 
     await test.step("the cyberdeck is listed but the program is not", async () => {
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const deckLink = game.locator(
         `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${deckEmbeddedId}"]`,
       );
@@ -183,7 +183,7 @@ test.describe("Special Gear Pane", () => {
         { actorId, itemId: embeddedId },
       );
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
       );
@@ -217,7 +217,7 @@ test.describe("Special Gear Pane", () => {
       await expect(game.locator(".notification.info")).toHaveCount(0);
       expect(await chatMessageCount(game)).toBe(chatBefore);
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(`#${sheetId} .mook-special-content`),
       ).toContainText("(x3)");
@@ -236,7 +236,7 @@ test.describe("Special Gear Pane", () => {
 
       expect(await chatMessageCount(game)).toBe(chatBefore);
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
       );
@@ -275,7 +275,7 @@ test.describe("Special Gear Pane", () => {
         "the gear should be embedded on the mook",
       ).toBeTruthy();
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
       );
@@ -333,7 +333,7 @@ test.describe("Special Gear Pane", () => {
         "the gear should be embedded on the mook",
       ).toBeTruthy();
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
       );
@@ -358,7 +358,7 @@ test.describe("Special Gear Pane", () => {
 
       await waitItemRemoved(game, { actorId, itemId: embeddedId });
 
-      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      const freshSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game.locator(
           `#${freshSheet} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
@@ -389,7 +389,7 @@ test.describe("Special Gear Pane", () => {
         "the upgrade should be embedded on the mook",
       ).toBeTruthy();
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const link = game.locator(
         `#${sheetId} ${MOOK_FIELD.specialGearItem}[data-item-id="${embeddedId}"]`,
       );
@@ -475,7 +475,7 @@ test.describe("Special Gear Pane", () => {
         "both items should be embedded on the mook",
       ).toBeTruthy();
 
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
     });
 
     const installGlyph = game.locator(
@@ -518,7 +518,7 @@ test.describe("Special Gear Pane", () => {
       expect(installedIn).toContain(upgradeEmbeddedId);
 
       // On a fresh render the glyph flips to its active uninstall variant.
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const uninstallGlyph = game.locator(
         `#${sheetId} ${MOOK_FIELD.upgradeUninstallAction}[data-item-id="${upgradeEmbeddedId}"]`,
       );
@@ -562,7 +562,7 @@ test.describe("Special Gear Pane", () => {
       );
 
       // On a fresh render the plain install glyph is back.
-      sheetId = await closeAndReopenMookSheet(game, actorId);
+      sheetId = await closeAndReopenActorSheet(game, actorId);
       const glyph = game.locator(
         `#${sheetId} ${MOOK_FIELD.upgradeInstallAction}[data-item-id="${upgradeEmbeddedId}"]`,
       );
@@ -576,7 +576,7 @@ test.describe("Special Gear Pane", () => {
       const name = uniqueName("cyberware");
       const itemId = await createItemViaUI(game, { type: "cyberware", name });
       await closeDocSheet(game, { collection: "items", id: itemId });
-      const sheetId = await closeAndReopenMookSheet(game, actorId);
+      const sheetId = await closeAndReopenActorSheet(game, actorId);
 
       const dialog = await openInstallCyberwareDialog(game, {
         itemId,
@@ -606,7 +606,7 @@ test.describe("Special Gear Pane", () => {
         value: "cyberwareInternal",
       });
       await closeDocSheet(game, { collection: "items", id: itemId });
-      const sheetId = await closeAndReopenMookSheet(game, actorId);
+      const sheetId = await closeAndReopenActorSheet(game, actorId);
 
       const coreId = await coreFoundationalId(
         game,
@@ -665,7 +665,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("a fresh render lists the arm as a clickable cyberware link", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         const link = game.locator(
           `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
         );
@@ -702,7 +702,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("a fresh render shows the core label with the optional in parentheses", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         const link = game.locator(
           `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${optional.embeddedId}"]`,
         );
@@ -726,7 +726,7 @@ test.describe("Special Gear Pane", () => {
       const arm = await installFoundationalArm(game, { actorId, sheetId });
 
       await test.step("a normal click on the link opens a non-editable item sheet", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await game
           .locator(
             `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
@@ -767,7 +767,7 @@ test.describe("Special Gear Pane", () => {
       const arm = await installFoundationalArm(game, { actorId, sheetId });
 
       await test.step("ctrl-clicking the link posts an item card and opens no sheet", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         const messagesBefore = await chatMessageCount(game);
         await game
           .locator(
@@ -798,7 +798,7 @@ test.describe("Special Gear Pane", () => {
       const arm = await installFoundationalArm(game, { actorId, sheetId });
 
       await test.step("shift-clicking the link confirms and uninstalls the arm", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await game
           .locator(
             `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
@@ -822,7 +822,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("a fresh render no longer lists the uninstalled arm", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await expect(
           game.locator(
             `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
@@ -847,7 +847,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("shift-clicking the optional confirms and uninstalls it", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await game
           .locator(
             `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${optional.embeddedId}"]`,
@@ -871,7 +871,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("a fresh render no longer shows the core label or the optional", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await expect(
           game.locator(
             `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${optional.embeddedId}"]`,
@@ -891,7 +891,7 @@ test.describe("Special Gear Pane", () => {
       const arm = await installFoundationalArm(game, { actorId, sheetId });
 
       await test.step("focusing the link and pressing Delete removes the arm after confirmation", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await deleteKeyRemove(
           game,
           game.locator(
@@ -917,7 +917,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("a fresh render no longer lists the removed arm", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await expect(
           game.locator(
             `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
@@ -952,7 +952,7 @@ test.describe("Special Gear Pane", () => {
           { timeout: 10000 },
         );
         await closeDocSheet(game, { collection: "items", id: itemId });
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
 
         const dialog = await openInstallCyberwareDialog(game, {
           itemId,
@@ -986,7 +986,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("pressing Delete on the arm confirms removal then offers the container-delete dialog", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await deleteKeyRemove(
           game,
           game.locator(
@@ -1029,7 +1029,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("a fresh render lists neither the arm nor its former optional", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         await expect(
           game.locator(
             `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${arm.embeddedId}"]`,
@@ -1051,7 +1051,7 @@ test.describe("Special Gear Pane", () => {
       const second = await installOptionalIntoCore(game, { actorId, sheetId });
 
       await test.step("a fresh render lists both optionals under the core label", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         const firstLink = game.locator(
           `#${sheetId} ${MOOK_FIELD.cyberwareItem}[data-item-id="${first.embeddedId}"]`,
         );
@@ -1101,7 +1101,7 @@ test.describe("Special Gear Pane", () => {
       });
 
       await test.step("uninstalling the non-core arm and optional removes only those", async () => {
-        sheetId = await closeAndReopenMookSheet(game, actorId);
+        sheetId = await closeAndReopenActorSheet(game, actorId);
         for (const item of [arm, optional]) {
           await game
             .locator(
@@ -1114,7 +1114,7 @@ test.describe("Special Gear Pane", () => {
           await resolveYesNo(confirmDialog, "yes");
           await expect(confirmDialog).toHaveCount(0, { timeout: 10000 });
 
-          sheetId = await closeAndReopenMookSheet(game, actorId);
+          sheetId = await closeAndReopenActorSheet(game, actorId);
         }
       });
 

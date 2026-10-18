@@ -1,4 +1,11 @@
 import { expect } from "@playwright/test";
+import { openItemSettings } from "./items.mjs";
+import {
+  closeOwnedItemSheet,
+  expectSheetRendered,
+  openOwnedItemSheet,
+  sheet,
+} from "./sheets.mjs";
 import { openSidebarTab } from "./sidebar.mjs";
 
 export const DROP_TAB_BY_TYPE = {
@@ -146,6 +153,133 @@ export async function createEmbeddedItemViaUI(
         .items.find((item) => !beforeIds.includes(item.id)).id,
     { actorId, beforeIds },
   );
+}
+
+/**
+ * Enable the world setting that lets players create inventory items. The
+ * + buttons on character sheets only render when it is on; container
+ * sheets show them to GMs regardless.
+ */
+export async function enablePlayersCreateInventory(page) {
+  await page.evaluate(async () => {
+    await game.settings.set(game.system.id, "playersCreateInventory", true);
+  });
+}
+
+/**
+ * Create an item in an actor's inventory via the UI by clicking the
+ * category header's + button on the actor's sheet (container or
+ * character). Optionally renames the item and applies additional item
+ * data after creation. Character sheets need the playersCreateInventory
+ * world setting enabled first; see enablePlayersCreateInventory.
+ *
+ * @param {Object} page - the top-level game object from Foundry
+ * @param {String} actorId - id of the actor owning the item
+ * @param {String} sheetId - rendered element id of the actor's sheet
+ * @param {String} itemType - type of the item to create (a key of CPR.inventoryCategories)
+ * @param {String} itemName - (optional) name for the item; defaults to "New {Type}"
+ * @param {Object} data - (optional) additional item data applied after creation
+ * @returns {Object} - an object with the itemId and a refreshed sheetId
+ */
+export async function createInventoryItemViaUI(
+  page,
+  { actorId, sheetId, itemType, itemName, data },
+) {
+  const actorSheet = sheet(page, sheetId);
+
+  // Character sheets keep the gear list behind a tab; activate it so the
+  // + button is visible. Container sheets have no such tab.
+  if (await actorSheet.locator('.navtabs-right a[data-tab="gear"]').count()) {
+    await activateGearTab(page, sheetId);
+  }
+
+  const existingIds = await page.evaluate((id) => {
+    return Array.from(game.actors.get(id).items.map((item) => item.id));
+  }, actorId);
+
+  const createBtn = actorSheet.locator(
+    `.item-create[data-item-type="${itemType}"]`,
+  );
+  await expect(createBtn).toBeVisible();
+  await createBtn.click();
+
+  const newItemHandle = await page.waitForFunction(
+    ({ id, existingIds }) => {
+      const items = Array.from(game.actors.get(id).items.map((i) => i.id));
+      return items.find((v) => !existingIds.includes(v)) ?? null;
+    },
+    { id: actorId, existingIds },
+    { timeout: 10000 },
+  );
+  const itemId = await newItemHandle.jsonValue();
+  expect(itemId).toBeTruthy();
+
+  if (itemName) {
+    const nameLink = actorSheet
+      .locator(`li.item[data-item-id="${itemId}"]`)
+      .locator("a.item-edit");
+    await nameLink.click();
+
+    const itemSheetId = await openOwnedItemSheet(page, { actorId, itemId });
+    const itemSheet = await openItemSettings(page, itemSheetId);
+    const nameInput = itemSheet.locator('input[name="name"]');
+    await expect(nameInput).toBeVisible();
+    await nameInput.fill(itemName);
+    await nameInput.blur();
+
+    await page.waitForFunction(
+      ({ actorId, itemId, itemName }) =>
+        game.actors.get(actorId)?.items.get(itemId)?.name === itemName,
+      { actorId, itemId, itemName },
+      { timeout: 5000 },
+    );
+
+    await closeOwnedItemSheet(page, { actorId, itemId });
+  }
+
+  if (data) {
+    await page.evaluate(
+      ({ actorId, itemId, data }) =>
+        game.actors.get(actorId).items.get(itemId).update(data),
+      { actorId, itemId, data },
+    );
+    await page.waitForFunction(
+      ({ actorId, itemId, data }) => {
+        const item = game.actors.get(actorId)?.items.get(itemId);
+        if (!item) return false;
+        const flat = [];
+        const walk = (obj, prefix) => {
+          for (const [key, value] of Object.entries(obj)) {
+            const path = prefix ? `${prefix}.${key}` : key;
+            if (
+              value !== null &&
+              typeof value === "object" &&
+              !Array.isArray(value)
+            ) {
+              walk(value, path);
+            } else {
+              flat.push([path, value]);
+            }
+          }
+        };
+        walk(foundry.utils.expandObject(data), "");
+        return flat.every(
+          ([path, value]) =>
+            JSON.stringify(foundry.utils.getProperty(item, path)) ===
+            JSON.stringify(value),
+        );
+      },
+      { actorId, itemId, data },
+      { timeout: 5000 },
+    );
+  }
+
+  const freshSheetId = await expectSheetRendered(page, {
+    collection: "actors",
+    id: actorId,
+  });
+
+  return { itemId, sheetId: freshSheetId };
 }
 
 async function waitForOwnedItemTransfer(

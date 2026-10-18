@@ -1,32 +1,32 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
-  createItemViaUI,
-  expectSheetRendered,
+  chatMessageCount,
+  closeAndReopenActorSheet,
   closeDocSheet,
-  openSidebarTab,
-  openItemSettings,
-  setItemField,
-  dragItemToActorSheet,
-  openOwnedItemSheet,
   closeOwnedItemSheet,
-  uniqueName,
+  createItemViaUI,
+  dragItemToActorSheet,
   dismissNotifications,
+  expectSheetRendered,
+  openItemSettings,
+  openOwnedItemSheet,
+  openSidebarTab,
+  setItemField,
+  uniqueName,
+  waitForNewChatMessage,
+  waitForSkillLevel,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   MOOK_FIELD,
-  chatMessageCount,
-  createMookViaUI,
-  waitForNewChatMessage,
-  ownedItemIdsByNames,
-  closeAndReopenMookSheet,
-  openMookSkillDialog,
-  mookSkillDialogRow,
-  setMookSkillDialogLevel,
-  confirmMookSkillDialog,
   cancelMookSkillDialog,
+  confirmMookSkillDialog,
+  createMookViaUI,
+  mookSkillDialogRow,
+  openMookSkillDialog,
+  ownedItemIdsByNames,
   ownedSkillLevel,
-  waitForSkillLevel,
-  installConsoleErrorHarness,
+  setMookSkillDialogLevel,
 } from "./mook-sheet-helpers.mjs";
 
 /*
@@ -72,7 +72,7 @@ async function addLeveledCustomSkill(game, { actorId, sheetId, level }) {
 async function createMookWithCustomSkill(game, level) {
   const { actorId, sheetId } = await createMookViaUI(game);
   const skill = await addLeveledCustomSkill(game, { actorId, sheetId, level });
-  const freshSheetId = await closeAndReopenMookSheet(game, actorId);
+  const freshSheetId = await closeAndReopenActorSheet(game, actorId);
   return { actorId, sheetId: freshSheetId, ...skill };
 }
 
@@ -142,7 +142,7 @@ test.describe("Mook Skills", () => {
     });
 
     await test.step("the fresh render shows Handgun at its base value", async () => {
-      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      const freshSheet = await closeAndReopenActorSheet(game, actorId);
       const entry = game
         .locator(`#${freshSheet} ${MOOK_FIELD.skillEntry}`)
         .filter({ hasText: "Handgun" });
@@ -185,7 +185,7 @@ test.describe("Mook Skills", () => {
     });
 
     await test.step("the fresh render is unchanged", async () => {
-      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      const freshSheet = await closeAndReopenActorSheet(game, actorId);
       const entries = game.locator(`#${freshSheet} ${MOOK_FIELD.skillEntry}`);
       await expect(entries.filter({ hasText: "Handgun" })).toHaveCount(0);
       await expect(
@@ -223,7 +223,7 @@ test.describe("Mook Skills", () => {
     });
 
     await test.step("the entry is gone from the pane on a fresh render", async () => {
-      const freshSheet = await closeAndReopenMookSheet(game, actorId);
+      const freshSheet = await closeAndReopenActorSheet(game, actorId);
       await expect(
         game
           .locator(`#${freshSheet} ${MOOK_FIELD.skillEntry}`)
@@ -247,7 +247,7 @@ test.describe("Mook Skills", () => {
       for (const [setting, suffix] of cases) {
         await test.step(`the "${setting}" display renders ${suffix}`, async () => {
           await setSkillDisplaySetting(game, setting);
-          const freshSheet = await closeAndReopenMookSheet(game, actorId);
+          const freshSheet = await closeAndReopenActorSheet(game, actorId);
           const entry = game
             .locator(`#${freshSheet} ${MOOK_FIELD.skillEntry}`)
             .filter({ hasText: name });
@@ -322,7 +322,7 @@ test.describe("Mook Skills", () => {
     let skill;
     await test.step("adding a custom skill adds a second glyph with its base value", async () => {
       skill = await addLeveledCustomSkill(game, { actorId, sheetId, level: 3 });
-      freshSheet = await closeAndReopenMookSheet(game, actorId);
+      freshSheet = await closeAndReopenActorSheet(game, actorId);
       const entries = game.locator(`#${freshSheet} ${MOOK_FIELD.skillEntry}`);
       await expect(entries.locator(MOOK_FIELD.skillCustomGlyph)).toHaveCount(2);
       const custom = entries.filter({ hasText: skill.name });

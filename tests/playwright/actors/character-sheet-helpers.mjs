@@ -1,5 +1,4 @@
-import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import { expect } from "@playwright/test";
 import {
   activateGearTab,
   closeDocSheet,
@@ -7,14 +6,10 @@ import {
   createItemViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
-  reopenActorSheetViaUI,
   setItemField,
   setItemSelected,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
-
-export const CTRL_CLICK_MODIFIERS =
-  process.platform === "darwin" ? ["Meta"] : ["Control"];
 
 export const CHARACTER_FIELD = {
   nameInput: 'input[name="name"]',
@@ -59,74 +54,6 @@ export async function createCharacterViaUI(
   return { actorId, sheetId };
 }
 
-export async function setCharacterField(page, sheetId, selector, value) {
-  const input = page.locator(`#${sheetId} ${selector}`);
-  await expect(input).toBeVisible();
-  await input.fill(String(value));
-  await input.press("Tab");
-}
-
-export async function closeAndReopenCharacterSheet(page, actorId) {
-  await closeDocSheet(page, { collection: "actors", id: actorId });
-  return reopenActorSheetViaUI(page, actorId);
-}
-
-export async function waitForCharacterFields(page, actorId, expected) {
-  await page.waitForFunction(
-    ({ actorId, expected }) => {
-      const actor = game.actors.get(actorId);
-      if (!actor) return false;
-      return Object.entries(expected).every(
-        ([path, value]) => foundry.utils.getProperty(actor, path) === value,
-      );
-    },
-    { actorId, expected },
-    { timeout: 10000 },
-  );
-}
-
-export async function openLedgerWindow(page, sheetId, openIconSelector) {
-  await page.locator(`#${sheetId} ${openIconSelector}`).click();
-  const ledger = page.locator(".application.ledger");
-  await expect(ledger).toBeVisible();
-  return ledger;
-}
-
-export async function applyLedgerChange(
-  page,
-  actorId,
-  fieldPath,
-  action,
-  value,
-  reason,
-) {
-  const before = await page.evaluate(
-    ({ actorId, fieldPath }) => {
-      const actor = game.actors.get(actorId);
-      return actor ? foundry.utils.getProperty(actor, fieldPath) : undefined;
-    },
-    { actorId, fieldPath },
-  );
-  const expected =
-    action === "add"
-      ? before + value
-      : action === "subtract"
-        ? before - value
-        : value;
-
-  const ledger = page.locator(".application.ledger");
-  await ledger.locator('input[name="modifyValue"]').fill(String(value));
-  await ledger.locator('input[name="reason"]').fill(reason);
-  await ledger.locator(`.ledger-edit-button[data-action="${action}"]`).click();
-  await waitForCharacterFields(page, actorId, { [fieldPath]: expected });
-}
-
-export async function closeLedgerWindow(page) {
-  const ledger = page.locator(".application.ledger");
-  await ledger.locator('button[data-action="close"]').click();
-  await expect(ledger).toBeHidden();
-}
-
 export async function createRoleItemViaUI(page, name = uniqueName("role")) {
   const itemId = await createItemViaUI(page, { type: "role", name });
   await closeDocSheet(page, { collection: "items", id: itemId });
@@ -138,28 +65,6 @@ export async function dragRoleItemToCharacter(
   { actorId, sheetId, itemId },
 ) {
   await dragItemToActorSheet(page, { itemId, sheetId, actorId });
-}
-
-export async function chatMessageCount(page) {
-  return page.evaluate(() => game.messages.size);
-}
-
-export async function waitForNewChatMessage(
-  page,
-  before,
-  { requireRoll = false, timeout = 10000 } = {},
-) {
-  return page.waitForFunction(
-    ({ before, requireRoll }) => {
-      if (game.messages.size <= before) return false;
-      const msg = game.messages.contents.at(-1);
-      if (!msg) return false;
-      if (requireRoll && !msg.rolls.length) return false;
-      return msg.id;
-    },
-    { before, requireRoll },
-    { timeout },
-  );
 }
 
 export async function openStatRollDialog(page, sheetId, stat) {
@@ -327,21 +232,6 @@ export async function ownedSkillEmbeddedId(page, actorId, name) {
   );
 }
 
-// Wait until an owned skill's persisted level equals the expected value (the
-// proof that an inline edit landed on the document).
-export async function waitForSkillLevel(page, actorId, name, level) {
-  await page.waitForFunction(
-    ({ actorId, name, level }) => {
-      const skill = game.actors
-        .get(actorId)
-        .itemTypes.skill.find((s) => s.name === name);
-      return skill && skill.system.level === level;
-    },
-    { actorId, name, level },
-    { timeout: 10000 },
-  );
-}
-
 // Wait until an owned skill is gone from the character after a confirmed delete.
 export async function waitForSkillRemoved(page, actorId, name) {
   await page.waitForFunction(
@@ -350,52 +240,6 @@ export async function waitForSkillRemoved(page, actorId, name) {
     { actorId, name },
     { timeout: 10000 },
   );
-}
-
-// The yes/no confirmation dialog used by destructive sheet actions (delete
-// skill). Returns the dialog locator; the spec owns every visibility/text/count
-// assertion. Dismiss it with resolveYesNo(dialog, "yes" | "no").
-export function yesNoDialog(page) {
-  return page.locator(".cpr-dialog").filter({
-    has: page.locator(".cpr-dialog-message"),
-  });
-}
-
-export async function resolveYesNo(dialog, action) {
-  await dialog.locator(`button[data-action="${action}"]`).click();
-}
-
-export function installConsoleErrorHarness() {
-  test.beforeEach(async ({ page }) => {
-    page.consoleErrors = [];
-    page.expectedConsoleErrors = [];
-    // Warnings are captured but never fail a test: Foundry emits routine
-    // deprecation warnings, so specs that care opt in by polling for exact text.
-    page.consoleWarnings = [];
-    // Log-level lines (CPR LOG | ...) are likewise opt-in evidence.
-    page.consoleLogs = [];
-    page.on("console", (msg) => {
-      if (msg.type() === "error") page.consoleErrors.push(msg.text());
-      else if (msg.type() === "warning") page.consoleWarnings.push(msg.text());
-      else if (msg.type() === "log") page.consoleLogs.push(msg.text());
-    });
-    page.on("pageerror", (err) => {
-      page.consoleErrors.push(`uncaught exception: ${err.message}`);
-    });
-    await gotoReadyWorld(page);
-  });
-
-  test.afterEach(async ({ page }) => {
-    const unexpected = page.consoleErrors.filter(
-      (text) =>
-        text.startsWith("uncaught exception:") ||
-        !page.expectedConsoleErrors.some((re) => re.test(text)),
-    );
-    expect(
-      unexpected,
-      `console errors during test:\n${unexpected.join("\n")}`,
-    ).toEqual([]);
-  });
 }
 
 /**

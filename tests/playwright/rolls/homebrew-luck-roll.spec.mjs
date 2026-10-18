@@ -1,10 +1,13 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  CTRL_CLICK_MODIFIERS,
+  chatMessageCount,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
   uniqueName,
+  waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 
 /*
@@ -87,19 +90,15 @@ async function attemptRestoreLuckRollDefaults(page, label) {
 // Ctrl-click the LUCK stat (skipping the verify dialog), wait for the new chat
 // message, and read back what kind of roll it was and the rendered result.
 async function rollLuck(page, sheetId) {
-  const before = await page.evaluate(() => game.messages.size);
-  // macOS Chromium treats Ctrl+click as a right-click (context menu) and never
-  // dispatches `click`, so use Cmd there. The roll handler accepts both
-  // (`event.ctrlKey || event.metaKey`).
-  const modifier = process.platform === "darwin" ? ["Meta"] : ["Control"];
+  const before = await chatMessageCount(page);
+  // Ctrl-click skips the verify dialog; CTRL_CLICK_MODIFIERS picks the key that
+  // actually dispatches `click` on this platform.
   await page
     .locator(`#${sheetId} ${LUCK_ROLLABLE}`)
-    .click({ modifiers: modifier });
-  await page.waitForFunction((n) => game.messages.size > n, before, {
-    timeout: 10000,
-  });
-  return page.evaluate(() => {
-    const message = game.messages.contents.at(-1);
+    .click({ modifiers: CTRL_CLICK_MODIFIERS });
+  const messageId = await waitForNewChatMessage(page, before);
+  return page.evaluate((id) => {
+    const message = game.messages.get(id);
     const content = message.content;
     const die = Number((content.match(/d10_(\d+)/) || [])[1]);
     const result = content.includes("roll-success")
@@ -112,7 +111,7 @@ async function rollLuck(page, sheetId) {
       die,
       result,
     };
-  });
+  }, messageId);
 }
 
 test.beforeEach(async ({ page }) => {

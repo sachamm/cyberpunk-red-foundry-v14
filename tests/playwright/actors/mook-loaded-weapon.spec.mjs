@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
   activateGearTab,
   closeDocSheet,
@@ -424,23 +424,7 @@ async function expectTransferredWeaponRendered(page, { target, weaponId }) {
   }
 }
 
-test.beforeEach(async ({ page }) => {
-  page.consoleErrors = [];
-  page.on("console", (message) => {
-    if (message.type() === "error") page.consoleErrors.push(message.text());
-  });
-  page.on("pageerror", (error) => {
-    page.consoleErrors.push(`uncaught exception: ${error.message}`);
-  });
-  await gotoReadyWorld(page);
-});
-
-test.afterEach(async ({ page }) => {
-  expect(
-    page.consoleErrors,
-    `console errors during test:\n${page.consoleErrors.join("\n")}`,
-  ).toEqual([]);
-});
+installConsoleErrorHarness();
 
 test.describe("Loaded weapon transfers between inventory actors", () => {
   test.setTimeout(180000);

@@ -1,23 +1,27 @@
 import { test, expect } from "@playwright/test";
+import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  CTRL_CLICK_MODIFIERS,
   addModViaUI,
+  chatMessageCount,
   closeActiveEffectConfigViaUI,
+  closeAndReopenActorSheet,
   closeDocSheet,
   createEffectViaUI,
   openSidebarTab,
+  resolveYesNo,
+  waitForActorFields,
+  waitForNewChatMessage,
+  waitForSkillLevel,
+  yesNoDialog,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
-  CTRL_CLICK_MODIFIERS,
   SKILL_FIELD,
   addSkillToCharacter,
   characterSkillRow,
-  chatMessageCount,
   chatRollCard,
-  closeAndReopenCharacterSheet,
   confirmRollDialog,
   createCharacterViaUI,
-  installConsoleErrorHarness,
-  resolveYesNo,
   rollCardTotal,
   rollDiceSum,
   setStatRollLuck,
@@ -25,11 +29,7 @@ import {
   skillCategorySection,
   skillRollDialog,
   statValueInput,
-  waitForCharacterFields,
-  waitForNewChatMessage,
-  waitForSkillLevel,
   waitForSkillRemoved,
-  yesNoDialog,
 } from "./character-sheet-helpers.mjs";
 
 /*
@@ -90,7 +90,7 @@ test.describe("Character sheet — skills", () => {
     });
 
     await test.step("the row and its base persist on a fresh render", async () => {
-      const freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      const freshSheet = await closeAndReopenActorSheet(page, actorId);
       const section = skillCategorySection(
         page,
         freshSheet,
@@ -145,7 +145,7 @@ test.describe("Character sheet — skills", () => {
     });
 
     await test.step("level 3 and base 9 persist on a fresh render", async () => {
-      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = await closeAndReopenActorSheet(page, actorId);
       const row = characterSkillRow(page, freshSheet, skill.name);
       await expect(row).toHaveCount(1);
       await expect(row.locator(SKILL_FIELD.levelInput)).toHaveValue("3");
@@ -299,7 +299,7 @@ test.describe("Character sheet — skills", () => {
         total,
         `total ${total} should equal dice ${diceSum} + INT 6 + level 2`,
       ).toBe(diceSum + 8);
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.stats.luck.value": luckBefore,
       });
     });
@@ -332,7 +332,7 @@ test.describe("Character sheet — skills", () => {
         total,
         `total ${total} should equal dice ${diceSum} + INT 6 + level 2 + LUCK 2`,
       ).toBe(diceSum + 10);
-      await waitForCharacterFields(page, actorId, {
+      await waitForActorFields(page, actorId, {
         "system.stats.luck.value": luckBefore - 2,
       });
     });
@@ -345,7 +345,7 @@ test.describe("Character sheet — skills", () => {
       ).toHaveValue(String(luckBefore - 2));
 
       // A fresh render from the document must agree.
-      sheetId = await closeAndReopenCharacterSheet(page, actorId);
+      sheetId = await closeAndReopenActorSheet(page, actorId);
       await expect(
         page.locator(`#${sheetId} ${statValueInput("luck")}`),
       ).toHaveValue(String(luckBefore - 2));
@@ -383,7 +383,7 @@ test.describe("Character sheet — skills", () => {
     });
 
     await test.step("the pin persists on a fresh render", async () => {
-      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = await closeAndReopenActorSheet(page, actorId);
       const row = characterSkillRow(page, freshSheet, skill.name);
       await expect(row).toHaveCount(1);
       await expect(row.locator("i.fa-thumbtack.pinned")).toHaveCount(1);
@@ -393,7 +393,7 @@ test.describe("Character sheet — skills", () => {
       await characterSkillRow(page, freshSheet, skill.name)
         .locator(SKILL_FIELD.favoriteGlyph)
         .click();
-      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = await closeAndReopenActorSheet(page, actorId);
       const row = characterSkillRow(page, freshSheet, skill.name);
       await expect(row.locator("i.fa-thumbtack.unpinned")).toHaveCount(1);
     });
@@ -478,7 +478,7 @@ test.describe("Character sheet — skills", () => {
 
     await test.step("the collapsed state and pinned exception persist on a fresh render", async () => {
       await skillCategoryHeader(page, freshSheet, "bodySkills").click();
-      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = await closeAndReopenActorSheet(page, actorId);
 
       const header = skillCategoryHeader(page, freshSheet, "bodySkills");
       await expect(header.locator("i.fa-plus.collapse-icon")).toBeVisible();
@@ -554,7 +554,7 @@ test.describe("Character sheet — skills", () => {
       await resolveYesNo(dialog, "yes");
       await waitForSkillRemoved(page, actorId, skill.name);
 
-      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = await closeAndReopenActorSheet(page, actorId);
       await expect(characterSkillRow(page, freshSheet, skill.name)).toHaveCount(
         0,
       );
@@ -682,7 +682,7 @@ test.describe("Character sheet — skills", () => {
     });
 
     await test.step("both effects persist on a fresh render", async () => {
-      freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      freshSheet = await closeAndReopenActorSheet(page, actorId);
       const row = characterSkillRow(page, freshSheet, skill.name);
       await expect(row.locator(SKILL_FIELD.modValue)).toHaveText("2");
       await expect(row.locator(SKILL_FIELD.base)).toHaveText("8");
@@ -718,7 +718,7 @@ test.describe("Character sheet — skills", () => {
     });
 
     await test.step("the marker persists on a fresh render", async () => {
-      const freshSheet = await closeAndReopenCharacterSheet(page, actorId);
+      const freshSheet = await closeAndReopenActorSheet(page, actorId);
       await expect(
         characterSkillRow(page, freshSheet, skill.name).locator(
           SKILL_FIELD.rollable(skill.name),
