@@ -1,4 +1,4 @@
-import prettier from "prettier";
+import { formatFoundryHtml } from "./FoundryTextUtils.mjs";
 import log from "./logger.mjs";
 
 /**
@@ -190,9 +190,7 @@ export async function cprTransformEntry(entry) {
     if (entry.system?.description?.value) {
       const cleaned = cleanString(entry.system.description.value);
       try {
-        entry.system.description.value = await prettier.format(cleaned, {
-          parser: "html",
-        });
+        entry.system.description.value = await formatFoundryHtml(cleaned);
       } catch (error) {
         // Foundry/user-authored HTML can be malformed (e.g. void elements with
         // end tags). Keep the cleaned-but-unformatted value rather than fail
