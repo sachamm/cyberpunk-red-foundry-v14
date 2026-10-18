@@ -198,6 +198,23 @@
   }
 }
 
+/* Foundry pins active HUD hover tokens to their resting colors. */
+html[data-cpr-theme-foundry] #token-hud {
+  .control-icon.active {
+    --control-hover-bg-color: var(--cpr-background-foundry-hover);
+    --control-hover-icon-color: var(--cpr-text-foundry-input);
+  }
+
+  .control-icon:hover img,
+  .control-icon.active img {
+    filter: none;
+  }
+
+  .control-icon.active:hover img {
+    filter: var(--control-icon-filter);
+  }
+}
+
 /* Foundry keeps the ESC menu dark in every interface variant. */
 html[data-cpr-theme-foundry] #menu {
   --color-text-emphatic: var(--cpr-text-header);
