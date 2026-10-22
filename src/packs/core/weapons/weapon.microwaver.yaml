@@ -37,8 +37,8 @@ system:
       <p>
         <em
           >Select target token and use
-          @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get
-          EMP'd Items} to determine what items are affected.</em
+          @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get EMP'd Items}
+          to determine what items are affected.</em
         >
       </p>
   dvTable: DV Pistol
