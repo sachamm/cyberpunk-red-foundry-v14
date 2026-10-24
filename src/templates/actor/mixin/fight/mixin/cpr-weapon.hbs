@@ -82,7 +82,7 @@
         class="text-pill">
       {{/if}}
       {{localize "CPR.global.generic.damage"}}
-      {{cprGetWeaponDamage weapon}}
+      {{cprApplyUpgrade weapon (cprGetWeaponDamage weapon) "damage"}}
     </span>
 
     {{!-- Ablation --}}
