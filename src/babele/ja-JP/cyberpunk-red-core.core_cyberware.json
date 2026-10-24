@@ -331,7 +331,7 @@
     },
     "Popup Grenade Launcher": {
       "name": "ポップアップ・グレネード・ランチャー",
-      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun\n  Link}.\n</p>\n",
+      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun Link}.\n</p>\n",
       "dvTable": "DV グレネードランチャー"
     },
     "Popup Melee Weapon": {
@@ -346,7 +346,7 @@
     },
     "Popup Shield": {
       "name": "ポップアップ・シールド",
-      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet\n    Proof Shield} to inventory to manage shield HP.\n  </p>\n</blockquote>\n",
+      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet Proof Shield}\n    to inventory to manage shield HP.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Quick Change Mount": {
