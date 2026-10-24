@@ -34,6 +34,23 @@ async function createTokenViaUI(page, { actorId, name }) {
       .filter({ hasText: "Activate" })
       .click({ timeout: 10000 });
   }
+  await page.evaluate(() => game.settings.set("core", "noCanvas", false));
+  await page.reload();
+  await gotoReadyWorld(page);
+  // Keep the real canvas enabled, but avoid software-WebGL rendering load in
+  // this DOM-color test. Performance mode requires a reload to style the UI.
+  await page.evaluate(async () => {
+    await game.settings.set("core", "maxFPS", 10);
+    await game.settings.set(
+      "core",
+      "performanceMode",
+      CONST.CANVAS_PERFORMANCE_MODES.LOW,
+    );
+  });
+  await page.reload();
+  await gotoReadyWorld(page);
+  await expect(page.locator("body")).toHaveClass(/performance-low/);
+  await dismissNotifications(page);
   await page.waitForFunction(
     (sceneName) => canvas.ready && canvas.scene?.name === sceneName,
     name,
@@ -120,9 +137,13 @@ async function controlStyle(control) {
       element.getAnimations().map((animation) => animation.finished),
     );
     const image = element.querySelector("img");
+    const glyph = element.querySelector("i");
+    const icon = image ?? glyph;
     return {
       colors: [style.backgroundColor, style.color, style.borderTopColor],
       filter: image ? getComputedStyle(image).filter : null,
+      iconOpacity: icon ? getComputedStyle(icon).opacity : null,
+      glyphColor: glyph ? getComputedStyle(glyph, "::before").color : null,
     };
   });
 }
@@ -147,20 +168,6 @@ test("real token HUD controls keep consistent colors across themes and toggle st
       name: uniqueName("hud-actor"),
     });
     await closeDocSheet(page, { collection: "actors", id: actorId });
-    await page.evaluate(() => game.settings.set("core", "noCanvas", false));
-    await page.reload();
-    await gotoReadyWorld(page);
-    // This checks DOM colors, not animation quality. Keep software WebGL from
-    // monopolizing the browser while the real canvas and HUD remain enabled.
-    await page.evaluate(async () => {
-      await game.settings.set("core", "maxFPS", 10);
-      await game.settings.set(
-        "core",
-        "performanceMode",
-        CONST.CANVAS_PERFORMANCE_MODES.LOW,
-      );
-    });
-    await dismissNotifications(page);
     await createTokenViaUI(page, { actorId, name });
     for (const theme of ["light", "dark"]) {
       await page.evaluate(async (variant) => {
@@ -173,14 +180,21 @@ test("real token HUD controls keep consistent colors across themes and toggle st
         '[data-action="config"]',
         '[data-action="sort"][data-direction="up"]',
         ".dv-table-selector",
+        '[data-action="target"]',
+        '[data-action="combat"]',
       ]) {
         await test.step(`${theme}: ${selector} has matching resting and hover colors`, async () => {
           const control = page.locator(`#token-hud ${selector}`);
           await page.mouse.move(100, 500);
           await soft
-            .poll(async () => (await controlStyle(control)).colors)
-            .toEqual(colors.rest);
+            .poll(() => controlStyle(control))
+            .toMatchObject({ colors: colors.rest, iconOpacity: "0.7" });
           const image = control.locator("img");
+          if (await control.locator("i").count()) {
+            await soft
+              .poll(async () => (await controlStyle(control)).glyphColor)
+              .toBe(colors.rest[1]);
+          }
           if (await image.count())
             await soft(image).toHaveCSS(
               "filter",
@@ -188,8 +202,13 @@ test("real token HUD controls keep consistent colors across themes and toggle st
             );
           await control.hover();
           await soft
-            .poll(async () => (await controlStyle(control)).colors)
-            .toEqual(colors.hover);
+            .poll(() => controlStyle(control))
+            .toMatchObject({ colors: colors.hover, iconOpacity: "1" });
+          if (await control.locator("i").count()) {
+            await soft
+              .poll(async () => (await controlStyle(control)).glyphColor)
+              .toBe(colors.hover[1]);
+          }
           if (await image.count())
             await soft(image).toHaveCSS("filter", "none");
         });
@@ -210,15 +229,15 @@ test("real token HUD controls keep consistent colors across themes and toggle st
           await reopenHud(page, actorId);
           await page.mouse.move(100, 500);
           await soft
-            .poll(async () => (await controlStyle(control)).colors)
-            .toEqual(colors.active);
+            .poll(() => controlStyle(control))
+            .toMatchObject({ colors: colors.active, iconOpacity: "1" });
           const image = control.locator("img");
           if (await image.count())
             await soft(image).toHaveCSS("filter", "none");
           await control.hover();
           await soft
-            .poll(async () => (await controlStyle(control)).colors)
-            .toEqual(colors.activeHover);
+            .poll(() => controlStyle(control))
+            .toMatchObject({ colors: colors.activeHover, iconOpacity: "1" });
           if (await image.count())
             await soft(image).toHaveCSS(
               "filter",
