@@ -200,6 +200,10 @@
 
 /* Foundry pins active HUD hover tokens to their resting colors. */
 html[data-cpr-theme-foundry] #token-hud {
+  .control-icon:not(:hover, .active) i {
+    opacity: 0.7;
+  }
+
   .control-icon.active {
     --control-hover-bg-color: var(--cpr-background-foundry-hover);
     --control-hover-icon-color: var(--cpr-text-foundry-input);
