@@ -204,6 +204,13 @@ html[data-cpr-theme-foundry] #menu {
   --color-text-primary: var(--cpr-text-header);
 }
 
+/* Tour cards keep dark backgrounds independently of their themed text. */
+html[data-cpr-theme-foundry] .tour {
+  --color-text-accent: var(--cpr-text-foundry-hover);
+
+  background: var(--cpr-background-window);
+}
+
 /* A few interface elements use direct Foundry colors instead of the theme
  * tokens mapped above. Keep those details in the active CPR palette too. */
 html[data-cpr-theme-foundry] #hotbar #action-bar .slot .slot-icon {
