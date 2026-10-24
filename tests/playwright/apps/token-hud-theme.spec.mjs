@@ -9,7 +9,7 @@ import {
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
-const soft = expect.configure({ soft: true, timeout: 3000 });
+const soft = expect.configure({ soft: true });
 test.use({ viewport: { width: 1280, height: 800 } });
 
 async function createTokenViaUI(page, { actorId, name }) {
@@ -131,7 +131,9 @@ async function palette(page) {
 }
 
 async function controlStyle(control) {
-  return control.evaluate(async (element) => {
+  return control.evaluateAll(async (elements) => {
+    if (elements.length !== 1) return null;
+    const [element] = elements;
     const style = getComputedStyle(element);
     await Promise.all(
       element.getAnimations().map((animation) => animation.finished),
@@ -151,6 +153,8 @@ async function controlStyle(control) {
 test("real token HUD controls keep consistent colors across themes and toggle states", async ({
   page,
 }) => {
+  // Software-rendered canvas interactions can exceed the normal test budget.
+  test.slow();
   await gotoReadyWorld(page);
   const original = await page.evaluate(() => ({
     theme: game.settings.get(game.system.id, "theme"),
