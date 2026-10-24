@@ -10,9 +10,9 @@ import {
 } from "../../../tools/playwright/ui/index.mjs";
 
 const soft = expect.configure({ soft: true, timeout: 3000 });
+test.use({ viewport: { width: 1280, height: 800 } });
 
-async function createTokenViaUI(page) {
-  const name = uniqueName("hud-scene");
+async function createTokenViaUI(page, { actorId, name }) {
   await openSidebarTab(page, "scenes");
   await page.locator("#scenes button.create-entry").click();
   const dialog = page.locator(".application.dialog");
@@ -23,47 +23,59 @@ async function createTokenViaUI(page) {
   await page
     .locator('.scene-config .window-header [data-action="close"]')
     .click();
-  const entry = page
-    .locator("#scenes .directory-item")
-    .filter({ hasText: name });
-  await entry.click({ button: "right" });
-  await page
-    .locator("#context-menu .context-item")
-    .filter({ hasText: "Activate" })
-    .click();
+  // Foundry may activate a newly created scene automatically.
+  if (!(await page.evaluate((n) => game.scenes.getName(n).active, name))) {
+    const entry = page
+      .locator("#scenes .directory-item")
+      .filter({ hasText: name });
+    await entry.click({ button: "right" });
+    await page
+      .locator("#context-menu .context-item")
+      .filter({ hasText: "Activate" })
+      .click({ timeout: 10000 });
+  }
   await page.waitForFunction(
     (sceneName) => canvas.ready && canvas.scene?.name === sceneName,
     name,
   );
-  const actorId = await createActorViaUI(page, {
-    type: "character",
-    name: uniqueName("hud-actor"),
-  });
-  await closeDocSheet(page, { collection: "actors", id: actorId });
   await openSidebarTab(page, "actors");
   await page
     .locator(`#actors [data-entry-id="${actorId}"]`)
-    .dragTo(page.locator("#board"), { targetPosition: { x: 850, y: 450 } });
+    .dragTo(page.locator("#board"), { targetPosition: { x: 600, y: 400 } });
   await page.waitForFunction(
     (id) => canvas.tokens.placeables.some((token) => token.actor?.id === id),
     actorId,
   );
-  return { actorId, name };
 }
 
 async function reopenHud(page, actorId) {
-  await page.waitForFunction(() => canvas.ready);
+  await page.waitForFunction((id) => {
+    const token = canvas.tokens.placeables.find(
+      (entry) => entry.actor?.id === id,
+    );
+    return canvas.ready && token?.visible && token.renderable;
+  }, actorId);
+  await page.evaluate(() => canvas.tokens.hud.close());
+  await expect(page.locator("#token-hud")).not.toBeVisible();
   const point = await page.evaluate((id) => {
     const token = canvas.tokens.placeables.find(
       (entry) => entry.actor?.id === id,
     );
     return canvas.clientCoordinatesFromCanvas(token.center);
   }, actorId);
-  await page.mouse.click(400, 100);
+  await page.mouse.move(100, 500);
+  await page.mouse.move(point.x, point.y, { steps: 5 });
+  await page.waitForFunction(
+    (id) =>
+      canvas.tokens.placeables.find((entry) => entry.actor?.id === id)?.hover,
+    actorId,
+    { timeout: 10000 },
+  );
   await page.mouse.click(point.x, point.y, { button: "right" });
-  await page
-    .locator("#token-hud")
-    .waitFor({ state: "visible", timeout: 10000 });
+  await expect(page.locator("#token-hud")).toBeVisible();
+  expect(await page.evaluate(() => canvas.tokens.hud.object?.actor?.id)).toBe(
+    actorId,
+  );
 }
 
 async function palette(page) {
@@ -118,20 +130,38 @@ async function controlStyle(control) {
 test("real token HUD controls keep consistent colors across themes and toggle states", async ({
   page,
 }) => {
-  // Real canvas rendering is substantially slower under software WebGL in CI.
-  test.slow();
   await gotoReadyWorld(page);
   const original = await page.evaluate(() => ({
     theme: game.settings.get(game.system.id, "theme"),
     themeFoundry: game.settings.get(game.system.id, "themeFoundry"),
     uiConfig: game.settings.get("core", "uiConfig"),
+    noCanvas: game.settings.get("core", "noCanvas"),
+    maxFPS: game.settings.get("core", "maxFPS"),
+    performanceMode: game.settings.get("core", "performanceMode"),
   }));
-  await page.evaluate(() => game.settings.set("core", "noCanvas", false));
-  await page.reload();
-  await gotoReadyWorld(page);
-  await dismissNotifications(page);
-  const { actorId, name } = await createTokenViaUI(page);
+  const name = uniqueName("hud-scene");
+  let actorId;
   try {
+    actorId = await createActorViaUI(page, {
+      type: "character",
+      name: uniqueName("hud-actor"),
+    });
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+    await page.evaluate(() => game.settings.set("core", "noCanvas", false));
+    await page.reload();
+    await gotoReadyWorld(page);
+    // This checks DOM colors, not animation quality. Keep software WebGL from
+    // monopolizing the browser while the real canvas and HUD remain enabled.
+    await page.evaluate(async () => {
+      await game.settings.set("core", "maxFPS", 10);
+      await game.settings.set(
+        "core",
+        "performanceMode",
+        CONST.CANVAS_PERFORMANCE_MODES.LOW,
+      );
+    });
+    await dismissNotifications(page);
+    await createTokenViaUI(page, { actorId, name });
     for (const theme of ["light", "dark"]) {
       await page.evaluate(async (variant) => {
         await game.settings.set(game.system.id, "theme", variant);
@@ -146,7 +176,7 @@ test("real token HUD controls keep consistent colors across themes and toggle st
       ]) {
         await test.step(`${theme}: ${selector} has matching resting and hover colors`, async () => {
           const control = page.locator(`#token-hud ${selector}`);
-          await page.mouse.move(500, 300);
+          await page.mouse.move(100, 500);
           await soft
             .poll(async () => (await controlStyle(control)).colors)
             .toEqual(colors.rest);
@@ -169,8 +199,16 @@ test("real token HUD controls keep consistent colors across themes and toggle st
           const control = page.locator(`#token-hud [data-action="${action}"]`);
           await control.click();
           await expect(control).toHaveClass(/active/);
+          if (action === "visibility") {
+            await page.waitForFunction(
+              (id) =>
+                canvas.tokens.placeables.find((entry) => entry.actor?.id === id)
+                  ?.document.hidden,
+              actorId,
+            );
+          }
           await reopenHud(page, actorId);
-          await page.mouse.move(500, 300);
+          await page.mouse.move(100, 500);
           await soft
             .poll(async () => (await controlStyle(control)).colors)
             .toEqual(colors.active);
@@ -228,27 +266,43 @@ test("real token HUD controls keep consistent colors across themes and toggle st
       });
     }
   } finally {
-    await page.evaluate(async (settings) => {
-      await game.settings.set(game.system.id, "themeFoundry", false);
-      await game.settings.set(game.system.id, "theme", settings.theme);
-      await game.settings.set("core", "uiConfig", settings.uiConfig);
-      await game.settings.set(
-        game.system.id,
-        "themeFoundry",
-        settings.themeFoundry,
-      );
-      await game.settings.set("core", "noCanvas", true);
-    }, original);
-    await openSidebarTab(page, "scenes");
-    await page
-      .locator("#scenes .directory-item")
-      .filter({ hasText: name })
-      .click({ button: "right" });
-    await page
-      .locator("#context-menu .context-item")
-      .filter({ hasText: "Delete" })
-      .click();
-    await page.locator('.application.dialog button[data-action="yes"]').click();
-    await deleteActorViaUI(page, actorId);
+    try {
+      if (await page.evaluate((n) => !!game.scenes.getName(n), name)) {
+        await openSidebarTab(page, "scenes");
+        await page
+          .locator("#scenes .directory-item")
+          .filter({ hasText: name })
+          .click({ button: "right" });
+        await page
+          .locator("#context-menu .context-item")
+          .filter({ hasText: "Delete" })
+          .click();
+        await page
+          .locator('.application.dialog button[data-action="yes"]')
+          .click();
+      }
+      if (actorId) await deleteActorViaUI(page, actorId);
+    } finally {
+      await page.evaluate(async (settings) => {
+        document.querySelector("#cpr-native-hud-reference")?.remove();
+        await game.settings.set(game.system.id, "themeFoundry", false);
+        await game.settings.set(game.system.id, "theme", settings.theme);
+        await game.settings.set("core", "uiConfig", settings.uiConfig);
+        if (canvas.initialized) {
+          await game.settings.set("core", "maxFPS", settings.maxFPS);
+          await game.settings.set(
+            "core",
+            "performanceMode",
+            settings.performanceMode,
+          );
+        }
+        await game.settings.set(
+          game.system.id,
+          "themeFoundry",
+          settings.themeFoundry,
+        );
+        await game.settings.set("core", "noCanvas", settings.noCanvas);
+      }, original);
+    }
   }
 });
