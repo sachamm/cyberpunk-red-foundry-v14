@@ -10,7 +10,11 @@ import {
 } from "../../../tools/playwright/ui/index.mjs";
 
 const soft = expect.configure({ soft: true });
-test.use({ viewport: { width: 1280, height: 800 } });
+const ACTION_TIMEOUT = 15000;
+test.use({
+  viewport: { width: 1280, height: 800 },
+  actionTimeout: ACTION_TIMEOUT,
+});
 
 async function createTokenViaUI(page, { actorId, name }) {
   await openSidebarTab(page, "scenes");
@@ -32,7 +36,7 @@ async function createTokenViaUI(page, { actorId, name }) {
     await page
       .locator("#context-menu .context-item")
       .filter({ hasText: "Activate" })
-      .click({ timeout: 10000 });
+      .click();
   }
   await page.evaluate(() => game.settings.set("core", "noCanvas", false));
   await page.reload();
@@ -72,23 +76,24 @@ async function reopenHud(page, actorId) {
     );
     return canvas.ready && token?.visible && token.renderable;
   }, actorId);
-  await page.evaluate(() => canvas.tokens.hud.close());
-  await expect(page.locator("#token-hud")).not.toBeVisible();
-  const point = await page.evaluate((id) => {
+  const point = await page.evaluate(async (id) => {
+    await canvas.tokens.hud.close();
     const token = canvas.tokens.placeables.find(
       (entry) => entry.actor?.id === id,
     );
     return canvas.clientCoordinatesFromCanvas(token.center);
   }, actorId);
+  await expect(page.locator("#token-hud")).not.toBeVisible();
   await page.mouse.move(100, 500);
-  await page.mouse.move(point.x, point.y, { steps: 5 });
+  await page.mouse.move(point.x, point.y);
   await page.waitForFunction(
     (id) =>
       canvas.tokens.placeables.find((entry) => entry.actor?.id === id)?.hover,
     actorId,
-    { timeout: 10000 },
+    { timeout: ACTION_TIMEOUT },
   );
-  await page.mouse.click(point.x, point.y, { button: "right" });
+  // Separate right-click gestures past Foundry's 250ms double-click window.
+  await page.mouse.click(point.x, point.y, { button: "right", delay: 300 });
   await expect(page.locator("#token-hud")).toBeVisible();
   expect(await page.evaluate(() => canvas.tokens.hud.object?.actor?.id)).toBe(
     actorId,
@@ -150,71 +155,72 @@ async function controlStyle(control) {
   });
 }
 
-test("real token HUD controls keep consistent colors across themes and toggle states", async ({
-  page,
-}) => {
-  // Software-rendered canvas interactions can exceed the normal test budget.
-  test.slow();
-  await gotoReadyWorld(page);
-  const original = await page.evaluate(() => ({
-    theme: game.settings.get(game.system.id, "theme"),
-    themeFoundry: game.settings.get(game.system.id, "themeFoundry"),
-    uiConfig: game.settings.get("core", "uiConfig"),
-    noCanvas: game.settings.get("core", "noCanvas"),
-    maxFPS: game.settings.get("core", "maxFPS"),
-    performanceMode: game.settings.get("core", "performanceMode"),
-  }));
-  const name = uniqueName("hud-scene");
-  let actorId;
-  try {
-    actorId = await createActorViaUI(page, {
-      type: "character",
-      name: uniqueName("hud-actor"),
+function expectControlStyle(
+  control,
+  colors,
+  { glyph = false, opacity = "1", filter = null } = {},
+) {
+  return soft
+    .poll(() => controlStyle(control))
+    .toEqual({
+      colors,
+      filter,
+      iconOpacity: opacity,
+      glyphColor: glyph ? colors[1] : null,
     });
-    await closeDocSheet(page, { collection: "actors", id: actorId });
-    await createTokenViaUI(page, { actorId, name });
-    for (const theme of ["light", "dark"]) {
+}
+
+// A failed canvas interaction in one palette must not skip the other palette.
+for (const theme of ["light", "dark"]) {
+  test(`real token HUD controls keep consistent colors and toggle states in ${theme} mode`, async ({
+    page,
+  }) => {
+    // Software-rendered canvas interactions can exceed the normal test budget.
+    test.slow();
+    await gotoReadyWorld(page);
+    const original = await page.evaluate(() => ({
+      theme: game.settings.get(game.system.id, "theme"),
+      themeFoundry: game.settings.get(game.system.id, "themeFoundry"),
+      uiConfig: game.settings.get("core", "uiConfig"),
+      noCanvas: game.settings.get("core", "noCanvas"),
+      maxFPS: game.settings.get("core", "maxFPS"),
+      performanceMode: game.settings.get("core", "performanceMode"),
+    }));
+    const name = uniqueName("hud-scene");
+    let actorId;
+    try {
+      actorId = await createActorViaUI(page, {
+        type: "character",
+        name: uniqueName("hud-actor"),
+      });
+      await closeDocSheet(page, { collection: "actors", id: actorId });
+      await createTokenViaUI(page, { actorId, name });
       await page.evaluate(async (variant) => {
         await game.settings.set(game.system.id, "theme", variant);
         await game.settings.set(game.system.id, "themeFoundry", true);
       }, theme);
       const colors = await palette(page);
       await reopenHud(page, actorId);
-      for (const selector of [
-        '[data-action="config"]',
-        '[data-action="sort"][data-direction="up"]',
-        ".dv-table-selector",
-        '[data-action="target"]',
-        '[data-action="combat"]',
+      for (const [selector, glyph] of [
+        ['[data-action="config"]', true],
+        ['[data-action="sort"][data-direction="up"]', false],
+        [".dv-table-selector", false],
+        ['[data-action="target"]', true],
+        ['[data-action="combat"]', false],
       ]) {
         await test.step(`${theme}: ${selector} has matching resting and hover colors`, async () => {
           const control = page.locator(`#token-hud ${selector}`);
           await page.mouse.move(100, 500);
-          await soft
-            .poll(() => controlStyle(control))
-            .toMatchObject({ colors: colors.rest, iconOpacity: "0.7" });
-          const image = control.locator("img");
-          if (await control.locator("i").count()) {
-            await soft
-              .poll(async () => (await controlStyle(control)).glyphColor)
-              .toBe(colors.rest[1]);
-          }
-          if (await image.count())
-            await soft(image).toHaveCSS(
-              "filter",
-              theme === "light" ? "invert(1)" : "none",
-            );
+          await expectControlStyle(control, colors.rest, {
+            glyph,
+            opacity: "0.7",
+            filter: glyph ? null : theme === "light" ? "invert(1)" : "none",
+          });
           await control.hover();
-          await soft
-            .poll(() => controlStyle(control))
-            .toMatchObject({ colors: colors.hover, iconOpacity: "1" });
-          if (await control.locator("i").count()) {
-            await soft
-              .poll(async () => (await controlStyle(control)).glyphColor)
-              .toBe(colors.hover[1]);
-          }
-          if (await image.count())
-            await soft(image).toHaveCSS("filter", "none");
+          await expectControlStyle(control, colors.hover, {
+            glyph,
+            filter: glyph ? null : "none",
+          });
         });
       }
       for (const action of ["target", "visibility"]) {
@@ -232,21 +238,16 @@ test("real token HUD controls keep consistent colors across themes and toggle st
           }
           await reopenHud(page, actorId);
           await page.mouse.move(100, 500);
-          await soft
-            .poll(() => controlStyle(control))
-            .toMatchObject({ colors: colors.active, iconOpacity: "1" });
-          const image = control.locator("img");
-          if (await image.count())
-            await soft(image).toHaveCSS("filter", "none");
+          const glyph = action === "target";
+          await expectControlStyle(control, colors.active, {
+            glyph,
+            filter: glyph ? null : "none",
+          });
           await control.hover();
-          await soft
-            .poll(() => controlStyle(control))
-            .toMatchObject({ colors: colors.activeHover, iconOpacity: "1" });
-          if (await image.count())
-            await soft(image).toHaveCSS(
-              "filter",
-              theme === "light" ? "invert(1)" : "none",
-            );
+          await expectControlStyle(control, colors.activeHover, {
+            glyph,
+            filter: glyph ? null : theme === "light" ? "invert(1)" : "none",
+          });
           await control.click();
           await reopenHud(page, actorId);
           await soft(control).not.toHaveClass(/active/);
@@ -274,7 +275,7 @@ test("real token HUD controls keep consistent colors across themes and toggle st
         const reference = page.locator(
           '#cpr-native-hud-reference [data-action="visibility"]',
         );
-        await reference.hover({ timeout: 5000 });
+        await reference.hover();
         await soft.poll(() => controlStyle(reference)).toEqual(before);
         await page
           .locator("#cpr-native-hud-reference")
@@ -287,45 +288,45 @@ test("real token HUD controls keep consistent colors across themes and toggle st
         await control.hover();
         await soft.poll(() => controlStyle(control)).toEqual(before);
       });
-    }
-  } finally {
-    try {
-      if (await page.evaluate((n) => !!game.scenes.getName(n), name)) {
-        await openSidebarTab(page, "scenes");
-        await page
-          .locator("#scenes .directory-item")
-          .filter({ hasText: name })
-          .click({ button: "right" });
-        await page
-          .locator("#context-menu .context-item")
-          .filter({ hasText: "Delete" })
-          .click();
-        await page
-          .locator('.application.dialog button[data-action="yes"]')
-          .click();
-      }
-      if (actorId) await deleteActorViaUI(page, actorId);
     } finally {
-      await page.evaluate(async (settings) => {
-        document.querySelector("#cpr-native-hud-reference")?.remove();
-        await game.settings.set(game.system.id, "themeFoundry", false);
-        await game.settings.set(game.system.id, "theme", settings.theme);
-        await game.settings.set("core", "uiConfig", settings.uiConfig);
-        if (canvas.initialized) {
-          await game.settings.set("core", "maxFPS", settings.maxFPS);
-          await game.settings.set(
-            "core",
-            "performanceMode",
-            settings.performanceMode,
-          );
+      try {
+        if (await page.evaluate((n) => !!game.scenes.getName(n), name)) {
+          await openSidebarTab(page, "scenes");
+          await page
+            .locator("#scenes .directory-item")
+            .filter({ hasText: name })
+            .click({ button: "right" });
+          await page
+            .locator("#context-menu .context-item")
+            .filter({ hasText: "Delete" })
+            .click();
+          await page
+            .locator('.application.dialog button[data-action="yes"]')
+            .click();
         }
-        await game.settings.set(
-          game.system.id,
-          "themeFoundry",
-          settings.themeFoundry,
-        );
-        await game.settings.set("core", "noCanvas", settings.noCanvas);
-      }, original);
+        if (actorId) await deleteActorViaUI(page, actorId);
+      } finally {
+        await page.evaluate(async (settings) => {
+          document.querySelector("#cpr-native-hud-reference")?.remove();
+          await game.settings.set(game.system.id, "themeFoundry", false);
+          await game.settings.set(game.system.id, "theme", settings.theme);
+          await game.settings.set("core", "uiConfig", settings.uiConfig);
+          if (canvas.initialized) {
+            await game.settings.set("core", "maxFPS", settings.maxFPS);
+            await game.settings.set(
+              "core",
+              "performanceMode",
+              settings.performanceMode,
+            );
+          }
+          await game.settings.set(
+            game.system.id,
+            "themeFoundry",
+            settings.themeFoundry,
+          );
+          await game.settings.set("core", "noCanvas", settings.noCanvas);
+        }, original);
+      }
     }
-  }
-});
+  });
+}
