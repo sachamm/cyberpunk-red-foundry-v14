@@ -231,7 +231,7 @@ test.describe("Character sheet Gear tab", () => {
   }) => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
-    await createInventoryItemViaUI(page, {
+    const { itemId } = await createInventoryItemViaUI(page, {
       actorId,
       sheetId,
       itemType: "weapon",
@@ -245,6 +245,7 @@ test.describe("Character sheet Gear tab", () => {
       const header = gearCategoryHeader(page, freshSheet, "weapon");
       await expect(header.locator("i.fa-minus.expand-icon")).toBeVisible();
       await expect(header.locator("i.fa-plus.collapse-icon")).toBeHidden();
+      await expect(gearRow(page, freshSheet, itemId)).toBeVisible();
     });
 
     await test.step("clicking the header collapses: plus shows, rows hide", async () => {
@@ -252,12 +253,14 @@ test.describe("Character sheet Gear tab", () => {
       await header.click();
       await expect(header.locator("i.fa-plus.collapse-icon")).toBeVisible();
       await expect(header.locator("i.fa-minus.expand-icon")).toBeHidden();
+      await expect(gearRow(page, freshSheet, itemId)).toBeHidden();
     });
 
     await test.step("expanding again restores rows", async () => {
       const header = gearCategoryHeader(page, freshSheet, "weapon");
       await header.click();
       await expect(header.locator("i.fa-minus.expand-icon")).toBeVisible();
+      await expect(gearRow(page, freshSheet, itemId)).toBeVisible();
     });
 
     await test.step("collapse persists on a fresh render", async () => {
@@ -268,6 +271,7 @@ test.describe("Character sheet Gear tab", () => {
       await expect(
         afterHeader.locator("i.fa-plus.collapse-icon"),
       ).toBeVisible();
+      await expect(gearRow(page, afterSheet, itemId)).toBeHidden();
     });
 
     await closeDocSheet(page, { collection: "actors", id: actorId });
