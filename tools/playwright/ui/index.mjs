@@ -38,8 +38,10 @@ export {
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
   enablePlayersCreateInventory,
+  getPlayersCreateInventory,
   hoverGearRow,
   installUpgrade,
+  setPlayersCreateInventory,
 } from "./embedded-items.mjs";
 export {
   CTRL_CLICK_MODIFIERS,

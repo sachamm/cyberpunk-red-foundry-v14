@@ -156,14 +156,34 @@ export async function createEmbeddedItemViaUI(
 }
 
 /**
- * Enable the world setting that lets players create inventory items. The
- * + buttons on character sheets only render when it is on; container
- * sheets show them to GMs regardless.
+ * Get the current value of the world setting that lets players create
+ * inventory items. The + buttons on character sheets only render when it is
+ * on; container sheets show them to GMs regardless.
+ */
+export async function getPlayersCreateInventory(page) {
+  return page.evaluate(() =>
+    game.settings.get(game.system.id, "playersCreateInventory"),
+  );
+}
+
+/**
+ * Set the world setting that lets players create inventory items. The +
+ * buttons on character sheets only render when it is on; container sheets
+ * show them to GMs regardless. World settings persist for the whole run, so
+ * a spec that changes this should restore the previous value afterwards.
+ */
+export async function setPlayersCreateInventory(page, enabled) {
+  await page.evaluate(async (value) => {
+    await game.settings.set(game.system.id, "playersCreateInventory", value);
+  }, enabled);
+}
+
+/**
+ * Enable the world setting that lets players create inventory items. See
+ * setPlayersCreateInventory for the persistence caveat.
  */
 export async function enablePlayersCreateInventory(page) {
-  await page.evaluate(async () => {
-    await game.settings.set(game.system.id, "playersCreateInventory", true);
-  });
+  await setPlayersCreateInventory(page, true);
 }
 
 /**

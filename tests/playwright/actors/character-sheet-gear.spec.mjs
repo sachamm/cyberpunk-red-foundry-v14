@@ -9,9 +9,11 @@ import {
   closeOwnedItemSheet,
   createInventoryItemViaUI,
   enablePlayersCreateInventory,
+  getPlayersCreateInventory,
   openOwnedItemSheet,
   reopenActorSheetViaUI,
   resolveYesNo,
+  setPlayersCreateInventory,
   yesNoDialog,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
@@ -27,6 +29,21 @@ import {
 
 installConsoleErrorHarness();
 
+// The playersCreateInventory world setting persists for the whole run, so
+// capture its value before this file changes it and restore it after every
+// test; other specs may assume either state.
+let createInventoryBaseline;
+
+test.beforeEach(async ({ page }) => {
+  if (createInventoryBaseline === undefined) {
+    createInventoryBaseline = await getPlayersCreateInventory(page);
+  }
+});
+
+test.afterEach(async ({ page }) => {
+  await setPlayersCreateInventory(page, createInventoryBaseline);
+});
+
 test.describe("Character sheet Gear tab", () => {
   test("the create glyph is gated by the playersCreateInventory setting", async ({
     page,
@@ -35,6 +52,8 @@ test.describe("Character sheet Gear tab", () => {
     let freshSheet = sheetId;
 
     await test.step("with the setting off, no item-create glyphs render", async () => {
+      await setPlayersCreateInventory(page, false);
+      freshSheet = await closeAndReopenActorSheet(page, actorId);
       const gear = await openGearTab(page, freshSheet);
       await expect(gear.locator("a.item-create")).toHaveCount(0);
     });
