@@ -29,9 +29,6 @@ import {
 
 installConsoleErrorHarness();
 
-// The playersCreateInventory world setting persists for the whole run, so
-// capture its value before this file changes it and restore it after every
-// test; other specs may assume either state.
 let createInventoryBaseline;
 
 test.beforeEach(async ({ page }) => {
