@@ -536,7 +536,7 @@ test.describe("CPR theme integration", () => {
     }
   });
 
-  test("keeps the real Welcome tour readable across CPR themes", async ({
+  test("keeps real Welcome and Sidebar tours readable across CPR themes", async ({
     page,
   }) => {
     const original = await captureSettings(page);
@@ -550,76 +550,94 @@ test.describe("CPR theme integration", () => {
           (variant) => game.settings.set(game.system.id, "theme", variant),
           theme,
         );
-        await page.locator('#settings button[data-app="tours"]').click();
-        const manager = page.locator("#tours-management");
-        const entry = manager.locator('[data-tour="core.welcome"]').first();
-        const reset = entry.locator('button[data-action="reset"]');
-        if (await reset.count()) await reset.click();
-        await manager
-          .locator('button[data-tour="core.welcome"][data-action="play"]')
-          .click();
-
-        for (const [selector, title] of [
-          [".tour-center-step", "Welcome to Foundry Virtual Tabletop"],
-          ["#tooltip.tour.active", "Available Resources"],
+        for (const [tourId, steps] of [
+          [
+            "core.welcome",
+            [
+              [".tour-center-step", "Welcome to Foundry Virtual Tabletop"],
+              ["#tooltip.tour.active", "Available Resources"],
+            ],
+          ],
+          ["core.sidebar", [["#tooltip.tour.active", "Sidebar Tabs"]]],
         ]) {
-          const step = page.locator(selector);
-          await expect(step).toBeVisible();
-          await expect(step.locator(".step-title")).toHaveText(title);
-          let native;
-          for (const enabled of [false, true, false]) {
-            await page.evaluate(
-              (value) =>
-                game.settings.set(game.system.id, "themeFoundry", value),
-              enabled,
-            );
-            const colors = await step.evaluate((element) => {
-              const probe = document.createElement("span");
-              probe.style.backgroundColor = "var(--cpr-background-window)";
-              element.append(probe);
-              const cprBackground = getComputedStyle(probe).backgroundColor;
-              probe.remove();
-              return {
-                cprBackground,
-                rendered: {
-                  background: getComputedStyle(element).backgroundColor,
-                  text: Array.from(
-                    element.querySelectorAll(
-                      ".step-title, .content, .content a, .progress, .step-button i",
-                    ),
-                    (node) => getComputedStyle(node).color,
-                  ),
-                },
-              };
-            });
-            if (enabled) {
-              expect
-                .soft(colors.rendered.background)
-                .toBe(colors.cprBackground);
-            } else if (native) {
-              expect.soft(colors.rendered).toEqual(native);
-            } else native = colors.rendered;
-            for (const color of colors.rendered.text) {
-              expect
-                .soft(
-                  contrastRatio(color, colors.rendered.background),
-                  `${theme}, theming ${enabled}, ${title}: ${color}`,
-                )
-                .toBeGreaterThanOrEqual(4.5);
-            }
-          }
-          await step
-            .locator(
-              `[data-action="${selector === ".tour-center-step" ? "next" : "exit"}"]`,
-            )
+          await page.locator('#settings button[data-app="tours"]').click();
+          const manager = page.locator("#tours-management");
+          const entry = manager.locator(`[data-tour="${tourId}"]`).first();
+          const reset = entry.locator('button[data-action="reset"]');
+          if (await reset.count()) await reset.click();
+          await manager
+            .locator(`button[data-tour="${tourId}"][data-action="play"]`)
             .click();
+
+          for (const [selector, title] of steps) {
+            const step = page.locator(selector);
+            await expect(step).toBeVisible();
+            await expect(step.locator(".step-title")).toHaveText(title);
+            if (tourId === "core.sidebar") {
+              await expect(
+                step.locator("p").filter({
+                  hasText:
+                    "It is organized into a set of tabs you can switch between.",
+                }),
+              ).toBeVisible();
+            }
+            let native;
+            for (const enabled of [false, true, false]) {
+              await page.evaluate(
+                (value) =>
+                  game.settings.set(game.system.id, "themeFoundry", value),
+                enabled,
+              );
+              const colors = await step.evaluate((element) => {
+                const probe = document.createElement("span");
+                probe.style.backgroundColor = "var(--cpr-background-window)";
+                element.append(probe);
+                const cprBackground = getComputedStyle(probe).backgroundColor;
+                probe.remove();
+                return {
+                  cprBackground,
+                  rendered: {
+                    background: getComputedStyle(element).backgroundColor,
+                    text: Array.from(
+                      element.querySelectorAll(
+                        ".step-title, p, li, a, .progress, .step-button i",
+                      ),
+                      (node) => getComputedStyle(node).color,
+                    ),
+                  },
+                };
+              });
+              if (enabled) {
+                expect
+                  .soft(colors.rendered.background)
+                  .toBe(colors.cprBackground);
+              } else if (native) {
+                expect.soft(colors.rendered).toEqual(native);
+              } else native = colors.rendered;
+              for (const color of colors.rendered.text) {
+                expect
+                  .soft(
+                    contrastRatio(color, colors.rendered.background),
+                    `${theme}, theming ${enabled}, ${title}: ${color}`,
+                  )
+                  .toBeGreaterThanOrEqual(4.5);
+              }
+            }
+            await step
+              .locator(
+                `[data-action="${selector === ".tour-center-step" ? "next" : "exit"}"]`,
+              )
+              .click();
+          }
+          await expect(page.locator(".tour-overlay")).toHaveCount(0);
+          await manager.locator('.window-header [data-action="close"]').click();
         }
-        await expect(page.locator(".tour-overlay")).toHaveCount(0);
-        await manager.locator('.window-header [data-action="close"]').click();
       }
     } finally {
       await page.evaluate(async (savedProgress) => {
-        game.tours.get("core.welcome").exit();
+        for (const id of ["core.welcome", "core.sidebar"]) {
+          game.tours.get(id).exit();
+        }
         await foundry.applications.instances.get("tours-management")?.close();
         await game.settings.set("core", "tourProgress", savedProgress);
       }, progress);
