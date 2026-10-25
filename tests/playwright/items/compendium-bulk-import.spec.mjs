@@ -158,7 +158,6 @@ test.afterEach(async ({ page }) => {
     originalWorldItemIds,
   );
   for (const itemId of remainingItemIds) {
-    // Bulk folder/pack deletion can still replace an open directory menu.
     await page.reload();
     await gotoReadyWorld(page);
     await deleteItemViaUI(page, itemId);
@@ -306,8 +305,7 @@ test("Import All Content rebuilds installed items and preserves them on folder e
 
     let duplicatedWeaponId;
     let duplicatedInstalledItemId;
-    // A new duplicate initially exposes the original's references, then clears
-    // them before rebuilding its own tree. Wait for the complete result.
+
     await expect(async () => {
       const duplicated = await page.evaluate(
         ({ originalId, malorianName }) => {
