@@ -13,6 +13,8 @@ const soft = expect.configure({ soft: true });
 const ACTION_TIMEOUT = 15000;
 test.use({
   viewport: { width: 1280, height: 800 },
+  // Keep the CSS viewport while quartering the software canvas's pixel count.
+  deviceScaleFactor: 0.5,
   actionTimeout: ACTION_TIMEOUT,
 });
 
@@ -59,6 +61,8 @@ async function createTokenViaUI(page, { actorId, name }) {
     (sceneName) => canvas.ready && canvas.scene?.name === sceneName,
     name,
   );
+  await expect(page.locator("#board")).toHaveAttribute("width", "640");
+  await expect(page.locator("#board")).toHaveAttribute("height", "400");
   await openSidebarTab(page, "actors");
   await page
     .locator(`#actors [data-entry-id="${actorId}"]`)
