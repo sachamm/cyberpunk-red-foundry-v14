@@ -51,6 +51,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
 - Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
+- Weapon damage override upgrades now replace the base damage formula on damage rolls
+- Fight tab damage pill now reflects installed weapon damage upgrades (overrides show the flat value)
 - Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
 - Fix Import All Content breaking items with pre-installed upgrades
@@ -65,6 +67,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Hitting enter when editing a custom Active Effect key no longer closes the sheet
 - Changing a mode for a skill modifier does not throw console errors
 - The `Big Knucks` cyberware item has been corrected in the compendium to use `Melee Weapon` Skill
+- Corrected spelling for `systems/cyberpunk-red-core/icons/compendium/cyberware/tactile_boost.svg` & `systems/cyberpunk-red-core/icons/compendium/gear/chemical_analyzer.svg`
 
 ### Att/round
 
@@ -80,6 +83,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Dragging a duplicate role (by name) is intentionally prevented and shows a warning
 - Removed duplicate cyberware icons from `src/icons/cyberweapons`
 - Unique icons have been created for each role
+- Updated `CREDITS.md` with attribution for all system assets
 
 ### Plumbing
 
