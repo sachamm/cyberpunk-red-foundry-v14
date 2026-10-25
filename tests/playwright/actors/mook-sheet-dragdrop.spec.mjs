@@ -6,6 +6,7 @@ import {
   dragOwnedItemToActorSheet,
   expectSheetRendered,
   openItemSettings,
+  openSidebarTab,
   positionActorSheet,
   setItemField,
   setItemSelected,
@@ -453,24 +454,26 @@ test.describe("Cyberware drag failure", () => {
     });
     await closeDocSheet(game, { collection: "items", id: itemId });
 
-    const sheetId = await closeAndReopenMookSheet(game, actorId);
+    let sheetId = await closeAndReopenMookSheet(game, actorId);
 
-    // The guard warns via a transient toast AND logs through LOGGER.warn (DisplayMessage
-    // does both). Assert on the console so we don't race the auto-dismissing notification.
-    const consoleLines = [];
-    game.on("console", (msg) => consoleLines.push(msg.text()));
+    await test.step("dragging the cyberware warns and leaves no item or install dialog after reopening", async () => {
+      await openSidebarTab(game, "items");
+      const entry = game.locator(`#items [data-entry-id="${itemId}"]`);
+      const mookSheet = game.locator(`#${sheetId}`);
+      const warning = game.locator(".notification.warning").filter({
+        hasText: "No Foundational Cyberware found for this type.",
+      });
+      await expect(entry).toBeVisible();
+      await expect(mookSheet).toBeVisible();
+      await expect(warning).toHaveCount(0);
 
-    await test.step("dragging the cyberware onto the mook triggers the install guard", async () => {
-      await dragItemToActorSheet(game, { itemId, sheetId, actorId });
-    });
+      // Observe the transient warning during the drag; a rejected item need not
+      // survive long enough for the successful-drop helper to observe it.
+      await Promise.all([
+        expect(warning).toBeVisible(),
+        entry.dragTo(mookSheet, { timeout: 5000 }),
+      ]);
 
-    await test.step("it warns that no foundational cyberware of the type is installed", async () => {
-      await expect(async () => {
-        expect(consoleLines.join("\n")).toContain("No Foundational Cyberware");
-      }).toPass({ timeout: 10000 });
-    });
-
-    await test.step("the item is removed and no install dialog appears", async () => {
       await expect
         .poll(async () => {
           const ids = await ownedItemIdsByNames(game, actorId, [itemName]);
@@ -482,6 +485,15 @@ test.describe("Cyberware drag failure", () => {
           has: game.locator('select[name="humanityLossType"]'),
         }),
       ).toHaveCount(0);
+
+      sheetId = await closeAndReopenMookSheet(game, actorId);
+      await expect(
+        game
+          .locator(`#${sheetId} ${MOOK_FIELD.cyberwareItem}`)
+          .filter({ hasText: itemName }),
+      ).toHaveCount(0);
+      const ids = await ownedItemIdsByNames(game, actorId, [itemName]);
+      expect(ids[itemName]).toBeFalsy();
     });
   });
 });
