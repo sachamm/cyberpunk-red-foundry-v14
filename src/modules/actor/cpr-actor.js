@@ -1744,6 +1744,8 @@ export default class CPRActor extends Actor {
 
     const cfg = config[location];
     if (!cfg) return; // exit if location not supported
+    // Shields store remaining HP; head and body armor store accumulated ablation.
+    const change = location === "shield" ? -ablation : ablation;
 
     armorList.forEach((armor) => {
       const sp = Number(foundry.utils.getProperty(armor, cfg.spPath));
@@ -1761,9 +1763,9 @@ export default class CPRActor extends Actor {
 
       // Clamp new ablation
       const newAblation =
-        ablation < 0
-          ? Math.max(ablationValue + ablation, 0)
-          : Math.min(ablationValue + ablation, armorSp);
+        change < 0
+          ? Math.max(ablationValue + change, 0)
+          : Math.min(ablationValue + change, armorSp);
 
       updateList.push({
         _id: armor.id,
