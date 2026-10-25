@@ -253,6 +253,56 @@ for (const theme of ["light", "dark"]) {
           await soft(control).not.toHaveClass(/active/);
         });
       }
+      await test.step(`${theme}: movement choices stay readable when hovered, selected and reopened`, async () => {
+        const button = page.locator(
+          '#token-hud button[data-palette="movementActions"]',
+        );
+        const menu = page.locator(
+          '#token-hud .palette[data-palette="movementActions"]',
+        );
+        const defaultAction = menu.locator('[data-movement-action=""]');
+        const walk = menu.locator('[data-movement-action="walk"]');
+        const resting = [
+          "rgba(0, 0, 0, 0)",
+          colors.rest[1],
+          "rgba(0, 0, 0, 0)",
+        ];
+        await button.click();
+        await expect(menu).toBeVisible();
+        await expect(defaultAction).toContainText("Default (Walk)");
+        await expect(walk).toHaveText("Walk");
+        await page.mouse.move(100, 500);
+        await expectControlStyle(defaultAction, colors.active, {
+          glyph: true,
+        });
+        await expectControlStyle(walk, resting, {
+          opacity: "0.7",
+          filter: theme === "light" ? "invert(1)" : "none",
+        });
+        await defaultAction.hover();
+        await expectControlStyle(defaultAction, colors.hover, {
+          glyph: true,
+        });
+        await walk.hover();
+        await expectControlStyle(walk, colors.hover, { filter: "none" });
+        await walk.click();
+        await page.waitForFunction(
+          (id) =>
+            canvas.tokens.placeables.find((token) => token.actor?.id === id)
+              ?.document.movementAction === "walk",
+          actorId,
+        );
+        await reopenHud(page, actorId);
+        if (!(await menu.isVisible())) await button.click();
+        await page.mouse.move(100, 500);
+        await soft(walk).toHaveClass(/active/);
+        await expectControlStyle(walk, colors.active, { filter: "none" });
+        await expectControlStyle(defaultAction, resting, { glyph: true });
+        await walk.hover();
+        await expectControlStyle(walk, colors.hover, { filter: "none" });
+        await button.click();
+        await expect(menu).not.toBeVisible();
+      });
       await test.step(`${theme}: disabled integration leaves the native HUD unchanged`, async () => {
         await page.evaluate(() =>
           game.settings.set(game.system.id, "themeFoundry", false),
@@ -287,6 +337,23 @@ for (const theme of ["light", "dark"]) {
         await reopenHud(page, actorId);
         await control.hover();
         await soft.poll(() => controlStyle(control)).toEqual(before);
+        const movementButton = page.locator(
+          '#token-hud button[data-palette="movementActions"]',
+        );
+        const movement = page.locator(
+          '#token-hud .palette[data-palette="movementActions"] [data-movement-action="walk"]',
+        );
+        await movementButton.click();
+        await movement.hover();
+        const nativeMovement = await controlStyle(movement);
+        await page.evaluate(async () => {
+          await game.settings.set(game.system.id, "themeFoundry", true);
+          await game.settings.set(game.system.id, "themeFoundry", false);
+        });
+        await reopenHud(page, actorId);
+        await movementButton.click();
+        await movement.hover();
+        await soft.poll(() => controlStyle(movement)).toEqual(nativeMovement);
       });
     } finally {
       try {
