@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
+  deleteItemViaUI,
   openItemSettings,
   openSidebarTab,
   reopenItemSheetViaUI,
@@ -13,6 +14,7 @@ const CORE_WEAPONS_PACK = "cyberpunk-red-core.core_weapons";
 
 let createdPackIds = [];
 let importedFolderId;
+let originalWorldItemIds;
 
 async function createItemCompendium(page, label) {
   const name = `e2e-pack-${Date.now().toString(36)}-${Math.random()
@@ -129,6 +131,9 @@ test.beforeEach(async ({ page }) => {
   createdPackIds = [];
   importedFolderId = undefined;
   await gotoReadyWorld(page);
+  originalWorldItemIds = await page.evaluate(() =>
+    game.items.map((item) => item.id),
+  );
 });
 
 test.afterEach(async ({ page }) => {
@@ -145,6 +150,19 @@ test.afterEach(async ({ page }) => {
     },
     { folderId: importedFolderId, packIds: createdPackIds },
   );
+  const remainingItemIds = await page.evaluate(
+    (originalIds) =>
+      game.items
+        .filter((item) => !originalIds.includes(item.id))
+        .map((item) => item.id),
+    originalWorldItemIds,
+  );
+  for (const itemId of remainingItemIds) {
+    // Bulk folder/pack deletion can still replace an open directory menu.
+    await page.reload();
+    await gotoReadyWorld(page);
+    await deleteItemViaUI(page, itemId);
+  }
 });
 
 test("Import All Content rebuilds installed items and preserves them on folder export", async ({
@@ -286,66 +304,65 @@ test("Import All Content rebuilds installed items and preserves them on folder e
     const menu = await openContextMenu(page, weaponEntry);
     await menu.locator(".context-item", { hasText: "Duplicate" }).click();
 
-    await expect
-      .poll(() =>
-        page.evaluate(
-          ({ originalId, malorianName }) => {
-            const copies = game.items.filter(
-              (item) =>
-                item.id !== originalId && item.name.includes(malorianName),
-            );
-            const installedIds = copies[0]?.system.installedItems.list ?? [];
-            return {
-              copyCount: copies.length,
-              installedItemCount: installedIds.length,
-              installedReferencesResolved: installedIds.every((id) =>
-                game.items.has(id),
-              ),
-            };
-          },
-          { originalId: importedWeaponId, malorianName: MALORIAN_NAME },
-        ),
-      )
-      .toEqual({
-        copyCount: 1,
-        installedItemCount: 1,
-        installedReferencesResolved: true,
-      });
+    let duplicatedWeaponId;
+    let duplicatedInstalledItemId;
+    // A new duplicate initially exposes the original's references, then clears
+    // them before rebuilding its own tree. Wait for the complete result.
+    await expect(async () => {
+      const duplicated = await page.evaluate(
+        ({ originalId, malorianName }) => {
+          const original = game.items.get(originalId);
+          const copies = game.items.filter(
+            (item) =>
+              item.id !== originalId && item.name.includes(malorianName),
+          );
+          const copy = copies[0];
+          const installedIds = copy?.system.installedItems.list ?? [];
+          return {
+            weaponId: copy?.id,
+            copyCount: copies.length,
+            installedIds,
+            installedItems: installedIds.map((id) => {
+              const item = game.items.get(id);
+              return item
+                ? { id: item.id, name: item.name, type: item.type }
+                : undefined;
+            }),
+            originalInstalledIds: original.system.installedItems.list,
+          };
+        },
+        { originalId: importedWeaponId, malorianName: MALORIAN_NAME },
+      );
 
-    const duplicated = await page.evaluate(
-      ({ originalId, malorianName }) => {
-        const original = game.items.get(originalId);
-        const copies = game.items.filter(
-          (item) => item.id !== originalId && item.name.includes(malorianName),
-        );
-        const copy = copies[0];
-        const installedIds = copy?.system.installedItems.list ?? [];
-        return {
-          copyCount: copies.length,
-          installedIds,
-          installedItems: installedIds.map((id) => {
-            const item = game.items.get(id);
-            return item
-              ? { id: item.id, name: item.name, type: item.type }
-              : undefined;
-          }),
-          originalInstalledIds: original.system.installedItems.list,
-        };
-      },
-      { originalId: importedWeaponId, malorianName: MALORIAN_NAME },
-    );
+      expect(duplicated.copyCount).toBe(1);
+      expect(duplicated.installedIds).toHaveLength(1);
+      expect(duplicated.installedItems).toEqual([
+        {
+          id: duplicated.installedIds[0],
+          name: expectedInstalledItem.name,
+          type: expectedInstalledItem.type,
+        },
+      ]);
+      expect(duplicated.installedIds).not.toEqual(
+        duplicated.originalInstalledIds,
+      );
+      expect(duplicated.originalInstalledIds).toEqual([
+        importedInstalledItemId,
+      ]);
+      duplicatedWeaponId = duplicated.weaponId;
+      [duplicatedInstalledItemId] = duplicated.installedIds;
+    }).toPass({ timeout: 15000 });
 
-    expect(duplicated.copyCount).toBe(1);
-    expect(duplicated.installedIds).toHaveLength(1);
-    expect(duplicated.installedItems).toEqual([
-      {
-        id: duplicated.installedIds[0],
-        name: expectedInstalledItem.name,
-        type: expectedInstalledItem.type,
-      },
-    ]);
-    expect(duplicated.installedIds).not.toEqual(
-      duplicated.originalInstalledIds,
-    );
+    await page.reload();
+    await gotoReadyWorld(page);
+    await expandItemFolder(page, importedFolderId);
+    const sheetId = await reopenItemSheetViaUI(page, duplicatedWeaponId);
+    const sheet = await openItemSettings(page, sheetId);
+    await expect(
+      sheet.locator(
+        `li[data-item-id="${duplicatedInstalledItemId}"][draggable="false"]`,
+      ),
+    ).toContainText(expectedInstalledItem.name);
+    await closeDocSheet(page, { collection: "items", id: duplicatedWeaponId });
   });
 });
