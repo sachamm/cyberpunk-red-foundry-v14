@@ -1156,6 +1156,96 @@ test.describe("Character sheet Gear tab", () => {
     await closeDocSheet(page, { collection: "actors", id: actorId });
   });
 
+  test("reloading a partially loaded weapon tops it up from the reserve stack", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+    const weapon = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "weapon",
+      itemName: "Topup Weapon",
+      data: {
+        system: {
+          isRanged: true,
+          ammoVariety: ["medPistol"],
+          magazine: { max: 6, value: 4 },
+          installedItems: { allowedTypes: ["itemUpgrade", "ammo"] },
+        },
+      },
+    });
+    const nines = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId: weapon.sheetId,
+      itemType: "ammo",
+      itemName: "Topup Nines",
+      data: { system: { variety: "medPistol", amount: 10 } },
+    });
+    let freshSheet = nines.sheetId;
+
+    // The gear row only shows a value/max amount while ammo is installed
+    // (hasAmmoLoaded), so verify the pre-seeded partial state at the data
+    // level instead.
+    await test.step("the weapon starts partially loaded with no ammo installed", async () => {
+      const state = await page.evaluate(
+        ({ aid, wid }) => {
+          const w = game.actors.get(aid).items.get(wid);
+          return {
+            value: w.system.magazine.value,
+            max: w.system.magazine.max,
+            installed: w.system.installedItems.list.length,
+          };
+        },
+        { aid: actorId, wid: weapon.itemId },
+      );
+      expect(state).toEqual({ value: 4, max: 6, installed: 0 });
+    });
+
+    await test.step("the reload glyph opens the select-ammo dialog", async () => {
+      const glyph = gearRow(page, freshSheet, weapon.itemId).locator(
+        'a.item-action[data-action="reload-ammo"]',
+      );
+      await expect(glyph).toBeVisible();
+      await glyph.click();
+
+      const dialog = selectAmmoDialog(page);
+      await expect(dialog).toBeVisible({ timeout: 5000 });
+      const options = dialog.locator('select[name="selectedAmmo"] option');
+      await expect(options).toHaveCount(1);
+      const labels = await options.allTextContents();
+      expect(labels.some((l) => /Topup Nines.*\[x10\]/.test(l))).toBe(true);
+
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      await expect(dialog).toHaveCount(0, { timeout: 5000 });
+    });
+
+    await test.step("confirming tops the magazine up to capacity from the reserve", async () => {
+      await page.waitForFunction(
+        ({ aid, wid, ammoId }) => {
+          const weapon = game.actors.get(aid).items.get(wid);
+          return (
+            weapon.system.installedItems.list.includes(ammoId) &&
+            weapon.system.magazine.value === 6 &&
+            game.actors.get(aid).items.get(ammoId).system.amount === 8
+          );
+        },
+        { aid: actorId, wid: weapon.itemId, ammoId: nines.itemId },
+        { timeout: 10000 },
+      );
+
+      const afterSheet = await closeAndReopenActorSheet(page, actorId);
+      freshSheet = afterSheet;
+      await expect(
+        gearRow(page, freshSheet, weapon.itemId).locator(".gear-amount"),
+      ).toHaveText("6/6");
+    });
+
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  });
+
   test("splitting a stack divides it into two rows and invalid amounts warn", async ({
     page,
   }) => {
