@@ -217,6 +217,20 @@ html[data-cpr-theme-foundry] #token-hud {
   .control-icon.active:hover img {
     filter: var(--control-icon-filter);
   }
+
+  [data-action="movementAction"].active {
+    background: var(--control-active-bg-color);
+  }
+
+  [data-action="movementAction"]:hover {
+    background: var(--control-hover-bg-color);
+    color: var(--control-hover-icon-color);
+  }
+
+  [data-action="movementAction"]:is(.active, :hover) img {
+    filter: none;
+    opacity: 1;
+  }
 }
 
 /* Foundry keeps the ESC menu dark in every interface variant. */
