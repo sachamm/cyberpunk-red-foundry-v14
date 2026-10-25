@@ -53,6 +53,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
 - Weapon damage override upgrades now replace the base damage formula on damage rolls
 - Fight tab damage pill now reflects installed weapon damage upgrades (overrides show the flat value)
+- Keep tracked armor resources in sync when editing dual-location armor without replacing another tracked item
 - Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
 - Fix Import All Content breaking items with pre-installed upgrades
