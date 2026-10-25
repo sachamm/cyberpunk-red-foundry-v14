@@ -209,6 +209,7 @@ html[data-cpr-theme-foundry] .tour {
   --color-text-accent: var(--cpr-text-foundry-hover);
 
   background: var(--cpr-background-window);
+  color: var(--cpr-text-normal);
 }
 
 /* A few interface elements use direct Foundry colors instead of the theme
