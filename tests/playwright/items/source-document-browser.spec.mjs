@@ -2,8 +2,10 @@ import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
+  createItemCompendium,
   createItemViaUI,
-  openSidebarTab,
+  cycleTo,
+  openItemBrowser,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -22,24 +24,6 @@ import {
 let createdItemIds = [];
 let createdPackIds = [];
 
-// Launch the document browser in Item mode and wait for results to start rendering.
-async function openItemBrowser(page) {
-  await openSidebarTab(page, "items");
-  const launch = page.locator('#items .cpr-browser-launch[data-mode="item"]');
-  await expect(launch).toBeVisible();
-  await launch.click();
-
-  const documentBrowser = page.locator("#cpr-document-browser");
-  await expect(documentBrowser).toBeVisible();
-  await expect(
-    documentBrowser.locator(".cpr-browser-results-list"),
-  ).toBeVisible();
-  await expect(
-    documentBrowser.locator(".cpr-browser-entry, .cpr-browser-empty").first(),
-  ).toBeVisible();
-  return documentBrowser;
-}
-
 // Create a world gear item with a known name and `sources` array; return its id.
 async function createGear(page, name, sources) {
   const id = await createItemViaUI(page, { type: "gear", name });
@@ -51,29 +35,6 @@ async function createGear(page, name, sources) {
   );
   await closeDocSheet(page, { collection: "items", id });
   return id;
-}
-
-// Create a temporary world item compendium so the browser can surface both
-// world and compendium-backed results in one run.
-async function createItemCompendium(page, label) {
-  const name = `e2e-pack-${Date.now().toString(36)}-${Math.random()
-    .toString(36)
-    .slice(2, 8)}`;
-  const pack = await page.evaluate(
-    async ({ label, name }) => {
-      const created = await globalThis.CompendiumCollection.createCompendium({
-        label,
-        name,
-        type: "Item",
-        package: game.world.id,
-      });
-      await created.configure({ locked: false });
-      return { id: created.metadata.id, label: created.metadata.label };
-    },
-    { label, name },
-  );
-  createdPackIds.push(pack.id);
-  return pack;
 }
 
 // Seed a compendium entry from a UI-created world item, then delete the staging
@@ -146,16 +107,6 @@ async function expandDynamicFilter(filter) {
   ).toBeVisible();
 }
 
-// Click a tristate span until it reports the wanted state. The control cycles
-// through its states on repeated clicks, so a bounded loop reaches any of them.
-async function cycleTo(locator, target) {
-  for (let i = 0; i < 4; i += 1) {
-    if ((await locator.getAttribute("data-state")) === target) return;
-    await locator.click();
-  }
-  await expect(locator).toHaveAttribute("data-state", target);
-}
-
 test.beforeEach(async ({ page }) => {
   createdItemIds = [];
   createdPackIds = [];
@@ -194,6 +145,7 @@ test.describe("Document browser - sources", () => {
     ]);
     await createGear(game, nameEmpty, []);
     const pack = await createItemCompendium(game, packLabel);
+    createdPackIds.push(pack.id);
     await createCompendiumGear(game, {
       packId: pack.id,
       name: packName,
@@ -250,6 +202,7 @@ test.describe("Document browser - sources", () => {
 
     await test.step("create world and compendium items with cited and uncited sources", async () => {
       const pack = await createItemCompendium(game, packLabel);
+      createdPackIds.push(pack.id);
       await createGear(game, worldCited, [{ book: "WorldBook", page: 12 }]);
       await createGear(game, worldUncited, []);
       await createCompendiumGear(game, {
@@ -305,6 +258,7 @@ test.describe("Document browser - sources", () => {
 
     await test.step("create one world result and one compendium result", async () => {
       const pack = await createItemCompendium(game, packLabel);
+      createdPackIds.push(pack.id);
       await createGear(game, worldName, [{ book: "WorldFilterBook", page: 7 }]);
       await createCompendiumGear(game, {
         packId: pack.id,
@@ -388,6 +342,7 @@ test.describe("Document browser - sources", () => {
     ]);
     await createGear(game, nameC, [{ book: "CCCBook", page: 1 }]);
     const pack = await createItemCompendium(game, packLabel);
+    createdPackIds.push(pack.id);
     await createCompendiumGear(game, {
       packId: pack.id,
       name: packName,
@@ -423,6 +378,7 @@ test.describe("Document browser - sources", () => {
     await createGear(game, worldName, [{ book: "AAABook", page: 10 }]);
     await createGear(game, worldOther, [{ book: "BBBBook", page: 5 }]);
     const pack = await createItemCompendium(game, packLabel);
+    createdPackIds.push(pack.id);
     await createCompendiumGear(game, {
       packId: pack.id,
       name: packName,

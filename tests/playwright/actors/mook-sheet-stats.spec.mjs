@@ -1,37 +1,16 @@
 import { test, expect } from "@playwright/test";
 import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
-  CTRL_CLICK_MODIFIERS,
   chatMessageCount,
   closeAndReopenActorSheet,
   closeDocSheet,
   openSidebarTab,
+  rollDeathSave,
   setSheetField,
   waitForActorFields,
   waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 import { MOOK_FIELD, createMookViaUI } from "./mook-sheet-helpers.mjs";
-
-async function rollDeathSave(page, sheetId) {
-  const before = await chatMessageCount(page);
-  await page
-    .locator(`#${sheetId} ${MOOK_FIELD.deathSaveRollable}`)
-    .click({ modifiers: CTRL_CLICK_MODIFIERS });
-  const messageId = await waitForNewChatMessage(page, before);
-  const rollClass = await page.evaluate(
-    (id) => game.messages.get(id).rolls?.[0]?.constructor?.name ?? null,
-    messageId,
-  );
-  const card = page.locator(
-    `#chat .chat-message[data-message-id="${messageId}"]`,
-  );
-  const resultTotal = Number(
-    await card.locator(".d10-number-div span.clickable").textContent(),
-  );
-  const outcome =
-    (await card.locator(".roll-success").count()) > 0 ? "success" : "failure";
-  return { rollClass, resultTotal, outcome };
-}
 
 installConsoleErrorHarness();
 

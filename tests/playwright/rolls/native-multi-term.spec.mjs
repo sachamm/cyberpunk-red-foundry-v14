@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import { rollType } from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * The native-first roll engine hands the WHOLE formula to Foundry (dice, keep/drop and other pool
@@ -14,34 +15,6 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
  * Faces are forced through CONFIG.Dice.randomUniform (see red-dmg-modifiers.spec.mjs); every die in a
  * given formula shares `faces`, so one mapping covers the whole roll including any red-added dice.
  */
-
-// Build (via `R[factory].create(...args)`) + roll a CPR roll in-page with forced faces; return its fields.
-async function rollType(page, factory, args, dieFaces, faces) {
-  return page.evaluate(
-    async ({ factory, args, dieFaces, faces }) => {
-      const R = await import(
-        `/systems/${game.system.id}/modules/rolls/cpr-rolls.js`
-      );
-      const original = CONFIG.Dice.randomUniform;
-      const queue = faces.map((f) => 1 - (f - 0.5) / dieFaces);
-      let i = 0;
-      CONFIG.Dice.randomUniform = () => (i < queue.length ? queue[i++] : 0.5);
-      try {
-        const roll = R[factory].create(...args);
-        await roll.roll();
-        return {
-          resultTotal: roll.resultTotal,
-          total: roll.total,
-          critSuccess: roll.wasCritSuccess(),
-          critFail: roll.wasCritFail(),
-        };
-      } finally {
-        CONFIG.Dice.randomUniform = original;
-      }
-    },
-    { factory, args, dieFaces, faces },
-  );
-}
 
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);

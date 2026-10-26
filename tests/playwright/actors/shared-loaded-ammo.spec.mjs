@@ -1,35 +1,22 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  activateGearTab,
   closeDocSheet,
   closeOwnedItemSheet,
   createDocumentViaUI,
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
+  equipWeapon,
   expectSheetRendered,
-  hoverGearRow,
   openItemSettings,
   openOwnedItemSheet,
+  placeSheetsSideBySide,
   positionActorSheet,
   reopenActorSheetViaUI,
   setItemField,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 import { setTradePartnerWithWealth } from "./container-sheet-helpers.mjs";
-
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-    );
-  }
-}
 
 async function dragWorldItemAndGetId(page, { actorId, actorSheetId, itemId }) {
   const before = await page.evaluate(
@@ -77,36 +64,6 @@ async function loadWeapon(page, { actorId, actorSheetId, weaponId, ammoId }) {
     },
     { actorId, weaponId, ammoId },
   );
-}
-
-async function placeSheetsSideBySide(
-  page,
-  { leftActorId, leftSheetId, rightActorId, rightSheetId },
-) {
-  const [leftBox, rightBox] = await Promise.all([
-    page.locator(`#${leftSheetId}`).boundingBox(),
-    page.locator(`#${rightSheetId}`).boundingBox(),
-  ]);
-  const viewportWidth = await page.evaluate(() => window.innerWidth);
-  const left = 8;
-  const right = Math.min(
-    left + leftBox.width + 8,
-    viewportWidth - rightBox.width - 8,
-  );
-  await positionActorSheet(page, { actorId: leftActorId, left, top: 8 });
-  await positionActorSheet(page, {
-    actorId: rightActorId,
-    left: right,
-    top: 8,
-  });
-  return {
-    dropPosition: {
-      x:
-        (Math.max(right, left + leftBox.width) + (right + rightBox.width)) / 2 -
-        right,
-      y: rightBox.height / 2,
-    },
-  };
 }
 
 test.beforeEach(async ({ page }) => {
@@ -266,7 +223,7 @@ test("transferring one loaded weapon preserves shared empty ammo used by the oth
     targetActorId: containerId,
     targetSheetId: containerSheetId,
     requireUiDrag: true,
-    dropPosition: layout.dropPosition,
+    dropPosition: layout,
   });
 
   await game.evaluate(
@@ -300,7 +257,7 @@ test("transferring one loaded weapon preserves shared empty ammo used by the oth
     targetActorId: containerId,
     targetSheetId: containerSheetId,
     requireUiDrag: true,
-    dropPosition: layout.dropPosition,
+    dropPosition: layout,
   });
 
   let state = await game.evaluate(

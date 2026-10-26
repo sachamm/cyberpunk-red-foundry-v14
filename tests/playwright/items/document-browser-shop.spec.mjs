@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
+import { openItemBrowser } from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * UI-driven tests for the document browser's PLAYER shop/cart half (add to cart,
@@ -11,24 +12,6 @@ import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
  * The player page does not reset the world (that would delete the character),
  * so each test sets the wealth it needs and asserts relative (before/after).
  */
-
-// Launch the document browser in Item mode from the Item directory's footer button.
-// Players have no "create item" control, so activate the Items tab directly
-// rather than via openSidebarTab (which waits for that GM-only button).
-async function openItemBrowser(page) {
-  const launch = page.locator('#items .cpr-browser-launch[data-mode="item"]');
-  if (!(await launch.isVisible())) {
-    await page.locator('#sidebar-tabs button[data-tab="items"]').click();
-  }
-  await expect(launch).toBeVisible();
-  await launch.click();
-  const documentBrowser = page.locator("#cpr-document-browser");
-  await expect(documentBrowser).toBeVisible();
-  await expect(
-    documentBrowser.locator(".cpr-browser-buy").first(),
-  ).toBeVisible();
-  return documentBrowser;
-}
 
 function parseDisplayedCurrency(valueText) {
   const numericText = valueText.replace(/[^\d.,-]/g, "").trim();
@@ -95,7 +78,9 @@ test.describe("Document browser — player shop", () => {
   }) => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
-      const documentBrowser = await openItemBrowser(player);
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
       const row = documentBrowser
         .locator(".cpr-browser-entry[data-uuid]")
         .first();
@@ -130,7 +115,9 @@ test.describe("Document browser — player shop", () => {
   }) => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
-      const documentBrowser = await openItemBrowser(player);
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
       await expect(
         documentBrowser.locator(
           ".cpr-browser-global-filters .cpr-browser-price-min",
@@ -175,7 +162,9 @@ test.describe("Document browser — player shop", () => {
   }) => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
-      const documentBrowser = await openItemBrowser(player);
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
 
       await documentBrowser.locator(".cpr-browser-buy").first().click();
       const line = documentBrowser.locator(".cpr-browser-cart-item").first();
@@ -198,7 +187,9 @@ test.describe("Document browser — player shop", () => {
   }) => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
-      const documentBrowser = await openItemBrowser(player);
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
       await documentBrowser.locator(".cpr-browser-buy").first().click();
       await expect(
         documentBrowser.locator(".cpr-browser-cart-item"),
@@ -221,7 +212,9 @@ test.describe("Document browser — player shop", () => {
   }) => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
-      const documentBrowser = await openItemBrowser(player);
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
       const total = await addPricedItemToCart(documentBrowser);
       // One eddie short of the total.
       await setWealth(player, total - 1);
@@ -249,7 +242,9 @@ test.describe("Document browser — player shop", () => {
   }) => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
-      const documentBrowser = await openItemBrowser(player);
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
       const total = await addPricedItemToCart(documentBrowser);
       // Comfortably affordable.
       await setWealth(player, total + 1000);

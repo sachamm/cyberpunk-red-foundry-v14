@@ -1,31 +1,17 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  activateGearTab,
   closeDocSheet,
   createDocumentViaUI,
   dragItemToActorSheet,
+  equipWeapon,
   expectSheetRendered,
-  hoverGearRow,
   installUpgrade,
   openItemSettings,
   setItemField,
   toggleItemCheckbox,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
-
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-    );
-  }
-}
 
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);

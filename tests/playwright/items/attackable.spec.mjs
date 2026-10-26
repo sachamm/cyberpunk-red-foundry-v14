@@ -3,14 +3,15 @@ import { installConsoleErrorHarness } from "../../../tools/playwright/session/co
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   CTRL_CLICK_MODIFIERS,
-  activateGearTab,
   chatMessageCount,
   createInventoryItemViaUI,
   dismissNotifications,
   enablePlayersCreateInventory,
-  hoverGearRow,
+  equipWeapon,
   openSidebarTab,
+  readDamageFormula,
   uniqueName,
+  verifyRollDialog,
   waitForNewChatMessage,
   waitForSkillLevel,
 } from "../../../tools/playwright/ui/index.mjs";
@@ -40,44 +41,11 @@ installConsoleErrorHarness();
  *   `data-bonus-damage`, but it is not added to the displayed total.
  */
 
-// Equip a weapon with two clicks (carried, then equipped), waiting for each
-// persisted state.
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
-}
-
 // The attack roll verify dialog (the one with the stat/skill inputs).
 function attackRollDialog(page) {
   return page.locator(".application").filter({
     has: page.locator('input[name="statValue"]'),
   });
-}
-
-// The damage roll verify dialog.
-function damageRollDialog(page) {
-  return page.locator(".application").filter({
-    has: page.locator(".total-mods"),
-  });
-}
-
-// The "Damage: <formula>" line in the damage dialog header. The formula is the
-// eval formula, so it carries the `dmg` crit marker (e.g. "2d6dmg").
-async function readDamageFormula(dialog) {
-  const header = dialog.locator(
-    ".dialog-header .text-center:has(span.text-semi)",
-  );
-  await expect(header).toBeVisible();
-  return (await header.textContent()).replace(/\s+/g, " ").trim();
 }
 
 // Confirm the open damage roll dialog with each die forced to the next face in
@@ -91,8 +59,7 @@ async function confirmForcedDamageRoll(
   page,
   { messagesBefore, dieFaces, faces },
 ) {
-  const dialog = damageRollDialog(page);
-  await expect(dialog).toBeVisible();
+  const dialog = await verifyRollDialog(page);
   await page.evaluate(
     ({ dieFaces, faces }) => {
       window.__cprOriginalRandomUniform = CONFIG.Dice.randomUniform;
@@ -296,7 +263,7 @@ test.describe("Item attackable mixin", () => {
 
       await test.step(`BODY ${body} rolls ${formula}`, async () => {
         await damageGlyph.click();
-        const dialog = damageRollDialog(page);
+        const dialog = await verifyRollDialog(page);
         // The formula is the eval formula, so it carries the `dmg` crit marker.
         const header = await readDamageFormula(dialog);
         expect(header, `damage formula at BODY ${body}`).toMatch(

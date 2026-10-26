@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  activateGearTab,
   chatMessageCount,
   closeAndReopenActorSheet,
   closeDocSheet,
@@ -11,15 +10,18 @@ import {
   dismissNotifications,
   dragItemToActorSheet,
   enablePlayersCreateInventory,
+  equipWeapon,
+  expectModEntry,
   expectSheetRendered,
-  hoverGearRow,
   installUpgrade,
-  openItemSettings,
-  openOwnedItemSheet,
+  openOwnedItemSettings,
   openSidebarTab,
+  readDamageFormula,
+  readTotalModsTooltip,
   setItemField,
   setItemSelected,
   uniqueName,
+  verifyRollDialog,
   waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
@@ -76,66 +78,6 @@ async function createWeaponUpgrade(
   });
   await closeDocSheet(page, { collection: "items", id: upgradeId });
   return upgradeId;
-}
-
-// Open the owned weapon's Settings tab from its gear row. The gear tab must
-// already be active on the actor sheet.
-async function openWeaponSettings(page, { actorId, itemId, sheetId }) {
-  const row = gearRow(page, sheetId, itemId);
-  await expect(row.locator(".item-edit")).toBeVisible();
-  await row.locator(".item-edit").click();
-  const itemSheetId = await openOwnedItemSheet(page, { actorId, itemId });
-  return openItemSettings(page, itemSheetId);
-}
-
-// Equip a weapon with two clicks (carried, then equipped), waiting for each
-// persisted state.
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
-}
-
-// The damage roll verify dialog (the one with the Total Mods row).
-function damageRollDialog(page) {
-  return page.locator(".application").filter({
-    has: page.locator(".total-mods"),
-  });
-}
-
-// The "Damage: <formula>" line in the damage dialog header. The formula is the
-// eval formula, so it carries the `dmg` crit marker (e.g. "2d6dmg").
-async function readDamageFormula(dialog) {
-  const header = dialog.locator(
-    ".dialog-header .text-center:has(span.text-semi)",
-  );
-  await expect(header).toBeVisible();
-  return (await header.textContent()).replace(/\s+/g, " ").trim();
-}
-
-// The data-tooltip on the Total Mods row: one line per mod, in the form
-// "<source> (<change name>): <signed value>".
-async function readTotalModsTooltip(dialog) {
-  const totalMods = dialog.locator(".total-mods .dialog-item-input");
-  await expect(totalMods).toBeVisible();
-  return totalMods.getAttribute("data-tooltip");
-}
-
-function expectModEntry(tooltip, source, value) {
-  const entry = (tooltip ?? "").split("<br/>").find((e) => e.includes(source));
-  expect(
-    entry,
-    `no mod entry for "${source}" in tooltip: ${tooltip}`,
-  ).toBeTruthy();
-  expect(entry, `mod entry for "${source}": ${entry}`).toContain(value);
 }
 
 test.beforeEach(async ({ page }) => {
@@ -211,7 +153,7 @@ test.describe("Item upgradable mixin", () => {
     );
 
     await test.step("the base weapon shows capacity 6 with no upgrade chip", async () => {
-      const settings = await openWeaponSettings(page, {
+      const { settings } = await openOwnedItemSettings(page, {
         actorId,
         itemId: weapon.itemId,
         sheetId: freshSheet,
@@ -242,7 +184,7 @@ test.describe("Item upgradable mixin", () => {
         targetId: weapon.itemId,
       });
 
-      const settings = await openWeaponSettings(page, {
+      const { settings } = await openOwnedItemSettings(page, {
         actorId,
         itemId: weapon.itemId,
         sheetId: freshSheet,
@@ -345,8 +287,7 @@ test.describe("Item upgradable mixin", () => {
 
     await test.step("the dialog keeps the base formula and lists the upgrade mod", async () => {
       await damageGlyph.click();
-      const dialog = damageRollDialog(page);
-      await expect(dialog).toBeVisible();
+      const dialog = await verifyRollDialog(page);
       // A modifier does not change the formula; it rides along as a mod.
       const header = await readDamageFormula(dialog);
       expect(header, `damage formula: ${header}`).toMatch(/:\s*2d6/);
@@ -355,7 +296,7 @@ test.describe("Item upgradable mixin", () => {
 
     await test.step("the posted card totals the dice plus the +2 mod", async () => {
       const messagesBefore = await chatMessageCount(page);
-      const dialog = damageRollDialog(page);
+      const dialog = await verifyRollDialog(page);
       await dialog
         .locator('button.cpr-dialog-button[data-action="confirm"]')
         .click();

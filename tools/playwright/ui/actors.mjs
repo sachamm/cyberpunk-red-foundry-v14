@@ -1,6 +1,7 @@
 import { expect } from "@playwright/test";
+import { chatMessageCount, waitForNewChatMessage } from "./chat.mjs";
 import { createDocumentViaUI } from "./documents.mjs";
-import { closeDocSheet } from "./sheets.mjs";
+import { CTRL_CLICK_MODIFIERS, closeDocSheet } from "./sheets.mjs";
 import { openSidebarTab } from "./sidebar.mjs";
 
 export const ACTOR_TYPES = [
@@ -90,4 +91,67 @@ export async function positionActorSheet(page, { actorId, left, top }) {
     positioned,
     `expected the sheet of actor ${actorId} to be rendered`,
   ).toBe(true);
+}
+
+// Ctrl-click a rendered actor sheet's death-save rollable and read the posted
+// chat card: the roll class, the speaking actor, the rolled total, and whether
+// the roll succeeded. Character and mook sheets both expose the same
+// data-roll-type="deathsave" control.
+export async function rollDeathSave(page, sheetId) {
+  const before = await chatMessageCount(page);
+  await page
+    .locator(`#${sheetId} a.rollable[data-roll-type="deathsave"]`)
+    .click({ modifiers: CTRL_CLICK_MODIFIERS });
+  const messageId = await waitForNewChatMessage(page, before, {
+    requireRoll: true,
+  });
+  const message = await page.evaluate((id) => {
+    const msg = game.messages.get(id);
+    return {
+      rollClass: msg.rolls?.[0]?.constructor?.name ?? null,
+      actor: msg.speaker.actor,
+    };
+  }, messageId);
+  const card = page.locator(
+    `#chat .chat-message[data-message-id="${messageId}"]`,
+  );
+  const resultTotal = Number(
+    await card.locator(".d10-number-div span.clickable").textContent(),
+  );
+  const outcome =
+    (await card.locator(".roll-success").count()) > 0 ? "success" : "failure";
+  return { ...message, resultTotal, outcome };
+}
+
+// Place two rendered actor sheets side by side with 8px margins and return a
+// point (relative to the right sheet's top-left corner) that lands inside it —
+// use it as a drop position when dragging from the left sheet. Foundry
+// cascades new windows over older ones, so both are repositioned explicitly.
+export async function placeSheetsSideBySide(
+  page,
+  { leftActorId, leftSheetId, rightActorId, rightSheetId },
+) {
+  const [leftBox, rightBox] = await Promise.all([
+    page.locator(`#${leftSheetId}`).boundingBox(),
+    page.locator(`#${rightSheetId}`).boundingBox(),
+  ]);
+  const viewportWidth = await page.evaluate(() => window.innerWidth);
+  const left = 8;
+  const right = Math.min(
+    left + leftBox.width + 8,
+    viewportWidth - rightBox.width - 8,
+  );
+  await positionActorSheet(page, { actorId: leftActorId, left, top: 8 });
+  await positionActorSheet(page, {
+    actorId: rightActorId,
+    left: right,
+    top: 8,
+  });
+
+  return {
+    x:
+      (Math.max(right, left + leftBox.width) + (right + rightBox.width)) / 2 -
+      right,
+    y: rightBox.height / 2,
+  };
 }

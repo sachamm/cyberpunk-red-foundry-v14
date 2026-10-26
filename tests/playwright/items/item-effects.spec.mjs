@@ -12,6 +12,7 @@ import {
   createInventoryItemViaUI,
   createItemViaUI,
   enablePlayersCreateInventory,
+  equipWeapon,
   getEffectRowViaUI,
   hoverGearRow,
   openOwnedItemSheet,
@@ -42,22 +43,6 @@ installConsoleErrorHarness();
  * - Switching a drug's usage to "snorted" bulk-disables every effect; back
  *   to "equipped" re-enables them all (_setUsage).
  */
-
-// Equip a weapon with two clicks (owned -> carried -> equipped), waiting for
-// each persisted state.
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
-}
 
 async function openEffectsTab(itemSheet) {
   await itemSheet.locator('a.tab-label[data-tab="item-effects"]').click();

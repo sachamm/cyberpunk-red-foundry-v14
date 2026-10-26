@@ -437,6 +437,23 @@ export async function hoverGearRow(gearContent, itemId) {
   return row;
 }
 
+// Click the equip action on an owned item's gear row until the item is
+// equipped, stepping through the carried state first and waiting for each
+// persisted state.
+export async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
+  for (const state of ["carried", "equipped"]) {
+    const gear = await activateGearTab(page, actorSheetId);
+    const row = await hoverGearRow(gear, itemId);
+    await row.locator("a.equip").click();
+    await page.waitForFunction(
+      ({ actorId, itemId, state }) =>
+        game.actors.get(actorId).items.get(itemId).system.equipped === state,
+      { actorId, itemId, state },
+      { timeout: 10000 },
+    );
+  }
+}
+
 export async function installUpgrade(
   page,
   { actorSheetId, actorId, upgradeId, targetId },
@@ -462,4 +479,19 @@ export async function installUpgrade(
     { actorId, upgradeId },
     { timeout: 10000 },
   );
+}
+
+// Open the owned item's Settings tab from its gear row (the gear tab must be
+// active on the actor sheet) and return the opened sheet's element id plus the
+// settings locator.
+export async function openOwnedItemSettings(
+  page,
+  { actorId, itemId, sheetId },
+) {
+  const row = page.locator(`#${sheetId} li.item[data-item-id="${itemId}"]`);
+  await expect(row.locator("a.item-edit")).toBeVisible();
+  await row.locator("a.item-edit").click();
+  const itemSheetId = await openOwnedItemSheet(page, { actorId, itemId });
+  const settings = await openItemSettings(page, itemSheetId);
+  return { itemSheetId, settings };
 }

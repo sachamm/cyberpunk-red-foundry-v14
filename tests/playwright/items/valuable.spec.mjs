@@ -7,15 +7,11 @@ import {
   createItemViaUI,
   dragItemToActorSheet,
   enablePlayersCreateInventory,
-  openItemSettings,
-  openOwnedItemSheet,
+  openOwnedItemSettings,
   setItemField,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
-import {
-  createCharacterViaUI,
-  gearRow,
-} from "../actors/character-sheet-helpers.mjs";
+import { createCharacterViaUI } from "../actors/character-sheet-helpers.mjs";
 
 installConsoleErrorHarness();
 
@@ -30,16 +26,6 @@ installConsoleErrorHarness();
  * - The same contract holds on a non-weapon valuable type (netarch), reached
  *   by dragging a world item onto the character.
  */
-
-// Open the owned item's Settings tab from its gear row (the gear tab must be
-// active) and return the sheet element id plus the settings locator.
-async function openOwnedItemSettings(page, { actorId, itemId, sheetId }) {
-  const row = gearRow(page, sheetId, itemId);
-  await row.locator("a.item-edit").click();
-  const itemSheetId = await openOwnedItemSheet(page, { actorId, itemId });
-  const settings = await openItemSettings(page, itemSheetId);
-  return { itemSheetId, settings };
-}
 
 // The valuable section's rows on the Settings tab: the editable price input
 // and the read-only category span derived from it.

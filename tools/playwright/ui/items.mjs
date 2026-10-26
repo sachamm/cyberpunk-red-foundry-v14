@@ -1,5 +1,6 @@
 import { expect } from "@playwright/test";
 import { createDocumentViaUI } from "./documents.mjs";
+import { closeDocSheet, expectSheetRendered } from "./sheets.mjs";
 import { openSidebarTab } from "./sidebar.mjs";
 
 export const ITEM_TYPES = [
@@ -105,4 +106,94 @@ export async function setItemSelected(page, { sheetId, itemId, name, value }) {
     { itemId, name, value },
     { timeout: 10000 },
   );
+}
+
+// Create a world weapon that can hold ammo (a heavyPistol, ranged, magazine of
+// 8), allow ammo — and, when includeUpgrades, itemUpgrade too — as installable
+// types, set its compatible ammo to its own weapon type, then close the sheet.
+// Returns the weapon's id.
+export async function createLoadableWeapon(
+  page,
+  { name, includeUpgrades = false },
+) {
+  const weaponType = "heavyPistol";
+  const itemId = await createItemViaUI(page, { type: "weapon", name });
+  const sheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+
+  const settings = await openItemSettings(page, sheetId);
+  await settings
+    .locator('select[name="system.weaponType"]')
+    .selectOption(weaponType);
+  await page.waitForFunction(
+    ({ itemId, weaponType }) =>
+      foundry.utils.getProperty(game.items.get(itemId), "system.weaponType") ===
+      weaponType,
+    { itemId, weaponType },
+    { timeout: 10000 },
+  );
+  await toggleItemCheckbox(page, {
+    sheetId,
+    itemId,
+    target: "system.isRanged",
+    expected: true,
+  });
+  await setItemField(page, {
+    sheetId,
+    itemId,
+    name: "system.magazine.max",
+    path: "system.magazine.max",
+    value: 8,
+  });
+
+  await (await openItemSettings(page, sheetId))
+    .locator(".manage-installable-types")
+    .click();
+  const installableTypesDialog = page
+    .locator(".application")
+    .filter({ has: page.locator('input[name="selectedTypes"]') });
+  await installableTypesDialog
+    .locator('input[name="selectedTypes"][value="ammo"]')
+    .check();
+  if (includeUpgrades) {
+    await installableTypesDialog
+      .locator('input[name="selectedTypes"][value="itemUpgrade"]')
+      .check();
+  }
+  await installableTypesDialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+  await page.waitForFunction(
+    ({ id, includeUpgrades }) => {
+      const allowed = game.items.get(id).system.installedItems.allowedTypes;
+      return (
+        allowed.includes("ammo") &&
+        (!includeUpgrades || allowed.includes("itemUpgrade"))
+      );
+    },
+    { id: itemId, includeUpgrades },
+  );
+
+  await (await openItemSettings(page, sheetId))
+    .locator(".select-compatible-ammo")
+    .click();
+  const compatibleAmmoDialog = page
+    .locator(".application")
+    .filter({ has: page.locator('input[name="selectedAmmo"]') });
+  await compatibleAmmoDialog
+    .locator(`input[name="selectedAmmo"][value="${weaponType}"]`)
+    .check();
+  await compatibleAmmoDialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+  await page.waitForFunction(
+    ({ id, weaponType }) =>
+      game.items.get(id).system.ammoVariety.includes(weaponType),
+    { id: itemId, weaponType },
+  );
+
+  await closeDocSheet(page, { collection: "items", id: itemId });
+  return itemId;
 }

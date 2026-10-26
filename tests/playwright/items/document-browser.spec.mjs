@@ -1,10 +1,11 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  openSidebarTab,
-  createDocumentViaUI,
   closeDocSheet,
+  createDocumentViaUI,
+  cycleTo,
   expectSheetRendered,
+  openItemBrowser,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -23,36 +24,6 @@ import {
  * the (many) compendium entries the document browser also indexes, keeping the result
  * counts deterministic.
  */
-
-// Launch the document browser in Item mode from the Item directory's footer
-// button and wait for its results to start rendering.
-async function openItemBrowser(page) {
-  await openSidebarTab(page, "items");
-  const launch = page.locator('#items .cpr-browser-launch[data-mode="item"]');
-  await expect(launch).toBeVisible();
-  await launch.click();
-
-  const documentBrowser = page.locator("#cpr-document-browser");
-  await expect(documentBrowser).toBeVisible();
-  await expect(
-    documentBrowser.locator(".cpr-browser-results-list"),
-  ).toBeVisible();
-  // The first batch (or the empty-state) has rendered, so listeners are wired.
-  await expect(
-    documentBrowser.locator(".cpr-browser-entry, .cpr-browser-empty").first(),
-  ).toBeVisible();
-  return documentBrowser;
-}
-
-// Click a tristate span until it reports the wanted state. Use this for setup
-// where the final state matters more than how many clicks it took to reach it.
-async function cycleTo(locator, target) {
-  for (let i = 0; i < 4; i += 1) {
-    if ((await locator.getAttribute("data-state")) === target) return;
-    await locator.click();
-  }
-  await expect(locator).toHaveAttribute("data-state", target);
-}
 
 // Create a world upgrade item and retarget it to a specific upgradable item type.
 async function createUpgrade(page, { name, targetType }) {

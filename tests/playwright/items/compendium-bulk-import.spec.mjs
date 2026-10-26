@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
+  createItemCompendium,
   deleteItemViaUI,
   openItemSettings,
   openSidebarTab,
@@ -15,27 +16,6 @@ const CORE_WEAPONS_PACK = "cyberpunk-red-core.core_weapons";
 let createdPackIds = [];
 let importedFolderId;
 let originalWorldItemIds;
-
-async function createItemCompendium(page, label) {
-  const name = `e2e-pack-${Date.now().toString(36)}-${Math.random()
-    .toString(36)
-    .slice(2, 8)}`;
-  const packId = await page.evaluate(
-    async ({ label, name }) => {
-      const pack = await globalThis.CompendiumCollection.createCompendium({
-        label,
-        name,
-        type: "Item",
-        package: game.world.id,
-      });
-      await pack.configure({ locked: false });
-      return pack.collection;
-    },
-    { label, name },
-  );
-  createdPackIds.push(packId);
-  return packId;
-}
 
 async function seedMalorian(page, packId) {
   return page.evaluate(
@@ -167,14 +147,16 @@ test.afterEach(async ({ page }) => {
 test("Import All Content rebuilds installed items and preserves them on folder export", async ({
   page,
 }) => {
-  const inputPackId = await createItemCompendium(
+  const { id: inputPackId } = await createItemCompendium(
     page,
     uniqueName("Malorian Import Pack"),
   );
-  const outputPackId = await createItemCompendium(
+  createdPackIds.push(inputPackId);
+  const { id: outputPackId } = await createItemCompendium(
     page,
     uniqueName("Malorian Export Pack"),
   );
+  createdPackIds.push(outputPackId);
   const expectedInstalledItem = await seedMalorian(page, inputPackId);
   let importedWeaponId;
   let importedInstalledItemId;

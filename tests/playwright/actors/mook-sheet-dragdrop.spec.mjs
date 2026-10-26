@@ -4,10 +4,10 @@ import {
   closeAndReopenActorSheet,
   closeDocSheet,
   createItemViaUI,
+  createLoadableWeapon,
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
   expectSheetRendered,
-  openItemSettings,
   openSidebarTab,
   positionActorSheet,
   setItemField,
@@ -74,81 +74,6 @@ test.describe("Drag and Drop", () => {
 
 const SPARE_AMMO = 50;
 
-async function createLoadableWeapon(page, { name }) {
-  const weaponType = "heavyPistol";
-  const itemId = await createItemViaUI(page, { type: "weapon", name });
-  const sheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: itemId,
-  });
-
-  const settings = await openItemSettings(page, sheetId);
-  await settings
-    .locator('select[name="system.weaponType"]')
-    .selectOption(weaponType);
-  await page.waitForFunction(
-    ({ itemId, weaponType }) =>
-      foundry.utils.getProperty(game.items.get(itemId), "system.weaponType") ===
-      weaponType,
-    { itemId, weaponType },
-    { timeout: 10000 },
-  );
-  await toggleItemCheckbox(page, {
-    sheetId,
-    itemId,
-    target: "system.isRanged",
-    expected: true,
-  });
-  await setItemField(page, {
-    sheetId,
-    itemId,
-    name: "system.magazine.max",
-    path: "system.magazine.max",
-    value: 8,
-  });
-
-  await (await openItemSettings(page, sheetId))
-    .locator(".manage-installable-types")
-    .click();
-  const installableTypesDialog = page
-    .locator(".application")
-    .filter({ has: page.locator('input[name="selectedTypes"]') });
-  await installableTypesDialog
-    .locator('input[name="selectedTypes"][value="ammo"]')
-    .check();
-  await installableTypesDialog
-    .locator('input[name="selectedTypes"][value="itemUpgrade"]')
-    .check();
-  await installableTypesDialog
-    .locator('button.cpr-dialog-button[data-action="confirm"]')
-    .click();
-  await page.waitForFunction((id) => {
-    const allowed = game.items.get(id).system.installedItems.allowedTypes;
-    return allowed.includes("ammo") && allowed.includes("itemUpgrade");
-  }, itemId);
-
-  await (await openItemSettings(page, sheetId))
-    .locator(".select-compatible-ammo")
-    .click();
-  const compatibleAmmoDialog = page
-    .locator(".application")
-    .filter({ has: page.locator('input[name="selectedAmmo"]') });
-  await compatibleAmmoDialog
-    .locator(`input[name="selectedAmmo"][value="${weaponType}"]`)
-    .check();
-  await compatibleAmmoDialog
-    .locator('button.cpr-dialog-button[data-action="confirm"]')
-    .click();
-  await page.waitForFunction(
-    ({ id, weaponType }) =>
-      game.items.get(id).system.ammoVariety.includes(weaponType),
-    { id: itemId, weaponType },
-  );
-
-  await closeDocSheet(page, { collection: "items", id: itemId });
-  return itemId;
-}
-
 async function installUpgradeOnMook(
   page,
   { sheetId, actorId, upgradeEmbeddedId, weaponName },
@@ -212,6 +137,7 @@ test.describe("Drag off / transfer", () => {
     await test.step("build an equipped, loaded, upgraded weapon plus a spare pile on the source mook", async () => {
       const weaponWorldId = await createLoadableWeapon(game, {
         name: weaponName,
+        includeUpgrades: true,
       });
       const upgradeWorldId = await createItemViaUI(game, {
         type: "itemUpgrade",

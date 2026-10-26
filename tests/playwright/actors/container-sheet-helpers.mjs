@@ -7,6 +7,7 @@ import {
   closeLedgerWindow,
   createDocumentViaUI,
   createInventoryItemViaUI,
+  equipWeapon,
   expectSheetRendered,
   hoverGearRow,
   openLedgerWindow,
@@ -298,29 +299,6 @@ export async function setTradePartnerWithWealth(
 }
 
 /**
- * Click the equip action on an owned item's gear row until the item is
- * equipped, stepping through the carried state first.
- *
- * @param {Object} game - the top-level game object from Foundry
- * @param {String} actorSheetId - rendered element id of the actor's sheet
- * @param {String} actorId - id of the actor owning the item
- * @param {String} itemId - id of the owned item to equip
- */
-export async function equipWeapon(game, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(game, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await game.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
-}
-
-/**
  * Click the purchase-fraction action on a named item row of a container
  * sheet and confirm the prompt with a specific amount.
  *
@@ -508,3 +486,7 @@ export async function sellItemToContainerViaUI(
     await context.close();
   }
 }
+
+// Re-exported from the shared UI layer so container specs keep importing it
+// from this file.
+export { equipWeapon };

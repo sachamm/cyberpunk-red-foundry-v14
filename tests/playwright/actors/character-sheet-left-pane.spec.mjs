@@ -9,6 +9,7 @@ import {
   closeLedgerWindow,
   openLedgerWindow,
   openSidebarTab,
+  rollDeathSave,
   setSheetField,
   waitForActorFields,
   waitForNewChatMessage,
@@ -65,32 +66,6 @@ async function restoreDice(page) {
       delete window.__cprOrigRandomUniform;
     }
   });
-}
-
-async function rollDeathSave(page, sheetId) {
-  const before = await chatMessageCount(page);
-  await page
-    .locator(`#${sheetId} ${CHARACTER_FIELD.deathSaveRollable}`)
-    .click({ modifiers: CTRL_CLICK_MODIFIERS });
-  const messageId = await waitForNewChatMessage(page, before, {
-    requireRoll: true,
-  });
-  const message = await page.evaluate((id) => {
-    const msg = game.messages.get(id);
-    return {
-      rollClass: msg.rolls?.[0]?.constructor?.name ?? null,
-      actor: msg.speaker.actor,
-    };
-  }, messageId);
-  const card = page.locator(
-    `#chat .chat-message[data-message-id="${messageId}"]`,
-  );
-  const resultTotal = Number(
-    await card.locator(".d10-number-div span.clickable").textContent(),
-  );
-  const outcome =
-    (await card.locator(".roll-success").count()) > 0 ? "success" : "failure";
-  return { ...message, resultTotal, outcome };
 }
 
 installConsoleErrorHarness();

@@ -9,14 +9,17 @@ export {
   ACTOR_TYPES,
   closeAndReopenActorSheet,
   createActorViaUI,
+  placeSheetsSideBySide,
   positionActorSheet,
   reopenActorSheetViaUI,
+  rollDeathSave,
   waitForActorFields,
   waitForSkillLevel,
 } from "./actors.mjs";
 export {
   ITEM_TYPES,
   createItemViaUI,
+  createLoadableWeapon,
   openItemSettings,
   reopenItemSheetViaUI,
   setItemField,
@@ -38,9 +41,11 @@ export {
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
   enablePlayersCreateInventory,
+  equipWeapon,
   getPlayersCreateInventory,
   hoverGearRow,
   installUpgrade,
+  openOwnedItemSettings,
   setPlayersCreateInventory,
 } from "./embedded-items.mjs";
 export {
@@ -74,3 +79,15 @@ export {
 } from "./active-effects.mjs";
 export { openNotesEditorViaUI, saveNotesEditorViaUI } from "./editors.mjs";
 export { fakeTokenDocument, openTokenSheet } from "./tokens.mjs";
+export {
+  createItemCompendium,
+  cycleTo,
+  openItemBrowser,
+} from "./document-browser.mjs";
+export {
+  expectModEntry,
+  readDamageFormula,
+  readTotalModsTooltip,
+  verifyRollDialog,
+} from "./roll-dialogs.mjs";
+export { rollType } from "./rolls.mjs";

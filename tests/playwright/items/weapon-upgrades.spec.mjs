@@ -3,15 +3,17 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   createDocumentViaUI,
-  activateGearTab,
   dragItemToActorSheet,
+  equipWeapon,
+  expectModEntry,
   expectSheetRendered,
-  hoverGearRow,
   installUpgrade,
   openItemSettings,
+  readTotalModsTooltip,
   setItemField,
   toggleItemCheckbox,
   uniqueName,
+  verifyRollDialog,
 } from "../../../tools/playwright/ui/index.mjs";
 
 /*
@@ -35,44 +37,6 @@ import {
  * is used only to confirm setup persisted and to read state for assertions, never
  * to perform the action under test.
  */
-
-// Cycle an embedded weapon's equip state up to "equipped" (owned → carried →
-// equipped) via the Gear-tab equip glyph, waiting for each transition.
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
-}
-
-// Read the applied-modifiers breakdown (source + value list) from an open
-// verify-roll dialog's Total Mods tooltip.
-async function readTotalModsTooltip(dialog) {
-  const totalMods = dialog.locator(".total-mods .dialog-item-input");
-  await expect(totalMods).toBeVisible();
-  return totalMods.getAttribute("data-tooltip");
-}
-
-// Assert the Total Mods tooltip carries a modifier entry for `source` whose
-// value is `value`. The tooltip lists one entry per mod, each "<source> (<key
-// label>): <+value>" and delimited by "<br/>", so splitting on "<br/>" anchors
-// the value to its own modifier — a value regression can't hide behind an
-// unrelated modifier that happens to share the value.
-function expectModEntry(tooltip, source, value) {
-  const entry = tooltip.split("<br/>").find((e) => e.includes(source));
-  expect(
-    entry,
-    `no mod entry for "${source}" in tooltip: ${tooltip}`,
-  ).toBeTruthy();
-  expect(entry, `mod entry for "${source}": ${entry}`).toContain(value);
-}
 
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
@@ -203,10 +167,7 @@ test.describe("Secondary-weapon upgrade attack modifier (#1181)", () => {
 
     // 7. The verify-roll dialog's Total Mods breakdown must list the upgrade's
     //    +1. This is the exact modifier the #1181 fix restores.
-    const dialog = game
-      .locator(".application")
-      .filter({ has: game.locator(".total-mods") });
-    await expect(dialog).toBeVisible();
+    const dialog = await verifyRollDialog(game);
     const tooltip = await readTotalModsTooltip(dialog);
     expectModEntry(tooltip, upgradeName, "+1");
 
@@ -292,10 +253,7 @@ test.describe("Secondary-weapon upgrade attack modifier (#1181)", () => {
     await expect(attack).toBeVisible();
     await attack.click();
 
-    const dialog = game
-      .locator(".application")
-      .filter({ has: game.locator(".total-mods") });
-    await expect(dialog).toBeVisible();
+    const dialog = await verifyRollDialog(game);
     const tooltip = await readTotalModsTooltip(dialog);
     expectModEntry(tooltip, weaponName, "+3");
 

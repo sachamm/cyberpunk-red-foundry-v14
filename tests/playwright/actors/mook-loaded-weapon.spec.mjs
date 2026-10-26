@@ -6,10 +6,11 @@ import {
   createDocumentViaUI,
   dragItemToActorSheet,
   dragOwnedItemToActorSheet,
+  equipWeapon,
   expectSheetRendered,
   hoverGearRow,
   openItemSettings,
-  positionActorSheet,
+  placeSheetsSideBySide,
   reopenActorSheetViaUI,
   setItemField,
   uniqueName,
@@ -46,20 +47,6 @@ async function createInventoryActor(page, type, label) {
     id: actorId,
   });
   return { actorId, sheetId, type };
-}
-
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
 }
 
 async function createLoadableWorldItems(page) {
@@ -237,41 +224,6 @@ async function loadWeaponOnCharacter(
   );
 
   return embedded;
-}
-
-async function placeSheetsSideBySide(
-  page,
-  { sourceActorId, sourceSheetId, targetActorId, targetSheetId },
-) {
-  const [sourceBox, targetBox] = await Promise.all([
-    page.locator(`#${sourceSheetId}`).boundingBox(),
-    page.locator(`#${targetSheetId}`).boundingBox(),
-  ]);
-  const viewportWidth = await page.evaluate(() => window.innerWidth);
-  const sourceLeft = 8;
-  const targetLeft = Math.min(
-    sourceLeft + sourceBox.width + 8,
-    viewportWidth - targetBox.width - 8,
-  );
-  await positionActorSheet(page, {
-    actorId: sourceActorId,
-    left: sourceLeft,
-    top: 8,
-  });
-  await positionActorSheet(page, {
-    actorId: targetActorId,
-    left: targetLeft,
-    top: 8,
-  });
-
-  return {
-    x:
-      (Math.max(targetLeft, sourceLeft + sourceBox.width) +
-        (targetLeft + targetBox.width)) /
-        2 -
-      targetLeft,
-    y: targetBox.height / 2,
-  };
 }
 
 function sourceWeaponRow(page, { sourceType, sourceSheetId, weaponId }) {
@@ -476,10 +428,10 @@ test.describe("Loaded weapon transfers between inventory actors", () => {
         source.sheetId = await reopenActorSheetViaUI(game, source.actorId);
         loader.sheetId = await reopenActorSheetViaUI(game, loader.actorId);
         const seedDropPosition = await placeSheetsSideBySide(game, {
-          sourceActorId: loader.actorId,
-          sourceSheetId: loader.sheetId,
-          targetActorId: source.actorId,
-          targetSheetId: source.sheetId,
+          leftActorId: loader.actorId,
+          leftSheetId: loader.sheetId,
+          rightActorId: source.actorId,
+          rightSheetId: source.sheetId,
         });
         await test.step(`prepare the loaded ${sourceType} source`, async () => {
           await dragLoadedWeapon(game, {
@@ -513,10 +465,10 @@ test.describe("Loaded weapon transfers between inventory actors", () => {
       expect(sourceItems.ammoId, "the source should own the ammo").toBeTruthy();
 
       const dropPosition = await placeSheetsSideBySide(game, {
-        sourceActorId: source.actorId,
-        sourceSheetId: source.sheetId,
-        targetActorId: target.actorId,
-        targetSheetId: target.sheetId,
+        leftActorId: source.actorId,
+        leftSheetId: source.sheetId,
+        rightActorId: target.actorId,
+        rightSheetId: target.sheetId,
       });
 
       await test.step(`drag the loaded weapon from ${sourceType} to ${targetType}`, async () => {

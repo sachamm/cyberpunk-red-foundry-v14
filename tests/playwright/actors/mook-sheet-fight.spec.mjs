@@ -6,6 +6,7 @@ import {
   closeAndReopenActorSheet,
   closeDocSheet,
   createItemViaUI,
+  createLoadableWeapon,
   dismissNotifications,
   dragItemToActorSheet,
   expectSheetRendered,
@@ -136,84 +137,6 @@ async function setupMookWithWeapons(page, weaponSpecs) {
 
   sheetId = await closeAndReopenActorSheet(page, actorId);
   return { actorId, sheetId, byName };
-}
-
-/**
- * Create a ranged weapon via the UI that can actually hold and load ammo: set its
- * type + magazine, add "ammo" to its installable types, and mark a compatible ammo
- * variety. Without those the change-ammo dialog has no valid ammo to offer. A fresh
- * ammo item defaults to the heavyPistol variety, which is what this accepts.
- */
-async function createLoadableWeapon(page, { name }) {
-  const weaponType = "heavyPistol";
-  const itemId = await createItemViaUI(page, { type: "weapon", name });
-  const sheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: itemId,
-  });
-
-  const settings = await openItemSettings(page, sheetId);
-  await settings
-    .locator('select[name="system.weaponType"]')
-    .selectOption(weaponType);
-  await page.waitForFunction(
-    ({ itemId, weaponType }) =>
-      foundry.utils.getProperty(game.items.get(itemId), "system.weaponType") ===
-      weaponType,
-    { itemId, weaponType },
-    { timeout: 10000 },
-  );
-  await toggleItemCheckbox(page, {
-    sheetId,
-    itemId,
-    target: "system.isRanged",
-    expected: true,
-  });
-  await setItemField(page, {
-    sheetId,
-    itemId,
-    name: "system.magazine.max",
-    path: "system.magazine.max",
-    value: 8,
-  });
-
-  await (await openItemSettings(page, sheetId))
-    .locator(".manage-installable-types")
-    .click();
-  const installableTypesDialog = page
-    .locator(".application")
-    .filter({ has: page.locator('input[name="selectedTypes"]') });
-  await installableTypesDialog
-    .locator('input[name="selectedTypes"][value="ammo"]')
-    .check();
-  await installableTypesDialog
-    .locator('button.cpr-dialog-button[data-action="confirm"]')
-    .click();
-  await page.waitForFunction((id) => {
-    const allowedTypes = game.items.get(id).system.installedItems.allowedTypes;
-    return allowedTypes.includes("ammo");
-  }, itemId);
-
-  await (await openItemSettings(page, sheetId))
-    .locator(".select-compatible-ammo")
-    .click();
-  const compatibleAmmoDialog = page
-    .locator(".application")
-    .filter({ has: page.locator('input[name="selectedAmmo"]') });
-  await compatibleAmmoDialog
-    .locator(`input[name="selectedAmmo"][value="${weaponType}"]`)
-    .check();
-  await compatibleAmmoDialog
-    .locator('button.cpr-dialog-button[data-action="confirm"]')
-    .click();
-  await page.waitForFunction(
-    ({ id, weaponType }) =>
-      game.items.get(id).system.ammoVariety.includes(weaponType),
-    { id: itemId, weaponType },
-  );
-
-  await closeDocSheet(page, { collection: "items", id: itemId });
-  return itemId;
 }
 
 /**

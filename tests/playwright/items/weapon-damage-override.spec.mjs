@@ -1,54 +1,20 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  activateGearTab,
   closeDocSheet,
   createDocumentViaUI,
   dragItemToActorSheet,
+  equipWeapon,
+  expectModEntry,
   expectSheetRendered,
-  hoverGearRow,
   installUpgrade,
+  readDamageFormula,
+  readTotalModsTooltip,
   setItemField,
   setItemSelected,
   uniqueName,
+  verifyRollDialog,
 } from "../../../tools/playwright/ui/index.mjs";
-
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
-}
-
-async function readTotalModsTooltip(dialog) {
-  const totalMods = dialog.locator(".total-mods .dialog-item-input");
-  await expect(totalMods).toBeVisible();
-  return totalMods.getAttribute("data-tooltip");
-}
-
-function expectModEntry(tooltip, source, value) {
-  const entry = (tooltip ?? "").split("<br/>").find((e) => e.includes(source));
-  expect(
-    entry,
-    `no mod entry for "${source}" in tooltip: ${tooltip}`,
-  ).toBeTruthy();
-  expect(entry, `mod entry for "${source}": ${entry}`).toContain(value);
-}
-
-async function readDamageFormula(dialog) {
-  const header = dialog.locator(
-    ".dialog-header .text-center:has(span.text-semi)",
-  );
-  await expect(header).toBeVisible();
-  return (await header.textContent()).replace(/\s+/g, " ").trim();
-}
 
 async function createCharacterAndWeapon(game, { weaponName, damage }) {
   const actorId = await createDocumentViaUI(game, {
@@ -180,10 +146,7 @@ test.describe("Weapon damage override upgrades (#1347)", () => {
     await expect(damageRoll).toBeVisible();
     await damageRoll.click();
 
-    const dialog = game
-      .locator(".application")
-      .filter({ has: game.locator(".total-mods") });
-    await expect(dialog).toBeVisible();
+    const dialog = await verifyRollDialog(game);
     const formula = await readDamageFormula(dialog);
     expect(formula, `damage formula: ${formula}`).toMatch(/:\s*12$/);
     const tooltip = await readTotalModsTooltip(dialog);
@@ -269,10 +232,7 @@ test.describe("Weapon damage override upgrades (#1347)", () => {
     await expect(damageRoll).toBeVisible();
     await damageRoll.click();
 
-    const dialog = game
-      .locator(".application")
-      .filter({ has: game.locator(".total-mods") });
-    await expect(dialog).toBeVisible();
+    const dialog = await verifyRollDialog(game);
     const formula = await readDamageFormula(dialog);
     expect(formula, `damage formula: ${formula}`).toMatch(/:\s*9$/);
     const tooltip = await readTotalModsTooltip(dialog);
@@ -346,10 +306,7 @@ test.describe("Weapon damage override upgrades (#1347)", () => {
     await expect(damageRoll).toBeVisible();
     await damageRoll.click();
 
-    const dialog = game
-      .locator(".application")
-      .filter({ has: game.locator(".total-mods") });
-    await expect(dialog).toBeVisible();
+    const dialog = await verifyRollDialog(game);
     const formula = await readDamageFormula(dialog);
     expect(formula, `damage formula: ${formula}`).toMatch(/:\s*2d6/);
     const tooltip = await readTotalModsTooltip(dialog);

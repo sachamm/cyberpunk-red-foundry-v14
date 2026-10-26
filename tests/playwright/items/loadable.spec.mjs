@@ -2,13 +2,12 @@ import { test, expect } from "@playwright/test";
 import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
   CTRL_CLICK_MODIFIERS,
-  activateGearTab,
   chatMessageCount,
   closeAndReopenActorSheet,
   createInventoryItemViaUI,
   dismissNotifications,
   enablePlayersCreateInventory,
-  hoverGearRow,
+  equipWeapon,
   openSidebarTab,
   uniqueName,
   waitForNewChatMessage,
@@ -34,22 +33,6 @@ installConsoleErrorHarness();
  *   the out-of-bullets condition surfaces as a console warning and a toast,
  *   not a block.
  */
-
-// Equip a weapon with two clicks (carried, then equipped), waiting for each
-// persisted state.
-async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
-  for (const state of ["carried", "equipped"]) {
-    const gear = await activateGearTab(page, actorSheetId);
-    const row = await hoverGearRow(gear, itemId);
-    await row.locator("a.equip").click();
-    await page.waitForFunction(
-      ({ actorId, itemId, state }) =>
-        game.actors.get(actorId).items.get(itemId).system.equipped === state,
-      { actorId, itemId, state },
-      { timeout: 10000 },
-    );
-  }
-}
 
 test.describe("Item loadable mixin", () => {
   test("uninstalling a magazine upgrade returns the overage to the ammo stack", async ({
