@@ -37,7 +37,6 @@ installConsoleErrorHarness();
  *   rest only, returning its rounds to the stack.
  */
 
-// The modal "Select Install Target" dialog (the one with the target radios).
 function installTargetsDialog(page) {
   return page.locator(".cpr-dialog").filter({
     has: page.locator('input[name="selectedTarget"]'),
@@ -51,9 +50,6 @@ test.describe("Item installable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // Weapon A has a single slot; weapon B is already full (3/3); the armor's
-    // default container accepts itemUpgrades but is not a weapon, so only A
-    // can take a weapon-type upgrade.
     const weaponAName = uniqueName("smg");
     const weaponBName = uniqueName("pistol");
     const armorName = uniqueName("vest");
@@ -113,7 +109,6 @@ test.describe("Item installable mixin", () => {
       await expect(radios).toHaveCount(1);
       await expect(radios.first()).toHaveValue(weaponA.itemId);
 
-      // The offered row shows the target's free/total slots: 1 free of 1.
       const targetRow = dialog.locator("li.dialog-item").filter({
         has: page.locator(
           `input[name="selectedTarget"][value="${weaponA.itemId}"]`,
@@ -122,7 +117,6 @@ test.describe("Item installable mixin", () => {
       await expect(targetRow).toHaveCount(1);
       await expect(targetRow.first()).toContainText("1/1");
 
-      // The full weapon and the non-weapon container are not offered.
       await expect(dialog).not.toContainText(weaponBName);
       await expect(dialog).not.toContainText(armorName);
     });
@@ -150,8 +144,6 @@ test.describe("Item installable mixin", () => {
       );
 
       freshSheet = await closeAndReopenActorSheet(page, actorId);
-      // The installed upgrade leaves the top-level gear list; its only row is
-      // now nested inside weapon A's row.
       const upgradeRows = gearRow(page, freshSheet, upgrade.itemId);
       await expect(upgradeRows).toHaveCount(1);
       const nestedUnder = await upgradeRows
@@ -171,8 +163,6 @@ test.describe("Item installable mixin", () => {
     });
 
     await test.step("with every target full or incompatible the dialog offers nothing", async () => {
-      // Weapon A is now full (1/1) and B was full to start with, so a size-2
-      // upgrade has nowhere to go.
       const bigName = uniqueName("bigUpgrade");
       const big = await createInventoryItemViaUI(page, {
         actorId,
@@ -192,8 +182,6 @@ test.describe("Item installable mixin", () => {
           game.i18n.format(game.i18n.localize(key), { target }),
         { key: "CPR.dialog.selectInstallTarget.noOptions", target: bigName },
       );
-      // The no-options dialog renders no rows at all, so the radio-based
-      // locator cannot match it; anchor on the header instead.
       const dialog = page.locator(".cpr-dialog").filter({
         has: page
           .locator(".dialog-header .text-normal")
@@ -212,8 +200,6 @@ test.describe("Item installable mixin", () => {
         .click();
       await expect(dialog).toHaveCount(0, { timeout: 5000 });
 
-      // Canceling leaves the upgrade uninstalled and top-level: its row sits
-      // directly in the category list, not inside any parent's sub-list.
       const bigRows = gearRow(page, freshSheet, big.itemId);
       await expect(bigRows).toHaveCount(1);
       const bigTopLevel = await bigRows
@@ -236,7 +222,6 @@ test.describe("Item installable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A default weapon (3 slots) and a size-1 weapon-type upgrade.
     const weaponA = await createInventoryItemViaUI(page, {
       actorId,
       sheetId,
@@ -272,7 +257,6 @@ test.describe("Item installable mixin", () => {
 
       freshSheet = await closeAndReopenActorSheet(page, actorId);
       const row = gearRow(page, freshSheet, upgrade.itemId);
-      // Still a top-level row with the (inactive) install glyph.
       await expect(row).toHaveCount(1);
       const glyph = row.locator(
         'a.item-action[data-action-type="install-item"]',
@@ -302,7 +286,6 @@ test.describe("Item installable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // Two weapons that both accept rifle ammo and upgrades, plus a stack of 12.
     const weaponAName = uniqueName("smg");
     const weaponBName = uniqueName("pistol");
     const ammoName = uniqueName("rifleAmmo");
@@ -353,8 +336,6 @@ test.describe("Item installable mixin", () => {
         await expect(dialog).toHaveCount(0, { timeout: 5000 });
       }
 
-      // Ammo costs no slots (initialSize 0), so one stack serves both guns:
-      // each magazine fills to 6, drawing all 12 rounds from the stack.
       await page.waitForFunction(
         ({ aid, a, b, ammoId }) => {
           const actor = game.actors.get(aid);
@@ -384,8 +365,6 @@ test.describe("Item installable mixin", () => {
       const itemSheet = page.locator(`#${itemSheetId}`);
       await openItemSettings(page, itemSheetId);
 
-      // The installed tree renders open on item sheets, with an uninstall
-      // control on the nested ammo row.
       const uninstallLink = itemSheet.locator(
         `a.uninstall-single-item[data-item-id="${ammo.itemId}"]`,
       );
@@ -406,7 +385,6 @@ test.describe("Item installable mixin", () => {
         headerText,
       );
 
-      // Both loading weapons are listed and checked by default.
       const checkboxA = dialog.locator(
         `input[name="selectedItems"][value="${weaponA.itemId}"]`,
       );
@@ -427,7 +405,6 @@ test.describe("Item installable mixin", () => {
         .click();
       await expect(dialog).toHaveCount(0, { timeout: 5000 });
 
-      // B's rounds return to the stack; A keeps its load and its install entry.
       await page.waitForFunction(
         ({ aid, a, b, ammoId }) => {
           const actor = game.actors.get(aid);
@@ -455,7 +432,6 @@ test.describe("Item installable mixin", () => {
       await expect(
         gearRow(page, freshSheet, weaponA.itemId).locator(".gear-amount"),
       ).toHaveText("6/6");
-      // With no ammo loaded, B's magazine display is empty.
       const bAmount = await gearRow(page, freshSheet, weaponB.itemId)
         .locator(".gear-amount")
         .innerText();

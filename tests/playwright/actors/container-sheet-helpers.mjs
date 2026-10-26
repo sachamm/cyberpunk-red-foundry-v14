@@ -487,6 +487,4 @@ export async function sellItemToContainerViaUI(
   }
 }
 
-// Re-exported from the shared UI layer so container specs keep importing it
-// from this file.
 export { equipWeapon };

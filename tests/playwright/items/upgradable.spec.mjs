@@ -43,9 +43,6 @@ import {
  * the reload flow actually fills to, and the total a posted damage card shows.
  */
 
-// Create a weapon-type itemUpgrade whose `dataPoint` (e.g. "magazine" or
-// "damage") is configured as `modType` (modifier|override) with `value`,
-// driven through the upgrade sheet's own fields.
 async function createWeaponUpgrade(
   page,
   { upgradeName, dataPoint, modType, value },
@@ -59,7 +56,6 @@ async function createWeaponUpgrade(
     collection: "items",
     id: upgradeId,
   });
-  // itemUpgrade.system.type defaults to "weapon"; confirm before proceeding.
   expect(
     await page.evaluate((id) => game.items.get(id).system.type, upgradeId),
   ).toBe("weapon");
@@ -91,7 +87,6 @@ test.describe("Item upgradable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A weapon with base capacity 6 that accepts rifle ammo and upgrades.
     const weaponName = uniqueName("smg");
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
@@ -107,7 +102,6 @@ test.describe("Item upgradable mixin", () => {
         },
       },
     });
-    // An ammo stack with a known amount so the reload draw is checkable.
     const ammo = await createInventoryItemViaUI(page, {
       actorId,
       sheetId: weapon.sheetId,
@@ -116,7 +110,6 @@ test.describe("Item upgradable mixin", () => {
       data: { system: { variety: "rifle", amount: 12 } },
     });
 
-    // Two upgrades on the same data point: an override to 9 and a +2 modifier.
     const overrideName = uniqueName("extendedMag");
     const modifierName = uniqueName("capacityCells");
     const overrideId = await createWeaponUpgrade(page, {
@@ -132,7 +125,6 @@ test.describe("Item upgradable mixin", () => {
       value: 2,
     });
 
-    // The latest actor-sheet element id after the creations above.
     const freshSheet = ammo.sheetId;
     for (const itemId of [overrideId, modifierId]) {
       await dragItemToActorSheet(page, {
@@ -158,8 +150,6 @@ test.describe("Item upgradable mixin", () => {
         itemId: weapon.itemId,
         sheetId: freshSheet,
       });
-      // `has` locators are re-anchored inside each candidate row, so pass a
-      // page-relative locator (the repo idiom), not one scoped to the sheet.
       const magazineRow = settings.locator("li.item", {
         has: page.locator('input[name="system.magazine.max"]'),
       });
@@ -192,9 +182,6 @@ test.describe("Item upgradable mixin", () => {
       const magazineRow = settings.locator("li.item", {
         has: page.locator('input[name="system.magazine.max"]'),
       });
-      // The chip renders getTotalUpgradeValues("magazine"): the override 9
-      // wins outright — not 8 (base + modifier) and not 11 (override +
-      // modifier added together).
       await expect(magazineRow).toContainText("(Attachments override: 9)");
       await expect(magazineRow).not.toContainText("11");
       await closeOwnedItemSheet(page, { actorId, itemId: weapon.itemId });
@@ -213,7 +200,6 @@ test.describe("Item upgradable mixin", () => {
         .click();
       await expect(dialog).toHaveCount(0, { timeout: 5000 });
 
-      // Reload fills to the upgraded capacity (9), drawing 9 of the stack's 12.
       await page.waitForFunction(
         ({ aid, wid, ammoId }) =>
           game.actors.get(aid).items.get(wid).system.magazine.value === 9 &&
@@ -235,8 +221,6 @@ test.describe("Item upgradable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A melee weapon with 2d6 damage; the container schema defaults already
-    // accept itemUpgrade installs.
     const weaponName = uniqueName("bat");
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
@@ -246,7 +230,6 @@ test.describe("Item upgradable mixin", () => {
       data: { system: { weaponType: "lightMelee", damage: "2d6" } },
     });
 
-    // A +2 modifier on the weapon's damage data point.
     const upgradeName = uniqueName("shockTip");
     const upgradeId = await createWeaponUpgrade(page, {
       upgradeName,
@@ -255,7 +238,6 @@ test.describe("Item upgradable mixin", () => {
       value: 2,
     });
 
-    // Embed the upgrade on the actor sheet, then install it into the weapon.
     await dragItemToActorSheet(page, {
       itemId: upgradeId,
       sheetId: weapon.sheetId,
@@ -288,7 +270,6 @@ test.describe("Item upgradable mixin", () => {
     await test.step("the dialog keeps the base formula and lists the upgrade mod", async () => {
       await damageGlyph.click();
       const dialog = await verifyRollDialog(page);
-      // A modifier does not change the formula; it rides along as a mod.
       const header = await readDamageFormula(dialog);
       expect(header, `damage formula: ${header}`).toMatch(/:\s*2d6/);
       expectModEntry(await readTotalModsTooltip(dialog), upgradeName, "+2");
@@ -303,15 +284,11 @@ test.describe("Item upgradable mixin", () => {
       const messageId = await waitForNewChatMessage(page, messagesBefore, {
         requireRoll: true,
       });
-      // Confirmed dialogs close with a short animation; wait for the dialog to
-      // leave the DOM before reading chat.
       await expect(dialog).toHaveCount(0);
 
       await openSidebarTab(page, "chat");
       const card = chatRollCard(page, messageId);
       await expect(card).toBeVisible();
-      // The damage card shows its total in the d6 number div (the crit bonus
-      // is not part of it; only the external mod is added on top).
       const total = Number(
         await card.locator(".d6-number-div span.clickable").textContent(),
       );
@@ -319,7 +296,6 @@ test.describe("Item upgradable mixin", () => {
       expect(total - dice, "card total minus the rolled dice").toBe(2);
     });
 
-    // The damage roll created with no token targeted raises a warning toast.
     await dismissNotifications(page);
   });
 });

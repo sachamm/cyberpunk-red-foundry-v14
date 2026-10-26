@@ -108,10 +108,6 @@ export async function setItemSelected(page, { sheetId, itemId, name, value }) {
   );
 }
 
-// Create a world weapon that can hold ammo (a heavyPistol, ranged, magazine of
-// 8), allow ammo — and, when includeUpgrades, itemUpgrade too — as installable
-// types, set its compatible ammo to its own weapon type, then close the sheet.
-// Returns the weapon's id.
 export async function createLoadableWeapon(
   page,
   { name, includeUpgrades = false },

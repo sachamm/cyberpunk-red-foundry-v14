@@ -38,7 +38,6 @@ import { createCharacterViaUI } from "../actors/character-sheet-helpers.mjs";
  * this matrix — their behaviour is pinned by the I/L specs instead.
  */
 
-// One characteristic element per mixin, all inside the rendered item sheet.
 const MIXIN_MARKERS = {
   attackable: 'input[name="system.rof"]',
   container: '[data-target="system.installedItems.allowed"]',
@@ -52,9 +51,6 @@ const MIXIN_MARKERS = {
   valuable: 'input[name="system.price.market"]',
 };
 
-// The effects mixin renders as a tab button, not a Settings row, so it is covered
-// by EFFECTS_TAB_MARKER rather than MIXIN_MARKERS. installable and loadable have an
-// intentionally empty settings partial (their behaviour is pinned by the I/L specs).
 const COVERED_MIXINS = new Set([
   ...Object.keys(MIXIN_MARKERS),
   "effects",
@@ -80,9 +76,6 @@ async function openOwnedSheetFromRow(
   await page
     .locator(`#${sheetId} a[data-tab="${DROP_TAB_BY_TYPE[type]}"]`)
     .click();
-  // Critical injuries carry data-item-id on the name link itself; every other
-  // section puts it on an ancestor row. Skills open via the edit pencil, since
-  // their name link rolls the skill instead of opening the sheet.
   const link =
     type === "criticalInjury"
       ? page.locator(`#${sheetId} a.item-edit[data-item-id="${embeddedId}"]`)
@@ -103,7 +96,6 @@ test.describe("Item sheet composition", () => {
     }) => {
       const { actorId, sheetId } = await createCharacterViaUI(game);
 
-      // Fresh item of this type, owned by the character.
       const name = uniqueName(type);
       const itemId = await createItemViaUI(game, { type, name });
       await closeDocSheet(game, { collection: "items", id: itemId });
@@ -128,8 +120,6 @@ test.describe("Item sheet composition", () => {
       });
       const settings = await openItemSettings(game, itemSheetId);
 
-      // The contract's two sides: the data model's mixin list (the same source the
-      // template loop reads) and the gate values a fresh item must satisfy.
       const { mixins, isWeapon, secondaryConfigured } = await game.evaluate(
         ({ type, actorId, embeddedId }) => {
           const item = game.actors.get(actorId).items.get(embeddedId);
@@ -145,8 +135,6 @@ test.describe("Item sheet composition", () => {
         { type, actorId, embeddedId },
       );
 
-      // The spec must cover every mixin a data model can declare; adding a new one
-      // without a marker here would otherwise pass vacuously.
       const uncovered = mixins.filter((m) => !COVERED_MIXINS.has(m));
       expect(
         uncovered,

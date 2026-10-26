@@ -93,10 +93,6 @@ export async function positionActorSheet(page, { actorId, left, top }) {
   ).toBe(true);
 }
 
-// Ctrl-click a rendered actor sheet's death-save rollable and read the posted
-// chat card: the roll class, the speaking actor, the rolled total, and whether
-// the roll succeeded. Character and mook sheets both expose the same
-// data-roll-type="deathsave" control.
 export async function rollDeathSave(page, sheetId) {
   const before = await chatMessageCount(page);
   await page
@@ -123,10 +119,6 @@ export async function rollDeathSave(page, sheetId) {
   return { ...message, resultTotal, outcome };
 }
 
-// Place two rendered actor sheets side by side with 8px margins and return a
-// point (relative to the right sheet's top-left corner) that lands inside it —
-// use it as a drop position when dragging from the left sheet. Foundry
-// cascades new windows over older ones, so both are repositioned explicitly.
 export async function placeSheetsSideBySide(
   page,
   { leftActorId, leftSheetId, rightActorId, rightSheetId },

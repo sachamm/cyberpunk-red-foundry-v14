@@ -41,20 +41,12 @@ installConsoleErrorHarness();
  *   `data-bonus-damage`, but it is not added to the displayed total.
  */
 
-// The attack roll verify dialog (the one with the stat/skill inputs).
 function attackRollDialog(page) {
   return page.locator(".application").filter({
     has: page.locator('input[name="statValue"]'),
   });
 }
 
-// Confirm the open damage roll dialog with each die forced to the next face in
-// `faces` (the same CONFIG.Dice.randomUniform mapping as damage-crit.spec.mjs),
-// returning the id of the posted chat message. The override stays until the
-// message exists — the roll evaluates asynchronously after the click — and is
-// restored afterwards. Confirmed dialogs close with a short animation, so this
-// also waits for the dialog to leave the DOM before returning; without that a
-// follow-up roll's dialog is ambiguous while the old one is still closing.
 async function confirmForcedDamageRoll(
   page,
   { messagesBefore, dieFaces, faces },
@@ -100,7 +92,6 @@ test.describe("Item attackable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // The seeded Handgun skill starts at level 0; raise it to 2.
     const levelInput = characterSkillRow(page, sheetId, "Handgun").locator(
       SKILL_FIELD.levelInput,
     );
@@ -109,8 +100,6 @@ test.describe("Item attackable mixin", () => {
     await levelInput.press("Tab");
     await waitForSkillLevel(page, actorId, "Handgun", 2);
 
-    // Raise DEX to 8 so the stat choice (REF for a ranged weapon) is observable:
-    // every other stat stays at 6.
     const dexInput = page.locator(`#${sheetId} ${statValueInput("dex")}`);
     await dexInput.fill("8");
     await dexInput.press("Tab");
@@ -120,7 +109,6 @@ test.describe("Item attackable mixin", () => {
       { timeout: 10000 },
     );
 
-    // A ranged pistol that attacks with the Handgun skill.
     const weaponName = uniqueName("pistol");
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
@@ -154,7 +142,6 @@ test.describe("Item attackable mixin", () => {
       await attackRoll.click();
       const dialog = attackRollDialog(page);
       await expect(dialog).toBeVisible();
-      // All stats start at 6 and DEX is 8, so a value of 6 proves REF was read.
       await expect(dialog.locator('input[name="statValue"]')).toHaveValue("6");
       await expect(dialog.locator('input[name="skillValue"]')).toHaveValue("2");
       const refLabel = await page.evaluate(() =>
@@ -198,7 +185,6 @@ test.describe("Item attackable mixin", () => {
       );
 
       const messagesBefore = await chatMessageCount(page);
-      // Ctrl-click skips the roll dialog and posts straight to chat.
       await attackRoll.click({ modifiers: CTRL_CLICK_MODIFIERS });
       const messageId = await waitForNewChatMessage(page, messagesBefore, {
         requireRoll: true,
@@ -212,7 +198,6 @@ test.describe("Item attackable mixin", () => {
       ).toBe(8 + 2);
     });
 
-    // Firing a pistol with no ammo warns (console + toast) but still rolls.
     await dismissNotifications(page);
   });
 
@@ -220,7 +205,6 @@ test.describe("Item attackable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A plain unarmed weapon: the schema defaults keep automatic calculation on.
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
       sheetId,
@@ -264,7 +248,6 @@ test.describe("Item attackable mixin", () => {
       await test.step(`BODY ${body} rolls ${formula}`, async () => {
         await damageGlyph.click();
         const dialog = await verifyRollDialog(page);
-        // The formula is the eval formula, so it carries the `dmg` crit marker.
         const header = await readDamageFormula(dialog);
         expect(header, `damage formula at BODY ${body}`).toMatch(
           new RegExp(`:\\s*${formula}`),
@@ -276,7 +259,6 @@ test.describe("Item attackable mixin", () => {
       });
     }
 
-    // Each damage roll created with no token targeted raises a warning toast.
     await dismissNotifications(page);
   });
 
@@ -286,8 +268,6 @@ test.describe("Item attackable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A melee weapon with 2d6 damage and the schema's RAW crit defaults
-    // (two dice at max face -> +5).
     const weaponName = uniqueName("bat");
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
@@ -322,7 +302,6 @@ test.describe("Item attackable mixin", () => {
       await openSidebarTab(page, "chat");
       const card = chatRollCard(page, messageId);
       await expect(card).toBeVisible();
-      // The displayed total is the dice only; the crit bonus is not added.
       await expect(card.locator(".d6-number-div span.clickable")).toHaveText(
         "12",
       );
@@ -356,7 +335,6 @@ test.describe("Item attackable mixin", () => {
       await expect(applyButton).toHaveAttribute("data-bonus-damage", "0");
     });
 
-    // Each damage roll created with no token targeted raises a warning toast.
     await dismissNotifications(page);
   });
 });

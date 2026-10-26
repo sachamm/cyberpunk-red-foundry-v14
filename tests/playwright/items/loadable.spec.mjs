@@ -41,7 +41,6 @@ test.describe("Item loadable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A weapon with base capacity 6 that accepts rifle ammo and upgrades.
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
       sheetId,
@@ -56,7 +55,6 @@ test.describe("Item loadable mixin", () => {
         },
       },
     });
-    // An ammo stack with a known amount so the returned overage is checkable.
     const ammo = await createInventoryItemViaUI(page, {
       actorId,
       sheetId: weapon.sheetId,
@@ -64,7 +62,6 @@ test.describe("Item loadable mixin", () => {
       itemName: uniqueName("rifleAmmo"),
       data: { system: { variety: "rifle", amount: 12 } },
     });
-    // A +3 capacity upgrade created straight into inventory with its modifier set.
     const upgrade = await createInventoryItemViaUI(page, {
       actorId,
       sheetId: ammo.sheetId,
@@ -114,7 +111,6 @@ test.describe("Item loadable mixin", () => {
         .click();
       await expect(selectDialog).toHaveCount(0, { timeout: 5000 });
 
-      // Reload fills to the upgraded capacity (9), drawing 9 of the stack's 12.
       await page.waitForFunction(
         ({ aid, wid, ammoId }) =>
           game.actors.get(aid).items.get(wid).system.magazine.value === 9 &&
@@ -144,8 +140,6 @@ test.describe("Item loadable mixin", () => {
         .click();
       await expect(dialog).toHaveCount(0, { timeout: 5000 });
 
-      // syncMagazine runs while the upgrade still counts toward capacity, so
-      // the 3 rounds above the base max go back to the loaded ammo stack.
       await page.waitForFunction(
         ({ aid, wid, uid, ammoId }) => {
           const w = game.actors.get(aid).items.get(wid);
@@ -182,7 +176,6 @@ test.describe("Item loadable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A ranged weapon with no ammo installed or owned.
     const weaponName = uniqueName("pistol");
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
@@ -213,7 +206,6 @@ test.describe("Item loadable mixin", () => {
 
     await test.step("the attack still posts a roll card named for the weapon", async () => {
       const messagesBefore = await chatMessageCount(page);
-      // Ctrl-click skips the roll dialog and posts straight to chat.
       await attackRoll.click({ modifiers: CTRL_CLICK_MODIFIERS });
       const messageId = await waitForNewChatMessage(page, messagesBefore, {
         requireRoll: true,

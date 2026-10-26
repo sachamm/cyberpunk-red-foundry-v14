@@ -437,9 +437,6 @@ export async function hoverGearRow(gearContent, itemId) {
   return row;
 }
 
-// Click the equip action on an owned item's gear row until the item is
-// equipped, stepping through the carried state first and waiting for each
-// persisted state.
 export async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
   for (const state of ["carried", "equipped"]) {
     const gear = await activateGearTab(page, actorSheetId);
@@ -481,9 +478,6 @@ export async function installUpgrade(
   );
 }
 
-// Open the owned item's Settings tab from its gear row (the gear tab must be
-// active on the actor sheet) and return the opened sheet's element id plus the
-// settings locator.
 export async function openOwnedItemSettings(
   page,
   { actorId, itemId, sheetId },

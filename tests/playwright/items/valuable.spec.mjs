@@ -27,8 +27,6 @@ installConsoleErrorHarness();
  *   by dragging a world item onto the character.
  */
 
-// The valuable section's rows on the Settings tab: the editable price input
-// and the read-only category span derived from it.
 async function priceRows(page, settings) {
   const categoryLabel = await page.evaluate(() =>
     game.i18n.localize("CPR.itemSheet.physical.price.category"),
@@ -50,7 +48,6 @@ test.describe("Item valuable mixin", () => {
     await enablePlayersCreateInventory(page);
     const { actorId, sheetId } = await createCharacterViaUI(page);
 
-    // A weapon at its schema defaults: price 100, the "premium" tier.
     const weapon = await createInventoryItemViaUI(page, {
       actorId,
       sheetId,
@@ -86,7 +83,6 @@ test.describe("Item valuable mixin", () => {
         value: 5000,
       });
 
-      // Reopen from the gear row so the assertions read persisted data.
       await closeOwnedItemSheet(page, { actorId, itemId: weapon.itemId });
       ({ itemSheetId, settings } = await openOwnedItemSettings(page, {
         actorId,

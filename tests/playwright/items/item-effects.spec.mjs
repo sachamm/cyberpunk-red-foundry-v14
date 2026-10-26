@@ -48,8 +48,6 @@ async function openEffectsTab(itemSheet) {
   await itemSheet.locator('a.tab-label[data-tab="item-effects"]').click();
 }
 
-// Create a world item of the given type, add one effect (the usage row only
-// renders once effects exist), and assert the usage select's option set.
 async function expectUsageOptions(page, type, expected) {
   const itemId = await createItemViaUI(page, {
     type,
@@ -168,7 +166,6 @@ test.describe("Item effects mixin", () => {
 
     await test.step("the toggle glyph disables the effect and persists across a reopen", async () => {
       const rows = await getEffectRowViaUI(itemSheet, "New Effect");
-      // Usage defaults to "toggled", so the toggle glyph is already rendered.
       await expect(
         rows
           .first()
@@ -218,7 +215,6 @@ test.describe("Item effects mixin", () => {
         itemId,
       );
       expect(count).toBe(0);
-      // With no effects left the usage row is not rendered at all.
       await expect(
         itemSheet.locator('select[name="system.usage"]'),
       ).toHaveCount(0);
@@ -456,8 +452,6 @@ test.describe("Item effects mixin", () => {
         { timeout: 10000 },
       );
 
-      // The sheet re-renders for the new usage: the toggle glyph (only drawn
-      // in "toggled" mode) is gone and the snorted-only consumed row appears.
       const rows = await getEffectRowViaUI(itemSheet, "New Effect");
       for (const index of [0, 1]) {
         await expect(
@@ -481,7 +475,6 @@ test.describe("Item effects mixin", () => {
         { timeout: 10000 },
       );
 
-      // Back in "toggled" mode the rows show their enabled state again.
       await usageSelect.selectOption("toggled");
       const rows = await getEffectRowViaUI(itemSheet, "New Effect");
       for (const index of [0, 1]) {
