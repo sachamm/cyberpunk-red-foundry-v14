@@ -1,40 +1,53 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  activateGearTab,
+  chatMessageCount,
   closeAndReopenActorSheet,
   closeDocSheet,
   closeOwnedItemSheet,
   createDocumentViaUI,
   createInventoryItemViaUI,
+  dismissNotifications,
   dragItemToActorSheet,
   enablePlayersCreateInventory,
   expectSheetRendered,
+  hoverGearRow,
   installUpgrade,
   openItemSettings,
   openOwnedItemSheet,
+  openSidebarTab,
   setItemField,
   setItemSelected,
   uniqueName,
+  waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
+  chatRollCard,
   createCharacterViaUI,
   gearRow,
+  rollDiceSum,
   selectAmmoDialog,
 } from "../actors/character-sheet-helpers.mjs";
 
 /*
- * Upgradable mixin: how several installed upgrades on the same data point
- * aggregate. `getTotalUpgradeValues` sums modifiers onto the base value, but
+ * Upgradable mixin: how installed upgrades change a weapon. On the magazine
+ * data point, `getTotalUpgradeValues` sums modifiers onto the base value, but
  * a single largest override beats that sum (an override of 0 falls back to
- * the modifier result). This spec pins the rule through two clean surfaces:
- * the magazine chip on the weapon sheet's Settings tab (`cprShowUpgrade`)
- * and the capacity the reload flow actually fills to.
+ * the modifier result). On the damage data point, a modifier-type upgrade
+ * rides the damage roll as a mod: the formula stays put and the posted total
+ * gains the bonus. This spec pins both through clean surfaces: the magazine
+ * chip on the weapon sheet's Settings tab (`cprShowUpgrade`), the capacity
+ * the reload flow actually fills to, and the total a posted damage card shows.
  */
 
-// Create a weapon-type itemUpgrade whose magazine data point is configured
-// as `modType` (modifier|override) with `value`, driven through the upgrade
-// sheet's own fields.
-async function createMagazineUpgrade(page, { upgradeName, modType, value }) {
+// Create a weapon-type itemUpgrade whose `dataPoint` (e.g. "magazine" or
+// "damage") is configured as `modType` (modifier|override) with `value`,
+// driven through the upgrade sheet's own fields.
+async function createWeaponUpgrade(
+  page,
+  { upgradeName, dataPoint, modType, value },
+) {
   const upgradeId = await createDocumentViaUI(page, {
     documentTab: "items",
     type: "itemUpgrade",
@@ -51,14 +64,14 @@ async function createMagazineUpgrade(page, { upgradeName, modType, value }) {
   await setItemSelected(page, {
     sheetId: upgradeSheetId,
     itemId: upgradeId,
-    name: "system.modifiers.magazine.type",
+    name: `system.modifiers.${dataPoint}.type`,
     value: modType,
   });
   await setItemField(page, {
     sheetId: upgradeSheetId,
     itemId: upgradeId,
-    name: "system.modifiers.magazine.value",
-    path: "system.modifiers.magazine.value",
+    name: `system.modifiers.${dataPoint}.value`,
+    path: `system.modifiers.${dataPoint}.value`,
     value,
   });
   await closeDocSheet(page, { collection: "items", id: upgradeId });
@@ -73,6 +86,56 @@ async function openWeaponSettings(page, { actorId, itemId, sheetId }) {
   await row.locator(".item-edit").click();
   const itemSheetId = await openOwnedItemSheet(page, { actorId, itemId });
   return openItemSettings(page, itemSheetId);
+}
+
+// Equip a weapon with two clicks (carried, then equipped), waiting for each
+// persisted state.
+async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
+  for (const state of ["carried", "equipped"]) {
+    const gear = await activateGearTab(page, actorSheetId);
+    const row = await hoverGearRow(gear, itemId);
+    await row.locator("a.equip").click();
+    await page.waitForFunction(
+      ({ actorId, itemId, state }) =>
+        game.actors.get(actorId).items.get(itemId).system.equipped === state,
+      { actorId, itemId, state },
+      { timeout: 10000 },
+    );
+  }
+}
+
+// The damage roll verify dialog (the one with the Total Mods row).
+function damageRollDialog(page) {
+  return page.locator(".application").filter({
+    has: page.locator(".total-mods"),
+  });
+}
+
+// The "Damage: <formula>" line in the damage dialog header. The formula is the
+// eval formula, so it carries the `dmg` crit marker (e.g. "2d6dmg").
+async function readDamageFormula(dialog) {
+  const header = dialog.locator(
+    ".dialog-header .text-center:has(span.text-semi)",
+  );
+  await expect(header).toBeVisible();
+  return (await header.textContent()).replace(/\s+/g, " ").trim();
+}
+
+// The data-tooltip on the Total Mods row: one line per mod, in the form
+// "<source> (<change name>): <signed value>".
+async function readTotalModsTooltip(dialog) {
+  const totalMods = dialog.locator(".total-mods .dialog-item-input");
+  await expect(totalMods).toBeVisible();
+  return totalMods.getAttribute("data-tooltip");
+}
+
+function expectModEntry(tooltip, source, value) {
+  const entry = (tooltip ?? "").split("<br/>").find((e) => e.includes(source));
+  expect(
+    entry,
+    `no mod entry for "${source}" in tooltip: ${tooltip}`,
+  ).toBeTruthy();
+  expect(entry, `mod entry for "${source}": ${entry}`).toContain(value);
 }
 
 test.beforeEach(async ({ page }) => {
@@ -114,13 +177,15 @@ test.describe("Item upgradable mixin", () => {
     // Two upgrades on the same data point: an override to 9 and a +2 modifier.
     const overrideName = uniqueName("extendedMag");
     const modifierName = uniqueName("capacityCells");
-    const overrideId = await createMagazineUpgrade(page, {
+    const overrideId = await createWeaponUpgrade(page, {
       upgradeName: overrideName,
+      dataPoint: "magazine",
       modType: "override",
       value: 9,
     });
-    const modifierId = await createMagazineUpgrade(page, {
+    const modifierId = await createWeaponUpgrade(page, {
       upgradeName: modifierName,
+      dataPoint: "magazine",
       modType: "modifier",
       value: 2,
     });
@@ -220,5 +285,100 @@ test.describe("Item upgradable mixin", () => {
         gearRow(page, afterSheet, weapon.itemId).locator(".gear-amount"),
       ).toHaveText("9/9");
     });
+  });
+
+  test("an installed damage modifier upgrade adds to the posted total", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+
+    // A melee weapon with 2d6 damage; the container schema defaults already
+    // accept itemUpgrade installs.
+    const weaponName = uniqueName("bat");
+    const weapon = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "weapon",
+      itemName: weaponName,
+      data: { system: { weaponType: "lightMelee", damage: "2d6" } },
+    });
+
+    // A +2 modifier on the weapon's damage data point.
+    const upgradeName = uniqueName("shockTip");
+    const upgradeId = await createWeaponUpgrade(page, {
+      upgradeName,
+      dataPoint: "damage",
+      modType: "modifier",
+      value: 2,
+    });
+
+    // Embed the upgrade on the actor sheet, then install it into the weapon.
+    await dragItemToActorSheet(page, {
+      itemId: upgradeId,
+      sheetId: weapon.sheetId,
+      actorId,
+    });
+    const embeddedUpgradeId = await page.evaluate(
+      ({ actorId, upgradeName }) =>
+        game.actors.get(actorId).items.find((i) => i.name === upgradeName)?.id,
+      { actorId, upgradeName },
+    );
+    await equipWeapon(page, {
+      actorSheetId: weapon.sheetId,
+      actorId,
+      itemId: weapon.itemId,
+    });
+    await installUpgrade(page, {
+      actorSheetId: weapon.sheetId,
+      actorId,
+      upgradeId: embeddedUpgradeId,
+      targetId: weapon.itemId,
+    });
+
+    const sheet = page.locator(`#${weapon.sheetId}`);
+    await sheet.locator('.navtabs-bottom a[data-tab="fight"]').click();
+    const damageGlyph = sheet.locator(
+      `.bottom-content-section a.rollable[data-roll-type="damage"][data-item-id="${weapon.itemId}"]`,
+    );
+    await expect(damageGlyph).toBeVisible();
+
+    await test.step("the dialog keeps the base formula and lists the upgrade mod", async () => {
+      await damageGlyph.click();
+      const dialog = damageRollDialog(page);
+      await expect(dialog).toBeVisible();
+      // A modifier does not change the formula; it rides along as a mod.
+      const header = await readDamageFormula(dialog);
+      expect(header, `damage formula: ${header}`).toMatch(/:\s*2d6/);
+      expectModEntry(await readTotalModsTooltip(dialog), upgradeName, "+2");
+    });
+
+    await test.step("the posted card totals the dice plus the +2 mod", async () => {
+      const messagesBefore = await chatMessageCount(page);
+      const dialog = damageRollDialog(page);
+      await dialog
+        .locator('button.cpr-dialog-button[data-action="confirm"]')
+        .click();
+      const messageId = await waitForNewChatMessage(page, messagesBefore, {
+        requireRoll: true,
+      });
+      // Confirmed dialogs close with a short animation; wait for the dialog to
+      // leave the DOM before reading chat.
+      await expect(dialog).toHaveCount(0);
+
+      await openSidebarTab(page, "chat");
+      const card = chatRollCard(page, messageId);
+      await expect(card).toBeVisible();
+      // The damage card shows its total in the d6 number div (the crit bonus
+      // is not part of it; only the external mod is added on top).
+      const total = Number(
+        await card.locator(".d6-number-div span.clickable").textContent(),
+      );
+      const dice = await rollDiceSum(page, messageId);
+      expect(total - dice, "card total minus the rolled dice").toBe(2);
+    });
+
+    // The damage roll created with no token targeted raises a warning toast.
+    await dismissNotifications(page);
   });
 });
