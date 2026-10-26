@@ -13,6 +13,7 @@ import {
 import {
   createCharacterViaUI,
   gearRow,
+  manageUpgradesDialog,
   selectAmmoDialog,
 } from "../actors/character-sheet-helpers.mjs";
 
@@ -40,14 +41,6 @@ installConsoleErrorHarness();
 function installTargetsDialog(page) {
   return page.locator(".cpr-dialog").filter({
     has: page.locator('input[name="selectedTarget"]'),
-  });
-}
-
-// The uninstall confirmation dialog (the one with the container checkboxes).
-// Only one CPR dialog is open at a time, so this is unambiguous.
-function uninstallDialog(page) {
-  return page.locator(".cpr-dialog").filter({
-    has: page.locator('input[name="selectedItems"]'),
   });
 }
 
@@ -399,7 +392,7 @@ test.describe("Item installable mixin", () => {
       await expect(uninstallLink).toHaveCount(1);
       await uninstallLink.click();
 
-      const dialog = uninstallDialog(page);
+      const dialog = manageUpgradesDialog(page);
       await expect(dialog).toBeVisible({ timeout: 5000 });
       const headerText = await page.evaluate(
         ({ key, installableItemName }) =>
@@ -425,7 +418,7 @@ test.describe("Item installable mixin", () => {
     });
 
     await test.step("confirming with weapon A unchecked unloads only weapon B", async () => {
-      const dialog = uninstallDialog(page);
+      const dialog = manageUpgradesDialog(page);
       await dialog
         .locator(`input[name="selectedItems"][value="${weaponA.itemId}"]`)
         .uncheck();

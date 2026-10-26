@@ -13,6 +13,7 @@ import {
   openSidebarTab,
   resolveYesNo,
   setItemField,
+  toggleItemCheckbox,
   uniqueName,
   waitForActorFields,
   waitForNewChatMessage,
@@ -42,20 +43,6 @@ import {
  * Armor tracking drives a token resource bar that needs canvas, so under noCanvas
  * the visible proof is the star glyph; externalData reads are supporting evidence.
  */
-
-async function toggleItemCheckbox(
-  page,
-  { sheetId, itemId, target, expected = true },
-) {
-  const sheet = await openItemSettings(page, sheetId);
-  await sheet.locator(`a.item-checkbox[data-target="${target}"]`).click();
-  await page.waitForFunction(
-    ({ itemId, target, expected }) =>
-      foundry.utils.getProperty(game.items.get(itemId), target) === expected,
-    { itemId, target, expected },
-    { timeout: 10000 },
-  );
-}
 
 /**
  * Create a weapon via the UI and configure the fight-relevant fields. The ranged-only
@@ -95,6 +82,7 @@ async function createConfiguredWeapon(
       sheetId,
       itemId,
       target: "system.isRanged",
+      expected: true,
     });
     if (autoFire > 0) {
       await setItemField(page, {
@@ -110,6 +98,7 @@ async function createConfiguredWeapon(
         sheetId,
         itemId,
         target: "system.fireModes.suppressiveFire",
+        expected: true,
       });
     }
     if (magazineMax > 0) {
@@ -178,6 +167,7 @@ async function createLoadableWeapon(page, { name }) {
     sheetId,
     itemId,
     target: "system.isRanged",
+    expected: true,
   });
   await setItemField(page, {
     sheetId,
@@ -281,6 +271,7 @@ async function createConfiguredArmor(
       sheetId,
       itemId,
       target: "system.isHeadLocation",
+      expected: true,
     });
   }
   if (!isBodyLocation) {
@@ -526,6 +517,7 @@ test.describe("Mook sheet - Fight Pane (weapons)", () => {
       sheetId: itemSheetId,
       itemId,
       target: "system.isWeapon",
+      expected: true,
     });
     await closeDocSheet(game, { collection: "items", id: itemId });
 

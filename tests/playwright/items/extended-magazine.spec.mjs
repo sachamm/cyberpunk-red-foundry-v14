@@ -10,19 +10,9 @@ import {
   installUpgrade,
   openItemSettings,
   setItemField,
+  toggleItemCheckbox,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
-
-async function toggleItemCheckbox(page, { sheetId, itemId, target }) {
-  const sheet = await openItemSettings(page, sheetId);
-  await sheet.locator(`a.item-checkbox[data-target="${target}"]`).click();
-  await page.waitForFunction(
-    ({ itemId, target }) =>
-      foundry.utils.getProperty(game.items.get(itemId), target) === true,
-    { itemId, target },
-    { timeout: 10000 },
-  );
-}
 
 async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
   for (const state of ["carried", "equipped"]) {
@@ -72,6 +62,7 @@ test("keeps upgraded magazine capacity after firing and unloads the remaining am
     sheetId: weaponSheetId,
     itemId: weaponId,
     target: "system.isRanged",
+    expected: true,
   });
   await setItemField(game, {
     sheetId: weaponSheetId,

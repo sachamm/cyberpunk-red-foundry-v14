@@ -10,6 +10,7 @@ import {
   installUpgrade,
   openItemSettings,
   setItemField,
+  toggleItemCheckbox,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -34,19 +35,6 @@ import {
  * is used only to confirm setup persisted and to read state for assertions, never
  * to perform the action under test.
  */
-
-// Click one of the sheet's pseudo-checkbox toggles (`a.item-checkbox`) and wait
-// for the boolean it targets to flip to the expected value.
-async function toggleItemCheckbox(page, { sheetId, itemId, target, expected }) {
-  const sheet = await openItemSettings(page, sheetId);
-  await sheet.locator(`a.item-checkbox[data-target="${target}"]`).click();
-  await page.waitForFunction(
-    ({ itemId, target, expected }) =>
-      foundry.utils.getProperty(game.items.get(itemId), target) === expected,
-    { itemId, target, expected },
-    { timeout: 10000 },
-  );
-}
 
 // Cycle an embedded weapon's equip state up to "equipped" (owned → carried →
 // equipped) via the Gear-tab equip glyph, waiting for each transition.

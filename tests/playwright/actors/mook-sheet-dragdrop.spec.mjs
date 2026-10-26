@@ -12,6 +12,7 @@ import {
   positionActorSheet,
   setItemField,
   setItemSelected,
+  toggleItemCheckbox,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
@@ -73,20 +74,6 @@ test.describe("Drag and Drop", () => {
 
 const SPARE_AMMO = 50;
 
-async function toggleItemCheckbox(
-  page,
-  { sheetId, itemId, target, expected = true },
-) {
-  const sheet = await openItemSettings(page, sheetId);
-  await sheet.locator(`a.item-checkbox[data-target="${target}"]`).click();
-  await page.waitForFunction(
-    ({ itemId, target, expected }) =>
-      foundry.utils.getProperty(game.items.get(itemId), target) === expected,
-    { itemId, target, expected },
-    { timeout: 10000 },
-  );
-}
-
 async function createLoadableWeapon(page, { name }) {
   const weaponType = "heavyPistol";
   const itemId = await createItemViaUI(page, { type: "weapon", name });
@@ -110,6 +97,7 @@ async function createLoadableWeapon(page, { name }) {
     sheetId,
     itemId,
     target: "system.isRanged",
+    expected: true,
   });
   await setItemField(page, {
     sheetId,
