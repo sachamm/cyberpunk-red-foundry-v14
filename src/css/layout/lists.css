@@ -143,6 +143,14 @@
       img {
         width: 100%;
       }
+
+      &.item-concealed {
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
 
     .toggle-installed-visibility {

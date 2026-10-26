@@ -349,6 +349,17 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
     this.#dragDrop.forEach((d) => d.bind(this.element));
     const root = this.element;
 
+    // Inventory templates use both image and wrapper thumbnails.  Apply the
+    // same cue here without fading the row or its nested installed items.
+    root.querySelectorAll(".item-thumb").forEach((thumbnail) => {
+      const itemId = thumbnail.closest("[data-item-id]")?.dataset.itemId;
+      const concealed = this.actor.items.get(itemId)?.system.concealable;
+      thumbnail.classList.toggle(
+        "item-concealed",
+        concealed?.concealable && concealed.isConcealed,
+      );
+    });
+
     // Size the item-type chips to their widest content and shrink the actor
     // name to fit. Deferred a frame so layout is settled before measuring.
     // (AppV1 did this from render hooks; AppV2 fires those per concrete class,
