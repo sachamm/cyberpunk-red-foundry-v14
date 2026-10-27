@@ -299,6 +299,39 @@ export function selectAmmoDialog(page) {
 }
 
 /**
+ * Open the Lifepath tab of a character sheet and return its content wrapper.
+ */
+export async function openLifepathTab(page, sheetId) {
+  await page
+    .locator(`#${sheetId} .navtabs-bottom a[data-tab="lifepath"]`)
+    .click();
+  const content = page.locator(
+    `#${sheetId} .tab.lifepath-tab[data-tab="lifepath"]`,
+  );
+  await expect(content).toBeVisible();
+  return content;
+}
+
+/**
+ * The "Set Lifepath" dialog opened by the lifepath tab's wrench glyph. Returns
+ * the dialog locator; the spec owns every visibility/field/count assertion and
+ * the dismissal.
+ */
+export function lifepathDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator('textarea[name="culturalOrigin"]'),
+  });
+}
+
+/**
+ * Locator for one lifepath section's value div on the tab, by its section
+ * class (e.g. "cultural-origins", "personality", "life-goals").
+ */
+export function lifepathValue(content, section) {
+  return content.locator(`.${section} .lifepath-value`);
+}
+
+/**
  * Install an owned upgrade into a container item through the manage-upgrades
  * dialog on the parent's gear row: open it, check the upgrade's checkbox, and
  * confirm. Waits until the parent's installed list contains the upgrade.
