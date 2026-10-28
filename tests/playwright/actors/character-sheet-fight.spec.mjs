@@ -362,7 +362,7 @@ test("an aimed shot's chosen location persists to the weapon's damage roll", asy
       .toBe("leg");
   });
 
-  await test.step("the damage dialog re-opens aimed, defaulting its location to head", async () => {
+  await test.step("the damage dialog re-opens aimed, defaulting its location to the persisted choice", async () => {
     messagesBefore = await chatMessageCount(page);
     await row.locator('[data-roll-type="damage"]').click();
     // The isAimed checkbox only renders in the damage verify prompt.
@@ -371,12 +371,9 @@ test("an aimed shot's chosen location persists to the weapon's damage roll", asy
     });
     await expect(dialog).toBeVisible({ timeout: 10000 });
     await expect(dialog.locator('input[name="isAimed"]')).toBeChecked();
-    // Candidate bug: the attack roll persists its chosen location in the
-    // actor's `aimedLocation` flag, but the DAMAGE case only reads that
-    // flag when the roll type is AIMED (cpr-actor-sheet.js), which a
-    // weapon damage glyph never produces — so the prompt always defaults
-    // to "head" regardless of the persisted choice.
-    await expect(dialog.locator('select[name="location"]')).toHaveValue("head");
+    // The location the attack roll persisted in the actor's `aimedLocation`
+    // flag is pre-selected in the damage prompt.
+    await expect(dialog.locator('select[name="location"]')).toHaveValue("leg");
     await confirmRollDialog(dialog);
 
     const messageId = await waitForNewChatMessage(page, messagesBefore, {
@@ -386,7 +383,7 @@ test("an aimed shot's chosen location persists to the weapon's damage roll", asy
       .locator(`#chat .chat-message[data-message-id="${messageId}"]`)
       .textContent();
     expect(cardText).toContain(labels.location);
-    expect(cardText).toContain(labels.head);
+    expect(cardText).toContain(labels.leg);
   });
 });
 

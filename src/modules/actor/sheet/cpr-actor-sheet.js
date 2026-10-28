@@ -564,9 +564,10 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
         item = this.actor.getOwnedItem(itemId);
         const damageType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor, { damageType });
-        if (rollType === CPRRolls.rollTypes.AIMED) {
+        if (damageType === CPRRolls.rollTypes.AIMED) {
           cprRoll.location =
-            this.actor.getFlag(game.system.id, "aimedLocation") || "body";
+            this.actor.getFlag(game.system.id, "aimedLocation") ||
+            cprRoll.location;
         }
         break;
       }
