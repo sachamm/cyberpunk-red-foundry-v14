@@ -6,8 +6,10 @@ import {
   createItemViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
+  openItemSettings,
   setItemField,
   setItemSelected,
+  toggleItemCheckbox,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -358,6 +360,139 @@ export async function installUpgradeViaUI(
         .items.get(itemId)
         .system.installedItems.list.includes(upgradeId),
     { actorId, itemId, upgradeId },
+    { timeout: 10000 },
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Role tab
+ * ------------------------------------------------------------------ */
+
+/**
+ * Open the Role tab of a character sheet and return its content wrapper.
+ */
+export async function openRoleTab(page, sheetId) {
+  await page.locator(`#${sheetId} .navtabs-bottom a[data-tab="role"]`).click();
+  const content = page.locator(`#${sheetId} .tab.role-tab[data-tab="role"]`);
+  await expect(content).toBeVisible();
+  return content;
+}
+
+/**
+ * The `.role-item` block for one role on the Role tab, by role name.
+ */
+export function roleBlock(content, name) {
+  return content.locator(".role-item").filter({ hasText: name });
+}
+
+/**
+ * Configure a world role item's main ability through its Settings tab: set
+ * the ability name and rank, then optionally enable rolling. Waits for each
+ * change to land on the item document. The addRoleAbilityRank row only
+ * renders once hasRoll is on, so call enableRoleRankInRolls afterwards.
+ */
+export async function configureRoleMainAbilityViaUI(
+  page,
+  { sheetId, itemId, mainAbility, rank, hasRoll = false },
+) {
+  await setItemField(page, {
+    sheetId,
+    itemId,
+    name: "system.mainRoleAbility",
+    path: "system.mainRoleAbility",
+    value: mainAbility,
+  });
+  await setItemField(page, {
+    sheetId,
+    itemId,
+    name: "system.rank",
+    path: "system.rank",
+    value: rank,
+  });
+  if (hasRoll) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId,
+      target: "system.hasRoll",
+      expected: true,
+    });
+  }
+}
+
+/**
+ * Enable the "add the role ability rank to rolls" option on a world role
+ * item. The row only renders when hasRoll is already on, so this must run
+ * after configureRoleMainAbilityViaUI(..., { hasRoll: true }).
+ */
+export async function enableRoleRankInRolls(page, { sheetId, itemId }) {
+  await toggleItemCheckbox(page, {
+    sheetId,
+    itemId,
+    target: "system.addRoleAbilityRank",
+    expected: true,
+  });
+}
+
+/**
+ * The create/edit subskill dialog on a role item's Settings tab.
+ */
+export function roleAbilityDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator('input[name="hasRoll"]'),
+  });
+}
+
+/**
+ * Add a subskill to a world role item through the Settings tab's create
+ * glyph and dialog. The dialog renders stat/skill/multiplier selects only
+ * when the ability is already rollable, so a freshly created subskill keeps
+ * the schema defaults (stat "--", skill "--") and hasRoll false — the
+ * dialog's hasRoll checkbox cannot enable rolling on a new subskill (see the
+ * note in character-sheet-role.spec.mjs). Waits for the subskill to land on
+ * the item document.
+ */
+export async function addRoleSubskillViaUI(
+  page,
+  { sheetId, itemId, name, rank },
+) {
+  const sheet = await openItemSettings(page, sheetId);
+  await sheet
+    .locator('a.role-ability-action[data-action-type="create"]')
+    .click();
+  const dialog = roleAbilityDialog(page);
+  await expect(dialog).toBeVisible({ timeout: 5000 });
+  await dialog.locator('input[name="name"]').fill(name);
+  await dialog.locator('input[name="rank"]').fill(String(rank));
+  await dialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+  await expect(dialog).toHaveCount(0, { timeout: 5000 });
+  await page.waitForFunction(
+    ({ itemId, name }) =>
+      game.items.get(itemId).system.abilities.some((a) => a.name === name),
+    { itemId, name },
+    { timeout: 10000 },
+  );
+}
+
+/**
+ * Wait until an owned role item's main rank (subskill null) or one of its
+ * subskills' ranks equals the expected value.
+ */
+export async function waitForRoleAbilityRank(
+  page,
+  { actorId, itemId, subskill = null, rank },
+) {
+  await page.waitForFunction(
+    ({ actorId, itemId, subskill, rank }) => {
+      const item = game.actors.get(actorId)?.items.get(itemId);
+      if (!item) return false;
+      if (subskill === null) return item.system.rank === rank;
+      return (
+        item.system.abilities.find((a) => a.name === subskill)?.rank === rank
+      );
+    },
+    { actorId, itemId, subskill, rank },
     { timeout: 10000 },
   );
 }
