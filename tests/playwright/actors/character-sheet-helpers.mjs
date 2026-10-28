@@ -3,6 +3,7 @@ import {
   activateGearTab,
   closeDocSheet,
   createActorViaUI,
+  createInventoryItemViaUI,
   createItemViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
@@ -493,6 +494,98 @@ export async function waitForRoleAbilityRank(
       );
     },
     { actorId, itemId, subskill, rank },
+    { timeout: 10000 },
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Fight tab
+ * ------------------------------------------------------------------ */
+
+/**
+ * Open the Fight tab of a character sheet and return its content wrapper.
+ */
+export async function openFightTab(page, sheetId) {
+  await page.locator(`#${sheetId} .navtabs-bottom a[data-tab="fight"]`).click();
+  const content = page.locator(`#${sheetId} .tab.fight-tab[data-tab="fight"]`);
+  await expect(content).toBeVisible();
+  return content;
+}
+
+/**
+ * Locator for one equipped weapon row in the Fight tab's Meatspace view.
+ */
+export function fightWeaponRow(page, sheetId, itemId) {
+  return page.locator(
+    `#${sheetId} .item.weapon-grid[data-item-id="${itemId}"]`,
+  );
+}
+
+/**
+ * Locator for one equipped armor row in the Fight tab's Meatspace view.
+ */
+export function fightArmorRow(page, sheetId, itemId) {
+  return page.locator(`#${sheetId} .item.armor-grid[data-item-id="${itemId}"]`);
+}
+
+/**
+ * Create an item in a character's inventory via the gear tab's + button and
+ * equip it: two clicks on the row's equip glyph cycle owned -> carried ->
+ * equipped, waiting for each state to land on the item document. Returns the
+ * created item id and a refreshed sheet id.
+ */
+export async function createEquippedItemViaUI(
+  page,
+  { actorId, sheetId, itemType, itemName, data },
+) {
+  const created = await createInventoryItemViaUI(page, {
+    actorId,
+    sheetId,
+    itemType,
+    itemName,
+    data,
+  });
+  const row = gearRow(page, created.sheetId, created.itemId);
+  for (const state of ["carried", "equipped"]) {
+    await row.locator("a.equip").click();
+    await page.waitForFunction(
+      ({ actorId, itemId, state }) =>
+        game.actors.get(actorId).items.get(itemId).system.equipped === state,
+      { actorId, itemId: created.itemId, state },
+      { timeout: 10000 },
+    );
+  }
+  return created;
+}
+
+/**
+ * Install an owned program into a cyberdeck through the deck gear row's
+ * manage-programs glyph (the same select-installable-items dialog as
+ * manage-upgrades). Waits until the deck's installed list contains the
+ * program.
+ */
+export async function installProgramIntoDeckViaUI(
+  page,
+  { sheetId, actorId, deckId, programId },
+) {
+  const row = gearRow(page, sheetId, deckId);
+  await row.locator('a[data-action-type="manage-programs"]').click();
+  const dialog = manageUpgradesDialog(page);
+  await expect(dialog).toBeVisible({ timeout: 5000 });
+  await dialog
+    .locator(`input[name="selectedItems"][value="${programId}"]`)
+    .check();
+  await dialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+  await expect(dialog).toHaveCount(0, { timeout: 5000 });
+  await page.waitForFunction(
+    ({ actorId, deckId, programId }) =>
+      game.actors
+        .get(actorId)
+        .items.get(deckId)
+        .system.installedItems.list.includes(programId),
+    { actorId, deckId, programId },
     { timeout: 10000 },
   );
 }
