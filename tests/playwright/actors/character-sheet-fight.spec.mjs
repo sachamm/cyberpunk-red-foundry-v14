@@ -43,9 +43,6 @@ installConsoleErrorHarness();
  * persistence, critical injury rolls, and all cyberdeck/netrunning behaviour.
  */
 
-// Custom net role ability names keep every label rendering verbatim (no
-// localization key resolves for them), so assertions can match on the raw
-// strings. Mirrors character-sheet-role.spec.mjs.
 const NET_ROLE_ABILITY = "Wire Main";
 
 let createInventoryBaseline;
@@ -94,7 +91,6 @@ async function setupCharacterWithDeck(
 
   const programIds = {};
   for (const program of programs) {
-    // Programs are not equippable: plain inventory creation, then install.
     const created = await createInventoryItemViaUI(page, {
       actorId,
       sheetId,
@@ -204,8 +200,6 @@ test("a fresh character's Fight tab shows empty Meatspace sections", async ({
         .locator(".armor-section .items-header")
         .filter({ hasText: labels.armor }),
     ).toBeVisible();
-    // With no equipped weapons the list shows a single plain "Weapons"
-    // header; Ranged/Melee headers only appear once weapons are equipped.
     const weaponHeaders = content.locator(".weapon-section > .items-header");
     await expect(weaponHeaders).toHaveCount(1);
     await expect(weaponHeaders.first()).toHaveText(labels.weapons);
@@ -229,8 +223,6 @@ test("equipped weapons and armor render under their Ranged/Melee headers", async
   await enablePlayersCreateInventory(page);
   let { actorId, sheetId } = await createCharacterViaUI(page);
 
-  // Unloaded on purpose: the load-ammo flow is covered on the mook sheet's
-  // identical weapon partial.
   const ranged = await createEquippedItemViaUI(page, {
     actorId,
     sheetId,
@@ -266,8 +258,6 @@ test("equipped weapons and armor render under their Ranged/Melee headers", async
   }));
 
   await test.step("Ranged and Melee headers replace the plain Weapons header", async () => {
-    // The empty-list "Weapons" header is a direct child of .weapon-section;
-    // the Ranged/Melee headers live inside the weapon list partial.
     await expect(
       content.locator(".weapon-section > .items-header"),
     ).toHaveCount(0);
@@ -285,8 +275,6 @@ test("equipped weapons and armor render under their Ranged/Melee headers", async
     const aimed = row.locator('a.fire-checkbox[data-fire-mode="aimed"]');
     await expect(aimed).toBeVisible();
     await expect(aimed.locator("i.fa-circle")).toBeVisible();
-    // A fresh medPistol has no autofire mode, so only the aimed checkbox
-    // renders.
     await expect(
       row.locator('a.fire-checkbox[data-fire-mode="autofire"]'),
     ).toHaveCount(0);
@@ -348,7 +336,6 @@ test("an aimed shot's chosen location persists to the weapon's damage roll", asy
   let messagesBefore = await chatMessageCount(page);
   await test.step("the attack dialog defaults to head; choosing leg rolls and persists", async () => {
     await row.locator('[data-roll-type="attack"]').click();
-    // The location select only renders for aimed attack rolls.
     const dialog = page.locator(".application").filter({
       has: page.locator('select[name="location"]'),
     });
@@ -373,14 +360,11 @@ test("an aimed shot's chosen location persists to the weapon's damage roll", asy
   await test.step("the damage dialog re-opens aimed, defaulting its location to the persisted choice", async () => {
     messagesBefore = await chatMessageCount(page);
     await row.locator('[data-roll-type="damage"]').click();
-    // The isAimed checkbox only renders in the damage verify prompt.
     const dialog = page.locator(".application").filter({
       has: page.locator('input[name="isAimed"]'),
     });
     await expect(dialog).toBeVisible({ timeout: 10000 });
     await expect(dialog.locator('input[name="isAimed"]')).toBeChecked();
-    // The location the attack roll persisted in the actor's `aimedLocation`
-    // flag is pre-selected in the damage prompt.
     await expect(dialog.locator('select[name="location"]')).toHaveValue("leg");
     await confirmRollDialog(dialog);
 
@@ -407,7 +391,6 @@ test("rolling a critical injury draws from the table, posts a card and renders i
     await rollGlyph.click();
     const dialog = criticalInjuryDialog(page);
     await expect(dialog).toBeVisible({ timeout: 10000 });
-    // The world ships exactly these two tables from the internal pack.
     const options = await dialog
       .locator('select[name="currentTable"] option')
       .allTextContents();
@@ -438,8 +421,6 @@ test("rolling a critical injury draws from the table, posts a card and renders i
       .locator('button.cpr-dialog-button[data-action="confirm"]')
       .click();
 
-    // The drawn result's text becomes the injury item's name; read it back
-    // rather than hardcoding a table outcome.
     const handle = await page.waitForFunction(
       (aid) => {
         const injuries = game.actors.get(aid).itemTypes.criticalInjury;
@@ -450,9 +431,6 @@ test("rolling a critical injury draws from the table, posts a card and renders i
     );
     injuryName = await handle.jsonValue();
 
-    // The CI card is HTML-only: the table roll is already evaluated before
-    // CPRTableRoll wraps it and never evaluates itself, so RenderRollCard
-    // attaches no rolls to the message. Match on content instead.
     const messageId = await waitForNewChatMessage(page, messagesBefore, {
       requireContent: true,
     });
@@ -524,7 +502,6 @@ test("the Meat|Net toggle appears with an equipped cyberdeck and persists", asyn
     await expect(content.locator(".interface-abilities-section")).toBeVisible({
       timeout: 10000,
     });
-    // The Meatspace block is not rendered at all in Netspace.
     await expect(content.locator(".weapon-section")).toHaveCount(0);
     await expect(content.locator(".armor-section")).toHaveCount(0);
   });
@@ -576,7 +553,6 @@ test("the net role select lists every dragged role and persists the choice", asy
 
     const freshSheet = await closeAndReopenActorSheet(page, actorId);
     const freshContent = await openFightTab(page, freshSheet);
-    // The Netspace flag persists too, so the select renders on reopen.
     await expect(
       freshContent.locator(
         'select.select-net-role[name="system.roleInfo.activeNetRole"]',
@@ -603,7 +579,6 @@ test("rolling an interface ability posts a card using the active net role", asyn
   await content.locator('a.rollable[data-interface-ability="scanner"]').click();
   const dialog = netRollDialog(page);
   await expect(dialog).toBeVisible({ timeout: 10000 });
-  // The role's rank (3) is the roll's role value.
   await expect(dialog.locator('input[name="roleValue"]')).toHaveValue("3");
   await confirmRollDialog(dialog);
 
@@ -629,9 +604,6 @@ test("rolling an interface ability without a net role shows an error and posts n
     game.i18n.localize("CPR.messages.noNetrunningRoleConfigured"),
   );
 
-  // DisplayMessage("error") logs the toast's text and LOGGER.error repeats it
-  // prefixed "CPR ERR | ". One unanchored pattern covers both lines so the
-  // global harness ignores exactly these.
   page.expectedConsoleErrors.push(/No Netrunning role configured/);
 
   const messagesBefore = await chatMessageCount(page);
@@ -697,9 +669,6 @@ test("installed programs group under their class headers with the right glyphs",
   }));
 
   await test.step("every class header renders and each program sits under its own", async () => {
-    // Headers and rows are siblings in the installed-software list, so the
-    // DOM order proves the grouping. The Netspace toggle re-renders the
-    // sheet asynchronously, so poll until the section has rendered.
     await expect
       .poll(
         () =>
@@ -755,8 +724,6 @@ test("installed programs group under their class headers with the right glyphs",
     await expect(
       row.locator('a.program-execution[data-execution-type="atk"]'),
     ).toBeVisible();
-    // A fresh program's standard damage ("1d6") is non-empty, so the damage
-    // glyph renders.
     await expect(
       row.locator('a.program-execution[data-execution-type="damage"]'),
     ).toBeVisible();
@@ -823,7 +790,6 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
   await test.step("rezzing moves it to the rezzed list with its stats", async () => {
     await rezGlyph.click();
     await expect(rezzedRow).toBeVisible({ timeout: 10000 });
-    // A fresh booster has atk/def 0 and full rez 10.
     await expect(rezzedRow.locator(".rezzed-program-atk")).toHaveText("0");
     await expect(rezzedRow.locator(".rezzed-program-def")).toHaveText("0");
     await expect(rezzedRow.locator(".rezzed-program-rez")).toHaveText("10");
@@ -834,9 +800,6 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
 
   await test.step("derezzing reverts the program on the client", async () => {
     await derezGlyph.click();
-    // The handler mutates the program's client document; the open sheet does
-    // not re-render, so poll the document and assert the DOM on a reopened
-    // sheet.
     await expect
       .poll(
         () =>
@@ -870,9 +833,6 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
   });
 
   await test.step("derezzing persists across a world reload", async () => {
-    // The buggy path only mutated the client document in memory, so an
-    // in-session re-read cannot see the bug — only a real DB round-trip
-    // can (same pattern as ammo-persistence.spec.mjs).
     await gotoGame(page);
     const sheet = await reopenActorSheetViaUI(page, actorId);
     const contentAfterReload = await openFightTab(page, sheet);
@@ -994,8 +954,6 @@ test("program attack, defense and damage rolls post cards titled with the progra
     `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.defender}"]`,
   );
 
-  // Attack/defense use the net verify dialog; damage uses the program damage
-  // prompt. The card's roll title is always the program's name.
   async function rollProgram(row, executionType, name) {
     const messagesBefore = await chatMessageCount(page);
     const glyph = row.locator(
@@ -1023,8 +981,6 @@ test("program attack, defense and damage rolls post cards titled with the progra
   });
 
   await test.step("the defender's def glyph is not overlapped by the uninstall link", async () => {
-    // The shield used to be auto-placed into an implicit grid cell over the
-    // row's uninstall link, hiding its top half from clicks.
     const shield = await defenderRow
       .locator(".installed-program-defense")
       .boundingBox();

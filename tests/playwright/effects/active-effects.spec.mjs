@@ -1766,7 +1766,6 @@ test("item-sourced effects render on the character sheet", async ({ page }) => {
   );
   await closeActiveEffectConfigViaUI(page, aeConfig);
 
-  // An always-on effect applies without equipping the item.
   const usage = gearSheet.locator('select[name="system.usage"]');
   await usage.selectOption("always");
   await page.waitForFunction(
@@ -1826,9 +1825,6 @@ test("item-sourced effects render on the character sheet", async ({ page }) => {
   });
 
   await test.step("item-sourced rows offer edit only", async () => {
-    // No toggle: cprShowEffectToggle hides it for an unsuppressed effect
-    // with usage "always". No copy/delete: those render only when the
-    // effect's source is the actor itself.
     await expect(
       effectRow.locator('a.effect-control[data-action="edit"]'),
     ).toHaveCount(1);
@@ -1892,7 +1888,6 @@ test("deleting an actor effect can be canceled", async ({ page }) => {
   await resolveYesNo(dialog, "no");
   await expect(dialog).toHaveCount(0);
 
-  // The effect is untouched: its row still renders and the document keeps it.
   const remaining = await getEffectRowViaUI(actorSheet, "New Effect");
   await expect(remaining).toHaveCount(1);
   const effectCount = await page.evaluate(

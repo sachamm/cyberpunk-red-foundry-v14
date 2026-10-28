@@ -50,8 +50,6 @@ installConsoleErrorHarness();
  * already-rollable ability works).
  */
 
-// Custom ability names keep every label rendering verbatim (no localization
-// key resolves for them), so assertions can match on the raw strings.
 const MAIN_ABILITY = "Zeb Main";
 
 test("a fresh character's Role tab shows the empty-state warning", async ({
@@ -72,7 +70,6 @@ test("a dragged role renders its header, main-ability row and sorted subskill ro
   const { actorId, sheetId } = await createCharacterViaUI(page);
   const { itemId, name: roleName } = await createRoleItemViaUI(page);
   const itemSheetId = await reopenItemSheetViaUI(page, itemId);
-  // Subskill names are deliberately unsorted to prove the tab sorts by name.
   await configureRoleMainAbilityViaUI(page, {
     sheetId: itemSheetId,
     itemId,
@@ -114,9 +111,6 @@ test("a dragged role renders its header, main-ability row and sorted subskill ro
   });
 
   await test.step("the main-ability row shows the rollable glyph, MOD cell and rank input", async () => {
-    // Foundry's DragDrop marks every `.item` element draggable at render time
-    // (dragSelector in cpr-actor-sheet.js), including the header row — so
-    // target the main row by its non-subskill rank input instead.
     const mainRow = block.locator(
       "li.item.flexrow[draggable]:has(input.number.ability-input:not([data-subskill-name]))",
     );
@@ -132,12 +126,10 @@ test("a dragged role renders its header, main-ability row and sorted subskill ro
   });
 
   await test.step("subskill rows render sorted by name, each with its rank", async () => {
-    // Exclude the header row, which is also a draggable `.item` element.
     const rows = block.locator("li.item.flexrow[draggable]:not(.items-header)");
-    await expect(rows).toHaveCount(4); // main row + 3 subskills
+    await expect(rows).toHaveCount(4);
     const names = [];
     for (let i = 1; i < 4; i++) {
-      // textContent includes the template's indentation whitespace.
       names.push(
         (await rows.nth(i).locator(".ability-name").textContent())?.trim(),
       );
@@ -190,7 +182,6 @@ test("editing the main-ability rank persists to the role item", async ({
   await expect(input).toHaveValue("2");
 
   await test.step("typing a new rank updates the item document", async () => {
-    // The sheet binds these inputs to `change`, so Tab commits the fill.
     await input.fill("7");
     await input.press("Tab");
     await waitForRoleAbilityRank(page, { actorId, itemId, rank: 7 });
@@ -237,8 +228,6 @@ test("editing a subskill rank persists and leaves the MOD column untouched", asy
   const input = subRow.locator(
     'input.number.ability-input[data-subskill-name="Mike Sub"]',
   );
-  // The MOD cell is the `.ability-rank` div holding a span (the sibling div
-  // holds the rank input); it sums active effects only and hides at zero.
   const modCell = subRow.locator(".item-detail.ability-rank:has(> span)");
 
   await test.step("the subskill's MOD cell is hidden at zero with no effects", async () => {
@@ -247,7 +236,6 @@ test("editing a subskill rank persists and leaves the MOD column untouched", asy
   });
 
   await test.step("typing a new subskill rank updates the item document", async () => {
-    // The sheet binds these inputs to `change`, so Tab commits the fill.
     await input.fill("6");
     await input.press("Tab");
     await waitForRoleAbilityRank(page, {
@@ -257,7 +245,6 @@ test("editing a subskill rank persists and leaves the MOD column untouched", asy
       rank: 6,
     });
     await expect(input).toHaveValue("6");
-    // A rank edit must not touch the MOD column.
     await expect(modCell).toHaveClass(/zero-not-visible/);
   });
 
@@ -300,11 +287,6 @@ test("clearing a rank input is rejected with an error and does not persist", asy
   );
   await expect(input).toHaveValue("3");
 
-  // The rejection surfaces through DisplayMessage("error"): Foundry's
-  // ui.notifications.error logs the toast's textContent (with a trailing
-  // space) and LOGGER.error logs it again prefixed "CPR ERR | ". One
-  // unanchored pattern covers both lines so the global harness ignores
-  // exactly these.
   page.expectedConsoleErrors.push(
     /Error: The amount entered could not be converted to a number!/,
   );
@@ -313,7 +295,6 @@ test("clearing a rank input is rejected with an error and does not persist", asy
   });
 
   await test.step("clearing the rank input shows an error toast and leaves the document unchanged", async () => {
-    // Tab commits the cleared value through the sheet's `change` binding.
     await input.fill("");
     await input.press("Tab");
     await expect(errorNotification.first()).toBeVisible({ timeout: 10000 });
@@ -342,8 +323,6 @@ test("a rollable main ability posts a role roll card to chat", async ({
   const { actorId, sheetId } = await createCharacterViaUI(page);
   const { itemId, name: roleName } = await createRoleItemViaUI(page);
   const itemSheetId = await reopenItemSheetViaUI(page, itemId);
-  // Stat and skill keep the schema defaults ("--"), so the roll is dice
-  // plus the main rank (addRoleAbilityRank enabled).
   await configureRoleMainAbilityViaUI(page, {
     sheetId: itemSheetId,
     itemId,

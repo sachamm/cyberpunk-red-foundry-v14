@@ -31,8 +31,6 @@ installConsoleErrorHarness();
 const NOTES_PANE = ".lifepath-tab-grid .note-pad prose-mirror";
 const NOTES_FIELD_PATH = "system.information.notes";
 
-// Every section on the lifepath tab, in template order. Each one renders a
-// `.lifepath-value` div from its enriched `system.lifepath.*` field.
 const SECTIONS = [
   "cultural-origins",
   "languages",
@@ -53,7 +51,6 @@ const SECTIONS = [
   "life-goals",
 ];
 
-// The 17 named textareas in the "Set Lifepath" dialog, one per lifepath field.
 const DIALOG_FIELDS = [
   "culturalOrigin",
   "languages",
@@ -170,7 +167,6 @@ test.describe("Character sheet — lifepath", () => {
         personality,
       );
       await expect(lifepathValue(reopened, "life-goals")).toHaveText(lifeGoals);
-      // Fields that were never set stay empty.
       await expect(lifepathValue(reopened, "languages")).toHaveText("");
       await expect(lifepathValue(reopened, "enemies")).toHaveText("");
     });
@@ -218,7 +214,6 @@ test.describe("Character sheet — lifepath", () => {
       await expect(dialog.locator('textarea[name="lifeGoals"]')).toHaveValue(
         lifeGoals,
       );
-      // A field that was never set prefills empty.
       await expect(dialog.locator('textarea[name="languages"]')).toHaveValue(
         "",
       );
