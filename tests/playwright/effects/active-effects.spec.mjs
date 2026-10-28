@@ -1727,3 +1727,179 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
   await closeDocSheet(page, { collection: "items", id: drugId });
   await closeDocSheet(page, { collection: "actors", id: actorId });
 });
+
+test("item-sourced effects render on the character sheet", async ({ page }) => {
+  const gearName = uniqueName("gear");
+  const gearId = await createDocumentViaUI(page, {
+    documentTab: "items",
+    type: "gear",
+    name: gearName,
+  });
+  expect(gearId).toBeTruthy();
+
+  const gearSheet = page.locator(`#CPRItemSheet-Item-${gearId}`);
+  await expect(gearSheet).toBeVisible();
+  await gearSheet.locator('.navtabs-item [data-tab="item-effects"]').click();
+
+  const { aeConfig } = await createEffectViaUI(page, gearSheet, {
+    ownerType: "item",
+    ownerId: gearId,
+  });
+  await aeConfig.locator('nav [data-tab="changes"]').click();
+  const row = await addModViaUI(aeConfig);
+  await row.locator(".key-cat").selectOption("combat");
+  await page.waitForFunction(
+    (id) =>
+      game.items
+        .get(id)
+        .effects.contents[0].getFlag(game.system.id, "changes.cats.0") ===
+      "combat",
+    gearId,
+  );
+  await row.locator("select.key-key").selectOption("bonuses.maxHp");
+  const valueInput = row.locator('input[name="changes.0.value"]');
+  await valueInput.fill("2");
+  await valueInput.press("Tab");
+  await page.waitForFunction(
+    (id) => game.items.get(id).effects.contents[0].changes[0].value === "2",
+    gearId,
+  );
+  await closeActiveEffectConfigViaUI(page, aeConfig);
+
+  // An always-on effect applies without equipping the item.
+  const usage = gearSheet.locator('select[name="system.usage"]');
+  await usage.selectOption("always");
+  await page.waitForFunction(
+    (id) => game.items.get(id).system.usage === "always",
+    gearId,
+  );
+
+  const actorId = await createDocumentViaUI(page, {
+    documentTab: "actors",
+    type: "character",
+    name: uniqueName("character"),
+  });
+  expect(actorId).toBeTruthy();
+  const actorSheetId = await expectSheetRendered(page, {
+    collection: "actors",
+    id: actorId,
+  });
+  await closeDocSheet(page, { collection: "items", id: gearId });
+  await dragItemToActorSheet(page, {
+    itemId: gearId,
+    sheetId: actorSheetId,
+    actorId,
+  });
+
+  const embeddedGearId = await page.evaluate(
+    ({ actorId: aid, name }) =>
+      game.actors.get(aid).items.find((item) => item.name === name).id,
+    { actorId, name: gearName },
+  );
+  await page.waitForFunction(
+    ({ actorId: aid, itemId: iid }) =>
+      game.actors.get(aid).items.get(iid).effects.contents[0].system
+        .isSuppressed === false && game.actors.get(aid).bonuses.maxHp === 2,
+    { actorId, itemId: embeddedGearId },
+  );
+
+  const actorSheet = page.locator(`#${actorSheetId}`);
+  await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
+  const effectRow = (await getEffectRowViaUI(actorSheet, "New Effect")).first();
+  await expect(effectRow).toHaveCount(1);
+
+  await test.step("the row renders under Permanent with its modifier pill", async () => {
+    await expect(
+      actorSheet.locator('li[data-effect-type="permanent"]'),
+    ).toContainText("Permanent Effects");
+    await expect(effectRow).toContainText("Max Hit Points");
+    await expect(effectRow).toContainText("+2");
+  });
+
+  await test.step("the source column shows the item name and usage label", async () => {
+    const usageLabel = await page.evaluate(() =>
+      game.i18n.localize("CPR.effectSheet.uses.always"),
+    );
+    const source = effectRow.locator(".effect-source");
+    await expect(source).toContainText(gearName);
+    await expect(source).toContainText(`(${usageLabel})`);
+  });
+
+  await test.step("item-sourced rows offer edit only", async () => {
+    // No toggle: cprShowEffectToggle hides it for an unsuppressed effect
+    // with usage "always". No copy/delete: those render only when the
+    // effect's source is the actor itself.
+    await expect(
+      effectRow.locator('a.effect-control[data-action="edit"]'),
+    ).toHaveCount(1);
+    await expect(
+      effectRow.locator('a.effect-control[data-action="toggle"]'),
+    ).toHaveCount(0);
+    await expect(
+      effectRow.locator('a.effect-control[data-action="copy"]'),
+    ).toHaveCount(0);
+    await expect(
+      effectRow.locator('a.effect-control[data-action="delete"]'),
+    ).toHaveCount(0);
+  });
+
+  await closeDocSheet(page, { collection: "actors", id: actorId });
+});
+
+test("deleting an actor effect can be canceled", async ({ page }) => {
+  const actorId = await createDocumentViaUI(page, {
+    documentTab: "actors",
+    type: "character",
+    name: uniqueName("character"),
+  });
+  expect(actorId).toBeTruthy();
+  const actorSheetId = await expectSheetRendered(page, {
+    collection: "actors",
+    id: actorId,
+  });
+  const actorSheet = page.locator(`#${actorSheetId}`);
+  await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
+
+  const { aeConfig } = await createEffectViaUI(page, actorSheet, {
+    ownerType: "actor",
+    ownerId: actorId,
+  });
+  await aeConfig.locator('nav [data-tab="changes"]').click();
+  const row = await addModViaUI(aeConfig);
+  await row.locator(".key-cat").selectOption("combat");
+  await page.waitForFunction(
+    (id) =>
+      game.actors
+        .get(id)
+        .effects.contents[0].getFlag(game.system.id, "changes.cats.0") ===
+      "combat",
+    actorId,
+  );
+  await row.locator("select.key-key").selectOption("bonuses.maxHp");
+  const valueInput = row.locator('input[name="changes.0.value"]');
+  await valueInput.fill("2");
+  await valueInput.press("Tab");
+  await page.waitForFunction(
+    (id) => game.actors.get(id).effects.contents[0].changes[0].value === "2",
+    actorId,
+  );
+  await closeActiveEffectConfigViaUI(page, aeConfig);
+
+  const effectRow = (await getEffectRowViaUI(actorSheet, "New Effect")).first();
+  await clickEffectActionViaUI(effectRow, "delete");
+  const dialog = yesNoDialog(page);
+  await expect(dialog).toBeVisible();
+  await resolveYesNo(dialog, "no");
+  await expect(dialog).toHaveCount(0);
+
+  // The effect is untouched: its row still renders and the document keeps it.
+  const remaining = await getEffectRowViaUI(actorSheet, "New Effect");
+  await expect(remaining).toHaveCount(1);
+  const effectCount = await page.evaluate(
+    (id) => game.actors.get(id).effects.contents.length,
+    actorId,
+  );
+  expect(effectCount).toBe(1);
+
+  await closeDocSheet(page, { collection: "actors", id: actorId });
+});
