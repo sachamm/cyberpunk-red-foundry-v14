@@ -977,18 +977,7 @@ test("program attack, defense and damage rolls post cards titled with the progra
     const glyph = row.locator(
       `a.program-execution[data-execution-type="${executionType}"]`,
     );
-    if (executionType === "def") {
-      // Candidate bug: on the character sheet, .installed-program-defense
-      // references a grid area ("program-defense") that is not defined in
-      // the inner grid-template-areas of .cyberdeck-installed-software-list
-      // (character.css), so Chrome places the shield in an implicit cell
-      // overlapping the row's uninstall link. The top ~11px of the glyph is
-      // covered, so click its bottom strip instead. The mook sheet has no
-      // such grid and is unaffected.
-      await glyph.click({ position: { x: 7, y: 15 } });
-    } else {
-      await glyph.click();
-    }
+    await glyph.click();
     const dialog =
       executionType === "damage"
         ? programDamageDialog(page)
@@ -1007,6 +996,25 @@ test("program attack, defense and damage rolls post cards titled with the progra
 
   await test.step("the attacker's atk glyph rolls an interface attack", async () => {
     await rollProgram(attackerRow, "atk", attackerName);
+  });
+
+  await test.step("the defender's def glyph is not overlapped by the uninstall link", async () => {
+    // The shield used to be auto-placed into an implicit grid cell over the
+    // row's uninstall link, hiding its top half from clicks.
+    const shield = await defenderRow
+      .locator(".installed-program-defense")
+      .boundingBox();
+    const uninstall = await defenderRow
+      .locator("a.uninstall-single-item")
+      .boundingBox();
+    expect(shield).not.toBeNull();
+    expect(uninstall).not.toBeNull();
+    const overlaps =
+      shield.x < uninstall.x + uninstall.width &&
+      uninstall.x < shield.x + shield.width &&
+      shield.y < uninstall.y + uninstall.height &&
+      uninstall.y < shield.y + shield.height;
+    expect(overlaps).toBe(false);
   });
 
   await test.step("the defender's def glyph rolls an interface defense", async () => {

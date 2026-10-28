@@ -586,7 +586,13 @@
           grid-area: program-attack-and-damage;
           display: grid;
           grid-template-columns: 0.938rem 0.938rem;
-          grid-template-areas: "program-attack program-damage";
+
+          /* Both row types share this container: attacker programs fill the
+             first row, defender/booster/blackice rows the second. Unused
+             auto rows collapse to zero height. */
+          grid-template-areas:
+            "program-attack program-damage"
+            "program-defense program-rez";
 
           .installed-program-attack {
             grid-area: program-attack;
@@ -598,6 +604,10 @@
 
           .installed-program-damage {
             grid-area: program-damage;
+          }
+
+          .program-rez-toggle {
+            grid-area: program-rez;
           }
         }
 
