@@ -169,6 +169,35 @@ const programDamageDialog = (page) =>
     has: page.locator(".total-mods"),
   });
 
+/**
+ * The installed-program row for a program id in the netspace software list.
+ */
+const installedProgramRow = (content, programId) =>
+  content.locator(
+    `li.item.cyberdeck-installed-software-list[data-item-id="${programId}"]`,
+  );
+
+/**
+ * The rezzed-program row for a program id in the netspace software list.
+ */
+const rezzedProgramRow = (content, programId) =>
+  content.locator(
+    `li.item.cyberdeck-rezzed-software-list[data-item-id="${programId}"]`,
+  );
+
+/**
+ * Assert a program row is installed and unrezzed: the name link is not
+ * italicized and the rez glyph shows the up arrow.
+ */
+async function expectUnrezzedProgram(row) {
+  await expect(row.locator("a.name.item-view")).not.toHaveClass(/text-italic/);
+  await expect(
+    row
+      .locator('a.program-execution[data-execution-type="rez"]')
+      .locator("i.fa-circle-up"),
+  ).toBeVisible();
+}
+
 test("a fresh character's Fight tab shows empty Meatspace sections", async ({
   page,
 }) => {
@@ -702,9 +731,7 @@ test("installed programs group under their class headers with the right glyphs",
 
   await test.step("booster and defender rows show def + rez glyphs, not italic", async () => {
     for (const key of ["booster", "defender"]) {
-      const row = content.locator(
-        `li.item.cyberdeck-installed-software-list[data-item-id="${programIds[key]}"]`,
-      );
+      const row = installedProgramRow(content, programIds[key]);
       await expect(
         row.locator('a.program-execution[data-execution-type="def"]'),
       ).toBeVisible();
@@ -718,9 +745,7 @@ test("installed programs group under their class headers with the right glyphs",
   });
 
   await test.step("attacker rows show atk + damage glyphs, no def or rez", async () => {
-    const row = content.locator(
-      `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.attacker}"]`,
-    );
+    const row = installedProgramRow(content, programIds.attacker);
     await expect(
       row.locator('a.program-execution[data-execution-type="atk"]'),
     ).toBeVisible();
@@ -736,9 +761,7 @@ test("installed programs group under their class headers with the right glyphs",
   });
 
   await test.step("blackice rows show rez but no def glyph", async () => {
-    const row = content.locator(
-      `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.blackice}"]`,
-    );
+    const row = installedProgramRow(content, programIds.blackice);
     await expect(
       row.locator('a.program-execution[data-execution-type="rez"]'),
     ).toBeVisible();
@@ -765,9 +788,7 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
   const content = await openFightTab(page, sheetId);
   await openNetspace(page, sheetId);
 
-  const installedRow = content.locator(
-    `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.booster}"]`,
-  );
+  const installedRow = installedProgramRow(content, programIds.booster);
   const nameLink = installedRow.locator("a.name.item-view");
   const rezGlyph = installedRow.locator(
     'a.program-execution[data-execution-type="rez"]',
@@ -775,9 +796,7 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
   const derezGlyph = installedRow.locator(
     'a.program-execution[data-execution-type="derez"]',
   );
-  const rezzedRow = content.locator(
-    `li.item.cyberdeck-rezzed-software-list[data-item-id="${programIds.booster}"]`,
-  );
+  const rezzedRow = rezzedProgramRow(content, programIds.booster);
 
   await test.step("an unrezzed program renders in the installed list without italics", async () => {
     await expect(nameLink).toBeVisible({ timeout: 10000 });
@@ -815,21 +834,10 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
     const freshSheet = await closeAndReopenActorSheet(page, actorId);
     const freshContent = await openFightTab(page, freshSheet);
     await expect(
-      freshContent.locator(
-        `li.item.cyberdeck-rezzed-software-list[data-item-id="${programIds.booster}"]`,
-      ),
+      rezzedProgramRow(freshContent, programIds.booster),
     ).toHaveCount(0, { timeout: 10000 });
-    const freshRow = freshContent.locator(
-      `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.booster}"]`,
-    );
-    await expect(freshRow.locator("a.name.item-view")).not.toHaveClass(
-      /text-italic/,
-    );
-    await expect(
-      freshRow
-        .locator('a.program-execution[data-execution-type="rez"]')
-        .locator("i.fa-circle-up"),
-    ).toBeVisible();
+    const freshRow = installedProgramRow(freshContent, programIds.booster);
+    await expectUnrezzedProgram(freshRow);
   });
 
   await test.step("derezzing persists across a world reload", async () => {
@@ -838,21 +846,10 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
     const contentAfterReload = await openFightTab(page, sheet);
     await openNetspace(page, sheet);
     await expect(
-      contentAfterReload.locator(
-        `li.item.cyberdeck-rezzed-software-list[data-item-id="${programIds.booster}"]`,
-      ),
+      rezzedProgramRow(contentAfterReload, programIds.booster),
     ).toHaveCount(0, { timeout: 10000 });
-    const row = contentAfterReload.locator(
-      `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.booster}"]`,
-    );
-    await expect(row.locator("a.name.item-view")).not.toHaveClass(
-      /text-italic/,
-    );
-    await expect(
-      row
-        .locator('a.program-execution[data-execution-type="rez"]')
-        .locator("i.fa-circle-up"),
-    ).toBeVisible();
+    const row = installedProgramRow(contentAfterReload, programIds.booster);
+    await expectUnrezzedProgram(row);
   });
 });
 
@@ -880,16 +877,12 @@ test("reduce-rez decrements a rezzed program's rez and reset-rez restores max", 
   const content = await openFightTab(page, sheetId);
   await openNetspace(page, sheetId);
 
-  const installedRow = content.locator(
-    `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.booster}"]`,
-  );
+  const installedRow = installedProgramRow(content, programIds.booster);
   await installedRow
     .locator('a.program-execution[data-execution-type="rez"]')
     .click();
 
-  const rezzedRow = content.locator(
-    `li.item.cyberdeck-rezzed-software-list[data-item-id="${programIds.booster}"]`,
-  );
+  const rezzedRow = rezzedProgramRow(content, programIds.booster);
   await expect(rezzedRow).toBeVisible({ timeout: 10000 });
 
   const rezValue = () =>
@@ -947,12 +940,8 @@ test("program attack, defense and damage rolls post cards titled with the progra
   const content = await openFightTab(page, sheetId);
   await openNetspace(page, sheetId);
 
-  const attackerRow = content.locator(
-    `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.attacker}"]`,
-  );
-  const defenderRow = content.locator(
-    `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.defender}"]`,
-  );
+  const attackerRow = installedProgramRow(content, programIds.attacker);
+  const defenderRow = installedProgramRow(content, programIds.defender);
 
   async function rollProgram(row, executionType, name) {
     const messagesBefore = await chatMessageCount(page);
