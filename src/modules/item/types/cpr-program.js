@@ -24,11 +24,11 @@ export default class CPRProgramItem extends CPRItem {
   }
 
   /**
-   * Sets a program to uninstalled.
+   * Sets a program to unrezzed.
    *
    * @public
    */
-  unsetRezzed() {
-    this.system.isRezzed = false;
+  async unsetRezzed() {
+    await this.update({ "system.isRezzed": false });
   }
 }

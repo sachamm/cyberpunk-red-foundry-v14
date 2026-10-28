@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
+import { gotoReadyWorld as gotoGame } from "../../../tools/playwright/session/world.mjs";
 import {
   chatMessageCount,
   closeAndReopenActorSheet,
@@ -7,6 +8,7 @@ import {
   createInventoryItemViaUI,
   enablePlayersCreateInventory,
   getPlayersCreateInventory,
+  reopenActorSheetViaUI,
   reopenItemSheetViaUI,
   setPlayersCreateInventory,
   uniqueName,
@@ -131,11 +133,17 @@ async function setupCharacterWithDeck(
 
 /**
  * Switch the Fight tab to Netspace (requires an equipped cyberdeck).
+ * Idempotent: the toggle link only renders while in Meatspace, so this is a
+ * no-op when the sheet already shows Netspace (e.g. after a world reload,
+ * where the persisted fightState flag re-opens it there).
  */
 async function openNetspace(page, sheetId) {
-  await page
-    .locator(`#${sheetId} a.toggle-fight-state[data-state="Netspace"]`)
-    .click();
+  const netspaceLink = page.locator(
+    `#${sheetId} a.toggle-fight-state[data-state="Netspace"]`,
+  );
+  if (await netspaceLink.isVisible()) {
+    await netspaceLink.click();
+  }
 }
 
 /**
@@ -841,16 +849,6 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
       )
       .toBe(false);
 
-    // Candidate bug: the derez is never persisted. `derezProgram` only
-    // mutates the client document in memory (CPRProgramItem.unsetRezzed)
-    // and relies on this sheet's trailing batched updateEmbeddedDocuments
-    // with a full system payload (cpr-character-sheet.js). Foundry v13
-    // defaults every update operation to diff:true, so the client diffs the
-    // payload against the already-mutated document, finds no difference, and
-    // silently skips the update — the server keeps isRezzed: true and a
-    // world reload re-rezzes the program. Every other execution path (rez,
-    // reduce-rez, reset-rez) persists because it performs a direct
-    // program.update() with a plain diff before that batch.
     const freshSheet = await closeAndReopenActorSheet(page, actorId);
     const freshContent = await openFightTab(page, freshSheet);
     await expect(
@@ -866,6 +864,32 @@ test("rezzing a program moves it to the rezzed list and derezzing reverses it", 
     );
     await expect(
       freshRow
+        .locator('a.program-execution[data-execution-type="rez"]')
+        .locator("i.fa-circle-up"),
+    ).toBeVisible();
+  });
+
+  await test.step("derezzing persists across a world reload", async () => {
+    // The buggy path only mutated the client document in memory, so an
+    // in-session re-read cannot see the bug — only a real DB round-trip
+    // can (same pattern as ammo-persistence.spec.mjs).
+    await gotoGame(page);
+    const sheet = await reopenActorSheetViaUI(page, actorId);
+    const contentAfterReload = await openFightTab(page, sheet);
+    await openNetspace(page, sheet);
+    await expect(
+      contentAfterReload.locator(
+        `li.item.cyberdeck-rezzed-software-list[data-item-id="${programIds.booster}"]`,
+      ),
+    ).toHaveCount(0, { timeout: 10000 });
+    const row = contentAfterReload.locator(
+      `li.item.cyberdeck-installed-software-list[data-item-id="${programIds.booster}"]`,
+    );
+    await expect(row.locator("a.name.item-view")).not.toHaveClass(
+      /text-italic/,
+    );
+    await expect(
+      row
         .locator('a.program-execution[data-execution-type="rez"]')
         .locator("i.fa-circle-up"),
     ).toBeVisible();

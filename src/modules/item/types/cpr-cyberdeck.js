@@ -435,7 +435,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   // eslint-disable-next-line class-methods-use-this
   async derezProgram(program) {
-    program.unsetRezzed();
+    await program.unsetRezzed();
     if (program.system.class === "blackice") {
       await CPRCyberdeckItem._derezBlackIceToken(program);
     }
