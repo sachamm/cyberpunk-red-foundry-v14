@@ -75,10 +75,22 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
         }),
         "Wardrobe & Style": new fields.SchemaField(
           UpgradeModifierSchema.defineSchema(),
-          { required: false },
+          {
+            required: false,
+            deprecate: {
+              version: "0.93.0",
+              path: "",
+              reason: "Clothing bonuses now use Active Effects",
+            },
+          },
         ),
         cool: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
           required: false,
+          deprecate: {
+            version: "0.93.0",
+            path: "",
+            reason: "Clothing bonuses now use Active Effects",
+          },
         }),
       }),
       type: new fields.StringField({

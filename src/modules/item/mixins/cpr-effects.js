@@ -194,6 +194,17 @@ const Effects = function Effects() {
    * @returns {Bool}
    */
   this.areEffectsSuppressed = function areEffectsSuppressed() {
+    if (this.type === "itemUpgrade" && this.system.type === "clothing") {
+      // Upgrades have no equipped field; the installed clothing owns that state.
+      const equippedHost = this.actor?.items.some(
+        (item) =>
+          item.type === "clothing" &&
+          item.system.equipped === "equipped" &&
+          item.system.installedItems.list.includes(this.id),
+      );
+      if (!equippedHost) return true;
+      if (["equipped", "installed"].includes(this.system.usage)) return false;
+    }
     switch (this.system.usage) {
       case "carried":
         return this.system.equipped === "owned";

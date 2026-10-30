@@ -23,3 +23,4 @@ export { default as RelinkCyberwareIcons } from "./045-relink-cyberweapon-icons.
 export { default as RelinkDlcContent } from "./046-relink-dlc-content.js";
 export { default as UpdateRoleIcons } from "./047-update-role-icons.js";
 export { default as CorrectIconSpelling } from "./048-correct-icon-spelling.js";
+export { default as ClothingUpgradeEffects } from "./049-clothing-upgrade-effects.js";

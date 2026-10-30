@@ -619,22 +619,7 @@ CPR.upgradableDataPoints = {
       localization: "CPR.itemSheet.itemUpgrade.shieldHp",
     },
   },
-  clothing: {
-    "Wardrobe & Style": {
-      type: "modifier",
-      value: 0,
-      isSituational: false,
-      onByDefault: false,
-      localization: "CPR.global.itemType.skill.wardrobeAndStyle",
-    },
-    cool: {
-      type: "modifier",
-      value: 0,
-      isSituational: false,
-      onByDefault: false,
-      localization: "CPR.global.stats.cool",
-    },
-  },
+  clothing: {},
   gear: {},
 };
 
