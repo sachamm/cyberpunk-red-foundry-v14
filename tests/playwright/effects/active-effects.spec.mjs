@@ -1127,11 +1127,41 @@ test("actor-owned effects on a character", async ({ page }) => {
   const setStatMod = async ({ mode, value }) => {
     const row = aeConfig.locator('.changes-list > li[data-index="1"]');
     if (mode) {
+      const previousRow = await row.elementHandle();
       await row.locator('select[name="changes.1.mode"]').selectOption(mode);
+      await page.waitForFunction(
+        ({ actorId: aid, effectId: eid, mode: expected }) =>
+          game.actors.get(aid).effects.get(eid).changes[1].mode ===
+          Number(expected),
+        { actorId, effectId, mode },
+      );
+      await page.waitForFunction(
+        (element) => !element.isConnected,
+        previousRow,
+      );
+      await previousRow.dispose();
     }
     const valueInput = row.locator('input[name="changes.1.value"]');
     await valueInput.fill(value);
     await valueInput.press("Tab");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid, value: expected }) =>
+        game.actors.get(aid).effects.get(eid).changes[1].value === expected,
+      { actorId, effectId, value },
+    );
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+    await clickEffectActionViaUI(
+      await getEffectRowViaUI(actorSheet, "New Effect"),
+      "edit",
+    );
+    await expect(aeConfig).toBeVisible();
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    await expect(valueInput).toHaveValue(value);
+    if (mode) {
+      await expect(row.locator('select[name="changes.1.mode"]')).toHaveValue(
+        mode,
+      );
+    }
   };
 
   const expectBodyValue = async (expected) => {
