@@ -319,6 +319,7 @@ export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
 
       const skillByCategory = skillsList.filter((s) => k === s.system.category);
 
+      skillByCategory.sort((a, b) => a.name.localeCompare(b.name));
       skillByCategory.forEach((s) => {
         options.push({
           value: s.name,
