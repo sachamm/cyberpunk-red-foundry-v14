@@ -954,6 +954,12 @@ CPR.browserFilters = {
       field: "system.handsReq",
       label: "CPR.browser.filter.hands",
     },
+    {
+      id: "upgraded",
+      type: "boolean",
+      field: "system.installedItems.list.0",
+      label: "CPR.browser.filter.upgraded",
+    },
   ],
   ammo: [
     {
@@ -1000,6 +1006,12 @@ CPR.browserFilters = {
       // Hands, which cyberware data models don't define) while the toggle is on.
       filters: CPR.browserWeaponStatFilters,
     },
+    {
+      id: "upgraded",
+      type: "boolean",
+      field: "system.installedItems.list.0",
+      label: "CPR.browser.filter.upgraded",
+    },
   ],
   clothing: [
     {
@@ -1015,6 +1027,12 @@ CPR.browserFilters = {
       field: "system.style",
       choices: "clothingVarieties",
       label: "CPR.browser.filter.clothingStyle",
+    },
+    {
+      id: "upgraded",
+      type: "boolean",
+      field: "system.installedItems.list.0",
+      label: "CPR.browser.filter.upgraded",
     },
   ],
   armor: [
@@ -1035,6 +1053,12 @@ CPR.browserFilters = {
       derive: "armorSp",
       label: "CPR.browser.filter.armorSp",
     },
+    {
+      id: "upgraded",
+      type: "boolean",
+      field: "system.installedItems.list.0",
+      label: "CPR.browser.filter.upgraded",
+    },
   ],
   cyberdeck: [
     {
@@ -1042,6 +1066,12 @@ CPR.browserFilters = {
       type: "range",
       field: "system.installedItems.slots",
       label: "CPR.browser.filter.slots",
+    },
+    {
+      id: "upgraded",
+      type: "boolean",
+      field: "system.installedItems.list.0",
+      label: "CPR.browser.filter.upgraded",
     },
   ],
   drug: [
@@ -1052,6 +1082,14 @@ CPR.browserFilters = {
       field: "drugType",
       choices: "drugTypes",
       label: "CPR.browser.filter.type",
+    },
+  ],
+  gear: [
+    {
+      id: "upgraded",
+      type: "boolean",
+      field: "system.installedItems.list.0",
+      label: "CPR.browser.filter.upgraded",
     },
   ],
   program: [
@@ -1070,6 +1108,14 @@ CPR.browserFilters = {
       field: "system.type",
       choices: "itemUpgradeTypes",
       label: "CPR.itemSheet.itemUpgrade.upgradeType",
+    },
+  ],
+  vehicle: [
+    {
+      id: "upgraded",
+      type: "boolean",
+      field: "system.installedItems.list.0",
+      label: "CPR.browser.filter.upgraded",
     },
   ],
 };
