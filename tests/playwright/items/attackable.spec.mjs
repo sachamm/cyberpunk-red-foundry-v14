@@ -198,6 +198,32 @@ test.describe("Item attackable mixin", () => {
       ).toBe(8 + 2);
     });
 
+    await test.step("raising Handgun to 4 changes the next roll's total", async () => {
+      const charSheet = page.locator(`#${weapon.sheetId}`);
+      await charSheet.locator('.navtabs-right a[data-tab="skills"]').click();
+      const levelInput = characterSkillRow(
+        page,
+        weapon.sheetId,
+        "Handgun",
+      ).locator(SKILL_FIELD.levelInput);
+      await levelInput.fill("4");
+      await levelInput.press("Tab");
+      await waitForSkillLevel(page, actorId, "Handgun", 4);
+
+      const messagesBefore = await chatMessageCount(page);
+      await attackRoll.click({ modifiers: CTRL_CLICK_MODIFIERS });
+      const messageId = await waitForNewChatMessage(page, messagesBefore, {
+        requireRoll: true,
+      });
+      const card = chatRollCard(page, messageId);
+      await expect(card).toBeVisible();
+      const dice = await rollDiceSum(page, messageId);
+      expect(
+        (await rollCardTotal(card)) - dice,
+        "card total minus the rolled die",
+      ).toBe(8 + 4);
+    });
+
     await dismissNotifications(page);
   });
 

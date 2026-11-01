@@ -122,7 +122,7 @@ test.describe("Item upgradable mixin", () => {
       upgradeName: modifierName,
       dataPoint: "magazine",
       modType: "modifier",
-      value: 2,
+      value: 4,
     });
 
     const freshSheet = ammo.sheetId;
