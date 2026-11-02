@@ -17,6 +17,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 ### Nouvelles fonctionnalités
 
+- Fade concealed inventory item thumbnails, restoring their opacity on hover
 - Add Foundry v13 Support
 - Remove Foundry v12 Support
 - Remove all non-core compendia.
