@@ -18,6 +18,7 @@ import {
   reopenActorSheetViaUI,
   reopenItemSheetViaUI,
   setItemSelected,
+  toggleItemCheckbox,
   uniqueName,
   waitForNewChatMessage,
 } from "../../../tools/playwright/ui/index.mjs";
@@ -31,6 +32,86 @@ import {
 } from "../actors/character-sheet-helpers.mjs";
 
 test.beforeEach(async ({ page }) => gotoReadyWorld(page));
+
+test("upgrade settings only show modifier sections with configurable fields", async ({
+  page,
+}) => {
+  const itemId = await createItemViaUI(page, {
+    type: "itemUpgrade",
+    name: uniqueName("upgrade-settings"),
+  });
+  let sheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+  const explanation =
+    "Modifier types will be added/subtracted to the datapoint.";
+
+  for (const [type, field] of [
+    ["clothing", null],
+    ["weapon", "attackmod"],
+    ["gear", null],
+    ["armor", "bodySp"],
+    ["cyberware", null],
+    ["cyberdeck", "slots"],
+    ["vehicle", "sdp"],
+  ]) {
+    await test.step(`${type} only shows applicable modifier controls`, async () => {
+      await setItemSelected(page, {
+        sheetId,
+        itemId,
+        name: "system.type",
+        value: type,
+      });
+      await closeDocSheet(page, { collection: "items", id: itemId });
+      sheetId = await reopenItemSheetViaUI(page, itemId);
+      const sheet = await openItemSettings(page, sheetId);
+      const header = sheet
+        .locator(".item-settings-tab")
+        .getByText("Attribute", { exact: true });
+      if (field) {
+        await expect.soft(header).toBeVisible();
+        await expect.soft(sheet).toContainText(explanation);
+        await expect
+          .soft(sheet.locator(`input[name="system.modifiers.${field}.value"]`))
+          .toBeVisible();
+      } else {
+        await expect.soft(header).toHaveCount(0);
+        await expect.soft(sheet).not.toContainText(explanation);
+      }
+    });
+  }
+
+  await test.step("cyberware still offers secondary-weapon settings", async () => {
+    await setItemSelected(page, {
+      sheetId,
+      itemId,
+      name: "system.type",
+      value: "cyberware",
+    });
+    await closeDocSheet(page, { collection: "items", id: itemId });
+    sheetId = await reopenItemSheetViaUI(page, itemId);
+    for (const expected of [true, false]) {
+      await toggleItemCheckbox(page, {
+        sheetId,
+        itemId,
+        target: "system.modifiers.secondaryWeapon.configured",
+        expected,
+      });
+      await closeDocSheet(page, { collection: "items", id: itemId });
+      sheetId = await reopenItemSheetViaUI(page, itemId);
+      const sheet = await openItemSettings(page, sheetId);
+      await expect
+        .soft(sheet.locator('input[name="system.attackmod"]'))
+        .toHaveCount(expected ? 1 : 0);
+      await expect
+        .soft(sheet.getByText("Attribute", { exact: true }))
+        .toHaveCount(0);
+      await expect.soft(sheet).not.toContainText(explanation);
+    }
+  });
+  await closeDocSheet(page, { collection: "items", id: itemId });
+});
 
 test("migrated clothing effects follow installation and the equipped host", async ({
   page,
