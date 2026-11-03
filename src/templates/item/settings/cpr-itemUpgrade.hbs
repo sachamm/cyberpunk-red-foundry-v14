@@ -62,9 +62,8 @@
     {{/if}}
   </div>
 </li>
-{{localize "CPR.itemSheet.itemUpgrade.upgradeOverview"}}
-{{!-- Cyberware has no upgradable data points, but could have a weapon attachment --}}
-{{#if (cprCompare system.type "!==" "cyberware") }}
+{{#if upgradableDataPoints.length}}
+  {{localize "CPR.itemSheet.itemUpgrade.upgradeOverview"}}
   <li class="item items-header flexrow">
     <div class="setting-name text-nowrap">
       {{localize "CPR.itemSheet.itemUpgrade.dataPoint"}}
