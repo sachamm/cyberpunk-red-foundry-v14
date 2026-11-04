@@ -16,6 +16,63 @@ import {
 
 test.beforeEach(async ({ page }) => gotoReadyWorld(page));
 
+test("items without concealability keep their thumbnails unfaded", async ({
+  page,
+}) => {
+  const inventoryCreation = await page.evaluate(() =>
+    game.settings.get(game.system.id, "playersCreateInventory"),
+  );
+  await page.evaluate(() =>
+    game.settings.set(game.system.id, "playersCreateInventory", true),
+  );
+  try {
+    const actorId = await createActorViaUI(page, {
+      name: uniqueName("unconcealable-items"),
+    });
+    let actorSheetId = await expectSheetRendered(page, {
+      collection: "actors",
+      id: actorId,
+    });
+    for (const type of ["program", "netarch"]) {
+      await test.step(`${type} remains unfaded after repeated sheet reopens`, async () => {
+        await activateGearTab(page, actorSheetId);
+        const itemId = await createEmbeddedItemViaUI(page, {
+          sheetId: actorSheetId,
+          actorId,
+          type,
+        });
+        expect(
+          await page.evaluate(
+            ({ actorId, itemId }) =>
+              game.actors.get(actorId).items.get(itemId).system.concealable,
+            { actorId, itemId },
+          ),
+        ).toBeUndefined();
+        for (let render = 0; render < 2; render += 1) {
+          await closeDocSheet(page, { collection: "actors", id: actorId });
+          actorSheetId = await reopenActorSheetViaUI(page, actorId);
+          await activateGearTab(page, actorSheetId);
+          await page.mouse.move(0, 0);
+          await expect
+            .soft(
+              page.locator(
+                `#${actorSheetId} li.item[data-item-id="${itemId}"] .item-thumb`,
+              ),
+            )
+            .toHaveCSS("opacity", "1");
+        }
+      });
+    }
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+  } finally {
+    await page.evaluate(
+      (value) =>
+        game.settings.set(game.system.id, "playersCreateInventory", value),
+      inventoryCreation,
+    );
+  }
+});
+
 for (const type of ["clothing", "ammo", "gear"]) {
   test(`concealed ${type} has a thumbnail cue without fading its row`, async ({
     page,
