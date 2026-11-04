@@ -356,7 +356,7 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
       const concealed = this.actor.items.get(itemId)?.system.concealable;
       thumbnail.classList.toggle(
         "item-concealed",
-        concealed?.concealable && concealed.isConcealed,
+        Boolean(concealed?.concealable && concealed.isConcealed),
       );
     });
 
