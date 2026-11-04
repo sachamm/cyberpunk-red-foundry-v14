@@ -46,6 +46,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 ### Исправления
 
+- Clothing upgrades now use Active Effects for wearer bonuses. Existing COOL and Wardrobe & Style bonuses are converted, with the original settings retained for reference. COOL follows normal STAT effect behavior; situational settings remain available for Wardrobe & Style.
 - Preserve shared empty ammo stacks when transferring loaded weapons between actor sheets
 - Calculate EMP from the updated Humanity on the first recalculation
 - Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
