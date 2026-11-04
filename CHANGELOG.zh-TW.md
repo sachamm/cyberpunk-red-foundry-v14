@@ -86,6 +86,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Removed duplicate cyberware icons from `src/icons/cyberweapons`
 - Unique icons have been created for each role
 - Updated `CREDITS.md` with attribution for all system assets
+- Rolling damage after an aimed shot will remember the location in the damage roll
 
 ### Plumbing
 
