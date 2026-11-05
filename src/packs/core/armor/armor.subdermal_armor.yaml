@@ -22,7 +22,13 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Armor Item for Subdermal Armor Cyberware.</p>
+      <blockquote>
+        <p>
+          Armor Item for tracking SP of
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.O5GmxTYCrrs8uWAd]{Subdermal Armor}
+          Cyberware.
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   headLocation:

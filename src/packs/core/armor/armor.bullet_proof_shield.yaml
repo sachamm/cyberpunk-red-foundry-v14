@@ -22,7 +22,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Requires an arm and has HP that is reduced by damage.</p>
+      <blockquote><p>Requires a free arm to be effective.</p></blockquote>
   equipped: owned
   favorite: false
   headLocation:

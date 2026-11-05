@@ -22,9 +22,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>
-        Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.
-      </p>
+      <p>Metal plated armor to resist the most powerful hits.</p>
   equipped: owned
   favorite: false
   headLocation:

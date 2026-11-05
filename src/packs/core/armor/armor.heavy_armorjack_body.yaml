@@ -22,7 +22,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
+      <p>Heavier version of an Armorjack.</p>
   equipped: owned
   favorite: false
   headLocation:

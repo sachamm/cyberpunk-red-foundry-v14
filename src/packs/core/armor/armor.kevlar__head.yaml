@@ -22,7 +22,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Standard Kevlar for your head. No armor penalty.</p>
+      <p>Standard Kevlar for your head.</p>
   equipped: owned
   favorite: false
   headLocation:

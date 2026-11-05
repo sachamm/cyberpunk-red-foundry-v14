@@ -22,7 +22,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Simple Leather armor. No armor penalty.</p>
+      <p>Simple Leather armor.</p>
   equipped: owned
   favorite: false
   headLocation:

@@ -22,7 +22,13 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Armor Item for Skin Weave Cyberware.</p>
+      <blockquote>
+        <p>
+          Armor Item for tracking the SP of
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.micrAI9oicghVbcG]{Skin Weave}
+          Cyberware.
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   headLocation:

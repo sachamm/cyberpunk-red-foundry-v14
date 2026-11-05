@@ -22,7 +22,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Standard Kevlar clothing. No armor penalty.</p>
+      <p>Standard Kevlar clothing.</p>
   equipped: owned
   favorite: false
   headLocation:

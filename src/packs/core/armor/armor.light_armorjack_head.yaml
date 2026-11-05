@@ -22,7 +22,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Light version of an Armorjack for your head. No armor penalty.</p>
+      <p>Light version of an Armorjack for your head.</p>
   equipped: owned
   favorite: false
   headLocation:

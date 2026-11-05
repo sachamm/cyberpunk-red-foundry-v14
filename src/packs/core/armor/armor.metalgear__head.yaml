@@ -23,8 +23,7 @@ system:
   description:
     value: |
       <p>
-        Heaviest and most powerful armor in circulation. Protects your head -4 to REF,
-        DEX, and MOVE.
+        Protect your head with the heaviest and most durable armor in circulation.
       </p>
   equipped: owned
   favorite: false
