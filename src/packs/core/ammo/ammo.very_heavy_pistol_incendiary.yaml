@@ -23,9 +23,11 @@ system:
   description:
     value: |
       <p>
-        If damage dealt to target they are set alight. Target takes 2 damage to HP at
-        end of their turn unless they use action to extinguish flames. Does not stack.
+        If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target
+        takes 2 damage to HP at end of their turn unless they use action to extinguish
+        flames.
       </p>
+      <blockquote><p>Fire effects do not stack.</p></blockquote>
   favorite: false
   installLocation: mall
   overrides:

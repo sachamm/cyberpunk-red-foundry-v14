@@ -22,9 +22,12 @@ system:
   description:
     value: |
       <p>
-        No immediate damage. If hit <strong>DV15 Resist Torture/Drugs</strong> Check.
-        On a fail 3d6 damage to HP. No Ablation.
+        No immediate damage. Does not ablate armor. If hit target rolls a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.
+        On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}
+        directly.
       </p>
+      <blockquote><p>Does not affect inorganic targets.</p></blockquote>
   favorite: false
   installLocation: mall
   overrides:
@@ -33,9 +36,9 @@ system:
       mode: none
       value: -1
     crit:
-      bonus: 5
-      count: 2
-      override: false
+      bonus: 0
+      count: 0
+      override: true
       threshold: 0
     damage:
       minimum: 1d6

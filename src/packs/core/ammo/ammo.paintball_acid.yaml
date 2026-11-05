@@ -23,13 +23,11 @@ system:
     value: |
       <p>
         Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on
-        hit*.
+        hit.
       </p>
-      <p>
-        <em
-          >*Not currently supported so will need to manually reduce armour on hit</em
-        >
-      </p>
+      <blockquote>
+        <p><em>Not currently supported, manually reduce armour on hit</em></p>
+      </blockquote>
   favorite: false
   installLocation: mall
   overrides:

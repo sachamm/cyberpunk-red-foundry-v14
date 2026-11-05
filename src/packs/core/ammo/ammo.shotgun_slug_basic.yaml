@@ -21,7 +21,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Basic ammo, nothing special.</p>
+      <p>Basic ammo, single target only.</p>
   favorite: false
   installLocation: mall
   overrides:

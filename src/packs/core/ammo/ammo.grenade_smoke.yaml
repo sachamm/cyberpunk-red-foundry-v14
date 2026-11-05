@@ -21,10 +21,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>
-        Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute. Tasks
-        obscured by smoke have a -4 penalty.
-      </p>
+      <p>Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute.</p>
+      <blockquote>
+        <p>Tasks obscured by smoke have a <strong>-4 penalty</strong>.</p>
+      </blockquote>
   favorite: false
   installLocation: mall
   overrides:

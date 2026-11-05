@@ -22,10 +22,15 @@ system:
   description:
     value: |
       <p>
-        Deals no damage. If hit roll <strong>DV15 Resist Torture/Drugs</strong>. On a
-        fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for
-        1 minute. No Crit damage dealt.
+        Deals no damage. Does not ablate armor. If hit, targets roll
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
+        On a failure, targets suffer the
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}
+        and
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}
+        Critical injuries (see pg. 188) for 1 minute.
       </p>
+      <blockquote><p>Does not affect inorganic targets.</p></blockquote>
   favorite: false
   installLocation: mall
   overrides:

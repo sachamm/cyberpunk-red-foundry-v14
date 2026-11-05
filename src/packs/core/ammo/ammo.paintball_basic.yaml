@@ -21,7 +21,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Regular paintballs that don't do any damage. Annoying though.</p>
+      <p>Regular paintballs that don't do any damage. Can obstruct vision.</p>
   favorite: false
   installLocation: mall
   overrides:

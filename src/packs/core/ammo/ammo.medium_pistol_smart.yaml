@@ -22,10 +22,17 @@ system:
   description:
     value: |
       <p>
-        Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by
-        4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add
-        luck. Target can dodge the second roll as normal if able to do so.
+        If you miss a single shot attack by 4 or less, roll second attack at same DV
+        1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as
+        normal if able to do so.
       </p>
+      <blockquote>
+        <p>
+          Requires
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}
+          - Not enforced by system.
+        </p>
+      </blockquote>
   favorite: false
   installLocation: mall
   overrides:

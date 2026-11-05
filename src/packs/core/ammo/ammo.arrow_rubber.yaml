@@ -23,8 +23,11 @@ system:
     value: |
       <p>
         Does not cause Critical Injury. Does not ablate armor. Leaves target at
-        minimum 1hp. Counts as Basic ammo for exotic weapons
+        minimum 1hp. Counts as Basic ammo for exotic weapons.
       </p>
+      <blockquote>
+        <p>Non-lethal damage not currently supported by system.</p>
+      </blockquote>
   favorite: false
   installLocation: mall
   overrides:
@@ -33,7 +36,7 @@ system:
       mode: none
       value: -1
     crit:
-      bonus: 5
+      bonus: 0
       count: 0
       override: true
       threshold: 0

@@ -22,11 +22,13 @@ system:
   description:
     value: |
       <p>
-        Deals no damage. If meat target hit
-        <strong>DV13 Resist Torture/Drugs</strong>. On fail falls Prone (see pg. 169)
-        and unconscious for 1 minute. Can be woken by damage or another person using
-        an action to touch/shake them.
+        Deals no damage. Target rolls a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.
+        On a failure, the target falls <strong>Prone</strong> (see pg. 169) and
+        unconscious for 1 minute. Can be woken by damage or another person using an
+        action to touch/shake them.
       </p>
+      <blockquote><p>Does not affect inorganic targets.</p></blockquote>
   favorite: false
   installLocation: mall
   overrides:

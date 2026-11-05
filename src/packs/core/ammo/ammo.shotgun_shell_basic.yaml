@@ -21,7 +21,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Basic ammo, nothing special.</p>
+      <p>Basic ammo, deals damage to all targets in a 6x6 m/yds area.</p>
   favorite: false
   installLocation: mall
   overrides:

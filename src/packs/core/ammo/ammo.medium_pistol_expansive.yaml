@@ -23,9 +23,11 @@ system:
     value: |
       <p>
         If the victim rolls the Foreign object Critical Injury (see pg. 187), they
-        also roll for a second (different) Critical Injury. The second Critical Injury
-        does not deal bonus damage.
+        also roll for a second (different) Critical Injury.
       </p>
+      <blockquote>
+        <p>The second Critical Injury does not deal bonus damage.</p>
+      </blockquote>
   favorite: false
   installLocation: mall
   overrides:

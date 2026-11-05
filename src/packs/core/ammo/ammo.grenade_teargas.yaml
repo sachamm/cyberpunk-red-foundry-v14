@@ -22,11 +22,13 @@ system:
   description:
     value: |
       <p>
-        Deals no Damage. Hit targets with Meat eyes roll
-        <strong>DV13 Resist Torture/Drugs</strong> Check. On fail suffer Damaged Eye
-        Critical Injury (See pg. 188) for 1 minute. Does not deal critical bonus
-        damage.
+        Deals no Damage. Does not deal bonus critical damage. Targets roll
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.
+        On failure, the target suffers
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}
+        Critical Injury for 1 minute.
       </p>
+      <blockquote><p>Does not affect inorganic targets.</p></blockquote>
   favorite: false
   installLocation: mall
   overrides:
