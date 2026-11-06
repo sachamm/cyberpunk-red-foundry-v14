@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Provides immunity to deafness or sudden loud noises.</p>
+      <p>
+        Provides immunity to deafness or sudden loud noises like those produced by
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.e8gDMbdK1oPKwhqW]{Grenade (Flashbang)}
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -29,7 +29,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Must be paired. Built-in virtuality goggles.</p>
+      <p>
+        Built-in
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.ECoCsPyfIEBCSggM]{virtuality goggles}.
+      </p>
+      <blockquote>
+        <p>Cyberware must be paired to provide associated benefit.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

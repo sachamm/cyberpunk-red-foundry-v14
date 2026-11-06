@@ -114,10 +114,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A regular leg. This can support attachments like a Standard Foot or weapons
-        such as the Talon Foot.
-      </p>
+      <p>A normal organic leg.</p>
+      <blockquote>
+        <p>
+          Can support attachments like a
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.W7S33SRvtrZUpceP]{Standard Foot}
+          or other weapons &amp; tools that can be installed into a meat leg.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

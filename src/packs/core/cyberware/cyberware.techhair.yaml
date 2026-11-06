@@ -74,7 +74,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>+2 Grooming with Chemskin. Color changing hair.</p>
+      <p>Light-up color-changing artificial hair.</p>
+      <blockquote>
+        <p>
+          +2 <strong>Personal Grooming</strong> when installed with
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.6jicmuwJKrB98O1R]{Chemskin}.
+          Effects do not stack.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

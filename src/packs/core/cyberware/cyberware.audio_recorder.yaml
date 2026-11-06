@@ -29,7 +29,12 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Records sound. Can link into a chip or agent.</p>
+      <p>
+        Can save audio recordings onto a
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gAfBLrpJzkKVtr8o]{Memory Chip}
+        or linked
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

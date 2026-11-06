@@ -29,7 +29,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Chipware. Allows scent tracking</p>
+      <p>A boosted sense of smell that allows scent tracking.</p>
+      <blockquote>
+        <p>
+          Chipware must be installed into a
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.IJarQGKk5rPayoLT]{Chipware Socket}
+          or similar device.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

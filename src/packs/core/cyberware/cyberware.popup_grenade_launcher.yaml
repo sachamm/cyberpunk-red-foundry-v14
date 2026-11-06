@@ -32,10 +32,16 @@ system:
   description:
     value: |
       <p>
-        A concealable one-shot Grenade Launcher. Can't hold anything with this hand
-        while activated. Incompatible with all upgrades except
-        @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun Link}.
+        A concealable one-shot
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.KgqUdz9Fs55747gv]{Grenade Launcher}.
       </p>
+      <blockquote>
+        <p>Can't hold anything with this hand while activated.</p>
+        <p>
+          Incompatible with all upgrades except
+          @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun Link}.
+        </p>
+      </blockquote>
   dvTable: DV Grenade Launcher
   favorite: false
   fireModes:

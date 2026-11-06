@@ -29,13 +29,11 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A foldable bulletproof shield that can be drawn or concealed easily. Can't
-        hold anything with this hand while activated.
-      </p>
+      <p>A foldable shield that can be drawn or concealed easily.</p>
       <blockquote>
+        <p>Can't hold anything with this hand while activated.</p>
         <p>
-          Add
+          Add a
           @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet Proof Shield}
           to inventory to manage shield HP.
         </p>

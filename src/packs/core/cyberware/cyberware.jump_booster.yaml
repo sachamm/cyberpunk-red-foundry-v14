@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Built-in hydraulics negates penalty for jumping. Must be paired.</p>
+      <p>Built-in hydraulics negates penalty for jumping.</p>
+      <blockquote>
+        <p>Cyberware must be paired to provide associated benefit.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

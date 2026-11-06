@@ -29,7 +29,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Records memories for BD replay. Great for Medias.</p>
+      <p>
+        Records your memories onto a
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gAfBLrpJzkKVtr8o]{Memory Chip}
+        or linked
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.
+        Playback requires a
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Ed0JaqTO1JyAUa47]{Braindance Viewer}.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

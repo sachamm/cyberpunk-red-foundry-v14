@@ -76,14 +76,12 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        Allows you to install an extra pair of cyberarms. Additional cyberarms are
-        sold &amp; installed separately.
-      </p>
+      <p>Allows you to install an extra pair of cyberarms.</p>
       <blockquote>
+        <p>Additional cyberarms are sold &amp; installed separately.</p>
         <p>
-          * Install your extra pair of foundational Cyberarms as normal, do not
-          install your extra cyberarms into this item.
+          Install your extra pair of foundational Cyberarms as normal, do not install
+          your extra cyberarms into this item.
         </p>
       </blockquote>
   dvTable: ""

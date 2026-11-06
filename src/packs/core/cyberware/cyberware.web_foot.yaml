@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Webbing between your toes allows you to swim. Must be paired.</p>
+      <p>Webbing between your toes allows you to swim.</p>
+      <blockquote>
+        <p>Cyberware must be paired to provide associated benefit.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

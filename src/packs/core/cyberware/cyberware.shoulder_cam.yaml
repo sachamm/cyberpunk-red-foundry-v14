@@ -18,7 +18,7 @@ system:
   brand: ""
   canIgnoreArmor: true
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   critFailEffect: jammed
@@ -30,8 +30,11 @@ system:
   description:
     value: |
       <p>
-        A stowable camera that pops out of your shoulder. Can link with an agent or
-        memory chip.
+        A concealable camera that pops out of your shoulder. Footage can be stored on
+        a
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gAfBLrpJzkKVtr8o]{Memory Chip}
+        or linked
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.
       </p>
   dvTable: ""
   favorite: false

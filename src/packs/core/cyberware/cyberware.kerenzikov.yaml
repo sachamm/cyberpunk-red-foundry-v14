@@ -73,8 +73,9 @@ system:
     count: 2
     threshold: 0
   description:
-    value: |
-      <p>Speedware. Permanent +2 to Initiative.</p>
+    value: >
+      <p>Speedware that grants a permanent +2 to
+      <strong>Initiative</strong>.</p>
   dvTable: ""
   favorite: false
   fireModes:

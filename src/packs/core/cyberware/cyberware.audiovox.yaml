@@ -118,9 +118,11 @@ system:
     count: 2
     threshold: 0
   description:
-    value: >
-      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument
-      checks.</p>
+    value: |
+      <p>
+        Autotune synthesizer. Provides +2 to <strong>Acting</strong> and
+        <strong>Play Instrument</strong> checks.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

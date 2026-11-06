@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>An artifical skin type for your arm.</p>
+      <p>An artificial skin type for your arm.</p>
   dvTable: ""
   favorite: false
   fireModes:

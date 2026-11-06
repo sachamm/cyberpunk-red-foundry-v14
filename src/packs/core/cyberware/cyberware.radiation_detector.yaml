@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Shows radiation with a blue glow. Maximum range 100m/yds.</p>
+      <p>Shows radiation as a blue glow. Maximum range 100m/yds.</p>
   dvTable: ""
   favorite: false
   fireModes:

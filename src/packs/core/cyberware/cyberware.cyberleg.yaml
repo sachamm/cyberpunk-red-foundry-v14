@@ -204,7 +204,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A cybernetical replacement leg. Comes with a free foot.</p>
+      <p>A cybernetic replacement leg.</p>
   dvTable: ""
   favorite: false
   fireModes:

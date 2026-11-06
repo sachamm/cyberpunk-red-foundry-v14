@@ -30,7 +30,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A single shot weapon which can be concealed.</p>
+      <p>Store and shoot a single dart from your eye.</p>
   dvTable: DV Pistol
   favorite: false
   fireModes:

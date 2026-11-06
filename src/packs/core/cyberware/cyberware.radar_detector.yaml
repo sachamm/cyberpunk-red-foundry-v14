@@ -28,8 +28,9 @@ system:
     count: 2
     threshold: 0
   description:
-    value: |
-      <p>Notifies of detected active radar within a 1 mile radius.</p>
+    value: >
+      <p>Notifies the user when it detects a radar signal within a 100m/yd
+      radius.</p>
   dvTable: ""
   favorite: false
   fireModes:

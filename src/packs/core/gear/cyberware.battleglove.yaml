@@ -33,6 +33,9 @@ system:
         An exotic heavy gauntlet, that covers your hand and forearm. Provides three
         option slots.
       </p>
+      <blockquote>
+        <p>*Remember to set HL to 0 when installing cyberwear options.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

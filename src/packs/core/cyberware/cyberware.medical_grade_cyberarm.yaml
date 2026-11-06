@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A medical grade cyberarm. Does not allow options to be installed.</p>
+      <p>A medical grade cyberarm with no room for upgrades.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -74,7 +74,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>+2 Personal Grooming when using Techhair as well. Changes hue.</p>
+      <p>Permanent dyes implanted into the skin.</p>
+      <blockquote>
+        <p>
+          <strong>+2 Personal Grooming</strong> when installed with
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.opzHe5mz24EwqNCM]{Techhair}.
+          Effects do not stack.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

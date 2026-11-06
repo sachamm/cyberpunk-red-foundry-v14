@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Looks like a normal hand for the most part.</p>
+      <p>A normal cybernetic hand.</p>
   dvTable: ""
   favorite: false
   fireModes:

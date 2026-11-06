@@ -29,9 +29,19 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Chipware.</p>
-      <p>Sets a Skill to 3 unless the skill is already &gt;3*.</p>
-      <p><em>* Not supported, Skill must be modified manually.</em></p>
+      <p>
+        Provides a value of <strong>3</strong> to a specific
+        <strong>skill</strong> while installed (provides no effect if the skill is
+        already 3+).
+      </p>
+      <blockquote>
+        <p>
+          Chipware must be installed into a
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.IJarQGKk5rPayoLT]{Chipware Socket}
+          or similar device.
+        </p>
+        <p>Requires manual AE creation.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

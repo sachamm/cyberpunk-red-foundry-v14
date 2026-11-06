@@ -30,6 +30,9 @@ system:
   description:
     value: |
       <p>Eyewear with two options slots for cybereye options.</p>
+      <blockquote>
+        <p>*Remember to set HL to 0 when installing cyberwear options.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

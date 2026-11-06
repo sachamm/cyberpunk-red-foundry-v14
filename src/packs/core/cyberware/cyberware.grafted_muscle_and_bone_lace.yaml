@@ -76,7 +76,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Increase Body by 2 (and related stats). Stacks. Max at 10 Body.</p>
+      <p>Increase <strong>BODY</strong> by 2.</p>
+      <blockquote>
+        <p>Effect stacks up to <strong>BODY 10</strong></p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

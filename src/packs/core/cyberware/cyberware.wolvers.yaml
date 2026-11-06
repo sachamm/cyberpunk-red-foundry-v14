@@ -30,9 +30,17 @@ system:
   description:
     value: |
       <p>
-        Claws which retract from your knuckles which is a Heavy Melee Weapon. Can be
-        concealed.
+        Heavy melee weapons which retract from between your knuckles. Can be concealed
+        without a check.
       </p>
+      <blockquote>
+        <p>You are unable to hold anything in this hand while activated.</p>
+        <p>
+          Can be installed into your
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.WzgaetvvHUQeD19B]{Meat Arm}
+          as the only piece of cyberware.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

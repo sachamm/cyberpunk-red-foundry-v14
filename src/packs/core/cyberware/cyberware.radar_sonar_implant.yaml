@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Scans 50m/yds around you. Doesn't work through cover.</p>
+      <p>
+        Scans the surrounding terrain in a 50m/yd radius around you. Works underwater,
+        but not through cover.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

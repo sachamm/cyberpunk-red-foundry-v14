@@ -30,7 +30,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Encodes and decodes transmissions.</p>
+      <p>Encodes and decodes any transmissions you send or receive.</p>
   dvTable: ""
   favorite: false
   fireModes:

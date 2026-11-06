@@ -204,7 +204,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A cybernetical replacement arm. Comes with a free hand.</p>
+      <p>A cybernetic arm with room for upgrades.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -18,7 +18,7 @@ system:
   brand: ""
   canIgnoreArmor: true
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   critFailEffect: jammed
@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A throat snake which is a Very Heavy Melee weapon.</p>
+      <p>
+        Install a weaponized tentacle into your throat that can be concealed without a
+        check.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

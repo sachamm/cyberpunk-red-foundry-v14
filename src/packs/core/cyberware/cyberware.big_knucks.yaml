@@ -18,7 +18,7 @@ system:
   brand: ""
   canIgnoreArmor: true
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   critFailEffect: jammed
@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Armored knuckles which function as a Melee Weapon.</p>
+      <p>
+        Armored knuckles which function as a Melee Weapon. Can be concealed without a
+        check.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

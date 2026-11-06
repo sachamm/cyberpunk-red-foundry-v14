@@ -74,7 +74,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Provides +2 to Resist Torture/Drugs checks.</p>
+      <p>Provides +2 to <strong>Resist Torture/Drugs</strong> checks.</p>
   dvTable: ""
   favorite: false
   fireModes:

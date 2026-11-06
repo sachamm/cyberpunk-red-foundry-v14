@@ -30,8 +30,10 @@ system:
   description:
     value: |
       <p>
-        Your cyberarm can be detached and re-attached (and swapped) using your open
-        socket. Keep an arm for every occasion.
+        Your
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.RT4NU0EbvmkgoSpZ]{cyberarm}
+        can be detached, re-attached, or swapped using your open socket. Keep an arm
+        for every occasion.
       </p>
   dvTable: ""
   favorite: false

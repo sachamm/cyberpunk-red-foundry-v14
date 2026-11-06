@@ -74,16 +74,12 @@ system:
     count: 2
     threshold: 0
   description:
-    value: >
-      <p>A metallic coating for your leg. Provides +2 to Wardrobe and
-      Style.*</p>
-
+    value: |
       <p>
-        <em
-          >*Note: Superchrome effects do not stack and will need to be managed in the
-          Effects tab if multiple Superchrome items are installed.</em
-        >
+        A metallic coating for your leg. Provides +2 to
+        <strong>Wardrobe and Style</strong>.
       </p>
+      <blockquote><p>Effects do not stack</p></blockquote>
   dvTable: ""
   favorite: false
   fireModes:

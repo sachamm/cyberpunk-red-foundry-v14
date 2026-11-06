@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Notifies of bugs or taps within 2m/yds.</p>
+      <p>Notifies the user of bugs or taps within 2m/yds.</p>
   dvTable: ""
   favorite: false
   fireModes:

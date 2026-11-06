@@ -74,8 +74,9 @@ system:
     count: 2
     threshold: 0
   description:
-    value: |
-      <p>Provides +2 to perception checks that use hearing.</p>
+    value: >
+      <p>Provides +2 bonus to <strong>Perception</strong> checks that use
+      hearing.</p>
   dvTable: ""
   favorite: false
   fireModes:

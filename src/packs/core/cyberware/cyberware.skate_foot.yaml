@@ -1,6 +1,50 @@
 _id: QDM0kdE3MK9YzjY3
 _key: "!items!QDM0kdE3MK9YzjY3"
-effects: []
+effects:
+  - _id: fxIH2SP3zbjPTRg3
+    _key: "!items.effects!QDM0kdE3MK9YzjY3.fxIH2SP3zbjPTRg3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1794358417047
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: L5BVRBGb798QfKk9
+      modifiedTime: 1794358547187
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    changes:
+      - key: bonuses.run
+        mode: 2
+        value: "6"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/icons/compendium/cyberware/skate_foot.svg
+    name: Skate Foot
+    origin: Compendium.cyberpunk-red-core.core_cyberware.Item.QDM0kdE3MK9YzjY3
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
 flags:
   cyberpunk-red-core:
     _migration:
@@ -29,7 +73,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>While running your movement is increased by 6m/yds. Must be paired.</p>
+      <p>While running your movement is increased by 6m/yds.</p>
+      <blockquote>
+        <p>Cyberware must be paired to provide associated benefit.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

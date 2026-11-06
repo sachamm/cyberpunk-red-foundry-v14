@@ -74,7 +74,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Provides a +1 to aimed shots.</p>
+      <p>Provides a +1 to <strong>aimed shots</strong>.</p>
+      <blockquote>
+        <p>Effects of multiple targeting scopes do not stack.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

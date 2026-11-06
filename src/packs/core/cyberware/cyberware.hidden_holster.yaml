@@ -18,7 +18,7 @@ system:
   brand: ""
   canIgnoreArmor: true
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   critFailEffect: jammed
@@ -28,8 +28,11 @@ system:
     count: 2
     threshold: 0
   description:
-    value: |
-      <p>Holster that is hidden inside you.</p>
+    value: >
+      <p>A holster that is concealed inside you without a check.</p>
+
+      <blockquote><p>Can only conceal a normally concealable
+      weapon.</p></blockquote>
   dvTable: ""
   favorite: false
   fireModes:

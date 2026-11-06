@@ -28,17 +28,17 @@ system:
     count: 2
     threshold: 0
   description:
-    value: |
-      <p>
-        External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor
-        does not stack.
-      </p>
-      <p>
-        <em
-          >* Cyberware Armor does not function as armor in the system, please add the
-          "Skin Weave" item to the character/mook to track</em
-        >
-      </p>
+    value: >
+      <p>Reinforced mesh embedded into your skin that can slowly repair
+      itself.</p>
+
+      <blockquote>
+        <p>
+          <em>Add </em
+          >@UUID[Compendium.cyberpunk-red-core.core_armor.Item.DXavZyl7CTtgoZ6i]{Skin Weave}
+          to track SP
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

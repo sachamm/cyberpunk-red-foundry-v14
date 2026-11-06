@@ -29,12 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A concealable One-Handed Melee Weapon. Can't hold anything with this hand
-        while activated.
-      </p>
+      <p>A concealable One-Handed Melee Weapon.</p>
       <blockquote>
-        <p>Configure settings to match the weapon being installed.</p>
+        <p>Can't hold anything with this hand while activated.</p>
+        <p>Requires manual configuration to match the weapon being installed.</p>
       </blockquote>
   dvTable: ""
   favorite: false

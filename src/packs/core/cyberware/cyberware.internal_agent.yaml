@@ -74,7 +74,11 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Built in agent. Audio only but can be linked with other cybergear.</p>
+      <p>
+        Built in
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{agent}.
+        Audio only but can be linked with other cybergear.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

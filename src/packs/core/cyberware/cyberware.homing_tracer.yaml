@@ -29,7 +29,12 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Audio tracking of a tracer up to 1 mile. Replacements not included.</p>
+      <p>
+        Provides audio tracking of a paired
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.IqXTqNGBmSuigIWv]{Tracer Button}
+        up to 1 mile.
+      </p>
+      <blockquote><p>Replacements not included.</p></blockquote>
   dvTable: ""
   favorite: false
   fireModes:

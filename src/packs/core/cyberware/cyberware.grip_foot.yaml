@@ -29,7 +29,8 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Provides traction for climbing vertically. Must be paired.</p>
+      <p>Provides traction for climbing vertically.</p>
+      <blockquote><p>Must be paired.</p></blockquote>
   dvTable: ""
   favorite: false
   fireModes:

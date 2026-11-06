@@ -14,11 +14,11 @@ ownership:
 sort: 0
 system:
   ammoVariety: []
-  attackmod: 0
+  attackmod: 1
   brand: ""
   canIgnoreArmor: true
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   critFailEffect: jammed
@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Pointy Teeth which is a Light Melee weapon. Can use poison/toxins.</p>
+      <p>
+        Razor sharp teeth that can conceal and administer a single does of drugs or
+        poison.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

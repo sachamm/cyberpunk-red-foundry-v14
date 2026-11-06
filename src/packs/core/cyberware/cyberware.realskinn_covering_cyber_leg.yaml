@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>An artifical skin type for your leg.</p>
+      <p>An artificial skin type for your leg.</p>
   dvTable: ""
   favorite: false
   fireModes:

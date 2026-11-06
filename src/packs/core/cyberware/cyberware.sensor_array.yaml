@@ -31,7 +31,11 @@ system:
     value: |
       <p>Allows you to install up to 5 additional cyberaudio options.</p>
       <blockquote>
-        <p>* Manually adjust your Cyberaudio Suite's number of slots to 8.</p>
+        <p>
+          Manually adjust your
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.hsoSD662cLKvHKZJ]{Cyberaudio Suite}'s
+          number of slots to 8.
+        </p>
       </blockquote>
   dvTable: ""
   favorite: false

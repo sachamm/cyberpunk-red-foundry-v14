@@ -29,10 +29,19 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        Plating on your hand which allows you to utilise Smartguns. Requires a neural
-        link.
-      </p>
+      <p>Plating on your hand which allows you to utilize Smartguns.</p>
+      <blockquote>
+        <p>
+          Requires a
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.ju5Rq9rOe2lpDKKl]{Neural Link}
+          to function.
+        </p>
+        <p>
+          Can be installed into your
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.WzgaetvvHUQeD19B]{Meat Arm}
+          as the only piece of cyberware.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

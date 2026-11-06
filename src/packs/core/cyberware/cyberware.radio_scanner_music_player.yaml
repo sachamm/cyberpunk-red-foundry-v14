@@ -30,7 +30,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Tune into CitiNet radio stations or play your locally saved music.</p>
+      <p>
+        Tune into CitiNet radio stations or play music saved locally on a
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gAfBLrpJzkKVtr8o]{Memory Chip}.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -91,9 +91,10 @@ system:
   description:
     value: |
       <p>
-        Must be paired. +2 Perception and Lip Reading and Conceal/Reveal Object when
-        using sight.
+        Provides +2 <strong>Perception</strong>, <strong>Lip Reading</strong>, and
+        <strong>Conceal/Reveal Object</strong> when using sight.
       </p>
+      <p>Cyberware must be paired to provide associated benefit.</p>
   dvTable: ""
   favorite: false
   fireModes:

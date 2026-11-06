@@ -83,8 +83,10 @@ system:
   description:
     value: |
       <p>
-        Built-in medscanner which allows for quick assessment of injuries. Provides +2
-        to First Aid and Paramedic skill checks.
+        Built-in
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.xW4PlIcWJ82QSfSh]{Medscanner}
+        which allows for quick assessment of injuries. Provides +2 to
+        <strong>First Aid</strong> and <strong>Paramedic</strong> skill checks.
       </p>
   dvTable: ""
   favorite: false

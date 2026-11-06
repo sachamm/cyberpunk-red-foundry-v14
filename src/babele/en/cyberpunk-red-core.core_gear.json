@@ -18,12 +18,12 @@
     },
     "Battleglove": {
       "name": "Battleglove",
-      "description": "<p>\n  An exotic heavy gauntlet, that covers your hand and forearm. Provides three\n  option slots.\n</p>\n",
+      "description": "<p>\n  An exotic heavy gauntlet, that covers your hand and forearm. Provides three\n  option slots.\n</p>\n<blockquote>\n  <p>*Remember to set HL to 0 when installing cyberwear options.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Smart Glasses",
-      "description": "<p>Eyewear with two options slots for cybereye options.</p>\n",
+      "description": "<p>Eyewear with two options slots for cybereye options.</p>\n<blockquote>\n  <p>*Remember to set HL to 0 when installing cyberwear options.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Agent": {

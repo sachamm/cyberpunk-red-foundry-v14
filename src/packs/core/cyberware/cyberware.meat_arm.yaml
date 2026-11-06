@@ -114,10 +114,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A regular arm. This can support attachments like a Standard Hand or some
-        weapons and tools as the only installed piece.
-      </p>
+      <p>A normal organic arm.</p>
+      <blockquote>
+        <p>
+          Can support attachments like a
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.BUKAOysOkAkwaRqo]{Standard Hand}
+          or other weapons &amp; tools that can be installed into a meat arm.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

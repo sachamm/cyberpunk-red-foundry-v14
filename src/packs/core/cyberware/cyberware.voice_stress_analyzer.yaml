@@ -85,8 +85,8 @@ system:
   description:
     value: |
       <p>
-        Provides +2 to Human Perception and Interrogation checks. Can activate a
-        special lie-detecting mode.
+        Provides +2 to <strong>Human Perception</strong> and
+        <strong>Interrogation</strong> checks.
       </p>
   dvTable: ""
   favorite: false

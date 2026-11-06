@@ -76,13 +76,19 @@ system:
     threshold: 0
   description:
     value: |
-      <ul>
-        <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>
-        <li>
-          Increases your BODY stat to 14 (adjusting your HP, Wound Threshold, and
-          Death Save)
-        </li>
-      </ul>
+      <p>Increases your <strong>BODY</strong> stat to 14</p>
+      <p>
+        An Internal Linear Frame can be identified with a
+        [[/r 1d10red+@stats.tech+@skills.cybertech #DV13 Cybertech]]{DV13 Cybertech}
+        check.
+      </p>
+      <blockquote>
+        <p>
+          Requires
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Lx9FSNDEIxLZ7Pyh]{Grafted Muscle and Bone Lace}
+          x2 (Installed Separately) &amp; <strong>BODY</strong> 8
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

@@ -29,14 +29,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        Allows you to install up to 5 additional cybereyes. Additional cybereyes are
-        sold &amp; installed separately.
-      </p>
+      <p>Allows you to install up to 5 additional eyes .</p>
       <blockquote>
         <p>
-          * Install your extra foundational Cybereyes as normal, do not install your
-          extra cybereyes into this item.
+          Additional
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.aC234RUXPPUb08cO]{Cybereyes}
+          are sold &amp; installed separately. — Do not install your extra cybereyes
+          into this item.
         </p>
       </blockquote>
   dvTable: ""

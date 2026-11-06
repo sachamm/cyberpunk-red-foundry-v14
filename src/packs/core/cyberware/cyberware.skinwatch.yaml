@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>An LED watch in your skin.</p>
+      <p>An LED display that shows the time and date through your skin.</p>
   dvTable: ""
   favorite: false
   fireModes:

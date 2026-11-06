@@ -28,9 +28,14 @@ system:
     count: 2
     threshold: 0
   description:
-    value: >
-      <p>Must be paired. Provides immunity to dazzling effects (like
-      flashbangs).</p>
+    value: |
+      <p>
+        Provides immunity to dazzling effects like those produced by
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.e8gDMbdK1oPKwhqW]{Flashbang Grenades}.
+      </p>
+      <blockquote>
+        <p>Cyberware must be paired to provide associated benefit.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

@@ -75,9 +75,12 @@ system:
   description:
     value: |
       <p>
-        Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three
-        installed.
+        Glowing tattoos. +2 to <strong>Wardrobe &amp; Style</strong> if you have at
+        least three installed.
       </p>
+      <blockquote>
+        <p>Requires manual action to enable/disable the provided Active Effects</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

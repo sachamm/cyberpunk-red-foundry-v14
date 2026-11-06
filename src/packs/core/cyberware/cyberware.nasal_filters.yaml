@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Provides immunity to inhalable gases or fumes.</p>
+      <p>
+        Provides immunity to inhalable gases or fumes like those produced by
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.3rtsVDMaB16lc5tY]{Teargas Grenades}.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:
