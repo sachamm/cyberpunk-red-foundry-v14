@@ -68,11 +68,11 @@
     },
     "Skin Weave": {
       "name": "Skin Weave",
-      "description": "<blockquote>\n  <p>\n    Armor Item for tracking the SP of\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.micrAI9oicghVbcG]{Skin Weave}\n    Cyberware.\n  </p>\n</blockquote>\n"
+      "description": "<p>\n  Armor Item for tracking the SP of\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.micrAI9oicghVbcG]{Skin Weave}\n  Cyberware.\n</p>\n<blockquote><p>Recovers 1SP per day</p></blockquote>\n"
     },
     "Subdermal Armor": {
       "name": "Subdermal Armor",
-      "description": "<blockquote>\n  <p>\n    Armor Item for tracking SP of\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.O5GmxTYCrrs8uWAd]{Subdermal Armor}\n    Cyberware.\n  </p>\n</blockquote>\n"
+      "description": "<p>\n  Armor Item for tracking SP of\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.O5GmxTYCrrs8uWAd]{Subdermal Armor}\n  Cyberware.\n</p>\n<blockquote><p>Recovers 1SP per day</p></blockquote>\n"
     }
   }
 }
