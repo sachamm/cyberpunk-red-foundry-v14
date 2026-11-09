@@ -22,9 +22,9 @@ system:
   description:
     value: |
       <p>
-        If you miss a single shot attack by 4 or less, roll second attack at same DV
-        1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as
-        normal if able to do so.
+        If you miss a single shot attack by 4 or less, make a
+        [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can
+        still attempt to dodge the second roll as normal.
       </p>
       <blockquote>
         <p>
