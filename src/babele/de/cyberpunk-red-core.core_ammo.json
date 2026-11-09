@@ -12,31 +12,31 @@
     },
     "Arrow (Biotoxin)": {
       "name": "Pfeil (Biotoxin)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 15 abzulegen. Scheitert die Probe, erleidet das Ziel 3W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Arrow (Expansive)": {
       "name": "Pfeil (Expansion)",
-      "description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Arrow (Incendiary)": {
       "name": "Pfeil (Brand)",
-      "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Arrow (Poison)": {
       "name": "Pfeil (Gift)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel 2W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+      "description": "<p>\n  No immediate damage. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Poison Damage]]{2d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Arrow (Rubber)": {
       "name": "Pfeil (Gummi)",
-      "description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Arrow (Sleep)": {
       "name": "Pfeil (Schlaf)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel die Zustände Liegend (siehe Seite 169) und Bewusstlos, die 1 Minute lang anhalten, es sei denn, das Ziel wird durch Schaden oder dadurch geweckt, dass jemand eine Aktion aufwendet, um es zu berühren.</p>"
+      "description": "<p>\n  Deals no damage. Target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target falls <strong>Prone</strong> (see pg. 169) and\n  unconscious for 1 minute. Can be woken by damage or another person using an\n  action to touch/shake them.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Arrow (Smart)": {
       "name": "Pfeil (Smart)",
-      "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Battery Pack": {
       "name": "Batteriepack",
@@ -48,35 +48,35 @@
     },
     "Grenade (Biotoxin)": {
       "name": "Granate (Biotoxin)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen mit SG 15 ablegen. Scheitert die Probe, erleidet das Ziel 3W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (EMP)": {
       "name": "Granate (EMP)",
-      "description": "<p>Richtet keinen Schaden an. Stattdessen müssen alle eine Probe auf Cybertech mit SG 15 ablegen. Wenn sie scheitern, dann wählt der SL 2 Teile an Cyberware oder getragener Elektronik aus, die 1 Minute lang außer Betrieb gesetzt werden. Cybergliedmaßen, die außer Betrieb gesetzt werden reagieren wie ihre fleischlichen Pendants, wenn diese abgetrennt werden, hängen allerdings nur lose herunter. Siehe Kritische Verletzungen ab Seite 187.</p>"
+      "description": "<p>\n  On a hit, roll\n  [[/r 1d10red+@stats.tech+@skills.Cybertech #DV15 Cybertech]]{DV15 Cybertech}.\n  On a failure, 2 pieces of Cyberware or carried electronics (GM's choice) stop\n  working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see\n  pg. 187.\n</p>\n<blockquote>\n  <p>\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get Random EMP'd Items}\n  </p>\n</blockquote>\n"
     },
     "Grenade (Flashbang)": {
       "name": "Granate (Blendgranate)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Stattdessen müssen alle eine Probe auf Folter/Drogen widerstehen mit SG 15 ablegen. Wer scheitert, erleidet für die nächste Minute die Kritischen Verletzungen Augenschaden und Ohrenschaden (siehe Seite 188). Diese Kritischen Verletzungen richten keinen Bonusschaden an.</p>"
+      "description": "<p>\n  Deals no damage. Does not ablate armor. On a hit, targets roll\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  On a failure, targets suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  and\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}\n  Critical injuries (see pg. 188) for 1 minute.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (Incendiary)": {
       "name": "Granate (Brand)",
-      "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Grenade (Poison)": {
       "name": "Granate (Gift)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel 2W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+      "description": "<p>\n  No immediate damage. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Poison Damage]]{2d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (Sleep)": {
       "name": "Granate (Schlaf)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel die Zustände Liegend (siehe Seite 169) und Bewusstlos, die 1 Minute lang anhalten, es sei denn, das Ziel wird durch Schaden oder dadurch geweckt, dass jemand eine Aktion aufwendet, um es zu berühren.</p>"
+      "description": "<p>\n  Deals no damage. Target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target falls <strong>Prone</strong> (see pg. 169) and\n  unconscious for 1 minute. Can be woken by damage or another person using an\n  action to touch/shake them.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (Smoke)": {
       "name": "Granate (Rauch)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Füllt für eine Minute ein Gebiet von 10 x 10 Metern mit Rauch. Der normale Malus für den Versuch, eine Aufgabe im Rauch zu erfüllen liegt bei –4.</p>"
+      "description": "<p>Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute.</p>\n<blockquote>\n  <p>Tasks obscured by smoke have a <strong>-4 penalty</strong>.</p>\n</blockquote>\n"
     },
     "Grenade (Teargas)": {
       "name": "Granate (Tränengas)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Stattdessen muss jeder mit Fleischaugen eine Probe auf Folter/Drogen widerstehen mit SG 13 ablegen. Wer scheitert, erleidet in der nächsten Minute die Kritische Verletzung Augenschaden (siehe Seite 188). Diese Kritische Verletzung richtet keinen Bonusschaden an.</p>"
+      "description": "<p>\n  Deals no Damage. Does not deal bonus critical damage. Targets roll\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On failure, the target suffers\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  Critical Injury for 1 minute.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Heavy Pistol (Armor-Piercing)": {
       "name": "Schwere Pistole (Panzerbrechend)",
@@ -88,19 +88,19 @@
     },
     "Heavy Pistol (Expansive)": {
       "name": "Schwere Pistole (Expansion)",
-      "description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Heavy Pistol (Incendiary)": {
       "name": "Schwere Pistole (Brand)",
-      "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Heavy Pistol (Rubber)": {
       "name": "Schwere Pistole (Gummi)",
-      "description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Heavy Pistol (Smart)": {
       "name": "Schwere Pistole (Smart)",
-      "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Medium Pistol (Armor-Piercing)": {
       "name": "Mittelschwere Pistole (Panzerbrechend)",
@@ -112,27 +112,27 @@
     },
     "Medium Pistol (Expansive)": {
       "name": "Mittelschwere Pistole (Expansion)",
-      "description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Medium Pistol (Incendiary)": {
       "name": "Mittelschwere Pistole (Brand)",
-      "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Medium Pistol (Rubber)": {
       "name": "Mittelschwere Pistole (Gummi)",
-      "description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Medium Pistol (Smart)": {
       "name": "Mittelschwere Pistole (Smart)",
-      "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Paintball (Acid)": {
       "name": "Paintball (Säure)",
-      "description": "<p>Paintbälle mit Säure gefüllt. Verursacht keinen Schaden, aber bei Treffer wird die Rüstung um 1 SP abgetragen*.</p>\n<p><em>*Derzeit nicht unterstützt wird und die Rüstung beim Treffer manuell reduziert werden</em></p>"
+      "description": "<p>\n  Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on\n  hit.\n</p>\n<blockquote>\n  <p><em>Not currently supported, manually reduce armour on hit</em></p>\n</blockquote>\n"
     },
     "Paintball (Basic)": {
       "name": "Paintball (Basis)",
-      "description": "<p>Standard Paintbälle, die keinen Schaden anrichten. Dennoch ärgerlich.</p>"
+      "description": "<p>Regular paintballs that don't do any damage. Can obstruct vision.</p>\n"
     },
     "Rifle (Armor-Piercing)": {
       "name": "Gewehr (Panzerbrechend)",
@@ -144,7 +144,7 @@
     },
     "Rifle (Expansive)": {
       "name": "Gewehr (Expansion)",
-      "description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Rifle (Incendiary)": {
       "name": "Gewehr (Brand)",
@@ -152,11 +152,11 @@
     },
     "Rifle (Rubber)": {
       "name": "Gewehr (Gummi)",
-      "description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Rifle (Smart)": {
       "name": "Gewehr (Smart)",
-      "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Rocket (Armor-Piercing)": {
       "name": "Rakete (Panzerbrechend)",
@@ -164,15 +164,15 @@
     },
     "Rocket (Smart)": {
       "name": "Rakete (Smart)",
-      "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Shotgun Shell (Basic)": {
       "name": "Schrotpatrone (Basis)",
-      "description": "<p>Standardmunition, keine Besonderheiten.</p>"
+      "description": "<p>Basic ammo, deals damage to all targets in a 6x6 m/yds area.</p>\n"
     },
     "Shotgun Shell (Incendiary)": {
       "name": "Schrotpatrone (Brand)",
-      "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Shotgun Slug (Armor-Piercing)": {
       "name": "Flintenpatrone (Panzerbrechend)",
@@ -180,23 +180,23 @@
     },
     "Shotgun Slug (Basic)": {
       "name": "Flintenpatrone (Basis)",
-      "description": "<p>Standardmunition, keine Besonderheiten.</p>"
+      "description": "<p>Basic ammo, single target only.</p>\n"
     },
     "Shotgun Slug (Expansive)": {
       "name": "Flintenpatrone (Expansion)",
-      "description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Shotgun Slug (Incendiary)": {
       "name": "Flintenpatrone (Brand)",
-      "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Shotgun Slug (Rubber)": {
       "name": "Flintenpatrone (Gummi)",
-      "description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Shotgun Slug (Smart)": {
       "name": "Flintenpatrone (Smart)",
-      "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Very Heavy Pistol (Armor-Piercing)": {
       "name": "Sehr Schwere Pistole (Panzerbrechend)",
@@ -208,19 +208,19 @@
     },
     "Very Heavy Pistol (Expansive)": {
       "name": "Sehr Schwere Pistole (Expansion)",
-      "description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Very Heavy Pistol (Incendiary)": {
       "name": "Sehr Schwere Pistole (Brand)",
-      "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Very Heavy Pistol (Rubber)": {
       "name": "Sehr Schwere Pistole (Gummi)",
-      "description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Very Heavy Pistol (Smart)": {
       "name": "Sehr Schwere Pistole (Smart)",
-      "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     }
   }
 }
