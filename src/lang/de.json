@@ -112,6 +112,7 @@
   "CPR.browser.filter.rof": "ROF",
   "CPR.browser.filter.slots": "Slots",
   "CPR.browser.filter.type": "Type",
+  "CPR.browser.filter.upgraded": "Upgraded",
   "CPR.browser.launch.actor": "Actor Browser",
   "CPR.browser.launch.item": "Item Browser",
   "CPR.browser.noResults": "No matching documents.",
