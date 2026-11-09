@@ -27,7 +27,9 @@ installConsoleErrorHarness();
  * item-sheet-header.spec.mjs; this spec pins what the skill type itself shows:
  * the config-driven option sets and schema defaults, persistence of every
  * field on a world skill, editing an owned skill through its character-sheet
- * row (with the world copy left untouched), and the Observer read-only view.
+ * row (with the world copy left untouched), how the character sheet presents
+ * category/difficulty/basic for an owned skill, and the Observer read-only
+ * view.
  */
 
 // selectOptions localizes labels only — the DOM option values are the config
@@ -290,6 +292,116 @@ test("an owned skill's level and stat persist when edited on its owned sheet", a
     await expect(
       worldSettings.locator('select[name="system.stat"]'),
     ).toHaveValue("int");
+  });
+});
+
+test("the character sheet presents category, difficulty and basic for an owned skill", async ({
+  page,
+}) => {
+  const actorId = await createActorViaUI(page, {
+    type: "character",
+    name: uniqueName("character"),
+  });
+  const actorSheetId = await expectSheetRendered(page, {
+    collection: "actors",
+    id: actorId,
+  });
+
+  const skillName = uniqueName("skill");
+  const itemId = await createItemViaUI(page, {
+    type: "skill",
+    name: skillName,
+  });
+  await closeDocSheet(page, { collection: "items", id: itemId });
+  await dragItemToActorSheet(page, { itemId, sheetId: actorSheetId, actorId });
+
+  const embeddedId = await page.evaluate(
+    ({ actorId, name }) => game.actors.get(actorId).items.getName(name).id,
+    { actorId, name: skillName },
+  );
+
+  let ownedSheetId;
+  // Same row/pencil flow as the owned-editing test above.
+  const openOwnedSkillSettings = async () => {
+    if (ownedSheetId)
+      await closeOwnedItemSheet(page, { actorId, itemId: embeddedId });
+    await page.locator(`#${actorSheetId} a[data-tab="skills"]`).click();
+    const row = page.locator(`#${actorSheetId} [data-item-id="${embeddedId}"]`);
+    await expect(row).toBeVisible();
+    await row.locator("a.item-edit.skill-custom").first().click();
+    ownedSheetId = await openOwnedItemSheet(page, {
+      actorId,
+      itemId: embeddedId,
+    });
+    return openItemSettings(page, ownedSheetId);
+  };
+
+  const row = page.locator(`#${actorSheetId} li[data-item-id="${embeddedId}"]`);
+  // Each category renders its own collapsible section headed by
+  // #skillTab-<category>, so asserting containment is locale-independent.
+  const sectionRow = (category) =>
+    page
+      .locator(`#${actorSheetId} .collapsible`)
+      .filter({ has: page.locator(`#skillTab-${category}`) })
+      .locator(`li[data-item-id="${embeddedId}"]`);
+
+  await test.step("a new owned skill lists under its default category section", async () => {
+    await page.locator(`#${actorSheetId} a[data-tab="skills"]`).click();
+    await expect(sectionRow("awarenessSkills")).toBeVisible();
+  });
+
+  await test.step("changing the category moves the row to that category's section", async () => {
+    await openOwnedSkillSettings();
+    await setItemSelected(page, {
+      sheetId: ownedSheetId,
+      itemId: embeddedId,
+      actorId,
+      name: "system.category",
+      value: "socialSkills",
+    });
+    await expect(sectionRow("socialSkills")).toBeVisible();
+    await expect(sectionRow("awarenessSkills")).toHaveCount(0);
+  });
+
+  await test.step("only a difficult skill shows the (x2) marker next to its name", async () => {
+    // The owned sheet is still open from the previous step.
+    await setItemSelected(page, {
+      sheetId: ownedSheetId,
+      itemId: embeddedId,
+      actorId,
+      name: "system.difficulty",
+      value: "difficult",
+    });
+    await expect(row.locator("a.rollable")).toContainText("(x2)");
+    await setItemSelected(page, {
+      sheetId: ownedSheetId,
+      itemId: embeddedId,
+      actorId,
+      name: "system.difficulty",
+      value: "typical",
+    });
+    await expect(row.locator("a.rollable")).not.toContainText("(x2)");
+  });
+
+  await test.step("a basic skill's name renders semibold on the character sheet", async () => {
+    // `system.basic` is presentation-only: it adds the text-semi class to the
+    // rollable name link (no roll or math effect anywhere in src).
+    await toggleItemCheckbox(page, {
+      sheetId: ownedSheetId,
+      itemId: embeddedId,
+      actorId,
+      target: "system.basic",
+      expected: true,
+    });
+    await expect(row.locator("a.rollable")).toHaveClass(/text-semi/);
+    await toggleItemCheckbox(page, {
+      sheetId: ownedSheetId,
+      itemId: embeddedId,
+      actorId,
+      target: "system.basic",
+      expected: false,
+    });
+    await expect(row.locator("a.rollable")).not.toHaveClass(/text-semi/);
   });
 });
 
