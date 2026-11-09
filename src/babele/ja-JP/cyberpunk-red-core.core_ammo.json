@@ -12,31 +12,31 @@
     },
     "Arrow (Biotoxin)": {
       "name": "矢（バイオトキシン弾）",
-      "description": "<p>ダメージを与えない。その代わり命中を受けた生身の者は<strong>DV15の〈拷問/薬物判定〉</strong>を行わなければならない。これに失敗した者はHPに直接3D6のダメージを受ける。防具を損耗しない </p>\n"
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Arrow (Expansive)": {
       "name": "矢（ダムダム弾）",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Arrow (Incendiary)": {
       "name": "矢（焼夷弾）",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Arrow (Poison)": {
       "name": "矢（毒弾）",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "description": "<p>\n  No immediate damage. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Poison Damage]]{2d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Arrow (Rubber)": {
       "name": "矢（ゴム弾）",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Arrow (Sleep)": {
       "name": "矢（睡眠弾）",
-      "description": "<p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by damage or another person using an action to touch/shake them.</p>"
+      "description": "<p>\n  Deals no damage. Target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target falls <strong>Prone</strong> (see pg. 169) and\n  unconscious for 1 minute. Can be woken by damage or another person using an\n  action to touch/shake them.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Arrow (Smart)": {
       "name": "矢（スマート弾）",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Battery Pack": {
       "name": "バッテリーパック",
@@ -48,35 +48,35 @@
     },
     "Grenade (Biotoxin)": {
       "name": "グレネード（バイオトキシン弾）",
-      "description": "<p>ダメージを与えない。その代わり命中を受けた生身の者は<strong>DV15の〈拷問/薬物判定〉</strong>を行わなければならない。これに失敗した者はHPに直接3D6のダメージを受ける。防具を損耗しない </p>\n"
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (EMP)": {
       "name": "グレネード（EMP弾）",
-      "description": "<p>On a hit, the target rolls a 15 Cybertech Check. On Fail 2 pieces of Cyberware or carried electronics (GM's choice) stop working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.</p>"
+      "description": "<p>\n  On a hit, roll\n  [[/r 1d10red+@stats.tech+@skills.Cybertech #DV15 Cybertech]]{DV15 Cybertech}.\n  On a failure, 2 pieces of Cyberware or carried electronics (GM's choice) stop\n  working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see\n  pg. 187.\n</p>\n<blockquote>\n  <p>\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get Random EMP'd Items}\n  </p>\n</blockquote>\n"
     },
     "Grenade (Flashbang)": {
       "name": "閃光音響グレネード",
-      "description": "<p>Deals no damage. On a hit, the target rolls a  DV15 Resist Torture/Drugs. On a fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for 1 minute. No Crit damage dealt. </p>"
+      "description": "<p>\n  Deals no damage. Does not ablate armor. On a hit, targets roll\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  On a failure, targets suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  and\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}\n  Critical injuries (see pg. 188) for 1 minute.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (Incendiary)": {
       "name": "グレネード（焼夷弾）",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Grenade (Poison)": {
       "name": "グレネード（毒弾）",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "description": "<p>\n  No immediate damage. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Poison Damage]]{2d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (Sleep)": {
       "name": "グレネード（睡眠弾）",
-      "description": "<p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by damage or another person using an action to touch/shake them.</p>"
+      "description": "<p>\n  Deals no damage. Target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target falls <strong>Prone</strong> (see pg. 169) and\n  unconscious for 1 minute. Can be woken by damage or another person using an\n  action to touch/shake them.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Grenade (Smoke)": {
       "name": "発煙グレネード",
-      "description": "<p>Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute. Tasks obscured by smoke have a -4 penalty.</p>"
+      "description": "<p>Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute.</p>\n<blockquote>\n  <p>Tasks obscured by smoke have a <strong>-4 penalty</strong>.</p>\n</blockquote>\n"
     },
     "Grenade (Teargas)": {
       "name": "催涙ガス・グレネード",
-      "description": "<p>Deals no Damage. Hit targets with Meat eyes roll DV13 Resist Torture/Drugs Check. On fail suffer Damaged Eye Critical Injury (See pg. 188) for 1 minute. Does not deal critical bonus damage.</p>"
+      "description": "<p>\n  Deals no Damage. Does not deal bonus critical damage. Targets roll\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On failure, the target suffers\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  Critical Injury for 1 minute.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
     },
     "Heavy Pistol (Armor-Piercing)": {
       "name": "大型拳銃（徹甲弾）",
@@ -88,19 +88,19 @@
     },
     "Heavy Pistol (Expansive)": {
       "name": "大型拳銃（ダムダム弾）",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Heavy Pistol (Incendiary)": {
       "name": "大型拳銃（焼夷弾）",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Heavy Pistol (Rubber)": {
       "name": "大型拳銃（ゴム弾）",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Heavy Pistol (Smart)": {
       "name": "大型拳銃（スマート弾）",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Medium Pistol (Armor-Piercing)": {
       "name": "中型拳銃（徹甲弾）",
@@ -112,27 +112,27 @@
     },
     "Medium Pistol (Expansive)": {
       "name": "中型拳銃（ダムダム弾）",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Medium Pistol (Incendiary)": {
       "name": "中型拳銃（焼夷弾）",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Medium Pistol (Rubber)": {
       "name": "中型拳銃（ゴム弾）",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Medium Pistol (Smart)": {
       "name": "中型拳銃（スマート弾）",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Paintball (Acid)": {
       "name": "ペイントボール (酸)",
-      "description": "<p>Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on hit*.</p>\n<p><em>*Not currently supported so will need to manually reduce armour on hit</em></p>"
+      "description": "<p>\n  Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on\n  hit.\n</p>\n<blockquote>\n  <p><em>Not currently supported, manually reduce armour on hit</em></p>\n</blockquote>\n"
     },
     "Paintball (Basic)": {
       "name": "ペイントボール（通常）",
-      "description": "<p>Regular paintballs that don't do any damage. Annoying though.</p>"
+      "description": "<p>Regular paintballs that don't do any damage. Can obstruct vision.</p>\n"
     },
     "Rifle (Armor-Piercing)": {
       "name": "ライフル（徹甲弾）",
@@ -144,7 +144,7 @@
     },
     "Rifle (Expansive)": {
       "name": "ライフル（ダムダム弾）",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Rifle (Incendiary)": {
       "name": "ライフル（焼夷弾）",
@@ -152,11 +152,11 @@
     },
     "Rifle (Rubber)": {
       "name": "ライフル（ゴム弾）",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Rifle (Smart)": {
       "name": "ライフル（スマート弾）",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Rocket (Armor-Piercing)": {
       "name": "ロケット（徹甲弾）",
@@ -164,15 +164,15 @@
     },
     "Rocket (Smart)": {
       "name": "ロケット（スマート弾）",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Shotgun Shell (Basic)": {
       "name": "ショットガンの散弾（通常弾）",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "description": "<p>Basic ammo, deals damage to all targets in a 6x6 m/yds area.</p>\n"
     },
     "Shotgun Shell (Incendiary)": {
       "name": "ショットガン（焼夷弾）",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Shotgun Slug (Armor-Piercing)": {
       "name": "ショットガンのスラッグ弾（徹甲弾）",
@@ -180,23 +180,23 @@
     },
     "Shotgun Slug (Basic)": {
       "name": "ショットガンのスラッグ弾（通常弾）",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "description": "<p>Basic ammo, single target only.</p>\n"
     },
     "Shotgun Slug (Expansive)": {
       "name": "ショットガンのスラッグ弾（ダムダム弾）",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Shotgun Slug (Incendiary)": {
       "name": "ショットガンのスラッグ弾（焼夷弾）",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Shotgun Slug (Rubber)": {
       "name": "ショットガンのスラッグ弾（ゴム弾）",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Shotgun Slug (Smart)": {
       "name": "ショットガンのスラッグ弾（スマート弾）",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     },
     "Very Heavy Pistol (Armor-Piercing)": {
       "name": "超大型拳銃（徹甲弾）",
@@ -208,19 +208,19 @@
     },
     "Very Heavy Pistol (Expansive)": {
       "name": "超大型拳銃（ダムダム弾）",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury.\n</p>\n<blockquote>\n  <p>The second Critical Injury does not deal bonus damage.</p>\n</blockquote>\n"
     },
     "Very Heavy Pistol (Incendiary)": {
       "name": "超大型拳銃（焼夷弾）",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
     },
     "Very Heavy Pistol (Rubber)": {
       "name": "超大型拳銃（ゴム弾）",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons.\n</p>\n<blockquote>\n  <p>Non-lethal damage not currently supported by system.</p>\n</blockquote>\n"
     },
     "Very Heavy Pistol (Smart)": {
       "name": "超大型拳銃（スマート弾）",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n</blockquote>\n"
     }
   }
 }
