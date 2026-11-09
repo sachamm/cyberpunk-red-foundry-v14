@@ -46,6 +46,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 ### Bug Fixes
 
+- Weapon skill selection dropdown uses custom category sorting again, instead of alphabetical
 - Clothing upgrades now use Active Effects for wearer bonuses. Existing COOL and Wardrobe & Style bonuses are converted, with the original settings retained for reference. COOL follows normal STAT effect behavior; situational settings remain available for Wardrobe & Style.
 - Preserve shared empty ammo stacks when transferring loaded weapons between actor sheets
 - Calculate EMP from the updated Humanity on the first recalculation
@@ -88,6 +89,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Unique icons have been created for each role
 - Updated `CREDITS.md` with attribution for all system assets
 - Rolling damage after an aimed shot will remember the location in the damage roll
+- Compendium Item descriptions have been revised to provide a unified format
+  - Armor
 
 ### Plumbing
 
