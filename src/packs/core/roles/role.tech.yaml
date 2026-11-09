@@ -2,10 +2,14 @@ _id: f815HiiDpThbd7eY
 _key: "!items!f815HiiDpThbd7eY"
 effects: []
 flags:
+  babele:
+    hasTranslation: true
+    originalName: Tech
+    translated: true
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
+      current: 49
+      previous: "38"
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/roles/tech.svg
 name: Tech
@@ -15,48 +19,972 @@ sort: 0
 system:
   abilities:
     - bonusRatio: 1
-      bonuses: []
-      hasRoll: true
-      isSituational: false
+      bonuses:
+        - _id: kPCPEJfPmCv2NmNW
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Air Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: 3y2EPy6vj7FlG2Za
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Basic Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: otyHFYwRwojMdDVu
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Cybertech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: jHkogA4a7AaeKaRL
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Electronics/Security Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: difficult
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: 8YbV9bvNgB0W6EzX
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Land Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: cwt6i0sAZyARUvAh
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Sea Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+        - _id: zLH7FVLYxYqeyW6K
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Weaponstech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+      hasRoll: false
+      isSituational: true
       multiplier: 0.5
       name: Fabrication Expertise
       onByDefault: false
       rank: 0
-      skill: varying
-      stat: tech
+      skill: "--"
+      stat: "--"
       universalBonuses: []
     - bonusRatio: 1
-      bonuses: []
-      hasRoll: true
-      isSituational: false
+      bonuses:
+        - _id: kPCPEJfPmCv2NmNW
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Air Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: 3y2EPy6vj7FlG2Za
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Basic Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: otyHFYwRwojMdDVu
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Cybertech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: jHkogA4a7AaeKaRL
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Electronics/Security Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: difficult
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: 8YbV9bvNgB0W6EzX
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Land Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: cwt6i0sAZyARUvAh
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Sea Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+        - _id: zLH7FVLYxYqeyW6K
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Weaponstech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+      hasRoll: false
+      isSituational: true
       multiplier: 0.5
       name: Field Expertise
-      onByDefault: false
+      onByDefault: true
       rank: 0
-      skill: varying
-      stat: tech
+      skill: "--"
+      stat: "--"
       universalBonuses: []
     - bonusRatio: 1
-      bonuses: []
-      hasRoll: true
-      isSituational: false
+      bonuses:
+        - _id: kPCPEJfPmCv2NmNW
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Air Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: 3y2EPy6vj7FlG2Za
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Basic Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: otyHFYwRwojMdDVu
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Cybertech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: jHkogA4a7AaeKaRL
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Electronics/Security Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: difficult
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: 8YbV9bvNgB0W6EzX
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Land Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: cwt6i0sAZyARUvAh
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Sea Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+        - _id: zLH7FVLYxYqeyW6K
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Weaponstech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+      hasRoll: false
+      isSituational: true
       multiplier: 0.5
       name: Invention Expertise
       onByDefault: false
       rank: 0
-      skill: varying
-      stat: tech
+      skill: "--"
+      stat: "--"
       universalBonuses: []
     - bonusRatio: 1
-      bonuses: []
-      hasRoll: true
-      isSituational: false
+      bonuses:
+        - _id: kPCPEJfPmCv2NmNW
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Air Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: 3y2EPy6vj7FlG2Za
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Basic Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: otyHFYwRwojMdDVu
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Cybertech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 140
+            stat: tech
+          type: skill
+        - _id: jHkogA4a7AaeKaRL
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Electronics/Security Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: difficult
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: 8YbV9bvNgB0W6EzX
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Land Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 141
+            stat: tech
+          type: skill
+        - _id: cwt6i0sAZyARUvAh
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Sea Vehicle Tech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+        - _id: zLH7FVLYxYqeyW6K
+          _stats:
+            compendiumSource: null
+            coreVersion: "12.343"
+            createdTime: null
+            duplicateSource: null
+            lastModifiedBy: null
+            modifiedTime: null
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Weaponstech
+          ownership:
+            default: 0
+          sort: 0
+          system:
+            basic: false
+            category: techniqueSkills
+            core: true
+            description:
+              value: ""
+            difficulty: typical
+            favorite: false
+            level: 0
+            skillType: generic
+            source:
+              book: Core
+              page: 142
+            stat: tech
+          type: skill
+      hasRoll: false
+      isSituational: true
       multiplier: 0.5
       name: Upgrade Expertise
       onByDefault: false
       rank: 0
-      skill: varying
-      stat: tech
+      skill: "--"
+      stat: "--"
       universalBonuses: []
   addRoleAbilityRank: true
   bonusRatio: 1
@@ -69,11 +997,13 @@ system:
       </p>
   favorite: false
   hasRoll: false
+  ignoredByBrowser: false
   isSituational: false
   mainRoleAbility: Maker
   onByDefault: false
   rank: 4
   skill: "--"
+  source: null
   sources:
     - book: Cyberpunk RED
       page: 147
