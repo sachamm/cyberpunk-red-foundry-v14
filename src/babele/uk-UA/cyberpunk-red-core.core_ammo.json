@@ -12,7 +12,7 @@
     },
     "Arrow (Biotoxin)": {
       "name": "Arrow (Biotoxin)",
-      "description": "<p>\n  No immediate damage. If hit <strong>DV15 Resist Torture/Drugs</strong> Check.\n  On a fail 3d6 damage to HP. No Ablation.\n</p>\n"
+      "description": "<p>\n  No immediate damage. On a hit, the target rolls <strong>DV15 Resist Torture/Drugs</strong> Check.\n  On a fail 3d6 damage to HP. No Ablation.\n</p>\n"
     },
     "Arrow (Expansive)": {
       "name": "Arrow (Expansive)",
@@ -48,15 +48,15 @@
     },
     "Grenade (Biotoxin)": {
       "name": "Grenade (Biotoxin)",
-      "description": "<p>\n  No immediate damage. If hit <strong>DV15 Resist Torture/Drugs</strong> Check.\n  On a fail 3d6 damage to HP. No Ablation.\n</p>\n"
+      "description": "<p>\n  No immediate damage. On a hit, the target rolls <strong>DV15 Resist Torture/Drugs</strong> Check.\n  On a fail 3d6 damage to HP. No Ablation.\n</p>\n"
     },
     "Grenade (EMP)": {
       "name": "Grenade (EMP)",
-      "description": "<p>\n  If hit, perform <strong>DV15 Cybertech Check</strong>. On Fail 2 pieces of\n  Cyberware or carried electronics (GM's choice) stop working for 1 minute.\n  Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.\n</p>\n"
+      "description": "<p>\n  On a hit, perform <strong>DV15 Cybertech Check</strong>. On Fail 2 pieces of\n  Cyberware or carried electronics (GM's choice) stop working for 1 minute.\n  Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.\n</p>\n"
     },
     "Grenade (Flashbang)": {
       "name": "Grenade (Flashbang)",
-      "description": "<p>\n  Deals no damage. If hit roll <strong>DV15 Resist Torture/Drugs</strong>. On a\n  fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for\n  1 minute. No Crit damage dealt.\n</p>\n"
+      "description": "<p>\n  Deals no damage. On a hit, the target rolls a  <strong>DV15 Resist Torture/Drugs</strong>. On a\n  fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for\n  1 minute. No Crit damage dealt.\n</p>\n"
     },
     "Grenade (Incendiary)": {
       "name": "Grenade (Incendiary)",

@@ -22,7 +22,7 @@ system:
   description:
     value: |
       <p>
-        Deals no damage. Does not ablate armor. If hit, targets roll
+        Deals no damage. Does not ablate armor. On a hit, targets roll
         [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
         On a failure, targets suffer the
         @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}

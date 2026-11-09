@@ -22,7 +22,7 @@ system:
   description:
     value: |
       <p>
-        No immediate damage. If hit target rolls a
+        No immediate damage. On a hit, the target rolls a
         [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.
         On a failure, the target takes [[/r 3d6dmg#Poison Damage]]{2d6 Damage}
         directly.

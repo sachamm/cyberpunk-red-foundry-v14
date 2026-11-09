@@ -52,11 +52,11 @@
     },
     "Grenade (EMP)": {
       "name": "グレネード（EMP弾）",
-      "description": "<p>If hit DV15 Cybertech Check. On Fail 2 pieces of Cyberware or carried electronics (GM's choice) stop working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.</p>"
+      "description": "<p>On a hit, the target rolls a 15 Cybertech Check. On Fail 2 pieces of Cyberware or carried electronics (GM's choice) stop working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.</p>"
     },
     "Grenade (Flashbang)": {
       "name": "閃光音響グレネード",
-      "description": "<p>Deals no damage. If hit roll DV15 Resist Torture/Drugs. On a fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for 1 minute. No Crit damage dealt. </p>"
+      "description": "<p>Deals no damage. On a hit, the target rolls a  DV15 Resist Torture/Drugs. On a fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for 1 minute. No Crit damage dealt. </p>"
     },
     "Grenade (Incendiary)": {
       "name": "グレネード（焼夷弾）",

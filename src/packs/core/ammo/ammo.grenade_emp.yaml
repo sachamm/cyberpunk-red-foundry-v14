@@ -22,7 +22,7 @@ system:
   description:
     value: |
       <p>
-        If hit, roll
+        On a hit, roll
         [[/r 1d10red+@stats.tech+@skills.Cybertech #DV15 Cybertech]]{DV15 Cybertech}.
         On a failure, 2 pieces of Cyberware or carried electronics (GM's choice) stop
         working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see
