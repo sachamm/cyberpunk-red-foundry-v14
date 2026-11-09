@@ -112,6 +112,7 @@
   "CPR.browser.filter.rof": "Att/round",
   "CPR.browser.filter.slots": "Emplacements",
   "CPR.browser.filter.type": "Type",
+  "CPR.browser.filter.upgraded": "Upgraded",
   "CPR.browser.launch.actor": "Explorateur d'Acteurs",
   "CPR.browser.launch.item": "Explorateur d'Objets",
   "CPR.browser.noResults": "Aucun document correspondant.",
