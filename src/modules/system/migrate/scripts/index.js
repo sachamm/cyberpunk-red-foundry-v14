@@ -24,3 +24,4 @@ export { default as RelinkDlcContent } from "./046-relink-dlc-content.js";
 export { default as UpdateRoleIcons } from "./047-update-role-icons.js";
 export { default as CorrectIconSpelling } from "./048-correct-icon-spelling.js";
 export { default as ClothingUpgradeEffects } from "./049-clothing-upgrade-effects.js";
+export { default as ReconfigureTechMakerAbilities } from "./050-reconfigure-tech-maker-abilities.js";
