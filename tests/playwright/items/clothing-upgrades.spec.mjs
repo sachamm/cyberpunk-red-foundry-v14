@@ -242,7 +242,9 @@ test("migrated clothing effects follow installation and the equipped host", asyn
     const refresh = migration.locator('[data-action="refresh"]');
     await expect(refresh).toBeVisible();
     await page.waitForFunction(
-      () => game.settings.get(game.system.id, "dataModelVersion") === "49",
+      () =>
+        game.settings.get(game.system.id, "dataModelVersion") ===
+        String(game.cpr.MigrationRunner.newDataModelVersion),
     );
     await page.evaluate(() =>
       game.settings.set(game.system.id, "justMigrated", false),
