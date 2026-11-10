@@ -75,6 +75,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 ### Changes
 
+- The `Tech` Role's `Maker Abilities` have been reconfigured into situational bonuses that can be applied via the normal skill check roll dialogue.
+  - Renamed varients of the `Tech` Role and it's abilities will remain unchanged.
 - Theme all chat messages, including native Foundry rolls and RollTable draws, with CPR chat fonts and colors while keeping bespoke CPR roll/item card layouts.
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
 - Redesign the item sheet header into a chip-based three-row layout (breadcrumb and sources, name, stat chips and price) and make the description tab full-width
