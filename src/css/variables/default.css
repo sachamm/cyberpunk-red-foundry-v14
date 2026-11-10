@@ -105,6 +105,15 @@
   --cpr-pause-highlight2: #e0287d;
   --cpr-pause-text: var(--cpr-color-white);
 
+  /* Chips */
+  --cpr-chip-blue: #6495ed;
+  --cpr-chip-gray: var(--cpr-chip-grey);
+  --cpr-chip-green: #228b22;
+  --cpr-chip-grey: #696969;
+  --cpr-chip-pink: #ff69b4;
+  --cpr-chip-red: #dc143c;
+  --cpr-chip-yellow: #daa520;
+
   /* Text Colors */
   --cpr-text-chat-failure: var(--cpr-color-red);
   --cpr-text-chat-normal: var(--cpr-color-near-black);

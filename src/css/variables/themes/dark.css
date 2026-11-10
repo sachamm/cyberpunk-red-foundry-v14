@@ -42,6 +42,15 @@ html[data-cpr-theme="dark"] {
   --cpr-checkbox-disabled-color: #999;
   --cpr-checkbox-unchecked-color: #999;
 
+  /* Chips */
+  --cpr-chip-blue: #6495ed;
+  --cpr-chip-gray: var(--cpr-chip-grey);
+  --cpr-chip-green: #228b22;
+  --cpr-chip-grey: #696969;
+  --cpr-chip-pink: #ff69b4;
+  --cpr-chip-red: #dc143c;
+  --cpr-chip-yellow: #daa520;
+
   /* Text Colors */
   --cpr-text-chat-failure: var(--cpr-dark-red);
   --cpr-text-chat-normal: var(--cpr-dark-text-main);
