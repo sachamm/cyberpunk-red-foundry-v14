@@ -280,8 +280,10 @@ export default class MigrationRunner {
       // migrate world items
       await app.setCurrentPhase("migrateItems");
       await this.migrateDocuments(this.documents.worldItems);
-      // migrate world actors
+      // migrate world actors. Wait for the canvas first: updating an actor that has a token
+      // on the active scene crashes while that scene's draw is still in progress.
       await app.setCurrentPhase("migrateActors");
+      await this.waitForCanvasReady();
       await this.migrateDocuments(this.documents.worldActors);
       // migrate token actors in scenes
       await app.setCurrentPhase("migrateScenes");
@@ -304,6 +306,27 @@ export default class MigrationRunner {
 
     await app.setCurrentPhase("migrationComplete");
     return true;
+  }
+
+  /**
+   * Wait for the canvas to finish drawing the active scene before world actors are batch-updated.
+   *
+   * While a scene draw is in progress, `canvas.pendingRenderFlags` does not exist yet, and
+   * updating an actor that has a token on the viewed scene crashes inside Foundry's
+   * `_updateDependentTokens`. Resolves immediately when there is nothing to wait for: no
+   * viewed scene, canvas disabled, draw already complete, or no draw in progress. A pending
+   * draw is awaited via the "canvasReady" hook, bounded so a stalled draw can never block
+   * world loading indefinitely.
+   */
+  // eslint-disable-next-line class-methods-use-this
+  async waitForCanvasReady() {
+    if (!game.scenes.current || game.settings.get("core", "noCanvas")) return;
+    if (canvas.ready) return;
+    if (!canvas.loading) return;
+    await new Promise((resolve) => {
+      Hooks.once("canvasReady", resolve);
+      setTimeout(resolve, 30_000);
+    });
   }
 
   /**
