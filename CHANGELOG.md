@@ -92,8 +92,10 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Updated `CREDITS.md` with attribution for all system assets
 - Rolling damage after an aimed shot will remember the location in the damage roll
 - Compendium Item descriptions have been revised to provide a unified format
-  - Armor
   - Ammo
+  - Armor
+  - Clothing
+  - Cyberware
 
 ### Plumbing
 
