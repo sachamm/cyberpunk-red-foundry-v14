@@ -638,9 +638,10 @@ export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
    */
   async _selectRoleBonuses(event) {
     const cprRoleData = foundry.utils.duplicate(this.item.system);
-    const roleType = SystemUtils.GetEventDatum(event, "data-role-type"); // Either "mainRole" or "subRole".
-    const coreSkills = await SystemUtils.GetCoreSkills(); // Get core skills.
-    const customSkills = game.items.filter((i) => i.type === "skill"); // Get any custom skills.
+    const roleType = SystemUtils.GetEventDatum(event, "data-role-type"); // Either "mainRole" or "subRole"
+    const subRoleName = SystemUtils.GetEventDatum(event, "data-ability-name");
+    const coreSkills = await SystemUtils.GetCoreSkills();
+    const customSkills = game.items.filter((i) => i.type === "skill");
     // If object is owned, get all skills on actor. If not, get all skills in system.
     const allSkills = this.item.isOwned
       ? this.actor.itemTypes.skill
@@ -648,9 +649,6 @@ export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
           .concat(customSkills)
           .sort((a, b) => (a.name > b.name ? 1 : -1));
     const sortedAllSkills = SystemUtils.SortItemListByName(allSkills); // Sort these skills by name.
-
-    // If we are editing a subability, get name from event data. Then, get the subrole from the name.
-    const subRoleName = SystemUtils.GetEventDatum(event, "data-ability-name");
     const subRole = cprRoleData.abilities.find((a) => a.name === subRoleName);
 
     // The ability data is either item.system or item.system.someSubAbility.
@@ -659,27 +657,22 @@ export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
       abilityData = subRole;
     }
 
-    // Prepare relevant data for the dialog to use.
     let dialogData = {
       skillList: sortedAllSkills,
       roleData: abilityData,
     };
 
-    // Call dialog and await results. Return if dialog is cancelled.
     dialogData = await selectRoleBonuses(dialogData);
     if (!dialogData) {
       return;
     }
 
     // If we are updating the main role ability, we can update item.system.
-    // Else, find the correct subability and update that.
+    // Else, the dialog mutated the subability in place (dialogData.roleData is
+    // the same object as cprRoleData.abilities[i]), so update that array.
     if (roleType === "mainRole") {
       this.item.update({ system: dialogData.roleData });
     } else {
-      foundry.utils.mergeObject(
-        cprRoleData.abilities.find((a) => a.name === subRole.name),
-        dialogData.subRole,
-      );
       this.item.update({ "system.abilities": cprRoleData.abilities });
     }
   }

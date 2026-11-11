@@ -3,9 +3,10 @@ import { cprFormPrompt } from "./cpr-dialog.js";
 
 /**
  * Show the "Select Role Bonuses" dialog and process its result. The form lets the
- * user pick which skills a role/sub-ability grants bonuses to, a bonus ratio, and
- * any universal bonuses; the selections are converted into the role's
- * `bonuses` / `universalBonuses` / `bonusRatio` data.
+ * user pick which skills a role/sub-ability grants bonuses to, a bonus ratio, any
+ * universal bonuses, and whether it is situational/on-by-default; the selections
+ * are converted into the role's `bonuses` / `universalBonuses` / `bonusRatio` /
+ * `isSituational` / `onByDefault` data.
  *
  * @param {object} dialogData - { skillList, roleData } for the form
  * @returns {Promise<object|null>} the dialogData with `roleData` updated, or null if cancelled
@@ -32,6 +33,8 @@ export default async function selectRoleBonuses(dialogData) {
         bonusRatio,
         bonuses,
         universalBonuses: (formData.universalBonuses ?? []).filter((b) => b),
+        isSituational: Boolean(formData.isSituational),
+        onByDefault: Boolean(formData.onByDefault),
       });
       return data;
     },
