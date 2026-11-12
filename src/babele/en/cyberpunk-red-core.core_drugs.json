@@ -4,7 +4,7 @@
   "entries": {
     "Antibiotic": {
       "name": "Antibiotic",
-      "description": "<p>\n  If a target has started the natural healing process injecting them with\n  Antibiotic will cause them to heal an additional 2 Hit Points per day for a\n  week. This effect does not stack.\n</p>\n"
+      "description": "<p>\n  If a target has started the natural healing process injecting them with\n  pharmaceutical will cause them to heal an additional\n  <strong>2 Hit Points</strong> per day for a week.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>Effect does not stack</p>\n</blockquote>\n"
     },
     "Black Lace": {
       "name": "Black Lace",
@@ -20,7 +20,7 @@
     },
     "Rapidetox": {
       "name": "Rapidetox",
-      "description": "<p>\n  Injecting a target with Rapidetox will eliminate the effects of any drugs,\n  poisons, or intoxicants they are currently affected by.\n</p>\n"
+      "description": "<p>\n  Injecting a target with this pharmaceutical will eliminate the effects of any\n  drugs, poisons, or intoxicants that are affecting the subject.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n</blockquote>\n"
     },
     "Smash": {
       "name": "Smash",
@@ -28,15 +28,15 @@
     },
     "Speedheal": {
       "name": "Speedheal",
-      "description": "<p>\n  Injecting a target with Speedheal immediately causes them to heal HP equal to\n  their BODY plus their WILL. This effect does not work on Mortally Wounded\n  targets, and can only be used on a target once per day.\n</p>\n"
+      "description": "<p>\n  Injecting a target with this pharmaceutical immediately causes them to heal HP\n  equal to [[/r @stats.body+@stats.will#Speedheal]]{BODY plus their WILL}.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>\n    This effect does not work on <strong>Mortally Wounded</strong> targets, and\n    can only be used on a target once per day.\n  </p>\n</blockquote>\n"
     },
     "Stim": {
       "name": "Stim",
-      "description": "<p>\n  Injecting a target with Stim causes them to ignore all penalties from being\n  Seriously Wounded for one hour. It can only be used on a target once per day.\n</p>\n"
+      "description": "<p>\n  Injecting a target with this pharmaceutical causes them to ignore all\n  penalties from being <strong>Seriously Wounded</strong> for one hour.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>It can only be used on a target once per day.</p>\n  <p>Add this item to the target's inventory to apply the supplied AE</p>\n</blockquote>\n"
     },
     "Surge": {
       "name": "Surge",
-      "description": "<p>\n  Injecting a target with Surge causes them to be immune to sleep deprivation\n  for 24 hours. It can only be used on a target once per week.\n</p>\n"
+      "description": "<p>\n  Injecting a target with this pharmaceutical causes them to be immune to\n  <strong>sleep deprivation</strong> (see pg 377). Effect lasts for 24 hours.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>Can only be used on a target once per week.</p>\n</blockquote>\n"
     },
     "Synthcoke": {
       "name": "Synthcoke",

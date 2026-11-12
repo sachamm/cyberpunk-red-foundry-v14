@@ -67,9 +67,16 @@ system:
   description:
     value: |
       <p>
-        Injecting a target with Stim causes them to ignore all penalties from being
-        Seriously Wounded for one hour. It can only be used on a target once per day.
+        Injecting a target with this pharmaceutical causes them to ignore all
+        penalties from being <strong>Seriously Wounded</strong> for one hour.
       </p>
+      <blockquote>
+        <p>
+          Pharmaceuticals must be administered by a trained <strong>Medtech</strong>
+        </p>
+        <p>It can only be used on a target once per day.</p>
+        <p>Add this item to the target's inventory to apply the supplied AE</p>
+      </blockquote>
   equipped: owned
   favorite: false
   price:

@@ -22,9 +22,15 @@ system:
   description:
     value: |
       <p>
-        Injecting a target with Surge causes them to be immune to sleep deprivation
-        for 24 hours. It can only be used on a target once per week.
+        Injecting a target with this pharmaceutical causes them to be immune to
+        <strong>sleep deprivation</strong> (see pg 377). Effect lasts for 24 hours.
       </p>
+      <blockquote>
+        <p>
+          Pharmaceuticals must be administered by a trained <strong>Medtech</strong>
+        </p>
+        <p>Can only be used on a target once per week.</p>
+      </blockquote>
   equipped: owned
   favorite: false
   price:
