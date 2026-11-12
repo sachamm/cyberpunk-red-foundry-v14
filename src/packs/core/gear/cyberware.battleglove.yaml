@@ -34,7 +34,7 @@ system:
         option slots.
       </p>
       <blockquote>
-        <p>*Remember to set HL to 0 when installing cyberwear options.</p>
+        <p>Remember to set HL to 0 when installing cyberware options.</p>
       </blockquote>
   dvTable: ""
   favorite: false
