@@ -96,6 +96,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
   - Armor
   - Clothing
   - Cyberware
+  - Drugs
 
 ### Plumbing
 
