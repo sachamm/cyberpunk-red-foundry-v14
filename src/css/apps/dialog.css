@@ -141,6 +141,13 @@
       max-width: fit-content;
     }
 
+    /* Foundry v13 draws checkbox glyph layers at --checkbox-size while the input
+       inherits the 14px dialog text size; the mismatch misaligns the layers into a
+       doubled check mark, so we fix that here. */
+    input[type="checkbox"] {
+      font-size: var(--checkbox-size);
+    }
+
     /* Foundry v13's form reset collapses an unstyled radio to a zero-size box,
        which left the "Select Install Target" radios invisible/unclickable under
        ApplicationV2. Restore the native control so it renders and is actionable. */
@@ -156,6 +163,17 @@
   > select {
     flex: 0 1 auto;
   }
+}
+
+/* DialogV2 renders the role ability prompt once and cannot re-render when
+   Has roll is toggled, so its dependent rows are shown/hidden with CSS state
+   rather than a template conditional (which could never expand under v13). */
+.dialog-list > li.has-roll-option {
+  display: none;
+}
+
+.dialog-list:has(input[name="hasRoll"]:checked) > li.has-roll-option {
+  display: flex;
 }
 
 .situational-mods {

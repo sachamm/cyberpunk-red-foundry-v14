@@ -53,6 +53,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
 - Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
 - Fix Configure Bonuses to Rolls for role sub-abilities not saving any selections, including Situational? and On-by-default
+- Fix the Has roll checkbox in the Create/Edit Role Ability dialog not saving its state; the multiplier, stat, and skill rows now appear when Has roll is checked
 - Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
 - Weapon damage override upgrades now replace the base damage formula on damage rolls
