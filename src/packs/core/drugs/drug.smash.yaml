@@ -191,32 +191,37 @@ system:
   consumed: Smash Primary
   description:
     value: |
-      <p><strong>Primary Effect</strong></p>
-      <p>Dose lasts 4 hours.</p>
+      <p><strong>Primary Effect</strong> Dose lasts 4 hours.</p>
+      <ul>
+        <li>
+          <p>
+            The user feels happy and satisfied, receiving a temporary modifier of +2
+            to <strong>Acting</strong>, <strong>Contortionist</strong>,
+            <strong>Conversation</strong>, <strong>Dance</strong>,
+            <strong>Human Perception</strong>, and <strong>Persuasion</strong>
+          </p>
+        </li>
+      </ul>
+      <hr />
       <p>
-        The user feels happy and satisfied, receiving a temporary modifier of +2 to
-        the following skills
+        <strong
+          >Secondary Effect
+          [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}</strong
+        >
       </p>
       <ul>
-        <li>Dance</li>
-        <li>Contortionist</li>
-        <li>Conversation</li>
-        <li>Human Perception</li>
-        <li>Persuasion</li>
-        <li>Acting</li>
+        <li>
+          <p>
+            While addicted, user suffers a -2 modifier to <strong>Acting</strong>,
+            <strong>Contortionist</strong>, <strong>Conversation</strong>,
+            <strong>Dance</strong>, <strong>Human Perception</strong>, and
+            <strong>Persuasion</strong>
+          </p>
+        </li>
       </ul>
-      <p><strong>Secondary Effect (DV15)</strong></p>
-      <p>User is addicted to Smash.</p>
-      <p>While addicted, user suffers a -2 modifier to the following skills</p>
-      <ul>
-        <li>Dance</li>
-        <li>Contortionist</li>
-        <li>Conversation</li>
-        <li>Human Perception</li>
-        <li>Persuasion</li>
-        <li>Acting</li>
-      </ul>
-      <p>GM will tell your when you crave more Smash. Roleplay accordingly.</p>
+      <blockquote>
+        <p>GM will tell your when you crave more Smash. Roleplay accordingly.</p>
+      </blockquote>
   equipped: owned
   favorite: false
   price:
