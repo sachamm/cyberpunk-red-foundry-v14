@@ -91,3 +91,8 @@ export {
   verifyRollDialog,
 } from "./roll-dialogs.mjs";
 export { rollType } from "./rolls.mjs";
+export {
+  createCanvasTokenViaUI,
+  openCanvasTokenHudViaUI,
+  measureCanvasDistanceViaUI,
+} from "./canvas.mjs";
