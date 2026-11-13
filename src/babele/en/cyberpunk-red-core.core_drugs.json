@@ -4,43 +4,43 @@
   "entries": {
     "Antibiotic": {
       "name": "Antibiotic",
-      "description": "<p>\n  If a target has started the natural healing process injecting them with\n  pharmaceutical will cause them to heal an additional\n  <strong>2 Hit Points</strong> per day for a week.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>Effect does not stack</p>\n</blockquote>\n"
+      "description": "<p>\n  If a target has started the natural healing process injecting them with\n  Antibiotic will cause them to heal an additional 2 Hit Points per day for a\n  week. This effect does not stack.\n</p>\n"
     },
     "Black Lace": {
       "name": "Black Lace",
-      "description": "<p><strong>Primary Effect</strong> Dose lasts 24 hours</p>\n<ul>\n  <li>\n    <p>\n      The user rolls 2d6 Humanity Loss which is returned if they pass the\n      Secondary Effect save\n    </p>\n  </li>\n  <li>\n    <p>The user ignores Seriously Wounded wound states for the duration</p>\n  </li>\n</ul>\n<p>\n  <strong\n    >Secondary Effect\n    [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV17 Resist Torture/Drugs]]{DV17 Resist Torture/Drugs}</strong\n  >\n</p>\n<ul>\n  <li><p>On Fail Humanity loss is not returned</p></li>\n  <li><p>Unless experiencing the primary effect, REF -2</p></li>\n</ul>\n"
+      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 24 hours.</p>\n<ul>\n  <li>\n    The user rolls 2d6 Humanity Loss which is returned if they pass the\n    Secondary Effect save\n  </li>\n  <li>The user ignores Seriously Wounded wound states for the duration</li>\n</ul>\n<p><strong>Secondary Effect (DV17)</strong></p>\n<p>\n  When the dose wears off, the user rolls\n  <strong>WILL + Resist Torture/Drugs + 1d10 against Secondary DV</strong>.\n</p>\n<ul>\n  <li>On Fail Humanity loss is not returned</li>\n  <li>Unless experiencing the primary effect, REF -2</li>\n</ul>\n"
     },
     "Blue Glass": {
       "name": "Blue Glass",
-      "description": "<p><strong>Primary Effect</strong> Dose lasts 4 hours</p>\n<ul>\n  <li>\n    <p>\n      The GM may occasionally tell the user that they are seeing swirls of\n      colours. When this happens the user loses their action on a single turn\n    </p>\n  </li>\n</ul>\n<p>\n  <strong\n    >Secondary Effect\n    [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}</strong\n  >\n</p>\n<ul>\n  <li>\n    <p>\n      The GM may occasionally tell the user that they are seeing swirls of\n      colours. When this happens the user loses their action on a single turn\n    </p>\n  </li>\n</ul>\n"
+      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 4 hours.</p>\n<ul>\n  <li>\n    The GM may occasionally tell the user that they are seeing swirls of\n    colours. When this happens the user loses their action on a single turn\n  </li>\n</ul>\n<p><strong>Secondary Effect (DV15)</strong></p>\n<ul>\n  <li>\n    The GM may occasionally tell the user that they are seeing swirls of\n    colours. When this happens the user loses their action on a single turn\n  </li>\n</ul>\n"
     },
     "Boost": {
       "name": "Boost",
-      "description": "<p><strong>Primary Effect</strong> Dose lasts 24 hours.</p>\n<ul>\n  <li><p>The user has INT +2 for the duration</p></li>\n</ul>\n<p>\n  <strong\n    >Secondary Effect\n    [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV17 Resist Torture/Drugs]]{DV17 Resist Torture/Drugs}</strong\n  >\n</p>\n<ul>\n  <li><p>INT -2</p></li>\n</ul>\n"
+      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 24 hours.</p>\n<ul>\n  <li>The user has INT +2 for the duration</li>\n</ul>\n<p><strong>Secondary Effect (DV17)</strong></p>\n<ul>\n  <li>INT -2</li>\n</ul>\n"
     },
     "Rapidetox": {
       "name": "Rapidetox",
-      "description": "<p>\n  Injecting a target with this pharmaceutical will eliminate the effects of any\n  drugs, poisons, or intoxicants that are affecting the subject.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n</blockquote>\n"
+      "description": "<p>\n  Injecting a target with Rapidetox will eliminate the effects of any drugs,\n  poisons, or intoxicants they are currently affected by.\n</p>\n"
     },
     "Smash": {
       "name": "Smash",
-      "description": "<p><strong>Primary Effect</strong> Dose lasts 4 hours.</p>\n<ul>\n  <li>\n    <p>\n      The user feels happy and satisfied, receiving a temporary modifier of +2\n      to <strong>Acting</strong>, <strong>Contortionist</strong>,\n      <strong>Conversation</strong>, <strong>Dance</strong>,\n      <strong>Human Perception</strong>, and <strong>Persuasion</strong>\n    </p>\n  </li>\n</ul>\n<hr />\n<p>\n  <strong\n    >Secondary Effect\n    [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}</strong\n  >\n</p>\n<ul>\n  <li>\n    <p>\n      While addicted, user suffers a -2 modifier to <strong>Acting</strong>,\n      <strong>Contortionist</strong>, <strong>Conversation</strong>,\n      <strong>Dance</strong>, <strong>Human Perception</strong>, and\n      <strong>Persuasion</strong>\n    </p>\n  </li>\n</ul>\n<blockquote>\n  <p>GM will tell your when you crave more Smash. Roleplay accordingly.</p>\n</blockquote>\n"
+      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 4 hours.</p>\n<p>\n  The user feels happy and satisfied, receiving a temporary modifier of +2 to\n  the following skills\n</p>\n<ul>\n  <li>Dance</li>\n  <li>Contortionist</li>\n  <li>Conversation</li>\n  <li>Human Perception</li>\n  <li>Persuasion</li>\n  <li>Acting</li>\n</ul>\n<p><strong>Secondary Effect (DV15)</strong></p>\n<p>User is addicted to Smash.</p>\n<p>While addicted, user suffers a -2 modifier to the following skills</p>\n<ul>\n  <li>Dance</li>\n  <li>Contortionist</li>\n  <li>Conversation</li>\n  <li>Human Perception</li>\n  <li>Persuasion</li>\n  <li>Acting</li>\n</ul>\n<p>GM will tell your when you crave more Smash. Roleplay accordingly.</p>\n"
     },
     "Speedheal": {
       "name": "Speedheal",
-      "description": "<p>\n  Injecting a target with this pharmaceutical immediately causes them to heal HP\n  equal to [[/r @stats.body+@stats.will#Speedheal]]{BODY plus their WILL}.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>\n    This effect does not work on <strong>Mortally Wounded</strong> targets, and\n    can only be used on a target once per day.\n  </p>\n</blockquote>\n"
+      "description": "<p>\n  Injecting a target with Speedheal immediately causes them to heal HP equal to\n  their BODY plus their WILL. This effect does not work on Mortally Wounded\n  targets, and can only be used on a target once per day.\n</p>\n"
     },
     "Stim": {
       "name": "Stim",
-      "description": "<p>\n  Injecting a target with this pharmaceutical causes them to ignore all\n  penalties from being <strong>Seriously Wounded</strong> for one hour.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>It can only be used on a target once per day.</p>\n  <p>Add this item to the target's inventory to apply the supplied AE</p>\n</blockquote>\n"
+      "description": "<p>\n  Injecting a target with Stim causes them to ignore all penalties from being\n  Seriously Wounded for one hour. It can only be used on a target once per day.\n</p>\n"
     },
     "Surge": {
       "name": "Surge",
-      "description": "<p>\n  Injecting a target with this pharmaceutical causes them to be immune to\n  <strong>sleep deprivation</strong> (see pg 377). Effect lasts for 24 hours.\n</p>\n<blockquote>\n  <p>\n    Pharmaceuticals must be administered by a trained <strong>Medtech</strong>\n  </p>\n  <p>Can only be used on a target once per week.</p>\n</blockquote>\n"
+      "description": "<p>\n  Injecting a target with Surge causes them to be immune to sleep deprivation\n  for 24 hours. It can only be used on a target once per week.\n</p>\n"
     },
     "Synthcoke": {
       "name": "Synthcoke",
-      "description": "<p><strong>Primary Effect</strong> Dose lasts 4 hours.</p>\n<ul>\n  <li><p>The user feels paranoid occasionally</p></li>\n  <li>\n    <p>+1 <strong>REF</strong> for the duration</p>\n  </li>\n</ul>\n<hr />\n<p>\n  <strong\n    >Secondary Effect\n    [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}</strong\n  >\n</p>\n<ul>\n  <li>\n    <p>-2 <strong>REF</strong> unless under the Primary Effect</p>\n  </li>\n</ul>\n<blockquote>\n  <p>GM will tell your when you crave more Smash. Roleplay accordingly.</p>\n</blockquote>\n"
+      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 4 hours.</p>\n<ul>\n  <li>+1 REF by 1 point for the duration</li>\n  <li>The user feels paranoid occasionally</li>\n</ul>\n<p><strong>Secondary Effect (DV15)</strong></p>\n<ul>\n  <li>-2 REF unless under the Primary Effect</li>\n  <li>\n    GM will tell you when when you crave more Synthcoke. Roleplay accordingly.\n  </li>\n</ul>\n"
     }
   }
 }

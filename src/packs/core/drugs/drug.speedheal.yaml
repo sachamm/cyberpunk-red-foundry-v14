@@ -22,18 +22,10 @@ system:
   description:
     value: |
       <p>
-        Injecting a target with this pharmaceutical immediately causes them to heal HP
-        equal to [[/r @stats.body+@stats.will#Speedheal]]{BODY plus their WILL}.
+        Injecting a target with Speedheal immediately causes them to heal HP equal to
+        their BODY plus their WILL. This effect does not work on Mortally Wounded
+        targets, and can only be used on a target once per day.
       </p>
-      <blockquote>
-        <p>
-          Pharmaceuticals must be administered by a trained <strong>Medtech</strong>
-        </p>
-        <p>
-          This effect does not work on <strong>Mortally Wounded</strong> targets, and
-          can only be used on a target once per day.
-        </p>
-      </blockquote>
   equipped: owned
   favorite: false
   price:

@@ -22,14 +22,9 @@ system:
   description:
     value: |
       <p>
-        Injecting a target with this pharmaceutical will eliminate the effects of any
-        drugs, poisons, or intoxicants that are affecting the subject.
+        Injecting a target with Rapidetox will eliminate the effects of any drugs,
+        poisons, or intoxicants they are currently affected by.
       </p>
-      <blockquote>
-        <p>
-          Pharmaceuticals must be administered by a trained <strong>Medtech</strong>
-        </p>
-      </blockquote>
   equipped: owned
   favorite: false
   price:

@@ -112,27 +112,23 @@ system:
   consumed: Black Lace Primary
   description:
     value: |
-      <p><strong>Primary Effect</strong> Dose lasts 24 hours</p>
+      <p><strong>Primary Effect</strong></p>
+      <p>Dose lasts 24 hours.</p>
       <ul>
         <li>
-          <p>
-            The user rolls 2d6 Humanity Loss which is returned if they pass the
-            Secondary Effect save
-          </p>
+          The user rolls 2d6 Humanity Loss which is returned if they pass the
+          Secondary Effect save
         </li>
-        <li>
-          <p>The user ignores <strong>Seriously Wounded</strong> wound states for the duration</p>
-        </li>
+        <li>The user ignores Seriously Wounded wound states for the duration</li>
       </ul>
+      <p><strong>Secondary Effect (DV17)</strong></p>
       <p>
-        <strong
-          >Secondary Effect
-          [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV17 Resist Torture/Drugs]]{DV17 Resist Torture/Drugs}</strong
-        >
+        When the dose wears off, the user rolls
+        <strong>WILL + Resist Torture/Drugs + 1d10 against Secondary DV</strong>.
       </p>
       <ul>
-        <li><p>On Fail Humanity loss is not returned</p></li>
-        <li><p>Unless experiencing the primary effect, REF -2</p></li>
+        <li>On Fail Humanity loss is not returned</li>
+        <li>Unless experiencing the primary effect, REF -2</li>
       </ul>
   equipped: owned
   favorite: false

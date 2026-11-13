@@ -111,18 +111,14 @@ system:
   consumed: Boost Primary
   description:
     value: |
-      <p><strong>Primary Effect</strong> Dose lasts 24 hours.</p>
+      <p><strong>Primary Effect</strong></p>
+      <p>Dose lasts 24 hours.</p>
       <ul>
-        <li><p>The user has <strong>INT</strong> +2 for the duration</p></li>
+        <li>The user has INT +2 for the duration</li>
       </ul>
-      <p>
-        <strong
-          >Secondary Effect
-          [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV17 Resist Torture/Drugs]]{DV17 Resist Torture/Drugs}</strong
-        >
-      </p>
+      <p><strong>Secondary Effect (DV17)</strong></p>
       <ul>
-        <li><p>INT -2</p></li>
+        <li>INT -2</li>
       </ul>
   equipped: owned
   favorite: false

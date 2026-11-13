@@ -22,16 +22,10 @@ system:
   description:
     value: |
       <p>
-        If a target has started the natural healing process, injecting them with
-        an antibiotic will cause them to heal an additional
-        <strong>2 Hit Points</strong> per day for a week.
+        If a target has started the natural healing process injecting them with
+        Antibiotic will cause them to heal an additional 2 Hit Points per day for a
+        week. This effect does not stack.
       </p>
-      <blockquote>
-        <p>
-          Pharmaceuticals must be administered by a trained <strong>Medtech</strong>
-        </p>
-        <p>Effect does not stack</p>
-      </blockquote>
   equipped: owned
   favorite: false
   price:

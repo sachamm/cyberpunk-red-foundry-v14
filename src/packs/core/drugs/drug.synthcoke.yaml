@@ -156,28 +156,19 @@ system:
   consumed: Synthcoke Primary
   description:
     value: |
-      <p><strong>Primary Effect</strong> Dose lasts 4 hours.</p>
+      <p><strong>Primary Effect</strong></p>
+      <p>Dose lasts 4 hours.</p>
       <ul>
-        <li><p>The user feels paranoid occasionally</p></li>
+        <li>+1 REF by 1 point for the duration</li>
+        <li>The user feels paranoid occasionally</li>
+      </ul>
+      <p><strong>Secondary Effect (DV15)</strong></p>
+      <ul>
+        <li>-2 REF unless under the Primary Effect</li>
         <li>
-          <p>+1 <strong>REF</strong> for the duration</p>
+          GM will tell you when when you crave more Synthcoke. Roleplay accordingly.
         </li>
       </ul>
-      <hr />
-      <p>
-        <strong
-          >Secondary Effect
-          [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}</strong
-        >
-      </p>
-      <ul>
-        <li>
-          <p>-2 <strong>REF</strong> unless under the Primary Effect</p>
-        </li>
-      </ul>
-      <blockquote>
-        <p>GM will tell you when you crave more Synthcoke. Roleplay accordingly.</p>
-      </blockquote>
   equipped: owned
   favorite: false
   price:
