@@ -1,10 +1,11 @@
 {
   "foundry": {
-    "description": "Your local Foundry VTT install. dataPath: Foundry's user-data directory (worlds/systems/modules; the build deploys into <dataPath>/Data/systems). appPath: your Foundry application install. Both dataPath and appPath may contain a {VERSION} placeholder, replaced anywhere it appears by <versionPrefix><version> (version from src/system.json's compatibility.verified) so you can match any layout, e.g. appPath '/foundry/{VERSION}' -> '/foundry/v13'. versionPrefix: prefix for {VERSION}; omit it to default to 'v', or set it to \"\" for a bare version like '13'. If appPath has no {VERSION}, the <versionPrefix><version> subdir is appended automatically (the historical default). licenseKey: your Foundry license key, or leave blank and set FOUNDRY_LICENSE_KEY.",
+    "description": "Your local Foundry VTT install. dataPath: Foundry's user-data directory (worlds/systems/modules; the build deploys into <dataPath>/Data/systems). appPath: your Foundry application install. Both dataPath and appPath may contain a {VERSION} placeholder, replaced anywhere it appears by <versionPrefix><version> (version from src/system.json's compatibility.verified) so you can match any layout, e.g. appPath '/foundry/{VERSION}' -> '/foundry/v14'. versionPrefix: prefix for {VERSION}; omit it to default to 'v', or set it to \"\" for a bare version like '14'. If appPath has no {VERSION}, the <versionPrefix><version> subdir is appended automatically (the historical default). licenseKey: your Foundry license key, or leave blank and set FOUNDRY_KEY. nodePath: optional Node 24 executable for Foundry v14; override with FOUNDRY_NODE_PATH. Defaults to the Node executable running the harness.",
     "dataPath": "/absolute/path/to/foundry/userdata",
     "appPath": "/absolute/path/to/foundry/{VERSION}",
     "versionPrefix": "v",
-    "licenseKey": ""
+    "licenseKey": "",
+    "nodePath": "/absolute/path/to/node24"
   },
   "repos": {
     "description": "Absolute paths to the sibling cyberpunk-red-team repositories used by tooling (dlc, templates, system, cicd) — typically checked out next to this one.",

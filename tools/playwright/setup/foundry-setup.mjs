@@ -282,33 +282,12 @@ async function createAndLaunchWorld(page, worldId, config) {
   if (await present(createButton)) {
     await clickThrough(page, createButton);
 
-    // World creation dialog. Opening it can spawn a fresh tour (e.g. "Backups Overview") that
-    // overlays and re-renders the dialog, detaching the title input mid-fill - a 30s `fill` timeout
-    // that flaked CI. Clear tours and retry so a tour that appears after the dialog can't wedge us.
-    const titleInput = page.locator('input[name="title"]').first();
-    for (let attempt = 0; attempt < 6; attempt += 1) {
-      await dismissTours(page);
-      const filled = await titleInput
-        .fill(worldId, { timeout: 5000 })
-        .then(() => true)
-        .catch(() => false);
-      if (filled) break;
-    }
-    const idInput = page.locator('input[name="id"]').first();
-    if (await present(idInput, 1000)) {
-      await idInput.fill(worldId);
-    }
-    await page
-      .locator('select[name="system"]')
-      .first()
-      .selectOption(SYSTEM_NAME);
-    await clickThrough(
-      page,
-      page
-        .locator('button[type="submit"], button:has-text("Create World")')
-        .last(),
-    );
-    await page.waitForLoadState("networkidle").catch(() => {});
+    await page.locator('#world-create input[name="title"]').fill(worldId);
+    await page.locator('#world-create input[name="world-id"]').fill(worldId);
+    await page.locator(`.system[data-package-id="${SYSTEM_NAME}"]`).click();
+    await page.getByRole("button", { name: "Continue", exact: true }).click();
+    await page.waitForURL(/\/(players|join|game)$/, { timeout: 60000 });
+    return;
   }
 
   await launchWorldFromSetup(page, { config, worldId });
@@ -345,7 +324,7 @@ export async function driveSetup(page, { config, worldId }) {
 }
 
 async function currentPageHasJoinScreen(page) {
-  return present(page.locator('select[name="userid"]').first(), 2000);
+  return present(page.locator('select[name="userId"]').first(), 2000);
 }
 
 export async function launchedWorldHasJoinScreen(page, config) {
@@ -480,7 +459,7 @@ export async function joinAsUser(page, config, label, { password = "" } = {}) {
     await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
   }
 
-  const userSelect = page.locator('select[name="userid"]').first();
+  const userSelect = page.locator('select[name="userId"]').first();
   if (await present(userSelect)) {
     await userSelect.selectOption({ label }).catch(async () => {
       await userSelect.selectOption({ index: 1 });
@@ -496,11 +475,11 @@ export async function joinAsUser(page, config, label, { password = "" } = {}) {
 }
 
 async function waitForJoinableUsers(page) {
-  const userSelect = page.locator('select[name="userid"]').first();
+  const userSelect = page.locator('select[name="userId"]').first();
   await userSelect.waitFor({ state: "visible", timeout: 60000 });
   await page.waitForFunction(
     () => {
-      const select = document.querySelector('select[name="userid"]');
+      const select = document.querySelector('select[name="userId"]');
       if (!(select instanceof HTMLSelectElement)) return false;
       return Array.from(select.options).some((option) => option.value);
     },
@@ -526,7 +505,7 @@ export async function joinAsFullGM(page, config, { password }) {
   await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
   await waitForJoinableUsers(page);
   const candidates = await page
-    .locator('select[name="userid"] option')
+    .locator('select[name="userId"] option')
     .evaluateAll((options) =>
       options
         .map((option) => ({

@@ -198,6 +198,10 @@ export function resolveHarnessConfig({
 
   return {
     appPath,
+    nodePath:
+      process.env.FOUNDRY_NODE_PATH ||
+      local.foundry?.nodePath ||
+      process.execPath,
     version,
     appDir,
     dataPath,

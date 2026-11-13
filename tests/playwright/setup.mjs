@@ -40,7 +40,10 @@ export default async function globalSetup() {
 
   const browser = await chromium.launch({ args: ["--no-sandbox"] });
   try {
-    const page = await browser.newPage();
+    const page = await browser.newPage({
+      viewport: { width: 1920, height: 1080 },
+    });
+    page.on("pageerror", (error) => console.error(error.message));
     await driveSetup(page, { config, worldId });
     await joinAsGM(page, config);
     await disableCanvas(page);
@@ -50,7 +53,9 @@ export default async function globalSetup() {
     });
     await page.context().storageState({ path: STORAGE_STATE });
 
-    const playerContext = await browser.newContext();
+    const playerContext = await browser.newContext({
+      viewport: { width: 1920, height: 1080 },
+    });
     const playerPage = await playerContext.newPage();
     await joinAsUser(playerPage, config, PLAYER_NAME);
     await disableCanvas(playerPage);

@@ -3,6 +3,15 @@ import { PLAYER_STORAGE_STATE } from "../config/harness-config.mjs";
 
 export async function gotoReadyWorld(page) {
   await page.goto("/game");
+  await waitForReadyWorld(page);
+}
+
+export async function reloadReadyWorld(page) {
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await waitForReadyWorld(page);
+}
+
+async function waitForReadyWorld(page) {
   await page.waitForFunction(() => globalThis.game?.ready === true, null, {
     timeout: 60000,
   });

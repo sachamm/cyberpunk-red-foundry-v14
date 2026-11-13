@@ -78,7 +78,7 @@ export async function startFoundry({
   let child;
   try {
     child = spawn(
-      "node",
+      resolved.nodePath ?? process.execPath,
       [
         mainJs,
         `--dataPath=${resolved.dataPath}`,
