@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Version without v (for example 0.93.0-v14.alpha.1)
+        description: Version without v (for example 0.93.0-v14.alpha.2)
         required: true
-        default: 0.93.0-v14.alpha.1
+        default: 0.93.0-v14.alpha.2
   push:
     tags: ["v*-v14.*"]
 permissions:

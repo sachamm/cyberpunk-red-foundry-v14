@@ -1,5 +1,5 @@
 {
-  "version": "0.93.0-v14.alpha.1",
+  "version": "0.93.0-v14.alpha.2",
   "flags": {
     "featureVideoURL": ""
   },
@@ -371,7 +371,7 @@
   "secondaryTokenAttribute": null,
   "background": "systems/cyberpunk-red-core/images/Foundry-Background.webp",
   "url": "https://github.com/sachamm/cyberpunk-red-foundry-v14",
-  "manifest": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.1/system.json",
-  "download": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.1/cyberpunk-red-core-0.93.0-v14.alpha.1.zip",
+  "manifest": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.2/system.json",
+  "download": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.2/cyberpunk-red-core-0.93.0-v14.alpha.2.zip",
   "license": "LICENCE.md"
 }

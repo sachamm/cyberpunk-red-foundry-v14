@@ -2,6 +2,19 @@
 
 # Changelog
 
+## Version 0.93.0-v14.alpha.2
+
+### Documentation
+
+- Direct installation, release downloads, support, and contributions to this repository.
+- Remove outdated project branding and community links from the README, and update the public AI contribution policy.
+
+### Testing
+
+- Align browser tests with Foundry v14 settings menus, sheet configuration, token HUD glyphs, and Active Effect fields and numeric values.
+- Wait for nested cyberware deletion to complete before checking that the items were removed.
+- Validate all 482 browser cases on Foundry 14.370, including focused reruns of failed cases.
+
 ## Version 0.93
 
 ### Action Needed
