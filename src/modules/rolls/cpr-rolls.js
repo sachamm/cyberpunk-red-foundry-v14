@@ -314,7 +314,7 @@ export class CPRRoll extends Roll {
   }
 
   /**
-   * Pop up the roll confirmation dialog, then merge any changes back onto this roll.
+   * Pop up the roll confirmation dialog, which edits this roll in place.
    *
    * @param {Object} event
    * @param {CPRActor} actor
@@ -346,7 +346,8 @@ export class CPRRoll extends Roll {
         (err) => LOGGER.debug(err),
       );
       if (dialogData === undefined) return false;
-      foundry.utils.mergeObject(this, dialogData, { overwrite: true });
+      // The dialog returns this same roll. Recursively merging it into itself
+      // traverses referenced Documents and attempts to overwrite read-only fields.
     }
     return true;
   }

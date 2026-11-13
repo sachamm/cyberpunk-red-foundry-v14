@@ -292,11 +292,9 @@ export default class CPRCyberdeckItem extends CPRItem {
 
     if (!netrunnerToken) {
       // Search for a token associated with this Actor ID.
-      const tokenList = game.scenes
-        .map((tokenDoc) =>
-          tokenDoc.tokens.filter((t) => t.id === this.actor.id),
-        )
-        .filter((s) => s.length > 0);
+      const tokenList = game.scenes.contents.flatMap((sceneDoc) =>
+        sceneDoc.tokens.filter((t) => t.actorId === this.actor.id),
+      );
       if (tokenList.length === 1) {
         [netrunnerToken] = tokenList;
       } else {
@@ -344,7 +342,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         blackIce = await Actor.create({
           name: blackIceName,
           type: "blackIce",
-          folder: dynamicFolder,
+          folder: dynamicFolder.id,
           img: `systems/${game.system.id}/icons/netrunning/Black_Ice.png`,
           system: {
             class: program.system.blackIceType,
@@ -375,50 +373,41 @@ export default class CPRCyberdeckItem extends CPRItem {
       programUUID: program.uuid,
       sceneId: scene.id,
     };
-    const tokenData = [
+    const tokenData = await blackIce.getTokenDocument(
       {
         name: blackIce.name,
-        actorId: blackIce._id,
-        actorData: blackIce.system,
         actorLink: false,
-        img: blackIce.img,
+        texture: { src: blackIce.img },
         x: netrunnerToken.x + 75,
         y: netrunnerToken.y,
         flags: { [game.system.id]: tokenFlags },
       },
-    ];
+      { parent: scene },
+    );
     try {
-      const biTokenList = await scene.createEmbeddedDocuments(
-        "Token",
-        tokenData,
-      );
+      const biTokenList = await scene.createEmbeddedDocuments("Token", [
+        tokenData.toObject(),
+      ]);
       const biToken = biTokenList.length > 0 ? biTokenList[0] : null;
       if (biToken !== null) {
-        // Ensure Token has Black Ice image for token
-        biToken.update(
-          { texture: { src: blackIce.img } },
-          { animation: { duration: 0 } },
-        );
         // Update the Token Actor based on the Black ICE Program Stats, leaving any effect description in place.
-        biToken.actor.update({
-          class: program.system.blackIceType,
-          stats: {
-            per: program.system.per,
-            spd: program.system.spd,
-            atk: program.system.atk,
-            def: program.system.def,
-            rez: program.system.rez,
+        await biToken.actor.update({
+          system: {
+            class: program.system.blackIceType,
+            stats: {
+              per: program.system.per,
+              spd: program.system.spd,
+              atk: program.system.atk,
+              def: program.system.def,
+              rez: program.system.rez,
+            },
+            notes: program.system.description.value,
           },
-          notes: program.system.description.value,
         });
-        const cprFlags =
-          typeof program.flags[game.system.id] !== "undefined"
-            ? program.flags[game.system.id]
-            : {};
-        cprFlags.biTokenId = biToken.id;
-        cprFlags.sceneId = scene.id;
-        // Passed by reference
-        program.flags[game.system.id] = cprFlags;
+        await program.update({
+          [`flags.${game.system.id}.biTokenId`]: biToken.id,
+          [`flags.${game.system.id}.sceneId`]: scene.id,
+        });
       }
     } catch (error) {
       LOGGER.error(
@@ -489,7 +478,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   // eslint-disable-next-line class-methods-use-this
   async resetRezProgram(program) {
-    await program.update({ "system.rez.value": program.system.rez.max });
+    await CPRCyberdeckItem._updateProgramRez(program, program.system.rez.max);
   }
 
   /**
@@ -502,23 +491,17 @@ export default class CPRCyberdeckItem extends CPRItem {
   // eslint-disable-next-line class-methods-use-this
   async reduceRezProgram(program, reduceAmount = 1) {
     const newRez = Math.max(program.system.rez.value - reduceAmount, 0);
-    if (
-      program.system.class === "blackice" &&
-      typeof program.flags[game.system.id] !== "undefined"
-    ) {
-      const cprFlags = program.flags[game.system.id];
-      if (typeof cprFlags.biTokenId !== "undefined") {
-        const { biTokenId } = cprFlags;
-        const tokenList = canvas.scene.tokens
-          .map((tokenDoc) => tokenDoc.actor.token)
-          .filter((token) => token)
-          .filter((t) => t.id === biTokenId);
-        if (tokenList.length === 1) {
-          const [biToken] = tokenList;
-          await biToken.actor.update({
-            "system.rez.value": newRez,
-          });
-        }
+    await CPRCyberdeckItem._updateProgramRez(program, newRez);
+  }
+
+  static async _updateProgramRez(program, newRez) {
+    if (program.system.class === "blackice") {
+      const flags = program.flags[game.system.id];
+      const token = game.scenes
+        .get(flags?.sceneId)
+        ?.tokens.get(flags?.biTokenId);
+      if (token?.actor) {
+        await token.actor.update({ "system.stats.rez.value": newRez });
       }
     }
     await program.update({ "system.rez.value": newRez });
