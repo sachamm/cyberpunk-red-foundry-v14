@@ -1010,6 +1010,9 @@ test.describe("Special Gear Pane", () => {
         await containerDialog.locator(MOOK_FIELD.dialogConfirm).click();
         await expect(containerDialog).toHaveCount(0, { timeout: 10000 });
 
+        await waitItemRemoved(game, { actorId, itemId: arm.embeddedId });
+        await waitItemRemoved(game, { actorId, itemId: optional.embeddedId });
+
         const remaining = await game.evaluate(
           ({ actorId, armId, optionalId }) => ({
             arm: game.actors.get(actorId).items.has(armId),
