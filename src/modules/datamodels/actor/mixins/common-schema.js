@@ -116,7 +116,7 @@ export default class CommonSchema extends CPRSystemDataModel {
         filteredMods,
         SystemUtils.slugify(skill.name),
       ).reduce((acc, mod) => {
-        if (mod.changeMode === 2) {
+        if (mod.changeMode === "add") {
           return acc + mod.value;
         }
         return acc;

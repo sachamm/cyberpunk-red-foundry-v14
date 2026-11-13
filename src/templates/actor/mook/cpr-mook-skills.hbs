@@ -33,13 +33,13 @@
           {{skill.name}}
         {{/if}}
         {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "level") }}
-          ({{~cprEffectModMode 2 skill.system.level}})
+          ({{~cprEffectModMode "add" skill.system.level}})
         {{~/if}}
         {{~#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "base") }}
-          ({{~cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor))}})
+          ({{~cprEffectModMode "add" (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor))}})
         {{~/if}}
         {{~#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "total") }}
-          ({{~cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillModInfo skill.name ../actor "modTotal"))}})
+          ({{~cprEffectModMode "add" (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillModInfo skill.name ../actor "modTotal"))}})
         {{~/if~}}
       </a>
       {{~#unless skill.system.core}}

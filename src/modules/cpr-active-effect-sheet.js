@@ -68,7 +68,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
 
     // Prepare the key input element for each Change (a select or a text input).
     modList.forEach((change, i) => {
-      const name = `changes.${i}.key`;
+      const name = `system.changes.${i}.key`;
       const selectClasses = ["key-key", "force-submit"];
       const value = change.key;
       switch (change.category) {
@@ -229,17 +229,16 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @returns {Promise<void>}
    */
   static async #onAddMod() {
-    const idx = this.document.changes.length;
+    const idx = this.document.system.changes.length;
     LOGGER.debug(`adding change defaults for changes.${idx}`);
-    const changes = this.document.toObject().changes;
+    const changes = this.document.toObject().system.changes;
     changes.push({
-      key: "",
-      mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-      value: "0",
+      ...this.document.system.schema.fields.changes.element.getInitialValue(),
+      value: 0,
     });
     await this.submit({
       updateData: {
-        changes,
+        "system.changes": changes,
         [`flags.${game.system.id}.changes.cats.${idx}`]: "skill",
         [`flags.${game.system.id}.changes.situational.${idx}`]: {
           isSituational: false,
@@ -263,7 +262,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   static async #onDeleteMod(event, target) {
     const modnum = parseInt(target.dataset.index, 10);
     // First, delete the change itself in the AE.
-    const changes = this.document.toObject().changes;
+    const changes = this.document.toObject().system.changes;
     changes.splice(modnum, 1);
 
     // Then, reindex the corresponding flags for the deleted change.
@@ -299,7 +298,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     });
 
     await this.document.update({
-      changes,
+      "system.changes": changes,
       [`flags.${game.system.id}.==changes`]: newFlags,
     });
   }
@@ -329,7 +328,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       return {
         value: key,
         label: SystemUtils.Localize(value),
-        disabled: effect.changes.some((change) => change.key === key),
+        disabled: effect.system.changes.some((change) => change.key === key),
       };
     });
 
@@ -354,7 +353,9 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
         return {
           value: effectKey,
           label: SystemUtils.Localize(value),
-          disabled: effect.changes.some((change) => change.key === effectKey),
+          disabled: effect.system.changes.some(
+            (change) => change.key === effectKey,
+          ),
         };
       });
     });

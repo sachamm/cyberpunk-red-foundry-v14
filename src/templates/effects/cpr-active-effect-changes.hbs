@@ -28,15 +28,15 @@
           {{change.keyInput}}
         </div>
         <div class="change-value force-submit">
-          <input type="text" name="changes.{{i}}.value" value="{{change.value}}"/>
+          <input type="text" name="system.changes.{{i}}.value" value="{{change.value}}"/>
         </div>
         <div class="change-mode force-submit">
           {{#if (cprCompare change.category "===" "stat")}}
-            <select name="changes.{{i}}.mode" data-dtype="Number">
+            <select name="system.changes.{{i}}.type">
               {{selectOptions (cprFindConfigObj "effectModifierModes") selected=change.changeMode localize=true}}
             </select>
           {{else}}
-            <input type="hidden" name="changes.{{i}}.mode" data-dtype="Number" value="2"/>
+            <input type="hidden" name="system.changes.{{i}}.type" value="add"/>
             <span>
               {{localize "CPR.effectSheet.modifiers.addSubtract"}}
               <i class="fas fa-circle-question" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>

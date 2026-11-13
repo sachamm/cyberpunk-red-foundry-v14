@@ -169,11 +169,11 @@ export default class CPRActor extends Actor {
    * @override
    * @returns nothing, just applies effects to the actor
    */
-  applyActiveEffects() {
+  applyActiveEffects(phase) {
     for (const e of this.allApplicableEffects()) {
       e.determineSuppression();
     }
-    return super.applyActiveEffects();
+    return super.applyActiveEffects(phase);
   }
 
   /**

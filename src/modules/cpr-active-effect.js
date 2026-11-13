@@ -45,18 +45,9 @@ export default class CPRActiveEffect extends ActiveEffect {
     await this.setFlag(game.system.id, `changes.cats.${num}`, category);
   }
 
-  /**
-   * Check if this effect is suppressed before applying it. Taken from the 5E code in
-   * active-effect.js.
-   *
-   * @override
-   * @param {CPRActor} actor - who's getting the active effect?
-   * @param {Object} change - the change to apply from an effect
-   * @returns null if this is suppressed, apply() otherwise
-   */
-  apply(actor, change) {
-    if (this.system.isSuppressed) return null;
-    return super.apply(actor, change);
+  /** @inheritDoc */
+  get isSuppressed() {
+    return Boolean(this.system.isSuppressed || this.duration.expired);
   }
 
   /**

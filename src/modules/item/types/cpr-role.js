@@ -185,7 +185,7 @@ export default class CPRRoleItem extends CPRItem {
         category,
         isSituational,
         onByDefault,
-        changeMode: CONST.ACTIVE_EFFECT_MODES.ADD, // const = 2. This comes from foundry.
+        changeMode: "add",
       });
     }
     // Check whether each sub ability has the applicable bonus/universal bonus.
@@ -206,7 +206,7 @@ export default class CPRRoleItem extends CPRItem {
           category,
           isSituational,
           onByDefault,
-          changeMode: CONST.ACTIVE_EFFECT_MODES.ADD, // const = 2. This comes from foundry.
+          changeMode: "add",
         });
       }
     });

@@ -271,7 +271,7 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
         img: e.img,
         usage: e.usage,
         system: {
-          isSuppressed: e.system.isSuppressed,
+          isSuppressed: e.isSuppressed,
         },
         disabled: e.disabled,
       };
@@ -284,12 +284,12 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
       ) {
         // Get effects with no changes and display in the Permanent Effects category.
         // This is a rare case where a user makes an effect but doesn't add any changes.
-        if (e.changes.length === 0 && !e.disabled && !e.system.isSuppressed) {
+        if (e.system.changes.length === 0 && e.active) {
           categories.permanent.effects.push(simplifiedEffect);
         }
 
         // Get situational, non-disabled effects.
-        if (!e.disabled && !e.system.isSuppressed) {
+        if (e.active) {
           const situationalMods = CPRMod.getAllModifiers([e]).filter(
             (m) => m.isSituational,
           );
@@ -302,7 +302,7 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
         }
 
         // Get inactive (disabled or suppressed) effects.
-        if (e.disabled || e.system.isSuppressed) {
+        if (!e.active) {
           // The second argument in the following function is set to true, so that it gets disabled modifiers.
           simplifiedEffect.changes = CPRMod.getAllModifiers([e], true);
           categories.inactive.effects.push(simplifiedEffect);

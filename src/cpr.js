@@ -198,9 +198,6 @@ Hooks.once("init", async () => {
     CPRRolls.CPRTableRoll,
   );
 
-  // Turn legacy tranferral for active effects off. Necessary for v11.
-  CONFIG.ActiveEffect.legacyTransferral = false;
-
   // Make System fonts available to Foundry
   CONFIG.fontDefinitions.Jost = {
     editor: true,

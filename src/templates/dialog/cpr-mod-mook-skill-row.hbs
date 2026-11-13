@@ -13,7 +13,7 @@
   </div>
   <div class="dialog-item-detail skill-mod-value text-nowrap">
     {{!-- we only support mode 2 (add/subtract) for skills --}}
-    {{cprEffectModMode 2 this.mod}}
+    {{cprEffectModMode "add" this.mod}}
   </div>
   <div class="dialog-item-detail skill-total text-nowrap">
     {{cprMath "sum" this.stat this.level this.mod}}

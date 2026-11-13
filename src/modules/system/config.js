@@ -514,11 +514,11 @@ CPR.universalBonuses = {
 };
 
 CPR.effectModifierModes = {
-  1: "CPR.effectSheet.modifiers.multiply",
-  2: "CPR.effectSheet.modifiers.addSubtract",
-  3: "CPR.effectSheet.modifiers.lowerOf",
-  4: "CPR.effectSheet.modifiers.higherOf",
-  5: "CPR.effectSheet.modifiers.override",
+  multiply: "CPR.effectSheet.modifiers.multiply",
+  add: "CPR.effectSheet.modifiers.addSubtract",
+  downgrade: "CPR.effectSheet.modifiers.lowerOf",
+  upgrade: "CPR.effectSheet.modifiers.higherOf",
+  override: "CPR.effectSheet.modifiers.override",
 };
 
 CPR.effectUses = {

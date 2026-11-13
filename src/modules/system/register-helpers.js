@@ -822,25 +822,19 @@ export default function registerHandlebarsHelpers() {
 
   /**
    * For readability's sake, translate the "mode" of an active effect mod into an intuitive mathematical operator.
-   * For unknown modes, just return a question mark, which shouldn't happen. Modes are constants provided by Foundry:
-   *    0 (CUSTOM) - calls the "applyActiveEffect" hook with the value to figure out what to do with it (not used)
-   *    1 (MULTIPLY) - multiply this value with the current one
-   *    2 (ADD) - add this value to the current value (as an Integer) or set it if currently null
-   *    3 (DOWNGRADE) - like OVERRIDE but only replace if the value is lower (worse)
-   *    4 (UPGRADE) - like OVERRIDE but only replace if the value is higher (better)
-   *    5 (OVERRIDE) - replace the current value with this one
+   * For unknown types, return a question mark.
    */
   Handlebars.registerHelper("cprEffectModMode", (mode, value) => {
     switch (mode) {
-      case 1:
+      case "multiply":
         return `*${value}`;
-      case 2:
+      case "add":
         return value > 0 ? `+${value}` : value; // account for minus already being there for negative numbers
-      case 3:
+      case "downgrade":
         return `<=${value}`;
-      case 4:
+      case "upgrade":
         return `>=${value}`;
-      case 5:
+      case "override":
         return `=${value}`;
       default:
         return `?${value}`;

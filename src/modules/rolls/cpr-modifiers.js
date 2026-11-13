@@ -9,7 +9,7 @@ export default class CPRMod {
    * @constructor
    */
   constructor(effect, change) {
-    const index = effect.changes.indexOf(change); // Index of change on the effect.
+    const index = effect.system.changes.indexOf(change); // Index of change on the effect.
     // Effects created while Foundry's generic sheet was active may have changes
     // without CPR's parallel category/situational flags. Treat those changes as
     // custom so the CPR sheet can render and the user can repair them.
@@ -25,7 +25,7 @@ export default class CPRMod {
     this.source = effect.name;
     this.value = Number.parseInt(change.value, 10);
     this.key = change.key;
-    this.changeMode = change.mode; // Right now, only ADD (const = 2) is supported. Change modes come from Foundry)
+    this.changeMode = change.type;
   }
 
   /**
@@ -39,8 +39,8 @@ export default class CPRMod {
     const allModifiers = [];
     effects.forEach((effect) => {
       // Ignore suppressed/disabled effects, unless getDisabled = true. In that case, get all.
-      if ((!effect.system.isSuppressed && !effect.disabled) || getDisabled) {
-        effect.changes.forEach((change, index) => {
+      if (effect.active || getDisabled) {
+        effect.system.changes.forEach((change, index) => {
           const mod = new CPRMod(effect, change, index);
           allModifiers.push(mod);
         });
