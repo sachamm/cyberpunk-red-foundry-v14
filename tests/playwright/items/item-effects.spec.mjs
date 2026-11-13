@@ -120,12 +120,14 @@ test.describe("Item effects mixin", () => {
           "bonuses.maxHp",
         { itemId, effectId },
       );
-      const valueInput = aeConfig.locator('input[name="changes.0.value"]');
+      const valueInput = aeConfig.locator(
+        'input[name="system.changes.0.value"]',
+      );
       await valueInput.fill("2");
       await valueInput.press("Tab");
       await page.waitForFunction(
         ({ itemId: id, effectId: eid }) =>
-          game.items.get(id).effects.get(eid).changes[0].value === "2",
+          game.items.get(id).effects.get(eid).changes[0].value === 2,
         { itemId, effectId },
       );
 
@@ -155,7 +157,7 @@ test.describe("Item effects mixin", () => {
       const effects = await page.evaluate(
         (id) =>
           game.items.get(id).effects.contents.map((effect) => ({
-            changes: effect.changes,
+            changes: effect.toObject().system.changes,
             flags: effect.getFlag(game.system.id, "changes"),
             disabled: effect.disabled,
           })),
@@ -318,13 +320,15 @@ test.describe("Item effects mixin", () => {
             .key === "system.stats.body.value",
         { aid: actorId, iid: weapon.itemId },
       );
-      const valueInput = aeConfig.locator('input[name="changes.0.value"]');
+      const valueInput = aeConfig.locator(
+        'input[name="system.changes.0.value"]',
+      );
       await valueInput.fill("2");
       await valueInput.press("Tab");
       await page.waitForFunction(
         ({ aid, iid }) =>
           game.actors.get(aid).items.get(iid).effects.contents[0].changes[0]
-            .value === "2",
+            .value === 2,
         { aid: actorId, iid: weapon.itemId },
       );
 

@@ -96,7 +96,9 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
         'input[type="checkbox"]',
       );
       const windowHeaderButton = element.querySelector(".window-header button");
-      const valueInput = element.querySelector('input[name="changes.0.value"]');
+      const valueInput = element.querySelector(
+        'input[name="system.changes.0.value"]',
+      );
       const categorySelect = changeRow.querySelector(".key-cat");
       const valueInputStyle = getComputedStyle(valueInput);
       const categorySelectStyle = getComputedStyle(categorySelect);
@@ -192,7 +194,7 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
       { itemId, effectId },
     );
 
-    const valueInput = aeConfig.locator('input[name="changes.0.value"]');
+    const valueInput = aeConfig.locator('input[name="system.changes.0.value"]');
     await valueInput.fill("2");
     await expect(valueInput).toHaveCSS(
       "outline-color",
@@ -214,7 +216,7 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
     await valueInput.press("Tab");
     await game.waitForFunction(
       ({ itemId: id, effectId: eid }) =>
-        game.items.get(id).effects.get(eid).changes[0].value === "2",
+        game.items.get(id).effects.get(eid).changes[0].value === 2,
       { itemId, effectId },
     );
 
@@ -589,7 +591,7 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
         const effect = game.actors.get(aid).effects.contents[0];
         return (
           effect.changes[0].key.startsWith("bonuses.") &&
-          effect.changes[0].value === "2" &&
+          effect.changes[0].value === 2 &&
           effect.getFlag(
             game.system.id,
             "changes.situational.0.isSituational",
@@ -620,6 +622,13 @@ test.describe("Active Effect sheet (ApplicationV2)", () => {
         .getAttribute("data-tooltip");
       expect(tooltip).toContain(skillName);
       expect(tooltip).not.toContain("???");
+      expect(
+        await game.evaluate((id) => {
+          const actor = game.actors.get(id);
+          const key = actor.effects.contents[0].system.changes[0].key.slice(8);
+          return actor.system.skills[key].mods;
+        }, actorId),
+      ).toBe(2);
     });
 
     let messageId = null;
@@ -703,7 +712,7 @@ test("item-owned effects on gear", async ({ page }) => {
     );
     expect(origin.origin).toBe(origin.uuid);
     await expect(aeConfig.locator('input[name="transfer"]')).toHaveCount(1);
-    await expect(aeConfig.locator('input[name="origin"]')).toHaveCount(0);
+    await expect(aeConfig.locator('[name="origin"]')).toHaveCount(0);
   });
 
   await test.step("addMod seeds a CPR skill row", async () => {
@@ -712,10 +721,12 @@ test("item-owned effects on gear", async ({ page }) => {
     await expect(row.locator(".key-cat")).toHaveValue("skill");
     await expect(row.locator("select.key-key")).toHaveCount(1);
     await expect(row.locator("input.key-input")).toHaveCount(0);
-    await expect(row.locator('input[name="changes.0.value"]')).toHaveValue("0");
     await expect(
-      row.locator('input[type="hidden"][name="changes.0.mode"]'),
-    ).toHaveValue("2");
+      row.locator('input[name="system.changes.0.value"]'),
+    ).toHaveValue("0");
+    await expect(
+      row.locator('input[type="hidden"][name="system.changes.0.type"]'),
+    ).toHaveValue("add");
     await expect(row.locator(".toggle-situational")).toBeEnabled();
     await expect(row.locator(".toggle-situational")).not.toBeChecked();
     await expect(row.locator(".toggle-on-by-default")).toBeDisabled();
@@ -759,12 +770,12 @@ test("item-owned effects on gear", async ({ page }) => {
   });
 
   await test.step("value edits force-submit on blur", async () => {
-    const valueInput = aeConfig.locator('input[name="changes.0.value"]');
+    const valueInput = aeConfig.locator('input[name="system.changes.0.value"]');
     await valueInput.fill("3");
     await valueInput.press("Tab");
     await page.waitForFunction(
       ({ itemId: id, effectId: eid }) =>
-        game.items.get(id).effects.get(eid).changes[0].value === "3",
+        game.items.get(id).effects.get(eid).changes[0].value === 3,
       { itemId, effectId },
     );
   });
@@ -936,7 +947,7 @@ test("item-owned effects on gear", async ({ page }) => {
     const [original, copy] = await page.evaluate(
       ({ itemId: id }) =>
         game.items.get(id).effects.contents.map((effect) => ({
-          changes: effect.changes,
+          changes: effect.toObject().system.changes,
           flags: effect.getFlag(game.system.id, "changes"),
           disabled: effect.disabled,
         })),
@@ -984,7 +995,7 @@ test("actor-owned effects on a character", async ({ page }) => {
       "New Effect",
     );
     await expect(aeConfig.locator('input[name="disabled"]')).not.toBeChecked();
-    await expect(aeConfig.locator('input[name="origin"]')).toHaveCount(1);
+    await expect(aeConfig.locator('[name="origin"]')).toHaveCount(1);
     await expect(aeConfig.locator('input[name="transfer"]')).toHaveCount(0);
   });
 
@@ -995,7 +1006,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     await expect(row.locator("select.key-key")).toHaveCount(1);
     await expect(row.locator("input.key-input")).toHaveCount(0);
     await expect(
-      aeConfig.locator('input[name="changes.0.priority"]'),
+      aeConfig.locator('input[name="system.changes.0.priority"]'),
     ).toHaveCount(0);
   });
 
@@ -1085,9 +1096,9 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, effectId },
     );
 
-    const modeSelect = row.locator('select[name="changes.1.mode"]');
+    const modeSelect = row.locator('select[name="system.changes.1.type"]');
     await expect(modeSelect).toBeVisible();
-    await expect(modeSelect).toHaveValue("2");
+    await expect(modeSelect).toHaveValue("add");
     for (const label of [
       "Multiply",
       "Add / Subtract",
@@ -1128,11 +1139,13 @@ test("actor-owned effects on a character", async ({ page }) => {
     const row = aeConfig.locator('.changes-list > li[data-index="1"]');
     if (mode) {
       const previousRow = await row.elementHandle();
-      await row.locator('select[name="changes.1.mode"]').selectOption(mode);
+      await row
+        .locator('select[name="system.changes.1.type"]')
+        .selectOption(mode);
       await page.waitForFunction(
         ({ actorId: aid, effectId: eid, mode: expected }) =>
-          game.actors.get(aid).effects.get(eid).changes[1].mode ===
-          Number(expected),
+          game.actors.get(aid).effects.get(eid).system.changes[1].type ===
+          expected,
         { actorId, effectId, mode },
       );
       await page.waitForFunction(
@@ -1141,12 +1154,13 @@ test("actor-owned effects on a character", async ({ page }) => {
       );
       await previousRow.dispose();
     }
-    const valueInput = row.locator('input[name="changes.1.value"]');
+    const valueInput = row.locator('input[name="system.changes.1.value"]');
     await valueInput.fill(value);
     await valueInput.press("Tab");
     await page.waitForFunction(
       ({ actorId: aid, effectId: eid, value: expected }) =>
-        game.actors.get(aid).effects.get(eid).changes[1].value === expected,
+        game.actors.get(aid).effects.get(eid).system.changes[1].value ===
+        Number(expected),
       { actorId, effectId, value },
     );
     await closeActiveEffectConfigViaUI(page, aeConfig);
@@ -1158,9 +1172,9 @@ test("actor-owned effects on a character", async ({ page }) => {
     await aeConfig.locator('nav [data-tab="changes"]').click();
     await expect(valueInput).toHaveValue(value);
     if (mode) {
-      await expect(row.locator('select[name="changes.1.mode"]')).toHaveValue(
-        mode,
-      );
+      await expect(
+        row.locator('select[name="system.changes.1.type"]'),
+      ).toHaveValue(mode);
     }
   };
 
@@ -1176,24 +1190,24 @@ test("actor-owned effects on a character", async ({ page }) => {
   };
 
   await test.step("multiply scales the stat", async () => {
-    await setStatMod({ mode: "1", value: "2" });
+    await setStatMod({ mode: "multiply", value: "2" });
     await expectBodyValue(12); // BODY 6 x 2
   });
 
   await test.step("override replaces the stat", async () => {
-    await setStatMod({ mode: "5", value: "9" });
+    await setStatMod({ mode: "override", value: "9" });
     await expectBodyValue(9);
   });
 
   await test.step("lowerOf only applies when lower", async () => {
-    await setStatMod({ mode: "3", value: "4" });
+    await setStatMod({ mode: "downgrade", value: "4" });
     await expectBodyValue(4); // min(6, 4)
     await setStatMod({ value: "8" });
     await expectBodyValue(6); // min(6, 8) keeps the base
   });
 
   await test.step("higherOf only applies when higher", async () => {
-    await setStatMod({ mode: "4", value: "8" });
+    await setStatMod({ mode: "upgrade", value: "8" });
     await expectBodyValue(8); // max(6, 8)
     await setStatMod({ value: "4" });
     await expectBodyValue(6); // max(6, 4) keeps the base
@@ -1211,13 +1225,13 @@ test("actor-owned effects on a character", async ({ page }) => {
       { actorId, effectId },
     );
 
-    const valueInput = row.locator('input[name="changes.2.value"]');
+    const valueInput = row.locator('input[name="system.changes.2.value"]');
     await expect(valueInput).toBeVisible();
     await valueInput.fill("3");
     await valueInput.press("Tab");
     await page.waitForFunction(
       ({ actorId: aid, effectId: eid }) =>
-        game.actors.get(aid).effects.get(eid).changes[2].value === "3",
+        game.actors.get(aid).effects.get(eid).changes[2].value === 3,
       { actorId, effectId },
     );
 
@@ -1259,12 +1273,12 @@ test("actor-owned effects on a character", async ({ page }) => {
         "bonuses.maxHp",
       { actorId, effectId },
     );
-    const valueInput = row.locator('input[name="changes.3.value"]');
+    const valueInput = row.locator('input[name="system.changes.3.value"]');
     await valueInput.fill("2");
     await valueInput.press("Tab");
     await page.waitForFunction(
       ({ actorId: aid, effectId: eid }) =>
-        game.actors.get(aid).effects.get(eid).changes[3].value === "2",
+        game.actors.get(aid).effects.get(eid).changes[3].value === 2,
       { actorId, effectId },
     );
 
@@ -1374,7 +1388,7 @@ test("actor-owned effects on a character", async ({ page }) => {
     const effects = await page.evaluate(
       ({ actorId: aid }) =>
         game.actors.get(aid).effects.contents.map((effect) => ({
-          changes: effect.changes,
+          changes: effect.toObject().system.changes,
           flags: effect.getFlag(game.system.id, "changes"),
           disabled: effect.disabled,
         })),
@@ -1463,12 +1477,12 @@ test("usage-sensitive effects on gear and a drug", async ({ page }) => {
       { itemId: gearId, effectId },
     );
     await row.locator("select.key-key").selectOption("bonuses.maxHp");
-    const valueInput = row.locator('input[name="changes.0.value"]');
+    const valueInput = row.locator('input[name="system.changes.0.value"]');
     await valueInput.fill("2");
     await valueInput.press("Tab");
     await page.waitForFunction(
       ({ itemId: id, effectId: eid }) =>
-        game.items.get(id).effects.get(eid).changes[0].value === "2",
+        game.items.get(id).effects.get(eid).changes[0].value === 2,
       { itemId: gearId, effectId },
     );
     await closeActiveEffectConfigViaUI(page, aeConfig);
@@ -1757,11 +1771,11 @@ test("item-sourced effects render on the character sheet", async ({ page }) => {
     gearId,
   );
   await row.locator("select.key-key").selectOption("bonuses.maxHp");
-  const valueInput = row.locator('input[name="changes.0.value"]');
+  const valueInput = row.locator('input[name="system.changes.0.value"]');
   await valueInput.fill("2");
   await valueInput.press("Tab");
   await page.waitForFunction(
-    (id) => game.items.get(id).effects.contents[0].changes[0].value === "2",
+    (id) => game.items.get(id).effects.contents[0].changes[0].value === 2,
     gearId,
   );
   await closeActiveEffectConfigViaUI(page, aeConfig);
@@ -1872,11 +1886,11 @@ test("deleting an actor effect can be canceled", async ({ page }) => {
     actorId,
   );
   await row.locator("select.key-key").selectOption("bonuses.maxHp");
-  const valueInput = row.locator('input[name="changes.0.value"]');
+  const valueInput = row.locator('input[name="system.changes.0.value"]');
   await valueInput.fill("2");
   await valueInput.press("Tab");
   await page.waitForFunction(
-    (id) => game.actors.get(id).effects.contents[0].changes[0].value === "2",
+    (id) => game.actors.get(id).effects.contents[0].changes[0].value === 2,
     actorId,
   );
   await closeActiveEffectConfigViaUI(page, aeConfig);
