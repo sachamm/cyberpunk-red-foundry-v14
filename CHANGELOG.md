@@ -46,6 +46,15 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 ### Bug Fixes
 
+- Fix Black ICE token creation, program stat overrides, and persistent rez links on Foundry v14
+- Fix Interface and program roll confirmation on Foundry v14
+
+- Preserve legacy item sources during Foundry v14 migrations and stop when document writes are rejected
+- Use numeric measurement distances for DV ruler labels and show the selected table in the token HUD
+
+- Return created Black ICE, Demon, Mook, and Container actors to Foundry's creation dialog
+- Exclude expired Active Effects from CPR roll modifiers
+
 - Weapon skill selection dropdown uses custom category sorting again, instead of alphabetical
 - Clothing upgrades now use Active Effects for wearer bonuses. Existing COOL and Wardrobe & Style bonuses are converted, with the original settings retained for reference. COOL follows normal STAT effect behavior; situational settings remain available for Wardrobe & Style.
 - Preserve shared empty ammo stacks when transferring loaded weapons between actor sheets
@@ -75,6 +84,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 ### Changes
 
+- Target Foundry v14 only and use its native Active Effect change types and application phases
+
 - The `Tech` Role's `Maker Abilities` have been reconfigured into situational bonuses that can be applied via the normal skill check roll dialogue.
   - Renamed varients of the `Tech` Role and it's abilities will remain unchanged.
 - Theme all chat messages, including native Foundry rolls and RollTable draws, with CPR chat fonts and colors while keeping bespoke CPR roll/item card layouts.
@@ -99,6 +110,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
   - Drugs
 
 ### Plumbing
+
+- Package the v14 fork for GitHub releases with corresponding source and checksums
 
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
 - Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.

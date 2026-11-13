@@ -5,7 +5,7 @@ import * as CssTools from "./gulp/css.mjs";
 import { buildChangelog } from "./gulp/changelog.mjs";
 import { PackUtils } from "./gulp/utils/PackUtils.mjs";
 import { cprTransformEntry } from "./gulp/utils/cprPackData.mjs";
-import Config from "./gulp/config.mjs";
+import Config from "./tools/release/config.mjs";
 
 // DevMode defaults are project-specific, so they live here rather than in the
 // shared build system. Merged with any `devMode` block in foundryconfig.json.

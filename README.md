@@ -1,5 +1,10 @@
 # Cyberpunk RED - Welcome to The Street!
 
+This repository is an independent experimental **Foundry v14-only fork** of
+[Project Red's Cyberpunk RED system](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core).
+The original credits and license remain below. See [release instructions](RELEASING.md)
+for builds, installation, and current validation limits.
+
 ![Logo](src/images/Repo-Header.webp)
 
 <!-- markdownlint-disable-next-line MD033 -->

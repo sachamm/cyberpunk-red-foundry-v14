@@ -1,0 +1,38 @@
+name: Package v14 prerelease
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version without v (for example 0.93.0-v14.alpha.1)
+        required: true
+        default: 0.93.0-v14.alpha.1
+  push:
+    tags: ["v*-v14.*"]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:unit
+      - name: Build and validate artifacts
+        env:
+          REQUESTED_VERSION: ${{ inputs.version }}
+        run: |
+          version="${REQUESTED_VERSION:-${GITHUB_REF_NAME#v}}"
+          npm run package:release -- "$version"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: cyberpunk-red-v14-release
+          path: dist/release/*
+          if-no-files-found: error
+          compression-level: 0

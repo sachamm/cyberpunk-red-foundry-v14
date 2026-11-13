@@ -4,16 +4,16 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/"
+    "url": "https://github.com/sachamm/cyberpunk-red-foundry-v14"
   },
-  "license": "UNLICENSED",
+  "license": "GPL-3.0-only",
   "scripts": {
     "api-docs": "npx jsdoc -c jsdoc.json",
     "build": "npx gulp build",
     "extractPacks": "npx gulp extractPacks",
     "generateBabele": "npx gulp generateBabele",
     "installPackages": "npm i",
-    "lint": "npx eslint gulpfile.mjs src/modules vitest.config.js tests/unit tests/playwright tools/playwright",
+    "lint": "npx eslint gulpfile.mjs src/modules vitest.config.js tests/unit tests/playwright tools/playwright tools/release",
     "prettier": "npx prettier --check gulpfile.mjs gulp/*.mjs src/*.js src/modules src/lang/en.json src/**/*.json src/css/**/*.css vitest.config.js tests/unit",
     "prettier:fix": "npm run prettier -- --write",
     "start": "npx gulp",
@@ -27,7 +27,8 @@
     "generate-schemas": "node tools/playwright/bin/generate-schemas.mjs",
     "playwright:install": "npx playwright install chromium",
     "watch": "npx gulp watch",
-    "prepare": "husky"
+    "prepare": "husky",
+    "package:release": "node tools/release/package.mjs"
   },
   "engines": {
     "node": ">=15.0",
