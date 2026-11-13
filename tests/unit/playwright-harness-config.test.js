@@ -11,6 +11,7 @@ const HARNESS_CONFIG_SOURCE = fileURLToPath(
 const ORIGINAL_CWD = process.cwd();
 const TRACKED_ENV_KEYS = [
   "FOUNDRY_APP_PATH",
+  "FOUNDRY_NODE_PATH",
   "FOUNDRY_DATA_PATH",
   "FOUNDRY_VERSION",
   "FOUNDRY_KEY",
@@ -113,6 +114,21 @@ afterEach(async () => {
 });
 
 describe("playwright harness config", () => {
+  it("selects a dedicated Foundry runtime without changing the tooling runtime", async () => {
+    clearTrackedEnv();
+    const root = await writeHarnessFixture({
+      foundry: (dir) => ({
+        ...foundryConfig(dir),
+        nodePath: "/runtime/node24",
+      }),
+    });
+    expect((await resolveHarnessConfig(root)).nodePath).toBe("/runtime/node24");
+    process.env.FOUNDRY_NODE_PATH = "/override/node24";
+    expect((await resolveHarnessConfig(root)).nodePath).toBe(
+      "/override/node24",
+    );
+  });
+
   it("resolves required secrets from explicit environment", async () => {
     clearTrackedEnv();
     process.env.FOUNDRY_KEY = "env-license";

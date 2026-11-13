@@ -94,7 +94,7 @@ class FakePage {
       });
     }
 
-    if (selector.includes('select[name="userid"]')) {
+    if (selector.includes('select[name="userId"]')) {
       return new FakeLocator({ visible: this.joinScreenVisible });
     }
 
