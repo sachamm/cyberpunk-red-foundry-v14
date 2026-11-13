@@ -20,7 +20,9 @@ execFileSync(process.execPath, ["node_modules/gulp/bin/gulp.js", "build"], {
 });
 for (const name of [
   "LICENCE.md",
+  "CREDITS.md",
   "README.md",
+  "AI_POLICY.md",
   "CHANGELOG.md",
   "RELEASING.md",
 ]) {

@@ -8,6 +8,7 @@
 
 - Direct installation, release downloads, support, and contributions to this repository.
 - Remove outdated project branding and community links from the README, and update the public AI contribution policy.
+- Include the credits and AI contribution policy in the install archive so the README's local links resolve.
 
 ### Testing
 
