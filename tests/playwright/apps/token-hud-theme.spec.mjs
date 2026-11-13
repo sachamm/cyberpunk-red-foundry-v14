@@ -207,10 +207,10 @@ for (const theme of ["light", "dark"]) {
       await reopenHud(page, actorId);
       for (const [selector, glyph] of [
         ['[data-action="config"]', true],
-        ['[data-action="sort"][data-direction="up"]', false],
+        ['[data-action="sort"]', true],
         [".dv-table-selector", false],
         ['[data-action="target"]', true],
-        ['[data-action="combat"]', false],
+        ['[data-action="combat"]', true],
       ]) {
         await test.step(`${theme}: ${selector} has matching resting and hover colors`, async () => {
           const control = page.locator(`#token-hud ${selector}`);
@@ -242,15 +242,12 @@ for (const theme of ["light", "dark"]) {
           }
           await reopenHud(page, actorId);
           await page.mouse.move(100, 500);
-          const glyph = action === "target";
           await expectControlStyle(control, colors.active, {
-            glyph,
-            filter: glyph ? null : "none",
+            glyph: true,
           });
           await control.hover();
           await expectControlStyle(control, colors.activeHover, {
-            glyph,
-            filter: glyph ? null : theme === "light" ? "invert(1)" : "none",
+            glyph: true,
           });
           await control.click();
           await reopenHud(page, actorId);

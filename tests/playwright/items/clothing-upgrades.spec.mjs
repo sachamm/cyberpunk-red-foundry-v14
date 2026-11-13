@@ -268,9 +268,9 @@ test("migrated clothing effects follow installation and the equipped host", asyn
     await effectRow.locator('[data-action="edit"]').click();
     const config = page.locator(".application.active-effect-config");
     await config.locator('nav [data-tab="changes"]').click();
-    await expect(config.locator('input[name="changes.0.value"]')).toHaveValue(
-      "2",
-    );
+    await expect(
+      config.locator('input[name="system.changes.0.value"]'),
+    ).toHaveValue("2");
     await expect(
       config.locator('.changes-list > li[data-index="0"] .toggle-situational'),
     ).not.toBeChecked();

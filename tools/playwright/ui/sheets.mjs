@@ -49,7 +49,9 @@ export async function changeActorSheetViaUI(
 ) {
   const sheet = page.locator(`#${sheetId}`);
   await sheet.locator('[data-action="toggleControls"]').click();
-  await sheet.locator('[data-action="configureSheet"]').click();
+  await page
+    .locator("#context-menu .context-item", { hasText: "Configure Sheet" })
+    .click();
   const dialog = page.locator(".application.sheet-config");
   await dialog
     .locator('select[name="sheetClass"]')

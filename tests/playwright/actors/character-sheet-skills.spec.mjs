@@ -609,7 +609,7 @@ test.describe("Character sheet — skills", () => {
           );
           return (
             change.key === key &&
-            change.value === "2" &&
+            change.value === 2 &&
             hasSituationalFlag === isSituational &&
             hasOnByDefaultFlag === isSituational
           );

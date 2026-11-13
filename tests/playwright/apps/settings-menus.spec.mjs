@@ -33,7 +33,7 @@ async function openSystemSettingsMenu(page, key) {
   await page
     .locator('#sidebar button[data-action="tab"][data-tab="settings"]')
     .click();
-  await page.getByRole("button", { name: "Configure Settings" }).click();
+  await page.locator('#settings button[data-app="configure"]').click();
 
   const config = page.locator("#settings-config");
   await expect(config).toBeVisible();
