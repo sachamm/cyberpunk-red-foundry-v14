@@ -569,15 +569,32 @@ export default class MigrationRunner {
       // into `_source`, so a migration that adds an all-default SchemaField produces an
       // empty diff and would be silently skipped under the default `diff: true`. Writing
       // the full source keeps stored pack/world data in sync with the data models.
-      if (!batch) await doc.update(update, { noHook: true, diff: false });
+      if (!batch) {
+        const migrated = await doc.update(update, {
+          noHook: true,
+          diff: false,
+        });
+        if (!migrated)
+          throw new Error(`Migration update was rejected for ${doc.uuid}`);
+      }
       if (progress) progress.advance();
     }
-    if (batch)
-      await documentClass.updateDocuments(updates, {
+    if (batch) {
+      const migrated = await documentClass.updateDocuments(updates, {
         noHook: true,
         pack,
         diff: false,
       });
+      if (migrated.length !== updates.length) {
+        const migratedIds = new Set(migrated.map((doc) => doc.id));
+        const rejectedIds = updates
+          .filter((update) => !migratedIds.has(update._id))
+          .map((update) => update._id);
+        throw new Error(
+          `Migration updates were rejected for ${documentName}: ${rejectedIds.join(", ")}`,
+        );
+      }
+    }
   }
 
   async migrateItem(itemData) {

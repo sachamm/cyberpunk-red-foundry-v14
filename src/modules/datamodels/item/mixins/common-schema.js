@@ -47,6 +47,7 @@ export default class CommonSchema extends CPRSystemDataModel {
             path: "",
             reason: "Item sources are now a list (sources)",
           },
+          required: false,
           nullable: true,
         },
       ),
