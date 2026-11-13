@@ -4,7 +4,7 @@ effects: []
 flags:
   cyberpunk-red-core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberware.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/standard_bodysculpt.svg
 name: Standard Bodysculpt
 ownership:
   L5BVRBGb798QfKk9: 3
