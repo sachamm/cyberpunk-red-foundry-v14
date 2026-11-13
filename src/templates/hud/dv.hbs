@@ -1,6 +1,7 @@
-<div class="control-icon dv-table-selector">
+<button type="button" class="control-icon dv-table-selector"
+        aria-label="{{localize "CPR.hud.iconHintDv"}}"
+        data-tooltip="{{localize "CPR.hud.iconHintDv"}}{{#if cprDvTable }} ({{localize "CPR.hud.current" }}: {{cprDvTable }}){{/if }}">
   <img src="systems/cyberpunk-red-core/icons/hud/dv-icon.svg"
        width="36"
-       height="36"
-       data-tooltip="{{localize "CPR.hud.iconHintDv"}}{{#if this.cprDvTable }} ({{localize "CPR.hud.current" }}: {{this.cprDvTable }}){{/if }}"/>
-</div>
+       height="36"/>
+</button>

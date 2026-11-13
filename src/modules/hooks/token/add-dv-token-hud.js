@@ -7,21 +7,23 @@ const AddDvTokenHud = () => {
    * @public
    * @memberof hookEvents
    * @param {Document} hud - Instance of the token HUD provided by Foundry
-   * @param {object} html  - HTML DOM object
-   * @param {string} token - token data
+   * @param {HTMLElement} html - HTML DOM object
    */
-  Hooks.on("renderTokenHUD", async (hud, html, token) => {
-    const $html = $(html); // TODO: Remove JQuery.
+  Hooks.on("renderTokenHUD", async (hud, html) => {
+    const token = hud.document;
+    if (!token) return;
     const dvHudTemplate = `systems/${game.system.id}/templates/hud/dv.hbs`;
     const dvDisplay = await foundry.applications.handlebars.renderTemplate(
       dvHudTemplate,
-      token.flags,
+      { cprDvTable: token.getFlag(game.system.id, "cprDvTable")?.name },
     );
-    $html.find("div.left").append(dvDisplay);
-    $html.find(".dv-table-selector").click(() => {
-      HudInterface.SetDvTable(token);
-      hud.clear();
-    });
+    html.querySelector(".left")?.insertAdjacentHTML("beforeend", dvDisplay);
+    html
+      .querySelector(".dv-table-selector")
+      ?.addEventListener("click", async () => {
+        await hud.close();
+        await HudInterface.SetDvTable(token);
+      });
   });
 };
 

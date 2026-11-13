@@ -23,8 +23,7 @@ export default class HudInterface {
     const formData = await cprFormPrompt({
       data: {
         dvTables,
-        dvTable:
-          tokenData.flags[game.system.id]?.cprDvTable?.name || dvTables[0].name,
+        dvTable: tokenData.getFlag(game.system.id, "cprDvTable")?.name ?? "",
       },
       title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
       template: `systems/${game.system.id}/templates/dialog/hud/cpr-dv-prompt.hbs`,
@@ -35,9 +34,8 @@ export default class HudInterface {
     if (formData.dvTable === null) {
       formData.dvTable = "";
     }
-    const { controlled } = canvas.tokens;
-    const index = controlled.findIndex((x) => x.id === tokenData._id);
-    const token = controlled[index];
+    const token = tokenData.object;
+    if (!token) return;
     await SystemUtils.SetDvTable(token, formData.dvTable);
     if (token.actor.sheet.rendered) {
       token.actor.sheet.render();

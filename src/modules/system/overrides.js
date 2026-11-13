@@ -14,7 +14,7 @@ export default function overrideRulerFunctions() {
       const token = canvas.tokens.controlled[0];
       const dvTableFlag = token?.document.getFlag(game.system.id, "cprDvTable");
       if (dvTableFlag) {
-        const distance = Number(context.distance.total);
+        const distance = Math.round(waypoint.measurement.distance * 100) / 100;
 
         let DV = 0;
         for (const range of Object.keys(dvTableFlag.table)) {
