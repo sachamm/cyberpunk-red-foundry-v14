@@ -22,8 +22,8 @@ system:
   description:
     value: |
       <p>
-        If a target has started the natural healing process injecting them with
-        pharmaceutical will cause them to heal an additional
+        If a target has started the natural healing process, injecting them with
+        an antibiotic will cause them to heal an additional
         <strong>2 Hit Points</strong> per day for a week.
       </p>
       <blockquote>
