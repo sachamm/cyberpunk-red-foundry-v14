@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  checkboxGeometry,
   createItemViaUI,
   expectSheetRendered,
   openItemSettings,
@@ -80,7 +81,20 @@ test("Has roll registers and persists in the Create/Edit Role Ability dialog", a
 
     await dialog.locator('input[name="name"]').fill(abilityName);
     await dialog.locator('input[name="rank"]').fill("2");
+
+    // The checkbox must keep one deterministic square box in both states; v13
+    // otherwise sizes it from the glyph advance, so the checked layers shift.
+    const uncheckedBox = await checkboxGeometry(
+      dialog.locator('input[name="hasRoll"]'),
+    );
     await dialog.locator('input[name="hasRoll"]').check();
+    const checkedBox = await checkboxGeometry(
+      dialog.locator('input[name="hasRoll"]'),
+    );
+    expect(uncheckedBox.width).toBeCloseTo(uncheckedBox.height, 1);
+    expect(checkedBox.width).toBeCloseTo(checkedBox.height, 1);
+    expect(checkedBox.width).toBeCloseTo(uncheckedBox.width, 1);
+    expect(checkedBox.height).toBeCloseTo(uncheckedBox.height, 1);
 
     // Checking Has roll reveals the dependent rows.
     await expect(dialog.locator('select[name="multiplier"]')).toBeVisible();

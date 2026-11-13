@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
 import {
+  checkboxGeometry,
   createItemViaUI,
   expectSheetRendered,
   openItemSettings,
@@ -125,7 +126,17 @@ test("retains Configure Bonuses to Rolls selections for a role sub-ability (#145
     const onByDefault = dialog.locator('input[name="onByDefault"]');
     await expect(situational).toBeVisible({ timeout: 5000 });
     await expect(onByDefault).toBeVisible({ timeout: 5000 });
+
+    // The checkbox must keep one deterministic square box in both states; v13
+    // otherwise sizes it from the glyph advance, so the checked layers shift.
+    const uncheckedBox = await checkboxGeometry(situational);
     await situational.check();
+    const checkedBox = await checkboxGeometry(situational);
+    expect(uncheckedBox.width).toBeCloseTo(uncheckedBox.height, 1);
+    expect(checkedBox.width).toBeCloseTo(checkedBox.height, 1);
+    expect(checkedBox.width).toBeCloseTo(uncheckedBox.width, 1);
+    expect(checkedBox.height).toBeCloseTo(uncheckedBox.height, 1);
+
     await onByDefault.check();
     await dialog
       .locator('button.cpr-dialog-button[data-action="confirm"]')
