@@ -25,7 +25,7 @@ export default class CPRDemonActor extends Actor {
         bar1: { attribute: "stats.rez" },
       };
     }
-    super.create(createData, options);
+    return super.create(createData, options);
   }
 
   /**

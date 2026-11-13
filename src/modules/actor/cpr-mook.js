@@ -25,6 +25,6 @@ export default class CPRMookActor extends CPRActor {
         bar1: { attribute: "derivedStats.hp" },
       };
     }
-    super.create(createData, options);
+    return super.create(createData, options);
   }
 }

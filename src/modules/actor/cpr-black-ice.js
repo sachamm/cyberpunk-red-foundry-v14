@@ -26,7 +26,7 @@ export default class CPRBlackIceActor extends Actor {
         bar1: { attribute: "stats.rez" },
       };
     }
-    super.create(createData, options);
+    return super.create(createData, options);
   }
 
   /**

@@ -24,7 +24,8 @@ export default class CPRContainerActor extends Actor {
       createData.ownership = { default: 3 };
     }
     const newContainerActor = await super.create(createData, options);
-    newContainerActor.setContainerType("shop");
+    await newContainerActor.setContainerType("shop");
+    return newContainerActor;
   }
 
   /**
