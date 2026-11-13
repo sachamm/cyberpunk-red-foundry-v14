@@ -1,7 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { installConsoleErrorHarness } from "../../../tools/playwright/session/console-harness.mjs";
-import { gotoReadyWorld as gotoGame } from "../../../tools/playwright/session/world.mjs";
 import {
+  gotoReadyWorld as gotoGame,
+  reloadReadyWorld,
+} from "../../../tools/playwright/session/world.mjs";
+import {
+  createActorViaUI,
+  createCanvasTokenViaUI,
   chatMessageCount,
   closeAndReopenActorSheet,
   closeDocSheet,
@@ -994,3 +999,95 @@ test("program attack, defense and damage rolls post cards titled with the progra
     await rollProgram(attackerRow, "damage", attackerName);
   });
 });
+
+for (const reuseActor of [false, true]) {
+  test(`a Black ICE program creates a linked token (reuse actor: ${reuseActor}), persists stats, and derezzes`, async ({
+    page,
+  }) => {
+    test.setTimeout(180000);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    const name = uniqueName("canvas-blackice");
+    if (reuseActor) {
+      const id = await createActorViaUI(page, { type: "blackIce", name });
+      await closeDocSheet(page, { collection: "actors", id });
+    }
+    const { actorId, programIds } = await setupCharacterWithDeck(page, {
+      programs: [
+        {
+          key: "ice",
+          name,
+          data: {
+            system: {
+              class: "blackice",
+              per: 7,
+              spd: 8,
+              atk: 6,
+              def: 4,
+              rez: { value: 25, max: 25 },
+            },
+          },
+        },
+      ],
+    });
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+    const runnerTokenId = await createCanvasTokenViaUI(page, {
+      actorId,
+      name: uniqueName("net-scene"),
+    });
+    let sheetId = await reopenActorSheetViaUI(page, actorId);
+    let content = await openFightTab(page, sheetId);
+    await openNetspace(page, sheetId);
+    await installedProgramRow(content, programIds.ice)
+      .locator('a.program-execution[data-execution-type="rez"]')
+      .click();
+    await expect
+      .poll(() =>
+        page.evaluate(
+          (name) => canvas.scene.tokens.some((t) => t.name === name),
+          name,
+        ),
+      )
+      .toBe(true);
+    const tokenId = await page.evaluate(
+      (name) => canvas.scene.tokens.find((t) => t.name === name).id,
+      name,
+    );
+    await expect
+      .poll(() =>
+        page.evaluate(
+          (id) => canvas.scene.tokens.get(id).actor.system.stats.atk,
+          tokenId,
+        ),
+      )
+      .toBe(6);
+    const flags = await page.evaluate(
+      (id) => canvas.scene.tokens.get(id).flags[game.system.id],
+      tokenId,
+    );
+    expect(flags.netrunnerTokenId).toBe(runnerTokenId);
+    await closeDocSheet(page, { collection: "actors", id: actorId });
+    await reloadReadyWorld(page);
+    sheetId = await reopenActorSheetViaUI(page, actorId);
+    content = await openFightTab(page, sheetId);
+    await openNetspace(page, sheetId);
+    const persisted = await page.evaluate(
+      ({ aid, pid, tid }) => ({
+        program: game.actors.get(aid).items.get(pid).flags[game.system.id],
+        attack: canvas.scene.tokens.get(tid).actor.system.stats.atk,
+      }),
+      { aid: actorId, pid: programIds.ice, tid: tokenId },
+    );
+    expect(persisted.program.biTokenId).toBe(tokenId);
+    expect(persisted.attack).toBe(6);
+    await installedProgramRow(content, programIds.ice)
+      .locator('a.program-execution[data-execution-type="derez"]')
+      .click();
+    await expect
+      .poll(() => page.evaluate((id) => canvas.scene.tokens.has(id), tokenId))
+      .toBe(false);
+    sheetId = await closeAndReopenActorSheet(page, actorId);
+    await expectUnrezzedProgram(
+      installedProgramRow(await openFightTab(page, sheetId), programIds.ice),
+    );
+  });
+}

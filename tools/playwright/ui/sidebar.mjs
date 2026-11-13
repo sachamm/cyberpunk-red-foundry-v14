@@ -30,7 +30,9 @@ export async function openSidebarTab(page, tab) {
 
 export async function createButtonForSidebarTab(page, tab) {
   await openSidebarTab(page, tab);
-  const createButton = page.locator(`#${tab} button.create-entry`);
+  const createButton = page.locator(
+    `#${tab} .directory-header button.create-entry`,
+  );
   await expect(createButton).toBeVisible();
   return createButton;
 }
