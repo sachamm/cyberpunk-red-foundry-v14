@@ -296,7 +296,7 @@
     },
     "MultiOptic Mount": {
       "name": "MultiOptic Mount",
-      "description": "<p>Allows you to install up to 5 additional eyes .</p>\n<blockquote>\n  <p>\n    Additional\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.aC234RUXPPUb08cO]{Cybereyes}\n    are sold &amp; installed separately. — Do not install your extra cybereyes\n    into this item.\n  </p>\n</blockquote>\n",
+      "description": "<p>Allows you to install up to 5 additional eyes.</p>\n<blockquote>\n  <p>\n    Additional\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.aC234RUXPPUb08cO]{Cybereyes}\n    are sold &amp; installed separately. — Do not install your extra cybereyes\n    into this item.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Nasal Filters": {
@@ -436,7 +436,7 @@
     },
     "Skin Weave": {
       "name": "Skin Weave",
-      "description": "<p>Reinforced mesh embedded into your skin that can slowly repair itself.</p>\n<blockquote>\n  <p>\n    <em>Add </em\n    >@UUID[Compendium.cyberpunk-red-core.core_armor.Item.DXavZyl7CTtgoZ6i]{Skin Weave}\n    to track SP\n  </p>\n</blockquote>\n",
+      "description": "<p>Reinforced mesh embedded into your skin that can slowly repair itself.</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.DXavZyl7CTtgoZ6i]{Skin Weave}\n    to track SP\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Skinwatch": {
@@ -461,7 +461,7 @@
     },
     "Subdermal Armor": {
       "name": "Subdermal Armor",
-      "description": "<p>Reinforced mesh embedded beneath your skin that can slowly repair itself.</p>\n<blockquote>\n  <p>\n    <em>Add </em\n    >@UUID[Compendium.cyberpunk-red-core.core_armor.Item.M96Dfx18YqvhlIgb]{Subdermal Armor}<em\n    > </em> to track SP\n  </p>\n</blockquote>\n",
+      "description": "<p>Reinforced mesh embedded beneath your skin that can slowly repair itself.</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.M96Dfx18YqvhlIgb]{Subdermal Armor}\n    to track SP\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Subdermal Grip": {
@@ -526,7 +526,7 @@
     },
     "Vampyres": {
       "name": "Vampyres",
-      "description": "<p>\n  Razor sharp teeth that can conceal and administer a single does of drugs or\n  poison.\n</p>\n",
+      "description": "<p>\n  Razor sharp teeth that can conceal and administer a single dose of drugs or\n  poison.\n</p>\n",
       "dvTable": ""
     },
     "Virtuality": {
