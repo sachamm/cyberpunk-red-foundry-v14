@@ -14,7 +14,7 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
  * mutated data is applied via document.update(). At the updateItem(plainObject)
  * seam tested here the original `source` key is still present alongside the new
  * `-=source` marker. To assert on the real end state we realize the deletion the
- * same way Foundry would, via mergeObject(..., { performDeletions: true }).
+ * same way Foundry would, via mergeObject(..., { applyOperators: true }).
  */
 
 test.beforeEach(async ({ page }) => {
@@ -40,7 +40,7 @@ test("044 migration converts system.source into system.sources", async ({
     const withBookApplied = foundry.utils.mergeObject(
       { source: { book: "Core", page: 357 } },
       withBook.system,
-      { performDeletions: true },
+      { applyOperators: true },
     );
 
     // Blank book: converts to an empty sources array.
@@ -52,7 +52,7 @@ test("044 migration converts system.source into system.sources", async ({
     const blankBookApplied = foundry.utils.mergeObject(
       { source: { book: "", page: 0 } },
       blankBook.system,
-      { performDeletions: true },
+      { applyOperators: true },
     );
 
     // Whitespace-only book: counts as blank, converts to an empty sources array.
@@ -64,7 +64,7 @@ test("044 migration converts system.source into system.sources", async ({
     const whitespaceBookApplied = foundry.utils.mergeObject(
       { source: { book: "   ", page: 5 } },
       whitespaceBook.system,
-      { performDeletions: true },
+      { applyOperators: true },
     );
 
     // No legacy source at all: left untouched (no-op / idempotent).
@@ -135,7 +135,7 @@ test("044 migration preserves a persisted legacy source through schema cleaning"
     const itemData = item.toObject();
     await new M.default().updateItem(itemData);
     const applied = foundry.utils.mergeObject({}, itemData.system, {
-      performDeletions: true,
+      applyOperators: true,
     });
 
     await item.delete();

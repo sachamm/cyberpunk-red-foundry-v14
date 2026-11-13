@@ -1,0 +1,173 @@
+{
+  "upstreamTag": "v0.92.4",
+  "dataModelVersion": 38,
+  "weapon": {
+    "_id": "Y433cjlB1uVHPysk",
+    "effects": [],
+    "flags": {
+      "cyberpunk-red-core": {
+        "_migration": {
+          "current": 33,
+          "previous": "24"
+        }
+      }
+    },
+    "img": "systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg",
+    "name": "Heavy Pistol",
+    "system": {
+      "ammoVariety": ["heavyPistol"],
+      "attackmod": 0,
+      "brand": "",
+      "canIgnoreArmor": false,
+      "concealable": {
+        "concealable": true,
+        "isConcealed": false
+      },
+      "critFailEffect": "jammed",
+      "damage": "3d6",
+      "description": {
+        "value": "<p>A concealable, heavy pistol.</p>\n"
+      },
+      "dvTable": "DV Pistol",
+      "equipped": "owned",
+      "favorite": false,
+      "fireModes": {
+        "autoFire": 0,
+        "suppressiveFire": false
+      },
+      "handsReq": 1,
+      "ignoreArmorPercent": 0,
+      "ignoreBelowSP": 0,
+      "installedItems": {
+        "allowed": true,
+        "allowedTypes": ["itemUpgrade", "ammo"],
+        "list": [],
+        "slots": 3,
+        "usedSlots": 0
+      },
+      "isRanged": true,
+      "magazine": {
+        "ammoData": null,
+        "max": 8,
+        "value": 0
+      },
+      "price": {
+        "market": 100
+      },
+      "quality": "standard",
+      "revealed": true,
+      "rof": 2,
+      "source": {
+        "book": "Core",
+        "page": 341
+      },
+      "unarmedAutomaticCalculation": true,
+      "usage": "equipped",
+      "usesType": "magazine",
+      "weaponSkill": "Handgun",
+      "weaponType": "heavyPistol"
+    },
+    "type": "weapon"
+  },
+  "gear": {
+    "_id": "GqYz689ddSKQHMen",
+    "effects": [
+      {
+        "_id": "OnONUXyMY8mOquf7",
+        "changes": [
+          {
+            "key": "bonuses.librarySearch",
+            "mode": 2,
+            "priority": null,
+            "value": "2"
+          },
+          {
+            "key": "bonuses.wardrobeAndStyle",
+            "mode": 2,
+            "priority": null,
+            "value": "2"
+          }
+        ],
+        "description": "",
+        "disabled": false,
+        "duration": {
+          "combat": null,
+          "rounds": null,
+          "seconds": null,
+          "startRound": null,
+          "startTime": null,
+          "startTurn": null,
+          "turns": null
+        },
+        "flags": {
+          "cyberpunk-red-core": {
+            "changes": {
+              "cats": {
+                "0": "skill",
+                "1": "skill"
+              },
+              "situational": {
+                "0": {
+                  "isSituational": false,
+                  "onByDefault": false
+                },
+                "1": {
+                  "isSituational": true,
+                  "onByDefault": false
+                }
+              }
+            }
+          }
+        },
+        "img": "systems/cyberpunk-red-core/icons/compendium/gear/agent.svg",
+        "name": "Agent",
+        "statuses": [],
+        "system": {},
+        "transfer": true,
+        "type": "base"
+      }
+    ],
+    "flags": {
+      "cyberpunk-red-core": {
+        "_migration": {
+          "current": 33,
+          "previous": "24"
+        }
+      }
+    },
+    "img": "systems/cyberpunk-red-core/icons/compendium/gear/agent.svg",
+    "name": "Agent",
+    "system": {
+      "amount": 1,
+      "brand": "",
+      "concealable": {
+        "concealable": false,
+        "isConcealed": false
+      },
+      "description": {
+        "value": "<p>\n  AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on\n  circumstance.\n</p>\n"
+      },
+      "equipped": "owned",
+      "favorite": false,
+      "installedItems": {
+        "allowed": true,
+        "allowedTypes": ["itemUpgrade"],
+        "list": [],
+        "slots": 3,
+        "usedSlots": 0
+      },
+      "isElectronic": true,
+      "price": {
+        "market": 100
+      },
+      "providesHardening": false,
+      "revealed": true,
+      "source": {
+        "book": "Core",
+        "page": 352
+      },
+      "usage": "carried"
+    },
+    "type": "gear"
+  }
+}
