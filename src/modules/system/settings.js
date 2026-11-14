@@ -1,5 +1,4 @@
 import CPR from "./config.js";
-import CPRCharacterActorSheet from "../actor/sheet/cpr-character-sheet.js";
 import CPRCompendiaSettings from "../apps/settings/cpr-compendia-settings.js";
 import CPRBrowserCompendiaSettings from "../apps/settings/cpr-browser-compendia-settings.js";
 import CPRBrowserIndex from "../apps/browser/cpr-browser-index.js";
@@ -118,11 +117,6 @@ const registerSystemSettings = () => {
     default: false,
     onChange: (value) => {
       LOGGER.log(`Changed scrollToEditNumbers to ${value}`);
-      for (const app of foundry.applications.instances.values()) {
-        if (app instanceof CPRCharacterActorSheet) {
-          app.render();
-        }
-      }
     },
   });
 

@@ -70,6 +70,7 @@
                   <div class="item-detail ability-rank text-nowrap">
                     <input class="number ability-input"
                            value="{{role.system.rank}}"
+                           data-item-prop="system.rank"
                            data-role-name="{{role.name}}"
                            data-ability-name="{{role.system.mainRoleAbility}}"
                            type="number"/>
@@ -123,6 +124,7 @@
                         <div class="item-detail ability-rank text-nowrap">
                           <input class="number ability-input"
                                  value="{{ability.rank}}"
+                                 data-item-prop="system.abilities.{{ability.name}}"
                                  data-role-name="{{role}}"
                                  data-ability-name="{{role.system.mainRoleAbility}}"
                                  data-subskill-name="{{ability.name}}"

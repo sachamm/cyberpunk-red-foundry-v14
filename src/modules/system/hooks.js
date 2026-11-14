@@ -28,6 +28,7 @@ const hooksImports = [
   "foundry/ui/directory-browser-buttons.js",
   "foundry/ui/item-folder-upgraded-display.js",
   "foundry/ui/pause-animation.js",
+  "foundry/ui/scroll-to-edit-numbers.js",
   "foundry/ui/theme.js",
   "hotbar/generate-item-macro.js",
   "item/role/update-sub-roles.js",
