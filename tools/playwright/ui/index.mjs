@@ -73,6 +73,7 @@ export {
 export {
   createEffectViaUI,
   closeActiveEffectConfigViaUI,
+  submitActiveEffectConfigViaUI,
   addModViaUI,
   deleteModViaUI,
   getEffectRowViaUI,
