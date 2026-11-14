@@ -43,6 +43,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - The dialog box for updating mook skills now presents the skills by category, similar to the character sheet
 - Item upgrades may now be configured with negative modifiers
 - Add 4 new CPR default Turn Marker options that can be selected via the system settings menu
+- Add 2 new Bodysculpt items for purchase/installation as described on pg277 of the Core Rule Book
 
 ### Bug Fixes
 
