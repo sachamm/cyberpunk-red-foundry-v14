@@ -48,10 +48,12 @@
         {{#if (cprCompare item.system.class "===" "antipersonnelattacker") }}
           {{localize "CPR.global.generic.damage"}}
         {{else}}
-          {{localize "CPR.itemSheet.program.damageTo"}}
           {{#if (cprCompare item.system.class "===" "blackice") }}
-          {{localize "CPR.global.role.netrunner.name"}}{{else}}{{localize "CPR.itemSheet.program.nonBlackIce"}}{{/if}}
+            {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.global.role.netrunner.name")}}
+          {{else}}
+            {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.itemSheet.program.nonBlackIce")}}
           {{/if}}
+        {{/if}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
           {{#if this.editable }}
@@ -68,9 +70,11 @@
     {{#if (cprCompare (cprCompare item.system.class "===" "antiprogramattacker") "||" (cprCompare (cprCompare item.system.class "===" "blackice") "&&" (cprCompare item.system.blackIceType "===" "antiprogram"))) }}
       <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap">
-          {{localize "CPR.itemSheet.program.damageTo"}}
           {{#if (cprCompare item.system.class "===" "blackice") }}
-          {{localize "CPR.dialog.selectInstallPrograms.programs"}}{{else}}{{localize "CPR.global.programClass.blackice"}}{{/if}}
+            {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.dialog.selectInstallPrograms.programs")}}
+          {{else}}
+            {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.global.programClass.blackice")}}
+          {{/if}}
           </div>
           <div class="item flexrow setting-value text-nowrap item-end">
             {{#if this.editable }}
