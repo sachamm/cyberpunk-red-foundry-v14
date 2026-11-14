@@ -95,15 +95,22 @@ export async function toggleItemCheckbox(
   );
 }
 
-export async function setItemSelected(page, { sheetId, itemId, name, value }) {
+export async function setItemSelected(
+  page,
+  { sheetId, itemId, actorId = null, name, value },
+) {
   const sheet = await openItemSettings(page, sheetId);
   const select = sheet.locator(`select[name="${name}"]`);
   await expect(select).toBeVisible();
   await select.selectOption(value);
   await page.waitForFunction(
-    ({ itemId, name, value }) =>
-      foundry.utils.getProperty(game.items.get(itemId), name) === value,
-    { itemId, name, value },
+    ({ itemId, actorId, name, value }) => {
+      const item = actorId
+        ? game.actors.get(actorId)?.items.get(itemId)
+        : game.items.get(itemId);
+      return foundry.utils.getProperty(item, name) === value;
+    },
+    { itemId, actorId, name, value },
     { timeout: 10000 },
   );
 }
