@@ -75,6 +75,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Changing a mode for a skill modifier does not throw console errors
 - The `Big Knucks` cyberware item has been corrected in the compendium to use `Melee Weapon` Skill
 - Corrected spelling for `systems/cyberpunk-red-core/icons/compendium/cyberware/tactile_boost.svg` & `systems/cyberpunk-red-core/icons/compendium/gear/chemical_analyzer.svg`
+- Audiovox should no longer have it's active effect revert back to `Accounting` when added from the compendium to an actor without the `Play Instrument (Singing) skill
 
 ### Changes
 
