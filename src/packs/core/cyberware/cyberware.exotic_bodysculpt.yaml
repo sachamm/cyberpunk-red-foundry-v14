@@ -1,6 +1,51 @@
 _id: Drgv2kRDTThpCxEM
 _key: "!items!Drgv2kRDTThpCxEM"
-effects: []
+effects:
+  - _id: IjZT0JB5maErYGcL
+    _key: "!items.effects!Drgv2kRDTThpCxEM.IjZT0JB5maErYGcL"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1794762222199
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: L5BVRBGb798QfKk9
+      modifiedTime: 1794762287455
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    changes:
+      - key: system.derivedStats.humanity.max
+        mode: 2
+        value: "2"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": custom
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/cyberware/exotic_bodysculpt.svg
+    name: Exotic Bodyscupt
+    origin: Compendium.cyberpunk-red-core.core_cyberware.Item.Drgv2kRDTThpCxEM
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
 flags:
   cyberpunk-red-core: {}
 folder: null
@@ -71,7 +116,7 @@ system:
       page: 227
   type: fashionware
   unarmedAutomaticCalculation: true
-  usage: toggled
+  usage: installed
   usesType: magazine
   weaponSkill: Handgun
 type: cyberware
