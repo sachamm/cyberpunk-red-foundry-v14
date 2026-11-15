@@ -74,6 +74,7 @@ async function deleteDirectoryEntryViaUI(page, { documentTab, id }) {
       .first(),
   );
   await expect(entry).toHaveCount(0);
+  await expect(dialog).toHaveCount(0);
 }
 
 export async function deleteActorViaUI(page, actorId) {
