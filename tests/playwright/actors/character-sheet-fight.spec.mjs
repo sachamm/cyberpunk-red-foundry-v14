@@ -10,6 +10,7 @@ import {
   enablePlayersCreateInventory,
   expectSheetRendered,
   getPlayersCreateInventory,
+  ownedItemIdByName,
   reopenActorSheetViaUI,
   reopenItemSheetViaUI,
   resolveYesNo,
@@ -76,15 +77,6 @@ const actorFlag = (page, actorId, flag) =>
     ({ actorId, flag }) =>
       game.actors.get(actorId).getFlag(game.system.id, flag) ?? null,
     { actorId, flag },
-  );
-
-// Read-only: the owned item id for an exact name, or null. Dragging a world
-// item embeds a copy with a new id, so specs resolve the copy by name.
-const ownedItemIdByName = (page, actorId, name) =>
-  page.evaluate(
-    ({ actorId, name }) =>
-      game.actors.get(actorId).items.find((i) => i.name === name)?.id ?? null,
-    { actorId, name },
   );
 
 /**

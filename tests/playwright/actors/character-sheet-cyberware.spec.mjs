@@ -13,6 +13,7 @@ import {
   openItemSettings,
   openOwnedItemSheet,
   openSidebarTab,
+  ownedItemIdByName,
   resolveYesNo,
   setItemField,
   toggleItemCheckbox,
@@ -48,14 +49,6 @@ const CYBERWARE_TYPE_LABEL_KEYS = [
   "CPR.global.cyberwareType.fashionware",
   "CPR.global.cyberwareType.borgware",
 ];
-
-async function ownedItemIdByName(page, actorId, name) {
-  return page.evaluate(
-    ({ actorId, name }) =>
-      game.actors.get(actorId).items.find((i) => i.name === name)?.id ?? null,
-    { actorId, name },
-  );
-}
 
 async function createWorldCyberware(
   page,

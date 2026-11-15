@@ -9,6 +9,7 @@ export {
   ACTOR_TYPES,
   closeAndReopenActorSheet,
   createActorViaUI,
+  ownedItemIdByName,
   placeSheetsSideBySide,
   positionActorSheet,
   reopenActorSheetViaUI,
