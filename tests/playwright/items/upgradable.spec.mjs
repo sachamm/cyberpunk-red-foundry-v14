@@ -14,12 +14,14 @@ import {
   expectModEntry,
   expectSheetRendered,
   installUpgrade,
+  openItemSettings,
   openOwnedItemSettings,
   openSidebarTab,
   readDamageFormula,
   readTotalModsTooltip,
   setItemField,
   setItemSelected,
+  toggleItemCheckbox,
   uniqueName,
   verifyRollDialog,
   waitForNewChatMessage,
@@ -41,6 +43,18 @@ import {
  * gains the bonus. This spec pins both through clean surfaces: the magazine
  * chip on the weapon sheet's Settings tab (`cprShowUpgrade`), the capacity
  * the reload flow actually fills to, and the total a posted damage card shows.
+ *
+ * It also covers upgrades that target cyberware: those expose no modifier
+ * data points (their payload is an installation size plus an optional
+ * secondary weapon), so installing one charges the implant's slots instead of
+ * changing stats. A fresh custom cyberware accepts `itemUpgrade` installs by
+ * default, so no allowed-types setup is needed.
+ *
+ * One current behaviour is pinned as-is: a cyberware-targeting upgrade can be
+ * configured with a secondary weapon on its sheet (cyberware is treated like
+ * a weapon target there), but that weapon never reaches the Fight tab — the
+ * equipped-weapon list only includes secondary-weapon upgrades whose host
+ * item is equipped, and cyberware has no equippable mixin.
  */
 
 async function createWeaponUpgrade(
@@ -71,6 +85,59 @@ async function createWeaponUpgrade(
     name: `system.modifiers.${dataPoint}.value`,
     path: `system.modifiers.${dataPoint}.value`,
     value,
+  });
+  await closeDocSheet(page, { collection: "items", id: upgradeId });
+  return upgradeId;
+}
+
+/**
+ * Create a standalone itemUpgrade that targets cyberware. A fresh upgrade
+ * defaults to targeting weapons; the type select switches it, after which the
+ * sheet offers an installation size (the slot cost) instead of modifier rows.
+ * With `secondaryWeapon`, also check the Is-a-secondary-weapon box and pin
+ * that the attackable settings it reveals render for a cyberware target.
+ */
+async function createCyberwareUpgrade(
+  page,
+  { upgradeName, size, secondaryWeapon = false },
+) {
+  const upgradeId = await createDocumentViaUI(page, {
+    documentTab: "items",
+    type: "itemUpgrade",
+    name: upgradeName,
+  });
+  const upgradeSheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: upgradeId,
+  });
+  expect(
+    await page.evaluate((id) => game.items.get(id).system.type, upgradeId),
+  ).toBe("weapon");
+  await setItemSelected(page, {
+    sheetId: upgradeSheetId,
+    itemId: upgradeId,
+    name: "system.type",
+    value: "cyberware",
+  });
+  if (secondaryWeapon) {
+    await toggleItemCheckbox(page, {
+      sheetId: upgradeSheetId,
+      itemId: upgradeId,
+      target: "system.modifiers.secondaryWeapon.configured",
+      expected: true,
+    });
+    const settings = await openItemSettings(page, upgradeSheetId);
+    await expect(
+      settings.locator('select[name="system.weaponType"]'),
+    ).toBeVisible();
+    await expect(settings.locator('input[name="system.damage"]')).toBeVisible();
+  }
+  await setItemField(page, {
+    sheetId: upgradeSheetId,
+    itemId: upgradeId,
+    name: "system.size",
+    path: "system.size",
+    value: size,
   });
   await closeDocSheet(page, { collection: "items", id: upgradeId });
   return upgradeId;
@@ -297,5 +364,150 @@ test.describe("Item upgradable mixin", () => {
     });
 
     await dismissNotifications(page);
+  });
+
+  test("an upgrade targeting cyberware installs into the implant and consumes its slots", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+
+    const cyberwareName = uniqueName("arm");
+    const cyberware = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "cyberware",
+      itemName: cyberwareName,
+    });
+
+    const upgradeName = uniqueName("servo");
+    const upgradeId = await createCyberwareUpgrade(page, {
+      upgradeName,
+      size: 1,
+    });
+
+    await dragItemToActorSheet(page, {
+      itemId: upgradeId,
+      sheetId: cyberware.sheetId,
+      actorId,
+    });
+    const embeddedUpgradeId = await page.evaluate(
+      ({ actorId, upgradeName }) =>
+        game.actors.get(actorId).items.find((i) => i.name === upgradeName)?.id,
+      { actorId, upgradeName },
+    );
+
+    await test.step("the install dialog offers the implant as the target", async () => {
+      await installUpgrade(page, {
+        actorSheetId: cyberware.sheetId,
+        actorId,
+        upgradeId: embeddedUpgradeId,
+        targetId: cyberware.itemId,
+      });
+    });
+
+    await test.step("installing charges the implant's slots by the upgrade size", async () => {
+      const state = await page.evaluate(
+        ({ actorId, itemId, upgradeId }) => {
+          const actor = game.actors.get(actorId);
+          return {
+            isInstalled: actor.items.get(upgradeId).system.isInstalled,
+            installedIn: actor.items.get(upgradeId).system.installedIn,
+            list: actor.items.get(itemId).system.installedItems.list,
+            slots: actor.items.get(itemId).system.installedItems.slots,
+            usedSlots: actor.items.get(itemId).system.installedItems.usedSlots,
+          };
+        },
+        { actorId, itemId: cyberware.itemId, upgradeId: embeddedUpgradeId },
+      );
+      expect(state.isInstalled).toBe(true);
+      expect(state.installedIn).toEqual([cyberware.itemId]);
+      expect(state.list).toContain(embeddedUpgradeId);
+      expect(state.slots).toBe(3);
+      expect(
+        state.usedSlots,
+        "the upgrade's installation size is charged",
+      ).toBe(1);
+    });
+
+    await test.step("the item sheet shows one fewer available slot and lists the upgrade", async () => {
+      const { settings } = await openOwnedItemSettings(page, {
+        actorId,
+        itemId: cyberware.itemId,
+        sheetId: cyberware.sheetId,
+      });
+      const slotsRow = settings.locator("li.item", {
+        has: page.locator(".manage-installed-items"),
+      });
+      await expect(slotsRow).toContainText("Available Slots: 2");
+      const nestedRow = settings.locator(
+        `li.item[data-item-id="${embeddedUpgradeId}"][data-item-category="itemUpgrade"]`,
+      );
+      await expect(nestedRow).toBeVisible();
+      await expect(nestedRow).toContainText(upgradeName);
+      await closeOwnedItemSheet(page, { actorId, itemId: cyberware.itemId });
+    });
+
+    await test.step("a fresh gear render marks the implant as upgraded", async () => {
+      const afterSheet = await closeAndReopenActorSheet(page, actorId);
+      const row = gearRow(page, afterSheet, cyberware.itemId);
+      await expect(row.locator(".fa-square-caret-up")).toBeVisible();
+    });
+  });
+
+  test("a configured secondary weapon on a cyberware-targeting upgrade never lists on the fight tab", async ({
+    page,
+  }) => {
+    await enablePlayersCreateInventory(page);
+    const { actorId, sheetId } = await createCharacterViaUI(page);
+
+    const cyberwareName = uniqueName("arm");
+    const cyberware = await createInventoryItemViaUI(page, {
+      actorId,
+      sheetId,
+      itemType: "cyberware",
+      itemName: cyberwareName,
+    });
+
+    const upgradeName = uniqueName("blade");
+    const upgradeId = await createCyberwareUpgrade(page, {
+      upgradeName,
+      size: 1,
+      secondaryWeapon: true,
+    });
+
+    await dragItemToActorSheet(page, {
+      itemId: upgradeId,
+      sheetId: cyberware.sheetId,
+      actorId,
+    });
+    const embeddedUpgradeId = await page.evaluate(
+      ({ actorId, upgradeName }) =>
+        game.actors.get(actorId).items.find((i) => i.name === upgradeName)?.id,
+      { actorId, upgradeName },
+    );
+
+    await test.step("the configured upgrade installs into the implant", async () => {
+      await installUpgrade(page, {
+        actorSheetId: cyberware.sheetId,
+        actorId,
+        upgradeId: embeddedUpgradeId,
+        targetId: cyberware.itemId,
+      });
+    });
+
+    // The Fight tab lists secondary-weapon upgrades only when their host item
+    // is equipped (weapons-schema getWeapons("equipped")). Cyberware has no
+    // equippable mixin, so its host can never reach that state — pin the
+    // resulting absence rather than a string match.
+    await test.step("the fight tab renders no weapon row for the upgrade", async () => {
+      const sheet = page.locator(`#${cyberware.sheetId}`);
+      await sheet.locator('.navtabs-bottom a[data-tab="fight"]').click();
+      await expect(
+        sheet.locator(
+          `.bottom-content-section [data-item-id="${embeddedUpgradeId}"]`,
+        ),
+      ).toHaveCount(0);
+    });
   });
 });
