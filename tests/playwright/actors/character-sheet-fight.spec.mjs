@@ -6,25 +6,36 @@ import {
   closeAndReopenActorSheet,
   closeDocSheet,
   createInventoryItemViaUI,
+  createItemViaUI,
   enablePlayersCreateInventory,
+  expectSheetRendered,
   getPlayersCreateInventory,
   reopenActorSheetViaUI,
   reopenItemSheetViaUI,
+  resolveYesNo,
   setPlayersCreateInventory,
+  toggleItemCheckbox,
   uniqueName,
   waitForNewChatMessage,
+  yesNoDialog,
 } from "../../../tools/playwright/ui/index.mjs";
 import {
   configureRoleMainAbilityViaUI,
+  confirmInstallCyberwareDialog,
   confirmRollDialog,
   createCharacterViaUI,
   createEquippedItemViaUI,
   createRoleItemViaUI,
+  cyberwareRow,
   dragRoleItemToCharacter,
+  embedWorldItemOnCharacterSheet,
   fightArmorRow,
   fightWeaponRow,
   installProgramIntoDeckViaUI,
+  openCyberwareTab,
   openFightTab,
+  openGearTab,
+  openInstallCyberwareDialog,
 } from "./character-sheet-helpers.mjs";
 
 installConsoleErrorHarness();
@@ -65,6 +76,15 @@ const actorFlag = (page, actorId, flag) =>
     ({ actorId, flag }) =>
       game.actors.get(actorId).getFlag(game.system.id, flag) ?? null,
     { actorId, flag },
+  );
+
+// Read-only: the owned item id for an exact name, or null. Dragging a world
+// item embeds a copy with a new id, so specs resolve the copy by name.
+const ownedItemIdByName = (page, actorId, name) =>
+  page.evaluate(
+    ({ actorId, name }) =>
+      game.actors.get(actorId).items.find((i) => i.name === name)?.id ?? null,
+    { actorId, name },
   );
 
 /**
@@ -324,6 +344,96 @@ test("equipped weapons and armor render under their Ranged/Melee headers", async
     const row = fightArmorRow(page, sheetId, armor.itemId);
     await expect(row.locator(".armor-1-location")).toHaveText(labels.body);
     await expect(row.locator(".armor-1-stats")).toHaveText("7/7");
+  });
+});
+
+test("an installed weapon cyberware shows as an equipped melee weapon on the Fight tab", async ({
+  page,
+}) => {
+  const name = uniqueName("cyberknife");
+  let { actorId, sheetId } = await createCharacterViaUI(page);
+
+  // A world cyberware configured as a weapon. The attackable mixin defaults
+  // isRanged to false, so it classifies as melee on the Fight tab.
+  const itemId = await createItemViaUI(page, { type: "cyberware", name });
+  const itemSheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+  await toggleItemCheckbox(page, {
+    sheetId: itemSheetId,
+    itemId,
+    target: "system.isWeapon",
+    expected: true,
+  });
+  await closeDocSheet(page, { collection: "items", id: itemId });
+
+  // Dragging a world item embeds a copy with a new id; resolve it by name.
+  sheetId = await embedWorldItemOnCharacterSheet(page, {
+    itemId,
+    sheetId,
+    actorId,
+  });
+  const ownedId = await ownedItemIdByName(page, actorId, name);
+  expect(ownedId).toBeTruthy();
+
+  const labels = await page.evaluate(() => ({
+    melee: game.i18n.localize("CPR.characterSheet.bottomPane.fight.melee"),
+    weapons: game.i18n.localize("CPR.characterSheet.bottomPane.fight.weapons"),
+    meleeWeapon: game.i18n.localize("CPR.global.itemType.skill.meleeWeapon"),
+  }));
+
+  await test.step("installing it with no humanity loss equips it as a melee weapon", async () => {
+    await openGearTab(page, sheetId);
+    const dialog = await openInstallCyberwareDialog(page, {
+      sheetId,
+      itemId: ownedId,
+    });
+    await confirmInstallCyberwareDialog(dialog, { humanity: "none" });
+
+    const content = await openFightTab(page, sheetId);
+    // It is the only equipped weapon and it is melee, so the plain Weapons
+    // header is replaced by a single Melee sub-header.
+    await expect(
+      content.locator(".weapon-section > .items-header"),
+    ).toHaveCount(0);
+    const headers = content.locator(".weapon-content .items-header");
+    await expect(headers).toHaveCount(1);
+    await expect(headers.nth(0)).toHaveText(labels.melee);
+
+    const row = fightWeaponRow(page, sheetId, ownedId);
+    await expect(row).toBeVisible();
+    await expect(row.locator("a.name.item-edit")).toHaveText(name);
+    await expect(row.locator(".weapon-ammo")).toHaveText(labels.meleeWeapon);
+    await expect(row.locator('[data-roll-type="attack"]')).toBeVisible();
+    await expect(row.locator('[data-roll-type="damage"]')).toBeVisible();
+  });
+
+  await test.step("uninstalling it removes the weapon and restores the plain Weapons header", async () => {
+    await openCyberwareTab(page, sheetId);
+    const uninstallGlyph = cyberwareRow(page, sheetId, ownedId).locator(
+      'a.install-remove-cyberware[data-item-prop="system.isInstalled"]',
+    );
+    await expect(uninstallGlyph).toBeVisible();
+    await uninstallGlyph.click();
+
+    const dialog = yesNoDialog(page);
+    await expect(dialog).toBeVisible({ timeout: 10000 });
+    await resolveYesNo(dialog, "yes");
+    // Wait for the confirm dialog to leave before switching tabs so the click
+    // does not land on a still-fading overlay.
+    await expect(dialog).toHaveCount(0);
+
+    const content = await openFightTab(page, sheetId);
+    await expect(fightWeaponRow(page, sheetId, ownedId)).toHaveCount(0);
+    // With no weapons equipped the plain Weapons header returns and there are
+    // no Ranged/Melee sub-headers.
+    await expect(content.locator(".weapon-content .items-header")).toHaveCount(
+      0,
+    );
+    await expect(content.locator(".weapon-section > .items-header")).toHaveText(
+      labels.weapons,
+    );
   });
 });
 
