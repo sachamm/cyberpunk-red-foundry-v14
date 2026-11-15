@@ -25,7 +25,7 @@ effects:
       rounds: null
       seconds: null
       startRound: null
-      startTime: null
+      startTime: 0
       startTurn: null
       turns: null
     flags:
@@ -59,9 +59,8 @@ effects:
       systemId: null
       systemVersion: null
     changes:
-      - key: bonuses.playInstrument
+      - key: bonuses.playInstrument(Singing)
         mode: 2
-        priority: null
         value: "2"
     description: ""
     disabled: false
@@ -70,14 +69,14 @@ effects:
       rounds: null
       seconds: null
       startRound: null
-      startTime: null
+      startTime: 0
       startTurn: null
       turns: null
     flags:
       cyberpunk-red-core:
         changes:
           cats:
-            "0": skill
+            "0": custom
           situational:
             "0":
               isSituational: false
@@ -121,8 +120,15 @@ system:
     value: |
       <p>
         Autotune synthesizer. Provides +2 to <strong>Acting</strong> and
-        <strong>Play Instrument</strong> checks.
+        <strong>Play Instrument (Singing)</strong> checks.
       </p>
+      <blockquote>
+        <p>
+          Add
+          @UUID[Compendium.cyberpunk-red-core.core_skills-play-instrument.Item.bQKaMBoOouUT7Eah]{Play Instrument (Singing)}
+          to your sheet if you don't have it already.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:
@@ -133,6 +139,7 @@ system:
     static: 3
   ignoreArmorPercent: 50
   ignoreBelowSP: 0
+  ignoredByBrowser: false
   installLocation: clinic
   installedItems:
     allowed: false
@@ -155,6 +162,7 @@ system:
   revealed: true
   rof: 1
   size: 1
+  source: null
   sources:
     - book: Cyberpunk RED
       page: 362
