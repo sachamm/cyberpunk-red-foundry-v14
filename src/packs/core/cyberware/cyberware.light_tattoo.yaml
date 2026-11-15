@@ -9,8 +9,8 @@ effects:
       createdTime: null
       duplicateSource: null
       exportSource: null
-      lastModifiedBy: null
-      modifiedTime: null
+      lastModifiedBy: L5BVRBGb798QfKk9
+      modifiedTime: 1794551120496
       systemId: null
       systemVersion: null
     changes:
@@ -19,7 +19,7 @@ effects:
         priority: null
         value: "2"
     description: ""
-    disabled: false
+    disabled: true
     duration:
       combat: null
       rounds: null

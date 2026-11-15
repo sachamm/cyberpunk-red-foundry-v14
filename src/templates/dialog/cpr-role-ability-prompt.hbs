@@ -31,11 +31,10 @@
           <span class="text-semi">{{localize "CPR.dialog.createEditRoleAbility.hasRoll"}}</span>
         </div>
         <div class="dialog-item-input text-nowrap">
-          <input class="item-checkbox text-right" name="hasRoll" data-target="hasRoll" type="checkbox" value="{{hasRoll}}" {{checked hasRoll}}/>
+          <input class="text-right" name="hasRoll" type="checkbox" {{checked hasRoll}}/>
         </div>
       </li>
-      {{#if hasRoll }}
-      <li class="dialog-item flexrow">
+      <li class="dialog-item flexrow has-roll-option">
         <div class="dialog-item-name text-nowrap">
           <span class="text-semi">{{localize "CPR.dialog.createEditRoleAbility.multiplier"}}</span>
         </div>
@@ -45,7 +44,7 @@
         </select>
       </div>
     </li>
-      <li class="dialog-item flexrow">
+      <li class="dialog-item flexrow has-roll-option">
         <div class="dialog-item-name text-nowrap">
           <span class="text-semi">{{localize "CPR.global.generic.stat"}}</span>
         </div>
@@ -55,7 +54,7 @@
           </select>
         </div>
       </li>
-      <li class="dialog-item flexrow">
+      <li class="dialog-item flexrow has-roll-option">
         <div class="dialog-item-name text-nowrap">
           <span class="text-semi">{{localize "CPR.dialog.createEditRoleAbility.skill"}}</span>
         </div>
@@ -65,7 +64,6 @@
         </select>
       </div>
       </li>
-      {{/if}}
     </ol>
   </div>
 </div>

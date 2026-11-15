@@ -63,7 +63,7 @@ export {
   openOwnedItemSheet,
 } from "./sheets.mjs";
 export { chatMessageCount, waitForNewChatMessage } from "./chat.mjs";
-export { yesNoDialog, resolveYesNo } from "./dialogs.mjs";
+export { checkboxGeometry, resolveYesNo, yesNoDialog } from "./dialogs.mjs";
 export {
   applyLedgerChange,
   closeLedgerWindow,

@@ -28,19 +28,17 @@
           {{localize "CPR.effectSheet.header.situational"}}
         </div>
         <div class="dialog-item-input text-nowrap">
-          <a class="item-checkbox" data-target="roleData.isSituational"><i class="far fa{{#if roleData.isSituational }}-check{{/if }}-circle"></i></a>
+          <input type="checkbox" name="isSituational"{{#if roleData.isSituational}} checked{{/if}}/>
         </div>
       </li>
-      {{#if roleData.isSituational }}
-        <li class="dialog-item flexrow">
-          <div class="dialog-item-name text-nowrap text-semi">
-            {{localize "CPR.effectSheet.header.onByDefault"}}
-          </div>
-          <div class="dialog-item-input text-nowrap">
-            <a class="item-checkbox" data-target="roleData.onByDefault"><i class="far fa{{#if roleData.onByDefault }}-check{{/if }}-circle"></i></a>
-          </div>
-        </li>
-      {{/if}}
+      <li class="dialog-item flexrow">
+        <div class="dialog-item-name text-nowrap text-semi">
+          {{localize "CPR.effectSheet.header.onByDefault"}}
+        </div>
+        <div class="dialog-item-input text-nowrap">
+          <input type="checkbox" name="onByDefault"{{#if roleData.onByDefault}} checked{{/if}}/>
+        </div>
+      </li>
       <li class="dialog-item dialog-item-header flexrow">
         <div class="dialog-item-name text-nowrap">
           {{localize "CPR.dialog.selectRoleBonuses.universalBonuses"}}

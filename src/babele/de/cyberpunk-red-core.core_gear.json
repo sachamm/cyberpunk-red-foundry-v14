@@ -18,12 +18,12 @@
     },
     "Battleglove": {
       "name": "Kampfhandschuh",
-      "description": "<p>Ein exotischer schwerer Panzerhandschuh, der Hand und Unterarm bedeckt. Bietet drei Optionsslots für Cyberarm- oder Cyberbein-Optionen. Details auf Seite 347.</p>",
+      "description": "<p>\n  An exotic heavy gauntlet, that covers your hand and forearm. Provides three\n  option slots.\n</p>\n<blockquote>\n  <p>Remember to set HL to 0 when installing cyberware options.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Smart-Brille",
-      "description": "<p>Brille mit zwei Optionsslots für Cyberaugen-Optionen.</p>",
+      "description": "<p>Eyewear with two options slots for cybereye options.</p>\n<blockquote>\n  <p>Remember to set HL to 0 when installing cyberware options.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Agent": {

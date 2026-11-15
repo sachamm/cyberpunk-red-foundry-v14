@@ -159,6 +159,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/compendium/cyberware/emp_threading.svg` remixed from [Tree Shape Of Straight Lines Like A Computer Printed Circuit](https://www.svgrepo.com/svg/25715/tree-shape-of-straight-lines-like-a-computer-printed-circuit)
 - `src/icons/compendium/cyberware/enhanced_antibodies.svg` derived from prototype icon and [Antibody](https://www.svgrepo.com/svg/321735/antibody)
 - `src/icons/compendium/cyberware/exposed_coverings.svg` derived from Plastic Coverings and [Circuitry](https://game-icons.net/1x1/lorc/circuitry.html)
+- `src/icons/compendium/cyberware/exotic_bodysculpt.svg` remixed from [Scalpel](https://thenounproject.com/icon/scalpel-7724917/)
 - `src/icons/compendium/cyberware/gills.svg` derived from prototype icon and [Water](https://www.svgrepo.com/svg/352680/water)
 - `src/icons/compendium/cyberware/grafted_muscle_and_lace.svg` derived from prototype icon and [Biceps](https://game-icons.net/1x1/delapouite/biceps.html)
 - `src/icons/compendium/cyberware/grapple_hand.svg` derived from prototype icon and [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
@@ -214,6 +215,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/compendium/cyberware/skinwatch.svg` remixed from [Wristwatch Watch](https://www.svgrepo.com/svg/302337/wristwatch-watch)
 - `src/icons/compendium/cyberware/skin_weave.svg` remixed from [Wolverine Claws](https://game-icons.net/1x1/lorc/wolverine-claws.html)
 - `src/icons/compendium/cyberware/slice_n_dice.svg` derived from prototype icon and [Whiplash](https://game-icons.net/1x1/lorc/whiplash.html)
+- `src/icons/compendium/cyberware/standard_bodysculpt.svg` remixed from [Scalpel](https://thenounproject.com/icon/scalpel-7724917/)
 - `src/icons/compendium/cyberware/standard_foot.svg` remixed from [Left Foot](https://www.svgrepo.com/svg/78614/left-foot)
 - `src/icons/compendium/cyberware/standard_hand.svg` remixed from [Hand Drag](https://www.svgrepo.com/svg/188175/hand-drag)
 - `src/icons/compendium/cyberware/subdermal_armor.svg` remixed from [Shoulder Armor](https://game-icons.net/1x1/delapouite/shoulder-armor.html)
@@ -451,7 +453,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/compendium/upgrades/hardened_circuitry.svg` derived from prototype and [CPU](https://game-icons.net/1x1/delapouite/cpu.html) and [Shield](https://game-icons.net/1x1/sbed/shield.html)
 - `src/icons/compendium/upgrades/heavy_chasis.svg` remixed from [Car Travel SVG Vector](https://www.svgrepo.com/svg/390412/car-travel) and [Weight Hanging SVG Vector](https://www.svgrepo.com/svg/352684/weight-hanging)
 - `src/icons/compendium/upgrades/housing_capacity.svg` remixed from [Bed SVG Vector](https://www.svgrepo.com/svg/409415/bed)
-- `src\icons\compendium\upgrades\hover_upgrade.svg` remixed from [Computer Fan](https://game-icons.net/1x1/delapouite/computer-fan.html)
+- `src/icons/compendium/upgrades/hover_upgrade.svg` remixed from [Computer Fan](https://game-icons.net/1x1/delapouite/computer-fan.html)
 - `src/icons/compendium/upgrades/infrared_nightvision_scope.svg.svg` remixed from [Orbit](https://www.svgrepo.com/svg/285298/orbit)
 - `src/icons/compendium/upgrades/insulated_wiring.svg` derived from prototype and [Wires Wire](https://www.svgrepo.com/svg/268331/wires-wire)
 - `src/icons/compendium/upgrades/krash_barrier.svg` derived from prototype and [Barrier](https://www.svgrepo.com/svg/203555/barrier)
@@ -508,7 +510,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/compendium/weapons/SniperRifle*` remixed from [Flintwyrm](https://twitter.com/Flintwyrm)
 - `src/icons/compendium/weapons/SpikedBat*` remixed from [Flintwyrm](https://twitter.com/Flintwyrm)
 - `src/icons/compendium/weapons/stun_gun.svg` remixed from [Mac 10](https://game-icons.net/1x1/skoll/mac-10.html)
-- `src\icons\compendium\weapons\StunBaton.svg` remixed from [Telescopic Baton](https://game-icons.net/1x1/skoll/telescopic-baton.html) & [Lighting Trio](https://game-icons.net/1x1/lorc/lightning-trio.html)
+- `src/icons/compendium/weapons/StunBaton.svg` remixed from [Telescopic Baton](https://game-icons.net/1x1/skoll/telescopic-baton.html) & [Lighting Trio](https://game-icons.net/1x1/lorc/lightning-trio.html)
 - `src/icons/compendium/weapons/Sword*` remixed from [Flintwyrm](https://twitter.com/Flintwyrm)
 - `src/icons/compendium/weapons/thrown_weapon*` remixed from [Arrow Dunk](https://game-icons.net/1x1/lorc/arrow-dunk.html)
 - `src/icons/compendium/weapons/Tomahawk*` remixed from [Flintwyrm](https://twitter.com/Flintwyrm)
@@ -587,7 +589,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src/icons/prototypes/icons/hardware.svg` remixed from [CPU](https://www.svgrepo.com/svg/478251/cpu-5)
 - `src/icons/prototypes/icons/internal.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human)
 - `src/icons/prototypes/icons/neuralware.svg` remixed from [Human Brain](https://www.svgrepo.com/svg/66295/human-brain)
-- `src\icons\prototypes\icons\role.svg` created by Aru.Guy
+- `src/icons/prototypes/icons/role.svg` created by Aru.Guy
 
 ## src/images/
 

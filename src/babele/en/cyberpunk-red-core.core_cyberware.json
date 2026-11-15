@@ -129,6 +129,10 @@
       "description": "<p>Doubles natural healing while resting.</p>\n",
       "dvTable": ""
     },
+    "Exotic Bodysculpt": {
+      "name": "Exotic Bodysculpt",
+      "description": "<p>Embrace the inhuman and give yourself fins, feathers, or fur.</p>\n<blockquote>\n  <p>\n    A <strong>MEDTECH</strong> may perform this procedure by passing a\n    <strong>DV17 Surgery Check</strong> and consuming materials worth 500eb.\n  </p>\n</blockquote>\n"
+    },
     "Exposed Covering (Cyber Arm)": {
       "name": "Exposed Covering (Cyber Arm)",
       "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
@@ -448,6 +452,10 @@
       "name": "Slice 'N Dice",
       "description": "<p>\n  Monofilament wiring that can be used as a Medium Melee Weapon. Can be\n  concealed without a check.\n</p>\n<blockquote>\n  <p>You are unable to hold anything in this hand while activated.</p>\n  <p>\n    Can be installed into your\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.WzgaetvvHUQeD19B]{Meat Arm}\n    as the only piece of cyberware.\n  </p>\n</blockquote>\n",
       "dvTable": ""
+    },
+    "Standard Bodysculpt": {
+      "name": "Standard Bodysculpt",
+      "description": "<p>Remove scar tissue or just be your most attractive self.</p>\n<blockquote>\n  <p>\n    A <strong>MEDTECH</strong> may perform this procedure by passing a\n    <strong>DV15 Surgery Check</strong> and consuming materials worth 100eb.\n  </p>\n</blockquote>\n"
     },
     "Standard Foot": {
       "name": "Standard Foot",

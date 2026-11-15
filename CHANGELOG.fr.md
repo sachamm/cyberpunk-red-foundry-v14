@@ -43,6 +43,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - The dialog box for updating mook skills now presents the skills by category, similar to the character sheet
 - Item upgrades may now be configured with negative modifiers
 - Add 4 new CPR default Turn Marker options that can be selected via the system settings menu
+- Add 2 new Bodysculpt items for purchase/installation as described on pg277 of the Core Rule Book
 
 ### Corrections de bugs
 
@@ -52,6 +53,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Calculate EMP from the updated Humanity on the first recalculation
 - Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
 - Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
+- Fix Configure Bonuses to Rolls for role sub-abilities not saving any selections, including Situational? and On-by-default
+- Fix the Has roll checkbox in the Create/Edit Role Ability dialog not saving its state; the multiplier, stat, and skill rows now appear when Has roll is checked
 - Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
 - Weapon damage override upgrades now replace the base damage formula on damage rolls
@@ -92,8 +95,11 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Updated `CREDITS.md` with attribution for all system assets
 - Rolling damage after an aimed shot will remember the location in the damage roll
 - Compendium Item descriptions have been revised to provide a unified format
-  - Armor
   - Ammo
+  - Armor
+  - Clothing
+  - Cyberware
+  - Drugs
 
 ### Plumbing
 

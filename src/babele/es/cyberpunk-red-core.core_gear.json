@@ -18,12 +18,12 @@
     },
     "Battleglove": {
       "name": "Guante de Batalla",
-      "description": "<p>Un Guantelete pesado exótico que cubre la mano y el antebrazo. Proporciona tres ranuras de opciones. Consulte la descripción completa del artículo en el pg. 347.</p>",
+      "description": "<p>\n  An exotic heavy gauntlet, that covers your hand and forearm. Provides three\n  option slots.\n</p>\n<blockquote>\n  <p>Remember to set HL to 0 when installing cyberware options.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Gafas inteligentes",
-      "description": "<p>Gafas tecnológicas con dos ranuras para opciones de ciberópticos.</p>",
+      "description": "<p>Eyewear with two options slots for cybereye options.</p>\n<blockquote>\n  <p>Remember to set HL to 0 when installing cyberware options.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Agent": {

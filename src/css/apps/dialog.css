@@ -134,11 +134,25 @@
   .dialog-item-input {
     text-align: end;
 
-    input[type="checkbox"],
     input[type="radio"],
     select {
       height: unset;
       max-width: fit-content;
+    }
+
+    /* Foundry v13 sizes the checkbox from its glyph layers (FA advance x line
+       height) instead of a fixed box, so the checked duotone layers drift into
+       a doubled, right-shifted check mark. To avoid that, we set the input to a
+       square --checkbox-size box and center the layers. "inline-flex" keeps it on
+       the row's "text-align: end" instead of taking its own line. */
+    input[type="checkbox"] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--checkbox-size);
+      height: var(--checkbox-size);
+      margin: 0;
+      font-size: var(--checkbox-size);
     }
 
     /* Foundry v13's form reset collapses an unstyled radio to a zero-size box,
@@ -156,6 +170,17 @@
   > select {
     flex: 0 1 auto;
   }
+}
+
+/* DialogV2 renders the role ability prompt once and cannot re-render when
+   Has roll is toggled, so its dependent rows are shown/hidden with CSS state
+   rather than a template conditional (which could never expand under v13). */
+.dialog-list > li.has-roll-option {
+  display: none;
+}
+
+.dialog-list:has(input[name="hasRoll"]:checked) > li.has-roll-option {
+  display: flex;
 }
 
 .situational-mods {
