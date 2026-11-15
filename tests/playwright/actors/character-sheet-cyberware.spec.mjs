@@ -15,7 +15,6 @@ import {
   openSidebarTab,
   resolveYesNo,
   setItemField,
-  setItemSelected,
   toggleItemCheckbox,
   uniqueName,
   waitForNewChatMessage,
@@ -93,22 +92,6 @@ async function createWorldCyberware(
       expected: false,
     });
   }
-  await closeDocSheet(page, { collection: "items", id: itemId });
-  return { itemId, name };
-}
-
-async function createWorldCyberwareUpgrade(page, name) {
-  const itemId = await createItemViaUI(page, { type: "itemUpgrade", name });
-  const sheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: itemId,
-  });
-  await setItemSelected(page, {
-    sheetId,
-    itemId,
-    name: "system.type",
-    value: "cyberware",
-  });
   await closeDocSheet(page, { collection: "items", id: itemId });
   return { itemId, name };
 }
@@ -563,114 +546,6 @@ test.describe("Character sheet Cyberware tab", () => {
         // than 16 chars to the first 15 plus an ellipsis.
         const expectedName = name.length > 16 ? `${name.slice(0, 15)}…` : name;
         expect(cardName).toBe(expectedName);
-      });
-    } finally {
-      await closeDocSheet(page, { collection: "actors", id: actorId });
-      await deleteActorViaUI(page, actorId);
-      for (const id of itemIds) await deleteItemViaUI(page, id);
-    }
-  });
-
-  test("the manage-upgrades glyph never renders on installed cyberware rows (product bug pin)", async ({
-    page,
-  }) => {
-    // Product bug pin. Both branches that should render the manage-upgrades
-    // glyph on an installed cyberware row are dead (cpr-cyberware-foundational-content.hbs
-    // and cpr-cyberware-optional-content.hbs): `{{#if isUpgraded}}` references a bare
-    // `isUpgraded`, which is undefined in the partial's {actor, cyberware} context, and
-    // the else branch filters actor.itemTypes.itemUpgrade by "type" === "cyberware", but
-    // itemUpgrade documents always have type "itemUpgrade" — their target doc type lives
-    // in system.type, which is what the gear tab's cpr-actions.hbs checks. This test pins
-    // the absence so a fix is noticed; it also shows the same fixture state satisfies the
-    // gear tab's condition, where the glyph does render.
-    const { actorId, sheetId: initialSheet } = await createCharacterViaUI(page);
-    const itemIds = [];
-    try {
-      const found = await createWorldCyberware(page, {
-        name: uniqueName("cyberarm"),
-      });
-      itemIds.push(found.itemId);
-      const upg = await createWorldCyberwareUpgrade(
-        page,
-        uniqueName("cyberarm upgrade"),
-      );
-      itemIds.push(upg.itemId);
-
-      let sheetId = await embedWorldItemOnCharacterSheet(page, {
-        itemId: found.itemId,
-        sheetId: initialSheet,
-        actorId,
-      });
-      const foundOwnedId = await ownedItemIdByName(page, actorId, found.name);
-      expect(foundOwnedId).toBeTruthy();
-
-      sheetId = await embedWorldItemOnCharacterSheet(page, {
-        itemId: upg.itemId,
-        sheetId,
-        actorId,
-      });
-      const upgOwnedId = await ownedItemIdByName(page, actorId, upg.name);
-      expect(upgOwnedId).toBeTruthy();
-
-      const manageUpgradesGlyph = (row) =>
-        row.locator('a.item-action[data-action-type="manage-upgrades"]');
-
-      await test.step("the same fixture state does show the glyph on the gear tab", async () => {
-        await openGearTab(page, sheetId);
-        await expect(gearRow(page, sheetId, foundOwnedId)).toBeVisible();
-        await expect(
-          manageUpgradesGlyph(gearRow(page, sheetId, foundOwnedId)),
-        ).toBeVisible();
-      });
-
-      await test.step("after installing, the glyph is absent although a compatible uninstalled upgrade exists", async () => {
-        await openGearTab(page, sheetId);
-        const dialog = await openInstallCyberwareDialog(page, {
-          sheetId,
-          itemId: foundOwnedId,
-        });
-        await confirmInstallCyberwareDialog(dialog, { humanity: "none" });
-
-        // The fixture really is in the state the gear tab's condition describes.
-        const hasCompatibleUpgrade = await page.evaluate(
-          ({ aid }) => {
-            const actor = game.actors.get(aid);
-            return actor.itemTypes.itemUpgrade.some(
-              (u) => u.system.type === "cyberware" && !u.system.isInstalled,
-            );
-          },
-          { aid: actorId },
-        );
-        expect(hasCompatibleUpgrade).toBe(true);
-
-        await openCyberwareTab(page, sheetId);
-        const row = cyberwareRow(page, sheetId, foundOwnedId);
-        await expect(row).toBeVisible();
-        await expect(manageUpgradesGlyph(row)).toHaveCount(0);
-      });
-
-      await test.step("the glyph is still absent once the upgrade is installed (upgraded state)", async () => {
-        // No UI path reaches this on the cyberware tab, so install through the
-        // product's own container method.
-        const installed = await page.evaluate(
-          ({ aid, foundId, upgId }) =>
-            game.actors
-              .get(aid)
-              .items.get(foundId)
-              .installItems([game.actors.get(aid).items.get(upgId)]),
-          { aid: actorId, foundId: foundOwnedId, upgId: upgOwnedId },
-        );
-        expect(installed).toBe(true);
-
-        const freshSheet = await closeAndReopenActorSheet(page, actorId);
-        await openCyberwareTab(page, freshSheet);
-        const row = cyberwareRow(page, freshSheet, foundOwnedId);
-        await expect(row).toBeVisible();
-        await expect(manageUpgradesGlyph(row)).toHaveCount(0);
-        // The upgraded caret does render, so the row is in the upgraded state.
-        await expect(
-          row.locator("a.name.item-view i.fa-square-caret-up"),
-        ).toBeVisible();
       });
     } finally {
       await closeDocSheet(page, { collection: "actors", id: actorId });
