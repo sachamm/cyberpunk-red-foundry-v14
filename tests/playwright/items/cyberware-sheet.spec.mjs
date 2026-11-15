@@ -33,16 +33,6 @@ installConsoleErrorHarness();
  *   `isFoundational=false` in CPRItem.update, so those types never show the
  *   foundational block and always render the upgradable partial's generic
  *   "Slots" input (which non-foundational implants of other types also get).
- * The static humanity-loss row's label is deliberately NOT asserted: it
- * localizes "CPR.dialog.installCyberware.static" ("Static: {loss}") without
- * passing its argument, so the rendered label carries a raw placeholder.
- *
- * The owned-upgrade case (W5) is intentionally not covered here: a
- * cyberware-targeting upgrade sheet renders no modifier rows at all
- * (CPR.upgradableDataPoints.cyberware lists only secondaryWeapon, a type-
- * "item" data point that _getItemUpgradeData omits), so modifiers.slots is
- * unreachable through the UI and no core upgrade targets cyberware. The
- * generic install flow stays covered by upgradable.spec.mjs.
  *
  * Other specs share this world run, so nothing below counts world items
  * globally — every assertion is scoped to this test's own item.
