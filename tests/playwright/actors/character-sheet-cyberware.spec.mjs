@@ -38,9 +38,6 @@ import {
 
 installConsoleErrorHarness();
 
-// The nine CPR.cyberwareTypes config keys (src/modules/system/config.js). `CPR`
-// is module-scoped and unreachable from the page context, so specs localize by
-// lang key. Note the neuralWare config key maps to a lowercase lang key.
 const CYBERWARE_TYPE_LABEL_KEYS = [
   "CPR.global.cyberwareType.cyberAudioSuite",
   "CPR.global.cyberwareType.cyberEye",
@@ -53,8 +50,6 @@ const CYBERWARE_TYPE_LABEL_KEYS = [
   "CPR.global.cyberwareType.borgware",
 ];
 
-// Read-only: the owned item id for an exact name, or null. Dragging a world
-// item embeds a copy with a new id, so specs resolve the copy by name.
 async function ownedItemIdByName(page, actorId, name) {
   return page.evaluate(
     ({ actorId, name }) =>
@@ -63,8 +58,6 @@ async function ownedItemIdByName(page, actorId, name) {
   );
 }
 
-// Create a world cyberware via the item directory UI, apply the fixture fields
-// on its settings tab, and close the sheet. Returns { itemId, name }.
 async function createWorldCyberware(
   page,
   { name, staticLoss = null, slots = null, optional = false },
@@ -84,7 +77,6 @@ async function createWorldCyberware(
     });
   }
   if (slots !== null) {
-    // Only rendered for foundational cyberware with option slots allowed.
     await setItemField(page, {
       sheetId,
       itemId,
@@ -94,8 +86,6 @@ async function createWorldCyberware(
     });
   }
   if (optional) {
-    // The checkbox renders inverted (a checked circle means "requires a
-    // foundational"), but data-target is the real field.
     await toggleItemCheckbox(page, {
       sheetId,
       itemId,
@@ -107,8 +97,6 @@ async function createWorldCyberware(
   return { itemId, name };
 }
 
-// Create a world itemUpgrade configured to upgrade cyberware and close its
-// sheet. Returns { itemId, name }.
 async function createWorldCyberwareUpgrade(page, name) {
   const itemId = await createItemViaUI(page, { type: "itemUpgrade", name });
   const sheetId = await expectSheetRendered(page, {
@@ -133,7 +121,6 @@ test.describe("Character sheet Cyberware tab", () => {
     try {
       const content = await openCyberwareTab(page, sheetId);
 
-      // The headers are the localized CPR.cyberwareTypes config values.
       const labels = await page.evaluate(
         (keys) => keys.map((k) => game.i18n.localize(k)),
         CYBERWARE_TYPE_LABEL_KEYS,
@@ -185,28 +172,21 @@ test.describe("Character sheet Cyberware tab", () => {
           sheetId,
           itemId: ownedId,
         });
-        // A foundational has no parent to install into, so no select renders.
         await expect(
           dialog.locator('select[name="foundationalId"]'),
         ).toHaveCount(0);
 
         const messagesBefore = await chatMessageCount(page);
         await confirmInstallCyberwareDialog(dialog, { humanity: "static" });
-
-        // Exactly one message is posted and it carries the roll.
         await expect
           .poll(() => chatMessageCount(page))
           .toBe(messagesBefore + 1);
         const messageId = await waitForNewChatMessage(page, messagesBefore, {
           requireRoll: true,
         });
-        // Chat log content is hidden until the chat sidebar tab is active.
         await openSidebarTab(page, "chat");
         const card = chatRollCard(page, messageId);
         await expect(card).toBeVisible();
-        // The humanity loss card shows the static number as plain text in
-        // .d6-number-div (not a clickable d10 total) under the localized
-        // "Static Loss" label.
         await expect(card.locator(".humanity-static-div")).toHaveText(
           await page.evaluate(() =>
             game.i18n.localize("CPR.chat.humanityLoss.static"),
@@ -232,10 +212,6 @@ test.describe("Character sheet Cyberware tab", () => {
         await expect(row.locator("a.name.item-view")).toHaveText(
           new RegExp(`\\(0/3\\s*${optionSlots}\\)`),
         );
-        // The gear tab hides installed cyberware entirely (its row is wrapped
-        // in {{#unless item.system.isInstalled}}), so no gear-tab row remains.
-        // Scope to the gear tab because the Cyberware tab now renders its own
-        // row for the same owned item, which unscoped gearRow would also match.
         await expect(
           page
             .locator(`#${sheetId} .tab.gear-tab[data-tab="gear"]`)
@@ -331,7 +307,6 @@ test.describe("Character sheet Cyberware tab", () => {
         await expect(foundRow.locator("a.name.item-view")).toHaveText(
           new RegExp(`\\(1/2\\s*${optionSlots}\\)`),
         );
-        // The optional row is linked to its parent installation and indented one level.
         await expect(optRow).toHaveAttribute(
           "data-installation-id",
           foundOwnedId,
@@ -340,7 +315,6 @@ test.describe("Character sheet Cyberware tab", () => {
           "style",
           "padding-left:1rem;",
         );
-        // The foundational's name link carries no indent.
         await expect(foundRow.locator("a.name.item-view")).not.toHaveAttribute(
           "style",
         );
@@ -456,7 +430,6 @@ test.describe("Character sheet Cyberware tab", () => {
 
         const dialog = yesNoDialog(page);
         await expect(dialog).toBeVisible({ timeout: 10000 });
-        // DialogV2 renders the window title as h1.window-title (not the legacy .dialog-title).
         await expect(dialog.locator(".window-title")).toHaveText(
           await page.evaluate(() =>
             game.i18n.localize("CPR.dialog.uninstallCyberware.title"),
@@ -483,7 +456,6 @@ test.describe("Character sheet Cyberware tab", () => {
           page.locator(`#${sheetId} ${CHARACTER_FIELD.humanityValueInput}`),
         ).toHaveValue("58");
 
-        // The item is back on the gear tab, uninstalled.
         await openGearTab(page, sheetId);
         await expect(gearRow(page, sheetId, ownedId)).toBeVisible();
         await expect(
@@ -548,7 +520,6 @@ test.describe("Character sheet Cyberware tab", () => {
         expect(itemSheetId).toBeTruthy();
         const settings = await openItemSettings(page, itemSheetId);
 
-        // Editable controls are replaced by plain text in read-only mode.
         await expect(
           settings.locator('input[name="system.humanityLoss.static"]'),
         ).toHaveCount(0);
@@ -556,16 +527,12 @@ test.describe("Character sheet Cyberware tab", () => {
           settings.locator('select[name="system.type"]'),
         ).toHaveCount(0);
         await expect(settings.locator("a.item-checkbox")).toHaveCount(0);
-        // ...and the type still renders, as text. The read-only sheet renders
-        // both name and type in span.text-flex-end, so scope to the Type row.
         const cyberArmLabel = await page.evaluate(() =>
           game.i18n.localize("CPR.global.cyberwareType.cyberArm"),
         );
         const typeLabel = await page.evaluate(() =>
           game.i18n.localize("CPR.global.generic.type"),
         );
-        // Playwright matches a hasText RegExp against the raw text content
-        // (no whitespace normalization), so allow the template's indentation.
         const typeRow = settings.locator("li.item").filter({
           has: page.locator(".setting-name", {
             hasText: new RegExp(`^\\s*${typeLabel}\\s*$`),
