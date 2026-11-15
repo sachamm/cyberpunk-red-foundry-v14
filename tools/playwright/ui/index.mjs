@@ -21,6 +21,7 @@ export {
   ITEM_TYPES,
   createItemViaUI,
   createLoadableWeapon,
+  createUpgradeViaUI,
   openItemSettings,
   reopenItemSheetViaUI,
   setItemField,

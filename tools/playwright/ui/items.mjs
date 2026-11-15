@@ -25,6 +25,87 @@ export async function createItemViaUI(page, { type, name }) {
   return createDocumentViaUI(page, { documentTab: "items", type, name });
 }
 
+/**
+ * Create a standalone itemUpgrade through the UI. A fresh upgrade defaults to
+ * targeting weapons (pinned here); `target` switches the type select, after
+ * which the sheet offers either modifier rows (weapon/vehicle targets) or an
+ * installation size (cyberware). With `secondaryWeapon`, also check the
+ * Is-a-secondary-weapon box and pin that the attackable settings it reveals
+ * render for the target.
+ */
+export async function createUpgradeViaUI(
+  page,
+  {
+    name,
+    target = "weapon",
+    dataPoint = null,
+    modType = null,
+    value = null,
+    size = null,
+    secondaryWeapon = false,
+  },
+) {
+  const upgradeId = await createDocumentViaUI(page, {
+    documentTab: "items",
+    type: "itemUpgrade",
+    name,
+  });
+  const sheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: upgradeId,
+  });
+  expect(
+    await page.evaluate((id) => game.items.get(id).system.type, upgradeId),
+  ).toBe("weapon");
+  if (target !== "weapon") {
+    await setItemSelected(page, {
+      sheetId,
+      itemId: upgradeId,
+      name: "system.type",
+      value: target,
+    });
+  }
+  if (secondaryWeapon) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId: upgradeId,
+      target: "system.modifiers.secondaryWeapon.configured",
+      expected: true,
+    });
+    const settings = await openItemSettings(page, sheetId);
+    await expect(
+      settings.locator('select[name="system.weaponType"]'),
+    ).toBeVisible();
+    await expect(settings.locator('input[name="system.damage"]')).toBeVisible();
+  }
+  if (dataPoint) {
+    await setItemSelected(page, {
+      sheetId,
+      itemId: upgradeId,
+      name: `system.modifiers.${dataPoint}.type`,
+      value: modType,
+    });
+    await setItemField(page, {
+      sheetId,
+      itemId: upgradeId,
+      name: `system.modifiers.${dataPoint}.value`,
+      path: `system.modifiers.${dataPoint}.value`,
+      value,
+    });
+  }
+  if (size !== null) {
+    await setItemField(page, {
+      sheetId,
+      itemId: upgradeId,
+      name: "system.size",
+      path: "system.size",
+      value: size,
+    });
+  }
+  await closeDocSheet(page, { collection: "items", id: upgradeId });
+  return upgradeId;
+}
+
 export async function reopenItemSheetViaUI(page, itemId) {
   await openSidebarTab(page, "items");
   const entry = page.locator(`#items [data-entry-id="${itemId}"]`);

@@ -6,6 +6,7 @@ import {
   closeOwnedItemSheet,
   createActorViaUI,
   createItemViaUI,
+  createUpgradeViaUI,
   dragItemToActorSheet,
   expectSheetRendered,
   hoverGearRow,
@@ -14,7 +15,6 @@ import {
   openOwnedItemSheet,
   reopenItemSheetViaUI,
   setItemField,
-  setItemSelected,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -128,34 +128,13 @@ test("an installed seating upgrade adjusts the owned vehicle callout and chips",
   // A seating upgrade built through the UI, mirroring the core "Seating
   // Upgrade" (+2 seats) — no compendium import needed.
   const upgradeName = uniqueName("seating-upgrade");
-  const worldUpgradeId = await createItemViaUI(page, {
-    type: "itemUpgrade",
+  const worldUpgradeId = await createUpgradeViaUI(page, {
     name: upgradeName,
-  });
-  const upgradeSheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: worldUpgradeId,
-  });
-  await setItemSelected(page, {
-    sheetId: upgradeSheetId,
-    itemId: worldUpgradeId,
-    name: "system.type",
-    value: "vehicle",
-  });
-  await setItemSelected(page, {
-    sheetId: upgradeSheetId,
-    itemId: worldUpgradeId,
-    name: "system.modifiers.seats.type",
-    value: "modifier",
-  });
-  await setItemField(page, {
-    sheetId: upgradeSheetId,
-    itemId: worldUpgradeId,
-    name: "system.modifiers.seats.value",
-    path: "system.modifiers.seats.value",
+    target: "vehicle",
+    dataPoint: "seats",
+    modType: "modifier",
     value: 2,
   });
-  await closeDocSheet(page, { collection: "items", id: worldUpgradeId });
   await dragItemToActorSheet(page, {
     itemId: worldUpgradeId,
     sheetId: actorSheetId,

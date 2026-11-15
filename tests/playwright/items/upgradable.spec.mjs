@@ -3,25 +3,19 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   chatMessageCount,
   closeAndReopenActorSheet,
-  closeDocSheet,
   closeOwnedItemSheet,
-  createDocumentViaUI,
   createInventoryItemViaUI,
+  createUpgradeViaUI,
   dismissNotifications,
   dragItemToActorSheet,
   enablePlayersCreateInventory,
   equipWeapon,
   expectModEntry,
-  expectSheetRendered,
   installUpgrade,
-  openItemSettings,
   openOwnedItemSettings,
   openSidebarTab,
   readDamageFormula,
   readTotalModsTooltip,
-  setItemField,
-  setItemSelected,
-  toggleItemCheckbox,
   uniqueName,
   verifyRollDialog,
   waitForNewChatMessage,
@@ -56,92 +50,6 @@ import {
  * equipped-weapon list only includes secondary-weapon upgrades whose host
  * item is equipped, and cyberware has no equippable mixin.
  */
-
-async function createWeaponUpgrade(
-  page,
-  { upgradeName, dataPoint, modType, value },
-) {
-  const upgradeId = await createDocumentViaUI(page, {
-    documentTab: "items",
-    type: "itemUpgrade",
-    name: upgradeName,
-  });
-  const upgradeSheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: upgradeId,
-  });
-  expect(
-    await page.evaluate((id) => game.items.get(id).system.type, upgradeId),
-  ).toBe("weapon");
-  await setItemSelected(page, {
-    sheetId: upgradeSheetId,
-    itemId: upgradeId,
-    name: `system.modifiers.${dataPoint}.type`,
-    value: modType,
-  });
-  await setItemField(page, {
-    sheetId: upgradeSheetId,
-    itemId: upgradeId,
-    name: `system.modifiers.${dataPoint}.value`,
-    path: `system.modifiers.${dataPoint}.value`,
-    value,
-  });
-  await closeDocSheet(page, { collection: "items", id: upgradeId });
-  return upgradeId;
-}
-
-/**
- * Create a standalone itemUpgrade that targets cyberware. A fresh upgrade
- * defaults to targeting weapons; the type select switches it, after which the
- * sheet offers an installation size (the slot cost) instead of modifier rows.
- * With `secondaryWeapon`, also check the Is-a-secondary-weapon box and pin
- * that the attackable settings it reveals render for a cyberware target.
- */
-async function createCyberwareUpgrade(
-  page,
-  { upgradeName, size, secondaryWeapon = false },
-) {
-  const upgradeId = await createDocumentViaUI(page, {
-    documentTab: "items",
-    type: "itemUpgrade",
-    name: upgradeName,
-  });
-  const upgradeSheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: upgradeId,
-  });
-  expect(
-    await page.evaluate((id) => game.items.get(id).system.type, upgradeId),
-  ).toBe("weapon");
-  await setItemSelected(page, {
-    sheetId: upgradeSheetId,
-    itemId: upgradeId,
-    name: "system.type",
-    value: "cyberware",
-  });
-  if (secondaryWeapon) {
-    await toggleItemCheckbox(page, {
-      sheetId: upgradeSheetId,
-      itemId: upgradeId,
-      target: "system.modifiers.secondaryWeapon.configured",
-      expected: true,
-    });
-    const settings = await openItemSettings(page, upgradeSheetId);
-    await expect(
-      settings.locator('select[name="system.weaponType"]'),
-    ).toBeVisible();
-    await expect(settings.locator('input[name="system.damage"]')).toBeVisible();
-  }
-  await setItemField(page, {
-    sheetId: upgradeSheetId,
-    itemId: upgradeId,
-    name: "system.size",
-    path: "system.size",
-    value: size,
-  });
-  await closeDocSheet(page, { collection: "items", id: upgradeId });
-  return upgradeId;
-}
 
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
@@ -179,14 +87,14 @@ test.describe("Item upgradable mixin", () => {
 
     const overrideName = uniqueName("extendedMag");
     const modifierName = uniqueName("capacityCells");
-    const overrideId = await createWeaponUpgrade(page, {
-      upgradeName: overrideName,
+    const overrideId = await createUpgradeViaUI(page, {
+      name: overrideName,
       dataPoint: "magazine",
       modType: "override",
       value: 9,
     });
-    const modifierId = await createWeaponUpgrade(page, {
-      upgradeName: modifierName,
+    const modifierId = await createUpgradeViaUI(page, {
+      name: modifierName,
       dataPoint: "magazine",
       modType: "modifier",
       value: 4,
@@ -298,8 +206,8 @@ test.describe("Item upgradable mixin", () => {
     });
 
     const upgradeName = uniqueName("shockTip");
-    const upgradeId = await createWeaponUpgrade(page, {
-      upgradeName,
+    const upgradeId = await createUpgradeViaUI(page, {
+      name: upgradeName,
       dataPoint: "damage",
       modType: "modifier",
       value: 2,
@@ -381,8 +289,9 @@ test.describe("Item upgradable mixin", () => {
     });
 
     const upgradeName = uniqueName("servo");
-    const upgradeId = await createCyberwareUpgrade(page, {
-      upgradeName,
+    const upgradeId = await createUpgradeViaUI(page, {
+      name: upgradeName,
+      target: "cyberware",
       size: 1,
     });
 
@@ -470,8 +379,9 @@ test.describe("Item upgradable mixin", () => {
     });
 
     const upgradeName = uniqueName("blade");
-    const upgradeId = await createCyberwareUpgrade(page, {
-      upgradeName,
+    const upgradeId = await createUpgradeViaUI(page, {
+      name: upgradeName,
+      target: "cyberware",
       size: 1,
       secondaryWeapon: true,
     });
