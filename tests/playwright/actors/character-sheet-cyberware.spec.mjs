@@ -6,17 +6,13 @@ import {
   closeAndReopenActorSheet,
   closeDocSheet,
   closeOwnedItemSheet,
-  createItemViaUI,
   deleteActorViaUI,
   deleteItemViaUI,
-  expectSheetRendered,
   openItemSettings,
   openOwnedItemSheet,
   openSidebarTab,
   ownedItemIdByName,
   resolveYesNo,
-  setItemField,
-  toggleItemCheckbox,
   uniqueName,
   waitForNewChatMessage,
   yesNoDialog,
@@ -26,6 +22,7 @@ import {
   chatRollCard,
   confirmInstallCyberwareDialog,
   createCharacterViaUI,
+  createWorldCyberware,
   cyberwareRow,
   embedWorldItemOnCharacterSheet,
   gearRow,
@@ -49,45 +46,6 @@ const CYBERWARE_TYPE_LABEL_KEYS = [
   "CPR.global.cyberwareType.fashionware",
   "CPR.global.cyberwareType.borgware",
 ];
-
-async function createWorldCyberware(
-  page,
-  { name, staticLoss = null, slots = null, optional = false },
-) {
-  const itemId = await createItemViaUI(page, { type: "cyberware", name });
-  const sheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: itemId,
-  });
-  if (staticLoss !== null) {
-    await setItemField(page, {
-      sheetId,
-      itemId,
-      name: "system.humanityLoss.static",
-      path: "system.humanityLoss.static",
-      value: staticLoss,
-    });
-  }
-  if (slots !== null) {
-    await setItemField(page, {
-      sheetId,
-      itemId,
-      name: "system.installedItems.slots",
-      path: "system.installedItems.slots",
-      value: slots,
-    });
-  }
-  if (optional) {
-    await toggleItemCheckbox(page, {
-      sheetId,
-      itemId,
-      target: "system.isFoundational",
-      expected: false,
-    });
-  }
-  await closeDocSheet(page, { collection: "items", id: itemId });
-  return { itemId, name };
-}
 
 test.describe("Character sheet Cyberware tab", () => {
   test("with no installed cyberware the tab shows one header per type and no rows", async ({

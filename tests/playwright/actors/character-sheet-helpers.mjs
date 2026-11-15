@@ -596,6 +596,58 @@ export async function installProgramIntoDeckViaUI(
  * ------------------------------------------------------------------ */
 
 /**
+ * Create a world cyberware item via its settings sheet, optionally configuring
+ * its static humanity loss, install slots, foundational state, and weapon flag,
+ * then close it. Returns the created item id and name.
+ */
+export async function createWorldCyberware(
+  page,
+  { name, staticLoss = null, slots = null, optional = false, isWeapon = false },
+) {
+  const itemId = await createItemViaUI(page, { type: "cyberware", name });
+  const sheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+  if (staticLoss !== null) {
+    await setItemField(page, {
+      sheetId,
+      itemId,
+      name: "system.humanityLoss.static",
+      path: "system.humanityLoss.static",
+      value: staticLoss,
+    });
+  }
+  if (slots !== null) {
+    await setItemField(page, {
+      sheetId,
+      itemId,
+      name: "system.installedItems.slots",
+      path: "system.installedItems.slots",
+      value: slots,
+    });
+  }
+  if (optional) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId,
+      target: "system.isFoundational",
+      expected: false,
+    });
+  }
+  if (isWeapon) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId,
+      target: "system.isWeapon",
+      expected: true,
+    });
+  }
+  await closeDocSheet(page, { collection: "items", id: itemId });
+  return { itemId, name };
+}
+
+/**
  * Open the Cyberware tab of a character sheet and return its content wrapper.
  */
 export async function openCyberwareTab(page, sheetId) {

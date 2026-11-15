@@ -6,16 +6,13 @@ import {
   closeAndReopenActorSheet,
   closeDocSheet,
   createInventoryItemViaUI,
-  createItemViaUI,
   enablePlayersCreateInventory,
-  expectSheetRendered,
   getPlayersCreateInventory,
   ownedItemIdByName,
   reopenActorSheetViaUI,
   reopenItemSheetViaUI,
   resolveYesNo,
   setPlayersCreateInventory,
-  toggleItemCheckbox,
   uniqueName,
   waitForNewChatMessage,
   yesNoDialog,
@@ -27,6 +24,7 @@ import {
   createCharacterViaUI,
   createEquippedItemViaUI,
   createRoleItemViaUI,
+  createWorldCyberware,
   cyberwareRow,
   dragRoleItemToCharacter,
   embedWorldItemOnCharacterSheet,
@@ -347,18 +345,7 @@ test("an installed weapon cyberware shows as an equipped melee weapon on the Fig
 
   // A world cyberware configured as a weapon. The attackable mixin defaults
   // isRanged to false, so it classifies as melee on the Fight tab.
-  const itemId = await createItemViaUI(page, { type: "cyberware", name });
-  const itemSheetId = await expectSheetRendered(page, {
-    collection: "items",
-    id: itemId,
-  });
-  await toggleItemCheckbox(page, {
-    sheetId: itemSheetId,
-    itemId,
-    target: "system.isWeapon",
-    expected: true,
-  });
-  await closeDocSheet(page, { collection: "items", id: itemId });
+  const { itemId } = await createWorldCyberware(page, { name, isWeapon: true });
 
   // Dragging a world item embeds a copy with a new id; resolve it by name.
   sheetId = await embedWorldItemOnCharacterSheet(page, {
