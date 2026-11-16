@@ -20,8 +20,8 @@ system:
     isConcealed: false
   description:
     value: >
-      <p>A budget Desktop or laptop that cannot be used as a Portable Net
-      Arch</p>
+      <p>A budget desktop or laptop that cannot be used as a Portable Net
+      Arch.</p>
   equipped: owned
   favorite: false
   installedItems:

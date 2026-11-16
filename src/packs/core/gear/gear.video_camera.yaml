@@ -21,7 +21,7 @@ system:
   description:
     value: |
       <p>
-        Record up to 12 hours of vidio on a
+        Record up to 12 hours of video on a
         @UUID[Compendium.cyberpunk-red-core.core_gear.Item.LKAYRh3Oecskc6kH]{Memory Chip}.
       </p>
   equipped: owned

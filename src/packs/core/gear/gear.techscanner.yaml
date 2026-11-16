@@ -114,7 +114,7 @@ system:
   description:
     value: |
       <p>
-        An electronic device that grants +2 to to <strong>Basic Tech</strong>,
+        An electronic device that grants +2 to <strong>Basic Tech</strong>,
         <strong>Cybertech</strong>, <strong>Electronic/Security Tech</strong>,
         <strong>Weaponstech</strong>, <strong>Land Vehicle Tech</strong>,
         <strong>Sea Vehicle Tech</strong>, <strong>Air Vehicle Tech</strong> checks.

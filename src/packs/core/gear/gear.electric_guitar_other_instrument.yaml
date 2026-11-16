@@ -21,8 +21,9 @@ system:
   description:
     value: |
       <p>
-        Musical instrument. Electric instruments requires an
-        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}.
+        Musical instrument. Electric instruments require an
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}
+        or other similar output device.
       </p>
   equipped: owned
   favorite: false

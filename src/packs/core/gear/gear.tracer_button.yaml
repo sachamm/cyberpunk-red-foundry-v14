@@ -22,7 +22,9 @@ system:
     value: |
       <p>
         Can be tracked from up to a mile away with a
-        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.QIHx5oQOirtTlAaD]{Homing Tracer}.
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.QIHx5oQOirtTlAaD]{Homing Tracer}
+        &amp; similar
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.o3lADTIXaa3eLryF]{Cyberware Options}.
       </p>
   equipped: owned
   favorite: false

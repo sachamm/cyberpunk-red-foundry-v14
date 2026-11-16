@@ -21,7 +21,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Generic spraypaint. Make some art or blind a camera.</p>
+      <p>Generic spray paint. Make some art or blind a camera.</p>
   equipped: owned
   favorite: false
   ignoredByBrowser: false

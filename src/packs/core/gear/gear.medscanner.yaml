@@ -74,7 +74,7 @@ system:
   description:
     value: |
       <p>
-        Grants users +2 <strong>First Aid</strong> or
+        Grants users +2 <strong>First Aid</strong> and
         <strong>Paramedic</strong> checks.
       </p>
   equipped: owned

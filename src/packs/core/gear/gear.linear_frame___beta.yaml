@@ -75,8 +75,8 @@ system:
       </ul>
       <blockquote>
         <p>
-          Does not affect HP or Deathsave due to BODY increase — Not currently
-          supported by system
+          Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to
+          <strong>BODY</strong> increase — Not currently supported by system.
         </p>
       </blockquote>
   equipped: owned
