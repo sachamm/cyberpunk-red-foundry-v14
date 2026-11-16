@@ -74,6 +74,16 @@ export async function waitForSkillLevel(page, actorId, name, level) {
   );
 }
 
+// Read-only: the owned item id for an exact name, or null. Dragging a world
+// item embeds a copy with a new id, so specs resolve the copy by name.
+export async function ownedItemIdByName(page, actorId, name) {
+  return page.evaluate(
+    ({ actorId, name }) =>
+      game.actors.get(actorId).items.find((i) => i.name === name)?.id ?? null,
+    { actorId, name },
+  );
+}
+
 // Reposition a rendered actor sheet's window frame. Foundry cascades new
 // windows over older ones, which hides drop targets; placing sheets is test
 // choreography, so this uses the sheet API rather than dragging headers.

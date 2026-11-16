@@ -987,6 +987,7 @@
   "CPR.itemSheet.cyberware.requiresFoundational": "Requires Foundational",
   "CPR.itemSheet.cyberware.rolled": "Rolled",
   "CPR.itemSheet.cyberware.slotSize": "Option Slots Usage (Size)",
+  "CPR.itemSheet.cyberware.static": "Static",
   "CPR.itemSheet.effects.actions": "Actions",
   "CPR.itemSheet.effects.createEffect": "Create Effect",
   "CPR.itemSheet.effects.createEffectDesc": "Add an effect to this item",

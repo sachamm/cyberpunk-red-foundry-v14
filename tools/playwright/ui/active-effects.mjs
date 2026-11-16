@@ -48,6 +48,13 @@ export async function closeActiveEffectConfigViaUI(page, aeConfig) {
   await expect(aeConfig).toHaveCount(0);
 }
 
+// Unlike the close button, the footer submit button persists unsaved form
+// fields (name, disabled, ...) before closing.
+export async function submitActiveEffectConfigViaUI(page, aeConfig) {
+  await aeConfig.locator('footer.form-footer button[type="submit"]').click();
+  await expect(aeConfig).toHaveCount(0);
+}
+
 export async function addModViaUI(aeConfig) {
   const rows = aeConfig.locator(".changes-list > li");
   const before = await rows.count();

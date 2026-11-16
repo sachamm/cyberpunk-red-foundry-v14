@@ -1,6 +1,7 @@
 import { expect } from "@playwright/test";
 import {
   activateGearTab,
+  closeAndReopenActorSheet,
   closeDocSheet,
   createActorViaUI,
   createInventoryItemViaUI,
@@ -588,4 +589,152 @@ export async function installProgramIntoDeckViaUI(
     { actorId, deckId, programId },
     { timeout: 10000 },
   );
+}
+
+/* ------------------------------------------------------------------ *
+ * Cyberware tab
+ * ------------------------------------------------------------------ */
+
+/**
+ * Create a world cyberware item via its settings sheet, optionally configuring
+ * its static humanity loss, install slots, foundational state, and weapon flag,
+ * then close it. Returns the created item id and name.
+ */
+export async function createWorldCyberware(
+  page,
+  { name, staticLoss = null, slots = null, optional = false, isWeapon = false },
+) {
+  const itemId = await createItemViaUI(page, { type: "cyberware", name });
+  const sheetId = await expectSheetRendered(page, {
+    collection: "items",
+    id: itemId,
+  });
+  if (staticLoss !== null) {
+    await setItemField(page, {
+      sheetId,
+      itemId,
+      name: "system.humanityLoss.static",
+      path: "system.humanityLoss.static",
+      value: staticLoss,
+    });
+  }
+  if (slots !== null) {
+    await setItemField(page, {
+      sheetId,
+      itemId,
+      name: "system.installedItems.slots",
+      path: "system.installedItems.slots",
+      value: slots,
+    });
+  }
+  if (optional) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId,
+      target: "system.isFoundational",
+      expected: false,
+    });
+  }
+  if (isWeapon) {
+    await toggleItemCheckbox(page, {
+      sheetId,
+      itemId,
+      target: "system.isWeapon",
+      expected: true,
+    });
+  }
+  await closeDocSheet(page, { collection: "items", id: itemId });
+  return { itemId, name };
+}
+
+/**
+ * Open the Cyberware tab of a character sheet and return its content wrapper.
+ */
+export async function openCyberwareTab(page, sheetId) {
+  await page
+    .locator(`#${sheetId} .navtabs-right a[data-tab="cyberware"]`)
+    .click();
+  const content = page.locator(
+    `#${sheetId} .tab.cyberware-tab[data-tab="cyberware"]`,
+  );
+  await expect(content).toBeVisible();
+  return content;
+}
+
+/**
+ * Locator for one installed cyberware row on the Cyberware tab, by its owned
+ * item id. Scoped to the tab because the gear tab renders its own rows for
+ * the same (uninstalled) items.
+ */
+export function cyberwareRow(page, sheetId, itemId) {
+  return page.locator(
+    `#${sheetId} .tab.cyberware-tab li.item[data-item-id="${itemId}"]`,
+  );
+}
+
+/**
+ * Locator for the install-cyberware prompt dialog.
+ */
+export function installCyberwareDialog(page) {
+  return page.locator(".cpr-dialog").filter({
+    has: page.locator('select[name="humanityLossType"]'),
+  });
+}
+
+/**
+ * Drag a world item onto the character sheet. Unlike mooks, dropping on a
+ * character sheet only embeds the item in inventory — it does not install or
+ * equip it. Returns a fresh actor sheet id with the new row rendered.
+ */
+export async function embedWorldItemOnCharacterSheet(
+  page,
+  { itemId, sheetId, actorId },
+) {
+  await dragItemToActorSheet(page, { itemId, sheetId, actorId });
+  return closeAndReopenActorSheet(page, actorId);
+}
+
+/**
+ * Locator for the install glyph on an embedded (uninstalled) cyberware's gear
+ * row. The same element re-renders as the uninstall glyph once installed.
+ */
+export function installCyberwareGlyph(page, sheetId, itemId) {
+  return gearRow(page, sheetId, itemId).locator(
+    'a.install-remove-cyberware[data-item-prop="system.isInstalled"]',
+  );
+}
+
+/**
+ * Click the install glyph on an embedded cyberware's gear row, which opens
+ * the install prompt. Returns the dialog locator; the spec owns every field
+ * assertion and the dismissal (confirmInstallCyberwareDialog). The prompt's
+ * preselected loss type ("rolled") matches no option value, so callers must
+ * pass `humanity` explicitly when confirming.
+ */
+export async function openInstallCyberwareDialog(page, { sheetId, itemId }) {
+  await installCyberwareGlyph(page, sheetId, itemId).click();
+  const dialog = installCyberwareDialog(page);
+  await expect(dialog).toBeVisible({ timeout: 10000 });
+  return dialog;
+}
+
+/**
+ * Confirm the install-cyberware prompt. `humanity` is the humanityLossType
+ * option value to select ("roll", "static", or "none"); pass null to leave
+ * the prompt's preselection (which renders as roll). Waits for the dialog to
+ * close.
+ */
+export async function confirmInstallCyberwareDialog(
+  dialog,
+  { humanity = "none" } = {},
+) {
+  if (humanity) {
+    await dialog
+      .locator('select[name="humanityLossType"]')
+      .selectOption(humanity);
+  }
+  await dialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+  await expect(dialog).toHaveCount(0, { timeout: 5000 });
 }

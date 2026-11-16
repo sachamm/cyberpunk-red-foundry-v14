@@ -9,6 +9,7 @@ export {
   ACTOR_TYPES,
   closeAndReopenActorSheet,
   createActorViaUI,
+  ownedItemIdByName,
   placeSheetsSideBySide,
   positionActorSheet,
   reopenActorSheetViaUI,
@@ -20,6 +21,7 @@ export {
   ITEM_TYPES,
   createItemViaUI,
   createLoadableWeapon,
+  createUpgradeViaUI,
   openItemSettings,
   reopenItemSheetViaUI,
   setItemField,
@@ -72,6 +74,7 @@ export {
 export {
   createEffectViaUI,
   closeActiveEffectConfigViaUI,
+  submitActiveEffectConfigViaUI,
   addModViaUI,
   deleteModViaUI,
   getEffectRowViaUI,

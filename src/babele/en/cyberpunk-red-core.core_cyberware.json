@@ -26,7 +26,7 @@
     },
     "AudioVox": {
       "name": "AudioVox",
-      "description": "<p>\n  Autotune synthesizer. Provides +2 to <strong>Acting</strong> and\n  <strong>Play Instrument</strong> checks.\n</p>\n",
+      "description": "<p>\n  Autotune synthesizer. Provides +2 to <strong>Acting</strong> and\n  <strong>Play Instrument (Singing)</strong> checks.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_skills-play-instrument.Item.bQKaMBoOouUT7Eah]{Play Instrument (Singing)}\n    to your sheet if you don't have it already.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Big Knucks": {
