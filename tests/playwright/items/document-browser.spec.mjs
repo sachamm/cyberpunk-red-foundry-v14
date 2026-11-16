@@ -7,6 +7,7 @@ import {
   expectSheetRendered,
   openItemBrowser,
   uniqueName,
+  waitForBrowserResultsSettled,
 } from "../../../tools/playwright/ui/index.mjs";
 
 /*
@@ -678,5 +679,110 @@ test.describe("Document browser", () => {
         ),
       )
       .toEqual({ fit: true, restored: true, shrunk: true });
+  });
+
+  test("clear filters resets a mixed filter state and restores the full result count", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("clear-filters");
+    const bladeName = `${nameTag} blade`;
+    const gunName = `${nameTag} gun`;
+    const rifleName = `${nameTag} rifle`;
+    const crateName = `${nameTag} crate`;
+    const bladeId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: bladeName,
+    });
+    await closeDocSheet(game, { collection: "items", id: bladeId });
+    const gunId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: gunName,
+    });
+    await closeDocSheet(game, { collection: "items", id: gunId });
+    const rifleId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: rifleName,
+    });
+    await closeDocSheet(game, { collection: "items", id: rifleId });
+    const crateId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: crateName,
+    });
+    await closeDocSheet(game, { collection: "items", id: crateId });
+
+    // Distinct prices and qualities (setup, not the action under test) so every
+    // filter below drops exactly one of the four world items. Only weapon and
+    // cyberdeck carry a quality field, so the quality dimension uses weapons.
+    await game.evaluate(
+      async ({ bladeId, gunId, rifleId, crateId }) => {
+        await game.items.get(bladeId).update({ "system.price.market": 100 });
+        await game.items
+          .get(gunId)
+          .update({ "system.price.market": 450, "system.quality": "standard" });
+        await game.items
+          .get(rifleId)
+          .update({ "system.price.market": 300, "system.quality": "poor" });
+        await game.items.get(crateId).update({ "system.price.market": 500 });
+      },
+      { bladeId, gunId, rifleId, crateId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    const fullCount = await entries.count();
+    // The world items sit on top of the indexed compendium content.
+    expect(fullCount).toBeGreaterThan(4);
+
+    const nameInput = documentBrowser.locator(".cpr-browser-name-input");
+    const priceMin = documentBrowser.locator(
+      ".cpr-browser-sidebar .cpr-browser-price-min",
+    );
+    const qualitySelect = documentBrowser.locator(".cpr-browser-quality");
+    const weaponTristate = documentBrowser.locator(
+      '.cpr-browser-typebox[data-type="weapon"] .cpr-browser-tristate[data-tree="type"]',
+    );
+
+    await nameInput.fill(nameTag);
+    await expect(entries).toHaveCount(4);
+
+    // Price min drops the cheap blade; gear sorts before weapon by type order.
+    await priceMin.fill("200");
+    await priceMin.blur();
+    await expect(entries).toHaveCount(3);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      crateName,
+      gunName,
+      rifleName,
+    ]);
+
+    // Weapon-only drops the gear crate.
+    await weaponTristate.click();
+    await expect(weaponTristate).toHaveAttribute("data-state", "only");
+    await expect(entries).toHaveCount(2);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      gunName,
+      rifleName,
+    ]);
+
+    // Quality standard drops the poor rifle.
+    await qualitySelect.selectOption("standard");
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      gunName,
+    );
+
+    await documentBrowser.locator('[data-action="clearFilters"]').click();
+    await waitForBrowserResultsSettled(documentBrowser);
+
+    await expect(nameInput).toHaveValue("");
+    await expect(priceMin).toHaveValue("");
+    await expect(qualitySelect).toHaveValue("");
+    await expect(weaponTristate).toHaveAttribute("data-state", "include");
+    await expect(entries).toHaveCount(fullCount);
   });
 });
