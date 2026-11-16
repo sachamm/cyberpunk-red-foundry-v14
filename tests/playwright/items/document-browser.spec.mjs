@@ -785,4 +785,76 @@ test.describe("Document browser", () => {
     await expect(weaponTristate).toHaveAttribute("data-state", "include");
     await expect(entries).toHaveCount(fullCount);
   });
+
+  test("brand filter options are generated from indexed content and 'only' scopes results", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("brand");
+    const alphaName = `${nameTag} alpha`;
+    const betaName = `${nameTag} beta`;
+    const brandAlpha = `${nameTag} Alpha`;
+    const brandBeta = `${nameTag} Beta`;
+    const alphaId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: alphaName,
+    });
+    await closeDocSheet(game, { collection: "items", id: alphaId });
+    const betaId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: betaName,
+    });
+    await closeDocSheet(game, { collection: "items", id: betaId });
+
+    // Distinct tokenized brands (setup, not the action under test) so each is
+    // guaranteed to be its own option in the generated brand list.
+    await game.evaluate(
+      async ({ alphaId, betaId, brandAlpha, brandBeta }) => {
+        await game.items.get(alphaId).update({ "system.brand": brandAlpha });
+        await game.items.get(betaId).update({ "system.brand": brandBeta });
+      },
+      { alphaId, betaId, brandAlpha, brandBeta },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+
+    // The brand group is a global dynamic filter: collapsed by default, with
+    // one option per distinct non-empty brand across the indexed content.
+    const brandGroup = documentBrowser.locator(
+      'fieldset.cpr-browser-filter-tristate[data-filter-id="brand"]',
+    );
+    await expect(brandGroup).toHaveCount(1);
+    await expect(brandGroup).toHaveClass(/cpr-browser-collapsed/);
+
+    await brandGroup.locator('legend[data-collapse="brand"]').click();
+    await expect(brandGroup).not.toHaveClass(/cpr-browser-collapsed/);
+
+    const alphaOption = brandGroup.locator(".cpr-browser-tristate-row", {
+      hasText: brandAlpha,
+    });
+    const betaOption = brandGroup.locator(".cpr-browser-tristate-row", {
+      hasText: brandBeta,
+    });
+    await expect(alphaOption).toHaveCount(1);
+    await expect(betaOption).toHaveCount(1);
+    // A brand no indexed item carries is never offered as an option.
+    await expect(
+      brandGroup.locator(".cpr-browser-tristate-row", {
+        hasText: `${nameTag} Gamma`,
+      }),
+    ).toHaveCount(0);
+
+    // One click takes the tri-state to "only": results scope to that brand.
+    const alphaTristate = alphaOption.locator(".cpr-browser-tristate");
+    await alphaTristate.click();
+    await expect(alphaTristate).toHaveAttribute("data-state", "only");
+
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      alphaName,
+    );
+  });
 });
