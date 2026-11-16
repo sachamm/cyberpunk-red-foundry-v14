@@ -103,6 +103,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
   - Clothing
   - Cyberware
   - Drugs
+  - Gear
 
 ### Plumbing
 
