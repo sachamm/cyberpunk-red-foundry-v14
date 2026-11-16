@@ -31,14 +31,12 @@ system:
   description:
     value: |
       <p>
-        Functions like a standard grenade launcher, but with a magazine size of 1.
-        Requires 2 hands to use, and takes up 2 attachment slots. While attached, the
-        weapon can't be concealed under clothing.
+        Functions like a single shot
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.KgqUdz9Fs55747gv]{Grenade Launcher}.
       </p>
-      <p>
-        Note that the weapon inherits any modifiers from the gun it is attached to,
-        such as other attachments and quality.
-      </p>
+      <blockquote>
+        <p>While attached, the weapon can't be concealed under clothing.</p>
+      </blockquote>
   dvTable: DV Grenade Launcher
   favorite: false
   fireModes:

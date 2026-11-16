@@ -29,12 +29,17 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. A <strong>Flamethrower</strong> that can be
-        mounted facing the front, side or back of the vehicle. The driver may fire it
-        using an Action. It cannot be reloaded while driving, and cannot accept weapon
-        attachments.
+        A
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.qAqYtbD1yFgQNelR]{Flamethrower}
+        that can be mounted facing the front, side or back of the vehicle. The driver
+        may fire it using an Action. It cannot be reloaded while driving, and cannot
+        accept weapon attachments.
       </p>
-      <p>You may install this upgrade multiple times.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+        <p>You may install this upgrade multiple times.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

@@ -29,14 +29,17 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. Adds two seats to the vehicle. These can be
-        installed as an external sidecar, they may also be installed as ejector seats
-        with removable parachutes.
+        These can be installed as an external sidecar, they may also be installed as
+        ejector seats with removable parachutes.
       </p>
-      <p>
-        Can be taken multiple times with the exception of Bikes, Jetskis and
-        Gyrocopters.
-      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+        <p>
+          Can be taken multiple times with the exception of Bikes, Jetskis and
+          Gyrocopters.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

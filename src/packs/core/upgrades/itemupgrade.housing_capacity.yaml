@@ -29,17 +29,22 @@ system:
   description:
     value: |
       <p>
-        Can be applied to Aerozep, AV-4, Cabin Cruiser, Groundcars and Yacht. When
-        installed onto a Groundcar or AV-4, it adds a sleeping area with 1 bed, a
+        When installed onto a Groundcar or AV-4, it adds a sleeping area with 1 bed, a
         toilet, a shower, and a small kitchen to the vehicle. When installed into a
         Cabin Cruiser, Yacht, or Aerozep, it adds one room to the vehicle.
       </p>
-      <p>
-        <strong
-          >Requires a Heavy Chassis on a Compact Groundcar and High Performance
-          Groundcar</strong
-        >.
-      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p>
+          <strong>Availability:</strong> Aerozep, AV-4, Cabin Cruiser, Groundcars,
+          Yachts
+        </p>
+        <p>
+          Requires a
+          @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.YRDJbfFA4knBhApR]{Heavy Chassis}
+          on a Compact Groundcar and High Performance Groundcar.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

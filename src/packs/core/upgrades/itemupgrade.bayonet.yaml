@@ -29,8 +29,9 @@ system:
   description:
     value: |
       <p>
-        An old idea that still works just as good; lets you use your gun as a light
-        melee weapon. While attached, the weapon can't be concealed under clothing.
+        An old idea that still works just as good; lets you use your gun as a
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.hvxl5hrwWBPZmSwF]{Light Melee}
+        weapon. While attached, the weapon can't be concealed under clothing.
       </p>
   dvTable: ""
   favorite: false
