@@ -20,7 +20,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Toothbrush etc.</p>
+      <p>Contains a toothbrush and other personal grooming items.</p>
   equipped: owned
   favorite: false
   installedItems:

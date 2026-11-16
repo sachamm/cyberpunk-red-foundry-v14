@@ -20,7 +20,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>12hr per memory chip.</p>
+      <p>
+        Record up to 12 hours of vidio on a
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.LKAYRh3Oecskc6kH]{Memory Chip}.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

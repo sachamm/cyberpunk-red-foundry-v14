@@ -67,10 +67,18 @@ system:
     value: |
       <p>Exoskeleton.</p>
       <ul>
-        <li>Requires 1 Interface Plug</li>
-        <li>Increases BODY to 12 while plugged in</li>
-        <li>Does not affect HP or Deathsave due to BODY increase</li>
+        <li>
+          Requires 1
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plug}
+        </li>
+        <li>Increases <strong>BODY</strong> to 12</li>
       </ul>
+      <blockquote>
+        <p>
+          Does not affect HP or Deathsave due to BODY increase — Not currently
+          supported by system
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   installedItems:

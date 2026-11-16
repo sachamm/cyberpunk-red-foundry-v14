@@ -74,8 +74,10 @@ system:
   description:
     value: |
       <p>
-        AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on
-        circumstance.
+        A <strong>Standard Quality</strong> AI Smartpohone that provides +2
+        <strong>Library Search</strong>, +2
+        <strong>Wardrobe &amp; Style</strong> depending on circumstance. Includes a
+        touchscreen, microphone, camera, and flashlight.
       </p>
   equipped: owned
   favorite: false
@@ -84,7 +86,7 @@ system:
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: true
   price:

@@ -73,7 +73,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>+2 First Aid or Paramedic checks.</p>
+      <p>
+        Grants users +2 <strong>First Aid</strong> or
+        <strong>Paramedic</strong> checks.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

@@ -20,7 +20,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Can be tracked from up to a mile away with a homing tracer.</p>
+      <p>
+        Can be tracked from up to a mile away with a
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.QIHx5oQOirtTlAaD]{Homing Tracer}.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

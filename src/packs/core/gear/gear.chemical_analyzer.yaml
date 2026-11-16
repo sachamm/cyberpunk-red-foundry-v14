@@ -20,7 +20,13 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Determine chemical composition using sample database.</p>
+      <p>Determines the chemical composition of a sample.</p>
+      <blockquote>
+        <p>
+          Your GM may require a related <strong>Intelligence</strong> or
+          <strong>Tech</strong> check.
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   installedItems:

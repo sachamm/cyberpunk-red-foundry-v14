@@ -1,0 +1,45 @@
+_id: b8eEIuW2lcXPWWtn
+_key: "!items!b8eEIuW2lcXPWWtn"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/glow_paint.svg
+name: Spray Paint
+ownership:
+  L5BVRBGb798QfKk9: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Generic spraypaint. Make some art or blind a camera.</p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 20
+  providesHardening: false
+  revealed: true
+  source: null
+  sources:
+    - book: Cyberpunk RED
+      page: 353
+  usage: toggled
+type: gear

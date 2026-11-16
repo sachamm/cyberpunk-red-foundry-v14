@@ -20,7 +20,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Musical instrument. Electric instruments requires an amplifier.</p>
+      <p>
+        Musical instrument. Electric instruments requires an
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

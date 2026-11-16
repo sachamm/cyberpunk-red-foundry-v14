@@ -19,8 +19,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |
-      <p>Desktop or laptop.</p>
+    value: >
+      <p>A budget Desktop or laptop that cannot be used as a Portable Net
+      Arch</p>
   equipped: owned
   favorite: false
   installedItems:

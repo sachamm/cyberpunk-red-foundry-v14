@@ -21,7 +21,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Wearer is immune to loud sounds.</p>
+      <p>
+        Wearer is immune to loud sounds like those produced by
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.e8gDMbdK1oPKwhqW]{Flashbang Grenades}.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

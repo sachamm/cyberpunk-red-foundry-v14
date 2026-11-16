@@ -20,7 +20,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Braindance viewing device.</p>
+      <p>A braindance viewing device.</p>
   equipped: owned
   favorite: false
   installedItems:

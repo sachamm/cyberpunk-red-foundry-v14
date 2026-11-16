@@ -20,7 +20,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Duration: 6h. Supports two instruments.</p>
+      <p>
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MfuoJ69NL1FiP7B8]{Battery}
+        powered electronic device that can support up to two electronic instruments.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

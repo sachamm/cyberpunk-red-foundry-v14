@@ -20,7 +20,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Tool bag.</p>
+      <p>Tool bag filled with basic tools for everyday repairs.</p>
   equipped: owned
   favorite: false
   installedItems:
