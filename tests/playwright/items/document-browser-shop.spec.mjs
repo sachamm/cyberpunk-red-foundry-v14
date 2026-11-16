@@ -425,13 +425,25 @@ test.describe("Document browser — player shop", () => {
       name: doomedName,
     });
     await closeDocSheet(game, { collection: "items", id: doomedId });
-    // Distinct prices (setup, not the action under test).
+    // Distinct prices (setup, not the action under test), plus visibility for
+    // the harness player — world gear is private to its creator by default.
     await game.evaluate(
-      async ({ keptId, doomedId }) => {
-        await game.items.get(keptId).update({ "system.price.market": 100 });
-        await game.items.get(doomedId).update({ "system.price.market": 250 });
+      async ({ keptId, doomedId, playerName }) => {
+        const playerId = game.users.getName(playerName).id;
+        const ownership = {
+          default: 0,
+          [playerId]: CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED,
+        };
+        await game.items.get(keptId).update({
+          "system.price.market": 100,
+          ownership,
+        });
+        await game.items.get(doomedId).update({
+          "system.price.market": 250,
+          ownership,
+        });
       },
-      { keptId, doomedId },
+      { keptId, doomedId, playerName: PLAYER_NAME },
     );
 
     const { context, page: player } = await openPlayerPage(browser, baseURL);
@@ -446,11 +458,14 @@ test.describe("Document browser — player shop", () => {
       const entries = documentBrowser.locator(".cpr-browser-entry");
       await expect(entries).toHaveCount(2);
       for (const name of [doomedName, keptName]) {
-        await entries.filter({ hasText: name }).locator(".cpr-browser-buy").click();
+        await entries
+          .filter({ hasText: name })
+          .locator(".cpr-browser-buy")
+          .click();
       }
-      await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
-        2,
-      );
+      await expect(
+        documentBrowser.locator(".cpr-browser-cart-item"),
+      ).toHaveCount(2);
 
       // The doomed item is deleted after it was added to the cart.
       await deleteItemViaUI(game, doomedId);
@@ -470,10 +485,12 @@ test.describe("Document browser — player shop", () => {
       await expect(
         documentBrowser.locator(".cpr-browser-cart-item"),
       ).toHaveCount(0);
-      await expect.poll(() => characterState(player)).toEqual({
-        wealth: before.wealth - 100,
-        items: before.items + 1,
-      });
+      await expect
+        .poll(() => characterState(player))
+        .toEqual({
+          wealth: before.wealth - 100,
+          items: before.items + 1,
+        });
 
       // The purchase log message (new, or appended to an earlier one from this
       // run) records the kept item and not the deleted one.
@@ -528,14 +545,19 @@ test.describe("Document browser — player shop", () => {
     });
     await closeDocSheet(game, { collection: "items", id: hiddenId });
     await game.evaluate(
-      ({ openId, hiddenId }) => {
+      async ({ openId, hiddenId, playerName }) => {
+        const playerId = game.users.getName(playerName).id;
         const levels = CONST.DOCUMENT_OWNERSHIP_LEVELS;
         return Promise.all([
-          game.items.get(openId).update({ "ownership.DEFAULT": levels.LIMITED }),
-          game.items.get(hiddenId).update({ "ownership.DEFAULT": levels.NONE }),
+          // Shareable with the harness player only.
+          game.items.get(openId).update({
+            ownership: { default: 0, [playerId]: levels.LIMITED },
+          }),
+          // Private to everyone but the GM.
+          game.items.get(hiddenId).update({ ownership: { default: 0 } }),
         ]);
       },
-      { openId, hiddenId },
+      { openId, hiddenId, playerName: PLAYER_NAME },
     );
 
     // A compendium entry in a pack the player can't see.
@@ -552,7 +574,16 @@ test.describe("Document browser — player shop", () => {
         const item = game.items.get(itemId);
         await pack.importDocument(item);
         await item?.delete();
-        await pack.configure({ visible: false });
+        // v13 compendium visibility is role-based ownership — a fresh world
+        // pack defaults to PLAYER OBSERVER, so deny every non-GM role.
+        await pack.configure({
+          ownership: {
+            GAMEMASTER: "OWNER",
+            ASSISTANT: "NONE",
+            TRUSTED: "NONE",
+            PLAYER: "NONE",
+          },
+        });
       },
       { packId, itemId: packedId },
     );
