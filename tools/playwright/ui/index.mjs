@@ -83,9 +83,15 @@ export {
 export { openNotesEditorViaUI, saveNotesEditorViaUI } from "./editors.mjs";
 export { fakeTokenDocument, openTokenSheet } from "./tokens.mjs";
 export {
+  browserRowByName,
+  createCompendiumItem,
+  createItemClosed,
   createItemCompendium,
   cycleTo,
   openItemBrowser,
+  readBrowserDragPayload,
+  searchItems,
+  updateItemFields,
   waitForBrowserResultsSettled,
 } from "./document-browser.mjs";
 export {
