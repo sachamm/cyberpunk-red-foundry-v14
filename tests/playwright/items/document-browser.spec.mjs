@@ -1,14 +1,18 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  closeDocSheet,
-  createDocumentViaUI,
+  browserRowByName,
+  createCompendiumItem,
+  createItemClosed,
   createItemCompendium,
   cycleTo,
   dismissNotifications,
   expectSheetRendered,
   openItemBrowser,
+  readBrowserDragPayload,
+  searchItems,
   uniqueName,
+  updateItemFields,
   waitForBrowserResultsSettled,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -30,17 +34,10 @@ import {
 
 // Create a world upgrade item and retarget it to a specific upgradable item type.
 async function createUpgrade(page, { name, targetType }) {
-  const id = await createDocumentViaUI(page, {
-    documentTab: "items",
-    type: "itemUpgrade",
-    name,
-  });
-  await page.evaluate(
-    ({ id, targetType }) =>
-      game.items.get(id).update({ "system.type": targetType }),
-    { id, targetType },
-  );
-  await closeDocSheet(page, { collection: "items", id });
+  const id = await createItemClosed(page, { type: "itemUpgrade", name });
+  await updateItemFields(page, [
+    { id, changes: { "system.type": targetType } },
+  ]);
   return id;
 }
 
@@ -120,15 +117,10 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const name = uniqueName("gear");
-    const itemId = await createDocumentViaUI(game, {
-      documentTab: "items",
-      type: "gear",
-      name,
-    });
-    await closeDocSheet(game, { collection: "items", id: itemId });
+    const itemId = await createItemClosed(game, { type: "gear", name });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
+    await searchItems(documentBrowser, name);
 
     const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
@@ -143,21 +135,17 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const nameTag = uniqueName("scope");
-    const weaponId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "weapon",
       name: `${nameTag} blade`,
     });
-    await closeDocSheet(game, { collection: "items", id: weaponId });
-    const gearId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "gear",
       name: `${nameTag} crate`,
     });
-    await closeDocSheet(game, { collection: "items", id: gearId });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
     // First click now narrows the type box directly to "only".
@@ -178,20 +166,17 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const nameTag = uniqueName("promote");
-    const weaponId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const weaponId = await createItemClosed(game, {
       type: "weapon",
       name: `${nameTag} blade`,
     });
     // A known weaponType so its sub-filter option exists in the Weapon box.
-    await game.evaluate(
-      (id) => game.items.get(id).update({ "system.weaponType": "heavyMelee" }),
-      weaponId,
-    );
-    await closeDocSheet(game, { collection: "items", id: weaponId });
+    await updateItemFields(game, [
+      { id: weaponId, changes: { "system.weaponType": "heavyMelee" } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(1);
 
     // Expand the Weapon box so its sub-filters are interactable.
@@ -225,19 +210,16 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const nameTag = uniqueName("manual");
-    const weaponId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const weaponId = await createItemClosed(game, {
       type: "weapon",
       name: `${nameTag} blade`,
     });
-    await game.evaluate(
-      (id) => game.items.get(id).update({ "system.weaponType": "heavyMelee" }),
-      weaponId,
-    );
-    await closeDocSheet(game, { collection: "items", id: weaponId });
+    await updateItemFields(game, [
+      { id: weaponId, changes: { "system.weaponType": "heavyMelee" } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(1);
 
     const weaponBox = documentBrowser.locator(
@@ -295,7 +277,7 @@ test.describe("Document browser", () => {
     });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
 
     const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(expectedOrder.length);
@@ -378,37 +360,28 @@ test.describe("Document browser", () => {
     const cheapName = `${nameTag} 1 cheap`;
     const midName = `${nameTag} 2 mid`;
     const dearName = `${nameTag} 3 dear`;
-    const cheapId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const cheapId = await createItemClosed(game, {
       type: "gear",
       name: cheapName,
     });
-    await closeDocSheet(game, { collection: "items", id: cheapId });
-    const midId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const midId = await createItemClosed(game, {
       type: "gear",
       name: midName,
     });
-    await closeDocSheet(game, { collection: "items", id: midId });
-    const dearId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const dearId = await createItemClosed(game, {
       type: "gear",
       name: dearName,
     });
-    await closeDocSheet(game, { collection: "items", id: dearId });
 
     // Distinct prices (setup, not the action under test).
-    await game.evaluate(
-      async ({ cheapId, midId, dearId }) => {
-        await game.items.get(cheapId).update({ "system.price.market": 50 });
-        await game.items.get(midId).update({ "system.price.market": 200 });
-        await game.items.get(dearId).update({ "system.price.market": 500 });
-      },
-      { cheapId, midId, dearId },
-    );
+    await updateItemFields(game, [
+      { id: cheapId, changes: { "system.price.market": 50 } },
+      { id: midId, changes: { "system.price.market": 200 } },
+      { id: dearId, changes: { "system.price.market": 500 } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
 
     const entries = documentBrowser.locator(".cpr-browser-entry");
     const entryNames = entries.locator(".item-header-name");
@@ -440,21 +413,17 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const nameTag = uniqueName("keys");
-    const weaponId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "weapon",
       name: `${nameTag} blade`,
     });
-    await closeDocSheet(game, { collection: "items", id: weaponId });
-    const gearId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "gear",
       name: `${nameTag} crate`,
     });
-    await closeDocSheet(game, { collection: "items", id: gearId });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
     const weaponTristate = documentBrowser.locator(
@@ -478,15 +447,10 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const name = uniqueName("kbopen");
-    const itemId = await createDocumentViaUI(game, {
-      documentTab: "items",
-      type: "gear",
-      name,
-    });
-    await closeDocSheet(game, { collection: "items", id: itemId });
+    const itemId = await createItemClosed(game, { type: "gear", name });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
+    await searchItems(documentBrowser, name);
     const open = documentBrowser.locator(
       ".cpr-browser-entry .cpr-browser-entry-open",
     );
@@ -503,48 +467,25 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const name = uniqueName("gmdrag");
-    const itemId = await createDocumentViaUI(game, {
-      documentTab: "items",
-      type: "gear",
-      name,
-    });
-    await closeDocSheet(game, { collection: "items", id: itemId });
+    await createItemClosed(game, { type: "gear", name });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
+    await searchItems(documentBrowser, name);
     const row = documentBrowser.locator(".cpr-browser-entry[data-uuid]");
     await expect(row).toHaveCount(1);
 
     // GM rows are draggable and starting a drag writes the Foundry drop payload.
     await expect(row).toHaveAttribute("draggable", "true");
-    const payload = await game.evaluate(() => {
-      const el = document.querySelector(
-        "#cpr-document-browser .cpr-browser-entry[data-uuid]",
-      );
-      const dt = new DataTransfer();
-      el.dispatchEvent(
-        new DragEvent("dragstart", {
-          bubbles: true,
-          cancelable: true,
-          dataTransfer: dt,
-        }),
-      );
-      return dt.getData("text/plain");
-    });
+    const payload = await readBrowserDragPayload(game);
     expect(JSON.parse(payload)).toMatchObject({ type: "Item" });
   });
 
   test("collapsing a result group hides its rows", async ({ page: game }) => {
     const name = uniqueName("collapse");
-    const itemId = await createDocumentViaUI(game, {
-      documentTab: "items",
-      type: "weapon",
-      name,
-    });
-    await closeDocSheet(game, { collection: "items", id: itemId });
+    await createItemClosed(game, { type: "weapon", name });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
+    await searchItems(documentBrowser, name);
 
     const entry = documentBrowser.locator(".cpr-browser-entry");
     await expect(entry).toHaveCount(1);
@@ -566,55 +507,40 @@ test.describe("Document browser", () => {
     const nameTag = uniqueName("installed-width");
     const ammoHostName = `${nameTag} ammo host`;
     const cyberwareHostName = `${nameTag} cyberware host`;
-    const ammoHostId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const ammoHostId = await createItemClosed(game, {
       type: "weapon",
       name: ammoHostName,
     });
-    await closeDocSheet(game, { collection: "items", id: ammoHostId });
-    const ammoId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const ammoId = await createItemClosed(game, {
       type: "ammo",
       name: uniqueName("installed-ammo"),
     });
-    await closeDocSheet(game, { collection: "items", id: ammoId });
-    const cyberwareHostId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const cyberwareHostId = await createItemClosed(game, {
       type: "cyberware",
       name: cyberwareHostName,
     });
-    await closeDocSheet(game, {
-      collection: "items",
-      id: cyberwareHostId,
-    });
-    const cyberwareId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const cyberwareId = await createItemClosed(game, {
       type: "cyberware",
       name: uniqueName("installed-cyberware"),
     });
-    await closeDocSheet(game, { collection: "items", id: cyberwareId });
 
-    await game.evaluate(
-      async ({ ammoHostId, ammoId, cyberwareHostId, cyberwareId }) => {
-        await game.items
-          .get(ammoHostId)
-          .update({ "system.installedItems.list": [ammoId] });
-        await game.items
-          .get(cyberwareHostId)
-          .update({ "system.installedItems.list": [cyberwareId] });
+    await updateItemFields(game, [
+      { id: ammoHostId, changes: { "system.installedItems.list": [ammoId] } },
+      {
+        id: cyberwareHostId,
+        changes: { "system.installedItems.list": [cyberwareId] },
       },
-      { ammoHostId, ammoId, cyberwareHostId, cyberwareId },
-    );
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
 
-    const ammoHost = documentBrowser.locator(".cpr-browser-entry").filter({
-      has: game.getByText(ammoHostName, { exact: true }),
-    });
-    const cyberwareHost = documentBrowser.locator(".cpr-browser-entry").filter({
-      has: game.getByText(cyberwareHostName, { exact: true }),
-    });
+    const ammoHost = browserRowByName(game, documentBrowser, ammoHostName);
+    const cyberwareHost = browserRowByName(
+      game,
+      documentBrowser,
+      cyberwareHostName,
+    );
     await expect(ammoHost).toHaveCount(1);
     await expect(cyberwareHost).toHaveCount(1);
     await ammoHost.locator(".cpr-browser-expand").click();
@@ -691,47 +617,38 @@ test.describe("Document browser", () => {
     const gunName = `${nameTag} gun`;
     const rifleName = `${nameTag} rifle`;
     const crateName = `${nameTag} crate`;
-    const bladeId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const bladeId = await createItemClosed(game, {
       type: "weapon",
       name: bladeName,
     });
-    await closeDocSheet(game, { collection: "items", id: bladeId });
-    const gunId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const gunId = await createItemClosed(game, {
       type: "weapon",
       name: gunName,
     });
-    await closeDocSheet(game, { collection: "items", id: gunId });
-    const rifleId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const rifleId = await createItemClosed(game, {
       type: "weapon",
       name: rifleName,
     });
-    await closeDocSheet(game, { collection: "items", id: rifleId });
-    const crateId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const crateId = await createItemClosed(game, {
       type: "gear",
       name: crateName,
     });
-    await closeDocSheet(game, { collection: "items", id: crateId });
 
     // Distinct prices and qualities (setup, not the action under test) so every
     // filter below drops exactly one of the four world items. Only weapon and
     // cyberdeck carry a quality field, so the quality dimension uses weapons.
-    await game.evaluate(
-      async ({ bladeId, gunId, rifleId, crateId }) => {
-        await game.items.get(bladeId).update({ "system.price.market": 100 });
-        await game.items
-          .get(gunId)
-          .update({ "system.price.market": 450, "system.quality": "standard" });
-        await game.items
-          .get(rifleId)
-          .update({ "system.price.market": 300, "system.quality": "poor" });
-        await game.items.get(crateId).update({ "system.price.market": 500 });
+    await updateItemFields(game, [
+      { id: bladeId, changes: { "system.price.market": 100 } },
+      {
+        id: gunId,
+        changes: { "system.price.market": 450, "system.quality": "standard" },
       },
-      { bladeId, gunId, rifleId, crateId },
-    );
+      {
+        id: rifleId,
+        changes: { "system.price.market": 300, "system.quality": "poor" },
+      },
+      { id: crateId, changes: { "system.price.market": 500 } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
@@ -796,28 +713,21 @@ test.describe("Document browser", () => {
     const betaName = `${nameTag} beta`;
     const brandAlpha = `${nameTag} Alpha`;
     const brandBeta = `${nameTag} Beta`;
-    const alphaId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const alphaId = await createItemClosed(game, {
       type: "weapon",
       name: alphaName,
     });
-    await closeDocSheet(game, { collection: "items", id: alphaId });
-    const betaId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const betaId = await createItemClosed(game, {
       type: "weapon",
       name: betaName,
     });
-    await closeDocSheet(game, { collection: "items", id: betaId });
 
     // Distinct tokenized brands (setup, not the action under test) so each is
     // guaranteed to be its own option in the generated brand list.
-    await game.evaluate(
-      async ({ alphaId, betaId, brandAlpha, brandBeta }) => {
-        await game.items.get(alphaId).update({ "system.brand": brandAlpha });
-        await game.items.get(betaId).update({ "system.brand": brandBeta });
-      },
-      { alphaId, betaId, brandAlpha, brandBeta },
-    );
+    await updateItemFields(game, [
+      { id: alphaId, changes: { "system.brand": brandAlpha } },
+      { id: betaId, changes: { "system.brand": brandBeta } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
@@ -867,44 +777,33 @@ test.describe("Document browser", () => {
     const stdName = `${nameTag} std`;
     const poorName = `${nameTag} poor`;
     const excellentName = `${nameTag} excel`;
-    const stdId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const stdId = await createItemClosed(game, {
       type: "weapon",
       name: stdName,
     });
-    await closeDocSheet(game, { collection: "items", id: stdId });
-    const poorId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const poorId = await createItemClosed(game, {
       type: "weapon",
       name: poorName,
     });
-    await closeDocSheet(game, { collection: "items", id: poorId });
-    const excellentId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const excellentId = await createItemClosed(game, {
       type: "weapon",
       name: excellentName,
     });
-    await closeDocSheet(game, { collection: "items", id: excellentId });
 
     // One weapon per quality (setup, not the action under test). Only weapon
     // and cyberdeck carry a quality field, so the fixtures are weapons.
-    await game.evaluate(
-      async ({ stdId, poorId, excellentId }) => {
-        await game.items.get(stdId).update({ "system.quality": "standard" });
-        await game.items.get(poorId).update({ "system.quality": "poor" });
-        await game.items
-          .get(excellentId)
-          .update({ "system.quality": "excellent" });
-      },
-      { stdId, poorId, excellentId },
-    );
+    await updateItemFields(game, [
+      { id: stdId, changes: { "system.quality": "standard" } },
+      { id: poorId, changes: { "system.quality": "poor" } },
+      { id: excellentId, changes: { "system.quality": "excellent" } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
     const entries = documentBrowser.locator(".cpr-browser-entry");
     const qualitySelect = documentBrowser.locator(".cpr-browser-quality");
 
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     // Within one type the rows sort by name: excel, poor, std.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
@@ -939,35 +838,24 @@ test.describe("Document browser", () => {
     const everydayName = `${nameTag} everyday`;
     const costlyName = `${nameTag} costly`;
     const expensiveName = `${nameTag} expensive`;
-    const everydayId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const everydayId = await createItemClosed(game, {
       type: "gear",
       name: everydayName,
     });
-    await closeDocSheet(game, { collection: "items", id: everydayId });
-    const costlyId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const costlyId = await createItemClosed(game, {
       type: "gear",
       name: costlyName,
     });
-    await closeDocSheet(game, { collection: "items", id: costlyId });
-    const expensiveId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const expensiveId = await createItemClosed(game, {
       type: "gear",
       name: expensiveName,
     });
-    await closeDocSheet(game, { collection: "items", id: expensiveId });
 
-    await game.evaluate(
-      async ({ everydayId, costlyId, expensiveId }) => {
-        await game.items.get(everydayId).update({ "system.price.market": 25 });
-        await game.items.get(costlyId).update({ "system.price.market": 75 });
-        await game.items
-          .get(expensiveId)
-          .update({ "system.price.market": 600 });
-      },
-      { everydayId, costlyId, expensiveId },
-    );
+    await updateItemFields(game, [
+      { id: everydayId, changes: { "system.price.market": 25 } },
+      { id: costlyId, changes: { "system.price.market": 75 } },
+      { id: expensiveId, changes: { "system.price.market": 600 } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
@@ -980,7 +868,7 @@ test.describe("Document browser", () => {
       ".cpr-browser-sidebar .cpr-browser-price-min",
     );
 
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     // Within one type the rows sort by name: costly, everyday, expensive.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
@@ -1031,38 +919,25 @@ test.describe("Document browser", () => {
     const weaponAName = `${nameTag} weaponA`;
     const weaponBName = `${nameTag} weaponB`;
     const implantName = `${nameTag} implant`;
-    const weaponAId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const weaponAId = await createItemClosed(game, {
       type: "cyberware",
       name: weaponAName,
     });
-    await closeDocSheet(game, { collection: "items", id: weaponAId });
-    const weaponBId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const weaponBId = await createItemClosed(game, {
       type: "cyberware",
       name: weaponBName,
     });
-    await closeDocSheet(game, { collection: "items", id: weaponBId });
-    const implantId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "cyberware",
       name: implantName,
     });
-    await closeDocSheet(game, { collection: "items", id: implantId });
 
     // Two cyberweapons with distinct rates of fire and one plain implant
     // (setup, not the action under test).
-    await game.evaluate(
-      async ({ weaponAId, weaponBId }) => {
-        await game.items
-          .get(weaponAId)
-          .update({ "system.isWeapon": true, "system.rof": 5 });
-        await game.items
-          .get(weaponBId)
-          .update({ "system.isWeapon": true, "system.rof": 2 });
-      },
-      { weaponAId, weaponBId },
-    );
+    await updateItemFields(game, [
+      { id: weaponAId, changes: { "system.isWeapon": true, "system.rof": 5 } },
+      { id: weaponBId, changes: { "system.isWeapon": true, "system.rof": 2 } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
@@ -1071,7 +946,7 @@ test.describe("Document browser", () => {
       '.cpr-browser-typebox[data-type="cyberware"]',
     );
 
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     // Within one type the rows sort by name: implant, weaponA, weaponB.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
@@ -1115,43 +990,40 @@ test.describe("Document browser", () => {
     const bodyName = `${nameTag} body`;
     const headName = `${nameTag} head`;
     const bothName = `${nameTag} both`;
-    const bodyId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "armor",
       name: bodyName,
     });
-    await closeDocSheet(game, { collection: "items", id: bodyId });
-    const headId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const headId = await createItemClosed(game, {
       type: "armor",
       name: headName,
     });
-    await closeDocSheet(game, { collection: "items", id: headId });
-    const bothId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const bothId = await createItemClosed(game, {
       type: "armor",
       name: bothName,
     });
-    await closeDocSheet(game, { collection: "items", id: bothId });
 
     // Distinct location coverage and SPs (setup, not the action under test):
     // body keeps its 7-SP body default; head covers only the head at 9 SP;
     // both covers body (14 SP) and head (3 SP).
-    await game.evaluate(
-      async ({ headId, bothId }) => {
-        await game.items.get(headId).update({
+    await updateItemFields(game, [
+      {
+        id: headId,
+        changes: {
           "system.isBodyLocation": false,
           "system.isHeadLocation": true,
           "system.headLocation.sp": 9,
-        });
-        await game.items.get(bothId).update({
+        },
+      },
+      {
+        id: bothId,
+        changes: {
           "system.isHeadLocation": true,
           "system.bodyLocation.sp": 14,
           "system.headLocation.sp": 3,
-        });
+        },
       },
-      { headId, bothId },
-    );
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
@@ -1160,7 +1032,7 @@ test.describe("Document browser", () => {
       '.cpr-browser-typebox[data-type="armor"]',
     );
 
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     // Within one type the rows sort by name: body, both, head.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
@@ -1207,30 +1079,26 @@ test.describe("Document browser", () => {
     const nameTag = uniqueName("weapon-filter");
     const concealedName = `${nameTag} concealed`;
     const twohandName = `${nameTag} twohand`;
-    const concealedId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const concealedId = await createItemClosed(game, {
       type: "weapon",
       name: concealedName,
     });
-    await closeDocSheet(game, { collection: "items", id: concealedId });
-    const twohandId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const twohandId = await createItemClosed(game, {
       type: "weapon",
       name: twohandName,
     });
-    await closeDocSheet(game, { collection: "items", id: twohandId });
 
     // One concealable one-handed weapon and one two-handed weapon (setup).
-    await game.evaluate(
-      async ({ concealedId, twohandId }) => {
-        await game.items.get(concealedId).update({
+    await updateItemFields(game, [
+      {
+        id: concealedId,
+        changes: {
           "system.handsReq": 1,
           "system.concealable.concealable": true,
-        });
-        await game.items.get(twohandId).update({ "system.handsReq": 2 });
+        },
       },
-      { concealedId, twohandId },
-    );
+      { id: twohandId, changes: { "system.handsReq": 2 } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
@@ -1239,7 +1107,7 @@ test.describe("Document browser", () => {
       '.cpr-browser-typebox[data-type="weapon"]',
     );
 
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     // Within one type the rows sort by name: concealed, twohand.
     await expect(entries).toHaveCount(2);
     await expect(entries.locator(".item-header-name")).toHaveText([
@@ -1300,10 +1168,7 @@ test.describe("Document browser", () => {
     );
 
     // A name nothing carries leaves the empty state and a zeroed footer.
-    await documentBrowser
-      .locator(".cpr-browser-name-input")
-      .fill(uniqueName("no-such-item"));
-    await waitForBrowserResultsSettled(documentBrowser);
+    await searchItems(documentBrowser, uniqueName("no-such-item"));
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(0);
     await expect(documentBrowser.locator(".cpr-browser-empty")).toHaveText(
       "No matching documents.",
@@ -1319,38 +1184,26 @@ test.describe("Document browser", () => {
     const nameTag = uniqueName("installed-tree");
     const hostName = `${nameTag} host`;
     const childName = `${nameTag} implant`;
-    const hostId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const hostId = await createItemClosed(game, {
       type: "cyberware",
       name: hostName,
     });
-    await closeDocSheet(game, { collection: "items", id: hostId });
-    const childId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const childId = await createItemClosed(game, {
       type: "cyberware",
       name: childName,
     });
-    await closeDocSheet(game, { collection: "items", id: childId });
 
     // Install the child in the host (setup, not the action under test).
-    await game.evaluate(
-      ({ hostId, childId }) =>
-        game.items
-          .get(hostId)
-          .update({ "system.installedItems.list": [childId] }),
-      { hostId, childId },
-    );
+    await updateItemFields(game, [
+      { id: hostId, changes: { "system.installedItems.list": [childId] } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     // Within one type the rows sort by name: host, implant.
-    const hostRow = documentBrowser.locator(".cpr-browser-entry").filter({
-      has: game.locator(".item-header-name", { hasText: hostName }),
-    });
-    const childRow = documentBrowser.locator(".cpr-browser-entry").filter({
-      has: game.locator(".item-header-name", { hasText: childName }),
-    });
+    const hostRow = browserRowByName(game, documentBrowser, hostName);
+    const childRow = browserRowByName(game, documentBrowser, childName);
     await expect(hostRow).toHaveCount(1);
     await expect(childRow).toHaveCount(1);
 
@@ -1380,34 +1233,26 @@ test.describe("Document browser", () => {
     const nameTag = uniqueName("installed-open");
     const hostName = `${nameTag} weapon`;
     const childName = `${nameTag} upgrade`;
-    const hostId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const hostId = await createItemClosed(game, {
       type: "weapon",
       name: hostName,
     });
-    await closeDocSheet(game, { collection: "items", id: hostId });
     const childId = await createUpgrade(game, {
       name: childName,
       targetType: "weapon",
     });
 
     // Load the upgrade into the weapon (setup, not the action under test).
-    await game.evaluate(
-      ({ hostId, childId }) =>
-        game.items
-          .get(hostId)
-          .update({ "system.installedItems.list": [childId] }),
-      { hostId, childId },
-    );
+    await updateItemFields(game, [
+      { id: hostId, changes: { "system.installedItems.list": [childId] } },
+    ]);
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
-    const hostRow = documentBrowser.locator(".cpr-browser-entry").filter({
-      has: game.locator(".item-header-name", { hasText: hostName }),
-    });
+    const hostRow = browserRowByName(game, documentBrowser, hostName);
     await hostRow.locator(".cpr-browser-expand").click();
     const tree = documentBrowser.locator("li.cpr-browser-installed");
     await expect(tree).toHaveCount(1);
@@ -1424,71 +1269,43 @@ test.describe("Document browser", () => {
     const nameTag = uniqueName("excluded");
     // World documents of every excluded type, plus a visible gear and a gear
     // that opts out of the browser (setup, not the action under test).
-    const skillId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "skill",
       name: `${nameTag} skill`,
     });
-    await closeDocSheet(game, { collection: "items", id: skillId });
-    const injuryId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "criticalInjury",
       name: `${nameTag} injury`,
     });
-    await closeDocSheet(game, { collection: "items", id: injuryId });
-    const roleId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "role",
       name: `${nameTag} role`,
     });
-    await closeDocSheet(game, { collection: "items", id: roleId });
     const normalName = `${nameTag} normal`;
-    const normalId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    await createItemClosed(game, {
       type: "gear",
       name: normalName,
     });
-    await closeDocSheet(game, { collection: "items", id: normalId });
-    const ignoredId = await createDocumentViaUI(game, {
-      documentTab: "items",
+    const ignoredId = await createItemClosed(game, {
       type: "gear",
       name: `${nameTag} ignored`,
     });
-    await closeDocSheet(game, { collection: "items", id: ignoredId });
-    await game.evaluate(
-      ({ ignoredId }) =>
-        game.items.get(ignoredId).update({ "system.ignoredByBrowser": true }),
-      { ignoredId },
-    );
+    await updateItemFields(game, [
+      { id: ignoredId, changes: { "system.ignoredByBrowser": true } },
+    ]);
 
     // A compendium with the same exclusions: an opted-out gear and a skill.
     const { id: packId } = await createItemCompendium(game, "E2E excluded");
-    const packedIgnoredId = await createDocumentViaUI(game, {
-      documentTab: "items",
-      type: "gear",
+    await createCompendiumItem(game, {
+      packId,
       name: `${nameTag} packed-ignored`,
+      fields: { "system.ignoredByBrowser": true },
     });
-    await closeDocSheet(game, { collection: "items", id: packedIgnoredId });
-    const packedSkillId = await createDocumentViaUI(game, {
-      documentTab: "items",
-      type: "skill",
+    await createCompendiumItem(game, {
+      packId,
       name: `${nameTag} packed-skill`,
+      type: "skill",
     });
-    await closeDocSheet(game, { collection: "items", id: packedSkillId });
-    await game.evaluate(
-      async ({ packId, packedIgnoredId, packedSkillId }) => {
-        await game.items
-          .get(packedIgnoredId)
-          .update({ "system.ignoredByBrowser": true });
-        const pack = game.packs.get(packId);
-        for (const itemId of [packedIgnoredId, packedSkillId]) {
-          const item = game.items.get(itemId);
-          await pack.importDocument(item);
-          await item?.delete();
-        }
-      },
-      { packId, packedIgnoredId, packedSkillId },
-    );
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
@@ -1496,7 +1313,7 @@ test.describe("Document browser", () => {
 
     // Only the plain world gear survives: excluded types and opted-out items
     // are dropped from both the world and compendium sources.
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
       normalName,
@@ -1512,28 +1329,14 @@ test.describe("Document browser", () => {
       game,
       "E2E compendia settings",
     );
-    // Seed the pack from a UI-created world item, then delete the staging
-    // world item so only the compendium entry carries the name.
-    const stagingId = await createDocumentViaUI(game, {
-      documentTab: "items",
-      type: "gear",
-      name: packedName,
-    });
-    await closeDocSheet(game, { collection: "items", id: stagingId });
-    await game.evaluate(
-      async ({ packId, itemId }) => {
-        const pack = game.packs.get(packId);
-        const item = game.items.get(itemId);
-        await pack.importDocument(item);
-        await item?.delete();
-      },
-      { packId, itemId: stagingId },
-    );
+    // Seed the pack; the helper deletes the staging world item afterwards so
+    // only the compendium entry carries the name.
+    await createCompendiumItem(game, { packId, name: packedName });
 
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
     const entries = documentBrowser.locator(".cpr-browser-entry");
-    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await searchItems(documentBrowser, nameTag);
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
       packedName,
