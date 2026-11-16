@@ -972,9 +972,7 @@ test.describe("Document browser", () => {
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
     const entries = documentBrowser.locator(".cpr-browser-entry");
-    const opSelect = documentBrowser.locator(
-      ".cpr-browser-price-category-op",
-    );
+    const opSelect = documentBrowser.locator(".cpr-browser-price-category-op");
     const valueSelect = documentBrowser.locator(
       ".cpr-browser-price-category-value",
     );
@@ -983,12 +981,12 @@ test.describe("Document browser", () => {
     );
 
     await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
-    // Within one type the rows sort by name: costly, expensive, everyday.
+    // Within one type the rows sort by name: costly, everyday, expensive.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
       costlyName,
-      expensiveName,
       everydayName,
+      expensiveName,
     ]);
 
     // "Equals costly" keeps only the costly-priced gear.
@@ -1163,11 +1161,11 @@ test.describe("Document browser", () => {
     );
 
     await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
-    // Within one type the rows sort by name: both, body, head.
+    // Within one type the rows sort by name: body, both, head.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
-      bothName,
       bodyName,
+      bothName,
       headName,
     ]);
 
@@ -1192,7 +1190,9 @@ test.describe("Document browser", () => {
 
     // The SP range matches any location the armor actually uses: only the
     // body-and-head piece has a used location at or above 10 SP.
-    const spMin = armorBox.locator('.cpr-browser-range-min[data-filter="armorSp"]');
+    const spMin = armorBox.locator(
+      '.cpr-browser-range-min[data-filter="armorSp"]',
+    );
     await spMin.fill("10");
     await spMin.blur();
     await expect(entries).toHaveCount(1);
@@ -1308,9 +1308,9 @@ test.describe("Document browser", () => {
     await expect(documentBrowser.locator(".cpr-browser-empty")).toHaveText(
       "No matching documents.",
     );
-    await expect(documentBrowser.locator(".cpr-browser-result-count")).toHaveText(
-      "Showing 0 of 0",
-    );
+    await expect(
+      documentBrowser.locator(".cpr-browser-result-count"),
+    ).toHaveText("Showing 0 of 0");
   });
 
   test("expands and collapses the installed-items tree under a result row", async ({
@@ -1457,9 +1457,7 @@ test.describe("Document browser", () => {
     await closeDocSheet(game, { collection: "items", id: ignoredId });
     await game.evaluate(
       ({ ignoredId }) =>
-        game.items
-          .get(ignoredId)
-          .update({ "system.ignoredByBrowser": true }),
+        game.items.get(ignoredId).update({ "system.ignoredByBrowser": true }),
       { ignoredId },
     );
 
@@ -1549,9 +1547,7 @@ test.describe("Document browser", () => {
     await expect(settings).toBeVisible();
 
     // Disabling the pack removes its entries from the browser.
-    const packCheckbox = settings.locator(
-      `input[data-pack-id="${packId}"]`,
-    );
+    const packCheckbox = settings.locator(`input[data-pack-id="${packId}"]`);
     await expect(packCheckbox).toBeChecked();
     await packCheckbox.uncheck();
     await settings.locator('button[type="submit"]').click();
