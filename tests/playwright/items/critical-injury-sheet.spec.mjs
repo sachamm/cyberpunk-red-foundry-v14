@@ -41,6 +41,25 @@ installConsoleErrorHarness();
  * death save base penalty (derived stat, sheet display and roll card).
  */
 
+// Hack a roll to make testing predictable
+async function queueDeathSaveFaces(page, faces) {
+  await page.evaluate((queuedFaces) => {
+    window.__cprOrigRandomUniform = CONFIG.Dice.randomUniform;
+    const queue = queuedFaces.map((face) => 1 - (face - 0.5) / 10);
+    let i = 0;
+    CONFIG.Dice.randomUniform = () => (i < queue.length ? queue[i++] : 0.5);
+  }, faces);
+}
+
+async function restoreDice(page) {
+  await page.evaluate(() => {
+    if (window.__cprOrigRandomUniform) {
+      CONFIG.Dice.randomUniform = window.__cprOrigRandomUniform;
+      delete window.__cprOrigRandomUniform;
+    }
+  });
+}
+
 test("quick-fix DV inputs follow the selected quickFix type", async ({
   page,
 }) => {
@@ -509,6 +528,9 @@ test("an owned injury's Increase Base Death Save raises the character's death sa
   });
 
   await test.step("a death save roll totals the die plus the base penalty", async () => {
+    // Queue a failing face (total 7 vs BODY 6): a passed death save would
+    // persist a +1 death-save penalty and confound the unflag step below.
+    await queueDeathSaveFaces(page, [6]);
     const messageId = await rollDeathSave();
     await openSidebarTab(page, "chat");
     const card = chatRollCard(page, messageId);
@@ -526,6 +548,7 @@ test("an owned injury's Increase Base Death Save raises the character's death sa
     await expect(card.locator(".d10-data-details")).toContainText(
       "Base Death Penalty: 1",
     );
+    await restoreDice(page);
   });
 
   await test.step("unflagging the injury removes the base penalty", async () => {
