@@ -28,7 +28,7 @@
     },
     "Agent": {
       "name": "Agent",
-      "description": "<p>Von selbstadaptiver KI betriebenes Smartphone. +2 für Datensuche. +2 für Garderobe und Stil unter bestimmten Umständen. Weitere Informationen auf Seite 352.</p>"
+      "description": "<p>\n  A <strong>Standard Quality</strong> Smartpohone with onboard AI that provides\n  +2 <strong>Library Search</strong>, +2\n  <strong>Wardrobe &amp; Style</strong> depending on circumstance. Includes a\n  touchscreen, microphone, camera, and flashlight.\n</p>\n"
     },
     "Airhypo": {
       "name": "Lufthypo",
@@ -40,11 +40,11 @@
     },
     "Audio Recorder": {
       "name": "Audiorekorder",
-      "description": "<p>Speichert bis zu 24 Stunden Klangaufnahmen auf einen einzigen Speicherchip.</p>"
+      "description": "<p>\n  Record up to 24 hours of audio on a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.LKAYRh3Oecskc6kH]{Memory Chip}.\n</p>\n"
     },
     "Auto Level Dampening Ear Protectors": {
       "name": "Automatische Lärmdämmung",
-      "description": "<p>Kompakter Hörschutz. Macht den Anwender immun gegenüber Effekten durch gefährlich laute Geräusche.</p>"
+      "description": "<p>\n  Wearer is immune to loud sounds like those produced by\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.e8gDMbdK1oPKwhqW]{Flashbang Grenades}.\n</p>\n"
     },
     "Binoculars": {
       "name": "Feldstecher",
@@ -52,7 +52,7 @@
     },
     "Braindance Viewer": {
       "name": "Braindance-Viewer",
-      "description": "<p>Dient zum Ansehen von Braindance-Erfahrungen.</p>"
+      "description": "<p>A braindance viewing device.</p>\n"
     },
     "Bug Detector": {
       "name": "Wanzen­­finder",
@@ -60,23 +60,23 @@
     },
     "Carryall": {
       "name": "Reisetasche",
-      "description": "<p>Tasche zum Tragen von Zeug.</p>"
+      "description": "<p>A bag to carry and conceal items.</p>\n"
     },
     "Chemical Analyzer": {
       "name": "Chemisches Analysegerät",
-      "description": "<p>Kann chemische Stoffzusammensetzungen mit einer Probendatenbank abgleichen.</p>"
+      "description": "<p>Determines the chemical composition of a sample.</p>\n<blockquote>\n  <p>\n    Your GM may require a related <strong>Intelligence</strong> or\n    <strong>Tech</strong> check.\n  </p>\n</blockquote>\n"
     },
     "Computer": {
       "name": "Computer",
-      "description": "<p>Laptop oder Desktop-Computer.</p>"
+      "description": "<p>A budget desktop or laptop that cannot be used as a Portable Net Arch.</p>\n"
     },
     "Cryopump": {
       "name": "Cryopumpe",
-      "description": "<p>Eine Cryopumpe ist ein aktenkoffergroßes Werkzeug, das einen mit einer leistungsstarken Pumpe verbundenen Leichensack enthält. Sobald ein freiwilliges/unfreiwilliges Ziel als Aktion in den Sack gepackt und mit der Pumpe verbunden worden ist, treibt die Pumpe eine hyperkalte chemische Flüssigkeit in den Sack, wobei das Ziel in Stasis versetzt wird.</p>"
+      "description": "<p>\n  Briefcase-sized tool used for hooking up a wounded person. Places them in\n  stasis.\n</p>\n<blockquote>\n  <p>\n    Can only be used by a <strong>Medtech</strong> with\n    <strong>Cryosystem</strong> training.\n  </p>\n</blockquote>\n"
     },
     "Cryotank": {
       "name": "Cryotank",
-      "description": "<p>Ein Cryotank ist ein menschengroßer Behälter, der einen voll entwickelten Erwachsenen fassen kann. Während die Person im Cryotank liegt, heilt er mit der doppelten normalen Geschwindigkeit.</p>"
+      "description": "<p>Holds a fully-sized human, heals injuries faster than normal.</p>\n<blockquote>\n  <p>\n    Can only be used by a <strong>Medtech</strong> with\n    <strong>Cryosystem</strong> training.\n  </p>\n</blockquote>\n"
     },
     "Disposable Cell Phone": {
       "name": "Wegwerfhandy",
@@ -84,7 +84,7 @@
     },
     "Drum Synthesizer": {
       "name": "Synth-Schlagzeug",
-      "description": "<p>Kann fast jede Art von Schlagzeug simulieren. Benötigt Verstärker.</p>"
+      "description": "<p>\n  Makes drum sounds when connected to\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}.\n</p>\n"
     },
     "Duct Tape": {
       "name": "Klebeband",
@@ -92,7 +92,7 @@
     },
     "Electric Guitar/Other Instrument": {
       "name": "Elektrische Gitarre/Anderes Instrument",
-      "description": "<p>Musikinstrument. Elektrische Instrumente benötigen einen Verstärker.</p>"
+      "description": "<p>\n  Musical instrument. Electric instruments require an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}\n  or other similar output device.\n</p>\n"
     },
     "Flashlight": {
       "name": "Taschenlampe",
@@ -112,15 +112,15 @@
     },
     "Grapple Gun": {
       "name": "Halteseilkanone",
-      "description": "<p>Verschießt ein Halteseil bis zu 30 m. Kann nicht als Waffe eingesetzt werden.</p>"
+      "description": "<p>Range: 30m/yds.</p>\n<blockquote>\n  <p>\n    Not usable as weapon, cannot be used to <strong>Grapple</strong> an\n    opponent.\n  </p>\n</blockquote>\n"
     },
     "Handcuffs": {
       "name": "Handschellen",
-      "description": "<p>Fesseln. Benötigt KRA >10, um sie zu zerreißen.</p>"
+      "description": "<p>\n  Physically restrain any individual with less than 10 <strong>BODY</strong>.\n</p>\n"
     },
     "Homing Tracer": {
       "name": "Peilsucher",
-      "description": "<p>Kann einer verbundenen Markierung auf 1,5 km folgen.</p>"
+      "description": "<p>\n  Track a linked\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.IqXTqNGBmSuigIWv]{Tracer Button}\n  up to 1 mile.\n</p>\n"
     },
     "Inflatable Bed & Sleep-bag": {
       "name": "Luftbett und\nSchlafsack",
@@ -132,11 +132,11 @@
     },
     "Linear Frame β (Beta)": {
       "name": "Lineartragwerk β (Beta)",
-      "description": "<p>Motorisch betriebenes Exo­­skelett, das dem Anwender außergewöhnliche Stärke verleiht.<br/>\nWährend er ins Tragwerk eingeklinkt ist, erhöht sich die KRA des Anwenders auf 14. Diese erhöhte KRA erhöht nicht die TP des Anwenders und hat keinen Einfluss auf die Traumaprobe. Benötigt 1 Installation von Interface-Buchsen für die Anwendung.</p>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>\n    Requires 2\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}\n  </li>\n  <li>Increases <strong>BODY</strong> to 14 while plugged in</li>\n</ul>\n<blockquote>\n  <p>\n    Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to\n    <strong>BODY</strong> increase — Not currently supported by system.\n  </p>\n</blockquote>\n"
     },
     "Linear Frame ∑ (Sigma)": {
       "name": "Lineartragwerk (Sigma)",
-      "description": "<p>Motorisch betriebenes Exo­­skelett, das dem Anwender außergewöhnliche Stärke verleiht.<br/>\nWährend er ins Tragwerk eingeklinkt ist, erhöht sich die KRA des Anwenders auf 12. Diese erhöhte KRA erhöht nicht die TP des Anwenders und hat keinen Einfluss auf die Traumaprobe. Benötigt 1 Installation von Interface-Buchsen für die Anwendung.</p>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>\n    Requires 1\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plug}\n  </li>\n  <li>Increases <strong>BODY</strong> to 12</li>\n</ul>\n<blockquote>\n  <p>\n    Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to\n    <strong>BODY</strong> increase — Not currently supported by system.\n  </p>\n</blockquote>\n"
     },
     "Lock Picking Set": {
       "name": "Satz Dietriche",
@@ -144,31 +144,31 @@
     },
     "Medscanner": {
       "name": "MediScanner",
-      "description": "<p>Der Anwender addiert +2 zur Fertigkeit Erste Hilfe und Notfallmedizin hinzu. Dieser Bonus ist nicht kumulativ mit sich selbst.</p>"
+      "description": "<p>\n  Grants users +2 <strong>First Aid</strong> and\n  <strong>Paramedic</strong> checks.\n</p>\n"
     },
     "Medtech Bag": {
       "name": "MediTech-Tasche",
-      "description": "<p>Vollständiger medizinischer Werkzeugsatz in einer Tasche.</p>"
+      "description": "<p>A bag filled with basic medical equipment.</p>\n"
     },
     "Memory Chip": {
       "name": "Speicherchip",
-      "description": "<p>Standarddatenspeicher.</p>"
+      "description": "<p>Universal data storage device.</p>\n<blockquote>\n  <p>\n    Use\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gAfBLrpJzkKVtr8o]{Memory Chip}\n    to track items installed into\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.IJarQGKk5rPayoLT]{Chipware Sockets}.\n  </p>\n</blockquote>\n"
     },
     "MRE": {
       "name": "EPA",
-      "description": "<p>Selbsterwärmende Essensration in einem Plastikfolienbeutel.</p>"
+      "description": "<p>Portable meal. Self-heating. Ready in 2 minutes.</p>\n"
     },
     "Personal CarePak": {
       "name": "Persönliches CarePak",
-      "description": "<p>Alles, was du brauchst, um dich zu waschen.</p>"
+      "description": "<p>Contains a toothbrush and other personal grooming items.</p>\n"
     },
     "Pocket Amplifier": {
       "name": "Taschenverstärker",
-      "description": "<p>Kann bis zu zwei Instrumente unterstützen. Hält 6 Stunden pro Aufladung.</p>"
+      "description": "<p>\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MfuoJ69NL1FiP7B8]{Battery}\n  powered electronic device that can support up to two electronic instruments.\n</p>\n"
     },
     "Radar Detector": {
       "name": "Radar­ detektor",
-      "description": "<p>Piepst im 100m-Umkreis um einen Radarstrahl.</p>"
+      "description": "<p>Detect radar beams up to 100m/yd away.</p>\n"
     },
     "Radiation Suit": {
       "name": "Strahlenschutzanzug",
@@ -184,7 +184,7 @@
     },
     "Road Flare": {
       "name": "Straßenleuchtfackel",
-      "description": "<p>Beleuchtet einen Bereich von 100 m für 1 Stunde.</p>"
+      "description": "<p>Range: 100m/yd. Duration: 1h. Provides illumination.</p>\n"
     },
     "Rope (60m/yd)": {
       "name": "Seil (60 m)",
@@ -194,37 +194,41 @@
       "name": "Störer/Entstörer",
       "description": "<p>Stört/entstört Kommunikationstechnik.</p>"
     },
+    "Spray Paint": {
+      "name": "Spray Paint",
+      "description": "<p>Generic spray paint. Make some art or blind a camera.</p>\n"
+    },
     "Tech Bag": {
       "name": "Tech-Tasche",
-      "description": "<p>Kleine Tasche mit Werkzeugen und einfachem Material zum Reparieren von Sachen.</p>"
+      "description": "<p>Tool bag filled with basic tools for everyday repairs.</p>\n"
     },
     "Techscanner": {
       "name": "TechScanner",
-      "description": "<p>Hilft bei der Diagnose kaputter Technologie. +2 für mehrere TCH-basierte Fertigkeiten.</p>"
+      "description": "<p>\n  An electronic device that grants +2 to <strong>Basic Tech</strong>,\n  <strong>Cybertech</strong>, <strong>Electronic/Security Tech</strong>,\n  <strong>Weaponstech</strong>, <strong>Land Vehicle Tech</strong>,\n  <strong>Sea Vehicle Tech</strong>, <strong>Air Vehicle Tech</strong> checks.\n</p>\n"
     },
     "Techtool": {
       "name": "Techwerkzeug",
-      "description": "<p>Ein Multifunktionswerkzeug mit allem Drum und Dran.</p>"
+      "description": "<p>Multi-purpose tool that fits in your pocket.</p>\n"
     },
     "Tent and Camping Equipment": {
       "name": "Zelt und Campingausrüstung",
-      "description": "<p>Ausrüstung für eine Person zum Zelten.</p>"
+      "description": "<p>Provides shelter from the weather and space for one person.</p>\n"
     },
     "Tracer Button": {
       "name": "Peilsender",
-      "description": "<p>Kann mit einem Peilsucher aus bis zu 1,5 Kilometer Entfernung geortet werden.</p>"
+      "description": "<p>\n  Can be tracked from up to a mile away with a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.QIHx5oQOirtTlAaD]{Homing Tracer}\n  &amp; similar\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.o3lADTIXaa3eLryF]{Cyberware Options}.\n</p>\n"
     },
     "Vial of Biotoxin": {
       "name": "Flasche mit Biotoxin",
-      "description": "<p>Richtet 3W6 Schaden an. Widerstand durch Folter/Drogen widerstehen. Nicht durch Panzerung beeinträchtigt.</p>"
+      "description": "<p>\n  Deals [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage} directly to HP unless subject\n  makes a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  check. Armor does not apply.\n</p>\n"
     },
     "Vial of Poison": {
       "name": "Flasche mit Gift",
-      "description": "<p>Richtet 2W6 Schaden an. Widerstand durch Folter/Drogen widerstehen. Nicht durch Panzerung beeinträchtigt.</p>"
+      "description": "<p>\n  Deals [[/r 2d6dmg#Poison Damage]]{2d6 Damage} directly to HP unless subject\n  makes a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}\n  check. Armor does not apply.\n</p>\n"
     },
     "Video Camera": {
       "name": "Videokamera",
-      "description": "<p>Speichert bis zu 12 Stunden Audio und Video auf einem einzigen Speicherchip.</p>"
+      "description": "<p>\n  Record up to 12 hours of video on a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.LKAYRh3Oecskc6kH]{Memory Chip}.\n</p>\n"
     },
     "Virtuality Goggles": {
       "name": "Virtuality-Brille",
