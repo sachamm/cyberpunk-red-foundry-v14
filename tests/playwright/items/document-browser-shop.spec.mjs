@@ -1,6 +1,19 @@
 import { test, expect } from "@playwright/test";
-import { openPlayerPage } from "../../../tools/playwright/session/world.mjs";
-import { openItemBrowser } from "../../../tools/playwright/ui/index.mjs";
+import { PLAYER_NAME } from "../../../tools/playwright/config/harness-config.mjs";
+import {
+  gotoReadyWorld,
+  openPlayerPage,
+} from "../../../tools/playwright/session/world.mjs";
+import {
+  closeDocSheet,
+  createActorViaUI,
+  createDocumentViaUI,
+  createItemCompendium,
+  deleteItemViaUI,
+  openItemBrowser,
+  uniqueName,
+  waitForBrowserResultsSettled,
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * UI-driven tests for the document browser's PLAYER shop/cart half (add to cart,
@@ -11,6 +24,11 @@ import { openItemBrowser } from "../../../tools/playwright/ui/index.mjs";
  * controls and a cart for a player, and checkout spends that character's wealth.
  * The player page does not reset the world (that would delete the character),
  * so each test sets the wealth it needs and asserts relative (before/after).
+ *
+ * A few tests also need GM-side fixtures or assertions (a second owned
+ * character, priced gear, a hidden compendium, the spare character's state):
+ * those drive the default GM page for setup while the player page drives the
+ * browser.
  */
 
 function parseDisplayedCurrency(valueText) {
@@ -268,6 +286,302 @@ test.describe("Document browser — player shop", () => {
         .toBe(before.items + 1);
       const after = await characterState(player);
       expect(after.wealth).toBe(before.wealth - total);
+    } finally {
+      await context.close();
+    }
+  });
+
+  test("a player can redirect a purchase to another character they own", async ({
+    page: game,
+    browser,
+    baseURL,
+  }) => {
+    await gotoReadyWorld(game);
+    // A second character owned by the player (setup, not the action under test).
+    const spareId = await createActorViaUI(game, {
+      type: "character",
+      name: uniqueName("spare"),
+    });
+    await closeDocSheet(game, { collection: "actors", id: spareId });
+    await game.evaluate(
+      async ({ spareId, playerName }) => {
+        const player = game.users.getName(playerName);
+        await game.actors.get(spareId).update({
+          [`ownership.${player.id}`]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+        });
+      },
+      { spareId, playerName: PLAYER_NAME },
+    );
+
+    const { context, page: player } = await openPlayerPage(browser, baseURL);
+    try {
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
+      const total = await addPricedItemToCart(documentBrowser);
+
+      // The assigned character is one eddie short; the spare can afford it.
+      await setWealth(player, total - 1);
+      await game.evaluate(
+        ({ spareId, wealth }) =>
+          game.actors.get(spareId).update({ "system.wealth.value": wealth }),
+        { spareId, wealth: total + 1000 },
+      );
+
+      // The buying-for selector offers exactly the player's characters and
+      // defaults to the assigned one.
+      const select = documentBrowser.locator(".cpr-browser-cart-actor-select");
+      await expect(select).toBeVisible();
+      const characterId = await player.evaluate(() => game.user.character.id);
+      await expect(select.locator("option")).toHaveCount(2);
+      await expect(select).toHaveValue(characterId);
+
+      // Redirecting the purchase to the spare charges the spare's wealth.
+      await select.selectOption(spareId);
+      const assignedBefore = await characterState(player);
+      const spareState = (id) => {
+        const actor = game.actors.get(id);
+        return { wealth: actor.system.wealth.value, items: actor.items.size };
+      };
+      const spareBefore = await game.evaluate(spareState, spareId);
+
+      await documentBrowser.locator(".cpr-browser-cart-purchase").click();
+      const dialog = player
+        .locator(".application.dialog")
+        .filter({ hasText: "Purchase" });
+      await expect(dialog).toBeVisible();
+      await dialog.locator('button[data-action="yes"]').click();
+
+      // The cart empties; the spare gains the item and loses its price, while
+      // the assigned character is not charged.
+      await expect(
+        documentBrowser.locator(".cpr-browser-cart-item"),
+      ).toHaveCount(0);
+      await expect
+        .poll(() => game.evaluate(spareState, spareId))
+        .toEqual({
+          wealth: spareBefore.wealth - total,
+          items: spareBefore.items + 1,
+        });
+      expect(await characterState(player)).toEqual(assignedBefore);
+    } finally {
+      await context.close();
+    }
+  });
+
+  test("declining the purchase dialog keeps the cart and leaves the character untouched", async ({
+    browser,
+    baseURL,
+  }) => {
+    const { context, page: player } = await openPlayerPage(browser, baseURL);
+    try {
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
+      const total = await addPricedItemToCart(documentBrowser);
+      // Comfortably affordable, so the decline — not the funds check — is what
+      // stops the purchase.
+      await setWealth(player, total + 1000);
+
+      const before = await characterState(player);
+      await documentBrowser.locator(".cpr-browser-cart-purchase").click();
+
+      // Declining the confirm dialog cancels the purchase.
+      const dialog = player
+        .locator(".application.dialog")
+        .filter({ hasText: "Purchase" });
+      await expect(dialog).toBeVisible();
+      await dialog.locator('button[data-action="no"]').click();
+      await expect(dialog).toHaveCount(0);
+
+      // The cart line is intact and the character is unchanged.
+      await expect(
+        documentBrowser.locator(".cpr-browser-cart-item"),
+      ).toHaveCount(1);
+      expect(await characterState(player)).toEqual(before);
+    } finally {
+      await context.close();
+    }
+  });
+
+  test("checkout skips deleted items and records the purchase in chat", async ({
+    page: game,
+    browser,
+    baseURL,
+  }) => {
+    await gotoReadyWorld(game);
+    const nameTag = uniqueName("purchase-log");
+    const keptName = `${nameTag} kept`;
+    const doomedName = `${nameTag} doomed`;
+    const keptId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: keptName,
+    });
+    await closeDocSheet(game, { collection: "items", id: keptId });
+    const doomedId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: doomedName,
+    });
+    await closeDocSheet(game, { collection: "items", id: doomedId });
+    // Distinct prices (setup, not the action under test).
+    await game.evaluate(
+      async ({ keptId, doomedId }) => {
+        await game.items.get(keptId).update({ "system.price.market": 100 });
+        await game.items.get(doomedId).update({ "system.price.market": 250 });
+      },
+      { keptId, doomedId },
+    );
+
+    const { context, page: player } = await openPlayerPage(browser, baseURL);
+    try {
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
+      await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+      await waitForBrowserResultsSettled(documentBrowser);
+
+      // Both tagged items are buyable; add each by its row.
+      const entries = documentBrowser.locator(".cpr-browser-entry");
+      await expect(entries).toHaveCount(2);
+      for (const name of [doomedName, keptName]) {
+        await entries.filter({ hasText: name }).locator(".cpr-browser-buy").click();
+      }
+      await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
+        2,
+      );
+
+      // The doomed item is deleted after it was added to the cart.
+      await deleteItemViaUI(game, doomedId);
+
+      // Enough for both lines; only the surviving line should be charged.
+      await setWealth(player, 1350);
+      const before = await characterState(player);
+      await documentBrowser.locator(".cpr-browser-cart-purchase").click();
+      const dialog = player
+        .locator(".application.dialog")
+        .filter({ hasText: "Purchase" });
+      await expect(dialog).toBeVisible();
+      await dialog.locator('button[data-action="yes"]').click();
+
+      // The cart empties, only the kept item is added, and only its price is
+      // charged.
+      await expect(
+        documentBrowser.locator(".cpr-browser-cart-item"),
+      ).toHaveCount(0);
+      await expect.poll(() => characterState(player)).toEqual({
+        wealth: before.wealth - 100,
+        items: before.items + 1,
+      });
+
+      // The purchase log message (new, or appended to an earlier one from this
+      // run) records the kept item and not the deleted one.
+      const { characterId, userId } = await player.evaluate(() => ({
+        characterId: game.user.character.id,
+        userId: game.user.id,
+      }));
+      const logContent = await player.waitForFunction(
+        ({ characterId, userId, keptName }) => {
+          for (const message of game.messages.contents) {
+            const log = message.getFlag(game.system.id, "purchaseLog");
+            if (!log || log.actorId !== characterId) continue;
+            if (log.userId !== userId) continue;
+            if (message.content.includes(keptName)) return message.content;
+          }
+          return false;
+        },
+        { characterId, userId, keptName },
+        { timeout: 15000 },
+      );
+      const content = await logContent.jsonValue();
+      expect(content).toContain(keptName);
+      expect(content).not.toContain(doomedName);
+    } finally {
+      await context.close();
+    }
+  });
+
+  test("players only see items they can view (world ownership and pack visibility)", async ({
+    page: game,
+    browser,
+    baseURL,
+  }) => {
+    await gotoReadyWorld(game);
+    const nameTag = uniqueName("visibility");
+    const openName = `${nameTag} open`;
+    const hiddenName = `${nameTag} hidden`;
+    const packedName = `${nameTag} packed`;
+
+    // World gear: one shareable (LIMITED), one private (NONE). Unpriced on
+    // purpose — this test is about visibility, not buying.
+    const openId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: openName,
+    });
+    await closeDocSheet(game, { collection: "items", id: openId });
+    const hiddenId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: hiddenName,
+    });
+    await closeDocSheet(game, { collection: "items", id: hiddenId });
+    await game.evaluate(
+      ({ openId, hiddenId }) => {
+        const levels = CONST.DOCUMENT_OWNERSHIP_LEVELS;
+        return Promise.all([
+          game.items.get(openId).update({ "ownership.DEFAULT": levels.LIMITED }),
+          game.items.get(hiddenId).update({ "ownership.DEFAULT": levels.NONE }),
+        ]);
+      },
+      { openId, hiddenId },
+    );
+
+    // A compendium entry in a pack the player can't see.
+    const packedId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: packedName,
+    });
+    await closeDocSheet(game, { collection: "items", id: packedId });
+    const { id: packId } = await createItemCompendium(game, "E2E hidden pack");
+    await game.evaluate(
+      async ({ packId, itemId }) => {
+        const pack = game.packs.get(packId);
+        const item = game.items.get(itemId);
+        await pack.importDocument(item);
+        await item?.delete();
+        await pack.configure({ visible: false });
+      },
+      { packId, itemId: packedId },
+    );
+
+    const { context, page: player } = await openPlayerPage(browser, baseURL);
+    try {
+      const documentBrowser = await openItemBrowser(player, {
+        readySelector: ".cpr-browser-buy",
+      });
+      const entries = documentBrowser.locator(".cpr-browser-entry");
+
+      // The shareable world item is the only one of the three visible.
+      await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+      await waitForBrowserResultsSettled(documentBrowser);
+      await expect(entries).toHaveCount(1);
+      await expect(entries.first().locator(".item-header-name")).toHaveText(
+        openName,
+      );
+
+      // The private world item and the hidden pack's entry match nothing.
+      await documentBrowser.locator(".cpr-browser-name-input").fill(hiddenName);
+      await waitForBrowserResultsSettled(documentBrowser);
+      await expect(entries).toHaveCount(0);
+      await expect(documentBrowser.locator(".cpr-browser-empty")).toBeVisible();
+
+      await documentBrowser.locator(".cpr-browser-name-input").fill(packedName);
+      await waitForBrowserResultsSettled(documentBrowser);
+      await expect(entries).toHaveCount(0);
+      await expect(documentBrowser.locator(".cpr-browser-empty")).toBeVisible();
     } finally {
       await context.close();
     }
