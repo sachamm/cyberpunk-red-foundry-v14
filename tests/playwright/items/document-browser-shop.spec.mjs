@@ -18,25 +18,7 @@ import {
   updateItemFields,
 } from "../../../tools/playwright/ui/index.mjs";
 
-/*
- * UI-driven tests for the document browser's PLAYER shop/cart half (add to
- * cart, adjust quantity, checkout, and the insufficient-funds guard).
- *
- * Each test opens an explicit player page via the `playerPage` fixture: the
- * non-GM User with an assigned Character (game.user.character) that
- * globalSetup creates. The document browser only shows buy controls and a cart
- * for a player, and checkout spends that character's wealth. The player page
- * does not reset the world (that would delete the character), so each test sets
- * the wealth it needs and asserts relative (before/after).
- *
- * A few tests also need GM-side fixtures or assertions (a second owned
- * character, priced gear, a hidden compendium, the spare character's state):
- * those drive the default GM page for setup while the player page drives the
- * browser.
- */
-
 const test = base.extend({
-  // The harness player's page, closed after each test (see the file header).
   playerPage: async ({ browser, baseURL }, use) => {
     const { context, page } = await openPlayerPage(browser, baseURL);
     await use(page);
@@ -64,9 +46,6 @@ function parseDisplayedCurrency(valueText) {
   return total;
 }
 
-// Add the first priced item to the cart, returning the cart total (so tests can
-// set wealth just above/below it). The price-min filter guarantees the bought
-// item costs something, so the total is > 0.
 async function addPricedItemToCart(documentBrowser) {
   const min = documentBrowser.locator(
     ".cpr-browser-sidebar .cpr-browser-price-min",
@@ -102,8 +81,6 @@ const characterState = (page) =>
     items: game.user.character.items.size,
   }));
 
-// Confirms or declines the "Purchase" dialog that checkout raises; returns the
-// dialog locator so callers can assert on its dismissal.
 async function respondToPurchaseDialog(page, answer) {
   const dialog = page
     .locator(".application.dialog")
@@ -125,8 +102,6 @@ test.describe("Document browser — player shop", () => {
       .first();
     await expect(row).toBeVisible();
 
-    // In shop mode the rows are non-draggable and starting a drag writes no
-    // payload, so a player can't copy an item onto a sheet for free.
     await expect(row).toHaveAttribute("draggable", "false");
     const payload = await readBrowserDragPayload(player);
     expect(payload).toBe("");
@@ -203,8 +178,6 @@ test.describe("Document browser — player shop", () => {
       1,
     );
 
-    // The cart names the actor the purchase will land on, so a player who owns
-    // several actors can catch (or redirect) a buy onto the wrong character.
     const select = documentBrowser.locator(".cpr-browser-cart-actor-select");
     await expect(select).toBeVisible();
     const characterId = await player.evaluate(() => game.user.character.id);
@@ -218,17 +191,14 @@ test.describe("Document browser — player shop", () => {
       readySelector: ".cpr-browser-buy",
     });
     const total = await addPricedItemToCart(documentBrowser);
-    // One eddie short of the total.
     await setWealth(player, total - 1);
 
     const before = await characterState(player);
     await documentBrowser.locator(".cpr-browser-cart-purchase").click();
 
-    // A warning notification appears; the purchase does not go through.
     await expect(player.locator(".notification.warning")).toContainText(
       "enough eddies",
     );
-    // The cart is left intact, wealth is unchanged, and nothing was added.
     await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
       1,
     );
@@ -242,16 +212,13 @@ test.describe("Document browser — player shop", () => {
       readySelector: ".cpr-browser-buy",
     });
     const total = await addPricedItemToCart(documentBrowser);
-    // Comfortably affordable.
     await setWealth(player, total + 1000);
 
     const before = await characterState(player);
     await documentBrowser.locator(".cpr-browser-cart-purchase").click();
 
-    // Confirm the purchase dialog.
     await respondToPurchaseDialog(player, "yes");
 
-    // The cart empties, the item is added, and wealth drops by the total.
     await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
       0,
     );
@@ -267,7 +234,6 @@ test.describe("Document browser — player shop", () => {
     playerPage: player,
   }) => {
     await gotoReadyWorld(game);
-    // A second character owned by the player (setup, not the action under test).
     const spareId = await createActorViaUI(game, {
       type: "character",
       name: uniqueName("spare"),
@@ -288,7 +254,6 @@ test.describe("Document browser — player shop", () => {
     });
     const total = await addPricedItemToCart(documentBrowser);
 
-    // The assigned character is one eddie short; the spare can afford it.
     await setWealth(player, total - 1);
     await game.evaluate(
       ({ spareId, wealth }) =>
@@ -296,15 +261,12 @@ test.describe("Document browser — player shop", () => {
       { spareId, wealth: total + 1000 },
     );
 
-    // The buying-for selector offers exactly the player's characters and
-    // defaults to the assigned one.
     const select = documentBrowser.locator(".cpr-browser-cart-actor-select");
     await expect(select).toBeVisible();
     const characterId = await player.evaluate(() => game.user.character.id);
     await expect(select.locator("option")).toHaveCount(2);
     await expect(select).toHaveValue(characterId);
 
-    // Redirecting the purchase to the spare charges the spare's wealth.
     await select.selectOption(spareId);
     const assignedBefore = await characterState(player);
     const spareState = (id) => {
@@ -316,8 +278,6 @@ test.describe("Document browser — player shop", () => {
     await documentBrowser.locator(".cpr-browser-cart-purchase").click();
     await respondToPurchaseDialog(player, "yes");
 
-    // The cart empties; the spare gains the item and loses its price, while
-    // the assigned character is not charged.
     await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
       0,
     );
@@ -337,18 +297,14 @@ test.describe("Document browser — player shop", () => {
       readySelector: ".cpr-browser-buy",
     });
     const total = await addPricedItemToCart(documentBrowser);
-    // Comfortably affordable, so the decline — not the funds check — is what
-    // stops the purchase.
     await setWealth(player, total + 1000);
 
     const before = await characterState(player);
     await documentBrowser.locator(".cpr-browser-cart-purchase").click();
 
-    // Declining the confirm dialog cancels the purchase.
     const dialog = await respondToPurchaseDialog(player, "no");
     await expect(dialog).toHaveCount(0);
 
-    // The cart line is intact and the character is unchanged.
     await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
       1,
     );
@@ -372,8 +328,6 @@ test.describe("Document browser — player shop", () => {
       name: doomedName,
     });
 
-    // Distinct prices (setup, not the action under test), plus visibility for
-    // the harness player — world gear is private to its creator by default.
     const { playerId, limited } = await game.evaluate(
       (playerName) => ({
         playerId: game.users.getName(playerName).id,
@@ -392,7 +346,6 @@ test.describe("Document browser — player shop", () => {
     });
     await searchItems(documentBrowser, nameTag);
 
-    // Both tagged items are buyable; add each by its row.
     const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(2);
     for (const name of [doomedName, keptName]) {
@@ -405,17 +358,13 @@ test.describe("Document browser — player shop", () => {
       2,
     );
 
-    // The doomed item is deleted after it was added to the cart.
     await deleteItemViaUI(game, doomedId);
 
-    // Enough for both lines; only the surviving line should be charged.
     await setWealth(player, 1350);
     const before = await characterState(player);
     await documentBrowser.locator(".cpr-browser-cart-purchase").click();
     await respondToPurchaseDialog(player, "yes");
 
-    // The cart empties, only the kept item is added, and only its price is
-    // charged.
     await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
       0,
     );
@@ -426,8 +375,6 @@ test.describe("Document browser — player shop", () => {
         items: before.items + 1,
       });
 
-    // The purchase log message (new, or appended to an earlier one from this
-    // run) records the kept item and not the deleted one.
     const { characterId, userId } = await player.evaluate(() => ({
       characterId: game.user.character.id,
       userId: game.user.id,
@@ -460,8 +407,6 @@ test.describe("Document browser — player shop", () => {
     const hiddenName = `${nameTag} hidden`;
     const packedName = `${nameTag} packed`;
 
-    // World gear: one shareable (LIMITED), one private (NONE). Unpriced on
-    // purpose — this test is about visibility, not buying.
     const openId = await createItemClosed(game, {
       type: "gear",
       name: openName,
@@ -478,20 +423,15 @@ test.describe("Document browser — player shop", () => {
       PLAYER_NAME,
     );
     await updateItemFields(game, [
-      // Shareable with the harness player only.
       {
         id: openId,
         changes: { ownership: { default: 0, [playerId]: limited } },
       },
-      // Private to everyone but the GM.
       { id: hiddenId, changes: { ownership: { default: 0 } } },
     ]);
 
-    // A compendium entry in a pack the player can't see.
     const { id: packId } = await createItemCompendium(game, "E2E hidden pack");
     await createCompendiumItem(game, { packId, name: packedName });
-    // v13 compendium visibility is role-based ownership — a fresh world
-    // pack defaults to PLAYER OBSERVER, so deny every non-GM role.
     await game.evaluate(
       (packId) =>
         game.packs.get(packId).configure({
@@ -510,14 +450,12 @@ test.describe("Document browser — player shop", () => {
     });
     const entries = documentBrowser.locator(".cpr-browser-entry");
 
-    // The shareable world item is the only one of the three visible.
     await searchItems(documentBrowser, nameTag);
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
       openName,
     );
 
-    // The private world item and the hidden pack's entry match nothing.
     await searchItems(documentBrowser, hiddenName);
     await expect(entries).toHaveCount(0);
     await expect(documentBrowser.locator(".cpr-browser-empty")).toBeVisible();

@@ -24,9 +24,6 @@ export async function openItemBrowser(page, { readySelector = null } = {}) {
   return documentBrowser;
 }
 
-// The results footer is only visible while batches are still appending (CSS
-// hides it once the final batch lands), so visibility is not a usable signal:
-// settled means the footer exists and no longer carries the loading class.
 export async function waitForBrowserResultsSettled(documentBrowser) {
   const footer = documentBrowser.locator(".cpr-browser-results-footer");
   await expect(footer).toHaveCount(1, { timeout: 30000 });
@@ -62,16 +59,12 @@ export async function createItemCompendium(page, label) {
   );
 }
 
-// Create a world item through the UI and close its sheet, returning its id.
-// Most browser tests only need the item to exist in the world, not the sheet.
 export async function createItemClosed(page, { type, name }) {
   const id = await createItemViaUI(page, { type, name });
   await closeDocSheet(page, { collection: "items", id });
   return id;
 }
 
-// Apply fixture-shaping updates to world items in one go (setup, never the
-// action under test). `updates` is a list of `{ id, changes }` objects.
 export async function updateItemFields(page, updates) {
   await page.evaluate(async (changesList) => {
     for (const { id, changes } of changesList) {
@@ -80,23 +73,17 @@ export async function updateItemFields(page, updates) {
   }, updates);
 }
 
-// The result row whose name matches one of our unique item names. The inner
-// locator must be page-rooted: a browser-rooted one makes filter({ has })
-// resolve against the container element and match nothing.
 export function browserRowByName(page, documentBrowser, name) {
   return documentBrowser.locator(".cpr-browser-entry").filter({
     has: page.locator(".item-header-name", { hasText: name }),
   });
 }
 
-// Type a name search and wait until the re-filtered results have settled.
 export async function searchItems(documentBrowser, name) {
   await documentBrowser.locator(".cpr-browser-name-input").fill(name);
   await waitForBrowserResultsSettled(documentBrowser);
 }
 
-// Start a drag on the first result row and return the text/plain payload its
-// dragstart handler writes ("" when the row refuses, e.g. in shop mode).
 export async function readBrowserDragPayload(page) {
   return page.evaluate(() => {
     const el = document.querySelector(
@@ -114,9 +101,6 @@ export async function readBrowserDragPayload(page) {
   });
 }
 
-// Seed a compendium entry from a UI-created world item: create it (closed),
-// optionally shape its fields, import it into the pack, then delete the
-// staging world item so only the compendium entry carries the name.
 export async function createCompendiumItem(
   page,
   { packId, name, type = "gear", fields = null },

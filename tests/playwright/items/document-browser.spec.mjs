@@ -16,23 +16,6 @@ import {
   waitForBrowserResultsSettled,
 } from "../../../tools/playwright/ui/index.mjs";
 
-/*
- * UI-driven tests for the document browser (CPRDocumentBrowser) as the GM — the
- * browse-and-filter half of the feature. Each test explicitly navigates to the
- * ready world as the GM, then drives the document browser the way a user would:
- * launching it from the Item directory, typing in the search, toggling a type
- * box, and collapsing a result group. Assertions read game/DOM state but never
- * perform the action under test.
- *
- * The player-facing shop/cart half lives in document-browser-shop.spec.mjs (it needs a
- * non-GM user with an assigned Character, which this GM-only harness lacks).
- *
- * World items are created with unique names so a name search isolates them from
- * the (many) compendium entries the document browser also indexes, keeping the result
- * counts deterministic.
- */
-
-// Create a world upgrade item and retarget it to a specific upgradable item type.
 async function createUpgrade(page, { name, targetType }) {
   const id = await createItemClosed(page, { type: "itemUpgrade", name });
   await updateItemFields(page, [
@@ -126,7 +109,6 @@ test.describe("Document browser", () => {
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(name);
 
-    // Clicking the row's open zone resolves and renders the item's sheet.
     await entries.first().locator(".cpr-browser-entry-open").click();
     await expectSheetRendered(game, { collection: "items", id: itemId });
   });
@@ -148,7 +130,6 @@ test.describe("Document browser", () => {
     await searchItems(documentBrowser, nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
-    // First click now narrows the type box directly to "only".
     const weaponTristate = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"] .cpr-browser-tristate[data-tree="type"]',
     );
@@ -170,7 +151,6 @@ test.describe("Document browser", () => {
       type: "weapon",
       name: `${nameTag} blade`,
     });
-    // A known weaponType so its sub-filter option exists in the Weapon box.
     await updateItemFields(game, [
       { id: weaponId, changes: { "system.weaponType": "heavyMelee" } },
     ]);
@@ -179,7 +159,6 @@ test.describe("Document browser", () => {
     await searchItems(documentBrowser, nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(1);
 
-    // Expand the Weapon box so its sub-filters are interactable.
     const weaponBox = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"]',
     );
@@ -192,15 +171,10 @@ test.describe("Document browser", () => {
       '.cpr-browser-tristate[data-tree="type"]',
     );
 
-    // First click now sets the sub-filter to "only", which auto-promotes the
-    // box to "only" as well.
     await subFilter.click();
     await expect(subFilter).toHaveAttribute("data-state", "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
 
-    // The next click moves "only" -> "exclude". With no "only" sub-filter left,
-    // a box we auto-promoted must fall back to "include", not stay stuck on
-    // "only".
     await subFilter.click();
     await expect(subFilter).toHaveAttribute("data-state", "exclude");
     await expect(typeTristate).toHaveAttribute("data-state", "include");
@@ -229,12 +203,9 @@ test.describe("Document browser", () => {
       '.cpr-browser-tristate[data-tree="type"]',
     );
 
-    // Put the box in the manual "only" state before touching any child filter.
     await cycleTo(typeTristate, "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
 
-    // Toggling a sub-filter must not undo a box the user set to "only" directly —
-    // only an auto-promotion is reversible.
     const subFilter = weaponBox.locator(
       '.cpr-browser-tristate[data-set="1"][data-filter="weaponType"][data-value="heavyMelee"]',
     );
@@ -323,7 +294,6 @@ test.describe("Document browser", () => {
     await expect(vehicleOption).toBeVisible();
     await expect(clothingOption).toBeVisible();
 
-    // Choosing a child as "only" must auto-promote the parent type box.
     await cycleTo(armorOption, "only");
     await expect(armorOption).toHaveAttribute("data-state", "only");
     await expect(typeTristate).toHaveAttribute("data-state", "only");
@@ -332,12 +302,10 @@ test.describe("Document browser", () => {
       expectedOrder.slice(0, 2),
     );
 
-    // The static option list must not shrink when one option is selected.
     await expect(armorOption).toBeVisible();
     await expect(vehicleOption).toBeVisible();
     await expect(clothingOption).toBeVisible();
 
-    // Repro: Armor back to include, then Vehicle only, and Armor stays hidden.
     await cycleTo(armorOption, "include");
     await expect(armorOption).toHaveAttribute("data-state", "include");
     await expect(typeTristate).toHaveAttribute("data-state", "include");
@@ -373,7 +341,6 @@ test.describe("Document browser", () => {
       name: dearName,
     });
 
-    // Distinct prices (setup, not the action under test).
     await updateItemFields(game, [
       { id: cheapId, changes: { "system.price.market": 50 } },
       { id: midId, changes: { "system.price.market": 200 } },
@@ -429,9 +396,7 @@ test.describe("Document browser", () => {
     const weaponTristate = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"] .cpr-browser-tristate[data-tree="type"]',
     );
-    // The toggle is reachable by keyboard...
     await expect(weaponTristate).toHaveAttribute("tabindex", "0");
-    // ...and Enter cycles it the same way a click does (include -> only).
     await weaponTristate.focus();
     await weaponTristate.press("Enter");
     await expect(weaponTristate).toHaveAttribute("data-state", "only");
@@ -456,7 +421,6 @@ test.describe("Document browser", () => {
     );
     await expect(open).toHaveCount(1);
 
-    // The row-open control is focusable and activates on Enter (no mouse).
     await expect(open).toHaveAttribute("tabindex", "0");
     await open.focus();
     await open.press("Enter");
@@ -474,7 +438,6 @@ test.describe("Document browser", () => {
     const row = documentBrowser.locator(".cpr-browser-entry[data-uuid]");
     await expect(row).toHaveCount(1);
 
-    // GM rows are draggable and starting a drag writes the Foundry drop payload.
     await expect(row).toHaveAttribute("draggable", "true");
     const payload = await readBrowserDragPayload(game);
     expect(JSON.parse(payload)).toMatchObject({ type: "Item" });
@@ -634,9 +597,6 @@ test.describe("Document browser", () => {
       name: crateName,
     });
 
-    // Distinct prices and qualities (setup, not the action under test) so every
-    // filter below drops exactly one of the four world items. Only weapon and
-    // cyberdeck carry a quality field, so the quality dimension uses weapons.
     await updateItemFields(game, [
       { id: bladeId, changes: { "system.price.market": 100 } },
       {
@@ -654,7 +614,6 @@ test.describe("Document browser", () => {
     await waitForBrowserResultsSettled(documentBrowser);
     const entries = documentBrowser.locator(".cpr-browser-entry");
     const fullCount = await entries.count();
-    // The world items sit on top of the indexed compendium content.
     expect(fullCount).toBeGreaterThan(4);
 
     const nameInput = documentBrowser.locator(".cpr-browser-name-input");
@@ -669,7 +628,6 @@ test.describe("Document browser", () => {
     await nameInput.fill(nameTag);
     await expect(entries).toHaveCount(4);
 
-    // Price min drops the cheap blade; gear sorts before weapon by type order.
     await priceMin.fill("200");
     await priceMin.blur();
     await expect(entries).toHaveCount(3);
@@ -679,7 +637,6 @@ test.describe("Document browser", () => {
       rifleName,
     ]);
 
-    // Weapon-only drops the gear crate.
     await weaponTristate.click();
     await expect(weaponTristate).toHaveAttribute("data-state", "only");
     await expect(entries).toHaveCount(2);
@@ -688,7 +645,6 @@ test.describe("Document browser", () => {
       rifleName,
     ]);
 
-    // Quality standard drops the poor rifle.
     await qualitySelect.selectOption("standard");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
@@ -722,8 +678,6 @@ test.describe("Document browser", () => {
       name: betaName,
     });
 
-    // Distinct tokenized brands (setup, not the action under test) so each is
-    // guaranteed to be its own option in the generated brand list.
     await updateItemFields(game, [
       { id: alphaId, changes: { "system.brand": brandAlpha } },
       { id: betaId, changes: { "system.brand": brandBeta } },
@@ -732,8 +686,6 @@ test.describe("Document browser", () => {
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
 
-    // The brand group is a global dynamic filter: collapsed by default, with
-    // one option per distinct non-empty brand across the indexed content.
     const brandGroup = documentBrowser.locator(
       'fieldset.cpr-browser-filter-tristate[data-filter-id="brand"]',
     );
@@ -751,14 +703,12 @@ test.describe("Document browser", () => {
     });
     await expect(alphaOption).toHaveCount(1);
     await expect(betaOption).toHaveCount(1);
-    // A brand no indexed item carries is never offered as an option.
     await expect(
       brandGroup.locator(".cpr-browser-tristate-row", {
         hasText: `${nameTag} Gamma`,
       }),
     ).toHaveCount(0);
 
-    // One click takes the tri-state to "only": results scope to that brand.
     const alphaTristate = alphaOption.locator(".cpr-browser-tristate");
     await alphaTristate.click();
     await expect(alphaTristate).toHaveAttribute("data-state", "only");
@@ -790,8 +740,6 @@ test.describe("Document browser", () => {
       name: excellentName,
     });
 
-    // One weapon per quality (setup, not the action under test). Only weapon
-    // and cyberdeck carry a quality field, so the fixtures are weapons.
     await updateItemFields(game, [
       { id: stdId, changes: { "system.quality": "standard" } },
       { id: poorId, changes: { "system.quality": "poor" } },
@@ -804,7 +752,6 @@ test.describe("Document browser", () => {
     const qualitySelect = documentBrowser.locator(".cpr-browser-quality");
 
     await searchItems(documentBrowser, nameTag);
-    // Within one type the rows sort by name: excel, poor, std.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
       excellentName,
@@ -824,7 +771,6 @@ test.describe("Document browser", () => {
       );
     }
 
-    // Clearing the select restores every quality.
     await qualitySelect.selectOption("");
     await expect(entries).toHaveCount(3);
   });
@@ -833,8 +779,6 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const nameTag = uniqueName("price-category");
-    // Market prices that land in three distinct categories (setup): 25 is
-    // everyday, 75 is costly, 600 is expensive.
     const everydayName = `${nameTag} everyday`;
     const costlyName = `${nameTag} costly`;
     const expensiveName = `${nameTag} expensive`;
@@ -869,7 +813,6 @@ test.describe("Document browser", () => {
     );
 
     await searchItems(documentBrowser, nameTag);
-    // Within one type the rows sort by name: costly, everyday, expensive.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
       costlyName,
@@ -877,7 +820,6 @@ test.describe("Document browser", () => {
       expensiveName,
     ]);
 
-    // "Equals costly" keeps only the costly-priced gear.
     await opSelect.selectOption("eq");
     await valueSelect.selectOption("costly");
     await expect(entries).toHaveCount(1);
@@ -885,7 +827,6 @@ test.describe("Document browser", () => {
       costlyName,
     );
 
-    // "At least costly" keeps costly and everything pricier.
     await opSelect.selectOption("gte");
     await expect(entries).toHaveCount(2);
     await expect(entries.locator(".item-header-name")).toHaveText([
@@ -893,7 +834,6 @@ test.describe("Document browser", () => {
       expensiveName,
     ]);
 
-    // "At most costly" keeps costly and everything cheaper.
     await opSelect.selectOption("lte");
     await expect(entries).toHaveCount(2);
     await expect(entries.locator(".item-header-name")).toHaveText([
@@ -901,8 +841,6 @@ test.describe("Document browser", () => {
       everydayName,
     ]);
 
-    // The category compare stacks with the sidebar price range: "at least
-    // costly" plus a 500 market floor leaves only the expensive gear.
     await opSelect.selectOption("gte");
     await priceMin.fill("500");
     await priceMin.blur();
@@ -932,8 +870,6 @@ test.describe("Document browser", () => {
       name: implantName,
     });
 
-    // Two cyberweapons with distinct rates of fire and one plain implant
-    // (setup, not the action under test).
     await updateItemFields(game, [
       { id: weaponAId, changes: { "system.isWeapon": true, "system.rof": 5 } },
       { id: weaponBId, changes: { "system.isWeapon": true, "system.rof": 2 } },
@@ -947,7 +883,6 @@ test.describe("Document browser", () => {
     );
 
     await searchItems(documentBrowser, nameTag);
-    // Within one type the rows sort by name: implant, weaponA, weaponB.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
       implantName,
@@ -955,14 +890,11 @@ test.describe("Document browser", () => {
       weaponBName,
     ]);
 
-    // The type box starts collapsed; expand it to reach the in-box filters.
     await cyberwareBox.locator(".cpr-browser-collapse-toggle").click();
     const isWeaponToggle = cyberwareBox.locator(
       '.cpr-browser-tristate[data-toggle="1"][data-filter="isWeapon"]',
     );
 
-    // One click takes the toggle to "only": only cyberweapons match, and the
-    // nested weapon-stat filters are revealed for them.
     await isWeaponToggle.click();
     await expect(isWeaponToggle).toHaveAttribute("data-state", "only");
     const nested = cyberwareBox.locator(".cpr-browser-toggle-nested");
@@ -973,7 +905,6 @@ test.describe("Document browser", () => {
       weaponBName,
     ]);
 
-    // The nested rof range narrows the cyberweapons by rate of fire.
     const rofMin = nested.locator('.cpr-browser-range-min[data-filter="rof"]');
     await rofMin.fill("4");
     await rofMin.blur();
@@ -1003,9 +934,6 @@ test.describe("Document browser", () => {
       name: bothName,
     });
 
-    // Distinct location coverage and SPs (setup, not the action under test):
-    // body keeps its 7-SP body default; head covers only the head at 9 SP;
-    // both covers body (14 SP) and head (3 SP).
     await updateItemFields(game, [
       {
         id: headId,
@@ -1033,7 +961,6 @@ test.describe("Document browser", () => {
     );
 
     await searchItems(documentBrowser, nameTag);
-    // Within one type the rows sort by name: body, both, head.
     await expect(entries).toHaveCount(3);
     await expect(entries.locator(".item-header-name")).toHaveText([
       bodyName,
@@ -1041,14 +968,11 @@ test.describe("Document browser", () => {
       headName,
     ]);
 
-    // The type box starts collapsed; expand it to reach the in-box filters.
     await armorBox.locator(".cpr-browser-collapse-toggle").click();
     const bodyOption = armorBox.locator(
       '.cpr-browser-tristate[data-set="1"][data-filter="armorLocation"][data-value="body"]',
     );
 
-    // "Only body" keeps the pure body piece — the body-and-head piece derives
-    // as "both", not "body".
     await bodyOption.click();
     await expect(bodyOption).toHaveAttribute("data-state", "only");
     await expect(entries).toHaveCount(1);
@@ -1056,12 +980,9 @@ test.describe("Document browser", () => {
       bodyName,
     );
 
-    // Cycling the option back to include restores every armor.
     await cycleTo(bodyOption, "include");
     await expect(entries).toHaveCount(3);
 
-    // The SP range matches any location the armor actually uses: only the
-    // body-and-head piece has a used location at or above 10 SP.
     const spMin = armorBox.locator(
       '.cpr-browser-range-min[data-filter="armorSp"]',
     );
@@ -1088,7 +1009,6 @@ test.describe("Document browser", () => {
       name: twohandName,
     });
 
-    // One concealable one-handed weapon and one two-handed weapon (setup).
     await updateItemFields(game, [
       {
         id: concealedId,
@@ -1108,17 +1028,14 @@ test.describe("Document browser", () => {
     );
 
     await searchItems(documentBrowser, nameTag);
-    // Within one type the rows sort by name: concealed, twohand.
     await expect(entries).toHaveCount(2);
     await expect(entries.locator(".item-header-name")).toHaveText([
       concealedName,
       twohandName,
     ]);
 
-    // The type box starts collapsed; expand it to reach the in-box filters.
     await weaponBox.locator(".cpr-browser-collapse-toggle").click();
 
-    // A hands floor of 2 keeps only the two-handed weapon.
     const handsMin = weaponBox.locator(
       '.cpr-browser-range-min[data-filter="hands"]',
     );
@@ -1129,8 +1046,6 @@ test.describe("Document browser", () => {
       twohandName,
     );
 
-    // Clearing the range and asking for concealable weapons keeps only the
-    // concealed one.
     await handsMin.fill("");
     await handsMin.blur();
     await expect(entries).toHaveCount(2);
@@ -1151,9 +1066,6 @@ test.describe("Document browser", () => {
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
 
-    // The browser appends rows in batches of 50; once settled it has rendered
-    // the whole indexed set (the core compendia alone hold far more than one
-    // batch), so the footer's shown/total agree and every row is present.
     const countText = await documentBrowser
       .locator(".cpr-browser-result-count")
       .innerText();
@@ -1167,7 +1079,6 @@ test.describe("Document browser", () => {
       total,
     );
 
-    // A name nothing carries leaves the empty state and a zeroed footer.
     await searchItems(documentBrowser, uniqueName("no-such-item"));
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(0);
     await expect(documentBrowser.locator(".cpr-browser-empty")).toHaveText(
@@ -1193,7 +1104,6 @@ test.describe("Document browser", () => {
       name: childName,
     });
 
-    // Install the child in the host (setup, not the action under test).
     await updateItemFields(game, [
       { id: hostId, changes: { "system.installedItems.list": [childId] } },
     ]);
@@ -1201,19 +1111,15 @@ test.describe("Document browser", () => {
     const documentBrowser = await openItemBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
     await searchItems(documentBrowser, nameTag);
-    // Within one type the rows sort by name: host, implant.
     const hostRow = browserRowByName(game, documentBrowser, hostName);
     const childRow = browserRowByName(game, documentBrowser, childName);
     await expect(hostRow).toHaveCount(1);
     await expect(childRow).toHaveCount(1);
 
-    // Only the host has installed items, so only its row gets an expand
-    // control.
     const expand = hostRow.locator(".cpr-browser-expand");
     await expect(expand).toBeVisible();
     await expect(childRow.locator(".cpr-browser-expand")).toHaveCount(0);
 
-    // Expanding reveals the installed tree with the child's type tag and name.
     await expand.click();
     const tree = documentBrowser.locator("li.cpr-browser-installed");
     await expect(tree).toHaveCount(1);
@@ -1222,7 +1128,6 @@ test.describe("Document browser", () => {
     await expect(childEntry.locator(".type-tag")).toHaveText("Cyberware");
     await expect(childEntry.locator(".item-view")).toContainText(childName);
 
-    // Collapsing removes the tree again.
     await expand.click();
     await expect(tree).toHaveCount(0);
   });
@@ -1242,7 +1147,6 @@ test.describe("Document browser", () => {
       targetType: "weapon",
     });
 
-    // Load the upgrade into the weapon (setup, not the action under test).
     await updateItemFields(game, [
       { id: hostId, changes: { "system.installedItems.list": [childId] } },
     ]);
@@ -1258,7 +1162,6 @@ test.describe("Document browser", () => {
     await expect(tree).toHaveCount(1);
     await expect(tree.locator(".type-tag")).toHaveText("Upgrade");
 
-    // Clicking the installed item's name opens its world sheet.
     await tree.locator(".item-view").click();
     await expectSheetRendered(game, { collection: "items", id: childId });
   });
@@ -1267,8 +1170,6 @@ test.describe("Document browser", () => {
     page: game,
   }) => {
     const nameTag = uniqueName("excluded");
-    // World documents of every excluded type, plus a visible gear and a gear
-    // that opts out of the browser (setup, not the action under test).
     await createItemClosed(game, {
       type: "skill",
       name: `${nameTag} skill`,
@@ -1294,7 +1195,6 @@ test.describe("Document browser", () => {
       { id: ignoredId, changes: { "system.ignoredByBrowser": true } },
     ]);
 
-    // A compendium with the same exclusions: an opted-out gear and a skill.
     const { id: packId } = await createItemCompendium(game, "E2E excluded");
     await createCompendiumItem(game, {
       packId,
@@ -1311,8 +1211,6 @@ test.describe("Document browser", () => {
     await waitForBrowserResultsSettled(documentBrowser);
     const entries = documentBrowser.locator(".cpr-browser-entry");
 
-    // Only the plain world gear survives: excluded types and opted-out items
-    // are dropped from both the world and compendium sources.
     await searchItems(documentBrowser, nameTag);
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
@@ -1329,8 +1227,6 @@ test.describe("Document browser", () => {
       game,
       "E2E compendia settings",
     );
-    // Seed the pack; the helper deletes the staging world item afterwards so
-    // only the compendium entry carries the name.
     await createCompendiumItem(game, { packId, name: packedName });
 
     const documentBrowser = await openItemBrowser(game);
@@ -1342,26 +1238,22 @@ test.describe("Document browser", () => {
       packedName,
     );
 
-    // The GM-only gear opens the compendia settings window.
     const settings = game.locator("#cpr-browser-compendia");
     await documentBrowser
       .locator('[data-action="openCompendiaSettings"]')
       .click();
     await expect(settings).toBeVisible();
 
-    // Disabling the pack removes its entries from the browser.
     const packCheckbox = settings.locator(`input[data-pack-id="${packId}"]`);
     await expect(packCheckbox).toBeChecked();
     await packCheckbox.uncheck();
     await settings.locator('button[type="submit"]').click();
-    // Saving closes the window.
     await expect(settings).toHaveCount(0);
 
     await waitForBrowserResultsSettled(documentBrowser);
     await expect(entries).toHaveCount(0);
     await expect(documentBrowser.locator(".cpr-browser-empty")).toBeVisible();
 
-    // Re-enabling the pack brings its entries back.
     await dismissNotifications(game);
     await documentBrowser
       .locator('[data-action="openCompendiaSettings"]')
