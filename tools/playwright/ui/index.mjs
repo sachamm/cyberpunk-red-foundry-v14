@@ -86,6 +86,7 @@ export {
   createItemCompendium,
   cycleTo,
   openItemBrowser,
+  waitForBrowserResultsSettled,
 } from "./document-browser.mjs";
 export {
   expectModEntry,

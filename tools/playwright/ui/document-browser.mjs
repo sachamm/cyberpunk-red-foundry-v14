@@ -22,6 +22,17 @@ export async function openItemBrowser(page, { readySelector = null } = {}) {
   return documentBrowser;
 }
 
+// The results footer is only visible while batches are still appending (CSS
+// hides it once the final batch lands), so visibility is not a usable signal:
+// settled means the footer exists and no longer carries the loading class.
+export async function waitForBrowserResultsSettled(documentBrowser) {
+  const footer = documentBrowser.locator(".cpr-browser-results-footer");
+  await expect(footer).toHaveCount(1, { timeout: 30000 });
+  await expect(footer).not.toHaveClass(/cpr-browser-loading/, {
+    timeout: 30000,
+  });
+}
+
 export async function cycleTo(locator, target) {
   for (let i = 0; i < 4; i += 1) {
     if ((await locator.getAttribute("data-state")) === target) return;
