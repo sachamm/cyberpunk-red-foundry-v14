@@ -3,7 +3,9 @@ import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
   closeDocSheet,
   createDocumentViaUI,
+  createItemCompendium,
   cycleTo,
+  dismissNotifications,
   expectSheetRendered,
   openItemBrowser,
   uniqueName,
@@ -855,6 +857,729 @@ test.describe("Document browser", () => {
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
       alphaName,
+    );
+  });
+
+  test("quality filter narrows to a single quality and restores all on clear", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("quality");
+    const stdName = `${nameTag} std`;
+    const poorName = `${nameTag} poor`;
+    const excellentName = `${nameTag} excel`;
+    const stdId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: stdName,
+    });
+    await closeDocSheet(game, { collection: "items", id: stdId });
+    const poorId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: poorName,
+    });
+    await closeDocSheet(game, { collection: "items", id: poorId });
+    const excellentId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: excellentName,
+    });
+    await closeDocSheet(game, { collection: "items", id: excellentId });
+
+    // One weapon per quality (setup, not the action under test). Only weapon
+    // and cyberdeck carry a quality field, so the fixtures are weapons.
+    await game.evaluate(
+      async ({ stdId, poorId, excellentId }) => {
+        await game.items.get(stdId).update({ "system.quality": "standard" });
+        await game.items.get(poorId).update({ "system.quality": "poor" });
+        await game.items
+          .get(excellentId)
+          .update({ "system.quality": "excellent" });
+      },
+      { stdId, poorId, excellentId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    const qualitySelect = documentBrowser.locator(".cpr-browser-quality");
+
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    // Within one type the rows sort by name: excel, poor, std.
+    await expect(entries).toHaveCount(3);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      excellentName,
+      poorName,
+      stdName,
+    ]);
+
+    for (const [value, name] of [
+      ["poor", poorName],
+      ["excellent", excellentName],
+      ["standard", stdName],
+    ]) {
+      await qualitySelect.selectOption(value);
+      await expect(entries).toHaveCount(1);
+      await expect(entries.first().locator(".item-header-name")).toHaveText(
+        name,
+      );
+    }
+
+    // Clearing the select restores every quality.
+    await qualitySelect.selectOption("");
+    await expect(entries).toHaveCount(3);
+  });
+
+  test("price-category compare narrows results and stacks with the price range", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("price-category");
+    // Market prices that land in three distinct categories (setup): 25 is
+    // everyday, 75 is costly, 600 is expensive.
+    const everydayName = `${nameTag} everyday`;
+    const costlyName = `${nameTag} costly`;
+    const expensiveName = `${nameTag} expensive`;
+    const everydayId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: everydayName,
+    });
+    await closeDocSheet(game, { collection: "items", id: everydayId });
+    const costlyId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: costlyName,
+    });
+    await closeDocSheet(game, { collection: "items", id: costlyId });
+    const expensiveId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: expensiveName,
+    });
+    await closeDocSheet(game, { collection: "items", id: expensiveId });
+
+    await game.evaluate(
+      async ({ everydayId, costlyId, expensiveId }) => {
+        await game.items.get(everydayId).update({ "system.price.market": 25 });
+        await game.items.get(costlyId).update({ "system.price.market": 75 });
+        await game.items
+          .get(expensiveId)
+          .update({ "system.price.market": 600 });
+      },
+      { everydayId, costlyId, expensiveId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    const opSelect = documentBrowser.locator(
+      ".cpr-browser-price-category-op",
+    );
+    const valueSelect = documentBrowser.locator(
+      ".cpr-browser-price-category-value",
+    );
+    const priceMin = documentBrowser.locator(
+      ".cpr-browser-sidebar .cpr-browser-price-min",
+    );
+
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    // Within one type the rows sort by name: costly, expensive, everyday.
+    await expect(entries).toHaveCount(3);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      costlyName,
+      expensiveName,
+      everydayName,
+    ]);
+
+    // "Equals costly" keeps only the costly-priced gear.
+    await opSelect.selectOption("eq");
+    await valueSelect.selectOption("costly");
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      costlyName,
+    );
+
+    // "At least costly" keeps costly and everything pricier.
+    await opSelect.selectOption("gte");
+    await expect(entries).toHaveCount(2);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      costlyName,
+      expensiveName,
+    ]);
+
+    // "At most costly" keeps costly and everything cheaper.
+    await opSelect.selectOption("lte");
+    await expect(entries).toHaveCount(2);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      costlyName,
+      everydayName,
+    ]);
+
+    // The category compare stacks with the sidebar price range: "at least
+    // costly" plus a 500 market floor leaves only the expensive gear.
+    await opSelect.selectOption("gte");
+    await priceMin.fill("500");
+    await priceMin.blur();
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      expensiveName,
+    );
+  });
+
+  test("cyberweapon toggle narrows to cyberweapons and exposes their weapon stat filters", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("cyberweapon");
+    const weaponAName = `${nameTag} weaponA`;
+    const weaponBName = `${nameTag} weaponB`;
+    const implantName = `${nameTag} implant`;
+    const weaponAId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "cyberware",
+      name: weaponAName,
+    });
+    await closeDocSheet(game, { collection: "items", id: weaponAId });
+    const weaponBId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "cyberware",
+      name: weaponBName,
+    });
+    await closeDocSheet(game, { collection: "items", id: weaponBId });
+    const implantId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "cyberware",
+      name: implantName,
+    });
+    await closeDocSheet(game, { collection: "items", id: implantId });
+
+    // Two cyberweapons with distinct rates of fire and one plain implant
+    // (setup, not the action under test).
+    await game.evaluate(
+      async ({ weaponAId, weaponBId }) => {
+        await game.items
+          .get(weaponAId)
+          .update({ "system.isWeapon": true, "system.rof": 5 });
+        await game.items
+          .get(weaponBId)
+          .update({ "system.isWeapon": true, "system.rof": 2 });
+      },
+      { weaponAId, weaponBId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    const cyberwareBox = documentBrowser.locator(
+      '.cpr-browser-typebox[data-type="cyberware"]',
+    );
+
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    // Within one type the rows sort by name: implant, weaponA, weaponB.
+    await expect(entries).toHaveCount(3);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      implantName,
+      weaponAName,
+      weaponBName,
+    ]);
+
+    // The type box starts collapsed; expand it to reach the in-box filters.
+    await cyberwareBox.locator(".cpr-browser-collapse-toggle").click();
+    const isWeaponToggle = cyberwareBox.locator(
+      '.cpr-browser-tristate[data-toggle="1"][data-filter="isWeapon"]',
+    );
+
+    // One click takes the toggle to "only": only cyberweapons match, and the
+    // nested weapon-stat filters are revealed for them.
+    await isWeaponToggle.click();
+    await expect(isWeaponToggle).toHaveAttribute("data-state", "only");
+    const nested = cyberwareBox.locator(".cpr-browser-toggle-nested");
+    await expect(nested).toBeVisible();
+    await expect(entries).toHaveCount(2);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      weaponAName,
+      weaponBName,
+    ]);
+
+    // The nested rof range narrows the cyberweapons by rate of fire.
+    const rofMin = nested.locator('.cpr-browser-range-min[data-filter="rof"]');
+    await rofMin.fill("4");
+    await rofMin.blur();
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      weaponAName,
+    );
+  });
+
+  test("armor location and SP filters narrow to the matching armor", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("armor");
+    const bodyName = `${nameTag} body`;
+    const headName = `${nameTag} head`;
+    const bothName = `${nameTag} both`;
+    const bodyId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "armor",
+      name: bodyName,
+    });
+    await closeDocSheet(game, { collection: "items", id: bodyId });
+    const headId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "armor",
+      name: headName,
+    });
+    await closeDocSheet(game, { collection: "items", id: headId });
+    const bothId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "armor",
+      name: bothName,
+    });
+    await closeDocSheet(game, { collection: "items", id: bothId });
+
+    // Distinct location coverage and SPs (setup, not the action under test):
+    // body keeps its 7-SP body default; head covers only the head at 9 SP;
+    // both covers body (14 SP) and head (3 SP).
+    await game.evaluate(
+      async ({ headId, bothId }) => {
+        await game.items.get(headId).update({
+          "system.isBodyLocation": false,
+          "system.isHeadLocation": true,
+          "system.headLocation.sp": 9,
+        });
+        await game.items.get(bothId).update({
+          "system.isHeadLocation": true,
+          "system.bodyLocation.sp": 14,
+          "system.headLocation.sp": 3,
+        });
+      },
+      { headId, bothId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    const armorBox = documentBrowser.locator(
+      '.cpr-browser-typebox[data-type="armor"]',
+    );
+
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    // Within one type the rows sort by name: both, body, head.
+    await expect(entries).toHaveCount(3);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      bothName,
+      bodyName,
+      headName,
+    ]);
+
+    // The type box starts collapsed; expand it to reach the in-box filters.
+    await armorBox.locator(".cpr-browser-collapse-toggle").click();
+    const bodyOption = armorBox.locator(
+      '.cpr-browser-tristate[data-set="1"][data-filter="armorLocation"][data-value="body"]',
+    );
+
+    // "Only body" keeps the pure body piece — the body-and-head piece derives
+    // as "both", not "body".
+    await bodyOption.click();
+    await expect(bodyOption).toHaveAttribute("data-state", "only");
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      bodyName,
+    );
+
+    // Cycling the option back to include restores every armor.
+    await cycleTo(bodyOption, "include");
+    await expect(entries).toHaveCount(3);
+
+    // The SP range matches any location the armor actually uses: only the
+    // body-and-head piece has a used location at or above 10 SP.
+    const spMin = armorBox.locator('.cpr-browser-range-min[data-filter="armorSp"]');
+    await spMin.fill("10");
+    await spMin.blur();
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      bothName,
+    );
+  });
+
+  test("weapon hands range and concealable filter narrow to the matching weapon", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("weapon-filter");
+    const concealedName = `${nameTag} concealed`;
+    const twohandName = `${nameTag} twohand`;
+    const concealedId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: concealedName,
+    });
+    await closeDocSheet(game, { collection: "items", id: concealedId });
+    const twohandId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: twohandName,
+    });
+    await closeDocSheet(game, { collection: "items", id: twohandId });
+
+    // One concealable one-handed weapon and one two-handed weapon (setup).
+    await game.evaluate(
+      async ({ concealedId, twohandId }) => {
+        await game.items.get(concealedId).update({
+          "system.handsReq": 1,
+          "system.concealable.concealable": true,
+        });
+        await game.items.get(twohandId).update({ "system.handsReq": 2 });
+      },
+      { concealedId, twohandId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    const weaponBox = documentBrowser.locator(
+      '.cpr-browser-typebox[data-type="weapon"]',
+    );
+
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    // Within one type the rows sort by name: concealed, twohand.
+    await expect(entries).toHaveCount(2);
+    await expect(entries.locator(".item-header-name")).toHaveText([
+      concealedName,
+      twohandName,
+    ]);
+
+    // The type box starts collapsed; expand it to reach the in-box filters.
+    await weaponBox.locator(".cpr-browser-collapse-toggle").click();
+
+    // A hands floor of 2 keeps only the two-handed weapon.
+    const handsMin = weaponBox.locator(
+      '.cpr-browser-range-min[data-filter="hands"]',
+    );
+    await handsMin.fill("2");
+    await handsMin.blur();
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      twohandName,
+    );
+
+    // Clearing the range and asking for concealable weapons keeps only the
+    // concealed one.
+    await handsMin.fill("");
+    await handsMin.blur();
+    await expect(entries).toHaveCount(2);
+    const concealableToggle = weaponBox.locator(
+      '.cpr-browser-tristate[data-bool="1"][data-filter="concealable"]',
+    );
+    await concealableToggle.click();
+    await expect(concealableToggle).toHaveAttribute("data-state", "only");
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      concealedName,
+    );
+  });
+
+  test("renders every indexed result once loading settles and shows an empty state for no matches", async ({
+    page: game,
+  }) => {
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+
+    // The browser appends rows in batches of 50; once settled it has rendered
+    // the whole indexed set (the core compendia alone hold far more than one
+    // batch), so the footer's shown/total agree and every row is present.
+    const countText = await documentBrowser
+      .locator(".cpr-browser-result-count")
+      .innerText();
+    const match = countText.match(/Showing (\d+) of (\d+)/);
+    expect(match).not.toBeNull();
+    const shown = Number(match[1]);
+    const total = Number(match[2]);
+    expect(shown).toBe(total);
+    expect(total).toBeGreaterThan(50);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(
+      total,
+    );
+
+    // A name nothing carries leaves the empty state and a zeroed footer.
+    await documentBrowser
+      .locator(".cpr-browser-name-input")
+      .fill(uniqueName("no-such-item"));
+    await waitForBrowserResultsSettled(documentBrowser);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(0);
+    await expect(documentBrowser.locator(".cpr-browser-empty")).toHaveText(
+      "No matching documents.",
+    );
+    await expect(documentBrowser.locator(".cpr-browser-result-count")).toHaveText(
+      "Showing 0 of 0",
+    );
+  });
+
+  test("expands and collapses the installed-items tree under a result row", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("installed-tree");
+    const hostName = `${nameTag} host`;
+    const childName = `${nameTag} implant`;
+    const hostId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "cyberware",
+      name: hostName,
+    });
+    await closeDocSheet(game, { collection: "items", id: hostId });
+    const childId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "cyberware",
+      name: childName,
+    });
+    await closeDocSheet(game, { collection: "items", id: childId });
+
+    // Install the child in the host (setup, not the action under test).
+    await game.evaluate(
+      ({ hostId, childId }) =>
+        game.items
+          .get(hostId)
+          .update({ "system.installedItems.list": [childId] }),
+      { hostId, childId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    // Within one type the rows sort by name: host, implant.
+    const hostRow = documentBrowser.locator(".cpr-browser-entry").filter({
+      has: game.locator(".item-header-name", { hasText: hostName }),
+    });
+    const childRow = documentBrowser.locator(".cpr-browser-entry").filter({
+      has: game.locator(".item-header-name", { hasText: childName }),
+    });
+    await expect(hostRow).toHaveCount(1);
+    await expect(childRow).toHaveCount(1);
+
+    // Only the host has installed items, so only its row gets an expand
+    // control.
+    const expand = hostRow.locator(".cpr-browser-expand");
+    await expect(expand).toBeVisible();
+    await expect(childRow.locator(".cpr-browser-expand")).toHaveCount(0);
+
+    // Expanding reveals the installed tree with the child's type tag and name.
+    await expand.click();
+    const tree = documentBrowser.locator("li.cpr-browser-installed");
+    await expect(tree).toHaveCount(1);
+    const childEntry = tree.locator("li.item");
+    await expect(childEntry).toHaveCount(1);
+    await expect(childEntry.locator(".type-tag")).toHaveText("Cyberware");
+    await expect(childEntry.locator(".item-view")).toContainText(childName);
+
+    // Collapsing removes the tree again.
+    await expand.click();
+    await expect(tree).toHaveCount(0);
+  });
+
+  test("opens the sheet of an installed item from its tree entry", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("installed-open");
+    const hostName = `${nameTag} weapon`;
+    const childName = `${nameTag} upgrade`;
+    const hostId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: hostName,
+    });
+    await closeDocSheet(game, { collection: "items", id: hostId });
+    const childId = await createUpgrade(game, {
+      name: childName,
+      targetType: "weapon",
+    });
+
+    // Load the upgrade into the weapon (setup, not the action under test).
+    await game.evaluate(
+      ({ hostId, childId }) =>
+        game.items
+          .get(hostId)
+          .update({ "system.installedItems.list": [childId] }),
+      { hostId, childId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
+
+    const hostRow = documentBrowser.locator(".cpr-browser-entry").filter({
+      has: game.locator(".item-header-name", { hasText: hostName }),
+    });
+    await hostRow.locator(".cpr-browser-expand").click();
+    const tree = documentBrowser.locator("li.cpr-browser-installed");
+    await expect(tree).toHaveCount(1);
+    await expect(tree.locator(".type-tag")).toHaveText("Upgrade");
+
+    // Clicking the installed item's name opens its world sheet.
+    await tree.locator(".item-view").click();
+    await expectSheetRendered(game, { collection: "items", id: childId });
+  });
+
+  test("excludes character-mechanic types and browser-ignored items from world and compendium sources", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("excluded");
+    // World documents of every excluded type, plus a visible gear and a gear
+    // that opts out of the browser (setup, not the action under test).
+    const skillId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "skill",
+      name: `${nameTag} skill`,
+    });
+    await closeDocSheet(game, { collection: "items", id: skillId });
+    const injuryId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "criticalInjury",
+      name: `${nameTag} injury`,
+    });
+    await closeDocSheet(game, { collection: "items", id: injuryId });
+    const roleId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "role",
+      name: `${nameTag} role`,
+    });
+    await closeDocSheet(game, { collection: "items", id: roleId });
+    const normalName = `${nameTag} normal`;
+    const normalId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: normalName,
+    });
+    await closeDocSheet(game, { collection: "items", id: normalId });
+    const ignoredId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: `${nameTag} ignored`,
+    });
+    await closeDocSheet(game, { collection: "items", id: ignoredId });
+    await game.evaluate(
+      ({ ignoredId }) =>
+        game.items
+          .get(ignoredId)
+          .update({ "system.ignoredByBrowser": true }),
+      { ignoredId },
+    );
+
+    // A compendium with the same exclusions: an opted-out gear and a skill.
+    const { id: packId } = await createItemCompendium(game, "E2E excluded");
+    const packedIgnoredId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: `${nameTag} packed-ignored`,
+    });
+    await closeDocSheet(game, { collection: "items", id: packedIgnoredId });
+    const packedSkillId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "skill",
+      name: `${nameTag} packed-skill`,
+    });
+    await closeDocSheet(game, { collection: "items", id: packedSkillId });
+    await game.evaluate(
+      async ({ packId, packedIgnoredId, packedSkillId }) => {
+        await game.items
+          .get(packedIgnoredId)
+          .update({ "system.ignoredByBrowser": true });
+        const pack = game.packs.get(packId);
+        for (const itemId of [packedIgnoredId, packedSkillId]) {
+          const item = game.items.get(itemId);
+          await pack.importDocument(item);
+          await item?.delete();
+        }
+      },
+      { packId, packedIgnoredId, packedSkillId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+
+    // Only the plain world gear survives: excluded types and opted-out items
+    // are dropped from both the world and compendium sources.
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      normalName,
+    );
+  });
+
+  test("GM can disable and re-enable a compendium in the browser via the settings menu", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("compendia-settings");
+    const packedName = `${nameTag} packed`;
+    const { id: packId } = await createItemCompendium(
+      game,
+      "E2E compendia settings",
+    );
+    // Seed the pack from a UI-created world item, then delete the staging
+    // world item so only the compendium entry carries the name.
+    const stagingId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "gear",
+      name: packedName,
+    });
+    await closeDocSheet(game, { collection: "items", id: stagingId });
+    await game.evaluate(
+      async ({ packId, itemId }) => {
+        const pack = game.packs.get(packId);
+        const item = game.items.get(itemId);
+        await pack.importDocument(item);
+        await item?.delete();
+      },
+      { packId, itemId: stagingId },
+    );
+
+    const documentBrowser = await openItemBrowser(game);
+    await waitForBrowserResultsSettled(documentBrowser);
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      packedName,
+    );
+
+    // The GM-only gear opens the compendia settings window.
+    const settings = game.locator("#cpr-browser-compendia");
+    await documentBrowser
+      .locator('[data-action="openCompendiaSettings"]')
+      .click();
+    await expect(settings).toBeVisible();
+
+    // Disabling the pack removes its entries from the browser.
+    const packCheckbox = settings.locator(
+      `input[data-pack-id="${packId}"]`,
+    );
+    await expect(packCheckbox).toBeChecked();
+    await packCheckbox.uncheck();
+    await settings.locator('button[type="submit"]').click();
+    // Saving closes the window.
+    await expect(settings).toHaveCount(0);
+
+    await waitForBrowserResultsSettled(documentBrowser);
+    await expect(entries).toHaveCount(0);
+    await expect(documentBrowser.locator(".cpr-browser-empty")).toBeVisible();
+
+    // Re-enabling the pack brings its entries back.
+    await dismissNotifications(game);
+    await documentBrowser
+      .locator('[data-action="openCompendiaSettings"]')
+      .click();
+    await expect(settings).toBeVisible();
+    const reopenedCheckbox = settings.locator(
+      `input[data-pack-id="${packId}"]`,
+    );
+    await expect(reopenedCheckbox).not.toBeChecked();
+    await reopenedCheckbox.check();
+    await settings.locator('button[type="submit"]').click();
+    await expect(settings).toHaveCount(0);
+
+    await waitForBrowserResultsSettled(documentBrowser);
+    await expect(entries).toHaveCount(1);
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
+      packedName,
     );
   });
 });
