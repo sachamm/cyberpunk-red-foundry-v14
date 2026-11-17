@@ -20,7 +20,11 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Range: 1 mile.</p>
+      <p>
+        Track a linked
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.IqXTqNGBmSuigIWv]{Tracer Button}
+        up to 1 mile.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

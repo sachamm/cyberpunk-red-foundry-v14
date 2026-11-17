@@ -21,7 +21,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>For one person.</p>
+      <p>Provides shelter from the weather and space for one person.</p>
   equipped: owned
   favorite: false
   installedItems:

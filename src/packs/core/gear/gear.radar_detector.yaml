@@ -20,7 +20,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Detect radar beam. Range: 100m/yd</p>
+      <p>Detect radar beams up to 100m/yd away.</p>
   equipped: owned
   favorite: false
   installedItems:

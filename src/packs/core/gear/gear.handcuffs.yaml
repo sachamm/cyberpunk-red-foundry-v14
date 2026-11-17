@@ -20,7 +20,9 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>BODY>10 can break.</p>
+      <p>
+        Physically restrain any individual with less than 10 <strong>BODY</strong>.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

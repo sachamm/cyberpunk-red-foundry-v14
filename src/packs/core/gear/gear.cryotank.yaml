@@ -21,6 +21,12 @@ system:
   description:
     value: |
       <p>Holds a fully-sized human, heals injuries faster than normal.</p>
+      <blockquote>
+        <p>
+          Can only be used by a <strong>Medtech</strong> with
+          <strong>Cryosystem</strong> training.
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   installedItems:

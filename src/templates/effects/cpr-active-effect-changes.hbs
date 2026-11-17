@@ -28,7 +28,7 @@
           {{change.keyInput}}
         </div>
         <div class="change-value force-submit">
-          <input type="text" name="system.changes.{{i}}.value" value="{{change.value}}"/>
+          <input type="text" name="system.changes.{{i}}.value" data-dtype="Number" value="{{change.value}}"/>
         </div>
         <div class="change-mode force-submit">
           {{#if (cprCompare change.category "===" "stat")}}

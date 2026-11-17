@@ -20,7 +20,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Makes drum sounds when connected to amplifier.</p>
+      <p>
+        Makes drum sounds when connected to
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

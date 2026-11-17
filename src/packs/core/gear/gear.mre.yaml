@@ -20,7 +20,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Portable meal. Self-heating.</p>
+      <p>Portable meal. Self-heating. Ready in 2 minutes.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -49,6 +49,14 @@ export default function CPRScrollableSheetMixin(Base) {
     _preSyncPartState(partId, newElement, priorElement, state) {
       super._preSyncPartState(partId, newElement, priorElement, state);
 
+      // Retains focus on inputs without names between re-renders
+      const focus = priorElement.querySelector(":focus");
+      const itemId = focus?.closest("[data-item-id]")?.dataset.itemId;
+      const itemProp = focus?.dataset.itemProp;
+      if (itemId && itemProp) {
+        state.focus = `[data-item-id="${CSS.escape(itemId)}"] ${focus.tagName}[data-item-prop="${CSS.escape(itemProp)}"]`;
+      }
+
       // Custom elements create their children when connected. Their new
       // .editor-content nodes do not exist yet, so record the field name.
       this.#captureEditorPositions(partId, priorElement);

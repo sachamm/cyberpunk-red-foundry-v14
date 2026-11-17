@@ -20,7 +20,15 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Data storage.</p>
+      <p>Universal data storage device.</p>
+      <blockquote>
+        <p>
+          Use
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gAfBLrpJzkKVtr8o]{Memory Chip}
+          to track items installed into
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.IJarQGKk5rPayoLT]{Chipware Sockets}.
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   installedItems:

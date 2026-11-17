@@ -20,7 +20,13 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Range: 30m/yds. Not usable as weapon.</p>
+      <p>Range: 30m/yds.</p>
+      <blockquote>
+        <p>
+          Not usable as weapon, cannot be used to <strong>Grapple</strong> an
+          opponent.
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   installedItems:

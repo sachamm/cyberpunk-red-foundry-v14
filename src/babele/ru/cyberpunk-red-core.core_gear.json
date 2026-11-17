@@ -28,7 +28,7 @@
     },
     "Agent": {
       "name": "Агент",
-      "description": "<p>Смартфон с ИИ. +2 к проверкам поиска информации и гардероба и стиля, в зависимости от обстоятельств.</p>"
+      "description": "<p>\n  A <strong>Standard Quality</strong> Smartpohone with onboard AI that provides\n  +2 <strong>Library Search</strong>, +2\n  <strong>Wardrobe &amp; Style</strong> depending on circumstance. Includes a\n  touchscreen, microphone, camera, and flashlight.\n</p>\n"
     },
     "Airhypo": {
       "name": "Пневмошприц",
@@ -40,11 +40,11 @@
     },
     "Audio Recorder": {
       "name": "Диктофон",
-      "description": "<p>До суток записи звука на щепке.</p>"
+      "description": "<p>\n  Record up to 24 hours of audio on a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.LKAYRh3Oecskc6kH]{Memory Chip}.\n</p>\n"
     },
     "Auto Level Dampening Ear Protectors": {
       "name": "Противошумные наушники",
-      "description": "<p>Носящий невосприимчив к громким звукам.</p>"
+      "description": "<p>\n  Wearer is immune to loud sounds like those produced by\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.e8gDMbdK1oPKwhqW]{Flashbang Grenades}.\n</p>\n"
     },
     "Binoculars": {
       "name": "Бинокль",
@@ -52,7 +52,7 @@
     },
     "Braindance Viewer": {
       "name": "Проигрыватель брейндансов",
-      "description": "<p>Устройство для просмотра брейндансов.</p>"
+      "description": "<p>A braindance viewing device.</p>\n"
     },
     "Bug Detector": {
       "name": "Обнаружитель жучков",
@@ -60,23 +60,23 @@
     },
     "Carryall": {
       "name": "Дорожная сумка",
-      "description": "<p>Сумка.</p>"
+      "description": "<p>A bag to carry and conceal items.</p>\n"
     },
     "Chemical Analyzer": {
       "name": "Химический анализатор",
-      "description": "<p>Определяет химический состав вещества, используя базу данных.</p>"
+      "description": "<p>Determines the chemical composition of a sample.</p>\n<blockquote>\n  <p>\n    Your GM may require a related <strong>Intelligence</strong> or\n    <strong>Tech</strong> check.\n  </p>\n</blockquote>\n"
     },
     "Computer": {
       "name": "Компьютер",
-      "description": "<p>Настольный или ноутбук.</p>"
+      "description": "<p>A budget desktop or laptop that cannot be used as a Portable Net Arch.</p>\n"
     },
     "Cryopump": {
       "name": "Криопомпа",
-      "description": "<p>Чемоданчик, подключаемый к пострадавшему, чтобы ввести его в стаз.</p>"
+      "description": "<p>\n  Briefcase-sized tool used for hooking up a wounded person. Places them in\n  stasis.\n</p>\n<blockquote>\n  <p>\n    Can only be used by a <strong>Medtech</strong> with\n    <strong>Cryosystem</strong> training.\n  </p>\n</blockquote>\n"
     },
     "Cryotank": {
       "name": "Криокапсула",
-      "description": "<p>Вмещает в себя взрослого человека, раны заживают быстрее обычного.</p>"
+      "description": "<p>Holds a fully-sized human, heals injuries faster than normal.</p>\n<blockquote>\n  <p>\n    Can only be used by a <strong>Medtech</strong> with\n    <strong>Cryosystem</strong> training.\n  </p>\n</blockquote>\n"
     },
     "Disposable Cell Phone": {
       "name": "Одноразовая мобила",
@@ -84,7 +84,7 @@
     },
     "Drum Synthesizer": {
       "name": "Драм-машина",
-      "description": "<p>Подключи к усилителю для извлечения звука барабанов.</p>"
+      "description": "<p>\n  Makes drum sounds when connected to\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}.\n</p>\n"
     },
     "Duct Tape": {
       "name": "Клейкая лента",
@@ -92,7 +92,7 @@
     },
     "Electric Guitar/Other Instrument": {
       "name": "Электрогитара/иной инструмент",
-      "description": "<p>Музыкальный инструмент. Для электрических музыкальных инструментов необходим усилитель.</p>"
+      "description": "<p>\n  Musical instrument. Electric instruments require an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Zp8YbDBMTCl7sy61]{amplifier}\n  or other similar output device.\n</p>\n"
     },
     "Flashlight": {
       "name": "Фонарик",
@@ -112,15 +112,15 @@
     },
     "Grapple Gun": {
       "name": "Крюк-кошка",
-      "description": "<p>Стреляет на 30 м/ярд. Нельзя использовать как оружие.</p>"
+      "description": "<p>Range: 30m/yds.</p>\n<blockquote>\n  <p>\n    Not usable as weapon, cannot be used to <strong>Grapple</strong> an\n    opponent.\n  </p>\n</blockquote>\n"
     },
     "Handcuffs": {
       "name": "Наручники",
-      "description": "<p>Можно сломать, если ТЕЛ > 10.</p>"
+      "description": "<p>\n  Physically restrain any individual with less than 10 <strong>BODY</strong>.\n</p>\n"
     },
     "Homing Tracer": {
       "name": "Радиопеленгатор",
-      "description": "<p>Радиус работы: миля (1.75 км).</p>"
+      "description": "<p>\n  Track a linked\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.IqXTqNGBmSuigIWv]{Tracer Button}\n  up to 1 mile.\n</p>\n"
     },
     "Inflatable Bed & Sleep-bag": {
       "name": "Надувная кровать и спальный мешок",
@@ -132,11 +132,11 @@
     },
     "Linear Frame β (Beta)": {
       "name": "Прямоходный остов β (бета)",
-      "description": "<p>Экзоскелет.</p>\n<ul>\n<li>Требуется два разъёма интерфейса.</li>\n<li>Поднимает ТЕЛ до 14 пока подключён.</li>\n<li>ПЗ и испытание против смерти остаются неизменными.</li>\n</ul>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>\n    Requires 2\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}\n  </li>\n  <li>Increases <strong>BODY</strong> to 14 while plugged in</li>\n</ul>\n<blockquote>\n  <p>\n    Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to\n    <strong>BODY</strong> increase — Not currently supported by system.\n  </p>\n</blockquote>\n"
     },
     "Linear Frame ∑ (Sigma)": {
       "name": "Прямоходный остов ∑ (сигма)",
-      "description": "<p>Экзоскелет.</p>\n<ul>\n<li>Требуется разъём интерфейса.</li>\n<li>Поднимает ТЕЛ до 12 пока подключён.</li>\n<li>ПЗ и испытание против смерти остаются неизменными.</li>\n</ul>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>\n    Requires 1\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plug}\n  </li>\n  <li>Increases <strong>BODY</strong> to 12</li>\n</ul>\n<blockquote>\n  <p>\n    Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to\n    <strong>BODY</strong> increase — Not currently supported by system.\n  </p>\n</blockquote>\n"
     },
     "Lock Picking Set": {
       "name": "Набор медвежатника",
@@ -144,31 +144,31 @@
     },
     "Medscanner": {
       "name": "Медсканер",
-      "description": "<p>+2 к проверкам первой помощи и парамедика.</p>"
+      "description": "<p>\n  Grants users +2 <strong>First Aid</strong> and\n  <strong>Paramedic</strong> checks.\n</p>\n"
     },
     "Medtech Bag": {
       "name": "Сумка медтехника",
-      "description": "<p>Медицинские инструменты.</p>"
+      "description": "<p>A bag filled with basic medical equipment.</p>\n"
     },
     "Memory Chip": {
       "name": "Щепка памяти",
-      "description": "<p>Хранилище данных.</p>"
+      "description": "<p>Universal data storage device.</p>\n<blockquote>\n  <p>\n    Use\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gAfBLrpJzkKVtr8o]{Memory Chip}\n    to track items installed into\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.IJarQGKk5rPayoLT]{Chipware Sockets}.\n  </p>\n</blockquote>\n"
     },
     "MRE": {
       "name": "ИРП",
-      "description": "<p>Переносной паёк. В комплекте нагревательный элемент.</p>"
+      "description": "<p>Portable meal. Self-heating. Ready in 2 minutes.</p>\n"
     },
     "Personal CarePak": {
       "name": "Набор личной гигиены",
-      "description": "<p>Зубная щётка и тому подобное.</p>"
+      "description": "<p>Contains a toothbrush and other personal grooming items.</p>\n"
     },
     "Pocket Amplifier": {
       "name": "Карманный усилитель",
-      "description": "<p>Заряда хватает на 6 часов, можно подключить до двух инструментов.</p>"
+      "description": "<p>\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MfuoJ69NL1FiP7B8]{Battery}\n  powered electronic device that can support up to two electronic instruments.\n</p>\n"
     },
     "Radar Detector": {
       "name": "Антирадар",
-      "description": "<p>Система обнаружения лучей радиолокаторов. Радиус обнаружения: 100 м/ярд.</p>"
+      "description": "<p>Detect radar beams up to 100m/yd away.</p>\n"
     },
     "Radiation Suit": {
       "name": "Радиационный костюм",
@@ -184,7 +184,7 @@
     },
     "Road Flare": {
       "name": "Сигнальная шашка",
-      "description": "<p>Светит час на 100 м/ярд.</p>"
+      "description": "<p>Range: 100m/yd. Duration: 1h. Provides illumination.</p>\n"
     },
     "Rope (60m/yd)": {
       "name": "Верёвка (60 м/ярд)",
@@ -194,37 +194,41 @@
       "name": "Скремблер/Дескремблер",
       "description": "<p>Скремблер/дескремблер для передач.</p>"
     },
+    "Spray Paint": {
+      "name": "Spray Paint",
+      "description": "<p>Generic spray paint. Make some art or blind a camera.</p>\n"
+    },
     "Tech Bag": {
       "name": "Сумка техника",
-      "description": "<p>Сумка с инструментами.</p>"
+      "description": "<p>Tool bag filled with basic tools for everyday repairs.</p>\n"
     },
     "Techscanner": {
       "name": "Техсканер",
-      "description": "<p>+2 к различным навыкам основанным на ТЕХ.</p>"
+      "description": "<p>\n  An electronic device that grants +2 to <strong>Basic Tech</strong>,\n  <strong>Cybertech</strong>, <strong>Electronic/Security Tech</strong>,\n  <strong>Weaponstech</strong>, <strong>Land Vehicle Tech</strong>,\n  <strong>Sea Vehicle Tech</strong>, <strong>Air Vehicle Tech</strong> checks.\n</p>\n"
     },
     "Techtool": {
       "name": "Техтул",
-      "description": "<p>Многофункциональный инструмент.</p>"
+      "description": "<p>Multi-purpose tool that fits in your pocket.</p>\n"
     },
     "Tent and Camping Equipment": {
       "name": "Палатка и набор для кемпинга",
-      "description": "<p>На одного человека.</p>"
+      "description": "<p>Provides shelter from the weather and space for one person.</p>\n"
     },
     "Tracer Button": {
       "name": "Радиомаячок",
-      "description": "<p>Маячок размером с пуговицу, можно отслеживать на расстоянии до 1 мили (1.75 км) при помощи радиопеленгатора.</p>"
+      "description": "<p>\n  Can be tracked from up to a mile away with a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.QIHx5oQOirtTlAaD]{Homing Tracer}\n  &amp; similar\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.o3lADTIXaa3eLryF]{Cyberware Options}.\n</p>\n"
     },
     "Vial of Biotoxin": {
       "name": "Ампула с биотоксином",
-      "description": "<p>3d6 урона при провале проверки сопротивления пыткам/препаратам. Броня не учитывается.</p>"
+      "description": "<p>\n  Deals [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage} directly to HP unless subject\n  makes a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  check. Armor does not apply.\n</p>\n"
     },
     "Vial of Poison": {
       "name": "Ампула с ядом",
-      "description": "<p>2d6 урона при провале проверки сопротивления пыткам/препаратам. Броня не учитывается.</p>"
+      "description": "<p>\n  Deals [[/r 2d6dmg#Poison Damage]]{2d6 Damage} directly to HP unless subject\n  makes a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}\n  check. Armor does not apply.\n</p>\n"
     },
     "Video Camera": {
       "name": "Видеокамера",
-      "description": "<p>До 12 часов на одной щепке.</p>"
+      "description": "<p>\n  Record up to 12 hours of video on a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.LKAYRh3Oecskc6kH]{Memory Chip}.\n</p>\n"
     },
     "Virtuality Goggles": {
       "name": "Очки виртуальности",

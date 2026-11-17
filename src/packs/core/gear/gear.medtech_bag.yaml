@@ -20,7 +20,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Medical equipment.</p>
+      <p>A bag filled with basic medical equipment.</p>
   equipped: owned
   favorite: false
   installedItems:

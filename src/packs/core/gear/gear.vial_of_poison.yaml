@@ -20,7 +20,12 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>2d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>
+      <p>
+        Deals [[/r 2d6dmg#Poison Damage]]{2d6 Damage} directly to HP unless subject
+        makes a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}
+        check. Armor does not apply.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

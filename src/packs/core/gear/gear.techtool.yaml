@@ -20,7 +20,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Multi-purpose tool.</p>
+      <p>Multi-purpose tool that fits in your pocket.</p>
   equipped: owned
   favorite: false
   installedItems:

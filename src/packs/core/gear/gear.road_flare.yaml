@@ -65,7 +65,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Range: 100m/yd. Duration: 1h.</p>
+      <p>Range: 100m/yd. Duration: 1h. Provides illumination.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -20,7 +20,12 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>3d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>
+      <p>
+        Deals [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage} directly to HP unless subject
+        makes a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
+        check. Armor does not apply.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

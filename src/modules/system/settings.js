@@ -107,6 +107,19 @@ const registerSystemSettings = () => {
     },
   });
 
+  // Allow mousewheel scrolling to edit character sheet number inputs
+  game.settings.register(game.system.id, "scrollToEditNumbers", {
+    name: "CPR.settings.scrollToEditNumbers.name",
+    hint: "CPR.settings.scrollToEditNumbers.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed scrollToEditNumbers to ${value}`);
+    },
+  });
+
   /*
    *  Game Settings
    */

@@ -24,6 +24,12 @@ system:
         Briefcase-sized tool used for hooking up a wounded person. Places them in
         stasis.
       </p>
+      <blockquote>
+        <p>
+          Can only be used by a <strong>Medtech</strong> with
+          <strong>Cryosystem</strong> training.
+        </p>
+      </blockquote>
   equipped: owned
   favorite: false
   installedItems:
