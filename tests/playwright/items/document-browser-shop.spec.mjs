@@ -27,18 +27,7 @@ const test = base.extend({
 });
 
 function parseDisplayedCurrency(valueText) {
-  const numericText = valueText.replace(/[^\d.,-]/g, "").trim();
-  const normalizedText =
-    numericText.includes(",") && numericText.includes(".")
-      ? numericText.lastIndexOf(",") > numericText.lastIndexOf(".")
-        ? numericText.replace(/\./g, "").replace(",", ".")
-        : numericText.replace(/,/g, "")
-      : numericText.includes(",")
-        ? /,\d{1,2}$/.test(numericText)
-          ? numericText.replace(",", ".")
-          : numericText.replace(/,/g, "")
-        : numericText;
-  const total = Number.parseFloat(normalizedText);
+  const total = Number.parseFloat(valueText.replace(/\D/g, ""));
   expect(
     Number.isFinite(total),
     `Expected cart total to be parseable from "${valueText}"`,
