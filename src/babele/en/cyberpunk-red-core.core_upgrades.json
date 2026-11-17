@@ -41,7 +41,7 @@
     },
     "Deployable Spike Strip": {
       "name": "Deployable Spike Strip",
-      "description": "<p>\n  As an Action, the driver can deploy a spike strip. While deployed, any closely\n  trailing vehicles with tires must make a\n  [[/r 1d10red+@stats.ref+@skills.driveLandVehicle #DV17 Drive Land Vehicle]]{DV17 Drive Land Vehicle}\n  check. On a failure, their vehicle takes\n  [[/r 4d6dmg*2 #Weak Point Damage]]{4d6} damage as if hitting a weak point.\n  Replacement spike strips cost 10eb.\n</p>\n<p>\n  You may install this upgrade multiple times, each upgrade increases the amount\n  of spike strips that can be deployed before the system requires reloading, and\n  it cannot be reloaded while the vehicle is moving.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Groundcars</p>\n</blockquote>\n",
+      "description": "<p>\n  As an Action, the driver can deploy a spike strip. While deployed, any closely\n  trailing vehicles with tires must make a\n  [[/r 1d10red+@stats.ref+@skills.driveLandVehicle #DV17 Drive Land Vehicle]]{DV17 Drive Land Vehicle}\n  check. On a failure, their vehicle takes\n  [[/r 4d6dmg #Weak Point Damage]]{4d6} damage as if hitting a weak point.\n  Replacement spike strips cost 10eb.\n</p>\n<p>\n  You may install this upgrade multiple times, each upgrade increases the amount\n  of spike strips that can be deployed before the system requires reloading, and\n  it cannot be reloaded while the vehicle is moving.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Groundcars</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "DNA Lock": {
@@ -226,7 +226,7 @@
     },
     "Seating Upgrade": {
       "name": "Seating Upgrade",
-      "description": "<p>\n  These can be installed as an external sidecar, they may also be installed as\n  ejector seats with removable parachutes.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n  <p>\n    Can be taken multiple times with the exception of Bikes, Jetskis and\n    Gyrocopters.\n  </p>\n</blockquote>\n",
+      "description": "<p>\n  Can be installed as an external sidecar, they may also be installed as ejector\n  seats with removable parachutes.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n  <p>\n    Can be taken multiple times with the exception of Bikes, Jetskis and\n    Gyrocopters.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Security Upgrade": {

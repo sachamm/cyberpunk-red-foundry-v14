@@ -34,7 +34,7 @@ system:
         trailing vehicles with tires must make a
         [[/r 1d10red+@stats.ref+@skills.driveLandVehicle #DV17 Drive Land Vehicle]]{DV17 Drive Land Vehicle}
         check. On a failure, their vehicle takes
-        [[/r 4d6dmg*2 #Weak Point Damage]]{4d6} damage as if hitting a weak point.
+        [[/r 4d6dmg #Weak Point Damage]]{4d6} damage as if hitting a weak point.
         Replacement spike strips cost 10eb.
       </p>
       <p>
