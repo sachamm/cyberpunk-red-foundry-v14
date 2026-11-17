@@ -7,7 +7,7 @@ flags:
       current: 33
       previous: "24"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/vehicles/ship.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicles/yacht.svg
 name: Yacht
 ownership:
   default: 0
