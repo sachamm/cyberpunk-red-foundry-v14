@@ -46,7 +46,7 @@
     },
     "DNA Lock": {
       "name": "DNA Lock",
-      "description": "<p>\n  Uses biometrics to lock the cyberdeck. Requires a\n  [[/r 1d10red+@stats.tech+@skills.electronicsOrSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}\n  check to crack.\n</p>\n",
+      "description": "<p>\n  Uses biometrics to lock the cyberdeck. Requires a\n  [[/r 1d10red+@stats.tech+@skills.electronicsAndSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}\n  check to crack.\n</p>\n",
       "dvTable": ""
     },
     "Drum Magazine (Assault Rifle)": {
@@ -231,7 +231,7 @@
     },
     "Security Upgrade": {
       "name": "Security Upgrade",
-      "description": "<p>\n  Adds DNA Locks to the vehicle requiring the correct biometrics or a\n  [[/r 1d10red+@stats.tech+@skills.electronicsOrSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}\n  check to unlock. An individual who fails to unlock the vehicle takes damage as\n  if hit with a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.O1brHdazB6mqbVp1]{Stun Baton}.\n</p>\n<p>\n  After remaining stationary for 1 minute, the vehicle is cloaked and requires a\n  [[/r 1d10red+@stats.int+@skills.perception #DV17 Perception]]{DV17 Perception}\n  check to spot.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n",
+      "description": "<p>\n  Adds DNA Locks to the vehicle requiring the correct biometrics or a\n  [[/r 1d10red+@stats.tech+@skills.electronicsAndSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}\n  check to unlock. An individual who fails to unlock the vehicle takes damage as\n  if hit with a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.O1brHdazB6mqbVp1]{Stun Baton}.\n</p>\n<p>\n  After remaining stationary for 1 minute, the vehicle is cloaked and requires a\n  [[/r 1d10red+@stats.int+@skills.perception #DV17 Perception]]{DV17 Perception}\n  check to spot.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Shotgun Underbarrel": {

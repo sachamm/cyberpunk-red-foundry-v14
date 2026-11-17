@@ -30,7 +30,7 @@ system:
     value: |
       <p>
         Adds DNA Locks to the vehicle requiring the correct biometrics or a
-        [[/r 1d10red+@stats.tech+@skills.electronicsOrSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}
+        [[/r 1d10red+@stats.tech+@skills.electronicsAndSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}
         check to unlock. An individual who fails to unlock the vehicle takes damage as
         if hit with a
         @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.O1brHdazB6mqbVp1]{Stun Baton}.
