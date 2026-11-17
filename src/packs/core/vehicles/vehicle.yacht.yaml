@@ -23,6 +23,9 @@ system:
         A luxury speedboat. Requires a minimum of two rooms. The price is for each
         room below or above deck.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 9</p>
+      </blockquote>
   favorite: false
   installedItems:
     allowed: true

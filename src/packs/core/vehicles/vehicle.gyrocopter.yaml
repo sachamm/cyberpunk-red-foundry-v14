@@ -20,6 +20,9 @@ system:
   description:
     value: |
       <p>A small two-seater rotorcraft.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+      </blockquote>
   favorite: false
   installedItems:
     allowed: true
