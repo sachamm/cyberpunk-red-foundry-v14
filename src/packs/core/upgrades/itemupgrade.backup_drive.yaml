@@ -29,9 +29,12 @@ system:
   description:
     value: |
       <p>
-        Saves Non-Black ICE programs when destroyed. These programs can be
-        re-installed by a Netrunner as a meat action.
+        Saves non-Black ICE <strong>Programs</strong> when destroyed. These programs
+        can be re-installed by a <strong>Netrunner</strong> as a meat action.
       </p>
+      <blockquote>
+        <p>No automation provided — Does not prevent item deletion!</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

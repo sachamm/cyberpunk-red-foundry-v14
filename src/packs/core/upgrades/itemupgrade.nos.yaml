@@ -29,13 +29,15 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. Adds a tank of nitrous oxide to the vehicle.
-        Allows you to use your Action to use an additional Move Action while driving.
+        Adds a tank of nitrous oxide to the vehicle. Allows you to use your Action to
+        use an additional <strong>Move Action</strong> while driving. You may install
+        this upgrade multiple times, each upgrade adds an additional tank and each
+        tank may be used once per day.
       </p>
-      <p>
-        You may install this upgrade multiple times, each upgrade adds an additional
-        tank and each tank may be used once per day.
-      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

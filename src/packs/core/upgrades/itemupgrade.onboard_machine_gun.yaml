@@ -29,12 +29,18 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. An <strong>Assault Rifle</strong> with a 30
-        round capacity and only capable of Autofire, that can be mounted facing the
-        front of the vehicle. The driver may fire it using an Action, cannot be
-        reloaded while driving and cannot accept weapon attachments.
+        An
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.QrQNdHTuEDxrfIxS]{Assault Rifle}
+        with a 30 round capacity and only capable of <strong>Autofire</strong>, that
+        can be mounted facing the front of the vehicle. The driver may fire it using
+        an Action, cannot be reloaded while driving and cannot accept weapon
+        attachments.
       </p>
-      <p>You may install this upgrade multiple times.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+        <p>You may install this upgrade multiple times.</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

@@ -28,7 +28,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Cyberdeck and user clothing cannot catch fire.</p>
+      <p>
+        Cyberdeck and user clothing cannot catch fire from
+        <strong>Program</strong> effects.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

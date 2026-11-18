@@ -28,7 +28,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Turns weapon into a "Smartgun".</p>
+      <p>
+        Turns weapon into a "Smartgun" that provides +1 bonus to attack if you have
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.2vSTximwCOxNPGJX]{Subdermal Grip}
+        or
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}
+        installed.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

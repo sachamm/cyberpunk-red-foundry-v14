@@ -29,11 +29,14 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. All glass on the vehicle is now considered
-        cover with 15 HP. Can be taken a second time to upgrade to 30HP. All windows
-        take damage individually.
+        All glass on the vehicle is now considered cover with 15 HP. Can be taken a
+        second time to upgrade to 30HP. All windows take damage individually. Refer to
+        the cover rules in CP:R, pg. 182.
       </p>
-      <p>Refer to the cover rules in CP:R, pg. 182.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

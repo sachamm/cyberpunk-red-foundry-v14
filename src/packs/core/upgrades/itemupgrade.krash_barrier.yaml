@@ -29,8 +29,8 @@ system:
   description:
     value: |
       <p>
-        Cyberdeck is immune to effects that force the Netrunner to Jack Out (safely or
-        unsafely).
+        Cyberdeck is immune to effects that force the <strong>Netrunner</strong> to
+        <strong>Jack Out</strong> (safely or unsafely).
       </p>
   dvTable: ""
   favorite: false

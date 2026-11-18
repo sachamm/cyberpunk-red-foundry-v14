@@ -29,15 +29,21 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. Adds DNA Locks to the vehicle requring the
-        correct biometrics or a DV 17 Electronics/Security Tech check to unlock.
-        Failure to unlock the vehicle takes damage as if hit with a Stun Baton.
+        Adds DNA Locks to the vehicle requiring the correct biometrics or a
+        [[/r 1d10red+@stats.tech+@skills.electronicsAndSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}
+        check to unlock. An individual who fails to unlock the vehicle takes damage as
+        if hit with a
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.O1brHdazB6mqbVp1]{Stun Baton}.
       </p>
       <p>
-        In addition, while remaining still the vehicle is cloaked and requires a
-        <strong>DV17 Perception</strong> check to spot. The vehicle must remain
-        stationary for a minute before this activates.
+        After remaining stationary for 1 minute, the vehicle is cloaked and requires a
+        [[/r 1d10red+@stats.int+@skills.perception #DV17 Perception]]{DV17 Perception}
+        check to spot.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 5</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

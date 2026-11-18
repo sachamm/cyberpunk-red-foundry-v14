@@ -30,22 +30,44 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. One of
-        the vehicles seats becomes a swivel mount for any two-handed ranged weapon. A
-        passenger may fire the weapon using an Action. The passenger can reload the
-        weapon. The weapon can be removed or reinstalled using an Action.
+        One of the vehicles seats becomes a swivel mount for any two-handed ranged
+        weapon. If the vehicle has the
+        @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Pj3nZU2coYUGIjR3]{Bulletproof Glass}
+        upgrade, the gunner is protected by the same glass. A passenger may fire the
+        weapon using an Action. The passenger can reload the weapon. The weapon can be
+        removed or reinstalled using an Action. The first time this upgrade is taken,
+        choose one of the following:
       </p>
-      <p>
-        The first time this upgrade is taken, included is a
-        <strong>Tsunami Arms Helix</strong>,
-        <strong>Rhinemetall EMG-86 Railgun</strong>, or
-        <strong>Militech "Cowboy" U-56 Grenade Launcher</strong>. If the vehicle has
-        the Bulletproof Glass upgrade, the gunner is protected by the same glass.
-      </p>
-      <p>
-        You may install this upgrade multiple times if the vehicle has the Housing
-        Capacity upgrade. <strong>Requires Heavy Chassis</strong>.
-      </p>
+      <ul>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.Rju0qV9mEaZ8oJhG]{Tsunami Arms Helix}
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.DXVvTnvnQKLp9Uky]{Rhinemetall EMG-86 Railgun}
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.IctYbE3ZOOR2yw5H]{Militech "Cowboy" U-56 Grenade Launcher}
+          </p>
+        </li>
+      </ul>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 7</p>
+        <p>
+          <strong>Availability:</strong> All Vehicles except Bikes, Jetskis and
+          Gyrocopters
+        </p>
+        <p>
+          You may install this upgrade multiple times if the vehicle has the
+          @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.qFItKouR0zGYlnta]{Housing Capacity}
+          upgrade. Requires
+          @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.YRDJbfFA4knBhApR]{Heavy Chassis}.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

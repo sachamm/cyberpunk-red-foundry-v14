@@ -30,16 +30,22 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all groundcars. As an Action, the driver can deploy a spike
-        strip. While deployed, any closely trailing vehicles with tires must make a
-        DV17 Drive Land Vehicle Check. On a failure, their vehicle takes 4d6 damage as
-        if hitting a weak point. Replacement spike strips cost 10eb.
+        As an Action, the driver can deploy a spike strip. While deployed, any closely
+        trailing vehicles with tires must make a
+        [[/r 1d10red+@stats.ref+@skills.driveLandVehicle #DV17 Drive Land Vehicle]]{DV17 Drive Land Vehicle}
+        check. On a failure, their vehicle takes
+        [[/r 4d6dmg #Weak Point Damage]]{4d6} damage as if hitting a weak point.
+        Replacement spike strips cost 10eb.
       </p>
       <p>
         You may install this upgrade multiple times, each upgrade increases the amount
         of spike strips that can be deployed before the system requires reloading, and
         it cannot be reloaded while the vehicle is moving.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Groundcars</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:
