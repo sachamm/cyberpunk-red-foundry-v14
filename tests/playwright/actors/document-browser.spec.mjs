@@ -83,15 +83,12 @@ test.describe("Document browser — actor mode", () => {
     await gotoReadyWorld(game);
     const documentBrowser = await openActorBrowser(game);
 
-    // Foundry prefixes the window title with the system name.
     await expect(documentBrowser.locator(".window-title")).toContainText(
       "Document Browser",
     );
-    // The name search is shared with item mode.
     await expect(
       documentBrowser.locator(".cpr-browser-name-input"),
     ).toBeVisible();
-    // Item-only surfaces stay out of actor mode.
     await expect(
       documentBrowser.locator(".cpr-browser-global-filters"),
     ).toHaveCount(0);
@@ -115,7 +112,6 @@ test.describe("Document browser — actor mode", () => {
         label,
       );
     }
-    // Actor boxes carry no per-type sub-filters, so nothing to expand.
     await expect(
       documentBrowser.locator(".cpr-browser-typebox-toggle"),
     ).toHaveCount(0);
@@ -140,7 +136,6 @@ test.describe("Document browser — actor mode", () => {
     const documentBrowser = await openActorBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
 
-    // Group headers appear in CONFIG.Actor.dataModels key order.
     const groupOrder = await documentBrowser
       .locator(".cpr-browser-group-header")
       .evaluateAll((els) => els.map((el) => el.dataset.group));
@@ -159,7 +154,6 @@ test.describe("Document browser — actor mode", () => {
     await expect(mookRow).toHaveCount(1);
     await expect(mookRow).toHaveAttribute("data-group", "mook");
 
-    // Names sort ascending within a group.
     const nameOrder = await documentBrowser
       .locator(".cpr-browser-results-list > li.cpr-browser-entry")
       .evaluateAll((rows) =>
@@ -173,7 +167,6 @@ test.describe("Document browser — actor mode", () => {
       nameOrder.indexOf(secondChar),
     );
 
-    // Every result renders once loading settles.
     const countText = await documentBrowser
       .locator(".cpr-browser-result-count")
       .innerText();
@@ -259,7 +252,6 @@ test.describe("Document browser — actor mode", () => {
 
     const documentBrowser = player.locator("#cpr-document-browser");
     await expect(documentBrowser).toBeVisible();
-    // The sanitizer coerced the request back to item mode.
     await expect(
       documentBrowser.locator(".cpr-browser-global-filters"),
     ).toBeVisible();
@@ -278,7 +270,6 @@ test.describe("Document browser — actor mode", () => {
 
     const documentBrowser = await openActorBrowser(game);
     await waitForBrowserResultsSettled(documentBrowser);
-    // Rows exist, so the absence of purchase controls below is not vacuous.
     const rowCount = await documentBrowser
       .locator(".cpr-browser-entry")
       .count();
