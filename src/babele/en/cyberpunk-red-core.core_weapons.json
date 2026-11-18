@@ -21,7 +21,7 @@
     },
     "Assault Rifle (Poor)": {
       "name": "Assault Rifle (Poor)",
-      "description": "<p>A standard-issue assault rifle.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A standard-issue assault rifle.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Assault Rifle"
     },
     "Baseball Bat": {
@@ -51,7 +51,7 @@
     },
     "Bow (Poor)": {
       "name": "Bow (Poor)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n    action to clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon jams and requires using an\n    action to clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Bows & Crossbows"
     },
     "Chainsaw": {
@@ -96,12 +96,12 @@
     },
     "Crossbow (Excellent)": {
       "name": "Crossbow (Excellent)",
-      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>\n",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>\n",
       "dvTable": "DV Bows & Crossbows"
     },
     "Crossbow (Poor)": {
       "name": "Crossbow (Poor)",
-      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Bows & Crossbows"
     },
     "Crowbar": {
@@ -141,7 +141,7 @@
     },
     "Grenade Launcher (Poor)": {
       "name": "Grenade Launcher (Poor)",
-      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Grenade Launcher"
     },
     "Heavy Melee": {
@@ -171,7 +171,7 @@
     },
     "Heavy Pistol (Poor)": {
       "name": "Heavy Pistol (Poor)",
-      "description": "<p>A pistol with moderate stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A pistol with moderate stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Pistol"
     },
     "Heavy SMG": {
@@ -186,7 +186,7 @@
     },
     "Heavy SMG (Poor)": {
       "name": "Heavy SMG (Poor)",
-      "description": "<p>A large bulky SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A large bulky SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV SMG"
     },
     "Helicopter Blades": {
@@ -291,7 +291,7 @@
     },
     "Medium Pistol (Poor)": {
       "name": "Medium Pistol (Poor)",
-      "description": "<p>A pistol with low stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A pistol with low stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Pistol"
     },
     "Microwaver": {
@@ -336,7 +336,7 @@
     },
     "Rocket Launcher (Poor)": {
       "name": "Rocket Launcher (Poor)",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Rocket Launcher"
     },
     "Shotgun": {
@@ -351,7 +351,7 @@
     },
     "Shotgun (Poor)": {
       "name": "Shotgun (Poor)",
-      "description": "<p>An all-purpose shotgun.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>An all-purpose shotgun.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Shotgun (Slug)"
     },
     "Shrieker": {
@@ -371,7 +371,7 @@
     },
     "Sledgehammer (Poor)": {
       "name": "Sledgehammer (Poor)",
-      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area. I\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "SMG": {
@@ -386,7 +386,7 @@
     },
     "SMG (Poor)": {
       "name": "SMG (Poor)",
-      "description": "<p>A compact SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A compact SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV SMG"
     },
     "Sniper Rifle": {
@@ -401,7 +401,7 @@
     },
     "Sniper Rifle (Poor)": {
       "name": "Sniper Rifle (Poor)",
-      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Sniper Rifle"
     },
     "Spiked Bat": {
@@ -501,7 +501,7 @@
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Very Heavy Pistol (Poor)",
-      "description": "<p>A pistol with excellent stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
+      "description": "<p>A pistol with excellent stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Pistol"
     }
   }

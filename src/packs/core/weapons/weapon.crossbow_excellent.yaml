@@ -28,11 +28,8 @@ system:
     count: 2
     threshold: 0
   description:
-    value: >
-      <p>An excellent quality crossbow, reloaded as part of an Attack
-      action.</p>
-
-      <p>+1 to Attack check.</p>
+    value: |
+      <p>A standard crossbow, reloaded as part of an Attack action.</p>
   dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false
