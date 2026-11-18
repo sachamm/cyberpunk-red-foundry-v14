@@ -88,6 +88,7 @@ export {
   createItemClosed,
   createItemCompendium,
   cycleTo,
+  openActorBrowser,
   openItemBrowser,
   readBrowserDragPayload,
   searchItems,
