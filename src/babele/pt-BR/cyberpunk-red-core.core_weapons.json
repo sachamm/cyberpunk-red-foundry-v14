@@ -6,7 +6,7 @@
   "entries": {
     "Air Pistol": {
       "name": "Pistola de ar",
-      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>",
+      "description": "<p>\n  Fires\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.XrmjWt5BvX6meuUs]{Paintballs}.\n  If loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.CiskMOqNs2y5axDS]{acid} it\n  is able to ablate armor by one with each hit.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Assault Rifle": {
@@ -16,12 +16,12 @@
     },
     "Assault Rifle (Excellent)": {
       "name": "Rifle de Assalto (Excelente)",
-      "description": "<p>Um fuzil de assalto padrão. +1 para Ataque.</p>",
+      "description": "<p>A standard-issue assault rifle.</p>\n",
       "dvTable": "DV Rifle de Assalto"
     },
     "Assault Rifle (Poor)": {
       "name": "Rifle de Assalto (Pobre)",
-      "description": "<p>Um fuzil de assalto padrão. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A standard-issue assault rifle.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Rifle de Assalto"
     },
     "Baseball Bat": {
@@ -31,12 +31,12 @@
     },
     "Baseball Bat (Excellent)": {
       "name": "Taco de beisebol (excelente)",
-      "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol. +1 para Ataque.</p>",
+      "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies.</p>\n",
       "dvTable": ""
     },
     "Baseball Bat (Poor)": {
       "name": "Taco de beisebol (ruim)",
-      "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Bow": {
@@ -46,12 +46,12 @@
     },
     "Bow (Excellent)": {
       "name": "Arco (Excelente)",
-      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>\n",
       "dvTable": "DV Arcos e Balestras"
     },
     "Bow (Poor)": {
       "name": "Arco (pobre)",
-      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon jams and requires using an\n    action to clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Arcos e Balestras"
     },
     "Chainsaw": {
@@ -61,12 +61,12 @@
     },
     "Chainsaw (Excellent)": {
       "name": "Motosserra (Excelente)",
-      "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque. +1 para Ataque.</p>",
+      "description": "<p>\n  A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3\n  hours on one tank.\n</p>\n",
       "dvTable": ""
     },
     "Chainsaw (Poor)": {
       "name": "Motosserra (ruim)",
-      "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>\n  A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3\n  hours on one tank.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Combat Knife": {
@@ -76,17 +76,17 @@
     },
     "Combat Knife (Excellent)": {
       "name": "Faca de Combate (Excelente)",
-      "description": "<p>Uma faca digna das ruas. +1 para Ataque.</p>",
+      "description": "<p>A knife fit for the streets.</p>\n",
       "dvTable": ""
     },
     "Combat Knife (Poor)": {
       "name": "Faca de Combate (ruim)",
-      "description": "<p>Uma faca digna das ruas. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>A knife fit for the streets.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Constitutional Arms Hurricane Assault Weapon": {
       "name": "Constitutional Arms Hurricane Assault Weapon",
-      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
+      "description": "<p>A double barrelled shotgun that takes 2 actions to reload.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Shotgun (Slug)"
     },
     "Crossbow": {
@@ -96,12 +96,12 @@
     },
     "Crossbow (Excellent)": {
       "name": "Besta (Excelente)",
-      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>\n",
       "dvTable": "DV Arcos e Balestras"
     },
     "Crossbow (Poor)": {
       "name": "Besta (pobre)",
-      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Arcos e Balestras"
     },
     "Crowbar": {
@@ -111,22 +111,22 @@
     },
     "Crowbar (Excellent)": {
       "name": "Pé de cabra (excelente)",
-      "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades. +1 para Ataque.</p>",
+      "description": "<p>\n  Useful as both a tool and a weapon. A rod of iron with split wedges on the\n  ends.\n</p>\n",
       "dvTable": ""
     },
     "Crowbar (Poor)": {
       "name": "Pé de cabra (pobre)",
-      "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>\n  Useful as both a tool and a weapon. A rod of iron with split wedges on the\n  ends.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Dartgun": {
       "name": "Dartgun",
-      "description": "<p>Uma Pistola Exótica Muito Pesada. Consulte a descrição completa do item na pág. 348.</p>",
+      "description": "<p>A springloaded weapon that launches non-basic Arrows.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Flamethrower": {
       "name": "Lança-chamas",
-      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>",
+      "description": "<p>\n  Fill a 6x6m/yds area with flames using the\n  <strong>Heavy Weapons</strong> skill.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Can only load\n    @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MdA5gBfCKbBuHGof]{Shotgun Shell (Incendiary)}\n  </p>\n</blockquote>\n",
       "dvTable": "DV Espingarda (Cartuchos de Espingarda)"
     },
     "Grenade Launcher": {
@@ -136,57 +136,57 @@
     },
     "Grenade Launcher (Excellent)": {
       "name": "Lança-granadas (Excelente)",
-      "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso. +1 para Ataque.</p>",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
       "dvTable": "DV Lançador de Granadas"
     },
     "Grenade Launcher (Poor)": {
       "name": "Lança-granadas (ruim)",
-      "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Lançador de Granadas"
     },
     "Heavy Melee": {
       "name": "Heavy Melee",
-      "description": "<p>Generic Heavy Melee Weapon.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Heavy Melee (Excellent)": {
       "name": "Heavy Melee (Excellent)",
-      "description": "<p>Generic Excellent Quality Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Heavy Melee (Poor)": {
       "name": "Heavy Melee (Poor)",
-      "description": "<p>Generic Poor Quality Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>\n<p>&nbsp;</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Heavy Pistol": {
       "name": "Pistola Pesada",
-      "description": "<p>Uma pistola pesada e ocultável.</p>",
+      "description": "<p>A pistol with moderate stopping power.</p>\n",
       "dvTable": "DV Pistola"
     },
     "Heavy Pistol (Excellent)": {
       "name": "Pistola Pesada (Excelente)",
-      "description": "<p>Uma pistola pesada e ocultável. +1 para Ataque.</p>",
+      "description": "<p>A pistol with moderate stopping power.</p>\n",
       "dvTable": "DV Pistola"
     },
     "Heavy Pistol (Poor)": {
       "name": "Pistola Pesada (Pobre)",
-      "description": "<p>Uma pistola pesada e ocultável. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A pistol with moderate stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Heavy SMG": {
       "name": "SMG Pesado",
-      "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido.</p>",
+      "description": "<p>A large bulky SMG.</p>\n",
       "dvTable": "DV SMG"
     },
     "Heavy SMG (Excellent)": {
       "name": "SMG Pesado (Excelente)",
-      "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido. +1 para Ataque.</p>",
+      "description": "<p>A large bulky SMG.</p>\n",
       "dvTable": "DV SMG"
     },
     "Heavy SMG (Poor)": {
       "name": "SMG Pesado (Pobre)",
-      "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A large bulky SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV SMG"
     },
     "Helicopter Blades": {
@@ -196,17 +196,17 @@
     },
     "Helicopter Blades (Excellent)": {
       "name": "Lâminas de Helicóptero (Excelente)",
-      "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente. +1 para Ataque.</p>",
+      "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily.\n</p>\n",
       "dvTable": ""
     },
     "Helicopter Blades (Poor)": {
       "name": "Lâminas de helicóptero (ruim)",
-      "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Kendachi Mono-Three": {
       "name": "Kendachi Mono-Three",
-      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n",
+      "description": "<p>A high-tech katana that is able to ignore any armor below SP11.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Lead Pipe": {
@@ -216,27 +216,27 @@
     },
     "Lead Pipe (Excellent)": {
       "name": "Tubo de chumbo (excelente)",
-      "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez. +1 para Ataque.</p>",
+      "description": "<p>\n  A hollow cylinder, typically made of metal or fiberglass. It may have conveyed\n  fluids once.\n</p>\n",
       "dvTable": ""
     },
     "Lead Pipe (Poor)": {
       "name": "Tubo de chumbo (ruim)",
-      "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+      "description": "<p>\n  A hollow cylinder, typically made of metal or fiberglass. It may have conveyed\n  fluids once.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Light Melee": {
       "name": "Light Melee",
-      "description": "<p>Generic Light Melee weapon.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Light Melee (Excellent)": {
       "name": "Light Melee (Excellent)",
-      "description": "<p>Generic Excellent Qulaity Light Melee weapon.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Light Melee (Poor)": {
       "name": "Light Melee (Poor)",
-      "description": "<p>Generic Poor Quality Light Melee weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Machete": {
@@ -246,62 +246,62 @@
     },
     "Machete (Excellent)": {
       "name": "Machado (Excelente)",
-      "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City. +1 para Ataque.</p>",
+      "description": "<p>\n  A long-bladed knife with a variety of uses. Known to be a favourite to some\n  gangs of Night City.\n</p>\n",
       "dvTable": ""
     },
     "Machete (Poor)": {
       "name": "Machete (pobre)",
-      "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>\n  A long-bladed knife with a variety of uses. Known to be a favourite to some\n  gangs of Night City.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Malorian Arms 3516": {
       "name": "Armas malorianas 3516",
-      "description": "<p>\n  An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link\n  that cannot be uninstalled.\n</p>\n",
+      "description": "<p>\n  Manufactured by a legend for a legend. Comes with a Smartgun Link that cannot\n  be uninstalled.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Martial Arts": {
       "name": "Artes marciais",
-      "description": "<p>Throwing hands, does ignore half armor.</p>\n<p><em>* Configure the correct Martial Art Skill for this before use.</em></p>\n",
+      "description": "<p>Throwing hands, does ignore half armor.</p>\n<blockquote>\n  <p>\n    <em\n      >Configure the correct skill before use — Martial Arts skills can be found\n      in Compendiums</em\n    >\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Melee": {
       "name": "Medium Melee",
-      "description": "<p>Generic Medium Melee Weapon.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Melee (Excellent)": {
       "name": "Medium Melee (Excellent)",
-      "description": "<p>Generic Excellent Quality Medium Melee Weapon.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Melee (Poor)": {
       "name": "Medium Melee (Poor)",
-      "description": "<p>Generic Poor Quality Medium Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Pistol": {
       "name": "Pistola Média",
-      "description": "<p>Uma pistola ocultável de tamanho médio.</p>",
+      "description": "<p>A pistol with low stopping power.</p>\n",
       "dvTable": "DV Pistola"
     },
     "Medium Pistol (Excellent)": {
       "name": "Pistola Média (Excelente)",
-      "description": "<p>Uma pistola ocultável de tamanho médio. +1 para Ataque.</p>",
+      "description": "<p>A pistol with low stopping power.</p>\n",
       "dvTable": "DV Pistola"
     },
     "Medium Pistol (Poor)": {
       "name": "Pistola Média (Ruim)",
-      "description": "<p>Uma pistola ocultável de tamanho médio. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A pistol with low stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Microwaver": {
       "name": "Microondas",
-      "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n<p>\n  <em\n    >Select target token and use\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get EMP'd Items}\n    to determine what items are affected.</em\n  >\n</p>\n",
+      "description": "<p>\n  Causes cyberware or electrical components to be rendered inoperable for 1\n  minute unless the target passes a\n  [[/r 1d10red+@stats.tech+@skills.cybertech #DV15 Cybertech]]{DV15 Cybertech}\n  check.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    <em\n      >Select target token and use\n      @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get EMP'd Items}\n      to determine what items are affected.</em\n    >\n  </p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
       "name": "Militech \"Cowboy\" U-56 Grenade Launcher",
-      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
+      "description": "<p>A double barrelled Grenade Launcher that takes 2 turns to reload.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Grenade Launcher"
     },
     "Naginata": {
@@ -311,17 +311,17 @@
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Excelente)",
-      "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos. +1 para Ataque.</p>",
+      "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements.\n</p>\n",
       "dvTable": ""
     },
     "Naginata (Poor)": {
       "name": "Naginata (pobre)",
-      "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Rhinemetall EMG-86 Railgun": {
       "name": "Rhinemetall EMG-86 Railgun",
-      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11.\n</p>\n",
+      "description": "<p>\n  A very heavy rifle fired with the <strong>Heavy Weapons</strong> skill that\n  ignores any armor below SP11. Reloading this behemoth takes 2 actions and\n  Aimed or Autofire shots cannot be made with this weapon.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher": {
@@ -331,12 +331,12 @@
     },
     "Rocket Launcher (Excellent)": {
       "name": "Lança-foguetes (Excelente)",
-      "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano. +1 para Ataque.</p>",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
       "dvTable": "DV Lança-foguetes"
     },
     "Rocket Launcher (Poor)": {
       "name": "Lança-foguetes (ruim)",
-      "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Lança-foguetes"
     },
     "Shotgun": {
@@ -346,17 +346,17 @@
     },
     "Shotgun (Excellent)": {
       "name": "Espingarda (Excelente)",
-      "description": "<p>Uma espingarda para todos os fins. +1 para Ataque.</p>",
+      "description": "<p>An all-purpose shotgun.</p>\n",
       "dvTable": "DV Espingarda (Cartuchos de Espingarda)"
     },
     "Shotgun (Poor)": {
       "name": "Espingarda (ruim)",
-      "description": "<p>Uma espingarda para todos os fins. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>An all-purpose shotgun.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Espingarda (Cartuchos de Espingarda)"
     },
     "Shrieker": {
       "name": "Gritador",
-      "description": "<p>\n  An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear\n  critical injuries. The target must beat a\n  <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}\n  critical injury.\n</p>\n",
+      "description": "<p>\n  A high tech acoustic disruptor designed to neutralize crowd coordination. Both\n  shooter and target must beat a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}\n  critical injury.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Sledgehammer": {
@@ -366,42 +366,42 @@
     },
     "Sledgehammer (Excellent)": {
       "name": "Marreta (Excelente)",
-      "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área. +1 para Ataque.</p>",
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area.\n</p>\n",
       "dvTable": ""
     },
     "Sledgehammer (Poor)": {
       "name": "Marreta (pobre)",
-      "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "SMG": {
       "name": "SMG",
-      "description": "<p>Uma SMG ocultável.</p>",
+      "description": "<p>A compact SMG.</p>\n",
       "dvTable": "DV SMG"
     },
     "SMG (Excellent)": {
       "name": "SMG (Excelente)",
-      "description": "<p>Uma SMG ocultável. +1 para Ataque.</p>",
+      "description": "<p>A compact SMG.</p>\n",
       "dvTable": "DV SMG"
     },
     "SMG (Poor)": {
       "name": "SMG (pobre)",
-      "description": "<p>Uma SMG ocultável. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A compact SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV SMG"
     },
     "Sniper Rifle": {
       "name": "Rifle de Precisão",
-      "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista.</p>",
+      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n",
       "dvTable": "DV Fuzil de Precisão"
     },
     "Sniper Rifle (Excellent)": {
       "name": "Rifle de Precisão (Excelente)",
-      "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista. +1 para Ataque.</p>",
+      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n",
       "dvTable": "DV Fuzil de Precisão"
     },
     "Sniper Rifle (Poor)": {
       "name": "Rifle de precisão (pobre)",
-      "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Fuzil de Precisão"
     },
     "Spiked Bat": {
@@ -411,22 +411,22 @@
     },
     "Spiked Bat (Excellent)": {
       "name": "Morcego cravado (excelente)",
-      "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta. +1 para Ataque.</p>",
+      "description": "<p>\n  An advancement over a regular bat. A number of nails have been hammered\n  through towards the tip.\n</p>\n",
       "dvTable": ""
     },
     "Spiked Bat (Poor)": {
       "name": "Morcego cravado (pobre)",
-      "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>\n  An advancement over a regular bat. A number of nails have been hammered\n  through towards the tip.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Stun Baton": {
       "name": "Bastão de Atordoamento",
-      "description": "<p>Uma arma corpo-a-corpo média exótica de uma mão. O alvo fica inconsciente se o dano causado reduzi-lo a menos de 1 HP. Não causa Lesões Críticas ou ablação de armadura. Consulte a descrição completa do item na pág. 349.</p>",
+      "description": "<p>\n  The target is knocked <strong>Unconscious</strong> if damage dealt would\n  reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Stun Gun": {
       "name": "Arma de choque",
-      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>",
+      "description": "<p>\n  The target is knocked <strong>Unconscious</strong> if damage dealt would\n  reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     },
     "Sword": {
@@ -436,17 +436,17 @@
     },
     "Sword (Excellent)": {
       "name": "Espada (Excelente)",
-      "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar. +1 para Ataque.</p>",
+      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>\n",
       "dvTable": ""
     },
     "Sword (Poor)": {
       "name": "Espada (pobre)",
-      "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Thrown Weapon": {
       "name": "Arma de Arremesso",
-      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>",
+      "description": "<p>\n  A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up\n  to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets.\n  Melee weapons deal their base damage, but don't penetrate half SP.\n</p>\n<blockquote>\n  <p>Load grenades and other thrown objects into this weapon.</p>\n</blockquote>\n",
       "dvTable": "DV Arma de Arremesso"
     },
     "Tomahawk": {
@@ -456,17 +456,17 @@
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk (Excelente)",
-      "description": "<p>Um machado leve que pode ser arremessado. +1 para Ataque.</p>",
+      "description": "<p>A light axe that can be thrown.</p>\n",
       "dvTable": ""
     },
     "Tomahawk (Poor)": {
       "name": "Tomahawk (pobre)",
-      "description": "<p>Um machado leve que pode ser arremessado. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+      "description": "<p>A light axe that can be thrown.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Tsunami Arms Helix": {
       "name": "Tsunami Arms Helix",
-      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "description": "<p>\n  A heavy machine gun that requires 2 actions to reload and cannot make single\n  shot attacks.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n  <p>\n    Uses 20 bullets with each attack — No automation provided. Users can roll a\n    second autofire attack to expend additional ammo.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Assault Rifle (Autofire)"
     },
     "Unarmed": {
@@ -476,32 +476,32 @@
     },
     "Very Heavy Melee": {
       "name": "Very Heavy Melee",
-      "description": "<p>Generic Very Heavy Melee Weapon.</p>",
+      "description": "<p>\n  A generic stand-in for any Very Heavy Melee Weapon that doesn't exist as a\n  stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Very Heavy Melee (Excellent)": {
       "name": "Very Heavy Melee (Excellent)",
-      "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>\n  A generic stand-in for any Excellent Quality Very Heavy Melee Weapon that\n  doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Very Heavy Melee (Poor)": {
       "name": "Very Heavy Melee (Poor)",
-      "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+      "description": "<p>\n  A generic stand-in for any Poor Quality Very Heavy Melee Weapon that doesn't\n  exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Very Heavy Pistol": {
       "name": "Pistola muito pesada",
-      "description": "<p>Uma pistola muito pesada. Não pode ser escondido.</p>",
+      "description": "<p>A pistol with excellent stopping power.</p>\n",
       "dvTable": "DV Pistola"
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Pistola muito pesada (excelente)",
-      "description": "<p>Uma pistola muito pesada. Não pode ser escondido. +1 para Ataque.</p>",
+      "description": "<p>A pistol with excellent stopping power.</p>\n",
       "dvTable": "DV Pistola"
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Pistola muito pesada (pobre)",
-      "description": "<p>Uma pistola muito pesada. Não pode ser escondido. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A pistol with excellent stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Pistola"
     }
   }
