@@ -28,7 +28,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A light axe that can be thrown. +1 to Attack.</p>
+      <p>A light axe that can be thrown.</p>
   dvTable: ""
   equipped: owned
   favorite: false

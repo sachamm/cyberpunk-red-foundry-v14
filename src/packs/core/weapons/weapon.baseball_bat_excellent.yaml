@@ -28,10 +28,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A firmly weighted bat. A favourite weapon of the Baseball Furies. +1 to
-        Attack.
-      </p>
+      <p>A firmly weighted bat. A favourite weapon of the Baseball Furies.</p>
   dvTable: ""
   equipped: owned
   favorite: false

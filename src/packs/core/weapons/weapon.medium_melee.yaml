@@ -28,7 +28,15 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Generic Medium Melee Weapon.</p>
+      <p>
+        A generic stand-in for any weapon that doesn't exist as a stand-alone item.
+      </p>
+      <blockquote>
+        <p>
+          <strong># of Hands</strong> varies by type, ask your GM what seems
+          appropriate.
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

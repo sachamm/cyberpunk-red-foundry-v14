@@ -27,11 +27,16 @@ system:
     count: 2
     threshold: 0
   description:
-    value: >
+    value: |
       <p>Throwing hands, does ignore half armor.</p>
-
-      <p><em>* Configure the correct Martial Art Skill for this before
-      use.</em></p>
+      <blockquote>
+        <p>
+          <em
+            >Configure the correct skill before use — Martial Arts skills can be found
+            in Compendiums</em
+          >
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

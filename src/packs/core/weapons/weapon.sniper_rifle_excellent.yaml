@@ -29,9 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.
-      </p>
+      <p>A sniper rifle ideal for long-distance shots.</p>
   dvTable: DV Sniper Rifle
   equipped: owned
   favorite: false

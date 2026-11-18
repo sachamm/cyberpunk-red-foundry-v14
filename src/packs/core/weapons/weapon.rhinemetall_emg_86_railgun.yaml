@@ -30,9 +30,17 @@ system:
   description:
     value: |
       <p>
-        An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY
-        11 or higher (unless mounted). Ignores any armor below SP11.
+        A very heavy rifle fired with the <strong>Heavy Weapons</strong> skill that
+        ignores any armor below SP11. Reloading this behemoth takes 2 actions and
+        Aimed or Autofire shots cannot be made with this weapon.
       </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+        <p>
+          Requires <strong>BODY</strong> 11 or higher to use unless the weapon is
+          mounted.
+        </p>
+      </blockquote>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

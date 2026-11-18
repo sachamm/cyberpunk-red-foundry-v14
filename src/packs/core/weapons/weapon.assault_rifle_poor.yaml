@@ -29,10 +29,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A standard-issue assault rifle. If you roll 1 on Attack (Crit fail) the gun
-        jams and requires using an action to clear.
-      </p>
+      <p>A standard-issue assault rifle.</p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit fail) the gun jams and requires an action to
+          clear.
+        </p>
+      </blockquote>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

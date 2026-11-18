@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A very heavy pistol. It can't be concealed.</p>
+      <p>A pistol with excellent stopping power.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

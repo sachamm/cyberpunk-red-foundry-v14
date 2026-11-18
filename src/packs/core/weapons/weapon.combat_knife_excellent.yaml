@@ -28,7 +28,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A knife fit for the streets. +1 to Attack.</p>
+      <p>A knife fit for the streets.</p>
   dvTable: ""
   equipped: owned
   favorite: false

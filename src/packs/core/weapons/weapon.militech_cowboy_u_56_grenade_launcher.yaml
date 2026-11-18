@@ -29,10 +29,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11
-        or higher (unless mounted).
-      </p>
+      <p>A double barrelled Grenade Launcher that takes 2 turns to reload.</p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+        <p>
+          Requires <strong>BODY</strong> 11 or higher to use unless the weapon is
+          mounted.
+        </p>
+      </blockquote>
   dvTable: DV Grenade Launcher
   equipped: owned
   favorite: false

@@ -27,11 +27,9 @@ system:
     count: 2
     threshold: 0
   description:
-    value: |
-      <p>
-        A bladed, hilted weapon. Specifically designed for cutting or thrusting. +1 to
-        Attack.
-      </p>
+    value: >
+      <p>A bladed, hilted weapon. Specifically designed for cutting or
+      thrusting.</p>
   dvTable: ""
   equipped: owned
   favorite: false

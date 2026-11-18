@@ -28,10 +28,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears
-        as a high-tech katana, able to ignore any armor below SP11.
-      </p>
+      <p>A high-tech katana that is able to ignore any armor below SP11.</p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

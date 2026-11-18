@@ -175,9 +175,12 @@ system:
   description:
     value: |
       <p>
-        An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link
-        that cannot be uninstalled.
+        Manufactured by a legend for a legend. Comes with a Smartgun Link that cannot
+        be uninstalled.
       </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

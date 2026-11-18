@@ -29,10 +29,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        Bring out the big guns. This rocket launcher will do some damage. If you roll
-        1 on Attack (Crit fail) the gun jams and requires using an action to clear.
-      </p>
+      <p>Bring out the big guns. This rocket launcher will do some damage.</p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit fail) the gun jams and requires an action to
+          clear.
+        </p>
+      </blockquote>
   dvTable: DV Rocket Launcher
   equipped: owned
   favorite: false

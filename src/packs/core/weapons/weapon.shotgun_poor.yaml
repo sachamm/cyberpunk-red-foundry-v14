@@ -30,10 +30,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and
-        requires using an action to clear.
-      </p>
+      <p>An all-purpose shotgun.</p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit fail) the gun jams and requires an action to
+          clear.
+        </p>
+      </blockquote>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

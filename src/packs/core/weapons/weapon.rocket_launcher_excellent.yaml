@@ -30,10 +30,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        Bring out the big guns. This rocket launcher will do some damage. +1 to
-        Attack.
-      </p>
+      <p>Bring out the big guns. This rocket launcher will do some damage.</p>
   dvTable: DV Rocket Launcher
   equipped: owned
   favorite: false

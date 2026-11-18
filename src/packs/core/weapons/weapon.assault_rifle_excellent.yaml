@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A standard-issue assault rifle. +1 to Attack.</p>
+      <p>A standard-issue assault rifle.</p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

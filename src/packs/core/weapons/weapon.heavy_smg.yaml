@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A heavy SMG. Due to its size it can't be concealed.</p>
+      <p>A large bulky SMG.</p>
   dvTable: DV SMG
   equipped: owned
   favorite: false

@@ -34,6 +34,9 @@ system:
         to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets.
         Melee weapons deal their base damage, but don't penetrate half SP.
       </p>
+      <blockquote>
+        <p>Load grenades and other thrown objects into this weapon.</p>
+      </blockquote>
   dvTable: DV Thrown Weapon
   equipped: owned
   favorite: false

@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A concealable, heavy pistol. +1 to Attack.</p>
+      <p>A pistol with moderate stopping power.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

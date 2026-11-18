@@ -31,7 +31,7 @@ system:
     value: |
       <p>
         Taken from a derelict aircraft, these blades are capable of slicing most
-        things easily. +1 to Attack.
+        things easily.
       </p>
   dvTable: ""
   equipped: owned

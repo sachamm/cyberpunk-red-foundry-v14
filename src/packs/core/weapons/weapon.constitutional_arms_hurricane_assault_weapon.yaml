@@ -30,10 +30,14 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or
-        higher (unless mounted).
-      </p>
+      <p>A double barrelled shotgun that takes 2 actions to reload.</p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+        <p>
+          Requires <strong>BODY</strong> 11 or higher to use unless the weapon is
+          mounted.
+        </p>
+      </blockquote>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

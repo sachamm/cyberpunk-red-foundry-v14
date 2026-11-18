@@ -30,7 +30,7 @@ system:
     value: |
       <p>
         A japanese wooden pole with a curved blade on one side. Favoured by Arasaka
-        tactical teams for close engagements. +1 to Attack.
+        tactical teams for close engagements.
       </p>
   dvTable: ""
   equipped: owned

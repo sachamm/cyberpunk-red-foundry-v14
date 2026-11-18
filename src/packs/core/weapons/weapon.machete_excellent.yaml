@@ -30,7 +30,7 @@ system:
     value: |
       <p>
         A long-bladed knife with a variety of uses. Known to be a favourite to some
-        gangs of Night City. +1 to Attack.
+        gangs of Night City.
       </p>
   dvTable: ""
   equipped: owned

@@ -29,10 +29,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the
-        gun jams and requires using an action to clear.
-      </p>
+      <p>A pistol with low stopping power.</p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit fail) the gun jams and requires an action to
+          clear.
+        </p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

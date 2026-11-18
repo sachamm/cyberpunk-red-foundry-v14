@@ -29,10 +29,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit
-        fail) the gun jams and requires using an action to clear.
-      </p>
+      <p>A pistol with excellent stopping power.</p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit fail) the gun jams and requires an action to
+          clear.
+        </p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false
