@@ -2,7 +2,19 @@
 
 # Changelog
 
-## Unreleased
+## Version 0.93.0-v14.alpha.3
+
+### New Features
+
+- Add an optional setting to adjust focused numeric inputs with the mouse wheel.
+- Allow character-sheet Active Effect categories to be collapsed and expanded.
+- Add Standard Bodysculpt, Exotic Bodysculpt, and Spray Paint compendium items, with new bodysculpt and refreshed vehicle icons.
+
+### Content and Interface
+
+- Improve core compendium descriptions and inline rolls for gear, drugs, weapons, vehicles, and upgrades, with translation updates.
+- Correct AudioVox's Play Instrument (Singing) bonus and normalize Light Tattoo humanity loss.
+- Fix role-bonus selection, dialog checkbox alignment, and unresolved cyberware and program sheet labels.
 
 ### Bug Fixes
 
@@ -13,6 +25,7 @@
 ### Testing
 
 - Cover model-24 characters, loaded weapons, independent tokens, Medtech abilities, and nested equipment in a locked world compendium through migration and reload.
+- Expand browser coverage for cyberware, cyberdecks, programs, critical injuries, roles, skills, vehicles, upgrades, collapsible effects, and document-browser filters and shopping flows.
 
 ## Version 0.93.0-v14.alpha.2
 
