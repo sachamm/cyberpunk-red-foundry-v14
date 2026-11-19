@@ -218,11 +218,19 @@
     span {
       padding: 0.125rem;
     }
+
+    &.expand-button {
+      cursor: pointer;
+    }
   }
 
   .item-header {
     background-color: var(--cpr-background-header) !important;
     color: var(--cpr-text-header);
+  }
+
+  .hide {
+    display: none;
   }
 
   li:nth-child(even) {

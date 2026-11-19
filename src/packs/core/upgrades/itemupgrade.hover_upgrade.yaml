@@ -29,10 +29,13 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all land vehicles. Adds fans onto the vehicle that allow it
-        to traverse water at a narrative speed of 15 MPH/ 24KPH while hovering, and a
-        combat speed of 10.
+        Adds fans onto the vehicle that allow it to traverse water at a narrative
+        speed of 15 MPH/ 24KPH while hovering, and a combat speed of 10.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 5</p>
+        <p><strong>Availability:</strong> All Land Vehicles</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

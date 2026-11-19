@@ -7,7 +7,7 @@ flags:
       current: 33
       previous: "24"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/vehicles/super_car.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicles/groundcar_super.svg
 name: Super Groundcar
 ownership:
   default: 0
@@ -23,6 +23,9 @@ system:
         An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable of
         very high speeds.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 9</p>
+      </blockquote>
   favorite: false
   installedItems:
     allowed: true

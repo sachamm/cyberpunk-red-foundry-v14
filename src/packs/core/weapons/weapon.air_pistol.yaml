@@ -30,9 +30,15 @@ system:
   description:
     value: |
       <p>
-        An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to
-        ablate armor by one with each hit.
+        Fires
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.XrmjWt5BvX6meuUs]{Paintballs}.
+        If loaded with
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.CiskMOqNs2y5axDS]{acid} it
+        is able to ablate armor by one with each hit.
       </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

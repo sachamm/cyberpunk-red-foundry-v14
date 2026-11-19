@@ -30,9 +30,12 @@ system:
   description:
     value: |
       <p>
-        An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would
+        The target is knocked <strong>Unconscious</strong> if damage dealt would
         reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor.
       </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

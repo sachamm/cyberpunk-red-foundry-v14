@@ -30,11 +30,16 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all bikes. While using Interface Plugs to drive this
-        vehicle, if you have a REF 8 or higher and you, a passenger, or your bike are
-        the target of an attack, you can attempt to dodge as you would on foot. If you
-        dodge for a passenger, that becomes their defence.
+        While using
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}
+        to drive this vehicle, if you have a REF 8 or higher and you, a passenger, or
+        your bike are the target of an attack, you can attempt to dodge as you would
+        on foot.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 5</p>
+        <p><strong>Availability:</strong> All Bikes</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

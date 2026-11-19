@@ -29,10 +29,13 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on
-        Attack (Crit fail) the gun jams and requires using an action to clear.
-      </p>
+      <p>A sniper rifle ideal for long-distance shots.</p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to
+          clear.
+        </p>
+      </blockquote>
   dvTable: DV Sniper Rifle
   equipped: owned
   favorite: false

@@ -29,16 +29,23 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. A
-        <strong>Rocket Launcher</strong> with a drum of three rockets, that can be
-        mounted facing the front of the vehicle. The driver may fire it using an
-        Action. It cannot be reloaded while driving, and cannot accept weapon
-        attachments.
+        A
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.Fl6F6x2PstAthge7]{Rocket Launcher}
+        with a drum of three rockets, that can be mounted facing the front of the
+        vehicle. The driver may fire it using an Action. It cannot be reloaded while
+        driving, and cannot accept weapon attachments.
       </p>
-      <p>
-        You may install this upgrade multiple times.
-        <strong>Requires Heavy Chassis</strong>.
-      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p>
+          <strong>Availability:</strong> All Vehicles except Bikes, Jetskis and
+          Gyrocopters
+        </p>
+        <p>
+          You may install this upgrade multiple times — Requires
+          @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.YRDJbfFA4knBhApR]{Heavy Chassis}.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

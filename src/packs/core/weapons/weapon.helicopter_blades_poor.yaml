@@ -30,9 +30,14 @@ system:
     value: |
       <p>
         Taken from a derelict aircraft, these blades are capable of slicing most
-        things easily. If you roll 1 on Attack (Crit Fail) the weapon fails in some
-        way and requires an action to be made usable again.
+        things easily.
       </p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit Fail) the weapon fails in some way and
+          requires an action to be made usable again.
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

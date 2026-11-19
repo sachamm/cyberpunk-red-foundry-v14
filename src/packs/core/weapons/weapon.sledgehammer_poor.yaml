@@ -30,9 +30,14 @@ system:
     value: |
       <p>
         A large mallet-like object with a flat metal head which distributes impacted
-        force over a wide area. If you roll 1 on Attack (Crit Fail) the weapon fails
-        in some way and requires an action to be made usable again.
+        force over a wide area.
       </p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit Fail) the weapon fails in some way and
+          requires an action to be made usable again.
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

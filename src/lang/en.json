@@ -220,6 +220,7 @@
   "CPR.characterSheet.rightPane.effects.source": "Source",
   "CPR.characterSheet.rightPane.effects.title": "Effects",
   "CPR.characterSheet.rightPane.effects.toggle": "Toggle Effect On/Off",
+  "CPR.characterSheet.rightPane.effects.toggleSection": "Show/Hide This Section",
   "CPR.characterSheet.rightPane.eurobucks.eurobucks": "Eurobucks",
   "CPR.characterSheet.rightPane.eurobucks.eurobucksModify": "Modify by",
   "CPR.characterSheet.rightPane.eurobucks.eurobucksModifyReason": "Reason",

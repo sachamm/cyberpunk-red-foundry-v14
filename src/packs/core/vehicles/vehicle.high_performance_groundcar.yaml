@@ -7,7 +7,7 @@ flags:
       current: 33
       previous: "24"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicles/groundcar_performance.svg
 name: High Performance Groundcar
 ownership:
   default: 0
@@ -20,6 +20,9 @@ system:
   description:
     value: |
       <p>A specialised groundcar designed for sports performance.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 5</p>
+      </blockquote>
   favorite: false
   installedItems:
     allowed: true

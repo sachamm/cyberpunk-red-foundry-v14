@@ -5,6 +5,7 @@ import {
   chatMessageCount,
   clickEffectActionViaUI,
   closeActiveEffectConfigViaUI,
+  closeAndReopenActorSheet,
   closeDocSheet,
   closeOwnedItemSheet,
   createActorViaUI,
@@ -1909,6 +1910,116 @@ test("deleting an actor effect can be canceled", async ({ page }) => {
     actorId,
   );
   expect(effectCount).toBe(1);
+
+  await closeDocSheet(page, { collection: "actors", id: actorId });
+});
+
+test("effect category headers collapse and expand their sections", async ({
+  page,
+}) => {
+  const actorId = await createDocumentViaUI(page, {
+    documentTab: "actors",
+    type: "character",
+    name: uniqueName("character"),
+  });
+  expect(actorId).toBeTruthy();
+  let sheetId = await expectSheetRendered(page, {
+    collection: "actors",
+    id: actorId,
+  });
+
+  const effectRow = () =>
+    page
+      .locator(`#${sheetId} .effects-list li.effect`)
+      .filter({ hasText: "New Effect" })
+      .first();
+
+  await test.step("create a character effect with a permanent modifier", async () => {
+    const actorSheet = page.locator(`#${sheetId}`);
+    await actorSheet.locator('.navtabs-right [data-tab="effects"]').click();
+
+    const { aeConfig } = await createEffectViaUI(page, actorSheet, {
+      ownerType: "actor",
+      ownerId: actorId,
+    });
+    await aeConfig.locator('nav [data-tab="changes"]').click();
+    const row = await addModViaUI(aeConfig);
+    await row.locator(".key-cat").selectOption("combat");
+    await page.waitForFunction(
+      (id) =>
+        game.actors
+          .get(id)
+          .effects.contents[0].getFlag(game.system.id, "changes.cats.0") ===
+        "combat",
+      actorId,
+    );
+    await row.locator("select.key-key").selectOption("bonuses.maxHp");
+    const valueInput = row.locator('input[name="changes.0.value"]');
+    await valueInput.fill("2");
+    await valueInput.press("Tab");
+    await page.waitForFunction(
+      (id) => game.actors.get(id).effects.contents[0].changes[0].value === "2",
+      actorId,
+    );
+    await closeActiveEffectConfigViaUI(page, aeConfig);
+
+    await expect(effectRow()).toContainText("Max Hit Points");
+  });
+
+  await test.step("all three category headers start expanded with a minus glyph", async () => {
+    const sheet = page.locator(`#${sheetId}`);
+    for (const type of ["permanent", "situational", "inactive"]) {
+      const header = sheet.locator(`li[data-effect-type="${type}"]`);
+      await expect(header).toBeVisible();
+      await expect(header.locator("i.fa-minus.expand-icon")).toBeVisible();
+      await expect(header.locator("i.fa-plus.collapse-icon")).toBeHidden();
+    }
+  });
+
+  await test.step("disabling the effect moves its row under Inactive Effects", async () => {
+    const effectId = await page.evaluate(
+      (id) => game.actors.get(id).effects.contents[0].id,
+      actorId,
+    );
+    await clickEffectActionViaUI(effectRow(), "toggle");
+    await page.waitForFunction(
+      ({ actorId: aid, effectId: eid }) =>
+        game.actors.get(aid).effects.get(eid).disabled === true,
+      { actorId, effectId },
+    );
+    await expect(effectRow()).toBeVisible();
+  });
+
+  await test.step("clicking the Inactive header collapses it: plus shows, row hides", async () => {
+    const sheet = page.locator(`#${sheetId}`);
+    const header = sheet.locator('li[data-effect-type="inactive"]');
+    await header.click();
+    await expect(header.locator("i.fa-plus.collapse-icon")).toBeVisible();
+    await expect(header.locator("i.fa-minus.expand-icon")).toBeHidden();
+    await expect(effectRow()).toBeHidden();
+  });
+
+  await test.step("clicking again expands it: minus shows, row returns", async () => {
+    const sheet = page.locator(`#${sheetId}`);
+    const header = sheet.locator('li[data-effect-type="inactive"]');
+    await header.click();
+    await expect(header.locator("i.fa-minus.expand-icon")).toBeVisible();
+    await expect(header.locator("i.fa-plus.collapse-icon")).toBeHidden();
+    await expect(effectRow()).toBeVisible();
+  });
+
+  await test.step("the collapsed state persists on a fresh render", async () => {
+    const sheet = page.locator(`#${sheetId}`);
+    await sheet.locator('li[data-effect-type="inactive"]').click();
+    sheetId = await closeAndReopenActorSheet(page, actorId);
+
+    const freshSheet = page.locator(`#${sheetId}`);
+    await freshSheet.locator('.navtabs-right [data-tab="effects"]').click();
+    const header = freshSheet.locator('li[data-effect-type="inactive"]');
+    await expect(header.locator("i.fa-plus.collapse-icon")).toBeVisible();
+    await expect(header.locator("i.fa-minus.expand-icon")).toBeHidden();
+    await expect(effectRow()).toBeHidden();
+  });
 
   await closeDocSheet(page, { collection: "actors", id: actorId });
 });

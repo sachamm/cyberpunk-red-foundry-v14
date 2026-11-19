@@ -4,59 +4,59 @@
   "entries": {
     "Aerozep": {
       "name": "K151 AeroZep",
-      "description": "<p>Ein modernes Frachtluftschiff. Erfordert mindestens zwei Zimmer. Der Preis gilt für jeden Raum unter Deck.</p>"
+      "description": "<p>\n  A modern-day cargo blimp. Requires a minimum of two rooms. The price is for\n  each room below deck.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 9</p>\n</blockquote>\n"
     },
     "AV-4 Multipurpose Aerodyne": {
       "name": "AV-4 Mehrzweck-Aerodynes",
-      "description": "<p>Ein Mehrzweckflugzeug, das dank vertikaler Triebwerke schnell eingesetzt werden kann. Wird häufig von Trauma-Teams eingesetzt.</p>"
+      "description": "<p>\n  A multipurpose aircraft capable of quick insertion thanks to vertical\n  thrusters. Used commonly by Trauma Teams.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n</blockquote>\n"
     },
     "AV-9 Super Aerodyne": {
       "name": "AV-9 Super Aerodynes",
-      "description": "<p>Ein hochmodernes AV mit begrenzten Sitzplätzen. Er kann bis zu 300 Meilen pro Stunde fliegen.</p>"
+      "description": "<p>\n  A highly advanced AV with limited seats. Can travel up to 300 miles per hour.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 9</p>\n</blockquote>\n"
     },
     "Cabin Cruiser": {
       "name": "Kajütboot",
-      "description": "<p>Ein sehr schnelles Schnellboot. Erfordert mindestens zwei Zimmer. Der Preis gilt für jeden Raum unter Deck.</p>"
+      "description": "<p>\n  A very fast speedboat. Requires a minimum of two rooms. The price is for each\n  room below deck.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n</blockquote>\n"
     },
     "Compact Groundcar": {
       "name": "Bodenfahrzeug",
-      "description": "<p>Ein CHOOH2-betriebenes Bodenfahrzeug. Sehr verbreitet, einige Dutzend Hersteller produzieren ähnliche Modelle.</p>"
+      "description": "<p>\n  A CHOOH<sup>2</sup>-powered ground car. Very common with a few dozen\n  manufacturers producing similar models.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
     },
     "Gyrocopter": {
       "name": "Gyrokopter",
-      "description": "<p>Ein kleines zweisitziges Drehflügelflugzeug.</p>"
+      "description": "<p>A small two-seater rotorcraft.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
     },
     "Helicopter": {
       "name": "Helikopter",
-      "description": "<p>Ein viersitziger Hubschrauber, der für hohe Geschwindigkeiten und lange Flüge geeignet ist.</p>"
+      "description": "<p>A four-seater helicopter capable of high speeds and long flights.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n</blockquote>\n"
     },
     "High Performance Groundcar": {
       "name": "Sportwagen",
-      "description": "<p>Ein spezielles Bodenfahrzeug, das für sportliche Leistungen entwickelt wurde.</p>"
+      "description": "<p>A specialised groundcar designed for sports performance.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n</blockquote>\n"
     },
     "Jetski": {
       "name": "Jetski",
-      "description": "<p>Ein gewöhnlicher Jetski mit CHOOH2-Antrieb, der Platz für zwei Personen bietet.</p>"
+      "description": "<p>A common CHOOH<sup>2</sup>-powered jetski that can seat two people.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
     },
     "Roadbike": {
       "name": "Motorrad",
-      "description": "<p>Ein übliches CHOOH2-Motorad</p>."
+      "description": "<p>\n  A common CHOOH<sup>2</sup>-powered roadbike seen during the time of the Red.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
     },
     "Speedboat": {
       "name": "Schnellboot",
-      "description": "<p>Ein Schnellboot mit CHOOH2-Antrieb.</p>"
+      "description": "<p>A fast CHOOH<sup>2</sup>-powered speedboat.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n</blockquote>\n"
     },
     "Super Groundcar": {
       "name": "Luxus Sportwagen",
-      "description": "<p>Ein teurer, exotischer Sportwagen mit CHOOH2-Antrieb. Er ist zu sehr hohen Geschwindigkeiten fähig.</p>"
+      "description": "<p>\n  An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable of\n  very high speeds.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 9</p>\n</blockquote>\n"
     },
     "Superbike": {
       "name": "Sportmotorrad",
-      "description": "<p>Eine verstärkte Version eines Motorrads, die sehr hohe Geschwindigkeiten erreichen kann.</p>"
+      "description": "<p>A beefed-up version of a roadbike, capable of very high speeds.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n</blockquote>\n"
     },
     "Yacht": {
       "name": "Yacht",
-      "description": "<p>Ein luxuriöses Schnellboot. Erfordert mindestens zwei Zimmer. Der Preis gilt für jedes Zimmer unter oder über Deck.</p>"
+      "description": "<p>\n  A luxury speedboat. Requires a minimum of two rooms. The price is for each\n  room below or above deck.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 9</p>\n</blockquote>\n"
     }
   }
 }

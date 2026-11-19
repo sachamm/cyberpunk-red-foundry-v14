@@ -30,7 +30,7 @@ system:
     value: |
       <p>
         A hollow cylinder, typically made of metal or fiberglass. It may have conveyed
-        fluids once. +1 to Attack.
+        fluids once.
       </p>
   dvTable: ""
   equipped: owned

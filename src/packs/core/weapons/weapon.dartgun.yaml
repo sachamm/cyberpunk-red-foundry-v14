@@ -29,7 +29,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>An Exotic Very Heavy Pistol.</p>
+      <p>A springloaded weapon that launches non-basic Arrows.</p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

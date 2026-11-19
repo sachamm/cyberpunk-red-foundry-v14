@@ -32,7 +32,6 @@ system:
     value: |
       <p>
         A high-impact grenade launcher. You can use a variety of grenades with this.
-        +1 to Attack.
       </p>
   dvTable: DV Grenade Launcher
   equipped: owned

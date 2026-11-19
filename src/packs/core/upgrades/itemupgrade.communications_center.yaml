@@ -29,14 +29,46 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. Touchscreen console that functions as an
-        Agent, along with a storage unit containing 6
-        <strong>Radio Communicators</strong>, 6
-        <strong>Scrambler/Descramblers</strong>, a
-        <strong>Radio Scanner/Music Player</strong>, a
-        <strong>Homing tracer</strong> with 6 tracers, and an
-        <strong>Audio Recorder</strong>.
+        Touchscreen console that functions as an
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent},
+        along with a storage unit containing the following items:
       </p>
+      <ul>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Lo7rXsc5ToQf2KlN]{Audio Recorder}
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.sMAZKb9ErPoQJ1vV]{Radio Scanner/Music Player}
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.DO2Nzq3dw0R72dpm]{Radio Communicators}
+            x6
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.CLaUNQ7cqa05XfFg]{Scrambler/Descramblers}
+            x6
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.QIHx5oQOirtTlAaD]{Homing tracer}
+            &amp;
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.IqXTqNGBmSuigIWv]{Tracer Button}
+            x6
+          </p>
+        </li>
+      </ul>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

@@ -6,7 +6,7 @@
   "entries": {
     "Air Pistol": {
       "name": "Пневматический пистолет",
-      "description": "<p>Экзотический пистолет среднего калибра. Стреляет пейнтбольными шариками. Если зарядить кислотными шариками, можно наносить повреждения броне.</p>",
+      "description": "<p>\n  Fires\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.XrmjWt5BvX6meuUs]{Paintballs}.\n  If loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.CiskMOqNs2y5axDS]{acid} it\n  is able to ablate armor by one with each hit.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Assault Rifle": {
@@ -16,12 +16,12 @@
     },
     "Assault Rifle (Excellent)": {
       "name": "Штурмовая винтовка (отличное)",
-      "description": "<p>Стандартная штурмовая винтовка.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A standard-issue assault rifle.</p>\n",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Assault Rifle (Poor)": {
       "name": "Штурмовая винтовка (плохое)",
-      "description": "<p>Стандартная штурмовая винтовка.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A standard-issue assault rifle.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Baseball Bat": {
@@ -31,12 +31,12 @@
     },
     "Baseball Bat (Excellent)": {
       "name": "Бейсбольная бита (отличное)",
-      "description": "<p>Увесистая бита. Любимое оружие Бейсбольных фурий.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies.</p>\n",
       "dvTable": ""
     },
     "Baseball Bat (Poor)": {
       "name": "Бейсбольная бита (плохое)",
-      "description": "<p>Увесистая бита. Любимое оружие Бейсбольных фурий.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Bow": {
@@ -46,12 +46,12 @@
     },
     "Bow (Excellent)": {
       "name": "Лук (отличное)",
-      "description": "<p>Лук отличного качества. Перезарядка является частью действия атаки.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>\n",
       "dvTable": "СЛ Луки и арбалеты"
     },
     "Bow (Poor)": {
       "name": "Лук (плохое)",
-      "description": "<p>Лук плохого качества. Перезарядка является частью действия атаки.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon jams and requires using an\n    action to clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Луки и арбалеты"
     },
     "Chainsaw": {
@@ -61,12 +61,12 @@
     },
     "Chainsaw (Excellent)": {
       "name": "Бензопила (отличное)",
-      "description": "<p>Переносная пила, работающая на CHOOH<sup>2</sup>. Одного полного бака хватит на два-три часа.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3\n  hours on one tank.\n</p>\n",
       "dvTable": ""
     },
     "Chainsaw (Poor)": {
       "name": "Бензопила (плохое)",
-      "description": "<p>Портативная, заправляемая CHOOH<sup>2</sup> пила.  Одного полного бака хватит на два-три часа.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>\n  A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3\n  hours on one tank.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Combat Knife": {
@@ -76,17 +76,17 @@
     },
     "Combat Knife (Excellent)": {
       "name": "Боевой нож (отличное)",
-      "description": "<p>Такому ножу самое место в уличной переделке.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A knife fit for the streets.</p>\n",
       "dvTable": ""
     },
     "Combat Knife (Poor)": {
       "name": "Боевой нож (плохое)",
-      "description": "<p>Такому ножу самое место в уличной переделке.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>A knife fit for the streets.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Constitutional Arms Hurricane Assault Weapon": {
       "name": "Штурмовое орудие «Ураган» от Конститьюшнал армс",
-      "description": "<p>Экзотический дробовик со СКА 2. Нельзя вести прицельный огонь и требуется ТЕЛ 11 или выше (если не стационарный).</p>",
+      "description": "<p>A double barrelled shotgun that takes 2 actions to reload.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Crossbow": {
@@ -96,12 +96,12 @@
     },
     "Crossbow (Excellent)": {
       "name": "Арбалет (отличное)",
-      "description": "<p>Арбалет отличного качества. Перезарядка является частью действия атаки.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>\n",
       "dvTable": "СЛ Луки и арбалеты"
     },
     "Crossbow (Poor)": {
       "name": "Арбалет (плохое)",
-      "description": "<p>Арбалет плохого качества. Перезарядка является частью действия атаки.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Луки и арбалеты"
     },
     "Crowbar": {
@@ -111,22 +111,22 @@
     },
     "Crowbar (Excellent)": {
       "name": "Монтировка (отличное)",
-      "description": "<p>Полезна как инструмент и как оружие. Железный стержень с раздвоенными изогнутыми клинами на концах.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  Useful as both a tool and a weapon. A rod of iron with split wedges on the\n  ends.\n</p>\n",
       "dvTable": ""
     },
     "Crowbar (Poor)": {
       "name": "Монтировка (плохое)",
-      "description": "<p>Полезна как инструмент и как оружие. Железный стержень с раздвоенными изогнутыми клинами на концах.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>\n  Useful as both a tool and a weapon. A rod of iron with split wedges on the\n  ends.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Dartgun": {
       "name": "Дротикомёт",
-      "description": "<p>Экзотический пистолет сверхкрупного калибра.</p>",
+      "description": "<p>A springloaded weapon that launches non-basic Arrows.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Flamethrower": {
       "name": "Огнемёт",
-      "description": "<p>Экзотический дробовик, для которого нужен навык «Крупнокалиберное оружие».</p>",
+      "description": "<p>\n  Fill a 6x6m/yds area with flames using the\n  <strong>Heavy Weapons</strong> skill.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Can only load\n    @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MdA5gBfCKbBuHGof]{Shotgun Shell (Incendiary)}\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Grenade Launcher": {
@@ -136,57 +136,57 @@
     },
     "Grenade Launcher (Excellent)": {
       "name": "Гранатомёт (отличное)",
-      "description": "<p>Мощный гранатомёт, использующий множество типов гранат.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
       "dvTable": "СЛ Гранатомёт"
     },
     "Grenade Launcher (Poor)": {
       "name": "Гранатомёт (плохое)",
-      "description": "<p>Мощный гранатомёт, использующий множество типов гранат.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Гранатомёт"
     },
     "Heavy Melee": {
       "name": "Тяжёлое оружие ближнего боя",
-      "description": "<p>Стандартное тяжёлое оружие ближнего боя.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Heavy Melee (Excellent)": {
       "name": "Тяжёлое оружие ближнего боя (отличное)",
-      "description": "<p>Стандартное тяжёлое оружие ближнего боя отличного качества.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Heavy Melee (Poor)": {
       "name": "Тяжёлое оружие ближнего боя (плохое)",
-      "description": "<p>Стандартное тяжёлое оружие ближнего боя плохого качества.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Heavy Pistol": {
       "name": "Пистолет крупного калибра",
-      "description": "<p>Пистолет крупного калибра, который можно спрятать.</p>",
+      "description": "<p>A pistol with moderate stopping power.</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Heavy Pistol (Excellent)": {
       "name": "Пистолет крупного калибра (отличное)",
-      "description": "<p>Пистолет крупного калибра, который можно спрятать.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A pistol with moderate stopping power.</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Heavy Pistol (Poor)": {
       "name": "Пистолет крупного калибра (плохое)",
-      "description": "<p>Пистолет крупного калибра, который можно спрятать.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A pistol with moderate stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Heavy SMG": {
       "name": "ПП крупного калибра",
-      "description": "<p>ПП крупного калибра. Из-за габаритов его нельзя спрятать.</p>",
+      "description": "<p>A large bulky SMG.</p>\n",
       "dvTable": "СЛ ПП"
     },
     "Heavy SMG (Excellent)": {
       "name": "ПП крупного калибра (отличное)",
-      "description": "<p>ПП крупного калибра. Из-за габаритов его нельзя спрятать.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A large bulky SMG.</p>\n",
       "dvTable": "СЛ ПП"
     },
     "Heavy SMG (Poor)": {
       "name": "ПП крупного калибра (плохое)",
-      "description": "<p>ПП крупного калибра. Из-за габаритов его нельзя спрятать.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A large bulky SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ ПП"
     },
     "Helicopter Blades": {
@@ -196,17 +196,17 @@
     },
     "Helicopter Blades (Excellent)": {
       "name": "Лопасти вертолёта (отличное)",
-      "description": "<p>Снятые со старого воздушного судна, с лёгкостью разрежут почти что угодно.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily.\n</p>\n",
       "dvTable": ""
     },
     "Helicopter Blades (Poor)": {
       "name": "Лопасти вертолёта (плохое)",
-      "description": "<p>Снятые со старого воздушного судна, с лёгкостью разрежут почти что угодно.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Kendachi Mono-Three": {
       "name": "«Моно-три» от Кэндати",
-      "description": "<p>Экзотическое двуручное очень тяжелое оружие отличного качества. Выглядит как хайтек-катана, игнорирует броню меньше ОС11*.</p>",
+      "description": "<p>A high-tech katana that is able to ignore any armor below SP11.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Lead Pipe": {
@@ -216,27 +216,27 @@
     },
     "Lead Pipe (Excellent)": {
       "name": "Свинцовая труба (отличное)",
-      "description": "<p>Полый цилиндр из металла или стекловолокна. Когда-то по нему качали жидкости.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A hollow cylinder, typically made of metal or fiberglass. It may have conveyed\n  fluids once.\n</p>\n",
       "dvTable": ""
     },
     "Lead Pipe (Poor)": {
       "name": "Свинцовая труба (плохое)",
-      "description": "<p>Полый цилиндр из металла или стекловолокна. Когда-то по нему качали жидкости.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  A hollow cylinder, typically made of metal or fiberglass. It may have conveyed\n  fluids once.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Light Melee": {
       "name": "Лёгкое оружие ближнего боя",
-      "description": "<p>Стандартное лёгкое оружие ближнего боя.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Light Melee (Excellent)": {
       "name": "Лёгкое оружие ближнего боя (отличное)",
-      "description": "<p>Стандартное лёгкое оружие ближнего боя отличного качества.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Light Melee (Poor)": {
       "name": "Лёгкое оружие ближнего боя (плохое)",
-      "description": "<p>Стандартное лёгкое оружие ближнего боя плохого качества.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Machete": {
@@ -246,62 +246,62 @@
     },
     "Machete (Excellent)": {
       "name": "Мачете (отличное)",
-      "description": "<p>Длинный нож с широким спектром использования. Пользуется популярностью у банд Найт Сити.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A long-bladed knife with a variety of uses. Known to be a favourite to some\n  gangs of Night City.\n</p>\n",
       "dvTable": ""
     },
     "Machete (Poor)": {
       "name": "Мачете (плохое)",
-      "description": "<p>Длинный нож с широким спектром использования. Пользуется популярностью у банд Найт Сити.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  A long-bladed knife with a variety of uses. Known to be a favourite to some\n  gangs of Night City.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Malorian Arms 3516": {
       "name": "Малориан армс 3516",
-      "description": "<p>\n  An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link\n  that cannot be uninstalled.\n</p>\n",
+      "description": "<p>\n  Manufactured by a legend for a legend. Comes with a Smartgun Link that cannot\n  be uninstalled.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Martial Arts": {
       "name": "Боевые искусства",
-      "description": "<p>Throwing hands, does ignore half armor.</p>\n<p><em>* Configure the correct Martial Art Skill for this before use.</em></p>\n",
+      "description": "<p>Throwing hands, does ignore half armor.</p>\n<blockquote>\n  <p>\n    <em\n      >Configure the correct skill before use — Martial Arts skills can be found\n      in Compendiums</em\n    >\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Melee": {
       "name": "Среднее оружие ближнего боя",
-      "description": "<p>Стандартное среднее оружие ближнего боя.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Melee (Excellent)": {
       "name": "Среднее оружие ближнего боя (отличное)",
-      "description": "<p>Стандартное среднее оружие ближнего боя отличного качества.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Melee (Poor)": {
       "name": "Среднее оружие ближнего боя (плохое)",
-      "description": "<p>Стандартное среднее оружие ближнего боя плохого качества.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  A generic stand-in for any weapon that doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Medium Pistol": {
       "name": "Пистолет среднего калибра",
-      "description": "<p>Пистолет среднего калибра, который можно спрятать.</p>",
+      "description": "<p>A pistol with low stopping power.</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Medium Pistol (Excellent)": {
       "name": "Пистолет среднего калибра (отличное)",
-      "description": "<p>Пистолет среднего калибра, который можно спрятать.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A pistol with low stopping power.</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Medium Pistol (Poor)": {
       "name": "Пистолет среднего калибра (плохое)",
-      "description": "<p>Пистолет среднего калибра, который можно спрятать.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A pistol with low stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Microwaver": {
       "name": "Микроволновка",
-      "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n<p>\n  <em\n    >Select target token and use\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get EMP'd Items}\n    to determine what items are affected.</em\n  >\n</p>\n",
+      "description": "<p>\n  Causes cyberware or electrical components to be rendered inoperable for 1\n  minute unless the target passes a\n  [[/r 1d10red+@stats.tech+@skills.cybertech #DV15 Cybertech]]{DV15 Cybertech}\n  check.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    <em\n      >Select target token and use\n      @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get EMP'd Items}\n      to determine what items are affected.</em\n    >\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
       "name": "Гранатомёт U-56 «Ковбой» от Милитех",
-      "description": "<p>Экзотический гранатомёт со СКА 2. Вмещает четыре гранаты. Требуется ТЕЛ 11 или выше (если не стационарный).</p>",
+      "description": "<p>A double barrelled Grenade Launcher that takes 2 turns to reload.</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Гранатомёт"
     },
     "Naginata": {
@@ -311,17 +311,17 @@
     },
     "Naginata (Excellent)": {
       "name": "Нагината (отличное)",
-      "description": "<p>Японское изогнутое лезвие на длинной деревянной рукояти. Любимое оружие бойцов Арасаки в ближнем бою.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements.\n</p>\n",
       "dvTable": ""
     },
     "Naginata (Poor)": {
       "name": "Нагината (плохое)",
-      "description": "<p>Японское изогнутое лезвие на длинной деревянной рукояти. Любимое оружие бойцов Арасаки в ближнем бою.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Rhinemetall EMG-86 Railgun": {
       "name": "Рельсотрон ЭМП-86 от Рейнметалл",
-      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11.\n</p>\n",
+      "description": "<p>\n  A very heavy rifle fired with the <strong>Heavy Weapons</strong> skill that\n  ignores any armor below SP11. Reloading this behemoth takes 2 actions and\n  Aimed or Autofire shots cannot be made with this weapon.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Rocket Launcher": {
@@ -331,12 +331,12 @@
     },
     "Rocket Launcher (Excellent)": {
       "name": "Ракетница (отличное)",
-      "description": "<p>Время больших стволов. Эта ракетница жахнет как надо.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
       "dvTable": "СЛ Ракетница"
     },
     "Rocket Launcher (Poor)": {
       "name": "Ракетница (плохое)",
-      "description": "<p>Время больших стволов. Эта ракетница жахнет как надо.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Ракетница"
     },
     "Shotgun": {
@@ -346,17 +346,17 @@
     },
     "Shotgun (Excellent)": {
       "name": "Дробовик (отличное)",
-      "description": "<p>Старый добрый универсальный дробовик.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>An all-purpose shotgun.</p>\n",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Shotgun (Poor)": {
       "name": "Дробовик (плохое)",
-      "description": "<p>Старый добрый универсальный дробовик.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>An all-purpose shotgun.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Shrieker": {
       "name": "Крикун",
-      "description": "<p>\n  An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear\n  critical injuries. The target must beat a\n  <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}\n  critical injury.\n</p>\n",
+      "description": "<p>\n  A high tech acoustic disruptor designed to neutralize crowd coordination. Both\n  shooter and target must beat a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}\n  critical injury.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Sledgehammer": {
@@ -366,42 +366,42 @@
     },
     "Sledgehammer (Excellent)": {
       "name": "Кувалда (отличное)",
-      "description": "<p>Огромный молот с плоским металлическим бойком, который позволяет распределить силу удара по большой площади.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area.\n</p>\n",
       "dvTable": ""
     },
     "Sledgehammer (Poor)": {
       "name": "Кувалда (плохое)",
-      "description": "<p>Огромный молот с плоским металлическим бойком, который позволяет распределить силу удара по большой площади.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "SMG": {
       "name": "ПП",
-      "description": "<p>ПП, который можно спрятать.</p>",
+      "description": "<p>A compact SMG.</p>\n",
       "dvTable": "СЛ ПП"
     },
     "SMG (Excellent)": {
       "name": "ПП (отличное)",
-      "description": "<p>ПП, который можно спрятать.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A compact SMG.</p>\n",
       "dvTable": "СЛ ПП"
     },
     "SMG (Poor)": {
       "name": "ПП (плохое)",
-      "description": "<p>ПП, который можно спрятать.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A compact SMG.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ ПП"
     },
     "Sniper Rifle": {
       "name": "Снайперская винтовка",
-      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона.</p>",
+      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n",
       "dvTable": "СЛ Снайперская винтовка"
     },
     "Sniper Rifle (Excellent)": {
       "name": "Снайперская винтовка (отличное)",
-      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n",
       "dvTable": "СЛ Снайперская винтовка"
     },
     "Sniper Rifle (Poor)": {
       "name": "Снайперская винтовка (плохое)",
-      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A sniper rifle ideal for long-distance shots.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Снайперская винтовка"
     },
     "Spiked Bat": {
@@ -411,22 +411,22 @@
     },
     "Spiked Bat (Excellent)": {
       "name": "Бита с гвоздями (отличное)",
-      "description": "<p>Улучшенная версия биты. В ударной части вбиты гвозди.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  An advancement over a regular bat. A number of nails have been hammered\n  through towards the tip.\n</p>\n",
       "dvTable": ""
     },
     "Spiked Bat (Poor)": {
       "name": "Бита с гвоздями (плохое)",
-      "description": "<p>Улучшенная версия биты. В ударной части вбиты гвозди.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>\n  An advancement over a regular bat. A number of nails have been hammered\n  through towards the tip.\n</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Stun Baton": {
       "name": "Оглушающая дубинка",
-      "description": "<p>Экзотическое одноручное среднее оружие ближнего боя. Цель падает без сознания, если удар снижает ПЗ ниже единицы. Не наносит критических ранений и не повреждает броню.</p>",
+      "description": "<p>\n  The target is knocked <strong>Unconscious</strong> if damage dealt would\n  reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Stun Gun": {
       "name": "Шокер",
-      "description": "<p>Экзотический пистолет крупного калибра. Цель падает без сознания, если удар снижает ПЗ ниже единицы. Не наносит критических ранений и не повреждает броню.</p>",
+      "description": "<p>\n  The target is knocked <strong>Unconscious</strong> if damage dealt would\n  reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Sword": {
@@ -436,17 +436,17 @@
     },
     "Sword (Excellent)": {
       "name": "Меч (отличное)",
-      "description": "<p>Клинок и рукоять. Создан специально для режущих и колющих ударов.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>\n",
       "dvTable": ""
     },
     "Sword (Poor)": {
       "name": "Меч (плохое)",
-      "description": "<p>Клинок и рукоять. Создан специально для режущих и колющих ударов.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Thrown Weapon": {
       "name": "Метательное оружие",
-      "description": "<p>Небольшой метательный предмет. Действием атаки можно провести атаку в дальнем бою на расстояние до 25 м/ярд. Цель может увернуться от неё, как от пули. Оружие ближнего боя наносит свой обычный урон, но не игнорируют половину ОС.</p>",
+      "description": "<p>\n  A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up\n  to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets.\n  Melee weapons deal their base damage, but don't penetrate half SP.\n</p>\n<blockquote>\n  <p>Load grenades and other thrown objects into this weapon.</p>\n</blockquote>\n",
       "dvTable": "СЛ Метательное оружие"
     },
     "Tomahawk": {
@@ -456,17 +456,17 @@
     },
     "Tomahawk (Excellent)": {
       "name": "Томагавк (отличное)",
-      "description": "<p>Лёгкий метательный топор.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A light axe that can be thrown.</p>\n",
       "dvTable": ""
     },
     "Tomahawk (Poor)": {
       "name": "Томагавк (плохое)",
-      "description": "<p>Лёгкий метательный топор.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>A light axe that can be thrown.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Tsunami Arms Helix": {
       "name": "«Спираль» от Цунами армс",
-      "description": "<p>Экзотическая штурмовая винтовка из которой можно только вести автоогонь. Магазин на 40 патронов, каждая атака потребляет 20 патронов. Использует правила автоогня с умножением до максимума 5. Требуется ТЕЛ 11 или выше (если не стационарная).</p>",
+      "description": "<p>\n  A heavy machine gun that requires 2 actions to reload and cannot make single\n  shot attacks.\n</p>\n<blockquote>\n  <p>This is an <strong>Exotic</strong> weapon.</p>\n  <p>\n    Requires <strong>BODY</strong> 11 or higher to use unless the weapon is\n    mounted.\n  </p>\n  <p>\n    Uses 20 bullets with each attack — No automation provided. Users can roll a\n    second autofire attack to expend additional ammo.\n  </p>\n</blockquote>\n",
       "dvTable": "DV Assault Rifle (Autofire)"
     },
     "Unarmed": {
@@ -476,32 +476,32 @@
     },
     "Very Heavy Melee": {
       "name": "Очень тяжёлое оружие ближнего боя",
-      "description": "<p>Стандартное очень тяжёлое оружие ближнего боя.</p>",
+      "description": "<p>\n  A generic stand-in for any Very Heavy Melee Weapon that doesn't exist as a\n  stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Very Heavy Melee (Excellent)": {
       "name": "Очень тяжёлое оружие ближнего боя (отличное)",
-      "description": "<p>Стандартное очень тяжёлое оружие ближнего боя отличного качества.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>\n  A generic stand-in for any Excellent Quality Very Heavy Melee Weapon that\n  doesn't exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Very Heavy Melee (Poor)": {
       "name": "Очень тяжёлое оружие ближнего боя (плохое)",
-      "description": "<p>Стандартное очень тяжёлое оружие ближнего боя отличного качества.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие выходит из строя и требует действие для починки.</p>",
+      "description": "<p>\n  A generic stand-in for any Poor Quality Very Heavy Melee Weapon that doesn't\n  exist as a stand-alone item.\n</p>\n<blockquote>\n  <p>\n    <strong># of Hands</strong> varies by type, ask your GM what seems\n    appropriate.\n  </p>\n\n  <p>\n    If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n    requires an action to be made usable again.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Very Heavy Pistol": {
       "name": "Пистолет сверхкрупного калибра",
-      "description": "<p>Пистолет сверхкрупного калибра. Не может быть спрятан.</p>",
+      "description": "<p>A pistol with excellent stopping power.</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Пистолет сверхкрупного калибра (отличное)",
-      "description": "<p>Пистолет сверхкрупного калибра. Не может быть спрятан.</p>\n<p>+1 к атаке.</p>",
+      "description": "<p>A pistol with excellent stopping power.</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Пистолет сверхкрупного калибра (плохое)",
-      "description": "<p>Пистолет сверхкрупного калибра. Не может быть спрятан.</p>\n<p>Если выпадает единица на атаку (критический провал), возникает неисправность, для устранения которой потребуется действие.</p>",
+      "description": "<p>A pistol with excellent stopping power.</p>\n<blockquote>\n  <p>\n    If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to\n    clear.\n  </p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     }
   }

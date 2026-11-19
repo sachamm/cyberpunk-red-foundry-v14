@@ -473,12 +473,20 @@ This game system (including items provided in the compendium) contains unofficia
 ### compendium/vehicles/
 
 - `src/icons/compendium/vehicles/airplane.svg` remixed from [Commercial Airplane](https://game-icons.net/1x1/delapouite/commercial-airplane.html)
+- `src/icons/compendium/vehicles/bike_road.svg` remixed from [Motorcycle](https://thenounproject.com/icon/motorcycle-5867409/)
+- `src/icons/compendium/vehicles/bike_super.svg` remixed from [Motorcycle](https://thenounproject.com/icon/motorcycle-5867412/)
 - `src/icons/compendium/vehicles/blimp.svg` remixed from [Zeppelin](https://game-icons.net/1x1/skoll/zeppelin.html)
+- `src/icons/compendium/vehicles/cabincruiser.svg` remixed from [speed Boat](https://thenounproject.com/icon/speed-boat-6151528/)
+- `src/icons/compendium/vehicles/groundcar_compact.svg` remixed from [Car](https://thenounproject.com/icon/car-8413196/)
+- `src/icons/compendium/vehicles/groundcar_performance.svg` remixed from [Sports Car](https://thenounproject.com/icon/sports-car-8314659/)
+- `src/icons/compendium/vehicles/groundcar_super.svg` remixed from [Super Car](https://thenounproject.com/icon/sport-car-6151530/)
 - `src/icons/compendium/vehicles/helicopter.svg` remixed from [Helicopter](https://game-icons.net/1x1/delapouite/helicopter.html)
+- `src/icons/compendium/vehicles/jetski.svg` remixed from [jetski](https://thenounproject.com/icon/jetski-6151529/)
 - `src/icons/compendium/vehicles/motorbike.svg` remixed from [Scooter](https://game-icons.net/1x1/delapouite/scooter.html)
 - `src/icons/compendium/vehicles/ship.svg` remixed from [Ship Bow](https://game-icons.net/1x1/delapouite/ship-bow.html)
-- `src/icons/compendium/vehicles/speed_boat.svg` remixed from [Speed Boat](https://game-icons.net/1x1/delapouite/speed-boat.html)
+- `src/icons/compendium/vehicles/speed_boat.svg` remixed from [Speed Boat](https://thenounproject.com/icon/speed-boat-6151528/)
 - `src/icons/compendium/vehicles/super_car.svg` remixed from [F1 Car](https://game-icons.net/1x1/skoll/f1-car.html)
+- `src/icons/compendium/vehicles/yacht.svg` remixed from [Sailboat](https://thenounproject.com/icon/sail-boat-6151549/)
 
 ### compendium/weapons/
 

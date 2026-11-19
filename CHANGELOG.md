@@ -70,6 +70,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Item upgrades may now be configured with negative modifiers
 - Add 4 new CPR default Turn Marker options that can be selected via the system settings menu
 - Add 2 new Bodysculpt items for purchase/installation as described on pg277 of the Core Rule Book
+- Active Effect categories can be collapsed and expanded by clicking on them.
 
 ### Bug Fixes
 
@@ -141,6 +142,9 @@ If you have any such items that should not crit, set them manually: on a weapon,
   - Cyberware
   - Drugs
   - Gear
+  - Vehicles
+  - Upgrades
+  - Weapons
 
 ### Plumbing
 

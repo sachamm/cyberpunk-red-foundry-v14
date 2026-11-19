@@ -30,9 +30,14 @@ system:
     value: |
       <p>
         A long-bladed knife with a variety of uses. Known to be a favourite to some
-        gangs of Night City. If you roll 1 on Attack (Crit Fail) the weapon fails in
-        some way and requires an action to be made usable again.
+        gangs of Night City.
       </p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit Fail) the weapon fails in some way and
+          requires an action to be made usable again.
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

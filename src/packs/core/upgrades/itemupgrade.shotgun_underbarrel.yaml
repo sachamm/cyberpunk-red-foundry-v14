@@ -30,15 +30,10 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        Functions like a standard shotgun, but with a magazine size of 2. Requires 2
-        hands to use, and takes up 2 attachment slots. While attached, the weapon
-        can't be concealed under clothing.
-      </p>
-      <p>
-        Note that the weapon inherits any modifiers from the gun it is attached to,
-        such as other attachments and quality.
-      </p>
+      <p>Requires 2 hands to use, and takes up 2 attachment slots.</p>
+      <blockquote>
+        <p>While attached, the weapon can't be concealed under clothing.</p>
+      </blockquote>
   dvTable: DV Shotgun (Slug)
   favorite: false
   fireModes:

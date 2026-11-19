@@ -29,12 +29,21 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all land and sea vehicles, except Bikes and Jetskies. When
-        you ram something with the front of your vehicle, your vehicle doesn't take
-        damage and nobody inside suffers from the Whiplash critical injury. You deal
-        2d6 additional ramming damage if your vehicle was boosted by NOS on the turn
-        you ram the object.
+        When you ram something with the front of your vehicle, your vehicle doesn't
+        take damage and nobody inside suffers from the
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.e5wyX6r4Tem6bNwQ]{Whiplash}
+        critical injury. You deal [[/r 2d6dmg #Bonus Ramming Damage]]{2d6} additional
+        ramming damage if your vehicle was boosted by
+        @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.LlcUvcVoCD6SeKOk]{NOS}
+        on the turn you ram the object.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p>
+          <strong>Availability:</strong> All Land and Sea Vehicles, except Bikes and
+          Jetskis.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

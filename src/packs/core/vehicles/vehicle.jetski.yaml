@@ -7,7 +7,7 @@ flags:
       current: 33
       previous: "24"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/vehicles/speed_boat.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicles/jetski.svg
 name: Jetski
 ownership:
   default: 0
@@ -20,6 +20,9 @@ system:
   description:
     value: |
       <p>A common CHOOH<sup>2</sup>-powered jetski that can seat two people.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+      </blockquote>
   favorite: false
   installedItems:
     allowed: true

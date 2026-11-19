@@ -27,12 +27,16 @@ system:
     count: 2
     threshold: 0
   description:
-    value: |
-      <p>
-        A bladed, hilted weapon. Specifically designed for cutting or thrusting. If
-        you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an
-        action to be made usable again.
-      </p>
+    value: >
+      <p>A bladed, hilted weapon. Specifically designed for cutting or
+      thrusting.</p>
+
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit Fail) the weapon fails in some way and
+          requires an action to be made usable again.
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

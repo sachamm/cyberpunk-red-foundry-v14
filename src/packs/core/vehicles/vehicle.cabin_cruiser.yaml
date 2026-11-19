@@ -7,7 +7,7 @@ flags:
       current: 33
       previous: "24"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/vehicles/ship.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicles/cabincruiser.svg
 name: Cabin Cruiser
 ownership:
   default: 0
@@ -23,6 +23,9 @@ system:
         A very fast speedboat. Requires a minimum of two rooms. The price is for each
         room below deck.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 7</p>
+      </blockquote>
   favorite: false
   installedItems:
     allowed: true

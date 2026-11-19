@@ -29,8 +29,9 @@ system:
   description:
     value: |
       <p>
-        Uses biometrics to lock the cyberdeck. Requires
-        <strong>DV17 Electronics/Security Tech</strong> Check to crack.
+        Uses biometrics to lock the cyberdeck. Requires a
+        [[/r 1d10red+@stats.tech+@skills.electronicsAndSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}
+        check to crack.
       </p>
   dvTable: ""
   favorite: false

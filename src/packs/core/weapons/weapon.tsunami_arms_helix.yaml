@@ -30,10 +30,20 @@ system:
   description:
     value: |
       <p>
-        An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20
-        bullets with each attack. Uses Autofire rules with a multiplication up to a
-        maximum of 5. Requires BODY 11 or higher (unless mounted).
+        A heavy machine gun that requires 2 actions to reload and cannot make single
+        shot attacks.
       </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+        <p>
+          Requires <strong>BODY</strong> 11 or higher to use unless the weapon is
+          mounted.
+        </p>
+        <p>
+          Uses 20 bullets with each attack — No automation provided. Users can roll a
+          second autofire attack to expend additional ammo.
+        </p>
+      </blockquote>
   dvTable: DV Assault Rifle (Autofire)
   equipped: owned
   favorite: false

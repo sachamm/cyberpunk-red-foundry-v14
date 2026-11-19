@@ -30,9 +30,14 @@ system:
     value: |
       <p>
         A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3
-        hours on one tank. If you roll 1 on Attack (Crit Fail) the weapon fails in
-        some way and requires an action to be made usable again.
+        hours on one tank.
       </p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit Fail) the weapon fails in some way and
+          requires an action to be made usable again.
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

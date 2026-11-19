@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A concealable, medium-sized pistol.</p>
+      <p>A pistol with low stopping power.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

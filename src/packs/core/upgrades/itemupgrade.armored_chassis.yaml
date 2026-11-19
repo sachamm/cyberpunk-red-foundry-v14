@@ -28,10 +28,11 @@ system:
     threshold: 0
   description:
     value: |
-      <p>
-        Can be applied to all vehicles. Armors the vehicle to SP13. Doesn't affect the
-        glass.
-      </p>
+      <p>Armors the vehicle to SP13. Doesn't affect the glass.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 5</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

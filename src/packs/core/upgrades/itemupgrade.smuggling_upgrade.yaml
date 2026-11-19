@@ -29,14 +29,21 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all vehicles. Adds two <strong>Hidden Holsters</strong> to
-        the vehicle, and a large hidden compartment for smuggling purposes. These can
-        be discovered with a <strong>DV17 Conceal/Reveal Object</strong> check.
+        Adds two
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.WDAHvqIooCSGWnCz]{Hidden Holsters}
+        to the vehicle, and a large hidden compartment for smuggling purposes. These
+        can be discovered with a
+        [[/r 1d10red+@stats.int+@skills.concealOrRevealObject #DV17 Conceal/Reveal Object]]{DV17 Conceal/Reveal Object}
+        check.
       </p>
-      <p>
-        Can be taken multiple times with the exception of Bikes, Jetskis and
-        Gyrocopters.
-      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+        <p><strong>Availability:</strong> All Vehicles</p>
+        <p>
+          Can be taken multiple times with the exception of Bikes, Jetskis and
+          Gyrocopters.
+        </p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

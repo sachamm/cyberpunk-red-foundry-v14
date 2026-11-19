@@ -28,8 +28,16 @@ system:
     threshold: 0
   description:
     value: |
-      <p>Generic Excellent Quality Very Heavy Melee Weapon.</p>
-      <p>+1 to Attack.</p>
+      <p>
+        A generic stand-in for any Excellent Quality Very Heavy Melee Weapon that
+        doesn't exist as a stand-alone item.
+      </p>
+      <blockquote>
+        <p>
+          <strong># of Hands</strong> varies by type, ask your GM what seems
+          appropriate.
+        </p>
+      </blockquote>
   dvTable: ""
   equipped: owned
   favorite: false

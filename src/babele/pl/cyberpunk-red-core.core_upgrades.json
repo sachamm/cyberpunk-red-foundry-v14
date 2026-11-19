@@ -6,47 +6,47 @@
   "entries": {
     "Armored Chassis": {
       "name": "Opancerzenie kadłuba",
-      "description": "<p>Pojazd zyskuje OB 13. Nie obejmuje okien i innych elementów szklanych.</p>",
+      "description": "<p>Armors the vehicle to SP13. Doesn't affect the glass.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "AV-4 Engine Upgrade": {
       "name": "Silniki AV-4",
-      "description": "<p>: Silnik turboodrzutowy dwuprzepływowy o wektorowanym ciągu pozwalający pojazdowi latać! Rozpatrując ruch pojazdu, dopóki znajduje się w powietrzu, traktuj go jak AV-4. Lecący pojazd kontroluje się za pomocą Umiejętności Pilotaż statków powietrznych, a nie Prowadzenie pojazdów lądowych.</p>",
+      "description": "<p>\n  Adds Aerodyne thrusters to the vehicle, allowing flight. While flying the\n  vehicle has a narrative speed of 200MPH / 322KPH, and a combat speed of 40.\n  The vehicle must be piloted using the <strong>Pilot Air Vehicle</strong> skill\n  while mid-air.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n  <p><strong>Availability:</strong> All Land Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Backup Drive": {
       "name": "Zapasowy dysk",
-      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n",
+      "description": "<p>\n  Saves non-Black ICE <strong>Programs</strong> when destroyed. These programs\n  can be re-installed by a <strong>Netrunner</strong> as a meat action.\n</p>\n<blockquote>\n  <p>No automation provided — Does not prevent item deletion!</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Bayonet": {
       "name": "Bagnet",
-      "description": "<p>Po zamontowaniu dodatku tę broń można też wykorzystać jak lekką broń białą. Po zamontowaniu tego dodatku broni nie da się ukryć pod ubraniem.</p>",
+      "description": "<p>\n  An old idea that still works just as good; lets you use your gun as a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.hvxl5hrwWBPZmSwF]{Light Melee}\n  weapon. While attached, the weapon can't be concealed under clothing.\n</p>\n",
       "dvTable": ""
     },
     "Bulletproof Glass": {
       "name": "Szyby kuloodporne",
-      "description": "<p>Zamiast nie dawać żadnej ochrony, wszystkie szyby pojazdu stają się osłoną: Cienkie szyby kuloodporne (15 PW). Jeśli dla danego pojazdu ponownie wybierze się to ulepszenie, staje się ono Grubymi szybami kuloodpornymi (30 PW). Każde okno pojazdu otrzymuje obrażenia osobno.</p>",
+      "description": "<p>\n  All glass on the vehicle is now considered cover with 15 HP. Can be taken a\n  second time to upgrade to 30HP. All windows take damage individually. Refer to\n  the cover rules in CP:R, pg. 182.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Combat Plow": {
       "name": "Pług bojowy",
-      "description": "<p>Gdy uderzasz przodem pojazdu w osłonę, inny pojazd lub pechowego przechodnia, twój pojazd nie odnosi uszkodzeń i żadna osoba w tym pojeździe nie odnosi Rany Krytycznej Odgięciowy Uraz Kręgosłupa Szyjnego. Jeśli w Turze, w której doszło do zderzenia, twój pojazd był pod działaniem Nitro, uderzona osłona, pojazd lub pechowy przechodzień otrzymują dodatkowe 2k6 obrażeń;</p>",
+      "description": "<p>\n  When you ram something with the front of your vehicle, your vehicle doesn't\n  take damage and nobody inside suffers from the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.e5wyX6r4Tem6bNwQ]{Whiplash}\n  critical injury. You deal [[/r 2d6dmg #Bonus Ramming Damage]]{2d6} additional\n  ramming damage if your vehicle was boosted by\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.LlcUvcVoCD6SeKOk]{NOS}\n  on the turn you ram the object.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p>\n    <strong>Availability:</strong> All Land and Sea Vehicles, except Bikes and\n    Jetskis.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Communications Center": {
       "name": "Centrum komunikacji",
-      "description": "<p>Łatwo dostępny panel z ekranem dotykowym i Agentem oraz miejscem na sprzęt ruchomy w postaci: 6 radiokomunikatorów, 6 koderów/dekoderów, 1 radio/odtwarzacza muzyki, 1 odbiornika lokalizatora z 6 nadajnikami wielkości guzika, 1 rejestratora dźwięku.</p>",
+      "description": "<p>\n  Touchscreen console that functions as an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent},\n  along with a storage unit containing the following items:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Lo7rXsc5ToQf2KlN]{Audio Recorder}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.sMAZKb9ErPoQJ1vV]{Radio Scanner/Music Player}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.DO2Nzq3dw0R72dpm]{Radio Communicators}\n      x6\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.CLaUNQ7cqa05XfFg]{Scrambler/Descramblers}\n      x6\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.QIHx5oQOirtTlAaD]{Homing tracer}\n      &amp;\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.IqXTqNGBmSuigIWv]{Tracer Button}\n      x6\n    </p>\n  </li>\n</ul>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Deployable Spike Strip": {
       "name": "Wyrzutnia kolczatki drogowej",
-      "description": "<p>Kierowca może użyć tego ulepszenia w ramach Akcji. Inne pojazdy z oponami, jadące tuż za pojazdem kierowcy, muszą wykonać Test Prowadzenia pojazdów lądowych o PT 17, by ominąć wyrzuconą kolczatkę. Jeśli Test się nie uda, pojazdy otrzymują 4k6 obrażeń w słaby punkt (obrażenia przebijające OB pojazdu mnoży się x2). Dodatkowe kolczatki kosztują 10 ed (Tanie). Każde dodatkowe wykupienie tego ulepszenia zwiększa liczbę kolczatek możliwych do wyrzucenia, zanim urządzenie będzie wymagało uzupełnienia amunicji, czego nie można zrobić w czasie jazdy</p>",
+      "description": "<p>\n  As an Action, the driver can deploy a spike strip. While deployed, any closely\n  trailing vehicles with tires must make a\n  [[/r 1d10red+@stats.ref+@skills.driveLandVehicle #DV17 Drive Land Vehicle]]{DV17 Drive Land Vehicle}\n  check. On a failure, their vehicle takes\n  [[/r 4d6dmg #Weak Point Damage]]{4d6} damage as if hitting a weak point.\n  Replacement spike strips cost 10eb.\n</p>\n<p>\n  You may install this upgrade multiple times, each upgrade increases the amount\n  of spike strips that can be deployed before the system requires reloading, and\n  it cannot be reloaded while the vehicle is moving.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Groundcars</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "DNA Lock": {
       "name": "Zamek DNA",
-      "description": "<p>Używa biometryki do zabezpieczenia cyberdeka. Wymaga testu PT17 Elektronika i zabezpieczenia aby złamać zabezpieczenie.&nbsp;</p>",
+      "description": "<p>\n  Uses biometrics to lock the cyberdeck. Requires a\n  [[/r 1d10red+@stats.tech+@skills.electronicsAndSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}\n  check to crack.\n</p>\n",
       "dvTable": ""
     },
     "Drum Magazine (Assault Rifle)": {
@@ -101,7 +101,7 @@
     },
     "Enhanced Interface Plug Integration": {
       "name": "Ulepszone zespolenie ze złączem interfejsu",
-      "description": "<p>Gdy kontrolujesz motocykl za pomocą złącza interfejsu, dzięki temu ulepszeniu możesz unikać kul (z REF 8 lub wyższym). Jeśli ty, twój pasażer lub twój motocykl są celem ataku, którego moglibyście spróbować uniknąć, będąc pieszo, możesz spróbować uniknąć tego ataku Testem Uniku, tak jak zwykle. Twój wybór sposobu obrony automatycznie obowiązuje też pasażera. W przypadku eksplozji lub innego ataku obszarowego, po udanym uniku twój motocykl przyspiesza i wyjeżdża z zagrożonego obszaru, analogicznie do tego, co dzieje się, gdy robisz unik pieszo.</p>",
+      "description": "<p>\n  While using\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}\n  to drive this vehicle, if you have a REF 8 or higher and you, a passenger, or\n  your bike are the target of an attack, you can attempt to dodge as you would\n  on foot.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n  <p><strong>Availability:</strong> All Bikes</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Extended Magazine (Assault Rifle)": {
@@ -156,7 +156,7 @@
     },
     "Grenade Launcher Underbarrel": {
       "name": "Granatnik Podwieszany do Granatnika",
-      "description": "<p>Trzymaną oburącz broń można wykorzystać jako granatnik z tylko jednym granatem w magazynku. Po zamontowaniu tego dodatku broni nie da się ukryć pod ubraniem. Wykorzystuje 2 gniazda na dodatki.</p>",
+      "description": "<p>\n  Functions like a single shot\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.KgqUdz9Fs55747gv]{Grenade Launcher}.\n</p>\n<blockquote>\n  <p>While attached, the weapon can't be concealed under clothing.</p>\n</blockquote>\n",
       "dvTable": "PT Granatniki"
     },
     "Hardened Circuitry": {
@@ -166,17 +166,17 @@
     },
     "Heavy Chassis": {
       "name": "Wzmocniona konstrukcja",
-      "description": "<p>Dodaje 20 PUK. Nie wpływa na szklane elementy pojazdu. Pojazd z tym ulepszeniem może holować ciężar o wadze do 10 ton. Może nawet mieć gdzieś widoczną grubą linę holowniczą. To ulepszenie jest wymagane do instalacji różnych innych ulepszeń związanych z ciężkim sprzętem.</p>",
+      "description": "<p>\n  Adds 20 SDP to the vehicle. This doesn't affect the glass, and vehicle can now\n  tow up to 10 tons.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p>\n    <strong>Availability:</strong> All Vehicles except Bikes Jetskis and\n    Gyrocopters\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Housing Capacity": {
       "name": "Zakwaterowanie",
-      "description": "<p>Wyposaża samochód lub AV-4 w obszar do spania z 1 łóżkiem, toaletę, prysznic i małą kuchnię, zamieniając pojazd w kombiwóz. W łodzi kabinowej, jachcie lub aerozepie to ulepszenie dodaje dodatkowe pomieszczenie.</p>\n<p><strong>Dla samochodu kompaktowego lub sportowego wymaga wzmocnionej konstrukcji.</strong>.</p>",
+      "description": "<p>\n  When installed onto a Groundcar or AV-4, it adds a sleeping area with 1 bed, a\n  toilet, a shower, and a small kitchen to the vehicle. When installed into a\n  Cabin Cruiser, Yacht, or Aerozep, it adds one room to the vehicle.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p>\n    <strong>Availability:</strong> Aerozep, AV-4, Cabin Cruiser, Groundcars,\n    Yachts\n  </p>\n  <p>\n    Requires a\n    @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.YRDJbfFA4knBhApR]{Heavy Chassis}\n    on a Compact Groundcar and High Performance Groundcar.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Hover Upgrade": {
       "name": "Poduszkowiec",
-      "description": "<p>Kilka potężnych śmigieł montowanych w podwoziu pojazdu, dzięki czemu może on ślizgać się nad wodą z prędkością łodzi kabinowej.</p>",
+      "description": "<p>\n  Adds fans onto the vehicle that allow it to traverse water at a narrative\n  speed of 15 MPH/ 24KPH while hovering, and a combat speed of 10.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n  <p><strong>Availability:</strong> All Land Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Infrared Nightvision Scope": {
@@ -186,37 +186,37 @@
     },
     "Insulated Wiring": {
       "name": "Izolowane obwody",
-      "description": "<p>Cyberdek oraz odzienie użytkownika nie mogą zająć się ogniem.&nbsp;</p>",
+      "description": "<p>\n  Cyberdeck and user clothing cannot catch fire from\n  <strong>Program</strong> effects.\n</p>\n",
       "dvTable": ""
     },
     "KRASH Barrier": {
       "name": "Bariera przeciwKRASHowa",
-      "description": "<p>Cyberdek z tym ulepszeniem jest odporny na działanie Programów siłą wyrzucających Netrunnera z Sieci (w bezpieczny lub niebezpieczny sposób). Zajmuje 2 gniazda modyfikacji.</p>",
+      "description": "<p>\n  Cyberdeck is immune to effects that force the <strong>Netrunner</strong> to\n  <strong>Jack Out</strong> (safely or unsafely).\n</p>\n",
       "dvTable": ""
     },
     "NOS": {
       "name": "Nitro",
-      "description": "<p>Przyspieszenie wtedy, gdy go potrzebujesz. Gdy prowadzisz pojazd, pozwala w ramach Akcji wykonać dodatkowy Ruch. Danego zbiornika nitro można użyć raz dziennie. Wybierając to ulepszenie ponownie, dodajesz nowy zbiornik. Zbiornik pobiera azot i tlen z powietrza, samodzielnie wytwarza podtlenek azotu i nie potrzebuje tankowania</p>",
+      "description": "<p>\n  Adds a tank of nitrous oxide to the vehicle. Allows you to use your Action to\n  use an additional <strong>Move Action</strong> while driving. You may install\n  this upgrade multiple times, each upgrade adds an additional tank and each\n  tank may be used once per day.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Onboard Flamethrower": {
       "name": "Pokładowy miotacz ognia",
-      "description": "<p> <strong> Miotacz ognia </strong>zamontowany na zewnątrz pojazdu, z przodu, z boku lub z tyłu. Kierowca może go użyć, wykorzystując do tego Akcję. Nie da się załadować w czasie jazdy. Broni nie da się usunąć ani ulepszyć dodatkami do broni. Można zamontować kilka sztuk.</p>",
+      "description": "<p>\n  A\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.qAqYtbD1yFgQNelR]{Flamethrower}\n  that can be mounted facing the front, side or back of the vehicle. The driver\n  may fire it using an Action. It cannot be reloaded while driving, and cannot\n  accept weapon attachments.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n  <p>You may install this upgrade multiple times.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Onboard Machine Gun": {
       "name": "Pokładowy karabin maszynowy",
-      "description": "<p> <strong>Karabin szturmowy </strong> z 30 pociskami, może strzelać tylko Ogniem ciągłym; montowany na zewnątrz pojazdu, z przodu; razi cele przed pojazdem. Kierowca może go użyć, wykorzystując do tego Akcję. Nie da się załadować w czasie jazdy. Broni nie da się usunąć ani ulepszyć dodatkami do broni. Można zamontować kilka sztuk</p>",
+      "description": "<p>\n  An\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.QrQNdHTuEDxrfIxS]{Assault Rifle}\n  with a 30 round capacity and only capable of <strong>Autofire</strong>, that\n  can be mounted facing the front of the vehicle. The driver may fire it using\n  an Action, cannot be reloaded while driving and cannot accept weapon\n  attachments.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n  <p>You may install this upgrade multiple times.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Onboard Melee Weapon": {
       "name": "Pokładowa broń biała",
-      "description": "<p><strong>Bardzo duża broń biała</strong></p>, montowana na zewnątrz, z przodu, z boku lub z tyłu. Kierowca może jej użyć, \nwykorzystując do tego Akcję. Broni nie da się usunąć. Można zamontować kilka sztuk",
+      "description": "<p>\n  A\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PxOjhUUs7cRULv75]{Very Heavy Melee Weapon}\n  that can be mounted facing the front, side or back of the vehicle. The driver\n  may attack with it using an Action. The weapon cannot be removed.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n  <p>You may install this upgrade multiple times.</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Onboard Rocket Pod": {
       "name": "Pokładowa wyrzutnia rakiet",
-      "description": "<p><strong>Zasobnik rakietowy z trzema rakietami</strong>, montowany na zewnątrz pojazdu, rażący cele przed pojazdem. Kierowca może go użyć, wykorzystując do tego Akcję. Nie da się załadować w czasie jazdy. Broni nie da się usunąć ani ulepszyć dodatkami do broni. Można zamontować kilka takich ulepszeń, ale jaka robota wymaga więcej niż trzech rakiet...? Wymaga wzmocnionej konstrukcji.</p>",
+      "description": "<p>\n  A\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.Fl6F6x2PstAthge7]{Rocket Launcher}\n  with a drum of three rockets, that can be mounted facing the front of the\n  vehicle. The driver may fire it using an Action. It cannot be reloaded while\n  driving, and cannot accept weapon attachments.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p>\n    <strong>Availability:</strong> All Vehicles except Bikes, Jetskis and\n    Gyrocopters\n  </p>\n  <p>\n    You may install this upgrade multiple times — Requires\n    @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.YRDJbfFA4knBhApR]{Heavy Chassis}.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Range Upgrade": {
@@ -226,27 +226,27 @@
     },
     "Seating Upgrade": {
       "name": "Ulepszenie foteli",
-      "description": "<p>Dodaje dwa fotele w pojeździe. Jeśli jest taka potrzeba, te dodatkowe miejsca mogą mieścić się w koszu motocyklowym, który może być w pełni zabezpieczony tym samym rodzajem szyb co reszta pojazdu, z opcjonalnymi bocznymi okienkami. Ponadto, każdy z foteli w pojeździe z tym ulepszeniem może być fotelem wyrzucanym, w razie potrzeby katapultującym zawartość fotela przez klapę w suficie, na 10 metrów w powietrze, ponad pojazd. Katapultowany pasażer śmigłowca zostaje uderzony łopatami wirnika, otrzymując obrażenia tak, jakby został trafiony bardzo dużą bronią białą. Zwykle w fotelach wyrzucanych montuje się spadochrony, ale przecież zawsze można je usunąć. To ulepszenie można wybrać kilkukrotnie dla większości pojazdów prócz motocykli, skuterów wodnych i żyrokopterów</p>",
+      "description": "<p>\n  Can be installed as an external sidecar, they may also be installed as ejector\n  seats with removable parachutes.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n  <p>\n    Can be taken multiple times with the exception of Bikes, Jetskis and\n    Gyrocopters.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Security Upgrade": {
       "name": "Systemy bezpieczeństwa",
-      "description": "<p> Wymienia wszystkie zamki pojazdu na zamki kodowane DNA, otwierane odciskiem kciuka, skanem tęczówki, próbką krwi lub inną metodą biometryczną. Zamki można otworzyć tylko za pomocą odpowiedniego klucza biometrycznego lub po udanym Teście Elektroniki i zabezpieczeń o PT 17. Jeśli Test wymagany do otworzenia któregoś zamka nie udał się albo osoba próbująca otworzyć zamek poda nieprawidłowy klucz biometryczny, system bezpieczeństwa wyzwala ładunek elektryczny, rażąc intruza tak, jakby otrzymał uderzenie Pałką ogłuszającą, o ile znajduje się w odległości do 2 m od pojazdu.\nPonadto to ulepszenie dodaje maskowanie, pozwalające ukryć pojazd, o ile pozostaje on w bezruchu. Pojazd można zauważyć po udanym Teście Percepcji o PT 17. System potrzebuje minuty na uruchomienie się i działa, wyświetlając na karoserii pojazdu w czasie rzeczywistym obraz z pokładowych kamer wideo, wspierany przez nanomaszyny operujące w trudno dostępnych miejscach.</p>",
+      "description": "<p>\n  Adds DNA Locks to the vehicle requiring the correct biometrics or a\n  [[/r 1d10red+@stats.tech+@skills.electronicsAndSecurityTech #DV17 Electronics/Security Tech]]{DV17 Electronics/Security Tech}\n  check to unlock. An individual who fails to unlock the vehicle takes damage as\n  if hit with a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.O1brHdazB6mqbVp1]{Stun Baton}.\n</p>\n<p>\n  After remaining stationary for 1 minute, the vehicle is cloaked and requires a\n  [[/r 1d10red+@stats.int+@skills.perception #DV17 Perception]]{DV17 Perception}\n  check to spot.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Shotgun Underbarrel": {
       "name": "Podwieszany Granatnik do Strzelby",
-      "description": "<p>Trzymaną oburącz broń można wykorzystać jako Strzelbę z tylko dwoma pociskami w magazynku. Po zamontowaniu tego dodatku broni nie da się ukryć pod ubraniem. Zajmuje 2 gniazda na dodatki.</p>",
+      "description": "<p>Requires 2 hands to use, and takes up 2 attachment slots.</p>\n<blockquote>\n  <p>While attached, the weapon can't be concealed under clothing.</p>\n</blockquote>\n",
       "dvTable": "PT Strzelba (Pocisk)"
     },
     "Smartgun Link": {
       "name": "Złącze Smartguna",
-      "description": "<p>Zmienia broń w \"Smarguna\". Zapoznaj się ze wszystkimi zasadami na stronie 344 przed użyciem.&nbsp;</p>",
+      "description": "<p>\n  Turns weapon into a \"Smartgun\" that provides +1 bonus to attack if you have\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.2vSTximwCOxNPGJX]{Subdermal Grip}\n  or\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}\n  installed.\n</p>\n",
       "dvTable": ""
     },
     "Smuggling Upgrade": {
       "name": "Skrytki przemytnicze",
-      "description": "<p>Dodaje do pojazdu dwie pokładowe Ukryte kabury (jeśli chodzi o zasady, działają one dokładnie tak samo, jak cyborgizacja o tej samej nazwie), które pozwalają kierowcy i jednemu pasażerowi na szybkie dobycie ukrytej broni. Ponadto, ulepszenie dodaje jedną dużą, ukrytą gdzieś w pojeździe przestrzeń, wykorzystywaną do przemytu. Skrytki można wykryć po udanym Teście Ukrycia/znalezienia przedmiotu o PT 17. To ulepszenie można wybrać kilkukrotnie dla wszystkich pojazdów prócz motocykli, skuterów wodnych i żyrokopterów.</p>\n",
+      "description": "<p>\n  Adds two\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.WDAHvqIooCSGWnCz]{Hidden Holsters}\n  to the vehicle, and a large hidden compartment for smuggling purposes. These\n  can be discovered with a\n  [[/r 1d10red+@stats.int+@skills.concealOrRevealObject #DV17 Conceal/Reveal Object]]{DV17 Conceal/Reveal Object}\n  check.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n  <p>\n    Can be taken multiple times with the exception of Bikes, Jetskis and\n    Gyrocopters.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     },
     "Sniping Scope": {
@@ -256,7 +256,7 @@
     },
     "Vehicle Heavy Weapon Mount": {
       "name": "Stanowisko bardzo ciężkiej broni",
-      "description": "<p>Ulepszenie przerabia jeden z foteli pojazdu na obrotowe stanowisko strzeleckie dla dowolnej dwuręcznej broni dystansowej, której pasażer może użyć w ramach swojej Akcji. Pasażer może także przeładować tę broń, nawet jeśli pojazd jest w ruchu. Broń można usunąć lub ponownie zamontować za pomocą Akcji. Gdy Nomada po raz pierwszy dodaje to ulepszenie do któregoś ze swoich pojazdów, Rodzina podarowuje mu w prezencie <strong>Tsunami Arms Helix</strong> lub <strong>karabin elektromagnetyczny Rhinemetall EMG-86</strong>, lub <strong>granatnik Militech U-56 „Cowboy”</strong>. Kolejne bronie Nomada musi zdobyć samodzielnie. Jeśli pojazd wyposażono w Szyby kuloodporne, strzelca także chroni taka osłona. Ulepszenie można dodawać kilkukrotnie tylko na łodziach kabinowych, jachtach, aerozepach i w samochodach, pod warunkiem, że dany pojazd ma już Ulepszenie Zakwaterowanie. <strong>Wymaga wzmocnionej konstrukcji.</strong></p>",
+      "description": "<p>\n  One of the vehicles seats becomes a swivel mount for any two-handed ranged\n  weapon. If the vehicle has the\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Pj3nZU2coYUGIjR3]{Bulletproof Glass}\n  upgrade, the gunner is protected by the same glass. A passenger may fire the\n  weapon using an Action. The passenger can reload the weapon. The weapon can be\n  removed or reinstalled using an Action. The first time this upgrade is taken,\n  choose one of the following:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.Rju0qV9mEaZ8oJhG]{Tsunami Arms Helix}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.DXVvTnvnQKLp9Uky]{Rhinemetall EMG-86 Railgun}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.IctYbE3ZOOR2yw5H]{Militech \"Cowboy\" U-56 Grenade Launcher}\n    </p>\n  </li>\n</ul>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n  <p>\n    <strong>Availability:</strong> All Vehicles except Bikes, Jetskis and\n    Gyrocopters\n  </p>\n  <p>\n    You may install this upgrade multiple times if the vehicle has the\n    @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.qFItKouR0zGYlnta]{Housing Capacity}\n    upgrade. Requires\n    @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.YRDJbfFA4knBhApR]{Heavy Chassis}.\n  </p>\n</blockquote>\n",
       "dvTable": ""
     }
   }

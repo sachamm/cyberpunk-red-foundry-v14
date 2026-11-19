@@ -30,12 +30,16 @@ system:
   description:
     value: |
       <p>
-        An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear
-        critical injuries. The target must beat a
-        <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the
+        A high tech acoustic disruptor designed to neutralize crowd coordination. Both
+        shooter and target must beat a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
+        check or suffer the
         @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}
         critical injury.
       </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

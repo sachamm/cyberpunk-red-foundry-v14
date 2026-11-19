@@ -1,9 +1,19 @@
 <ol class="effects-list">
   {{!-- derived from DND5E's active-effects.html --}}
   {{#each filteredEffects as |section sid| }}
-    <li class="effects-category flexrow item-header" data-effect-type="{{section.type}}">
+    <li class="effects-category flexrow item-header collapsible expand-button"
+        id="effectsTab-{{section.type}}"
+        data-effect-type="{{section.type}}"
+        data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.toggleSection"}}">
       <span class="effect-name">
         {{localize section.label}}
+        {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "effectsTab-VAR" section.type)) }}
+          <i class="fas fa-plus collapse-icon"></i>
+          <i class="fas fa-minus expand-icon hide"></i>
+        {{else}}
+          <i class="fas fa-plus collapse-icon hide"></i>
+          <i class="fas fa-minus expand-icon"></i>
+        {{/if}}
       </span>
       <span class="effect-source text-semi">
         {{localize "CPR.characterSheet.rightPane.effects.source"}}
@@ -13,7 +23,8 @@
       </span>
     </li>
     {{#each section.effects as |effect| }}
-      <li class="item effect flexrow" data-effect-id="{{effect.uuid}}">
+      <li class="item effect flexrow{{#if (cprListContains ../../this.options.collapsedSections (cprGeneratePartial "effectsTab-VAR" section.type))}} hide{{/if}}"
+          data-effect-id="{{effect.uuid}}">
         <div class="effect-name flexrow">
           <img class="effect-image" src="{{effect.img}}"/>
           <div class="effect-item">

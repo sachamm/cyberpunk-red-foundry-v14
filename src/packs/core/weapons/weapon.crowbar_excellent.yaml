@@ -30,7 +30,7 @@ system:
     value: |
       <p>
         Useful as both a tool and a weapon. A rod of iron with split wedges on the
-        ends. +1 to Attack.
+        ends.
       </p>
   dvTable: ""
   equipped: owned

@@ -29,11 +29,15 @@ system:
   description:
     value: |
       <p>
-        Can be applied to all land vehicles. Adds Aerodyne thrusters to the vehicle,
-        allowing flight. While flying the vehicle has a narrative speed of 200MPH /
-        322KPH, and a combat speed of 40. The vehicle must be piloted using the Pilot
-        Air Vehicle skill while mid-air.
+        Adds Aerodyne thrusters to the vehicle, allowing flight. While flying the
+        vehicle has a narrative speed of 200MPH / 322KPH, and a combat speed of 40.
+        The vehicle must be piloted using the <strong>Pilot Air Vehicle</strong> skill
+        while mid-air.
       </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 7</p>
+        <p><strong>Availability:</strong> All Land Vehicles</p>
+      </blockquote>
   dvTable: ""
   favorite: false
   fireModes:

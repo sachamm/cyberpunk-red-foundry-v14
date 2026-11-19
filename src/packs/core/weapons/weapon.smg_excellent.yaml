@@ -29,7 +29,7 @@ system:
     threshold: 0
   description:
     value: |
-      <p>A concealable SMG. +1 to Attack.</p>
+      <p>A compact SMG.</p>
   dvTable: DV SMG
   equipped: owned
   favorite: false

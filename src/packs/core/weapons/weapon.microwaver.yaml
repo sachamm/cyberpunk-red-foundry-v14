@@ -30,17 +30,21 @@ system:
   description:
     value: |
       <p>
-        An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be
-        rendered inoperable for a minute unless the target passes a
-        <strong>DV15 Cybertech Check</strong>.
+        Causes cyberware or electrical components to be rendered inoperable for 1
+        minute unless the target passes a
+        [[/r 1d10red+@stats.tech+@skills.cybertech #DV15 Cybertech]]{DV15 Cybertech}
+        check.
       </p>
-      <p>
-        <em
-          >Select target token and use
-          @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get EMP'd Items}
-          to determine what items are affected.</em
-        >
-      </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+        <p>
+          <em
+            >Select target token and use
+            @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get EMP'd Items}
+            to determine what items are affected.</em
+          >
+        </p>
+      </blockquote>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

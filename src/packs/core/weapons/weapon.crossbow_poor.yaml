@@ -30,10 +30,12 @@ system:
   description:
     value: |
       <p>A poor quality crossbow, reloaded as part of an Attack action.</p>
-      <p>
-        If you roll 1 on Attack (Crit fail) the weapon jams and requires using an
-        action to clear.
-      </p>
+      <blockquote>
+        <p>
+          If you roll 1 on Attack (Crit Fail) the gun jams and requires an action to
+          clear.
+        </p>
+      </blockquote>
   dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false

@@ -30,7 +30,7 @@ system:
     value: |
       <p>
         An advancement over a regular bat. A number of nails have been hammered
-        through towards the tip. +1 to Attack.
+        through towards the tip.
       </p>
   dvTable: ""
   equipped: owned

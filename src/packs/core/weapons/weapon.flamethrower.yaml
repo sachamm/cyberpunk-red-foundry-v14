@@ -29,7 +29,17 @@ system:
     threshold: 0
   description:
     value: |
-      <p>An Exotic Shotgun that uses the Heavy Weapons Skill.</p>
+      <p>
+        Fill a 6x6m/yds area with flames using the
+        <strong>Heavy Weapons</strong> skill.
+      </p>
+      <blockquote>
+        <p>This is an <strong>Exotic</strong> weapon.</p>
+        <p>
+          Can only load
+          @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MdA5gBfCKbBuHGof]{Shotgun Shell (Incendiary)}
+        </p>
+      </blockquote>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false
