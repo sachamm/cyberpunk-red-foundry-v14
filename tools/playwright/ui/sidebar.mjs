@@ -34,3 +34,31 @@ export async function createButtonForSidebarTab(page, tab) {
   await expect(createButton).toBeVisible();
   return createButton;
 }
+
+/**
+ * Open a Foundry compendium pack popout by clicking its entry in the
+ * Compendium sidebar tab. Packs are grouped under collapsible source
+ * folders, so any collapsed ancestor folder is expanded first.
+ */
+export async function openCompendiumPack(page, packId) {
+  const sidebar = await openSidebarTab(page, "compendium");
+  const entry = sidebar.locator(
+    `.directory-item.compendium[data-pack="${packId}"] .compendium-name`,
+  );
+  for (let depth = 0; depth < 5 && !(await entry.isVisible()); depth += 1) {
+    const folder = entry.locator(
+      'xpath=ancestor::li[contains(@class,"folder")][1]',
+    );
+    if ((await folder.count()) === 0) break;
+    const expanded = await folder.evaluate((el) =>
+      el.classList.contains("expanded"),
+    );
+    if (expanded) break;
+    await folder.locator(".folder-header").click();
+  }
+  await expect(entry).toBeVisible();
+  await entry.click();
+  const popout = page.locator(`#compendium-${packId.replaceAll(".", "_")}`);
+  await expect(popout).toBeVisible();
+  return popout;
+}

@@ -1,5 +1,5 @@
 export { uniqueName } from "./names.mjs";
-export { openSidebarTab } from "./sidebar.mjs";
+export { openCompendiumPack, openSidebarTab } from "./sidebar.mjs";
 export {
   createDocumentViaUI,
   deleteActorViaUI,
