@@ -1,3 +1,4 @@
+import { installationId } from "../legacy-installations.js";
 import BaseMigrationScript from "../base-migration-script.js";
 
 /**
@@ -33,7 +34,12 @@ export default class AmmoIsInstallable extends BaseMigrationScript {
   static addInstalledAmmo(loadable) {
     const { magazine, installedItems } = loadable.system;
     if (magazine.ammoData?.uuid) {
-      installedItems.list.push(magazine.ammoData.uuid);
+      installedItems.list = [
+        ...new Set([
+          ...installedItems.list.map(installationId),
+          installationId(magazine.ammoData.uuid),
+        ]),
+      ];
     }
     magazine.ammoData = null;
   }

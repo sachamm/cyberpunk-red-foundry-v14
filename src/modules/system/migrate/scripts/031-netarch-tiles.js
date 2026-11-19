@@ -14,7 +14,7 @@ export default class NetarchTilesMigration extends BaseMigrationScript {
         const { src } = tile.texture;
         if (src?.includes(`systems/${game.system.id}/tiles/netarch`)) {
           const newSrc = src.replace(/PNG/, "WebP").replace(/.png/, ".webp");
-          tile.update({ "texture.src": newSrc });
+          await tile.update({ "texture.src": newSrc });
         }
       }
     }

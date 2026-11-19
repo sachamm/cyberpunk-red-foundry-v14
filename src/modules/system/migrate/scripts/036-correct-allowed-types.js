@@ -18,7 +18,7 @@ export default class ReplaceProgramsWithProgram extends BaseMigrationScript {
     if (doc.system?.installedItems?.allowedTypes.includes("programs")) {
       const newAllowedTypes = [
         "program",
-        doc.system?.installedItems?.allowedTypes.filter(
+        ...doc.system.installedItems.allowedTypes.filter(
           (t) => t !== "programs",
         ),
       ];
@@ -30,7 +30,7 @@ export default class ReplaceProgramsWithProgram extends BaseMigrationScript {
     if (doc.system?.installedItems?.allowedTypes.includes("programs")) {
       const newAllowedTypes = [
         "program",
-        doc.system?.installedItems?.allowedTypes.filter(
+        ...doc.system.installedItems.allowedTypes.filter(
           (t) => t !== "programs",
         ),
       ];

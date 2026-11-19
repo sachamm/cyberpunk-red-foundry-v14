@@ -2,6 +2,18 @@
 
 # Changelog
 
+## Unreleased
+
+### Bug Fixes
+
+- Support direct migration from Cyberpunk RED 0.88.2 (data model 24) on Foundry V14, including early installation-reference normalization and recursive migration of serialized equipment.
+- Preserve custom Medtech abilities, recognize spaced legacy skill names, avoid duplicate loaded-ammo references, and await NET architecture tile updates during migration.
+- Keep allowed installation types flat and stamp nested equipment only after its migration transformations complete.
+
+### Testing
+
+- Cover model-24 characters, loaded weapons, independent tokens, Medtech abilities, and nested equipment in a locked world compendium through migration and reload.
+
 ## Version 0.93.0-v14.alpha.2
 
 ### Documentation

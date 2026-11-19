@@ -19,9 +19,22 @@ export default class UpdateMedtechRole extends BaseMigrationScript {
 
   async updateItem(doc) {
     if (doc.name === "Medtech" && doc.type === "role") {
+      // An already converted role may be encountered after an interrupted migration.
+      if (doc.system.abilities.some((a) => a.name === "Surgery Skill")) return;
       const migratedData = [];
 
       doc.system.abilities.forEach((ability) => {
+        if (
+          ![
+            "Medical Tech",
+            "Medical Tech (Cryosystem Operation)",
+            "Medical Tech (Pharmaceuticals)",
+            "Surgery",
+          ].includes(ability.name)
+        ) {
+          migratedData.push(ability);
+          return;
+        }
         const abilityRank = ability.rank;
         const abilityTemplate = {
           bonusRatio: 1,
@@ -74,7 +87,7 @@ export default class UpdateMedtechRole extends BaseMigrationScript {
         universalBonuses: [],
       };
 
-      migratedData.push(newSurgery);
+      if (Number.isFinite(oldSurgeryRank)) migratedData.push(newSurgery);
 
       doc.system.abilities = migratedData;
     }

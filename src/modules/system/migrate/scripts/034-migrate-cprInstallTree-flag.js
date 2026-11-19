@@ -31,23 +31,13 @@ export default class MoveCPRInstallTreeFlag extends BaseMigrationScript {
 
     if (!Array.isArray(cprInstallTree) || cprInstallTree.length === 0) return;
 
-    // Get migration data to update the record for each item data in tree.
-    const { MigrationRunner } = game.cpr;
-    const migrationData = {
-      previous: MigrationRunner.currentDataModelVersion,
-      current: MigrationRunner.newDataModelVersion,
-    };
-
     const systemId = game.system.id;
 
     // Inner helper that does recursive migration.
     function moveFlag(tree) {
       for (const itemData of tree) {
-        // Update migration record for all item data in tree.
-        itemData.flags[systemId] = {
-          ...itemData.flags[systemId],
-          _migration: migrationData,
-        };
+        itemData.flags ??= {};
+        itemData.flags[systemId] ??= {};
 
         // Recurse into nested cprInstallTree if present.
         const childTree = itemData.flags?.cprInstallTree;

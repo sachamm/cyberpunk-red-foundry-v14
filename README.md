@@ -21,6 +21,16 @@ Use a separate Foundry data folder and back up any existing worlds before testin
 
 Use the manifest URL for the specific version you want. GitHub's `latest` download route does not select prereleases; to move between alpha versions, install the newer release's manifest URL explicitly.
 
+## Migrating an older campaign
+
+Direct system-data migration is supported from Cyberpunk RED **0.88.2 / data-model version 24** through the current model. A V12 staging server is not required for that starting point. Older system data remains unsupported.
+
+1. Keep the original backup untouched and restore a copy of the complete world folder into a separate V14 user-data directory, with this fork installed.
+2. Launch the copied world and allow Foundry to finish its core migration. Sign in as a GM and complete the Cyberpunk RED migration wizard.
+3. Reload the world and verify characters, loaded ammunition, installed cyberware, role abilities, and independent scene tokens before using the campaign for play.
+
+The migration preserves document IDs and converts legacy installation UUIDs and loaded-ammo references. Serialized equipment inside installation-tree flags is migrated recursively. Missing base actors on existing scene tokens cannot be reconstructed by the system migration; their token records remain in the world. Media hosted on Forge or stored outside the world backup must remain accessible or be transferred separately.
+
 ## Release Notes
 
 Find version-specific notes and downloads on the [GitHub releases page](https://github.com/sachamm/cyberpunk-red-foundry-v14/releases). Development history is recorded in [CHANGELOG.md](CHANGELOG.md).
