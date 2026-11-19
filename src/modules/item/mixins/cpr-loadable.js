@@ -276,7 +276,8 @@ const Loadable = function Loadable() {
    * When a loadable item has an upgrade removed we need to sync the magazine data
    * in case the magazine size decreased, we need to remove the extra bullets.
    *
-   * @returns {Array} - updated embedded documents
+   * @returns {Promise<Array>} - updated embedded documents when the item has an
+   *                             owning actor, or top-level world items otherwise
    */
   this.syncMagazine = async function syncMagazine() {
     const updateData = [];
@@ -309,7 +310,11 @@ const Loadable = function Loadable() {
         }
       }
     }
-    return actor.updateEmbeddedDocuments("Item", updateData);
+    // World items have no owning actor; their installed items are top-level
+    // documents rather than embedded ones.
+    return actor
+      ? actor.updateEmbeddedDocuments("Item", updateData)
+      : Item.updateDocuments(updateData);
   };
 };
 
