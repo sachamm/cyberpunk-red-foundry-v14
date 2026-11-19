@@ -1954,11 +1954,11 @@ test("effect category headers collapse and expand their sections", async ({
       actorId,
     );
     await row.locator("select.key-key").selectOption("bonuses.maxHp");
-    const valueInput = row.locator('input[name="changes.0.value"]');
+    const valueInput = row.locator('input[name="system.changes.0.value"]');
     await valueInput.fill("2");
     await valueInput.press("Tab");
     await page.waitForFunction(
-      (id) => game.actors.get(id).effects.contents[0].changes[0].value === "2",
+      (id) => game.actors.get(id).effects.contents[0].changes[0].value === 2,
       actorId,
     );
     await closeActiveEffectConfigViaUI(page, aeConfig);
