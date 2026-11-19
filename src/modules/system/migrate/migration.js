@@ -1,3 +1,7 @@
+import {
+  applySerializedDeletions,
+  installedTreeItems,
+} from "./legacy-installations.js";
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import MigrationApp from "./migration-app.js";
@@ -22,8 +26,8 @@ export default class MigrationRunner {
    * and migration is cancelled before it starts.
    */
   static #MINIMUM_VERSION = {
-    dataModel: 34,
-    system: "0.89.3",
+    dataModel: 24,
+    system: "0.88.2",
   };
 
   /**
@@ -600,14 +604,25 @@ export default class MigrationRunner {
   async migrateItem(itemData) {
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
-      if (!this.isMigratableType("Item", itemData.type, migration)) continue;
       try {
-        await migration.updateItem(itemData);
+        await this.migrateItemTree(itemData, undefined, migration);
       } catch (err) {
         throw await this.generateError(itemData.uuid, err);
       }
     }
     return itemData;
+  }
+
+  /** Apply each numbered migration to serialized equipment as well as its owner. */
+  async migrateItemTree(itemData, actorData, migration, seen = new WeakSet()) {
+    if (seen.has(itemData)) return;
+    seen.add(itemData);
+    if (this.isMigratableType("Item", itemData.type, migration)) {
+      await migration.updateItem(itemData, actorData);
+    }
+    for (const child of installedTreeItems(itemData)) {
+      await this.migrateItemTree(child, actorData, migration, seen);
+    }
   }
 
   async migrateActor(actorData) {
@@ -623,10 +638,9 @@ export default class MigrationRunner {
       // Migrate embedded items.
       if (actorData.items.length === 0) continue;
       for (const itemData of actorData.items) {
-        if (!this.isMigratableType("Item", itemData.type, migration)) continue;
         try {
           itemData.uuid = `${actorData.uuid}.Item.${itemData._id}`;
-          await migration.updateItem(itemData, actorData);
+          await this.migrateItemTree(itemData, actorData, migration);
         } catch (err) {
           throw await this.generateError(itemData.uuid, err);
         }
@@ -730,6 +744,7 @@ export default class MigrationRunner {
    * @return {void}
    */
   updateMigrationRecord(update, isToken = false) {
+    update.flags ??= {};
     if (!update.flags[game.system.id]) update.flags[game.system.id] = {};
     const migrationData = {
       previous: this.currentDataModelVersion,
@@ -737,6 +752,22 @@ export default class MigrationRunner {
     };
     if (isToken) migrationData.isToken = true;
     update.flags[game.system.id]._migration = migrationData;
+    const stamp = (item, seen = new WeakSet()) => {
+      if (seen.has(item)) return;
+      seen.add(item);
+      item.flags ??= {};
+      item.flags[game.system.id] ??= {};
+      item.flags[game.system.id]._migration = { ...migrationData };
+      for (const child of installedTreeItems(item)) {
+        applySerializedDeletions(child);
+        stamp(child, seen);
+      }
+    };
+    for (const item of update.items ?? []) stamp(item);
+    for (const item of installedTreeItems(update)) {
+      applySerializedDeletions(item);
+      stamp(item);
+    }
   }
 
   /**

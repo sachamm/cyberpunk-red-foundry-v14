@@ -34,31 +34,16 @@ export default class RemoveUnusedInstallFlag extends BaseMigrationScript {
 
     if (!Array.isArray(cprInstallTree) || cprInstallTree.length === 0) return;
 
-    // Get migration data to update the record for each item data in tree.
-    const { MigrationRunner } = game.cpr;
-    const migrationData = {
-      previous: MigrationRunner.currentDataModelVersion,
-      current: MigrationRunner.newDataModelVersion,
-    };
-
-    const systemId = game.system.id;
-
     // Inner helper that does recursive migration.
     function deleteFlag(tree) {
       for (const itemData of tree) {
-        // Update migration record for all item data in tree.
-        itemData.flags[systemId] = {
-          ...itemData.flags[systemId],
-          _migration: migrationData,
-        };
-
-        BaseMigrationScript.safeDelete(itemData, `flags.cprInstallTree`);
-
-        // Recurse into nested cprInstallTree if present.
-        const childTree = itemData.flags?.cprInstallTree;
-        if (Array.isArray(childTree) && childTree.length > 0) {
-          deleteFlag(childTree);
-        }
+        // These are serialized objects inside a flag, not live Documents.
+        // Capture the old tree before deleting it, then visit either format.
+        const oldTree = itemData.flags?.cprInstallTree;
+        if (itemData.flags) delete itemData.flags.cprInstallTree;
+        const newTree = ContainerUtils.getInstallTreeFlag(itemData);
+        if (Array.isArray(oldTree)) deleteFlag(oldTree);
+        if (Array.isArray(newTree) && newTree !== oldTree) deleteFlag(newTree);
       }
     }
 

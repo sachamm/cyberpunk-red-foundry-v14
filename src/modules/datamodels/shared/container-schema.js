@@ -1,3 +1,4 @@
+import { normalizeLegacyInstallations } from "../../system/migrate/legacy-installations.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRSystemDataModel from "../system-data-model.js";
 
@@ -83,11 +84,7 @@ export default class ContainerSchema extends CPRSystemDataModel {
    * @returns {CPRSystemDataModel} - migrated data
    */
   static migrateData(source) {
-    const { installedItems } = source;
-    if (installedItems?.list?.length > 0) {
-      // Ensure that this list never has duplicates.
-      installedItems.list = Array.from(new Set(installedItems.list));
-    }
+    normalizeLegacyInstallations(source);
     return super.migrateData(source);
   }
 
