@@ -167,7 +167,7 @@
     {{#if weapon.system.isRanged}}
       <ul class="items-list">
         <li class="text-padding-sides-smaller">
-          {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-dv-glyph.hbs" weapon=weapon isTokenSheet=isTokenSheet}}
+          {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-dv-glyph.hbs" weapon=weapon canMeasureDv=canMeasureDv}}
         </li>
         <li class="text-padding-sides-smaller">
           {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-changeAmmo-glyph.hbs" weapon}}

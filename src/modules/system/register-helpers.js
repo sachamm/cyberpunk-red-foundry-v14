@@ -1116,13 +1116,10 @@ export default function registerHandlebarsHelpers() {
   });
 
   Handlebars.registerHelper("cprHighlightDVRuler", (item) => {
-    const token = item.actor.sheet?.token;
+    const token = SystemUtils.GetDvToken(item.actor);
     let itemDvTable = item.system?.dvTable;
-    if (token !== null && itemDvTable !== null && itemDvTable !== "") {
-      const tokenDv = token.object.document.getFlag(
-        game.system.id,
-        "cprDvTable",
-      );
+    if (token && itemDvTable) {
+      const tokenDv = token.getFlag(game.system.id, "cprDvTable");
       const firetype = token.actor.getFlag(
         game.system.id,
         `firetype-${item.id}`,

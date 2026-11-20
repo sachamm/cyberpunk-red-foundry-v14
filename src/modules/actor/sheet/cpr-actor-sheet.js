@@ -112,6 +112,7 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
     cprData.isGM = game.user.isGM;
 
     cprData.isTokenSheet = !!this.token;
+    cprData.canMeasureDv = !!SystemUtils.GetDvToken(this.actor);
 
     cprData.enrichedHTML = {};
     if (this.actor.type !== "container") {
@@ -796,10 +797,15 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
         }
         case "dv-ruler": {
           if (item.system?.dvTable !== "") {
+            const token = SystemUtils.GetDvToken(this.actor);
+            if (!token) {
+              this.render();
+              break;
+            }
             await item.doAction(this.actor, event.currentTarget.attributes);
-            await this._setDvIconState(item);
+            await this._setDvIconState(item, token);
             if (
-              canvas.tokens.controlled.filter((t) => t.id === this.token.id)
+              canvas.tokens.controlled.filter((t) => t.id === token.id)
                 .length === 0 &&
               canvas.tokens.ownedTokens.filter(
                 (t) =>
@@ -839,12 +845,13 @@ export default class CPRActorSheet extends CPRScrollableSheetMixin(
    * @callback
    * @param {CPRItem} item - item we are activating the DV Ruler for
    */
-  async _setDvIconState(item) {
+  async _setDvIconState(item, token = SystemUtils.GetDvToken(this.actor)) {
+    if (!token) return this.render();
     const dvGlyphs = this.element.querySelectorAll(".dv-glyph");
 
-    const dvFlag = this.token.getFlag(game.system.id, "cprDvTable");
+    const dvFlag = token.getFlag(game.system.id, "cprDvTable");
 
-    const dvFlagSet = dvFlag?.name !== "";
+    const dvFlagSet = !!dvFlag?.name;
 
     for (const glyphNode of dvGlyphs) {
       const weaponId = glyphNode.dataset.itemId;

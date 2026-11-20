@@ -41,8 +41,8 @@ const Loadable = function Loadable() {
       `flags.${game.system.id}.firetype-${this._id}`,
     );
     const activeTable = flag === "autofire" ? `${dvTable} (Autofire)` : dvTable;
-    if (actor.sheet.token !== null)
-      return SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
+    const token = SystemUtils.GetDvToken(actor);
+    if (token) return SystemUtils.SetDvTable(token.object, activeTable);
     return Promise.resolve();
   };
 

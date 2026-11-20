@@ -12,7 +12,7 @@
   "CPR.actorSheets.commonActions.managePrograms": "Manage Programs",
   "CPR.actorSheets.commonActions.manageUpgrades": "Manage Upgrades",
   "CPR.actorSheets.commonActions.measureDv": "Measure DV",
-  "CPR.actorSheets.commonActions.measureDvDisabled": "The 'Measure DV' tool currently only works when the character sheet has been opened from a token.",
+  "CPR.actorSheets.commonActions.measureDvDisabled": "Select a single token for this character, or open an unlinked token's sheet, to measure DV.",
   "CPR.actorSheets.commonActions.new": "New {item}",
   "CPR.actorSheets.commonActions.reload": "Reload",
   "CPR.actorSheets.commonActions.removeUpgrade": "Remove Upgrade",

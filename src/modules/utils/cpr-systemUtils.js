@@ -275,6 +275,21 @@ export default class CPRSystemUtils {
     return tableList;
   }
 
+  /**
+   * Resolve the on-scene token for a sheet DV action. Linked actors have no
+   * actor.token, so require one controlled token belonging to that actor.
+   * @param {Actor} actor
+   * @returns {TokenDocument|null}
+   */
+  static GetDvToken(actor) {
+    if (!canvas?.ready || !actor) return null;
+    if (actor.token?.object && actor.token.isOwner) return actor.token;
+    const tokens = canvas.tokens.controlled.filter(
+      (token) => token.actor === actor && token.isOwner,
+    );
+    return tokens.length === 1 ? tokens[0].document : null;
+  }
+
   static async SetDvTable(token, tableName) {
     const dvTables = await CPRSystemUtils.GetDvTables();
     const [selectedTable] = dvTables.filter(

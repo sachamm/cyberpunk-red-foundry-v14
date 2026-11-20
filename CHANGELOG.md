@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Unreleased
+
+### Bug Fixes
+
+- Enable the weapon DV ruler for linked characters when their token is selected, including player sheets opened with C outside combat. Keep token DV updates and weapon highlighting consistent with that selection.
+
 ## Version 0.93.0-v14.alpha.3
 
 ### New Features
