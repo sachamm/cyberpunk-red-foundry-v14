@@ -7,6 +7,7 @@
 ### Bug Fixes
 
 - Enable the weapon DV ruler for linked characters when their token is selected, including player sheets opened with C outside combat. Keep token DV updates and weapon highlighting consistent with that selection.
+- Declare system document types in `system.json` instead of the deprecated `template.json`, removing its startup warning.
 
 ## Version 0.93.0-v14.alpha.3
 
