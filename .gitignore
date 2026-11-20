@@ -29,6 +29,7 @@ foundryconfig.json
 dist/
 docs/
 src/packs/other/changelog
+src/packs/other/credits
 
 # Playwright generated runtime state and output.
 .playwright/

@@ -3,6 +3,7 @@ import * as BuildTools from "./gulp/build.mjs";
 import * as ImageTools from "./gulp/images.mjs";
 import * as CssTools from "./gulp/css.mjs";
 import { buildChangelog } from "./gulp/changelog.mjs";
+import { buildCredits } from "./gulp/credits.mjs";
 import { PackUtils } from "./gulp/utils/PackUtils.mjs";
 import { cprTransformEntry } from "./gulp/utils/cprPackData.mjs";
 import Config from "./gulp/config.mjs";
@@ -32,6 +33,7 @@ const config = new Config({
   excludeDirs: ["packs"],
   css: { enabled: true },
   changelog: { enabled: true, packName: "other_changelog" },
+  credits: { enabled: true, packName: "other_credits" },
   devMode: {
     enabled: true,
     outPath: "modules/system/devMode.js",
@@ -45,10 +47,11 @@ const config = new Config({
     excludePacks: [
       "internal_skills",
       "other_changelog",
+      "other_credits",
       "other_scenes",
       "other_macros",
     ],
-    generatedPacks: ["other_changelog"],
+    generatedPacks: ["other_changelog", "other_credits"],
     babeleMappings: { dvTable: "system.dvTable" },
   },
 });
@@ -61,6 +64,7 @@ gulp.task("generateDevMode", BuildTools.generateDevMode(config));
 gulp.task("compileCss", CssTools.compileCss(config));
 gulp.task("processImages", ImageTools.processImages(config));
 gulp.task("buildChangelog", buildChangelog(config));
+gulp.task("buildCredits", buildCredits(config));
 gulp.task("compilePacks", PackUtils.compilePacks(config));
 gulp.task("extractPacksTask", PackUtils.extractPacks(config));
 gulp.task("watchStaticAssets", BuildTools.watchStaticAssets(config));
@@ -73,6 +77,7 @@ const assets = gulp.series(
   "generateEnvFile",
   "buildManifest",
   "buildChangelog",
+  "buildCredits",
   "compileCss",
   "processImages",
   "copyStaticAssets",
@@ -82,8 +87,12 @@ const assets = gulp.series(
 
 export const build = gulp.series("cleanBuildDir", assets);
 
-// Build the changelog journal, then compile all packs.
-export const generatePacks = gulp.series("buildChangelog", "compilePacks");
+// Build the changelog and credits journals, then compile all packs.
+export const generatePacks = gulp.series(
+  "buildChangelog",
+  "buildCredits",
+  "compilePacks",
+);
 
 // Extract compiled packs back to YAML fragments (also regenerates Babele).
 export const extractPacks = gulp.series("extractPacksTask");

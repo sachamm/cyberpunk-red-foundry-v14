@@ -52,7 +52,12 @@
     {
       "name": "Cyberpunk RED: Other",
       "sorting": "m",
-      "packs": ["other_macros", "other_scenes", "other_changelog"]
+      "packs": [
+        "other_macros",
+        "other_scenes",
+        "other_changelog",
+        "other_credits"
+      ]
     }
   ],
   "packs": [
@@ -275,6 +280,14 @@
       "type": "JournalEntry",
       "name": "other_changelog",
       "path": "packs/other/changelog",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "label": "Credits",
+      "type": "JournalEntry",
+      "name": "other_credits",
+      "path": "packs/other/credits",
       "system": "cyberpunk-red-core",
       "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
     },
