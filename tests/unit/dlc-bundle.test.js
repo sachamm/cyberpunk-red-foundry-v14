@@ -33,6 +33,8 @@ describe("bundled DLC", () => {
     vi.stubEnv("CPR_SKIP_DLC", "1");
     const config = new DlcConfig({ manifestFile: "src/system.json" });
     expect(config.manifest.packs).toEqual(coreManifest.packs);
+    // Nothing under src/dlc/ (art, data) may be copied either.
+    expect(config.excludeDirs).toContain("dlc");
   });
 
   it("keeps DLC packs out of core babele generation and generic copies", () => {
@@ -80,6 +82,37 @@ describe("bundled DLC", () => {
         .readdirSync("src/dlc/babele/en")
         .every((f) => f.startsWith("cyberpunk-red-core.")),
     ).toBe(true);
+  });
+
+  it("resolves every compendium link and image in the DLC content", () => {
+    const docIds = new Map();
+    for (const pack of [...coreManifest.packs, ...dlc.packs]) {
+      const dir = path.join("src", pack.path);
+      if (!fs.existsSync(dir)) continue; // generated packs (changelog)
+      const ids = new Set();
+      for (const file of walk(dir).filter((f) => f.endsWith(".yaml"))) {
+        const match = fs.readFileSync(file, "utf8").match(/^_id: (\S+)$/m);
+        if (match) ids.add(match[1]);
+      }
+      docIds.set(pack.name, ids);
+    }
+
+    const broken = [];
+    for (const file of walk("src/dlc/packs")) {
+      const text = fs.readFileSync(file, "utf8");
+      for (const [ref, pack, id] of text.matchAll(
+        /Compendium\.cyberpunk-red-core\.([\w-]+)\.(?:[A-Za-z]+\.)?([A-Za-z0-9]{16})/g,
+      )) {
+        if (!docIds.get(pack)?.has(id)) broken.push(`${file}: ${ref}`);
+      }
+      for (const [, rel] of text.matchAll(
+        /systems\/cyberpunk-red-core\/([^"'\s)]+\.(?:svg|webp|png|jpe?g))/g,
+      )) {
+        if (!fs.existsSync(path.join("src", rel)))
+          broken.push(`${file}: ${rel}`);
+      }
+    }
+    expect(broken).toEqual([]);
   });
 
   it("ships the DLC licence and credits with the content", () => {
