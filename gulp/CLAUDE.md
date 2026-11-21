@@ -13,7 +13,7 @@ systems and modules; see [README.md](README.md) for configuration and task inter
 ## Repository map
 
 - `config.mjs` defines shared configuration, defaults, and local path discovery.
-- `build.mjs`, `css.mjs`, `images.mjs`, and `changelog.mjs` expose Gulp task factories.
+- `build.mjs`, `css.mjs`, `images.mjs`, `changelog.mjs`, and `credits.mjs` expose Gulp task factories.
 - `utils/PackUtils.mjs` owns pack compilation and extraction; `utils/cprPackData.mjs` contains CPR-specific pack
   normalization used by Core and DLC.
 - `scripts/` contains GitLab maintenance helpers.

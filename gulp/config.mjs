@@ -13,6 +13,7 @@ class Config {
   static FOUNDRY_CONFIG = "foundryconfig.json";
   static MANIFEST_FILE = "src/module.json";
   static CHANGELOG_FILE = "CHANGELOG.md";
+  static CREDITS_FILE = "CREDITS.md";
   static DEFAULT_VERSION = "v0.0.0dev";
   static SRC_DIR = "src";
   static BUILD_DIR = "dist";
@@ -22,6 +23,7 @@ class Config {
   static BABELE = { enabled: false, dir: "babele" };
   static CSS = { enabled: false, entry: "css/main.css", out: "css/main.css" };
   static CHANGELOG = { enabled: false, packName: "changelog" };
+  static CREDITS = { enabled: false, packName: "credits" };
   static DEV_MODE = {
     enabled: false,
     outPath: "modules/system/devMode.js",
@@ -50,6 +52,7 @@ class Config {
    * @param {string} [options.foundryConfig] - Path to the foundry config file
    * @param {string} [options.manifestFile] - Path to the manifest file
    * @param {string} [options.changelogFile] - Path to the changelog file
+   * @param {string} [options.creditsFile] - Path to the credits file
    * @param {string} [options.srcDir] - Source directory name
    * @param {string} [options.buildDir] - Build directory name
    * @param {string[]} [options.staticExts] - File extensions to copy to build
@@ -65,6 +68,9 @@ class Config {
    * @param {Object} [options.changelog] - Changelog journal generation options
    * @param {boolean} [options.changelog.enabled] - Whether to build changelog journals (default: false)
    * @param {string} [options.changelog.packName] - Manifest pack name to write journals into (default: "changelog")
+   * @param {Object} [options.credits] - Credits journal generation options
+   * @param {boolean} [options.credits.enabled] - Whether to build credits journal (default: false)
+   * @param {string} [options.credits.packName] - Manifest pack name to write journal into (default: "credits")
    * @param {Object} [options.devMode] - DevMode module generation options
    * @param {boolean} [options.devMode.enabled] - Whether to generate the devMode module (default: false)
    * @param {string} [options.devMode.outPath] - Output path relative to buildDir (default: "modules/system/devMode.js")
@@ -87,6 +93,7 @@ class Config {
     this._foundryConfig = options.foundryConfig || Config.FOUNDRY_CONFIG;
     this._manifestFile = options.manifestFile || Config.MANIFEST_FILE;
     this._changelogFile = options.changelogFile || Config.CHANGELOG_FILE;
+    this._creditsFile = options.creditsFile || Config.CREDITS_FILE;
     this._srcDir = options.srcDir || Config.SRC_DIR;
     this._buildDir = options.buildDir || Config.BUILD_DIR;
     this._staticExts = options.staticExts || Config.STATIC_EXTS;
@@ -95,6 +102,7 @@ class Config {
     this._babele = { ...Config.BABELE, ...options.babele };
     this._css = { ...Config.CSS, ...options.css };
     this._changelog = { ...Config.CHANGELOG, ...options.changelog };
+    this._credits = { ...Config.CREDITS, ...options.credits };
     this._devMode = { ...Config.DEV_MODE, ...options.devMode };
     this._packs = { ...Config.PACKS, ...options.packs };
     this._defaultVersion = options.defaultVersion || Config.DEFAULT_VERSION;
@@ -525,6 +533,15 @@ class Config {
   }
 
   /**
+   * Gets the credits journal generation options.
+   *
+   * @returns {Object} Credits options with enabled and packName properties
+   */
+  get credits() {
+    return { ...this._credits };
+  }
+
+  /**
    * Gets the devMode module generation options.
    *
    * @returns {Object} DevMode options with enabled, outPath, and defaults
@@ -560,6 +577,15 @@ class Config {
    */
   get changelogPath() {
     return path.resolve(path.join(this.root, this._changelogFile));
+  }
+
+  /**
+   * Gets the path to the credits file.
+   *
+   * @returns {string} Resolved path to the credits file
+   */
+  get creditsPath() {
+    return path.resolve(path.join(this.root, this._creditsFile));
   }
 
   /**

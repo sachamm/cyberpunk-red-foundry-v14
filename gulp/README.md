@@ -136,10 +136,12 @@ The `Config` constructor accepts the following options.
 | `defaultVersion` | `"v0.0.0dev"`                                                                                                       | Fallback version when CI/manifest unavailable                                   |
 | `foundryConfig`  | `"foundryconfig.json"`                                                                                              | Path to Foundry config (for local dev `foundry.dataPath` override)              |
 | `changelogFile`  | `"CHANGELOG.md"`                                                                                                    | Path to changelog                                                               |
+| `creditsFile`    | `"CREDITS.md"`                                                                                                      | Path to credits                                                                 |
 | `varsFile`       | `"vars.env"`                                                                                                        | Output path for CI environment file                                             |
 | `babele`         | `{ enabled: false, dir: "babele" }`                                                                                 | Babele translation file generation options                                      |
 | `css`            | `{ enabled: false, entry: "css/main.css", out: "css/main.css" }`                                                    | PostCSS pipeline options (entry/out relative to srcDir/buildDir)                |
 | `changelog`      | `{ enabled: false, packName: "changelog" }`                                                                         | Changelog journal generation options (`packName` = manifest pack to write into) |
+| `credits`        | `{ enabled: false, packName: "credits" }`                                                                           | Credits journal generation options (`packName` = manifest pack to write into)   |
 | `devMode`        | `{ enabled: false, outPath: "modules/system/devMode.js", defaults: {} }`                                            | DevMode module generation (`defaults` merged under foundryconfig's `devMode`)   |
 | `packs`          | `{ transformEntry: null, transformName: null, excludePacks: [], stats: false, lastModifiedBy: "0000000000000000" }` | Pack extract/compile hooks, Babele exclusions, and `_stats` stamping            |
 
@@ -281,6 +283,28 @@ add: `marked`, `js-yaml`.
 | Task                     | Description                                          |
 | ------------------------ | ---------------------------------------------------- |
 | `buildChangelog(config)` | Writes changelog journal fragments into the pack src |
+
+<!-- markdownlint-enable MD013 -->
+
+#### Credits Tasks (`credits.mjs`)
+
+Disabled by default. Enable with the `credits` option to turn the project's
+`CREDITS.md` into a Foundry journal pack fragment — one page per `#` / `##`
+section heading — written into the source directory of the manifest pack named
+by `credits.packName`. Run it before `compilePacks` so the journal is built into
+the pack:
+
+```js
+export const generatePacks = gulp.series("buildCredits", "compilePacks");
+```
+
+Consumer dependencies to add: `marked`, `js-yaml`.
+
+<!-- markdownlint-disable MD013 -->
+
+| Task                   | Description                                       |
+| ---------------------- | ------------------------------------------------- |
+| `buildCredits(config)` | Writes credits journal fragment into the pack src |
 
 <!-- markdownlint-enable MD013 -->
 
