@@ -10,7 +10,7 @@ test("bundled DLC compendia load every document", async ({ page }) => {
   const result = await test.step("load every DLC pack", () =>
     page.evaluate(async () => {
       const packs = game.system.packs.filter((p) =>
-        p.path.includes("/dlc/packs/"),
+        /\/dlc\/(legacy\/)?packs\//.test(p.path),
       );
       const out = [];
       for (const meta of packs) {
