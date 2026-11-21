@@ -26,7 +26,7 @@ flags:
               previous: "41"
         folder: Em6tnWjMgSob6YcK
         img: >-
-          systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/rocket_launcher_underbarrel.svg
+          systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/rocket-launcher-underbarrel.svg
         name: Rocket Launcher Underbarrel
         ownership:
           default: 0

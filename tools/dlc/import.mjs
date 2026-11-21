@@ -32,10 +32,50 @@ function upstreamDir() {
   return path.resolve(dir);
 }
 
+// Broken links and image paths in the upstream data, fixed on import. Each
+// entry is [upstream text, replacement], applied after the module→system
+// rewrite. Drop an entry once upstream fixes it.
+const S = `Compendium.${SYSTEM_ID}`;
+const UPSTREAM_FIXES = [
+  // Effect origins and a loot result still name packs that were merged into
+  // dlc_cyberware; the items keep their ids there.
+  [`${S}.dlc_mixing-drinks-changing-lives.Item.`, `${S}.dlc_cyberware.Item.`],
+  [
+    `${S}.dlc_must-have-cyberware-deals.mTL4ZsBLRd6dO7Hv`,
+    `${S}.dlc_cyberware.Item.mTL4ZsBLRd6dO7Hv`,
+  ],
+  // Smash is a core drug.
+  [
+    `${S}.dlc_consumables.PRLDaeBVeMuBBIeO`,
+    `${S}.core_drugs.Item.PRLDaeBVeMuBBIeO`,
+  ],
+  // No such Elflines gear item; the result is named after the Elflines Online
+  // upgrade.
+  [
+    `${S}.elflines_gear.yobTPhOaGRpfkjz8`,
+    `${S}.dlc_upgrades.Item.ucX1EbPnMOBUyvlB`,
+  ],
+  [
+    `systems/${SYSTEM_ID}/icons/compendium/cyberweapons/wolvers.svg`,
+    `systems/${SYSTEM_ID}/icons/compendium/cyberware/wolvers.svg`,
+  ],
+  [
+    `${DLC_DIR}/icons/dlc/upgrades/rocket_launcher_underbarrel.svg`,
+    `${DLC_DIR}/icons/dlc/upgrades/rocket-launcher-underbarrel.svg`,
+  ],
+  [
+    `${DLC_DIR}/assets/scenes/pBQGiLen5fM33fpL-thumb.webp`,
+    `${DLC_DIR}/assets/scenes/Chase_Grid_thumb.webp`,
+  ],
+];
+
 const rewrite = (text) =>
-  text
-    .replaceAll(`modules/${UPSTREAM_ID}/`, `systems/${SYSTEM_ID}/${DLC_DIR}/`)
-    .replaceAll(`Compendium.${UPSTREAM_ID}.`, `Compendium.${SYSTEM_ID}.`);
+  UPSTREAM_FIXES.reduce(
+    (out, [from, to]) => out.replaceAll(from, to),
+    text
+      .replaceAll(`modules/${UPSTREAM_ID}/`, `systems/${SYSTEM_ID}/${DLC_DIR}/`)
+      .replaceAll(`Compendium.${UPSTREAM_ID}.`, `Compendium.${SYSTEM_ID}.`),
+  );
 
 const TEXT_EXTS = new Set([".yaml", ".yml", ".json"]);
 

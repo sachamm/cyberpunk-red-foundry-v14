@@ -54,8 +54,10 @@ export const withDlc = (Base) =>
     }
 
     get excludeDirs() {
-      // Packs are compiled and Babele files are relocated by bundleDlc, so
-      // neither is copied verbatim.
+      // Without the DLC nothing under src/dlc/ ships. With it, packs are
+      // compiled and Babele files are relocated by bundleDlc, so neither is
+      // copied verbatim.
+      if (!enabled()) return [...super.excludeDirs, DLC_DIR];
       return [
         ...super.excludeDirs,
         path.join(DLC_DIR, "packs"),

@@ -40,7 +40,7 @@ effects:
     img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/cyberliver.svg
     name: Cyberliver
     origin: >-
-      Compendium.cyberpunk-red-core.dlc_mixing-drinks-changing-lives.Item.Pf0nIIWogwohv3gc
+      Compendium.cyberpunk-red-core.dlc_cyberware.Item.Pf0nIIWogwohv3gc
     sort: 0
     statuses: []
     system: {}

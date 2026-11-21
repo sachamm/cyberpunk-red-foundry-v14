@@ -37,7 +37,7 @@ effects:
             "0":
               isSituational: false
               onByDefault: false
-    img: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
+    img: systems/cyberpunk-red-core/icons/compendium/cyberware/wolvers.svg
     name: Tasmanskiy Klô
     origin: null
     sort: 0
@@ -52,7 +52,7 @@ flags:
       current: 44
       previous: "38"
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/wolvers.svg
 name: SlamDance Tasmanskiy Klô
 ownership:
   default: 0

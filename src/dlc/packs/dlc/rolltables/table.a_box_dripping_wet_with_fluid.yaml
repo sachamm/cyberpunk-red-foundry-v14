@@ -152,7 +152,7 @@ results:
       systemId: cyberpunk-red-core
       systemVersion: DUMMY_VALUE
     description: ""
-    documentUuid: Compendium.cyberpunk-red-core.dlc_consumables.PRLDaeBVeMuBBIeO
+    documentUuid: Compendium.cyberpunk-red-core.core_drugs.Item.PRLDaeBVeMuBBIeO
     drawn: false
     flags: {}
     img: systems/cyberpunk-red-core/icons/compendium/drugs/smash.svg

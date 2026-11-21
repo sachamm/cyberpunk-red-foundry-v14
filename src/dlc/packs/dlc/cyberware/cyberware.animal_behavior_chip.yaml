@@ -40,7 +40,7 @@ effects:
     img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/animal_behaviour_chip.svg
     name: Animal Behavior Chip
     origin: >-
-      Compendium.cyberpunk-red-core.dlc_mixing-drinks-changing-lives.Item.TVgFdyPTl0aVAQz5
+      Compendium.cyberpunk-red-core.dlc_cyberware.Item.TVgFdyPTl0aVAQz5
     sort: 0
     statuses: []
     system: {}

@@ -40,7 +40,7 @@ effects:
     img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/vic_jammer.svg
     name: VIC Jammer
     origin: >-
-      Compendium.cyberpunk-red-core.dlc_mixing-drinks-changing-lives.Item.D7TFt1EHP20nKr8S
+      Compendium.cyberpunk-red-core.dlc_cyberware.Item.D7TFt1EHP20nKr8S
     sort: 0
     statuses: []
     system: {}

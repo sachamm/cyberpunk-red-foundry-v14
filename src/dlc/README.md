@@ -21,7 +21,8 @@ Paths in `CREDITS.md` such as `src/icons/…` refer to the upstream repository l
 
 The only changes from upstream are that `modules/cyberpunk-red-dlc/…` paths and
 `Compendium.cyberpunk-red-dlc.…` links now point inside this system, and Babele files are renamed to the
-system's pack collection ids. Pack names are unchanged. Compendium folder entries upstream lists without
+system's pack collection ids. Pack names are unchanged. A short list of broken links and image paths in the upstream data is corrected
+on import (`UPSTREAM_FIXES` in `tools/dlc/import.mjs`). Compendium folder entries upstream lists without
 a matching pack (`black-chrome_programs`, `black-chrome_rolltables`) are dropped.
 
 ## Build
