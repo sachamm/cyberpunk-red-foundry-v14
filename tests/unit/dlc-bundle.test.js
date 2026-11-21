@@ -2,13 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import GitHubConfig from "../../tools/release/config.mjs";
-import { withDlc } from "../../tools/dlc/dlc.mjs";
+import { readDlcManifest, withDlc } from "../../tools/dlc/dlc.mjs";
 
 afterEach(() => vi.unstubAllEnvs());
 
 const DlcConfig = withDlc(GitHubConfig);
 const coreManifest = JSON.parse(fs.readFileSync("src/system.json", "utf8"));
-const dlc = JSON.parse(fs.readFileSync("src/dlc/dlc.json", "utf8"));
+const dlc = readDlcManifest(path.resolve("src"));
 
 const walk = (dir) =>
   fs
@@ -26,7 +26,30 @@ describe("bundled DLC", () => {
       ...coreManifest.packFolders,
       ...dlc.packFolders,
     ]);
-    expect(dlc.packs).toHaveLength(27);
+    // 27 module packs plus the v12-only Hardened Enemies tables.
+    expect(dlc.packs).toHaveLength(28);
+  });
+
+  it("restores the v12 Hardened Enemies tables under their v12 pack name", () => {
+    const pack = dlc.packs.find((p) => p.name === "dlc_hardened-enemies");
+    expect(pack).toMatchObject({
+      type: "RollTable",
+      path: "dlc/legacy/packs/hardened-enemies",
+    });
+    expect(
+      dlc.packFolders.filter((f) => f.packs.includes(pack.name)),
+    ).toMatchObject([{ name: "Cyberpunk RED: DLC" }]);
+    const tables = fs.readdirSync(path.join("src", pack.path));
+    expect(tables.sort()).toEqual([
+      "table.hardened_lieutenant_tactics.yaml",
+      "table.hardened_mini_boss_mini_promotion.yaml",
+      "table.mook_encounter_complication.yaml",
+    ]);
+    for (const file of tables) {
+      const text = fs.readFileSync(path.join("src", pack.path, file), "utf8");
+      expect(text).not.toMatch(/^\s+text:/m);
+      expect(text).toMatch(/^\s+description: \S/m);
+    }
   });
 
   it("builds the system without DLC when CPR_SKIP_DLC is set", () => {
@@ -58,7 +81,7 @@ describe("bundled DLC", () => {
     const coreNames = new Set(coreManifest.packs.map((p) => p.name));
     const dlcNames = new Set(dlc.packs.map((p) => p.name));
     for (const pack of dlc.packs) {
-      expect(pack.path.startsWith("dlc/packs/")).toBe(true);
+      expect(pack.path).toMatch(/^dlc\/(legacy\/)?packs\//);
       expect(fs.existsSync(path.join("src", pack.path))).toBe(true);
       expect(coreNames.has(pack.name)).toBe(false);
       expect(pack.system).toBe("cyberpunk-red-core");

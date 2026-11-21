@@ -32,7 +32,7 @@ test("bundled DLC compendia load every document", async ({ page }) => {
       return out;
     }));
 
-  expect(result).toHaveLength(27);
+  expect(result).toHaveLength(28);
   for (const pack of result) {
     expect(pack.missing, pack.name).toBeUndefined();
     expect(pack.loaded, pack.name).toBeGreaterThan(0);
