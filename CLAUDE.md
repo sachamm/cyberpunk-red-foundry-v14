@@ -89,14 +89,15 @@ weapon/armor/skill/cyberware/… for items). So `new Actor({type:"character"})` 
 - **Schemas** live in `src/modules/datamodels/`. Each Actor/Item type has a DataModel extending
   `CPRSystemDataModel` (`system-data-model.js`), which composes reusable schema fragments via a **mixin**
   mechanism (`SystemDataModel.mixin(...)`) — e.g. an item schema mixes in `physical`, `equippable`,
-  `valuable`, `stackable`, `attackable` from `datamodels/item/mixins/`. This mirrors Foundry's old
-  `template.json` templates but as composable classes. `template.json` still exists and must stay in sync.
+  `valuable`, `stackable`, `attackable` from `datamodels/item/mixins/`. Document sub-types and their
+  HTML sanitization fields (`htmlFields`) are declared in `src/system.json` under `documentTypes`, which must
+  stay in sync with the data models registered in `src/cpr.js`.
 - **Behaviour** lives in `src/modules/item/` and `src/modules/actor/`. `CPRItem` (base document) composes
   method mixins from `item/mixins/` (`cpr-attackable.js`, `cpr-loadable.js`, `cpr-container.js`, …), and
   per-type logic lives in `item/types/cpr-*.js`. Actors follow the same split (`actor/cpr-*.js` + sheets).
 
-Adding a field to an item type usually means editing its datamodel mixin/schema **and** `template.json`, plus
-possibly a migration script and the type's `.js` behaviour.
+Adding a field to an item type usually means editing its datamodel mixin/schema, plus possibly a migration
+script and the type's `.js` behaviour. Update `system.json` when adding a document type or an HTML field.
 
 ### Migrations (`src/modules/system/migrate/`)
 
