@@ -24,7 +24,23 @@ const enabled = () => !process.env.CPR_SKIP_DLC;
 export function readDlcManifest(srcDirPath) {
   const file = path.join(srcDirPath, DLC_DIR, "dlc.json");
   if (!enabled() || !fs.existsSync(file)) return { packs: [], packFolders: [] };
-  return fs.readJSONSync(file);
+  const dlc = fs.readJSONSync(file);
+
+  // v12-era content the module dropped (tools/dlc/import-legacy.mjs). Its
+  // packs join the module's compendium folder of the same name.
+  const legacyFile = path.join(srcDirPath, DLC_DIR, "legacy", "legacy.json");
+  if (!fs.existsSync(legacyFile)) return dlc;
+  const legacy = fs.readJSONSync(legacyFile);
+  const packFolders = dlc.packFolders.map((f) => ({
+    ...f,
+    packs: [...f.packs],
+  }));
+  for (const folder of legacy.packFolders) {
+    const match = packFolders.find((f) => f.name === folder.name);
+    if (match) match.packs.push(...folder.packs);
+    else packFolders.push(folder);
+  }
+  return { packFolders, packs: [...dlc.packs, ...legacy.packs] };
 }
 
 /**

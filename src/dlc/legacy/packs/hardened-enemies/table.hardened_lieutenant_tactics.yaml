@@ -1,0 +1,139 @@
+_id: amZejGzbh9vPIYgD
+_key: "!tables!amZejGzbh9vPIYgD"
+description: ""
+displayRoll: true
+flags: {}
+formula: 1d10
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Dice.svg
+name: Hardened Lieutenant Tactics
+replacement: true
+results:
+  - _id: GAB4VkDPVGQELhVC
+    _key: "!tables.results!amZejGzbh9vPIYgD.GAB4VkDPVGQELhVC"
+    description: Lieutenant and their allies ambush the party (CP:R page 399).
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: FzZmrVTi3g36meXo
+    _key: "!tables.results!amZejGzbh9vPIYgD.FzZmrVTi3g36meXo"
+    description: Lieutenant is grappling a human shield (CP:R page 184).
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: o7LoF8VyTstDqqQh
+    _key: "!tables.results!amZejGzbh9vPIYgD.o7LoF8VyTstDqqQh"
+    description: Lieutenant orders their allies to focus on a particular player.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: sO17c5MxQ3GR8PXH
+    _key: "!tables.results!amZejGzbh9vPIYgD.sO17c5MxQ3GR8PXH"
+    description: Lieutenant orders their allies to charge wildly at the party.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: 3Sef1wYXTp4oxwVt
+    _key: "!tables.results!amZejGzbh9vPIYgD.3Sef1wYXTp4oxwVt"
+    description: Lieutenant is in a highly defensible position, making use of cover.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: xa6fiX99mgC1MqXL
+    _key: "!tables.results!amZejGzbh9vPIYgD.xa6fiX99mgC1MqXL"
+    description: Lieutenant has First Aid and Paramedic Skill Bases of 14 each.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: 1udxY5oW9uaNmApH
+    _key: "!tables.results!amZejGzbh9vPIYgD.1udxY5oW9uaNmApH"
+    description: >-
+      Lieutenant has rigged an Armor-Piercing Grenade (CP:R page 345) as a trap
+      before the combat, somewhere on the field. Noticing it requires a DV15
+      Perception Skill Check. Disarming it requires a DV9 Demolitions Skill
+      Check. The grenade goes off if any Character moves into the square in
+      which it is hidden.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: NVcjUTkGFAsEDWGU
+    _key: "!tables.results!amZejGzbh9vPIYgD.NVcjUTkGFAsEDWGU"
+    description: >-
+      Lieutenant has done extensive research into the combat capabilities of the
+      party.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: xwBrtyTaAZaopTUs
+    _key: "!tables.results!amZejGzbh9vPIYgD.xwBrtyTaAZaopTUs"
+    description: >-
+      Lieutenant has a COOL of 6, a Reputation of 2, and attempts a Facedown.
+      (CP:R page 194) either before combat begins or right at the beginning.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: J68hJfTVPTTTH1MZ
+    _key: "!tables.results!amZejGzbh9vPIYgD.J68hJfTVPTTTH1MZ"
+    description: Lieutenant has a Tactics Skill Base of 16 and is in command.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1

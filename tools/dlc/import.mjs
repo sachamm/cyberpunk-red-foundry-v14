@@ -105,11 +105,13 @@ if (moduleJson.id !== UPSTREAM_ID) {
   throw new Error(`${upstream} is not the ${UPSTREAM_ID} repository.`);
 }
 
-// Keep the hand-written README; everything else is replaced.
-const readme = path.join(dest, "README.md");
-const readmeText = fs.existsSync(readme) ? fs.readFileSync(readme) : null;
-fs.emptyDirSync(dest);
-if (readmeText) fs.writeFileSync(readme, readmeText);
+// Keep the hand-written README and the v12 legacy content
+// (tools/dlc/import-legacy.mjs); everything else is replaced.
+for (const entry of fs.existsSync(dest) ? fs.readdirSync(dest) : []) {
+  if (!["README.md", "legacy"].includes(entry)) {
+    fs.removeSync(path.join(dest, entry));
+  }
+}
 for (const dir of ["packs", "icons", "assets", "babele"]) {
   const from = path.join(srcDir, dir);
   if (!fs.existsSync(from)) continue;

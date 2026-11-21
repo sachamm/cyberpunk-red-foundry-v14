@@ -25,6 +25,14 @@ system's pack collection ids. Pack names are unchanged. A short list of broken l
 on import (`UPSTREAM_FIXES` in `tools/dlc/import.mjs`). Compendium folder entries upstream lists without
 a matching pack (`black-chrome_programs`, `black-chrome_rolltables`) are dropped.
 
+## v12 legacy content
+
+`legacy/` holds content that the v12 system (0.89.2) shipped but the standalone module no longer has:
+the Hardened Enemies roll tables. They keep their v12 pack name (`dlc_hardened-enemies`) so links from v12
+worlds still resolve, and appear in the "Cyberpunk RED: DLC" compendium folder. Regenerate with
+`npm run dlc:import-legacy -- /path/to/fvtt-cyberpunk-red-core` (checked out at `v0.89.2`); a module
+re-sync leaves `legacy/` alone.
+
 ## Build
 
 `npx gulp build` includes the DLC automatically. `tools/dlc/dlc.mjs` merges `dlc.json` into the built
@@ -44,10 +52,11 @@ Without a path, `repos.dlc` from `foundryconfig.json` is used. The script replac
 
 When the official module supports Foundry v14:
 
-1. Delete `src/dlc/`, `tools/dlc/` and `tests/unit/dlc-bundle.test.js`.
+1. Delete `src/dlc/`, `tools/dlc/`, `tests/unit/dlc-bundle.test.js` and
+   `tests/playwright/items/dlc-compendia.spec.mjs`.
 2. In `gulpfile.mjs`, remove the `tools/dlc/dlc.mjs` import, the `withDlc(...)` wrapper (use
    `GitHubConfig` directly as `Config`) and the `bundleDlc` task.
-3. Remove the `dlc:import` script from `package.json` and `tools/dlc` from its `lint` script.
+3. Remove the `dlc:import` and `dlc:import-legacy` scripts from `package.json` and `tools/dlc` from its `lint` script.
 
 Items already dragged into a world are copies and keep working, but their images and links point at
 `systems/cyberpunk-red-core/dlc/…`. Re-import them from the official module's compendia to repoint them.
