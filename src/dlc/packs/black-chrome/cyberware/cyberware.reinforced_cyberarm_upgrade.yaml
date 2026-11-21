@@ -1,0 +1,83 @@
+_id: RA7Fa2ZiPNiJ1pQx
+_key: "!items!RA7Fa2ZiPNiJ1pQx"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/cyberware/reinforced-cyberarm.svg
+name: Reinforced Cyberarm Upgrade
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Durable reinforcement for your limb that prevents the
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-body.Item.Y65igO9rtakP4qSs]{Broken Arm}
+        critical injury.
+      </p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: 3
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: clinic
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: Black Chrome
+      page: 21
+    - book: Interface RED v3
+      page: 109
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

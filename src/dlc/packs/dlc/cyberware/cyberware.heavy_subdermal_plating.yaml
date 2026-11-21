@@ -1,0 +1,92 @@
+_id: JZWQbhT7YjmqZIt6
+_key: "!items!JZWQbhT7YjmqZIt6"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 57125ab5c54eda891b3a3fd872cbe8473e39f33c
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/heavy-subdermal-armor.svg
+name: Heavy Subdermal Plating
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Requires <strong>BODY 10</strong> or higher unless using a Full Body
+        Conversion.
+      </p>
+      <blockquote>
+        <p>
+          Add
+          @UUID[Compendium.cyberpunk-red-core.dlc_armor.Item.kEMGWjMaYcA4rGyJ]{Heavy Subdermal Plating}
+          to track SP
+        </p>
+      </blockquote>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: Going Metal
+      page: 107
+    - book: Interface RED v3
+      page: 107
+  type: borgware
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

@@ -1,0 +1,61 @@
+_id: Q0JwjXiktI0VuTZL
+_key: "!items!Q0JwjXiktI0VuTZL"
+effects: []
+flags: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/gas_jet.svg
+name: Gas Jet (Blue Glass)
+ownership:
+  L5BVRBGb798QfKk9: 3
+  default: 0
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Constructed from 3 doses of
+        @UUID[Compendium.cyberpunk-red-core.core_drugs.Item.UrKzMiFp4xFOLNIC]{Blue Glass}
+        for use with the
+        @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.ELLIHejsxsklkxkC]{Gas Jet}
+        cyberarm upgrade.
+      </p>
+      <p>
+        Unprotected organic targets suffer the <strong>Primary</strong> and
+        <strong>Secondary</strong> <strong>Effects</strong> of the drug as if they had
+        taken a dose.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 0
+      count: 0
+      override: true
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
+  price:
+    market: 60
+  size: 0
+  source: null
+  sources:
+    - book: Hornet's Pharmacy
+      page: 5
+    - book: Interface RED v4
+      page: 7
+  type: special
+  variety: shotgunShell
+type: ammo

@@ -1,0 +1,62 @@
+{
+  "label": "Armure",
+  "mapping": {},
+  "entries": {
+    "Diving Helmet": {
+      "name": "Diving Helmet",
+      "description": "<p>\n  A sealed, waterproof diving suit with specialized undergarments to keep the\n  body completely dry and warm in cold water.\n</p>\n"
+    },
+    "Dragoon Plating": {
+      "name": "Plaque Dragoon",
+      "description": "<p>\n  Armor plates compatible with Dragoon Plating cyberware. Dragoon Plating can be\n  removed, and summoned back within 6m/y as an action.\n</p>\n<p><em>Imposes -2 armor penalty while equiped.</em></p>\n"
+    },
+    "Dragoon Plating (Metalgear)": {
+      "name": "Plaques Dragoon (Metalgear)",
+      "description": "<p>\n  Armor plates compatible with Dragoon Plating, Metalgear cyberware. Dragoon\n  Plating can be removed, and summoned back within 6m/y as an action.\n</p>\n<p><em>Imposes -3 armor penalty while equiped.</em></p>\n"
+    },
+    "Dry Suit": {
+      "name": "Dry Suit",
+      "description": "<p>\n  A sealed, waterproof diving suit with specialized undergarments to keep the\n  body completely dry and warm in cold water.\n</p>\n"
+    },
+    "Esporma Environment Suit": {
+      "name": "Tenue de protection Esporma",
+      "description": "<p>A self-repairing armored suit to protect you in radioactive environments.</p>\n"
+    },
+    "FleshWeave (Armor)": {
+      "name": "Chair tissée (Armure)",
+      "description": "<p>Armor Item for Sycust FleshWeave Cyberware.</p>\n"
+    },
+    "Heavy Subdermal Plating": {
+      "name": "Plaque subdermique lourde",
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>\n<blockquote>\n  <p>Note: Remove -2 armor penalty for users with BODY 14 or FBC</p>\n</blockquote>\n"
+    },
+    "High-Density Bulletproof Shield": {
+      "name": "High-Density Bulletproof Shield",
+      "description": "<p>A sturdy shield that's less likely to break after a single hit.</p>\n<blockquote><p>Cannot be installed into popup cyberware.</p></blockquote>\n"
+    },
+    "Light Metalgear® (Body)": {
+      "name": "Light Metalgear® (Body)",
+      "description": "<p>A lighter model of the famous Metalgear® armor. -3 to REF, DEX, and MOVE.</p>\n"
+    },
+    "Light Metalgear® (Head)": {
+      "name": "Light Metalgear® (Head)",
+      "description": "<p>A lighter model of the famous Metalgear® armor. -3 to REF, DEX, and MOVE.</p>\n"
+    },
+    "PackShield": {
+      "name": "Sac bouclier",
+      "description": "<p>Businesswear Backpack Bulletproof Shield hybrid.</p>\n<p>\n  Can carry items like a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Carryall},\n  and be equipped in your hand like a shield.\n</p>\n<p>Only provides protection when equipped in a hand.</p>\n<p>\n  Cannot be installed in\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Popup\n Shield}.\n</p>\n"
+    },
+    "Roller Derby Helmet": {
+      "name": "Casque de Roller Derby",
+      "description": "<p>\n  Regulation uniform derby padding required for all league sanctioned events.\n</p>\n"
+    },
+    "Roller Derby Padding": {
+      "name": "Rembourrage de Roller Derby",
+      "description": "<p>\n  Regulation uniform derby padding required for all league sanctioned events.\n</p>\n"
+    },
+    "Scavenged Armor": {
+      "name": "Armure de récupération",
+      "description": "<p>\n  A scavenged set of Light Armorjack body armor that is unable to be repaired.\n</p>\n"
+    }
+  }
+}

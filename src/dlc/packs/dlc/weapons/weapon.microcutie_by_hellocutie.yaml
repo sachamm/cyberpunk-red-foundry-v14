@@ -1,0 +1,89 @@
+_id: maC7pXPwRqULiTPF
+_key: "!items!maC7pXPwRqULiTPF"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_excellent.svg
+name: MicroCutie by HelloCutie
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 1
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 2d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        An excellent quality pistol with a unique Hypurrburst™ mode fire mode*. The
+        weapon purrs when used. Hypurrburst™ is disabled if less than 4 bullets are in
+        the clip.
+      </p>
+      <p>When in Hypurrburst™ mode, the following applies</p>
+      <ul>
+        <li>MicroCutie is ROF 1</li>
+        <li>Purrs audibly</li>
+        <li>Fires a single shot, drains clip, and does 4d6 damage</li>
+        <li>Cannot be used to make aimed shots</li>
+      </ul>
+      <p>
+        <em
+          >*Special fire mode not currently supported; will need to be manually
+          applied</em
+        >
+      </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 10
+    value: 0
+  price:
+    market: 1000
+  quality: excellent
+  revealed: true
+  rof: 2
+  sources:
+    - book: Micro Chrome
+      page: 1
+    - book: Danger Gal Dossier
+      page: 145
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: weapon

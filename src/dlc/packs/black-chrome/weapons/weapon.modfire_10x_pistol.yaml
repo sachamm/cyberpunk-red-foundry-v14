@@ -1,0 +1,83 @@
+_id: OqCYiOiTR4zpimAq
+_key: "!items!OqCYiOiTR4zpimAq"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/weapons/modfire-10x-pistol.svg
+name: ModFire 10X (Pistol)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 0
+  brand: Centurian Essentials
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        The ModFire 10X is an <strong>Exotic Heavy Pistol</strong> that can also be
+        transformed into an <strong>Exotic SMG</strong> or an
+        <strong>Exotic Assault Rifle</strong>.
+      </p>
+      <blockquote>
+        <p>
+          The ModFire 10X and all its components fit neatly into a sleek
+          @UUID[Compendium.cyberpunk-red-core.black-chrome_gear.Item.RVr6mvr9BQ6hgS1L]{carrying
+       case}.
+          Transforming the weapon from one profile to another takes 1 minute as long
+          as you have all the requisite parts.
+        </p>
+      </blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 2
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 8
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 2
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 114
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: weapon

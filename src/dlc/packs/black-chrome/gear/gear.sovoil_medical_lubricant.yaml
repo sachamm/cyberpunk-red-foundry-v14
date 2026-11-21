@@ -1,0 +1,44 @@
+_id: RpCYrr6aUyZDUr4v
+_key: "!items!RpCYrr6aUyZDUr4v"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/gear/sovoil-lubricant-medical.svg
+name: SovOil Medical Lubricant
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: SovOil
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>Medical lubricant in a helpfully sized can.</p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 10
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 56
+  usage: toggled
+type: gear

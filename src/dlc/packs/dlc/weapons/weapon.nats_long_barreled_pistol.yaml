@@ -1,0 +1,68 @@
+_id: svNYsEeyi3sCEKfC
+_key: "!items!svNYsEeyi3sCEKfC"
+effects: []
+flags:
+  cyberpunk-red-core: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/long-barreled-pistol.svg
+name: Nat's Long-Barreled Pistol
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 1
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>An <strong>Excellent Quality</strong> very heavy pistol.</p>
+  dvTable: DV Long-Barrel Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 8
+    value: 0
+  price:
+    market: 500
+  quality: excellent
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: 12 Days of Redmas
+      page: 3
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

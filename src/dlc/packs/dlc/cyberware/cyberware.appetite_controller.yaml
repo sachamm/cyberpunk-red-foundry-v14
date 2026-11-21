@@ -1,0 +1,96 @@
+_id: nFysJU3aqxEIYpwb
+_key: "!items!nFysJU3aqxEIYpwb"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/appetite_controller.svg
+name: Appetite Controller
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        User ignores Humanity Loss penalties from starvation trauma but User can still
+        starve (see CP:R pg. 231).
+      </p>
+      <blockquote>
+        <p>
+          Requires a
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.0d2bEozOFhfPgkUP]{Biomonitor}
+        </p>
+        <p>
+          Users must Roll a <strong>Death Save</strong> at start of the 7th
+          consecutive day without eating.
+        </p>
+        <p>Each additional day increases the save by +1.</p>
+      </blockquote>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: Must Have Cyberware Deals
+      page: 2
+    - book: Exotics of 2045
+      page: 72
+    - book: Interface RED v2
+      page: 72
+    - book: Interface RED v3
+      page: 46
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: cyberware

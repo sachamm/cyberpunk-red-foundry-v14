@@ -1,0 +1,479 @@
+_id: o2161gOXy1TkjTLl
+_key: "!tables!o2161gOXy1TkjTLl"
+description: >-
+  <p><a
+  href="https://rtalsoriangames.com/wp-content/uploads/2021/07/RTG-CPR-NightCityWeather.pdf">Night
+  City Weather</a>, pg 4-5</p>
+displayRoll: false
+flags: {}
+folder: S3DaoDSZDyQyYrdA
+formula: 1d20
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+name: City Blackouts
+ownership:
+  GSQleko03XTBUGW9: 3
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: tN1CrwFGm7629rHE
+    _key: "!tables.results!o2161gOXy1TkjTLl.tN1CrwFGm7629rHE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Little China - Lasts [[3d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 4
+  - _id: 1ySQktMCEzdMFPef
+    _key: "!tables.results!o2161gOXy1TkjTLl.1ySQktMCEzdMFPef"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Old Japantown - Lasts [[3d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 4
+  - _id: TQaP2R3n3StOTFuB
+    _key: "!tables.results!o2161gOXy1TkjTLl.TQaP2R3n3StOTFuB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Old Combat Zone - Lasts [[3d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 4
+  - _id: dyNw1a4loC0ED2sc
+    _key: "!tables.results!o2161gOXy1TkjTLl.dyNw1a4loC0ED2sc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in South Night City - Lasts [[3d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 4
+  - _id: QnGHcfAx78dCRu41
+    _key: "!tables.results!o2161gOXy1TkjTLl.QnGHcfAx78dCRu41"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in ALL combat zones - Lasts [[3d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: dUVYke1jC1lvKnLM
+    _key: "!tables.results!o2161gOXy1TkjTLl.dUVYke1jC1lvKnLM"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in The Glen - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 2
+  - _id: YgDaVstktxBKNnGM
+    _key: "!tables.results!o2161gOXy1TkjTLl.YgDaVstktxBKNnGM"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in The University District - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 2
+  - _id: bf8covYmfGywtcSc
+    _key: "!tables.results!o2161gOXy1TkjTLl.bf8covYmfGywtcSc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Little Europe - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 2
+  - _id: h0OdHDCorEm22QmD
+    _key: "!tables.results!o2161gOXy1TkjTLl.h0OdHDCorEm22QmD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Upper Marina - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 2
+  - _id: m3TqrtSiTLjpCiZy
+    _key: "!tables.results!o2161gOXy1TkjTLl.m3TqrtSiTLjpCiZy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in The Watson Development Zone - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 2
+  - _id: Ch46LQEGVy97IhNe
+    _key: "!tables.results!o2161gOXy1TkjTLl.Ch46LQEGVy97IhNe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Pacifica Playground - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 11
+      - 11
+    type: text
+    weight: 2
+  - _id: IoMnpC9Kpi083VQG
+    _key: "!tables.results!o2161gOXy1TkjTLl.IoMnpC9Kpi083VQG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in NorCal Military Base - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 12
+      - 12
+    type: text
+    weight: 1
+  - _id: SJf92x39xKfgOA8O
+    _key: "!tables.results!o2161gOXy1TkjTLl.SJf92x39xKfgOA8O"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout on Morro Rock - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 13
+      - 13
+    type: text
+    weight: 2
+  - _id: 6fN4FOGB3Sw7G8E4
+    _key: "!tables.results!o2161gOXy1TkjTLl.6fN4FOGB3Sw7G8E4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in ALL rebuilding urban centers - Lasts [[1d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 14
+      - 14
+    type: text
+    weight: 2
+  - _id: rA1dUOyBgktn4fmi
+    _key: "!tables.results!o2161gOXy1TkjTLl.rA1dUOyBgktn4fmi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Rancho Coronado - Lasts [[2d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 15
+      - 15
+    type: text
+    weight: 3
+  - _id: 34BMeXnbTsAo3bkY
+    _key: "!tables.results!o2161gOXy1TkjTLl.34BMeXnbTsAo3bkY"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Heywood (Santo Domingo) - Lasts [[2d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 16
+      - 16
+    type: text
+    weight: 3
+  - _id: qPzAhDQO6Zrf3MzE
+    _key: "!tables.results!o2161gOXy1TkjTLl.qPzAhDQO6Zrf3MzE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in Heywood Industrial Zone - Lasts [[2d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 17
+      - 17
+    type: text
+    weight: 3
+  - _id: dsVAE1lzpubaE9qI
+    _key: "!tables.results!o2161gOXy1TkjTLl.dsVAE1lzpubaE9qI"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in New Westbrook - Lasts [[2d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 18
+      - 18
+    type: text
+    weight: 3
+  - _id: a8MeR9kejXrz9FF9
+    _key: "!tables.results!o2161gOXy1TkjTLl.a8MeR9kejXrz9FF9"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in ALL  overpacked suburbs - Lasts [[2d6*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 19
+      - 19
+    type: text
+    weight: 1
+  - _id: uFkwJ5RSq1QAznH0
+    _key: "!tables.results!o2161gOXy1TkjTLl.uFkwJ5RSq1QAznH0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Blackout in the Executive Zone - Lasts [[(2d6kl)*0.5]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: ""
+    range:
+      - 20
+      - 20
+    type: text
+    weight: 1
+sort: 0

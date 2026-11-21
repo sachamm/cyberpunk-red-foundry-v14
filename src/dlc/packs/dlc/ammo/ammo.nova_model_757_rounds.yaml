@@ -1,0 +1,69 @@
+_id: Gxesk4mgq9yMNJKw
+_key: "!items!Gxesk4mgq9yMNJKw"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_smart.svg
+name: Nova Model 757 Rounds
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 18
+  brand: Nova Arms
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        If you miss a single shot attack by 4 or less, make a
+        [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can
+        still attempt to dodge the second roll as normal.
+      </p>
+      <blockquote>
+        <p>
+          Requires
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}
+          - Not enforced by system.
+        </p>
+        <p>
+          For use only with the
+          @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.qL9B85FSo6cYhTBL]{Nova Model 757 Cityhunter}.
+          Comes in packs of 18 instead of the normal 10.
+        </p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 500
+  size: 0
+  sources:
+    - book: 12 Days of Gunmas
+      page: 5
+    - book: Danger Gal Dossier
+      page: 145
+  type: smart
+  variety: custom
+type: ammo

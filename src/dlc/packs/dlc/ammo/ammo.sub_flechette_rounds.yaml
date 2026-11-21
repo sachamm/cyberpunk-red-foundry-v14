@@ -1,0 +1,57 @@
+_id: V1DsAqTT45qL6ZUY
+_key: "!items!V1DsAqTT45qL6ZUY"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_armorpiercing.svg
+name: Sub-Flechette Rounds
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 4
+  amount: 10
+  brand: Malorian Arms
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Special ammo to only be used with the Malorian Arms
+        @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.iKzJWiFQqBcDQ7Gm]{Sub-Flechette Gun}.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 100
+  size: 0
+  sources:
+    - book: 12 Days of Gunmas
+      page: 4
+    - book: Interface RED v2
+      page: 60
+  type: armorPiercing
+  variety: custom
+type: ammo

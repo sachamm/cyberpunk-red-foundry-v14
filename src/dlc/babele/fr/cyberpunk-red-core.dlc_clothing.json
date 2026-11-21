@@ -1,0 +1,10 @@
+{
+  "label": "Vêtements",
+  "mapping": {},
+  "entries": {
+    "Superflash Jacket": {
+      "name": "Veste Superflash",
+      "description": "<p>\n  A nice jacket carrying a surprise; using an action anyone wearing this jacket\n  can consume a battery to let off a blinding light.\n</p>\n"
+    }
+  }
+}

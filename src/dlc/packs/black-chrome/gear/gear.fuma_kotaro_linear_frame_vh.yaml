@@ -1,0 +1,413 @@
+_id: mX0F4Jv5MTV6EdYy
+_key: "!items!mX0F4Jv5MTV6EdYy"
+effects:
+  - _id: xgobGEdNkOjCEOGK
+    _key: "!items.effects!mX0F4Jv5MTV6EdYy.xgobGEdNkOjCEOGK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: system.stats.body.value
+        mode: 5
+        priority: null
+        value: "12"
+      - key: bonuses.stealth
+        mode: 2
+        priority: null
+        value: "2"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: 1768521727
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
+            "1": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
+    name: Fūma Kotarō Linear Frame
+    origin: null
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: S9yWKCQpSU5aK4ku
+        _stats:
+          compendiumSource: Actor.wFky9QOP6GP9h7nr.Item.vSDQjbSqBmv55zTR
+          coreVersion: "13.351"
+          createdTime: 1786549257817
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786549434823
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/weapons/Naginata_excellent.svg
+        name: Very Heavy Fūma Kotarō Blade
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 1
+          brand: Yakuza
+          canIgnoreArmor: true
+          concealable:
+            concealable: true
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 4d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p><strong>Excellent Quality</strong> Very heavy melee weapons
+              that can be concealed in the frame without a check.</p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source:
+            book: Black Chrome
+            page: 36
+          sources:
+            - book: Black Chrome
+              page: 52
+          type: gear
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Melee Weapon
+          weaponType: vHeavyMelee
+        type: itemUpgrade
+      - _id: BA2c850uOiZQiQYW
+        _stats:
+          compendiumSource: Actor.wFky9QOP6GP9h7nr.Item.vSDQjbSqBmv55zTR
+          coreVersion: "13.351"
+          createdTime: 1786549257817
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786549452004
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/weapons/CombatKnife_excellent.svg
+        name: Light Fūma Kotarō Blade
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 1
+          brand: Yakuza
+          canIgnoreArmor: true
+          concealable:
+            concealable: true
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p><strong>Excellent Quality</strong> Light melee weapons that can
+              be concealed in the frame without a check.</p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 2
+          size: 1
+          source:
+            book: Black Chrome
+            page: 36
+          sources:
+            - book: Black Chrome
+              page: 52
+          type: gear
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Melee Weapon
+          weaponType: heavyMelee
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
+name: Fūma Kotarō Linear Frame VH
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: Yakuza
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>An exoskeleton that is designed for cyber-ninjas.</p>
+      <ul>
+        <li>
+          Requires 2
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}
+        </li>
+        <li>Increases <strong>BODY</strong> to 12 while plugged in</li>
+        <li><strong>Stealth</strong> +2</li>
+        <li>
+          Contains a pair of pre-installed excellent quality very heavy &amp; light
+          melee weapons
+        </li>
+        <li>Drawing and sheathing the frame's weapons does not require an Action</li>
+        <li>
+          A Conceal check is not required for the weapons concealed in the frame
+        </li>
+      </ul>
+      <blockquote>
+        <p>
+          Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to
+          <strong>BODY</strong> increase — Not currently supported by system.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - S9yWKCQpSU5aK4ku
+      - BA2c850uOiZQiQYW
+    slots: 2
+    usedSlots: 2
+  isElectronic: true
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 52
+  usage: equipped
+type: gear

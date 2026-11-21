@@ -1,0 +1,228 @@
+_id: UaNgALzUzD2sqiId
+_key: "!tables!UaNgALzUzD2sqiId"
+description: <p>Interface RED volume 3 / Digital Dating pg 12</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+name: "Good Date: End"
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: ws63xFUto4FHZKGQ
+    _key: "!tables.results!UaNgALzUzD2sqiId.ws63xFUto4FHZKGQ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They tell you all about their life goals…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Good Date: End"
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: cSp6bJ4DZfkcYNPr
+    _key: "!tables.results!UaNgALzUzD2sqiId.cSp6bJ4DZfkcYNPr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They give you some helpful advice.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Good Date: End"
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: l2MFTPuP2oSzl5qP
+    _key: "!tables.results!UaNgALzUzD2sqiId.l2MFTPuP2oSzl5qP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You get a good feeling about their outlook on life…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Good Date: End"
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: mDknRWwmZcn7hrc3
+    _key: "!tables.results!UaNgALzUzD2sqiId.mDknRWwmZcn7hrc3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They seem really eager to go on another date.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/success.svg
+    name: "Good Date: End"
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: 5xkSQhG1yjLgOwvN
+    _key: "!tables.results!UaNgALzUzD2sqiId.5xkSQhG1yjLgOwvN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They're really talented and have a Base 16 in a skill.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Good Date: End"
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: xVTJzSQPptX50Zcc
+    _key: "!tables.results!UaNgALzUzD2sqiId.xVTJzSQPptX50Zcc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>The date ended before you could learn anything else about them.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Good Date: End"
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: KC1SwRnZi4Go7k9Z
+    _key: "!tables.results!UaNgALzUzD2sqiId.KC1SwRnZi4Go7k9Z"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.iejESgT0MU8vGFWl
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: Life Goals
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: pYIMu1v2OtNjkEHC
+    _key: "!tables.results!UaNgALzUzD2sqiId.pYIMu1v2OtNjkEHC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.Slq0367fx4vxtM6H
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/outlook.svg
+    name: Outlook
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: s4vTvWmqzeWUjHlr
+    _key: "!tables.results!UaNgALzUzD2sqiId.s4vTvWmqzeWUjHlr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774530481
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.BIIxmGcvtftmOyzy
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/random.svg
+    name: Post-Date Review
+    range:
+      - 1
+      - 5
+    type: document
+    weight: 1
+  - _id: fBYhNrxGwmtQSAYV
+    _key: "!tables.results!UaNgALzUzD2sqiId.fBYhNrxGwmtQSAYV"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784773162047
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774836315
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.O47Q7mRmFQVCgP6N
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 1
+      - 6
+    type: document
+    weight: 1
+sort: 100000

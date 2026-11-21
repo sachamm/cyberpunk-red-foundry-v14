@@ -1,0 +1,10 @@
+{
+  "label": "Vêtements",
+  "mapping": {},
+  "entries": {
+    "Masetto Holo-Wear": {
+      "name": "Holomode Masetto",
+      "description": "<p>\n  Holographic clothing that can get disabled by EMP blasts for a minute. Can\n  swap styles with an action if purchased.\n</p>\n"
+    }
+  }
+}

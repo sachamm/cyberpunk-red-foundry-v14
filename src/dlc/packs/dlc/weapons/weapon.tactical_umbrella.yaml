@@ -1,0 +1,236 @@
+_id: pNkckh9tZBwSBxA2
+_key: "!items!pNkckh9tZBwSBxA2"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: 4DFnzbkmoMxpklDu
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.xRA275R527XLwaBJ
+          coreVersion: "13.351"
+          createdTime: 1786665907819
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786665999124
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/concealed-umbrella-blade.svg
+        name: Concealed Umbrella Blade
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 1
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: true
+            isConcealed: true
+          critFailEffect: jammed
+          damage: 3d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                                                An old idea that still works just as good; lets you use your gun as a light
+                                                melee weapon. While attached, the weapon can't be concealed under clothing.
+                                              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: 0
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 2
+          size: 1
+          source:
+            book: NCW
+            page: 6
+          sources:
+            - book: Night City Weather
+              page: 6
+            - book: Danger Gal Dossier
+              page: 144
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Melee Weapon
+          weaponType: heavyMelee
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/tactical-umbrella.svg
+name: Tactical Umbrella
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 0
+  brand: Militech
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A stylish umbrella with pop-out weapons. Contains a
+        <strong>Poor Quality Exotic Heavy Pistol</strong> (2 bullet capacity) and an
+        <strong>Excellent Quality Exotic Heavy Melee Weapon</strong>.
+      </p>
+      <p>Provides the protection of a normal umbrella (NCW pg 6)</p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - 4DFnzbkmoMxpklDu
+    slots: 3
+    usedSlots: 1
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 2
+    value: 0
+  price:
+    market: 1000
+  quality: poor
+  revealed: true
+  rof: 2
+  source: null
+  sources:
+    - book: Night City Weather
+      page: 6
+    - book: Danger Gal Dossier
+      page: 144
+    - book: Interface RED v2
+      page: 20
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: weapon

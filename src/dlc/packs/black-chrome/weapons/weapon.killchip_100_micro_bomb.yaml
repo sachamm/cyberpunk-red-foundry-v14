@@ -1,0 +1,70 @@
+_id: 398a6e2GP6Vie9Lr
+_key: "!items!398a6e2GP6Vie9Lr"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/black-chrome/weapons/killchip-100-micro-bomb.svg
+name: KillChip 100 Micro-Bomb
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: true
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 6d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>Memory chip, but explosive when plugged into Neuralware.</p>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 100
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Black Chrome
+      page: 88
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Demolitions
+  weaponType: thrownWeapon
+type: weapon

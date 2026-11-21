@@ -1,0 +1,84 @@
+_id: BrnkWBIkRTNolMl3
+_key: "!items!BrnkWBIkRTNolMl3"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: c64f882ee4e1cff2d7437ebe4594f8d2e9048d5c
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_excellent.svg
+name: Hello Cutie Janus Hex
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ammoVariety:
+    - paintball
+  attackmod: 1
+  brand: Sanroo & Take Your Best Shot
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Excellent Quality Very Heavy Pistol</strong> that shoots proprietary
+        Scent Balls. Incompatible with all magazine upgrades.
+      </p>
+      <blockquote>
+        <p>
+          Targets with meat eyes must suffer -3 penalty to ranged attack and
+          perception checks unless they succeed a
+          <strong>DV 15 Resist Drugs/Torture check</strong>, in which case the penalty
+          is reduced by 2.
+        </p>
+      </blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 2
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 2
+    value: 0
+  price:
+    market: 500
+  quality: excellent
+  revealed: true
+  rof: 1
+  sources:
+    - book: 12 Days of Cutimas
+      page: 4
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

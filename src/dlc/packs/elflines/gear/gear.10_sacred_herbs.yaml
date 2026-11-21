@@ -1,0 +1,51 @@
+_id: M2VfO2gN3P0coEZw
+_key: "!items!M2VfO2gN3P0coEZw"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: Ld94WnhHrzIRpK8Y
+img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+name: 10 Sacred Herbs
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 100000
+system:
+  amount: 1
+  brand: Elflines Online TCG
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Use
+        @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}
+        to recieve 10
+        @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.zDjspn0R9fgRILpv]{Sacred Herbs}!
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 5
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Elflines Online — TCG
+      page: 7
+    - book: Interface RED v3
+      page: 67
+  usage: toggled
+type: gear

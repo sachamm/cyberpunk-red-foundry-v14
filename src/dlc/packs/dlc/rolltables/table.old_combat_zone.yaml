@@ -1,0 +1,153 @@
+_id: f6Tgl7Z8uOkMqSgR
+_key: "!tables!f6Tgl7Z8uOkMqSgR"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Old Combat Zone
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: ofJ61dTajOMSzqig
+    _key: "!tables.results!f6Tgl7Z8uOkMqSgR.ofJ61dTajOMSzqig"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757893522
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778747798
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>The Jessie James Kosher Deli is worth the risk.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Old Combat Zone
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: LZOjUoJXiVYBBUEz
+    _key: "!tables.results!f6Tgl7Z8uOkMqSgR.LZOjUoJXiVYBBUEz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757893670
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778761623
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Climb up to an abandoned rooftop to enjoy the view.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Old Combat Zone
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: dFoHyYJFEpnIW5iZ
+    _key: "!tables.results!f6Tgl7Z8uOkMqSgR.dFoHyYJFEpnIW5iZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757893770
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778777572
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Romantically fire Grenade Launchers into piles of rubble.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Old Combat Zone
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: PlgUykPMiYiGBuHa
+    _key: "!tables.results!f6Tgl7Z8uOkMqSgR.PlgUykPMiYiGBuHa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757893884
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778790832
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Bring your own spray cans for a graffiti date.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Old Combat Zone
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: CsRQXsVLCc5HxQEu
+    _key: "!tables.results!f6Tgl7Z8uOkMqSgR.CsRQXsVLCc5HxQEu"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757894020
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778801229
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Help weed your Date's rooftop garden.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Old Combat Zone
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: DQNVfygfVkT4cpPs
+    _key: "!tables.results!f6Tgl7Z8uOkMqSgR.DQNVfygfVkT4cpPs"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757894453
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778809673
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Hang out in an abandoned mall.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Old Combat Zone
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

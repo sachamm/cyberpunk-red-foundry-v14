@@ -1,0 +1,69 @@
+_id: cnI1LNiN3K45ZBrD
+_key: "!items!cnI1LNiN3K45ZBrD"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/armor/skidrow_packshield.svg
+name: PackShield
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 7
+  brand: SkidRow LTD
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Businesswear Backpack Bulletproof Shield hybrid. Can store items like a
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Carryall},
+        and be equipped in your hand like a shield.
+      </p>
+      <blockquote>
+        <p>Requires a free arm to be effective.</p>
+        <p>
+          Cannot be installed in
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Popup Shield}.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: false
+  isElectronic: false
+  isHeadLocation: false
+  isShield: true
+  penalty: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 10
+    value: 10
+  sources:
+    - book: 12 Days of Gearmas
+      page: 4
+    - book: Interface RED v4
+      page: 68
+  usage: toggled
+type: armor

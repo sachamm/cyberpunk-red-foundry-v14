@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="modfire-10x-pistol.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter2"
+       x="-0.07595567"
+       y="-0.13561571"
+       width="1.1519113"
+       height="1.2712314">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood1" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur1" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset1" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite1" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite2" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="255.68277"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="fill:#1b1f21" />
+  <g
+     class=""
+     style="fill:#e64539;filter:url(#filter2)"
+     transform="translate(-1.2022624e-4,46.432172)"
+     id="g2">
+    <path
+       id="path8"
+       style="fill:#e64539"
+       d="m 54.980469,76.839844 v 12.320312 h 54.609371 z m -24,28.320316 v 9.65039 l 7.349609,4.52929 32.359375,20.82032 H 259 a 21,21 0 0 1 -5.34961,-7 h -81 a 11,11 0 0 1 0,-22 h 81 a 37.84,37.84 0 0 1 4.51953,-6 z m 260.468751,0 c 4.47,5 7.26172,10.36007 7.26172,17.08007 a 23.18,23.18 0 0 1 -8.15039,17.91993 h 43.41992 v 16.6289 16.3711 h 118 v -68 z m -16.63867,9.55078 a 7.9,7.9 0 0 0 -7.90039,7.89844 7.9,7.9 0 1 0 7.90039,-7.89844 z m 96.64648,0.4707 a 6.46,6.46 0 1 1 2.47266,12.42774 6.46,6.46 0 0 1 -6.45899,-6.44922 v -0.01 a 6.46,6.46 0 0 1 3.98633,-5.96875 z m 26.43164,0.01 a 6.46,6.46 0 1 1 2.47071,12.42773 6.46,6.46 0 0 1 -6.46876,-6.45898 h 0.01 a 6.46,6.46 0 0 1 3.98828,-5.96875 z m -52.83984,0.01 a 6.46,6.46 0 1 1 2.4707,12.42969 6.46,6.46 0 0 1 -6.48047,-6.4707 l 0.0215,0.01 a 6.46,6.46 0 0 1 3.98828,-5.96875 z m 79.26953,0 a 6.46,6.46 0 1 1 2.4707,12.42969 6.46,6.46 0 0 1 -6.46875,-6.4707 l 0.01,0.01 a 6.46,6.46 0 0 1 3.98828,-5.96875 z m 43.66211,11.95899 v 24 h 25 v -24 z m -83.60352,5.30078 a 6.46,6.46 0 1 1 2.47266,12.42968 6.46,6.46 0 0 1 -6.45899,-6.4414 v -0.0195 a 6.46,6.46 0 0 1 3.98633,-5.96875 z m 26.43164,0.0117 a 6.46,6.46 0 1 1 2.47071,12.42773 6.46,6.46 0 0 1 -6.45899,-6.45117 v -0.01 a 6.46,6.46 0 0 1 3.98828,-5.96679 z m -52.83984,0.01 a 6.46,6.46 0 1 1 2.4707,12.42774 6.46,6.46 0 0 1 -6.45898,-6.46094 6.46,6.46 0 0 1 3.98828,-5.9668 z m 79.26953,0 a 6.46,6.46 0 1 1 2.47266,12.42774 6.46,6.46 0 0 1 -6.46094,-6.46094 6.46,6.46 0 0 1 3.98828,-5.9668 z m -407.478514,0.25781 -7.740235,4.5293 v 45.31055 a 10.29,10.29 0 0 0 10.210938,10.58008 h 22.628906 c 9.3,0 24.770391,19.00023 10.400391,37.74023 -12.28,16.06 -34.709297,63.92961 -45.279297,87.09961 a 10.69,10.69 0 0 0 8.138672,15 l 59.060547,9.16016 a 10.57,10.57 0 0 0 11.75,-7.21094 l 26.880862,-77.78906 h 78.16992 v 6 h 81 v -47.83008 l 18.08008,-17.92969 14.91992,-0.53125 V 156.16016 H 65.980469 Z M 371.45703,151.8418 a 6.46,6.46 0 1 1 2.47266,12.42773 6.46,6.46 0 0 1 -6.45899,-6.43945 v -0.0195 a 6.46,6.46 0 0 1 3.98633,-5.96875 z m 26.43164,0.01 a 6.46,6.46 0 1 1 2.47071,12.42774 6.46,6.46 0 0 1 -6.46876,-6.44922 l 0.01,-0.01 a 6.46,6.46 0 0 1 3.98828,-5.96875 z m -52.83984,0.01 a 6.46,6.46 0 1 1 2.4707,12.42773 6.46,6.46 0 0 1 -6.48047,-6.45898 h 0.0215 a 6.46,6.46 0 0 1 3.98828,-5.96875 z m 79.26953,0 a 6.46,6.46 0 1 1 2.4707,12.42773 6.46,6.46 0 0 1 -6.46875,-6.45898 h 0.01 a 6.46,6.46 0 0 1 3.98828,-5.96875 z m -278.20898,47.29883 h 57.87109 v 42 h -72.61133 z m 13.80078,13 c 0,0 0,0.01 0,0.01 h 0.0195 z m 0,0.01 h -2.98047 l -2.37891,3.91016 c 0,0 4.63945,13.99961 13.93945,15.34961 -9.43629,-9.42631 -8.58257,-19.23132 -8.58007,-19.25977 z"
+       inkscape:label="Pistol" />
+  </g>
+</svg>

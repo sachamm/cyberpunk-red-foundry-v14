@@ -1,0 +1,233 @@
+_id: vAFzyUpgAmQfTKMa
+_key: "!tables!vAFzyUpgAmQfTKMa"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+name: Family (Who)
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: vtkFvM72DVnix7zx
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.vtkFvM72DVnix7zx"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…who are wealthy and powerful individuals with servants and luxury
+      homes.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: nYnYnuO3p6hPk6u1
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.nYnYnuO3p6hPk6u1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…who are well to do, living in large homes in a safe neighborhood.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: scshgRFNHij50o7F
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.scshgRFNHij50o7F"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…who are middle-class and live in a comfortable conapt in the
+      overpacked suburbs.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: Tnete6WF9KpTbVLs
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.Tnete6WF9KpTbVLs"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…who live their life on the road, sleeping in tents and trailers.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: gylst72PTdSeTToP
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.gylst72PTdSeTToP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…who were savage, violent creatures that couldn't provide for
+      themselves.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 5KbxVWpWEms9OOdO
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.5KbxVWpWEms9OOdO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…who took them in and gave them shelter as a child.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: gsxlCbss2aMU0whl
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.gsxlCbss2aMU0whl"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…who couldn't afford to rent even a cargo container.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: hSMI7DqUaFaRK6A0
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.hSMI7DqUaFaRK6A0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…who live in one of the huge megabuilding projects.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: suxZc5hO14OCrzqv
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.suxZc5hO14OCrzqv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…who are working hard to rebuild a nearby ghost town just outside of
+      Night City.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: aOnan72gyk0ytWtA
+    _key: "!tables.results!vAFzyUpgAmQfTKMa.aOnan72gyk0ytWtA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…who are seasoned edgerunners.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: 0

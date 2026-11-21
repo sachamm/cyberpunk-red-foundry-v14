@@ -1,0 +1,73 @@
+_id: ETPujR8m7tEoYFQW
+_key: "!items!ETPujR8m7tEoYFQW"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/armor/variable-clothing-line.svg
+name: Montage Variable Clothing
+ownership:
+  default: 0
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 11
+  brand: Montage
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Light Armorjack that can swap between pre-programmed patterns and styles via a
+        connected
+        @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.pDQRjH8q63YyoWSp]{App}
+      </p>
+      <blockquote>
+        <p>
+          Comes with your choice of 3 pre-programmed patterns or colors selected from
+          either
+          @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.Rs94jDJRrbHVpvIh]{Gang
+       Colors}
+          or
+          @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.7fXDqCH4Z3ZLo5kL]{Generic
+       Chic}
+          styles.
+        </p>
+        <p>Requires an action to swap styles via connected agent.</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 1
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 32
+  usage: toggled
+type: armor

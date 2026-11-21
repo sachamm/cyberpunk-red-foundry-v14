@@ -1,0 +1,49 @@
+_id: d1Uq6md45qeBlvAv
+_key: "!items!d1Uq6md45qeBlvAv"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: WcF65njAcmPq8Kbn
+img: icons/containers/boxes/crate-wooden-beige-red.webp
+name: A Box Dripping Wet With Fluid
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 300000
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Roll once from
+        @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.zRHyYnlEqNlTA4l5]{A
+       Box Dripping Wet With Fluid}
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: true
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Achievments & Lootboxes
+      page: 5
+  usage: toggled
+type: gear

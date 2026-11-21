@@ -1,0 +1,153 @@
+_id: DbO5vIsAxSfEqWKp
+_key: "!tables!DbO5vIsAxSfEqWKp"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Outskirts
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: T91bHcJqqC8rd48T
+    _key: "!tables.results!DbO5vIsAxSfEqWKp.T91bHcJqqC8rd48T"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755663612
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755715503
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Let's go for a hike!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Outskirts
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: CzJptbXuDuz89VrH
+    _key: "!tables.results!DbO5vIsAxSfEqWKp.CzJptbXuDuz89VrH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755663876
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755757439
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>My Family let me borrow our Gyrocopter.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Outskirts
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 9OI610DOoqN6Iq1X
+    _key: "!tables.results!DbO5vIsAxSfEqWKp.9OI610DOoqN6Iq1X"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755664110
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755792357
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Foraging for mushrooms is fun, I promise!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Outskirts
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: hfqhnM2E3Wa7cg53
+    _key: "!tables.results!DbO5vIsAxSfEqWKp.hfqhnM2E3Wa7cg53"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755664357
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755801916
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Have you ever tried archery?</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Outskirts
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: QFwOyyJ6knd1ooay
+    _key: "!tables.results!DbO5vIsAxSfEqWKp.QFwOyyJ6knd1ooay"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755664820
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755816755
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Let's go off-roading in the badlands!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Outskirts
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: fEjJL58z9RpAetWB
+    _key: "!tables.results!DbO5vIsAxSfEqWKp.fEjJL58z9RpAetWB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755665257
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755845182
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Track down a secret waterfall.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Outskirts
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,59 @@
+_id: IZwINpYpfLLAq5zb
+_key: "!items!IZwINpYpfLLAq5zb"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: icons/weapons/ammunition/arrow-broadhead-green.webp
+name: Poison Arrow
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        No immediate damage. If hit target rolls a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.
+        On a failure, the target takes [[/r 2d6dmg#Poison Damage]]{2d6 Damage}
+        directly.
+      </p>
+      <blockquote><p>Does not affect inorganic targets.</p></blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 0
+      count: 0
+      override: true
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: 2d6
+  price:
+    market: 10
+  size: 0
+  sources:
+    - book: Elflines Online
+      page: 3
+    - book: Interface RED v1
+      page: 42
+  type: poison
+  variety: arrow
+type: ammo

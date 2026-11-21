@@ -1,0 +1,75 @@
+_id: eZM7VjirAA4bTsni
+_key: "!items!eZM7VjirAA4bTsni"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/teen-dreem.svg
+name: Teen Dreem
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: destroyedBeyondRepair
+  damage: 2d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Poor Quality Exotic SMG</strong> This SMG can use Autofire and
+        Suppressive Fire all the way down to it's last 2 bullets. Caution is required
+        however, as using either firing mode well melt the gun beyond repair.
+      </p>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 10
+    value: 0
+  price:
+    market: 20
+  quality: poor
+  revealed: true
+  rof: 1
+  sources:
+    - book: 12 Days of Gunmas
+      page: 6
+    - book: Danger Gal Dossier
+      page: 145
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
+type: weapon

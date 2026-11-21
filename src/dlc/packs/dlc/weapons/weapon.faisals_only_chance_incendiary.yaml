@@ -1,0 +1,145 @@
+_id: VrbmDxeTEheV9Rbz
+_key: "!items!VrbmDxeTEheV9Rbz"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: yOBwtwNpmU5nu1sn
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_ammo.Item.yxGinCJXUJjdsK0g
+          coreVersion: "13.351"
+          createdTime: 1786661116257
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786661116257
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_incendiary.svg
+        name: Shotgun Slug (Incendiary)
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ablationValue: 1
+          amount: 0
+          brand: ""
+          concealable:
+            concealable: true
+            isConcealed: false
+          description:
+            value: |-
+              <p>
+                If damage dealt to target they are set alight. Target takes 2 damage to HP at
+                end of their turn unless they use action to extinguish flames. Does not stack.
+              </p>
+          favorite: false
+          ignoredByBrowser: false
+          installLocation: mall
+          overrides:
+            autofire:
+              minimum: 3
+              mode: none
+              value: -1
+            crit:
+              bonus: 5
+              count: 2
+              override: false
+              threshold: 0
+            damage:
+              minimum: 1d6
+              mode: none
+              value: 3d6
+          price:
+            market: 100
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 346
+          type: incendiary
+          variety: shotgunSlug
+        type: ammo
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun_poor.svg
+name: Faisal's Only Chance (Incendiary)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attackmod: 0
+  brand: Faisal Customs
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A single use disposable shotgun loaded with
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.yxGinCJXUJjdsK0g]{4
+       Incendiary Rounds}.
+        If you roll 1 on Attack (Crit fail) the gun jams and requires using an action
+        to clear.
+      </p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - yOBwtwNpmU5nu1sn
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 4
+    value: 4
+  price:
+    market: 50
+  quality: poor
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Toggle's Temple
+      page: 8
+    - book: Interface RED v5
+      page: 42
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

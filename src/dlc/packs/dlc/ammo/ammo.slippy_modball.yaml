@@ -1,0 +1,65 @@
+_id: 4d0r56BNO7JFVWxk
+_key: "!items!4d0r56BNO7JFVWxk"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: b94d31d231bd17c2fb5cd9a232a16823b9ee559f
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/modball_slippy.svg
+name: Slippy ModBall
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: Sanroo
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Balls filled with a slippery lubricant. Covers a 2m/yd<sup>2 </sup>surface
+        that requires a
+        [[/r 1d10red+@stats.body+@skills.athletics #DV13 Athletics]]{DV13 Athletics}
+        <strong></strong>check to avoid falling <strong>Prone</strong> when entering
+        or occupying the covered area.
+      </p>
+      <blockquote>
+        <p>
+          Targets receive a +1 Bonus to <strong>Contortionist Checks</strong> made to
+          escape a grapple
+        </p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 5
+  size: 0
+  sources:
+    - book: 12 Days of Cutimas
+      page: 6
+  type: basic
+  variety: paintball
+type: ammo

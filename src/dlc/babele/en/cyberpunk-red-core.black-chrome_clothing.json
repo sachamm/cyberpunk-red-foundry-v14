@@ -1,0 +1,10 @@
+{
+  "label": "Clothing",
+  "mapping": {},
+  "entries": {
+    "Masetto Holo-Wear": {
+      "name": "Masetto Holo-Wear",
+      "description": "<p>\n  Holographic clothing that can be swapped between downloaded styles as an\n  action. EMP blasts may disrupt this clothing. Holo-Wear does not provide any\n  protection from the environment.\n</p>\n"
+    }
+  }
+}

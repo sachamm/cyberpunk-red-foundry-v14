@@ -1,0 +1,47 @@
+_id: nCslR5IGki0hLZ4V
+_key: "!items!nCslR5IGki0hLZ4V"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/dosimeter-badge.svg
+name: Dosimeter Badge
+ownership:
+  IMmQeDHuejnDb1W4: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A personal device worn to monitor radiation exposure. Alerts user when
+        dangerous radiation levels are detected within 10m/yds.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 0
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: TotR — Street Stories
+      page: 58
+  usage: toggled
+type: gear

@@ -1,0 +1,225 @@
+_id: 5Hx4lztHQ79meK6J
+_key: "!tables!5Hx4lztHQ79meK6J"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/rockerboy.svg
+name: Rockerboy
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: FkufP6zDGOWTnSRf
+    _key: "!tables.results!5Hx4lztHQ79meK6J.FkufP6zDGOWTnSRf"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Musician</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: HFpaa4ipOoGhcEk3
+    _key: "!tables.results!5Hx4lztHQ79meK6J.HFpaa4ipOoGhcEk3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Slam Poet</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: C1SxDnL6vZuY39IM
+    _key: "!tables.results!5Hx4lztHQ79meK6J.C1SxDnL6vZuY39IM"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Street Artist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: CcNJzFfHnoZwRZ7D
+    _key: "!tables.results!5Hx4lztHQ79meK6J.CcNJzFfHnoZwRZ7D"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Performance Artist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: Ah6FSgwwxpJdkzcg
+    _key: "!tables.results!5Hx4lztHQ79meK6J.Ah6FSgwwxpJdkzcg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Comedian</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: ZShu7u9jW7FFUKLv
+    _key: "!tables.results!5Hx4lztHQ79meK6J.ZShu7u9jW7FFUKLv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Orator</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: Hlje1TMOK7CyLvQD
+    _key: "!tables.results!5Hx4lztHQ79meK6J.Hlje1TMOK7CyLvQD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Politico</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: Rey6r1bMaZXRHtpm
+    _key: "!tables.results!5Hx4lztHQ79meK6J.Rey6r1bMaZXRHtpm"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Rap Artist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: 0s2TzZ0AnWU0GE4F
+    _key: "!tables.results!5Hx4lztHQ79meK6J.0s2TzZ0AnWU0GE4F"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>DJ</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: OaufoQj0uKtCASaW
+    _key: "!tables.results!5Hx4lztHQ79meK6J.OaufoQj0uKtCASaW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Idoru</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: 0

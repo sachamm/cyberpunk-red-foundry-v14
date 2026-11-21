@@ -1,0 +1,157 @@
+_id: W5JR7Bb59cW6vLFl
+_key: "!items!W5JR7Bb59cW6vLFl"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: Ang0fek15tYWl8Hs
+        _stats:
+          compendiumSource: >-
+            Compendium.the-12-days-of-cutiemas.the-12-days-of-cutiemas.Item.MDO8d8g0Z7itszPX
+          coreVersion: "13.351"
+          createdTime: 1786665022835
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786665095589
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+          scene-packer:
+            hash: 453b05f8b3adc19bceb087b7e3d30217f693b224
+        folder: lRSD8hvBUPOJcvIv
+        img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/harpoon_emp.svg
+        name: Mini-Harpoon
+        ownership:
+          default: 0
+        sort: 300000
+        system:
+          ablationValue: 1
+          amount: 0
+          brand: Sanroo
+          concealable:
+            concealable: false
+            isConcealed: false
+          description:
+            value: >-
+              <p>Mini-Harpoons come pre-loaded into the Hello Cutie Fisher Kitty
+              and cannot be use with any other weapons. </p><p>*Note: Reloading
+              the weapon recovers all spent ammo. Refill this stack as
+              needed.</p>
+          favorite: false
+          ignoredByBrowser: true
+          installLocation: mall
+          overrides:
+            autofire:
+              minimum: 3
+              mode: none
+              value: -1
+            crit:
+              bonus: 5
+              count: 2
+              override: false
+              threshold: 0
+            damage:
+              minimum: 1d6
+              mode: none
+              value: 3d6
+          price:
+            market: 0
+          size: 0
+          source:
+            book: 12DoC
+            page: 4
+          sources:
+            - book: 12 Days of Cutimas
+              page: 12
+          type: emp
+          variety: arrow
+        type: ammo
+  scene-packer:
+    hash: 4aa3aa71640d41824c89f59f26f5c399ba1a2272
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/hello-cutie-fisher-kitty.svg
+name: Hello Cutie Fisher Kitty
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - arrow
+  attackmod: 0
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 2d6
+  damageCrit:
+    bonus: 0
+    count: 0
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Exotic Heavy Pistol (50m/yd Max Range)</strong> Fires mini-harpoons
+        that cannot cause critcal injuries. Each mini-harpoon sticks to its target
+        regardless of damage dealt, and removing a mini-harpoon takes 1 Action. All
+        retractable mini-harpoons are dislodged and recovered when using an action to
+        reloading the weapon.
+      </p>
+      <blockquote>
+        <p>
+          The user may use an action to electrify the cables connected to each
+          mini-harpoon and deal
+          [[/r 2d6dmgab0cd0#Electric Damage (Ignores Armor)]]{2d6} damage directly to
+          any connected target's HP. If a target is connected by 3 or more
+          mini-harpoons they take
+          [[/r 3d6dmgab0cd0#Electric Damage (Ignores Armor)]]{3d6} damage instead.
+        </p>
+      </blockquote>
+  dvTable: DV Bows & Crossbows
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list:
+      - Ang0fek15tYWl8Hs
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 4
+    value: 4
+  price:
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: 12 Days of Cutimas
+      page: 12
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: heavyPistol
+type: weapon

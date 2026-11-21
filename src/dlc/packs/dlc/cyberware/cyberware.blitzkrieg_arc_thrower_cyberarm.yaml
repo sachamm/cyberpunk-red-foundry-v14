@@ -1,0 +1,97 @@
+_id: mqxZ6A9U0LhaDwJm
+_key: "!items!mqxZ6A9U0LhaDwJm"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/radline_blitzkrieg-arc-thrower_cyberarm.svg
+name: Blitzkrieg Arc-Thrower Cyberarm
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - custom
+  attackmod: 0
+  brand: Radline Laboratories
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 0
+    count: 0
+    threshold: 0
+  description:
+    value: |
+      <p>
+        An "arm" in name only, the Arc-Thrower is a massive non-lethal electricity
+        cannon that uses the <strong>Heavy Weapons Skill</strong>; there is no room
+        for a hand or any other option slots.
+      </p>
+      <blockquote>
+        <p>
+          Firing the Arc-Thrower consumes a charge from the included
+          @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.rRM8ArZ4RlX7EnBh]{Radline MagnaSlot BatteryBrick }.
+          Use an Action to swap in a fresh battery pack even if you have no free hands
+          available.
+        </p>
+        <p>
+          Critical Injuries are not possible. Armor is not ablated. If target goes
+          under 1HP from the blast, target has 1HP and is
+          <strong>Unconscious</strong>.
+        </p>
+      </blockquote>
+  dvTable: DV Shotgun (Slug)
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: true
+  isRanged: true
+  isWeapon: true
+  magazine:
+    ammoData: null
+    max: 32
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: 12 Days of Cybermas
+      page: 4
+    - book: Interface RED v3
+      page: 86
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: shotgun
+type: cyberware

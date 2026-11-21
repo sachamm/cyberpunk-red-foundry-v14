@@ -1,0 +1,75 @@
+_id: cu7RHtUnTg9SFGWs
+_key: "!items!cu7RHtUnTg9SFGWs"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: QGREj0H9NMeDIoW8
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_excellent.svg
+name: Militech Sherriff
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 1
+  brand: Nova Arms
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A concealable, heavy pistol. +1 to Attack. Incompatible with magazine
+        upgrades.
+      </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 6
+    value: 0
+  price:
+    market: 200
+  quality: excellent
+  revealed: true
+  rof: 2
+  sources:
+    - book: Toggle's Temple
+      page: 4
+    - book: Interface RED v5
+      page: 38
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: weapon

@@ -1,0 +1,46 @@
+_id: myBn6xsxyEKDcoYc
+_key: "!items!myBn6xsxyEKDcoYc"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/solo-of-fortune-body-pillow.svg
+name: Solo of Fortune Bodypillow
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Bodypillow with the image of a famous Solo from the 2020s.</p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome+
+      page: 5
+    - book: Interface RED v4
+      page: 13
+  usage: toggled
+type: gear

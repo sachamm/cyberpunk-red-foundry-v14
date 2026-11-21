@@ -1,0 +1,61 @@
+_id: br6WK5M87HijJLE4
+_key: "!items!br6WK5M87HijJLE4"
+effects: []
+flags: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/gas_jet.svg
+name: Gas Jet (Biotoxin)
+ownership:
+  L5BVRBGb798QfKk9: 3
+  default: 0
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Constructed from 3
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Vials of Biotoxin}
+        for use with the
+        @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.ELLIHejsxsklkxkC]{Gas Jet}
+        cyberarm upgrade.
+      </p>
+      <p>
+        Targets must succeed a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
+        or take damage.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 0
+      count: 0
+      override: true
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: 3d6
+  price:
+    market: 1500
+  size: 0
+  source: null
+  sources:
+    - book: Hornet's Pharmacy
+      page: 5
+    - book: Interface RED v4
+      page: 7
+  type: biotoxin
+  variety: shotgunShell
+type: ammo

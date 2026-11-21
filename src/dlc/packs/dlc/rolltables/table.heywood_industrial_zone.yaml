@@ -1,0 +1,153 @@
+_id: qN0LtCkHexRogKzg
+_key: "!tables!qN0LtCkHexRogKzg"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Heywood Industrial Zone
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: H2H5j5ycIE6OJBfc
+    _key: "!tables.results!qN0LtCkHexRogKzg.H2H5j5ycIE6OJBfc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754865255
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754923327
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They want to show you some urban art.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Heywood Industrial Zone
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: qpfmOY2oZGtLNbJ1
+    _key: "!tables.results!qN0LtCkHexRogKzg.qpfmOY2oZGtLNbJ1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754865499
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754950918
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Laser tag at the Zhirafa Office park.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Heywood Industrial Zone
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: OLGGZ7YM7sPSSX71
+    _key: "!tables.results!qN0LtCkHexRogKzg.OLGGZ7YM7sPSSX71"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754865753
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755006183
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Dip into a cargo container speakeasy.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Heywood Industrial Zone
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: wvfcLXDJg5I1ksqg
+    _key: "!tables.results!qN0LtCkHexRogKzg.wvfcLXDJg5I1ksqg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754865985
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755041669
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attent an industrial music concert in an industrial park.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Heywood Industrial Zone
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: b0SFq8NA2Ul4fbfG
+    _key: "!tables.results!qN0LtCkHexRogKzg.b0SFq8NA2Ul4fbfG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754866244
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755073601
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They take you to a teriyaki place where they're a regular.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Heywood Industrial Zone
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 4umjm0rcaUMG1BnH
+    _key: "!tables.results!qN0LtCkHexRogKzg.4umjm0rcaUMG1BnH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754866479
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755129366
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Dodge flying metal at a drone fight!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Heywood Industrial Zone
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

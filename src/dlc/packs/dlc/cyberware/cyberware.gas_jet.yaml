@@ -1,0 +1,83 @@
+_id: ELLIHejsxsklkxkC
+_key: "!items!ELLIHejsxsklkxkC"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/gas-jet.svg
+name: Gas Jet
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - shotgunShell
+  attackmod: 0
+  brand: Pursuit Security Inc.
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: "0"
+  damageCrit:
+    bonus: 0
+    count: 0
+    threshold: 0
+  description:
+    value: |
+      <p>
+        As an action, spray a 6x6m/yds area with your choice of Street Drug, Poison,
+        or Biotoxin as if you are shooting a Shotgun. All unprotected organic targets
+        in range suffer the effects as normal. Can be concealed without a check.
+      </p>
+  dvTable: DV Shotgun (Slug)
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 100
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: clinic
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: true
+  isWeapon: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 2
+  source: null
+  sources:
+    - book: Hornet's Pharmacy
+      page: 5
+    - book: Interface RED v4
+      page: 7
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: cyberware

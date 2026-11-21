@@ -1,0 +1,80 @@
+_id: tk2g10vp4EdMXLPK
+_key: "!items!tk2g10vp4EdMXLPK"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher.svg
+name: SDF-45
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - rocket
+  attackmod: 0
+  brand: Midnight Arms
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 8d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Exotic Rocket Launcher</strong> This rocket launcher can only load
+        Armor-Piercing rockets, and has a maximum range of 400 m/yds. When fired one
+        rocket at a time, the GM chooses where they rockets land. When fired two
+        rockets at a time, the GM chooses where the rockets land but this time up to
+        50 m/yds away from the target, and with each rocket more than 10 m/yds from
+        each other.
+      </p>
+  dvTable: DV Rocket Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 4
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 2
+  sources:
+    - book: Woodchipper's Garage
+      page: 3
+    - book: Danger Gal Dossier
+      page: 144
+    - book: Interface RED v3
+      page: 27
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: rocketLauncher
+type: weapon

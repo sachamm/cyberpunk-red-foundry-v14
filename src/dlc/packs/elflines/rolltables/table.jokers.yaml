@@ -1,0 +1,268 @@
+_id: EB899IIEKiFCEvGf
+_key: "!tables!EB899IIEKiFCEvGf"
+description: <p>A random ELO Joker</p>
+displayRoll: false
+flags: {}
+folder: null
+formula: 2d6
+img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+name: Jokers
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: Ybd2uXm8pFt85ORh
+    _key: "!tables.results!EB899IIEKiFCEvGf.Ybd2uXm8pFt85ORh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.M2VfO2gN3P0coEZw
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: 10 Sacred Herbs
+    range:
+      - 8
+      - 8
+    type: document
+    weight: 1
+  - _id: QBIyN6w5Mcj0ZURC
+    _key: "!tables.results!EB899IIEKiFCEvGf.QBIyN6w5Mcj0ZURC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.WUCzN0E2M5WzD5op
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: 500 Gold Coins
+    range:
+      - 7
+      - 7
+    type: document
+    weight: 1
+  - _id: fvix14WErqursOGb
+    _key: "!tables.results!EB899IIEKiFCEvGf.fvix14WErqursOGb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.HS9aSsjOwjZBBxaY
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Duel Flag
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: jwMRKTMW6u76BhTQ
+    _key: "!tables.results!EB899IIEKiFCEvGf.jwMRKTMW6u76BhTQ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.QvHdLdm6fS3DlSeF
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Dungeonstone
+    range:
+      - 12
+      - 12
+    type: document
+    weight: 1
+  - _id: 3uXBjiWptI9Vho3g
+    _key: "!tables.results!EB899IIEKiFCEvGf.3uXBjiWptI9Vho3g"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.ZXPgWb7PVs7cmQSw
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Rank Up Elixir
+    range:
+      - 10
+      - 10
+    type: document
+    weight: 1
+  - _id: LTlucJht7CbCEggG
+    _key: "!tables.results!EB899IIEKiFCEvGf.LTlucJht7CbCEggG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.BkCnJKrEPJczGKOE
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Revive Sickness Cure
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: BULuk9tJ67jUiUFX
+    _key: "!tables.results!EB899IIEKiFCEvGf.BULuk9tJ67jUiUFX"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.DQzdPsBLtAipRKmc
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Super Repair Hammer
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: HGpH2lLwcL0UBJAS
+    _key: "!tables.results!EB899IIEKiFCEvGf.HGpH2lLwcL0UBJAS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.9azR9AhRXXBRPQLG
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Tiny Draglin
+    range:
+      - 11
+      - 11
+    type: document
+    weight: 1
+  - _id: rgBxPaGcY1YwrlE5
+    _key: "!tables.results!EB899IIEKiFCEvGf.rgBxPaGcY1YwrlE5"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.qQGZzdnJkAKDzbq9
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Tiny Tent
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: vfuHtL812xUKaWGe
+    _key: "!tables.results!EB899IIEKiFCEvGf.vfuHtL812xUKaWGe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.KQQ7MAe13VlEwFgZ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Weapon Glow Vial
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: 4BuYNyHVjt6MsNyw
+    _key: "!tables.results!EB899IIEKiFCEvGf.4BuYNyHVjt6MsNyw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.odO8JeHrzMjvvqg1
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Weapon Polish
+    range:
+      - 9
+      - 9
+    type: document
+    weight: 1
+sort: 100000

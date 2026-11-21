@@ -1,0 +1,50 @@
+_id: jlic1cP0wr7DOwad
+_key: "!items!jlic1cP0wr7DOwad"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/fire-safe.svg
+name: Fire Safe
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Small fireproof lockbox made of Thick Steel with 50HP. Can be opened with a
+        [[/r 1d10red+@stats.tech+@skills.pickLock #DV15 Pick Lock]]{DV15 Pick Lock}
+        check.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Cargo Containers & Cube Hotels
+      page: 5
+    - book: Interface RED v2
+      page: 37
+  usage: toggled
+type: gear

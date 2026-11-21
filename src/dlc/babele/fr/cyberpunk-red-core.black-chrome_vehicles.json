@@ -1,0 +1,130 @@
+{
+  "label": "Véhicules",
+  "mapping": {},
+  "entries": {
+    "AmeriCar EconoCompact": {
+      "name": "ÉconoCompact AmeriCar",
+      "description": "<p>Small and low-cost Compact Groundcar.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
+    },
+    "AmeriCar Family Star Van": {
+      "name": "Van Family Star AmeriCar",
+      "description": "<p>Comfortable family Compact Groundcar.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 2</p>\n</blockquote>\n"
+    },
+    "Dayton TDT 004": {
+      "name": "Dayton TDT 004",
+      "description": "<p>Troop transport Helicopter.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n</blockquote>\n"
+    },
+    "Diego Motors Chupacabra": {
+      "name": "Chupacabra Diego Motors",
+      "description": "<p>\n  Compact Groundcar built from recycled parts from older vehicles. Low-tech but\n  high-horse-power.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    },
+    "Diego Motors Range Trike": {
+      "name": "Vélomobile des grands espaces Diego Motors",
+      "description": "<p>Three wheeled Roadbike.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    },
+    "Grundy": {
+      "name": "Grundy",
+      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    },
+    "Harriet 100": {
+      "name": "Harriet 100",
+      "description": "<p>A classic Roadbike with a more feminine look.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 2</p>\n</blockquote>\n"
+    },
+    "Harvey 100": {
+      "name": "Harvey 100",
+      "description": "<p>A classic Roadbike.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
+    },
+    "Harvey Merc": {
+      "name": "Harvey Merc",
+      "description": "<p>A classic Roadbike, this time with mounted weapons.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    },
+    "Highway Master Artemis": {
+      "name": "Maîtresse du bitume Artémis",
+      "description": "<p>\n  A low-riding Roadbike with retractable glass cover. Has a surpercharge mode\n  that doesn't come with a safety guarantee.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n</blockquote>\n"
+    },
+    "Kaukaz Volkhov": {
+      "name": "Volkhov Kaukaz",
+      "description": "<p>\n  An armored pickup Compact Groundcar with mounted machine gun. Comes with a\n  bottle of vodka.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n</blockquote>\n"
+    },
+    "Makigai Ebi": {
+      "name": "Ebi Makigai",
+      "description": "<p>Small but well thought out Compact Groundcar.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
+    },
+    "Militech Gorgon Security Van": {
+      "name": "Fourgon blindé Gorgone Militech",
+      "description": "<p>A monster of an armored van.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    },
+    "Paladin 500": {
+      "name": "Paladin 500",
+      "description": "<p>\n  A High Performance Groundcar. Now you can be MadMax. In town. With two mounted\n  Machine Guns.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 8</p>\n</blockquote>\n"
+    },
+    "Quadra Thunder-X": {
+      "name": "Thunder-X Quadra",
+      "description": "<p>A top of the line High Performance Groundcar.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 8</p>\n</blockquote>\n"
+    },
+    "SH-45 Patroller": {
+      "name": "Patrouilleur SH-45",
+      "description": "<p>One seat Gyrocopter. Civilian version.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 2</p>\n</blockquote>\n"
+    },
+    "SH-45 Patroller Law": {
+      "name": "Patrouilleur de police SH-45",
+      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    },
+    "Street King Combat Vehicle": {
+      "name": "Véhicule de combat Street King",
+      "description": "<p>\n  A High Performance Groundcar which is large, armored and has a military look.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 10</p>\n</blockquote>\n"
+    },
+    "Tanson Bellhop": {
+      "name": "Bellhop Tanson",
+      "description": "<p>\n  A one seat Gyrocopter which can be folded to the size of a large suitcase.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
+    },
+    "Tanson JetBoy Hoverboard": {
+      "name": "Hoverboard JetBoy Tanson",
+      "description": "<p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n</blockquote>\n"
+    },
+    "TetraCorp America Badger Corporate Bus": {
+      "name": "Corpo Bus Furet TetraCorp America",
+      "description": "<p>\n  A luxurious bus for corporate road trips. Equally well equipped for work\n  meetings and after meeting drinks.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 6</p>\n</blockquote>\n"
+    },
+    "TetraCorp America MegaHauler": {
+      "name": "Mégacamion TetraCorp America",
+      "description": "<p>Armored truck transport. As much a train as a car.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 10</p>\n</blockquote>\n"
+    },
+    "Yang's Wheels Rickshaw": {
+      "name": "Cyclo-pousse Yang's Wheels",
+      "description": "<p>Roadbike with attached trailer for passengers.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 2</p>\n</blockquote>\n"
+    },
+    "Zacatzontli Pickup Truck": {
+      "name": "Pick-up Zacatzontli",
+      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    },
+    "Zetatech AeroCop": {
+      "name": "AeroCop Zetatech",
+      "description": "<p>AV4 type Aerodyne. Police version.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 10</p>\n</blockquote>\n"
+    },
+    "Zetatech AeroVox": {
+      "name": "AéroVox Zetatech",
+      "description": "<p>AV4 type Aerodyne. Civilian version.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 8</p>\n</blockquote>\n"
+    },
+    "Zetatech Destination": {
+      "name": "Destination Zetatech",
+      "description": "<p>AV4 style Aerodyne, civilian model.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 6</p>\n</blockquote>\n"
+    },
+    "Zetatech Herakles": {
+      "name": "Héraclès Zetatech",
+      "description": "<p>AV4 type troop transport, armored and armed.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 10</p>\n</blockquote>\n"
+    },
+    "Zonda Molly 1K": {
+      "name": "Molly 1000 Zonda",
+      "description": "<p>Off-road Compact Groundcar.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n</blockquote>\n"
+    },
+    "Zonda Parallax Cybercycle": {
+      "name": "Cybermoto Parallax Zonda",
+      "description": "<p>Top of the line Superbike.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 8</p>\n</blockquote>\n"
+    },
+    "Zonda Sliver": {
+      "name": "Sliver Zonda",
+      "description": "<p>A Roadbike with all the gadgets you'd ever need.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 4</p>\n</blockquote>\n"
+    }
+  }
+}

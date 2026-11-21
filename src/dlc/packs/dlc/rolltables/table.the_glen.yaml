@@ -1,0 +1,153 @@
+_id: QQSLG1LYDrOQJjLv
+_key: "!tables!QQSLG1LYDrOQJjLv"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: The Glen
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: RKKz76YIBGnpp1uu
+    _key: "!tables.results!QQSLG1LYDrOQJjLv.RKKz76YIBGnpp1uu"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758023058
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778645181
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Go clubbing at Club Atlantis.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Glen
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: nfirHJr96ZzwrPew
+    _key: "!tables.results!QQSLG1LYDrOQJjLv.nfirHJr96ZzwrPew"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758023264
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778657230
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Take a guided tour of City Hall.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Glen
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 34DN2tsob7osfeF7
+    _key: "!tables.results!QQSLG1LYDrOQJjLv.34DN2tsob7osfeF7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758023410
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778669764
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Enjoy happy hour at an Excellent Bar.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Glen
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: 5KXWGEB9P18z8UFW
+    _key: "!tables.results!QQSLG1LYDrOQJjLv.5KXWGEB9P18z8UFW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758023663
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778683115
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Score fresh baked goods at a local bakery.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Glen
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: lpJGkhbcTkbc95Oz
+    _key: "!tables.results!QQSLG1LYDrOQJjLv.lpJGkhbcTkbc95Oz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758023837
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778693464
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a political fundraiser.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Glen
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: NZq4ywSPOcMz3VyB
+    _key: "!tables.results!QQSLG1LYDrOQJjLv.NZq4ywSPOcMz3VyB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758023996
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778701170
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>A night at the opera.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Glen
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

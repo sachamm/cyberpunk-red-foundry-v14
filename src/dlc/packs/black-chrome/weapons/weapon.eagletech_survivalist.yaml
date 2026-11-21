@@ -1,0 +1,375 @@
+_id: 7q61PwpWp0KM6vYb
+_key: "!items!7q61PwpWp0KM6vYb"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: uIQpK3yNBGGA9yul
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.aFg1nXhz37e1C2YP
+          coreVersion: "13.351"
+          createdTime: 1786552839425
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786552919352
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/shotgun_underbarrel.svg
+        name: Assault Rifle Underbarrel
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety:
+            - rifle
+          attackmod: 0
+          brand: Eagletech
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 5d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>This rifle has a magazine size of 10 and uses the Archery skill
+              instead of Shoulder Arms.</p>
+          dvTable: DV Assault Rifle
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: true
+            allowedTypes:
+              - itemUpgrade
+              - ammo
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: true
+          magazine:
+            ammoData: null
+            max: 10
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 2
+          source:
+            book: Black Chrome
+            page: 103
+          sources:
+            - book: Black Chrome
+              page: 103
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Archery
+          weaponType: assaultRifle
+        type: itemUpgrade
+      - _id: KFEVXCI3AblQ9dap
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN
+          coreVersion: "13.351"
+          createdTime: 1786552839425
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786553680582
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: systems/cyberpunk-red-core/icons/compendium/upgrades/sniping_scope.svg
+        name: Sniping Scope
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: Eagletech
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                                                                Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots for
+                                                                targets greater than 50m/yds.
+                                                              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: true
+              onByDefault: false
+              type: modifier
+              value: 1
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source:
+            book: Core
+            page: 344
+          sources:
+            - book: Black Chrome
+              page: 103
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Crossbow.svg
+name: Eagletech Survivalist
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - arrow
+  attackmod: 0
+  brand: Eagletech
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is
+        incapable of Autofire. It comes with an integrated
+        <strong>Sniping Scope</strong>.
+      </p>
+  dvTable: DV Bows & Crossbows
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - uIQpK3yNBGGA9yul
+      - KFEVXCI3AblQ9dap
+    slots: 3
+    usedSlots: 3
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 103
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: bow
+type: weapon

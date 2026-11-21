@@ -1,0 +1,166 @@
+_id: McQc33tLYAp7djIV
+_key: "!tables!McQc33tLYAp7djIV"
+description: >-
+  Source: Achievements and Loot Boxes pg.6
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d6
+img: icons/containers/chest/chest-simple-box-red.webp
+name: A Box Sealed With A Lipstick Kiss
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+replacement: true
+results:
+  - _id: qARQwKszLKCxPfQz
+    _key: "!tables.results!McQc33tLYAp7djIV.qARQwKszLKCxPfQz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.UlNLm2tio4pdgOgV
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/CombatKnife.svg
+    name: Combat Knife
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: l2HE2AEJWDP4KWxL
+    _key: "!tables.results!McQc33tLYAp7djIV.l2HE2AEJWDP4KWxL"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_ammo.KPSBX2Ns6cj6JC4v
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/grenade_shurikentornado.svg
+    name: Shuriken Tornado Grenade
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: Z4X7w54H3NbzzFwz
+    _key: "!tables.results!McQc33tLYAp7djIV.Z4X7w54H3NbzzFwz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_clothing.Item.zbGmb4qw3DWOX9c5
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
+    name: Asia Pop Footwear
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: iQoEKgujgMhvPqeP
+    _key: "!tables.results!McQc33tLYAp7djIV.iQoEKgujgMhvPqeP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: 2 Businesswear Tops
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: xkhT1oZHM1csCCb0
+    _key: "!tables.results!McQc33tLYAp7djIV.xkhT1oZHM1csCCb0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_weapons.MVZoOzbbPrkBkj53
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/CombatKnife.svg
+    name: White Hornet Tanto
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: O7yueN1blyInPhr9
+    _key: "!tables.results!McQc33tLYAp7djIV.O7yueN1blyInPhr9"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_cyberware.Item.AAzvZil3N8CJfwW8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/cyberware/mr_studd.svg
+    name: Mr. Studd Sexual Implant
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: KiNstFkzGSpxEExo
+    _key: "!tables.results!McQc33tLYAp7djIV.KiNstFkzGSpxEExo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_clothing.Item.0NrP4N71Kcvywx31
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
+    name: Businesswear Top
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+sort: 0

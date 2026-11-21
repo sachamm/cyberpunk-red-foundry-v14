@@ -1,0 +1,147 @@
+_id: GpiJSkZb4nyFunjl
+_key: "!items!GpiJSkZb4nyFunjl"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/punknaught_buzzsaw-arm.svg
+name: Buzzsaw Arm
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Acts as a
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PxOjhUUs7cRULv75]{Very Heavy Melee Weapon},
+        choose location: Front, Rear, Side. A passenger must use their Action to
+        extend or retract the arm.
+      </p>
+      <blockquote>
+        <p><strong>Availability:</strong> Punknaught</p>
+        <p><strong>Construction Time:</strong> 1 days</p>
+        <p><strong>Salvage DV:</strong> 9</p>
+        <p><strong>Construction Modifier:</strong> +1</p>
+      </blockquote>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isRanged: false
+  magazine:
+    ammoData: {}
+    max: 0
+    value: 0
+  modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
+    attackmod:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
+      value: null
+    damage:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    magazine:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    rof:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    sdp:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    seats:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
+    speedCombat:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+  price:
+    market: 0
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  sources:
+    - book: Dreaded Punknaught
+      page: 4
+    - book: Interface RED v4
+      page: 40
+  type: vehicle
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: itemUpgrade

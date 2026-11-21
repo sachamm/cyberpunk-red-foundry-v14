@@ -1,0 +1,256 @@
+_id: tEEA2vrBTk31PqbJ
+_key: "!tables!tEEA2vrBTk31PqbJ"
+description: <p>Interface RED volume 3 / Digital Dating pg 13</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+name: "Weird Date: Beginning"
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: 1XU3CDn5ja1RMaa5
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.1XU3CDn5ja1RMaa5"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date tells you all about their tragic love life…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Weird Date: Beginning"
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: IDMU34uAXc11YwSZ
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.IDMU34uAXc11YwSZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>Your date does not match their profile picture from the Garden
+      Patch.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Weird Date: Beginning"
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: Zg7gH2KFtRiHJhCm
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.Zg7gH2KFtRiHJhCm"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784738902684
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date brought along one of their friends…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Weird Date: Beginning"
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: mWW7uQEFAGZEZlGR
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.mWW7uQEFAGZEZlGR"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date has some very strange notions about fashion.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Weird Date: Beginning"
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: DMrkiMgnICU5juJ4
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.DMrkiMgnICU5juJ4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date is wearing gang colors.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Weird Date: Beginning"
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: Txk5SOUmceVbmTmZ
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.Txk5SOUmceVbmTmZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date is chromed up and you worry they might be a cyberpsycho.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Weird Date: Beginning"
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: SliFvozrUqFLQTA2
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.SliFvozrUqFLQTA2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.9KMg3iZPirPBqxO8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lover.svg
+    name: Tragic Love
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: 4Sw5YQnhgOLpxwPE
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.4Sw5YQnhgOLpxwPE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.9KMg3iZPirPBqxO8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lover.svg
+    name: Tragic Love
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: 71hHbCWL8TrMDL5O
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.71hHbCWL8TrMDL5O"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.9KMg3iZPirPBqxO8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lover.svg
+    name: Tragic Love
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: UfR1NMKXEQ9xhjJQ
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.UfR1NMKXEQ9xhjJQ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.uSyfmaY819qyqOcQ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/friends.svg
+    name: Third Wheel
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: kAzimh0VgX2rfNYN
+    _key: "!tables.results!tEEA2vrBTk31PqbJ.kAzimh0VgX2rfNYN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.X9fLaJa3QrM9onHw
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Weird Date: Middle"
+    range:
+      - 1
+      - 6
+    type: document
+    weight: 1
+sort: 153125

@@ -1,0 +1,45 @@
+_id: 6I91wpBkczPpDkZt
+_key: "!items!6I91wpBkczPpDkZt"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/zetatech-aerocop.svg
+name: Zetatech AeroCop
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Zetatech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>AV4 type Aerodyne. Police version.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 10</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 58000
+  sdp: 120
+  seats: 6
+  sources:
+    - book: Black Chrome
+      page: 61
+  speedCombat: 40
+  speedNarrative: 200 MPH / 322 KPH
+type: vehicle

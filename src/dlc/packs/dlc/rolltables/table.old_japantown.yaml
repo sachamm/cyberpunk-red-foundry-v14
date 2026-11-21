@@ -1,0 +1,153 @@
+_id: dzeYlUgHY1UuUyGI
+_key: "!tables!dzeYlUgHY1UuUyGI"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Old Japantown
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: 3IeiW61qR1ubOxNT
+    _key: "!tables.results!dzeYlUgHY1UuUyGI.3IeiW61qR1ubOxNT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757928972
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778544075
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Enjoy a picnic overlooking the Hot Zone.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Old Japantown
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: YKxSguvL9PKsRAT6
+    _key: "!tables.results!dzeYlUgHY1UuUyGI.YKxSguvL9PKsRAT6"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757929121
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778560853
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Get conveyor belt "sushi".</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Old Japantown
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: U7zZ1aNfJThVHAYS
+    _key: "!tables.results!dzeYlUgHY1UuUyGI.U7zZ1aNfJThVHAYS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757929254
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778584847
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Sing karaoke in an all concrete building.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Old Japantown
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: 9mpjIY7icNaNyLe4
+    _key: "!tables.results!dzeYlUgHY1UuUyGI.9mpjIY7icNaNyLe4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757929387
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778601705
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date wants you to meet their best friend.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Old Japantown
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: 0CqiVTULV0vgG8kh
+    _key: "!tables.results!dzeYlUgHY1UuUyGI.0CqiVTULV0vgG8kh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757929550
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778615194
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a large parade and enjoy the atmosphere.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Old Japantown
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 5K0XZZ1nRVYnos1J
+    _key: "!tables.results!dzeYlUgHY1UuUyGI.5K0XZZ1nRVYnos1J"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757929822
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778625616
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You date's father wants to meet you.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Old Japantown
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,547 @@
+_id: p4xjEHc0yfYpqKJS
+_key: "!tables!p4xjEHc0yfYpqKJS"
+description: <p>Random weapon type provided by Gunpath.</p><p>Toggles Temple, pg. 16</p>
+displayRoll: false
+flags: {}
+folder: KmmkVwS79ivnwu2W
+formula: 1d60
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+name: Quality-Poor
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: 7A6oz0ZUuiJu3NsN
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.7A6oz0ZUuiJu3NsN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.tCTzi4miYdNgAJVc
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_poor.svg
+    name: Medium Pistol (Poor)
+    range:
+      - 1
+      - 6
+    type: document
+    weight: 1
+  - _id: N1UykdzmtlxlA60G
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.N1UykdzmtlxlA60G"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.HOgtO363Rw42ZHMp
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_poor.svg
+    name: Heavy Pistol (Poor)
+    range:
+      - 7
+      - 12
+    type: document
+    weight: 1
+  - _id: v7eMN5lmsRj0uOGO
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.v7eMN5lmsRj0uOGO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.CQ3pmuNqBNFiNMBd
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_poor.svg
+    name: Very Heavy Pistol (Poor)
+    range:
+      - 13
+      - 18
+    type: document
+    weight: 1
+  - _id: guY6dYovIW1x9dU2
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.guY6dYovIW1x9dU2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.eBiYEY7wwTGQeE1g
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG_poor.svg
+    name: SMG (Poor)
+    range:
+      - 19
+      - 24
+    type: document
+    weight: 1
+  - _id: jT53ZL0zGB68Qmvr
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.jT53ZL0zGB68Qmvr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.DrYW7Wu9wt8waU28
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG_poor.svg
+    name: Heavy SMG (Poor)
+    range:
+      - 25
+      - 30
+    type: document
+    weight: 1
+  - _id: rUiUgHR3P4DOfzpt
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.rUiUgHR3P4DOfzpt"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.L4aHgrhuHNzcyXTY
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun_poor.svg
+    name: Shotgun (Poor)
+    range:
+      - 31
+      - 36
+    type: document
+    weight: 1
+  - _id: vsHUmIXnZ5xrdmOS
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.vsHUmIXnZ5xrdmOS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.CnLh2ODjGnlRrYGP
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle_poor.svg
+    name: Sniper Rifle (Poor)
+    range:
+      - 43
+      - 48
+    type: document
+    weight: 1
+  - _id: 8mqKuRDM16YbrSar
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.8mqKuRDM16YbrSar"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.ID2GHK84vddEHgX8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Handgun-Medium
+    range:
+      - 4
+      - 6
+    type: document
+    weight: 1
+  - _id: CNDDPBpmy5lq3CUw
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.CNDDPBpmy5lq3CUw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.1KyWLf2dVdjQtSDT
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Handgun-HSMG
+    range:
+      - 28
+      - 30
+    type: document
+    weight: 1
+  - _id: CfYf2q7cPUjz4jS7
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.CfYf2q7cPUjz4jS7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.oW9TB4DYtsdBCHcp
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Handgun-SMG
+    range:
+      - 22
+      - 24
+    type: document
+    weight: 1
+  - _id: ya3JJQ7HSgBv6AZ9
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.ya3JJQ7HSgBv6AZ9"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.4DfchYZeEgbhZ4NL
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Handgun-VHeavy
+    range:
+      - 16
+      - 18
+    type: document
+    weight: 1
+  - _id: dP6gY6Xqw0y2uZ0A
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.dP6gY6Xqw0y2uZ0A"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.6foQgB6keUY92Wsk
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Handgun-Heavy
+    range:
+      - 10
+      - 12
+    type: document
+    weight: 1
+  - _id: CX7mXEyepPZJH5We
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.CX7mXEyepPZJH5We"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.wNHXTitRqLd1X0Do
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
+    name: Assault Rifle (Poor)
+    range:
+      - 37
+      - 42
+    type: document
+    weight: 1
+  - _id: 5qh3SkecXXCLpD1Q
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.5qh3SkecXXCLpD1Q"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.LIGE9re7IZWkvU4g
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/Bow_poor.svg
+    name: Bow (Poor)
+    range:
+      - 49
+      - 51
+    type: document
+    weight: 1
+  - _id: r2uSzoghZkS7270l
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.r2uSzoghZkS7270l"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.iIWzx4Ae6eUZmqcQ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/Crossbow_poor.svg
+    name: Crossbow (Poor)
+    range:
+      - 52
+      - 54
+    type: document
+    weight: 1
+  - _id: BeXgRttE4WQeYOdX
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.BeXgRttE4WQeYOdX"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.oDUEyZMGGDHSVNJo
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Shoulder-Shotgun
+    range:
+      - 34
+      - 36
+    type: document
+    weight: 1
+  - _id: F1njzII7hCY3pwD8
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.F1njzII7hCY3pwD8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.PTeaydhFSodkshDu
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Shoulder-Assault
+    range:
+      - 40
+      - 42
+    type: document
+    weight: 1
+  - _id: szw88JTrYPALkbUW
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.szw88JTrYPALkbUW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.Rqovv2G6xKO0TFwU
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Shoulder-Sniper
+    range:
+      - 46
+      - 48
+    type: document
+    weight: 1
+  - _id: xJfXp3N1FZtCDf5t
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.xJfXp3N1FZtCDf5t"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.SYVlWtjzWbG4XEfi
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Archery
+    range:
+      - 52
+      - 54
+    type: document
+    weight: 1
+  - _id: WrEFT69l0x52DBhW
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.WrEFT69l0x52DBhW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.30W4ja1h6Sq42cB9
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_poor.svg
+    name: Grenade Launcher (Poor)
+    range:
+      - 55
+      - 58
+    type: document
+    weight: 1
+  - _id: dwkAfh5hDVMaAq5J
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.dwkAfh5hDVMaAq5J"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.Ni28NtWNPp2juhS1
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Launcher-Grenade
+    range:
+      - 57
+      - 58
+    type: document
+    weight: 1
+  - _id: UIHThDSxl3HL9qck
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.UIHThDSxl3HL9qck"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.Gky7qJb3lawgiq1u
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
+    name: Rocket Launcher (Poor)
+    range:
+      - 59
+      - 60
+    type: document
+    weight: 1
+  - _id: dVVd5ngShgWsdqUA
+    _key: "!tables.results!p4xjEHc0yfYpqKJS.dVVd5ngShgWsdqUA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.fOAb4m9Vmy71p7BQ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Upgrades-Launcher-Rocket
+    range:
+      - 60
+      - 60
+    type: document
+    weight: 1
+sort: 900000

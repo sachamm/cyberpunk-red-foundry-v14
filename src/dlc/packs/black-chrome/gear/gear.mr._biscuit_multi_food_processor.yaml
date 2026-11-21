@@ -1,0 +1,47 @@
+_id: Hpa8rpiVDRX29Gr5
+_key: "!items!Hpa8rpiVDRX29Gr5"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/black-chrome/gear/mr-biscuit-multi-food-processor.svg
+name: Mr. Biscuit Multi-Food Processor
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: Everest VentureWare
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Can sustain a group of up to 10 people when in the <strong>Outskirts</strong>.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 49
+  usage: toggled
+type: gear

@@ -1,0 +1,126 @@
+_id: hqxjHYkBe9mLzl2B
+_key: "!items!hqxjHYkBe9mLzl2B"
+effects:
+  - _id: woRCPIH5rPonkfkF
+    _key: "!items.effects!hqxjHYkBe9mLzl2B.woRCPIH5rPonkfkF"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    changes:
+      - key: system.derivedStats.humanity.max
+        mode: 2
+        value: "2"
+    description: <p>Modular Cyberfingers do not impose max Humanity loss.</p>
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": custom
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/dlc/icons/black-chrome/cyberware/cyberfinger.svg
+    name: Modular Cyberfinger
+    origin: Item.TxpZaBEbfYFwf3Nn
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/cyberware/cyberfinger.svg
+name: One Shot Special Cyberfinger
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>Cyberfinger that conceals a single shot Pistol.</p>
+      <blockquote>
+        <p>
+          Can only be installed on a
+          @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.
+        </p>
+      </blockquote>
+  dvTable: DV Pistol
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: true
+  isWeapon: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 2
+  size: 1
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 26
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: installed
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: cyberware

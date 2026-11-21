@@ -1,0 +1,148 @@
+_id: yI9sUHnAIXGYncg9
+_key: "!items!yI9sUHnAIXGYncg9"
+effects:
+  - _id: eLAjuE7xaYrcbIzN
+    _key: "!items.effects!yI9sUHnAIXGYncg9.eLAjuE7xaYrcbIzN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.92.1
+    changes:
+      - key: bonuses.basicTech
+        mode: 2
+        priority: null
+        value: "4"
+      - key: bonuses.cybertech
+        mode: 2
+        priority: null
+        value: "4"
+      - key: bonuses.landVehicleTech
+        mode: 2
+        priority: null
+        value: "4"
+      - key: bonuses.seaVehicleTech
+        mode: 2
+        priority: null
+        value: "4"
+      - key: bonuses.airVehicleTech
+        mode: 2
+        priority: null
+        value: "4"
+      - key: bonuses.electronicsAndSecurityTech
+        mode: 2
+        priority: null
+        value: "4"
+      - key: bonuses.weaponstech
+        mode: 2
+        priority: null
+        value: "4"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
+            "2": skill
+            "3": skill
+            "4": skill
+            "5": skill
+            "6": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+            "1":
+              isSituational: true
+              onByDefault: false
+            "2":
+              isSituational: true
+              onByDefault: false
+            "3":
+              isSituational: true
+              onByDefault: false
+            "4":
+              isSituational: true
+              onByDefault: false
+            "5":
+              isSituational: true
+              onByDefault: false
+            "6":
+              isSituational: true
+              onByDefault: false
+    img: systems/cyberpunk-red-core/icons/compendium/gear/tech_bag.svg
+    name: Master Mechanic's Tool Kit
+    origin: null
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/master_mechanics_tool_kit.svg
+name: Master Mechanic's Tool Kit
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A massive tool chest that provides +4 bonus to <strong>Basic Tech</strong>,
+        <strong>Cybertech</strong>, <strong>Electronic/Security Tech</strong>,
+        <strong>Weaponstech</strong>, <strong>Land Vehicle Tech</strong>,
+        <strong>Sea Vehicle Tech</strong>, <strong>Air Vehicle Tech</strong> checks.
+      </p>
+      <blockquote>
+        <p>Large enough to be considered <strong>Thick Steel Cover</strong></p>
+        <p>Requires <strong>BODY</strong> 10 to move</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 20000
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: 12 Days of Gearmas
+      page: 3
+    - book: Interface RED v4
+      page: 67
+  usage: equipped
+type: gear

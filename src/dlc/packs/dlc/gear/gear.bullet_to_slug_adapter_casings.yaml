@@ -1,0 +1,49 @@
+_id: bDif9oZ2gb46jAx3
+_key: "!items!bDif9oZ2gb46jAx3"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/bullet-to-slug-adapter-casings.svg
+name: Bullet To Slug Adapter Casings
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A box of 10 casings and a loading jig. Replace 10 bullets of any type with a
+        corresponding Shotgun Slug as an action.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome+
+      page: 3
+    - book: Interface RED v4
+      page: 11
+  usage: toggled
+type: gear

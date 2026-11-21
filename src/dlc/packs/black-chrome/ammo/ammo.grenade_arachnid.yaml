@@ -1,0 +1,56 @@
+_id: 80TODp6SDXS3ZnSi
+_key: "!items!80TODp6SDXS3ZnSi"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/grenade_arachnid.svg
+name: Grenade (Arachnid)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: Centurian Essentials
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A very sticky grenade. Creates a sticky web that entangles target. Must be
+        destroyed or be torn by anyone in melee range making a
+        [[/r 1d10red+@stats.dex+@skills.brawling #DV15 Brawling]]{DV15 Brawling}
+        check.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 100
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 86
+  type: special
+  variety: grenade
+type: ammo

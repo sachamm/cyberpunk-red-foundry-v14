@@ -1,0 +1,49 @@
+_id: UGubWAFsjpMcfdm6
+_key: "!items!UGubWAFsjpMcfdm6"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: WcF65njAcmPq8Kbn
+img: icons/containers/chest/chest-simple-box-red.webp
+name: A Box Sealed With A Lipstick Kiss
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 525000
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Roll once from
+        @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.McQc33tLYAp7djIV]{A
+       Box Sealed With A Lipstick Kiss}
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: true
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Achievments & Lootboxes
+      page: 6
+  usage: toggled
+type: gear

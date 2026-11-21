@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### New Features
+
+- Bundle the Cyberpunk RED DLC compendia (Black Chrome, DLC, Elflines Online) until the DLC module supports Foundry v14.
+
 ### Bug Fixes
 
 - Enable the weapon DV ruler for linked characters when their token is selected, including player sheets opened with C outside combat. Keep token DV updates and weapon highlighting consistent with that selection.

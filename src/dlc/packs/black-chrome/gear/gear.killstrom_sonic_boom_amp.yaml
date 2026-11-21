@@ -1,0 +1,52 @@
+_id: NoN4GJNgu6tE6mqd
+_key: "!items!NoN4GJNgu6tE6mqd"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/gear/killstrom-sonic-boom-amp.svg
+name: KillStrom Sonic Boom Amp
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: KillStrom Music
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        While linked to an instrument, use an Action to make everyone within 10m/yds
+        roll a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
+        check. On a failure listeners suffer the
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}
+        critical injury for 1 minute.
+      </p>
+      <blockquote><p>Must be plugged into a wall socket.</p></blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 40
+  usage: toggled
+type: gear

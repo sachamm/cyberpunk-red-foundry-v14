@@ -1,0 +1,153 @@
+_id: 54TEwPQ6CnVhZHrO
+_key: "!tables!54TEwPQ6CnVhZHrO"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: New Westbrook
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: 6O4yYARP22quLwDq
+    _key: "!tables.results!54TEwPQ6CnVhZHrO.6O4yYARP22quLwDq"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753185724
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753404275
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: "<p>Attend a Skate Foot race near Night City Firestation #1.</p>"
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in New Westbrook
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: jHn77O05eb7T2xgk
+    _key: "!tables.results!54TEwPQ6CnVhZHrO.jHn77O05eb7T2xgk"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753186132
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753446635
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a gala hosted by Rocklin Augmentics on their campus.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in New Westbrook
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: P9rCwNzTCe4Ae8SV
+    _key: "!tables.results!54TEwPQ6CnVhZHrO.P9rCwNzTCe4Ae8SV"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753186965
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753477634
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Rock climbing on the cliffs below the WorldSat Offices.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in New Westbrook
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: HGoE2eaarF1kX2wW
+    _key: "!tables.results!54TEwPQ6CnVhZHrO.HGoE2eaarF1kX2wW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753187163
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753494582
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Track down an elusive food truck in the area.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in New Westbrook
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: V0WZX16G37kB0vmT
+    _key: "!tables.results!54TEwPQ6CnVhZHrO.V0WZX16G37kB0vmT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753187566
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753514049
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grab a drink at an Executive Bar.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in New Westbrook
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: wtifv8ID6kSJqfuu
+    _key: "!tables.results!54TEwPQ6CnVhZHrO.wtifv8ID6kSJqfuu"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753195056
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753346258
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Joint the audience of a live N54 show.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in New Westbrook
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+sort: 0

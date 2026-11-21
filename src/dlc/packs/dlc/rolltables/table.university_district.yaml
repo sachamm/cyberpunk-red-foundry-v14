@@ -1,0 +1,153 @@
+_id: 4NK2lbdRhkHEocWT
+_key: "!tables!4NK2lbdRhkHEocWT"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: University District
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: K7OI6Bxhm3TMxdeZ
+    _key: "!tables.results!4NK2lbdRhkHEocWT.K7OI6Bxhm3TMxdeZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758051026
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778301822
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a wild party off campus at the University Cargo Bay.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The University District
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: kUMSRaAxup9HfOG1
+    _key: "!tables.results!4NK2lbdRhkHEocWT.kUMSRaAxup9HfOG1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758051203
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778316589
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>How about a charming nature walk through the Lake Park?</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The University District
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: KEwh4NP9BUea3xIo
+    _key: "!tables.results!4NK2lbdRhkHEocWT.KEwh4NP9BUea3xIo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758051380
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778356169
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Tour Biotechnica's living museum inside a geodesic greendome.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The University District
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: VjFM2biD6SWO1eO7
+    _key: "!tables.results!4NK2lbdRhkHEocWT.VjFM2biD6SWO1eO7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758051543
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778376268
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date wants to show you their new research project.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The University District
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: L7p29geFHdgSLree
+    _key: "!tables.results!4NK2lbdRhkHEocWT.L7p29geFHdgSLree"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758051697
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778412534
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Participate in a group eating competition to win some T-shirts.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The University District
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: w2nGCA4NR6ffkKQ0
+    _key: "!tables.results!4NK2lbdRhkHEocWT.w2nGCA4NR6ffkKQ0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784758051872
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778432800
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a concert held on campus by the music department.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The University District
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

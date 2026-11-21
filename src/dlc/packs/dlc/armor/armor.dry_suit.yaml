@@ -1,0 +1,59 @@
+_id: XlpdmDjdNH9uzhq8
+_key: "!items!XlpdmDjdNH9uzhq8"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/armor/dry-suit.svg
+name: Dry Suit
+ownership:
+  IMmQeDHuejnDb1W4: 3
+  default: 0
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 7
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A sealed, waterproof diving suit with specialized undergarments to keep the
+        body completely dry and warm in cold water.
+      </p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 7
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 0
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 10
+    value: 10
+  sources:
+    - book: TotR — Street Stories
+      page: 57
+  usage: toggled
+type: armor

@@ -1,0 +1,46 @@
+_id: 6zH9r2jEY9ytH4em
+_key: "!items!6zH9r2jEY9ytH4em"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/yangs-wheels-rickshaw.svg
+name: Yang's Wheels Rickshaw
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Yang's Wheels LTD
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Roadbike with attached trailer for passengers.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 2</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 21000
+  sdp: 35
+  seats: 4
+  sources:
+    - book: Black Chrome
+      page: 81
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

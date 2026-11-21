@@ -1,0 +1,85 @@
+_id: 9rKtuQcxsOmHjKyT
+_key: "!items!9rKtuQcxsOmHjKyT"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/bodyweight-autoinjector.svg
+name: Bodyweight AutoInjector
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Bodyweight
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Use an Action to load one dose of a Street Drug into a subdermal storage pod.
+        Once loaded, you may use another action to manually release the dose into your
+        bloodstream. Additonaly, If you have a
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.0d2bEozOFhfPgkUP]{Biomonitor}
+        installed, you can program it to automatically dose yourself upon entering
+        combat, suffering a critical injury, or reaching a predetermined Wound State
+        threshold.
+      </p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: 3
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: clinic
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: Hornet's Pharmacy
+      page: 5
+    - book: Interface RED v4
+      page: 7
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: cyberware

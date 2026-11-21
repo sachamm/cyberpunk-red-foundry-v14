@@ -1,0 +1,50 @@
+_id: 1HFggpUoc6JFprWX
+_key: "!items!1HFggpUoc6JFprWX"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/laser-microphone.svg
+name: Laser Microphone
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        An invisible laser allows the user to measure vibrations and eavesdrop through
+        glass windows up to 300m/yds away.
+      </p>
+      <blockquote>
+        <p>The laser may become visible in foggy or smokey conditions.</p>
+        <p>Audio vibrations are completely blocked by Thick Bulletproof Glass.</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Going Quiet
+      page: 6
+  usage: toggled
+type: gear

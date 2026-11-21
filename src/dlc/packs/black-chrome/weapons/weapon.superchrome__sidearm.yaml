@@ -1,0 +1,124 @@
+_id: kQ8ZI0Fv1wDnZ5Ru
+_key: "!items!kQ8ZI0Fv1wDnZ5Ru"
+effects:
+  - _id: cbbjCrElwBdBKPvO
+    _key: "!items.effects!kQ8ZI0Fv1wDnZ5Ru.cbbjCrElwBdBKPvO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.92.1
+    changes:
+      - key: bonuses.wardrobeAndStyle
+        mode: 2
+        priority: null
+        value: "2"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: 1768694527
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+    name: Superchrome® Sidearm
+    origin: null
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+name: Superchrome® Sidearm
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 0
+  brand: Centurian Essentials
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        The Superchrome® Sidearm is a Very Heavy Pistol. Gives the user a +2 bonus to
+        Wardrobe and Style when equipped.
+      </p>
+      <blockquote>
+        <p>
+          Note: Superchrome effects do not stack and will need to be managed in the
+          Effects tab if multiple Superchrome items are installed.
+        </p>
+      </blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 8
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Black Chrome
+      page: 121
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

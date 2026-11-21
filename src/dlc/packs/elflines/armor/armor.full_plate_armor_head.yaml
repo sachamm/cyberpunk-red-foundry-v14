@@ -1,0 +1,60 @@
+_id: 6w3JLFVB9VIOmCmI
+_key: "!items!6w3JLFVB9VIOmCmI"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: icons/equipment/head/helm-barbute-rounded-steel.webp
+name: Full Plate Armor (Head)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Virtual armor for you head made of plate metal to withstand the heaviest
+        blows.
+      </p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 15
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: false
+  isElectronic: false
+  isHeadLocation: true
+  isShield: false
+  penalty: 4
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  sources:
+    - book: Elflines Online
+      page: 3
+    - book: Interface RED v1
+      page: 42
+  usage: equipped
+type: armor

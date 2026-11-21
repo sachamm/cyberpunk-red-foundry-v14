@@ -1,0 +1,139 @@
+_id: B0gn2to2mlOCrqx4
+_key: "!items!B0gn2to2mlOCrqx4"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: 8cwrd8SPBr255JSX
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_ammo.Item.NQP4I9heyv9fXj46
+          coreVersion: "13.351"
+          createdTime: 1786661102496
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786661102496
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_basic.svg
+        name: Very Heavy Pistol (Basic)
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ablationValue: 1
+          amount: 0
+          brand: ""
+          concealable:
+            concealable: true
+            isConcealed: false
+          description:
+            value: <p>Basic ammo, nothing special.</p>
+          favorite: false
+          ignoredByBrowser: false
+          installLocation: mall
+          overrides:
+            autofire:
+              minimum: 3
+              mode: none
+              value: -1
+            crit:
+              bonus: 5
+              count: 2
+              override: false
+              threshold: 0
+            damage:
+              minimum: 1d6
+              mode: none
+              value: 3d6
+          price:
+            market: 10
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 345
+          type: basic
+          variety: vHeavyPistol
+        type: ammo
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+name: Faisal's Convenience (Basic)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 0
+  brand: Faisal Customs
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A single use disposable very heavy pistol loaded with
+        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.NQP4I9heyv9fXj46]{8 Basic
+       Rounds}.
+        It can't be concealed or reloaded.
+      </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - 8cwrd8SPBr255JSX
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 8
+    value: 8
+  price:
+    market: 20
+  quality: standard
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Toggle's Temple
+      page: 5
+    - book: Interface RED v5
+      page: 39
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

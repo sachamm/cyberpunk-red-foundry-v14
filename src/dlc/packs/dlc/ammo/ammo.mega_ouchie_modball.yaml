@@ -1,0 +1,59 @@
+_id: zpaEFuTwYHT083dz
+_key: "!items!zpaEFuTwYHT083dz"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 42eaea5574cd98838b75c5052b89df02e1e6b584
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/modball_mega-ouchie.svg
+name: Mega Ouchie ModBall
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: Sanroo
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        No immediate damage. Does not ablate armor. On a hit the target rolls a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.
+        On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}
+        directly.
+      </p>
+      <blockquote><p>Does not affect inorganic targets.</p></blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 0
+      count: 0
+      override: true
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: 3d6
+  price:
+    market: 20
+  size: 0
+  sources:
+    - book: 12 Days of Cutimas
+      page: 5
+  type: biotoxin
+  variety: paintball
+type: ammo

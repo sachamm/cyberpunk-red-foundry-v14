@@ -1,0 +1,55 @@
+_id: HY1enelBmakuWORI
+_key: "!items!HY1enelBmakuWORI"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: MgaT7aTvtcZaSWIj
+img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-numbered.svg
+name: Numbered Cards
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 150000
+system:
+  amount: 10
+  brand: Elflines Online TCG
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A stack of Dirt Cheap numbered cards for building an Elflines Online-TCG deck.
+      </p>
+      <blockquote>
+        <p>
+          TCG card items are provided for use as loot and not for actual play. GM's
+          are encouraged to configure their own decks using Foundry's
+          <strong>Card Stack</strong> feature.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 5
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Elflines Online — TCG
+      page: 5
+    - book: Interface RED v3
+      page: 67
+  usage: toggled
+type: gear

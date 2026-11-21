@@ -1,0 +1,52 @@
+{
+  "label": "Rolltables",
+  "mapping": {},
+  "entries": {
+    "Face Cards": {
+      "name": "Face Cards",
+      "results": [
+        {
+          "1-1": "Spreading Slime",
+          "2-2": "Gather the Elflines",
+          "3-3": "Hero's Tutor",
+          "4-4": "Pot of Miasma",
+          "5-5": "Curse of Enthernox",
+          "6-6": "Blessing of Arvish",
+          "7-7": "Rank Up!",
+          "8-8": "Rise from Bog",
+          "9-9": "Flight of Dragons",
+          "10-10": "Zazzolite Aura",
+          "11-11": "Hero's Reversal",
+          "12-12": "Warlock's Wrath"
+        }
+      ]
+    },
+    "Jokers": {
+      "name": "Jokers",
+      "results": [
+        {
+          "8-8": "10 Sacred Herbs",
+          "7-7": "500 Gold Coins",
+          "4-4": "Duel Flag",
+          "12-12": "Dungeonstone",
+          "10-10": "Rank Up Elixir",
+          "6-6": "Revive Sickness Cure",
+          "2-2": "Super Repair Hammer",
+          "11-11": "Tiny Draglin",
+          "3-3": "Tiny Tent",
+          "5-5": "Weapon Glow Vial",
+          "9-9": "Weapon Polish"
+        }
+      ]
+    },
+    "Numbered Cards": {
+      "name": "Numbered Cards",
+      "results": [
+        {
+          "20-20": "Jokers",
+          "1-20": "Numbered Cards"
+        }
+      ]
+    }
+  }
+}

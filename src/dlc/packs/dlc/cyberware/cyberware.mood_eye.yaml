@@ -1,0 +1,117 @@
+_id: z6SGFU2FVhXqFpvT
+_key: "!items!z6SGFU2FVhXqFpvT"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/mood_eye.svg
+name: Mood Eye
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        MoodSync lenses that changed color based on data provided by your
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.ju5Rq9rOe2lpDKKl]{Neural Link}.
+      </p>
+      <p>
+        Lenses can be activated or deactivated without an action, however a
+        [[/r 1d10red+@stats.cool+@skills.acting #DV21 Acting]]{DV 21 Acting} check is
+        required to fool your cyberware.
+      </p>
+      <blockquote>
+        <p>
+          Requires a
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.ju5Rq9rOe2lpDKKl]{Neural Link}
+          to be installed to monitor your mood.
+        </p>
+      </blockquote>
+      <table>
+        <tbody>
+          <tr>
+            <td style="background-color: var(--cpr-chip-red)">
+              <p style="text-align: center">Rage</p>
+            </td>
+            <td style="background-color: var(--cpr-chip-blue)">
+              <p style="text-align: center">Sorrow</p>
+            </td>
+            <td style="background-color: var(--cpr-chip-yellow)">
+              <p style="text-align: center">Terror</p>
+            </td>
+            <td style="background-color: var(--cpr-chip-pink)">
+              <p style="text-align: center">Horny</p>
+            </td>
+            <td style="background-color: var(--cpr-chip-green)">
+              <p style="text-align: center">Envy</p>
+            </td>
+            <td style="background-color: var(--cpr-chip-grey)">
+              <p style="text-align: center">Flatlined</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: "0"
+    static: 0
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: Must Have Cyberware Deals
+      page: 3
+    - book: Interface RED v3
+      page: 47
+  type: fashionware
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: cyberware

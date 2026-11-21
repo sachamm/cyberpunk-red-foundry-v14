@@ -1,0 +1,130 @@
+_id: dKaThmT2dUhUr11H
+_key: "!tables!dKaThmT2dUhUr11H"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: ""
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/solo.svg
+name: Solo
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: oWSIl0G7ndZDkfYg
+    _key: "!tables.results!dKaThmT2dUhUr11H.oWSIl0G7ndZDkfYg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739184630
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739193607
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Bodyguard</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/solo.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: A1tRqupWGWbx3vzq
+    _key: "!tables.results!dKaThmT2dUhUr11H.A1tRqupWGWbx3vzq"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739194809
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739216709
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as <strong>Street Muscle for Hire</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/solo.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: BzY1QLPnD0c2KGBz
+    _key: "!tables.results!dKaThmT2dUhUr11H.BzY1QLPnD0c2KGBz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739218837
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739233221
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Corporate Enforcer</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/solo.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: edg7ZkJI33SnHPjH
+    _key: "!tables.results!dKaThmT2dUhUr11H.edg7ZkJI33SnHPjH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739236782
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739250770
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Local Vigilante</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/solo.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: 0fkx8wYqaXV2Yqlm
+    _key: "!tables.results!dKaThmT2dUhUr11H.0fkx8wYqaXV2Yqlm"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739254887
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739268568
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Hitman for Hire</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/solo.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+sort: 0

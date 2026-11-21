@@ -1,0 +1,60 @@
+_id: 9diHOp9hSafmHRqC
+_key: "!items!9diHOp9hSafmHRqC"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/arasaka_fire.svg
+name: Arasaka Fire
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 1
+  brand: Arasaka
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A proprietary weapon coating for use with
+        @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.Ifp6KgNYeZ0wfKSN]{Arasaka Weeping Reaver Katana}
+        that lights the target <strong>On</strong> <strong>Fire (Mild)</strong>.
+      </p>
+      <blockquote>
+        <ul>
+          <li><p>Coating lasts for 1 minute.</p></li>
+        </ul>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 100
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 91
+  type: incendiary
+  variety: custom
+type: ammo

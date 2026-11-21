@@ -1,0 +1,77 @@
+_id: xWscKBmJ8KyV7OBA
+_key: "!items!xWscKBmJ8KyV7OBA"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: mFEa4FhHbV1fi1zY
+img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle_excellent.svg
+name: Kodiak Hunter
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rifle
+  attackmod: 1
+  brand: Everest VentureWare
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>A long-distance hunting rifle. +1 to Attack.</p>
+      <blockquote>
+        <p>
+          An action is required to eject the spent round each time the rifle is fired.
+        </p>
+      </blockquote>
+  dvTable: DV Sniper Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 3
+    value: 0
+  price:
+    market: 100
+  quality: excellent
+  revealed: true
+  rof: 1
+  sources:
+    - book: Toggle's Temple
+      page: 10
+    - book: Interface RED v5
+      page: 44
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: sniperRifle
+type: weapon

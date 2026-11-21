@@ -1,0 +1,60 @@
+_id: wIMBD44ZU3iJ6jNI
+_key: "!items!wIMBD44ZU3iJ6jNI"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/arasaka_acid.svg
+name: Arasaka Acid
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 2
+  amount: 1
+  brand: Arasaka
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A proprietary weapon coating for use with
+        @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.Ifp6KgNYeZ0wfKSN]{Arasaka Weeping Reaver Katana}
+        that improves armor ablation.
+      </p>
+      <blockquote>
+        <ul>
+          <li><p>Coating lasts for 1 minute.</p></li>
+        </ul>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 100
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 91
+  type: acid
+  variety: custom
+type: ammo

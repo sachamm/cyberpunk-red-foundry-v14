@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="ambunaught-m2.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter3"
+       x="-0.077586207"
+       y="-0.084929497"
+       width="1.1551724"
+       height="1.169859">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood2" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur2" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset2" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite2" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite3" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="255.68278"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="fill:#1b1f21" />
+  <g
+     class=""
+     style="fill:#e64539;filter:url(#filter3)"
+     transform="translate(0,0)"
+     id="g2">
+    <path
+       d="m143.55 44.06 1.403 87.88-37.092-29.74L128 153l-60.94 4.07 62.434 29.87h7.02l16-48h76.972l16 48h8.01l65.065-19.204-56.537-14.177L287 83.94l-49.953 46.595-3.512-54.168-46.047 49.252-43.94-81.56zm21.936 112.88-10 30h71.028l-10-30h-51.028zM24 204.94v158h16.906l38.864-97.155 35.164 105.494 24.337-24.34H303v18H146.73l-25.06 25.058c15.133 6.527 26.447 20.33 29.498 36.94H326v-222H24zm197 23h36v30h30v36h-30v30h-36v-30h-30v-36h30v-30zm125 5.044V378.94h142v-46h-94.625l-15.777-94.672c-11.227-2.4-22.004-4.065-31.598-5.284zm50.637 10.037 3.26 19.568c28.086 8.33 51.377 27.818 67.593 52.35h17.844c-9.74-30.257-32.768-48.962-60.08-61.463-9.295-4.255-18.974-7.67-28.617-10.454zM78.23 318.095 53.094 380.94H24v46h28.832c4.202-22.882 24.097-40.426 48.023-40.97L78.23 318.093zM346 396.94v30h14.832c2.212-12.046 8.77-22.612 17.982-30H346zm95.186 0c9.21 7.388 15.77 17.954 17.982 30H488v-30h-46.814zm-339.186 7c-17.78 0-32 14.22-32 32s14.22 32 32 32 32-14.22 32-32-14.22-32-32-32zm308 0c-17.78 0-32 14.22-32 32s14.22 32 32 32 32-14.22 32-32-14.22-32-32-32z"
+       fill="#fff"
+       fill-opacity="1"
+       id="path2"
+       style="fill:#e64539" />
+  </g>
+</svg>

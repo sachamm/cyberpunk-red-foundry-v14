@@ -1,0 +1,645 @@
+_id: 2HdSK4OM7yHlkk16
+_key: "!items!2HdSK4OM7yHlkk16"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: zcULLJ7Ih6TaPVOP
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.Pj3nZU2coYUGIjR3
+          coreVersion: "13.351"
+          createdTime: 1784584188525
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784584188525
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/bulletproof_glass.svg
+        name: Bulletproof Glass
+        ownership:
+          default: 0
+        sort: 125000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles. All glass on the vehicle is now considered
+                cover with 15 HP. Can be taken a second time to upgrade to 30HP. All windows
+                take damage individually.
+              </p>
+              <p>Refer to the cover rules in CP:R, pg. 182.</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 1000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 163
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+      - _id: RKKLtnovXhHl8bKj
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.l2lIF8c1HknhG8CN
+          coreVersion: "13.351"
+          createdTime: 1784584188525
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784584188525
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/armored_chassis.svg
+        name: Armored Chassis
+        ownership:
+          default: 0
+        sort: 393750
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles. Armors the vehicle to SP13. Doesn't affect the
+                glass.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 5000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 163
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+      - _id: 9wrQIcYvG2OJ6Mn2
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.dlc_upgrades.Item.sAUmDCuqzJa6ioak
+          coreVersion: "13.351"
+          createdTime: 1784584188525
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784584188525
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: 0XZmVUnampyJzVpD
+        img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/sealed-environment.svg
+        name: Sealed Environment
+        ownership:
+          default: 0
+        sort: 175000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p><strong>Moto Rank Required:</strong> 1</p>
+              <p><strong>Availability:</strong> All Vehicles</p>
+              <hr />
+              <p>
+                Protects occupants from breathing in any hazardous gasses from outside the
+                vehicle.
+              </p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: 12 Days of Vehiclemas
+              page: 16
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+        type: itemUpgrade
+      - _id: lV5PVrAsO8yUZl6x
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.CeCRMtA7XTyEm3HM
+          coreVersion: "13.351"
+          createdTime: 1784584206436
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784584206436
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/security_upgrade.svg
+        name: Security Upgrade
+        ownership:
+          default: 0
+        sort: 106250
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles. Adds DNA Locks to the vehicle requring the
+                correct biometrics or a DV 17 Electronics/Security Tech check to unlock.
+                Failure to unlock the vehicle takes damage as if hit with a Stun Baton.
+              </p>
+              <p>
+                In addition, while remaining still the vehicle is cloaked and requires a
+                <strong>DV17 Perception</strong> check to spot. The vehicle must remain
+                stationary for a minute before this activates.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 5000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 163
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/america-luxus-15.svg
+name: TetraCorp America Luxus 15
+ownership:
+  default: 0
+sort: 0
+system:
+  brand: TetraCorp America
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A CHOOH<sup>2</sup>-powered ground car. Comes equipped with a
+        @UUID[Compendium.cyberpunk-red-core.black-chrome_gear.Item.DQ22OUTZiHGj8vWD]{Drink Master 3000}
+      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 6</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - zcULLJ7Ih6TaPVOP
+      - RKKLtnovXhHl8bKj
+      - 9wrQIcYvG2OJ6Mn2
+      - lV5PVrAsO8yUZl6x
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 45000
+  sdp: 50
+  seats: 8
+  source: null
+  sources:
+    - book: 12 Days of Vehiclemas
+      page: 5
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

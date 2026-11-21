@@ -1,0 +1,153 @@
+_id: Yce2r6XFY5QtohSx
+_key: "!tables!Yce2r6XFY5QtohSx"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+name: Media
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: asX7v24badEP4QSZ
+    _key: "!tables.results!Yce2r6XFY5QtohSx.asX7v24badEP4QSZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739867789
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739879105
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Blogger</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: U9JbQe6i0kwlXBkc
+    _key: "!tables.results!Yce2r6XFY5QtohSx.U9JbQe6i0kwlXBkc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739869723
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739914821
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Novelist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 3yMBSJrurfiJDTAt
+    _key: "!tables.results!Yce2r6XFY5QtohSx.3yMBSJrurfiJDTAt"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739870066
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739908303
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Videographer</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: puNn3gfdc8lPDCiS
+    _key: "!tables.results!Yce2r6XFY5QtohSx.puNn3gfdc8lPDCiS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739870388
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739923449
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Documentarian</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: zxrWZicJwATwSnKQ
+    _key: "!tables.results!Yce2r6XFY5QtohSx.zxrWZicJwATwSnKQ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739870703
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739933607
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Investigative Reporter</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: HllyzsXTP4TO75j1
+    _key: "!tables.results!Yce2r6XFY5QtohSx.HllyzsXTP4TO75j1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739871400
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739941304
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Street Scribe</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

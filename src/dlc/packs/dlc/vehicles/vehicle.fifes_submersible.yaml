@@ -1,0 +1,423 @@
+_id: fr7viJglQPSwyeVQ
+_key: "!items!fr7viJglQPSwyeVQ"
+effects: []
+flags:
+  cyberpunk-red-core:
+    cprInstallTree:
+      - _id: Zw9k1Umv3amWaTk3
+        _stats:
+          compendiumSource: Item.28tqkqyKzcBWN4f6
+          coreVersion: "13.351"
+          createdTime: 1790033514592
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790033514592
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags: {}
+        folder: null
+        img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/manipulator-arm.svg
+        name: Manipulator Arms x2
+        ownership:
+          default: 0
+        sort: 400000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>A pair of external manipulator arms that can lift and grasp
+              objects.</p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: TotR — Street Stories
+              page: 71
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+        type: itemUpgrade
+      - _id: xz6tSyYEyhpUxkGL
+        _stats:
+          compendiumSource: Item.P1EOuT5vvIoJkZC7
+          coreVersion: "13.351"
+          createdTime: 1790033514592
+          duplicateSource: Item.28tqkqyKzcBWN4f6
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790033514592
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags: {}
+        folder: null
+        img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/sonar-system.svg
+        name: Sonar System
+        ownership:
+          default: 0
+        sort: 150000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>A basic sonar system to assist with navigation when visibility
+              is low..</p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: TotR — Street Stories
+              page: 71
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+        type: itemUpgrade
+      - _id: 7TLHWi0OC4RSipmm
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.lw6N5svBE702A6VE
+          coreVersion: "13.351"
+          createdTime: 1790033514592
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790033514592
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/seating_upgrade.svg
+        name: Seating Upgrade x2
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles. Adds two seats to the vehicle. These can be
+                installed as an external sidecar, they may also be installed as ejector seats
+                with removable parachutes.
+              </p>
+              <p>
+                Can be taken multiple times with the exception of Bikes, Jetskis and
+                Gyrocopters.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: 4
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: TotR — Street Stories
+              page: 71
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/fifes-submersible.svg
+name: Fife's Submersible
+ownership:
+  default: 0
+sort: 0
+system:
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A small submersible vehicle that contains its own NET Architecture.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> N/A</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - Zw9k1Umv3amWaTk3
+      - xz6tSyYEyhpUxkGL
+      - 7TLHWi0OC4RSipmm
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 0
+  sdp: 100
+  seats: 4
+  source: null
+  sources:
+    - book: TotR — Street Stories
+      page: 71
+  speedCombat: 10
+  speedNarrative: 15 MPH / 24 KPH
+type: vehicle

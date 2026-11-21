@@ -1,0 +1,51 @@
+_id: gaGUmTGViuxZ4mqR
+_key: "!items!gaGUmTGViuxZ4mqR"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  icons/consumables/potions/bottle-conical-corked-labeled-skull-poison-green.webp
+name: Vial of Poison
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A virtual item that deals [[/r 2d6dmg #Vial of Poison Damage]]{2d6 damage}
+        unless the target passes a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}
+        check. Armor does not apply.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Elflines Online
+      page: 3
+    - book: Interface RED v1
+      page: 42
+  usage: toggled
+type: gear

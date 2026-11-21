@@ -1,0 +1,59 @@
+_id: BIIxmGcvtftmOyzy
+_key: "!tables!BIIxmGcvtftmOyzy"
+description: <p>Interface RED volume 3 / Digital Dating pg 15</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d2
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/random.svg
+name: Post-Date Review
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: IDBetDa2n0oU6sZB
+    _key: "!tables.results!BIIxmGcvtftmOyzy.IDBetDa2n0oU6sZB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: "<p>Failure: They're just not that into you.</p>"
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/failure.svg
+    name: Post-Date Review
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: TNqeLjlsmLAcychZ
+    _key: "!tables.results!BIIxmGcvtftmOyzy.TNqeLjlsmLAcychZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>Success: They say they want another date and promise to keep in
+      touch.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/success.svg
+    name: Post-Date Review
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+sort: 287500

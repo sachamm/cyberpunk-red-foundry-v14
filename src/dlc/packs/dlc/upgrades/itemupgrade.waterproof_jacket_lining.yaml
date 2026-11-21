@@ -1,0 +1,149 @@
+_id: mfPOgdF9AABuAwWa
+_key: "!items!mfPOgdF9AABuAwWa"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/waterproof-jacket-lining.svg
+name: Waterproof Jacket Lining
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Mechanically similar to an
+        @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.qLpYhxmPD1u2lMG8]{umbrella},
+        does not serve as a
+        @UUID[Compendium.cyberpunk-red-core.dlc_armor.Item.XlpdmDjdNH9uzhq8]{Dry Suit}.
+      </p>
+      <p>
+        Protects against
+        @UUID[Compendium.cyberpunk-red-core.dlc_weather-effects.Item.yd5RKbg33WnbwKAE]{Acid Rain}
+        and provides +2 to <strong>Resist Torture/Drugs</strong> Checks from
+        @UUID[Compendium.cyberpunk-red-core.dlc_weather-effects.Item.SKqisyIQrtc6AOd1]{Blood Rain}
+        exposure.
+      </p>
+      <blockquote>
+        <p>Upgrade designed for use with any <strong>Jacket</strong>.</p>
+      </blockquote>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isRanged: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    attackmod:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    damage:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    magazine:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    rof:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    sdp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    seats:
+      isSituational: false
+      onByDefault: false
+      value: null
+    secondaryWeapon:
+      configured: false
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
+    speedCombat:
+      isSituational: false
+      onByDefault: false
+      value: null
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: Night City Weather
+      page: 6
+    - book: Interface RED v2
+      page: 20
+  type: clothing
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: itemUpgrade

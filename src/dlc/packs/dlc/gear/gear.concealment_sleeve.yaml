@@ -1,0 +1,54 @@
+_id: drIcFf5Fn5aWRZNl
+_key: "!items!drIcFf5Fn5aWRZNl"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/concealment-sleeve.svg
+name: Concealment Sleeve
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>A custom fit RealSkinn™ sleeve made just for you.</p>
+      <blockquote>
+        <p>
+          All installed cyberware concealed by this sleeve becomes undetectable by
+          @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.JMYvZfk6ZBgt6tK0]{Cyberscanners}
+          and unusable until the sleeve is removed. — No automation provided.
+        </p>
+        <p>
+          Counts as a <strong>Very Expensive</strong> item — price categories are
+          currently hardcoded by the system.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 500
+  providesHardening: true
+  revealed: true
+  sources:
+    - book: Going Quiet
+      page: 5
+  usage: toggled
+type: gear

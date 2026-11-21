@@ -1,0 +1,74 @@
+_id: N2JO2RGnXWvrGjGf
+_key: "!items!N2JO2RGnXWvrGjGf"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
+name: KTech TechHammer
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - rocket
+    - shotgunShell
+    - shotgunSlug
+  attackmod: 0
+  brand: KTech
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>The KTech TechHammer is an Exotic Shotgun/Rocket Launcher.</p>
+      <blockquote>
+        <p>Magazine holds either 4 Shotgun slugs/shells, or 2 Smart Rockets.</p>
+      </blockquote>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 4
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Black Chrome
+      page: 110
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

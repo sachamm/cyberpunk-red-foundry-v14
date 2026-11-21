@@ -1,0 +1,677 @@
+_id: aIGB3mAQ7QWCQBJ0
+_key: "!tables!aIGB3mAQ7QWCQBJ0"
+description: >-
+  <p>Create a random weapon name via the Gunpath method.</p><p>Toggles Temple,
+  pg. 19</p>
+displayRoll: false
+flags: {}
+folder: KmmkVwS79ivnwu2W
+formula: 1d100
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+name: Weapon-Name
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: XBfy2U0MGjrZPnoC
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.XBfy2U0MGjrZPnoC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Letters - Numbers
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 1
+      - 9
+    type: text
+    weight: 1
+  - _id: gr7VH6DCH7JvXfWi
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.gr7VH6DCH7JvXfWi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Descriptor - Numbers
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 10
+      - 15
+    type: text
+    weight: 1
+  - _id: e5wRmNAqOMcpSrLD
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.e5wRmNAqOMcpSrLD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Model/Mark/Version - Number
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 16
+      - 21
+    type: text
+    weight: 1
+  - _id: muDbzcK1maaixhBg
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.muDbzcK1maaixhBg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Deadly Animal - Name
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 22
+      - 24
+    type: text
+    weight: 1
+  - _id: A6Nn4mEOw7PtrRIy
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.A6Nn4mEOw7PtrRIy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Descriptor - Deadly Animal Name
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 25
+      - 27
+    type: text
+    weight: 1
+  - _id: s6mtbmW3xuZHa6xb
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.s6mtbmW3xuZHa6xb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Deadly Animal Name - Descriptor
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 28
+      - 30
+    type: text
+    weight: 1
+  - _id: fenLeuGwvazvnmMi
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.fenLeuGwvazvnmMi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Noun - Deadly Animal Name
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 31
+      - 33
+    type: text
+    weight: 1
+  - _id: sA0yMTZwvxJpoRo6
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.sA0yMTZwvxJpoRo6"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Deadly Animal Name - Noun
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 34
+      - 36
+    type: text
+    weight: 1
+  - _id: 7FuhF48YSXTWHOlv
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.7FuhF48YSXTWHOlv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Mythological/Fictional - Name
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 37
+      - 39
+    type: text
+    weight: 1
+  - _id: JXOpognJjXtoPf5q
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.JXOpognJjXtoPf5q"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Descriptor - Mythological/Fictional Name
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 40
+      - 42
+    type: text
+    weight: 1
+  - _id: IN1dNbYVgAhZ3p4W
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.IN1dNbYVgAhZ3p4W"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Mythological/Fictional Name - Descriptor
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 43
+      - 45
+    type: text
+    weight: 1
+  - _id: elHcXerHgsYI6MFZ
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.elHcXerHgsYI6MFZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Noun - Mythological/Fiction Name
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 46
+      - 48
+    type: text
+    weight: 1
+  - _id: PQECL5rglhsRvm8u
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.PQECL5rglhsRvm8u"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Mythological/Fiction Name - Noun
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 49
+      - 51
+    type: text
+    weight: 1
+  - _id: y3UXoE3j1PdIfqeA
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.y3UXoE3j1PdIfqeA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Descriptor - Type of Person
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 52
+      - 54
+    type: text
+    weight: 1
+  - _id: u8UMDtvQjztyZIfC
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.u8UMDtvQjztyZIfC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Type of Person - Descriptor
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 55
+      - 57
+    type: text
+    weight: 1
+  - _id: Qnynn8f0dFzM3vSE
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.Qnynn8f0dFzM3vSE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Type of Person - Type of Person
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 58
+      - 60
+    type: text
+    weight: 1
+  - _id: dqUQC0pWDP6KiumZ
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.dqUQC0pWDP6KiumZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Noun1 (space) Noun2
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 61
+      - 63
+    type: text
+    weight: 1
+  - _id: AR8jWM11mrHONH2f
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.AR8jWM11mrHONH2f"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Noun1 (no space) noun2
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 64
+      - 66
+    type: text
+    weight: 1
+  - _id: 5CzoA0VwEhlZWZ2Z
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.5CzoA0VwEhlZWZ2Z"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Noun1 (no space) Noun2
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 67
+      - 69
+    type: text
+    weight: 1
+  - _id: xPkqI0MIvvEXtcUo
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.xPkqI0MIvvEXtcUo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Descriptor - Descriptive Noun
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 70
+      - 72
+    type: text
+    weight: 1
+  - _id: YbZf7f1WwX2Fuv7v
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.YbZf7f1WwX2Fuv7v"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Descriptive Noun - Descriptor
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 73
+      - 75
+    type: text
+    weight: 1
+  - _id: gTRjpXB08EIlts0l
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.gTRjpXB08EIlts0l"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Location
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 76
+      - 78
+    type: text
+    weight: 1
+  - _id: VLQ33fhrphroYxou
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.VLQ33fhrphroYxou"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Location - Descriptor
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 79
+      - 81
+    type: text
+    weight: 1
+  - _id: luKtZFCHtg2W9I37
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.luKtZFCHtg2W9I37"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Descriptor - Location
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 82
+      - 84
+    type: text
+    weight: 1
+  - _id: HUKeHW68giVEUwvx
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.HUKeHW68giVEUwvx"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Location - Noun
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 85
+      - 87
+    type: text
+    weight: 1
+  - _id: 6hyLrXaLKNC41xhC
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.6hyLrXaLKNC41xhC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Noun - Location
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 88
+      - 90
+    type: text
+    weight: 1
+  - _id: dXFHEqjXNWIlugCT
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.dXFHEqjXNWIlugCT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Technobabble Word - Number
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 91
+      - 93
+    type: text
+    weight: 1
+  - _id: H9tt7yTSs7EM5lAe
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.H9tt7yTSs7EM5lAe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Technobabble Word - Descriptor
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 94
+      - 96
+    type: text
+    weight: 1
+  - _id: 56HkdJ445w8kQWoK
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.56HkdJ445w8kQWoK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Technobabble Word - Noun
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 97
+      - 99
+    type: text
+    weight: 1
+  - _id: GzOyBERipo22e72o
+    _key: "!tables.results!aIGB3mAQ7QWCQBJ0.GzOyBERipo22e72o"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Name:</b> Something Geeky
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 100
+      - 100
+    type: text
+    weight: 1
+sort: 1200000

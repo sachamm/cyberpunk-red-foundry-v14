@@ -1,0 +1,220 @@
+_id: 6CYGY3LJdRM9vjaI
+_key: "!items!6CYGY3LJdRM9vjaI"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: furhpPyqMli2p65g
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.qkASZxwH3nxb1AUx
+          coreVersion: "13.351"
+          createdTime: 1777136757956
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: GhPkzdD89HrVDo6W
+          modifiedTime: 1777136757956
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: systems/cyberpunk-red-core/icons/compendium/upgrades/combat_plow.svg
+        name: Combat Plow
+        ownership:
+          default: 0
+        sort: 100000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: Salvaged
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Preinstalled during the construction of any Punknaught Core. When you ram
+                something with the front of your vehicle, your vehicle doesn't take damage
+                and nobody inside suffers from the Whiplash critical injury.
+              </p>
+              <blockquote>
+                <p>
+                  When ramming, your Punknaught deals an additional <strong>1d6</strong>
+                  damage per extra chassis you have constructed.
+                </p>
+                <p>
+                  Additionally, your Punknaught deals <strong>2d6</strong> additional ramming
+                  damage if your vehicle was boosted by
+                  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.n51IrwLux1v0fY78]{NOS}
+                  on the turn you ram the object.
+                </p>
+                <p>
+                  Constructing
+                  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.WOmB9knmOHXH1ifu]{Combat
+                  Spikes} can increase the bonus damage by an additional
+                  <strong>2d6</strong> when ramming with NOS.
+                </p>
+              </blockquote>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Dreaded Punknaught
+              page: 6
+            - book: Interface RED v4
+              page: 42
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/punknaught_core.svg
+name: Punknaught Core
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        You can't build a Punknaught without a core! All Punknaughts are reinforced
+        with a Makeshift Combat Plow and can support up to 3 extra chassis.
+      </p>
+      <blockquote>
+        <p>
+          <strong>Construction Time:</strong> 7 days<br /><strong>Salvage DV:</strong>
+          15<br /><strong>Construction Modifier:</strong> +0
+        </p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - furhpPyqMli2p65g
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 0
+  sdp: 60
+  seats: 20
+  sources:
+    - book: Dreaded Punknaught
+      page: 4
+    - book: Interface RED v4
+      page: 40
+  speedCombat: 15
+  speedNarrative: 60 MPH/97 KPH
+type: vehicle

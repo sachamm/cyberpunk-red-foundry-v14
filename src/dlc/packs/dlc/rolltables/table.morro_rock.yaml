@@ -1,0 +1,155 @@
+_id: NG4BqIBNAhx5fjul
+_key: "!tables!NG4BqIBNAhx5fjul"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Morro Rock
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: Byad3lmBggf0tW5k
+    _key: "!tables.results!NG4BqIBNAhx5fjul.Byad3lmBggf0tW5k"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753541261
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753580651
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Watch a test of the Orbital Massdriver.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at Morro Rock
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: AFUa5AodxFFsSI51
+    _key: "!tables.results!NG4BqIBNAhx5fjul.AFUa5AodxFFsSI51"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753543134
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753601094
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>A perfect place to watch the fireworks.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at Morro Rock
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: kDpwmJVlrXNibVTv
+    _key: "!tables.results!NG4BqIBNAhx5fjul.kDpwmJVlrXNibVTv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753543429
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753623975
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Lunch date at the Orbital Air Massdriver's employee cafeteria.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at Morro Rock
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: vSmSqEIsU5x4DCyR
+    _key: "!tables.results!NG4BqIBNAhx5fjul.vSmSqEIsU5x4DCyR"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753543713
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753654927
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Go for a cruise on a boat docked at Morro Rock.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at Morro Rock
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: YRaNR8IO16EUO9AL
+    _key: "!tables.results!NG4BqIBNAhx5fjul.YRaNR8IO16EUO9AL"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753544142
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753676983
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Double date with someone from their Family.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at Morro Rock
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: nKN8RdOLxDWgHZJL
+    _key: "!tables.results!NG4BqIBNAhx5fjul.nKN8RdOLxDWgHZJL"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784753544601
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784753721203
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>Ringside seats to an underground pit fight at the construction
+      site.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at Morro Rock
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

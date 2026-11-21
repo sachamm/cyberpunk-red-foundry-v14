@@ -1,0 +1,167 @@
+_id: AWMovh1iv6ahccEx
+_key: "!items!AWMovh1iv6ahccEx"
+effects: []
+flags:
+  cyberpunk-red-core:
+    cprInstallTree:
+      - _id: 3yazQVoYVDC49mvB
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.wMr8YQQxdBSNMq2o
+          coreVersion: "13.351"
+          createdTime: 1790282136715
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790282136715
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/cyberware/radio_scanner_music_player.svg
+        name: Integrated Radio Scanner/Music Player
+        ownership:
+          default: 0
+        sort: 100000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          core: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>Tune into CitiNet radio stations or play your locally saved
+              music.</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          humanityLoss:
+            roll: "0"
+            static: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: notApplicable
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - cyberware
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isFoundational: false
+          isRanged: false
+          isWeapon: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: 12 Days of Redmas
+              page: 4
+          type: cyberAudioSuite
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Archery
+          weaponType: assaultRifle
+        type: cyberware
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/smart-ears.svg
+name: Smart Ears
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A wearable headset with integrated Radio Scanner / Music Player and 2 empty
+        Cyberaudio slots.
+      </p>
+      <blockquote>
+        <p>Remember to set HL to 0 when installing cyberwear options.</p>
+      </blockquote>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: "0"
+    static: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: notApplicable
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - cyberware
+    list:
+      - 3yazQVoYVDC49mvB
+    slots: 2
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: true
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: 12 Days of Redmas
+      page: 4
+  type: cyberAudioSuite
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: cyberware

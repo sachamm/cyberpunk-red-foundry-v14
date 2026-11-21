@@ -1,0 +1,235 @@
+_id: vapukmsoth9PyrP0
+_key: "!tables!vapukmsoth9PyrP0"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+name: Family (Crisis)
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: 4nymnhuneX9JcPPD
+    _key: "!tables.results!vapukmsoth9PyrP0.4nymnhuneX9JcPPD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773522453
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who lost everything through betrayal.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: mgVpu6EauDH9F8Pc
+    _key: "!tables.results!vapukmsoth9PyrP0.mgVpu6EauDH9F8Pc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773527723
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who lost everything through mismanagement.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: F4dkcAk0MwwYThVV
+    _key: "!tables.results!vapukmsoth9PyrP0.F4dkcAk0MwwYThVV"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773531910
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who was exiled and driven from their home.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: 3H3hfNsoIYyTa9C2
+    _key: "!tables.results!vapukmsoth9PyrP0.3H3hfNsoIYyTa9C2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773536137
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who was incarcerated.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: 534C4lbzy5sMMtOk
+    _key: "!tables.results!vapukmsoth9PyrP0.534C4lbzy5sMMtOk"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773539980
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who vanished without a trace.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: iml8q0A7k09HmbYS
+    _key: "!tables.results!vapukmsoth9PyrP0.iml8q0A7k09HmbYS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773544306
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who was killed.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: cV87N7tpkhf7ORfP
+    _key: "!tables.results!vapukmsoth9PyrP0.cV87N7tpkhf7ORfP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773550364
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who was involved in a conspiracy.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: TyJKjyqwgcn2dWTZ
+    _key: "!tables.results!vapukmsoth9PyrP0.TyJKjyqwgcn2dWTZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773554149
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who has scattered to the winds.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: UB8Ht5sVJu6twmaA
+    _key: "!tables.results!vapukmsoth9PyrP0.UB8Ht5sVJu6twmaA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773576346
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who are feuding with another clan.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: 1VPXQl5sF4AhFuEv
+    _key: "!tables.results!vapukmsoth9PyrP0.1VPXQl5sF4AhFuEv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773563168
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>… who inherited the family's debt.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: 100000

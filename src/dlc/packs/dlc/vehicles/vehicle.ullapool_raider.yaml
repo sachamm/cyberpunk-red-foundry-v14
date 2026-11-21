@@ -1,0 +1,358 @@
+_id: Hq5u6dK7TlJMy4TG
+_key: "!items!Hq5u6dK7TlJMy4TG"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: Fuvu6uR9kVP16gne
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.l2lIF8c1HknhG8CN
+          coreVersion: "13.351"
+          createdTime: 1784585441973
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784585441973
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/armored_chassis.svg
+        name: Armored Chassis
+        ownership:
+          default: 0
+        sort: 393750
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles. Armors the vehicle to SP13. Doesn't affect the
+                glass.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 5000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 163
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+      - _id: fjwcig4FclVFAzCs
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.EUKwyodr06YR101B
+          coreVersion: "13.351"
+          createdTime: 1784585441973
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784585441973
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/onboard_rocket_pod.svg
+        name: Onboard Rocket Pod
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. A
+                <strong>Rocket Launcher</strong> with a drum of three rockets, that can be
+                mounted facing the front of the vehicle. The driver may fire it using an
+                Action. It cannot be reloaded while driving, and cannot accept weapon
+                attachments.
+              </p>
+              <p>
+                You may install this upgrade multiple times.
+                <strong>Requires Heavy Chassis</strong>.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: true
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 5000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 164
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/ullapool-raider.svg
+name: Ullapool Raider
+ownership:
+  default: 0
+sort: 0
+system:
+  brand: Highland Defense
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: >
+      <p>A fast CHOOH<sup>2</sup>-powered speedboat equiped with rocket
+      launchers.</p>
+
+      <p>The Ullapool Raider is incompatible with the following upgrades:</p>
+
+      <ul>
+        <li><p>Sealed Environment</p></li>
+        <li><p>Bullteproof Glass</p></li>
+        <li><p>Heavy Chassis</p></li>
+        <li><p>Submersible</p></li>
+      </ul>
+
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 6</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - Fuvu6uR9kVP16gne
+      - fjwcig4FclVFAzCs
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 32000
+  sdp: 35
+  seats: 5
+  source: null
+  sources:
+    - book: 12 Days of Vehiclemas
+      page: 13
+  speedCombat: 20
+  speedNarrative: 60 MPH / 97 KPH
+type: vehicle

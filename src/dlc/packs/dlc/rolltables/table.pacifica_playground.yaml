@@ -1,0 +1,153 @@
+_id: XNIggrlObsilgoj1
+_key: "!tables!XNIggrlObsilgoj1"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Pacifica Playground
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: cg9U8bFwbdmS8vLt
+    _key: "!tables.results!XNIggrlObsilgoj1.cg9U8bFwbdmS8vLt"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757951041
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784779018494
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date wants to share their favorite braindance with you.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Pacifica Playground
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: NSZbavZpmj1P8jDH
+    _key: "!tables.results!XNIggrlObsilgoj1.NSZbavZpmj1P8jDH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757951195
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784779032667
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Picnic lunch in the Playland by the Sea parking lot.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Pacifica Playground
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: Ctjc4qEKlUEF23nB
+    _key: "!tables.results!XNIggrlObsilgoj1.Ctjc4qEKlUEF23nB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757951289
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784779054528
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>A backstage tour of the Playland by the Sea Concert Hall.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Pacifica Playground
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: Bz9ojfomd2TkPnxB
+    _key: "!tables.results!XNIggrlObsilgoj1.Bz9ojfomd2TkPnxB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757951474
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784779063922
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Shell hunting on the beach.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Pacifica Playground
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: ZsNU33ummgvkFGtE
+    _key: "!tables.results!XNIggrlObsilgoj1.ZsNU33ummgvkFGtE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757951721
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784779080810
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Ride the rides and dine on unique Playland by the Sea kibble.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Pacifica Playground
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: htWuIiXDHsktjrFW
+    _key: "!tables.results!XNIggrlObsilgoj1.htWuIiXDHsktjrFW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757952083
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784779090122
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Drag racing down by the pier.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Pacifica Playground
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,153 @@
+_id: 2CcSw54SBYbGdyd2
+_key: "!tables!2CcSw54SBYbGdyd2"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+name: Exec
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: VeXWhd060kU31o3T
+    _key: "!tables.results!2CcSw54SBYbGdyd2.VeXWhd060kU31o3T"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740025989
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740131038
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Procurement Specialist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: Vnn2n8F9R7SiKpwD
+    _key: "!tables.results!2CcSw54SBYbGdyd2.Vnn2n8F9R7SiKpwD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740026227
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740464378
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Manufacturing Foreman</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: fKBehdT2HtGxeszh
+    _key: "!tables.results!2CcSw54SBYbGdyd2.fKBehdT2HtGxeszh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740026469
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740496470
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>R&amp;D Project Manager</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: 5JOnpfTteXmTso8F
+    _key: "!tables.results!2CcSw54SBYbGdyd2.5JOnpfTteXmTso8F"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740026718
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740298824
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Human Resources Director</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: uICXwaJ6JussWfCZ
+    _key: "!tables.results!2CcSw54SBYbGdyd2.uICXwaJ6JussWfCZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740026952
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740317093
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Public Affairs Agent</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: QOiyOGeiVnsDdK6s
+    _key: "!tables.results!2CcSw54SBYbGdyd2.QOiyOGeiVnsDdK6s"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740030604
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740338347
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Mergers and Acquisitions Coordinator</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

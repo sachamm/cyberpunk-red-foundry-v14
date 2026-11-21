@@ -1,0 +1,170 @@
+_id: InHC4cZ7lSiPBdEP
+_key: "!items!InHC4cZ7lSiPBdEP"
+effects: []
+flags:
+  cyberpunk-red-core:
+    cprInstallTree:
+      - _id: WPcApiR9Upm2mqAd
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.2vSTximwCOxNPGJX
+          coreVersion: "13.351"
+          createdTime: 1790111427472
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790111427472
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_grip.svg
+        name: Integrated Subdermal Grip
+        ownership:
+          default: 0
+        sort: 100000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: CyberDude
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          core: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Plating on your hand which allows you to utilise Smartguns. Requires a neural
+                link.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          humanityLoss:
+            roll: "0"
+            static: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: notApplicable
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - cyberware
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isFoundational: false
+          isRanged: false
+          isWeapon: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: 12 Days of Redmas
+              page: 3
+          type: cyberArm
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Archery
+          weaponType: assaultRifle
+        type: cyberware
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/cyberdude-smart-glove.svg
+name: CyberDude Smart Glove
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: CyberDude
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A fingerless smart glove that allows full access to any installed cyberfinger
+        upgrades. Comes with an Integrated Subdermal grip.
+      </p>
+      <blockquote>
+        <p>*Remember to set HL to 0 when installing cyberwear options.</p>
+      </blockquote>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: "0"
+    static: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: notApplicable
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - cyberware
+      - itemUpgrade
+    list:
+      - WPcApiR9Upm2mqAd
+    slots: 2
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: true
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 750
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: 12 Days of Redmas
+      page: 3
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: cyberware

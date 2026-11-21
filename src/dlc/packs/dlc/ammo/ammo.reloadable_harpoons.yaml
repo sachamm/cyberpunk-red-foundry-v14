@@ -1,0 +1,56 @@
+_id: HqaKGQpp5VMV5UNU
+_key: "!items!HqaKGQpp5VMV5UNU"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/harpoon_basic.svg
+name: Reloadable Harpoons
+ownership:
+  Oh50kk1fqzkpjwxb: 3
+  default: 0
+sort: 0
+system:
+  ablationValue: 1
+  amount: 1
+  brand: Slamdance Inc.
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Additional harpoons for use with the SlamDance
+        @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.UnVRX1UNOtUtN5xz]{Ballistic Harpoon Launcher}.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 1000
+  size: 0
+  sources:
+    - book: Woodchipper's Garage
+      page: 5
+    - book: Interface RED v3
+      page: 29
+  type: special
+  variety: custom
+type: ammo

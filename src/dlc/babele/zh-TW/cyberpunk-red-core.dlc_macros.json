@@ -1,0 +1,14 @@
+{
+  "label": "Macros",
+  "mapping": {},
+  "entries": {
+    "Begin your date!": {
+      "name": "Begin your date!",
+      "description": ""
+    },
+    "Find a match!": {
+      "name": "Find a match!",
+      "description": ""
+    }
+  }
+}

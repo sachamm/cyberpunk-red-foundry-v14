@@ -1,0 +1,57 @@
+_id: OCEWvjde4ZKq78ao
+_key: "!items!OCEWvjde4ZKq78ao"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_basic.svg
+name: Big Dreem Rounds
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 30
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Custom Ammo for use only with the
+        @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.dnfLVJnDKlEdLkpy]{Big
+       Dreem}.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 20
+  size: 0
+  sources:
+    - book: Black Chrome+
+      page: 3
+    - book: Interface RED v4
+      page: 11
+  type: basic
+  variety: custom
+type: ammo

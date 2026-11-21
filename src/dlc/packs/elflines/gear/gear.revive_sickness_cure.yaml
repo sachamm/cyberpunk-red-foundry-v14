@@ -1,0 +1,50 @@
+_id: BkCnJKrEPJczGKOE
+_key: "!items!BkCnJKrEPJczGKOE"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: Ld94WnhHrzIRpK8Y
+img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+name: Revive Sickness Cure
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 450000
+system:
+  amount: 1
+  brand: Elflines Online TCG
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Use
+        @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}
+        to remove Revive Sickness from a character!
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 20
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Elflines Online — TCG
+      page: 7
+    - book: Interface RED v3
+      page: 67
+  usage: toggled
+type: gear

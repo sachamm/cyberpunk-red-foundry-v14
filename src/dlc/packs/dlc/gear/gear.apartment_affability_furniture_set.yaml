@@ -1,0 +1,51 @@
+_id: RAQr2n7aI1PYp4hq
+_key: "!items!RAQr2n7aI1PYp4hq"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/apartment-affability.svg
+name: Apartment Affability Furniture Set
+ownership:
+  GSQleko03XTBUGW9: 3
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Easy to assemble furniture in a box. This is the starting Furniture Set for
+        most Apartments and Corporate Conapts.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Corporate Conapts & Studio Apartments
+      page: 7
+    - book: Interface RED v4
+      page: 51
+  usage: toggled
+type: gear

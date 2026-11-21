@@ -1,0 +1,136 @@
+_id: Www5jXWJlfhyuAzn
+_key: "!items!Www5jXWJlfhyuAzn"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: aqIBXGaOTYP99jEz
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_ammo.Item.dHHTQLHUkd0IX8GI
+          coreVersion: "13.351"
+          createdTime: 1786553327539
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786553528049
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/ammo/rocket_armorpiercing.svg
+        name: Rocket (Armor-Piercing)
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ablationValue: 2
+          amount: 0
+          brand: Gunmart
+          concealable:
+            concealable: true
+            isConcealed: false
+          description:
+            value: >-
+              <p>Double ablation to armor. Cannot be removed from launcher
+              without exploding.</p>
+          favorite: false
+          ignoredByBrowser: true
+          installLocation: mall
+          overrides:
+            autofire:
+              minimum: 3
+              mode: none
+              value: -1
+            crit:
+              bonus: 5
+              count: 2
+              override: false
+              threshold: 0
+            damage:
+              minimum: 1d6
+              mode: none
+              value: 3d6
+          price:
+            market: 0
+          size: 0
+          source: null
+          sources:
+            - book: Black Chrome
+              page: 107
+          type: armorPiercing
+          variety: rocket
+        type: ammo
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
+name: GunMart Engage Rocket Launcher
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rocket
+  attackmod: 0
+  brand: GunMart
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: destroyedBeyondRepair
+  damage: 8d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Poor Quality Exotic Rocket Launcher</strong> that explodes on a
+        Critical Failure or when unloading the weapon.
+      </p>
+  dvTable: DV Rocket Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list:
+      - aqIBXGaOTYP99jEz
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 1
+  price:
+    market: 100
+  quality: poor
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 107
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: rocketLauncher
+type: weapon

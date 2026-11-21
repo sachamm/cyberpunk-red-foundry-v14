@@ -1,0 +1,121 @@
+_id: Pf0nIIWogwohv3gc
+_key: "!items!Pf0nIIWogwohv3gc"
+effects:
+  - _id: MAlmk7UBNTZtlRrK
+    _key: "!items.effects!Pf0nIIWogwohv3gc.MAlmk7UBNTZtlRrK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1759519550081
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: pLIpYgHBYUznkgBy
+      modifiedTime: 1759629692202
+      systemId: cyberpunk-red-core
+      systemVersion: v0.89.2
+    changes:
+      - key: bonuses.resistTortureOrDrugs
+        mode: 2
+        priority: null
+        value: "6"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/cyberliver.svg
+    name: Cyberliver
+    origin: >-
+      Compendium.cyberpunk-red-core.dlc_mixing-drinks-changing-lives.Item.Pf0nIIWogwohv3gc
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/cyberliver.svg
+name: Cyberliver
+ownership:
+  default: 0
+  pLIpYgHBYUznkgBy: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Hammered Industries
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>A liver enhancement to mitigate alcohol side effects.</p>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d3
+    static: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - cyberware
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: {}
+    max: 0
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: Mixing Drinks — Changing Lives
+      page: 15
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: cyberware

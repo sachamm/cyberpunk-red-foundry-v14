@@ -1,0 +1,675 @@
+_id: oSGOCjOZciblW3HZ
+_key: "!items!oSGOCjOZciblW3HZ"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: jWcHMjSNwWlq4WeJ
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.7KjoeHsFOue8Dl42
+          coreVersion: "13.351"
+          createdTime: 1784585324333
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784585324333
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/av_4_engine_upgrade.svg
+        name: AV-4 Engine Upgrade
+        ownership:
+          default: 0
+        sort: 162500
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all land vehicles. Adds Aerodyne thrusters to the vehicle,
+                allowing flight. While flying the vehicle has a narrative speed of 200MPH /
+                322KPH, and a combat speed of 40. The vehicle must be piloted using the Pilot
+                Air Vehicle skill while mid-air.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 5000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 164
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+      - _id: K7coP5XSSlTenLQI
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.YRDJbfFA4knBhApR
+          coreVersion: "13.351"
+          createdTime: 1784585324333
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784585324333
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: systems/cyberpunk-red-core/icons/compendium/upgrades/heavy_chasis.svg
+        name: Heavy Chassis
+        ownership:
+          default: 0
+        sort: 165625
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. Adds 20
+                SDP to the vehicle. This doesn't affect the glass, and vehicle can now tow up
+                to 10 tons.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: 20
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 1000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 164
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+      - _id: 0NZlVuMmMvtdrR6R
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.lw6N5svBE702A6VE
+          coreVersion: "13.351"
+          createdTime: 1784585324333
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784585324333
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/seating_upgrade.svg
+        name: Seating Upgrade
+        ownership:
+          default: 0
+        sort: 396875
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles. Adds two seats to the vehicle. These can be
+                installed as an external sidecar, they may also be installed as ejector seats
+                with removable parachutes.
+              </p>
+              <p>
+                Can be taken multiple times with the exception of Bikes, Jetskis and
+                Gyrocopters.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: 2
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 1000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 163
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+      - _id: 5dog8SN07aWctCr2
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.FiZDgbVLFADR6QTT
+          coreVersion: "13.351"
+          createdTime: 1784585324333
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784585324333
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/vehicle_heavy_weapon_mount.svg
+        name: Vehicle Heavy Weapon Mount
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. One of
+                the vehicles seats becomes a swivel mount for any two-handed ranged weapon. A
+                passenger may fire the weapon using an Action. The passenger can reload the
+                weapon. The weapon can be removed or reinstalled using an Action.
+              </p>
+              <p>
+                The first time this upgrade is taken, included is a
+                <strong>Tsunami Arms Helix</strong>,
+                <strong>Rhinemetall EMG-86 Railgun</strong>, or
+                <strong>Militech "Cowboy" U-56 Grenade Launcher</strong>. If the vehicle has
+                the Bulletproof Glass upgrade, the gunner is protected by the same glass.
+              </p>
+              <p>
+                You may install this upgrade multiple times if the vehicle has the Housing
+                Capacity upgrade. <strong>Requires Heavy Chassis</strong>.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: true
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 5000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 164
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/vmw-aerojeep.svg
+name: VMW Aerojeep
+ownership:
+  default: 0
+sort: 0
+system:
+  brand: VMW
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A CHOOH<sup>2</sup>-powered flying ground car with an open cockpit. VMW
+        Aerojeep is incompatible with the following upgrades:
+      </p>
+      <ul>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Pj3nZU2coYUGIjR3]{Bulletproof Glass}
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.sAUmDCuqzJa6ioak]{Sealed Environment}
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.CeCRMtA7XTyEm3HM]{Security Upgrade}
+          </p>
+        </li>
+      </ul>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 6</p>
+        <p>Moves at half speed while traveling on the ground.</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - jWcHMjSNwWlq4WeJ
+      - K7coP5XSSlTenLQI
+      - 0NZlVuMmMvtdrR6R
+      - 5dog8SN07aWctCr2
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 44000
+  sdp: 50
+  seats: 4
+  source: null
+  sources:
+    - book: 12 Days of Vehiclemas
+      page: 11
+  speedCombat: 40
+  speedNarrative: 200 MPH / 322 KPH
+type: vehicle

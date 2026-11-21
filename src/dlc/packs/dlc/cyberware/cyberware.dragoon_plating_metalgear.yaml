@@ -1,0 +1,93 @@
+_id: YMu6SNA9VbtKHFL8
+_key: "!items!YMu6SNA9VbtKHFL8"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 931e408a98ec11425bb72c2c9c41ea166689de88
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/dragoon-plating-metalgear.svg
+name: Dragoon Plating (Metalgear)
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  V8F9A9hbCTVYRW7O: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Requires <strong>BODY 16</strong> or higher unless using a Full Body
+        Conversion.
+      </p>
+      <blockquote>
+        <p>
+          Comes with one set of detachable
+          @UUID[Compendium.cyberpunk-red-core.dlc_armor.Item.CmRGpzxkSmnXgBl9]{Dragoon Armor Plating (Metalgear)},
+          additional plates sold separately.
+        </p>
+      </blockquote>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 15000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: Going Metal
+      page: 105
+    - book: Interface RED v3
+      page: 105
+  type: borgware
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

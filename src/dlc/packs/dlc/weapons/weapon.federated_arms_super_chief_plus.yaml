@@ -1,0 +1,76 @@
+_id: 9C3QjCu45JPjAroJ
+_key: "!items!9C3QjCu45JPjAroJ"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: HM8bGbUXbIZM3Zhj
+img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_poor.svg
+name: Federated Arms Super Chief Plus
+ownership:
+  default: 0
+sort: 100000
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 0
+  brand: Federated Arms
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit
+        fail) the gun jams and requires using an action to clear.
+      </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 8
+    value: 0
+  price:
+    market: 50
+  quality: poor
+  revealed: true
+  rof: 1
+  sources:
+    - book: Cyberpunk RED
+      page: 342
+    - book: Toggle's Temple
+      page: 5
+    - book: Interface RED v5
+      page: 39
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

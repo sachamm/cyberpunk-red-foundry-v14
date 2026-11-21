@@ -1,0 +1,221 @@
+_id: 2V72TwxDLsHbyD7d
+_key: "!items!2V72TwxDLsHbyD7d"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: hPxtGlHws8zT9Yrd
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.dlc_upgrades.Item.5SEXfIt0muRpGrE5
+          coreVersion: "13.351"
+          createdTime: 1784573077058
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784573077058
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: Em6tnWjMgSob6YcK
+        img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/airhypo-bayonet.svg
+        name: Airhypo Bayonet
+        ownership:
+          default: 0
+        sort: 100000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: "0"
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>
+                A hypodermic syringe that can deliver 1 dose of any liquid compound to the
+                target.
+              </p>
+
+              <blockquote><p>Requires 1 Action to reload the Airhypo
+              Bayonet.</p></blockquote>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: true
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 100
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source: null
+          sources:
+            - book: Toggle's Temple
+              page: 14
+            - book: Interface RED v5
+              page: 48
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Melee Weapon
+          weaponType: lightMelee
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
+name: Mustang Arms Deathstalker
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attackmod: 0
+  brand: Mustang Arms
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>An all-purpose shotgun. Equipped with an Airhypo Bayonet.</p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - hPxtGlHws8zT9Yrd
+    slots: 3
+    usedSlots: 1
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 4
+    value: 0
+  price:
+    market: 600
+  quality: standard
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Toggle's Temple
+      page: 8
+    - book: Interface RED v5
+      page: 42
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

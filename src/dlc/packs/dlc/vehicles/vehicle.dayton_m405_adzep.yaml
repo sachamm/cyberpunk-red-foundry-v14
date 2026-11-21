@@ -1,0 +1,198 @@
+_id: h00va4y9gmRQvkUS
+_key: "!items!h00va4y9gmRQvkUS"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: M1FyahKCsB6FVtJT
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.oEK3gfarTQznYvv8
+          coreVersion: "13.351"
+          createdTime: 1784584775189
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784584775189
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: 0XZmVUnampyJzVpD
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/communications_center.svg
+        name: Communications Center
+        ownership:
+          default: 0
+        sort: 168750
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: |-
+              <p>
+                Can be applied to all vehicles. Touchscreen console that functions as an
+                Agent, along with a storage unit containing 6
+                <strong>Radio Communicators</strong>, 6
+                <strong>Scrambler/Descramblers</strong>, a
+                <strong>Radio Scanner/Music Player</strong>, a
+                <strong>Homing tracer</strong> with 6 tracers, and an
+                <strong>Audio Recorder</strong>.
+              </p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+          price:
+            market: 1000
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 163
+          type: vehicle
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/dayton-m405-adzep.svg
+name: Dayton M405 AdZep
+ownership:
+  default: 0
+sort: 0
+system:
+  brand: Dayton Aeronautics
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A modern-day advertising blimp. Contains only a single room.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 5</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - M1FyahKCsB6FVtJT
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 26000
+  sdp: 35
+  seats: 2
+  source: null
+  sources:
+    - book: 12 Days of Vehiclemas
+      page: 7
+  speedCombat: 15
+  speedNarrative: 60 MPH / 97 KPH
+type: vehicle

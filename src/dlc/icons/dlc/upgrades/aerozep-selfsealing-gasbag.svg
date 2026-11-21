@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="aerozep-selfsealing-gasbag.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4"
+       x="-0.074534161"
+       y="-0.0972973"
+       width="1.1490683"
+       height="1.1945946">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood3" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur3" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset3" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite3" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite4" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.5"
+     inkscape:cx="256"
+     inkscape:cy="255"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="fill:#1b1f21" />
+  <g
+     class=""
+     style="fill:#e64539;filter:url(#filter4)"
+     transform="translate(0,0)"
+     id="g2">
+    <path
+       id="path2"
+       style="fill:#e64539"
+       d="M 56.910156 130 L 63.910156 211.16992 C 73.450156 206.82992 124.5093 186.31031 138.7793 181.57031 L 138.81055 181.57031 L 110.59961 146.2207 L 56.910156 130 z M 276.59961 172.11914 C 155.10961 172.11914 17 252.88086 17 252.88086 C 17 252.88086 155.11961 333.65039 276.59961 333.65039 C 277.84238 333.65039 287.63614 333.64421 295.66406 333.65039 C 297.98078 331.60121 300.7614 330.16277 303.67383 329.16211 C 316.43095 324.48926 329.13131 319.63432 341.64648 314.28516 C 356.62703 307.87938 371.3991 300.90211 385.46289 292.6543 C 389.60226 290.05527 394.30508 288.08067 399.25781 288.01367 C 403.24857 287.88388 407.25624 288.80199 410.82617 290.58008 C 416.12187 293.54299 421.34101 296.65232 426.74023 299.42969 C 434.75551 303.61147 442.91155 307.4915 451.16016 311.1543 C 480.94614 296.40345 494.81055 275.7605 494.81055 252.88086 C 494.81055 210.48086 447.76961 175.55914 338.59961 172.11914 C 336.59961 172.05914 280.73961 172.11914 276.59961 172.11914 z M 63.910156 294.58008 L 56.910156 375.75977 L 110.55078 359.53906 L 138.75977 324.18945 C 124.50977 319.44945 73.450156 298.93008 63.910156 294.58008 z M 264.66016 349.39062 L 268.91016 380.7793 L 290.10547 380.7793 C 289.70416 377.92179 289.34546 375.05954 289.06641 372.19141 C 288.39855 364.97083 287.97316 357.71683 288.03516 350.46289 C 288.02296 350.12567 288.0568 349.79141 288.0625 349.45508 C 279.1222 349.42744 265.74683 349.43646 264.66016 349.39062 z " />
+    <path
+       d="m 400.00001,499.99999 c -12.75556,0 -37.97778,-13.61989 -57,-33.39975 C 316.00001,438.54045 300,399.67074 300,350.00112 a 11.111111,9.9999252 0 0 1 6.98889,-9.28993 c 36.37779,-13.09991 65.33333,-26.12981 86.84445,-39.02971 a 11.111111,9.9999252 0 0 1 12.33333,0 c 21.5,12.8999 50.47779,25.9398 86.84445,39.02971 A 11.111111,9.9999252 0 0 1 500,350.00112 c 0,49.67963 -15.99999,88.54933 -42.99999,116.59912 -19.01112,19.76986 -44.23334,33.39975 -57,33.39975 z"
+       fill="#000000"
+       id="path7"
+       style="height:512px;width:512px;fill:#e64539;filter:url(#filter1235);display:inline;fill-opacity:1;stroke-width:10.5409"
+       inkscape:label="shield" />
+  </g>
+</svg>

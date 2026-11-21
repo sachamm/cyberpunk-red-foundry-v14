@@ -1,0 +1,47 @@
+_id: THuhq91qOtXUZCrf
+_key: "!items!THuhq91qOtXUZCrf"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/antismog_breathing_mask.svg
+name: Hydrosubsidium Universal Aqualung
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: Hydrosubsidium Inc.
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        When worn, User can breathe underwater as long as within 10 m/yards of the
+        surface.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 42
+  usage: toggled
+type: gear

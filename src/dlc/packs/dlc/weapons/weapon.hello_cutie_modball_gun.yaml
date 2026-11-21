@@ -1,0 +1,80 @@
+_id: Cv13X97oRkjiqJe9
+_key: "!items!Cv13X97oRkjiqJe9"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: ecc5da098feefd16d15f5a6e7b19d4534daaea0d
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/air_pistol.svg
+name: Hello Cutie Modball Gun
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ammoVariety:
+    - paintball
+  attackmod: 0
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: "0"
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Medium Pistol</strong> that shoots ModBalls. Incompatible with
+        magazine upgrades.
+      </p>
+      <blockquote>
+        <p>
+          ModBall ammo can be purchased or created with a ModBall Construction Kit.
+        </p>
+      </blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 1
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 5
+    value: 0
+  price:
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: 12 Days of Cutimas
+      page: 5
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: weapon

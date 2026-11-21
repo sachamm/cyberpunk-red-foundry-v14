@@ -1,0 +1,45 @@
+_id: mjoHK8yhLZoNnjlS
+_key: "!items!mjoHK8yhLZoNnjlS"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/sh-45-patroller.svg
+name: SH-45 Patroller
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Dayton Aeronautics
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>One seat Gyrocopter. Civilian version.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 2</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 16000
+  sdp: 35
+  seats: 1
+  sources:
+    - book: Black Chrome
+      page: 58
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

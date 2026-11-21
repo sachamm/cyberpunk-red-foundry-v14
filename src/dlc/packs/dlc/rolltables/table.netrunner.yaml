@@ -1,0 +1,159 @@
+_id: VQoqtWyvqtVWF3ih
+_key: "!tables!VQoqtWyvqtVWF3ih"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+name: Netrunner
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: In6cZhgOd3AMYnvj
+    _key: "!tables.results!VQoqtWyvqtVWF3ih.In6cZhgOd3AMYnvj"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739304751
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739320874
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Freelance Hacker</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 5EhTF3IqEeNxhSfa
+    _key: "!tables.results!VQoqtWyvqtVWF3ih.5EhTF3IqEeNxhSfa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739305059
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739348720
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Corpo "Clone Runner"</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: nLlF2ovgXbcnLDU3
+    _key: "!tables.results!VQoqtWyvqtVWF3ih.nLlF2ovgXbcnLDU3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739305371
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739359503
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Hacktivist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: YfbuMM07ut3Ag4NS
+    _key: "!tables.results!VQoqtWyvqtVWF3ih.YfbuMM07ut3Ag4NS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739305678
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739380713
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Script Kiddie</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: nB9OzGVI6yObYz35
+    _key: "!tables.results!VQoqtWyvqtVWF3ih.nB9OzGVI6yObYz35"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739305954
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739535892
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Network Troubleshooter</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: BxOqzQvkBerSUfD2
+    _key: "!tables.results!VQoqtWyvqtVWF3ih.BxOqzQvkBerSUfD2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739306275
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739494950
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>File Recovery Professional</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

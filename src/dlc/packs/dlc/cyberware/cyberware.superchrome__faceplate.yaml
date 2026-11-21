@@ -1,0 +1,133 @@
+_id: dR7zepxVq2WGdpe8
+_key: "!items!dR7zepxVq2WGdpe8"
+effects:
+  - _id: HgVu2KFavKqxcncN
+    _key: "!items.effects!dR7zepxVq2WGdpe8.HgVu2KFavKqxcncN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: bonuses.wardrobeAndStyle
+        mode: 2
+        priority: null
+        value: "2"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: icons/svg/aura.svg
+    name: Superchrome® Covering (Face)
+    origin: Item.6QVxlymN918dNgzi
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/superchrome-faceplate.svg
+name: Superchrome® Faceplate
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A metallic coating for your face. Provides +2 to
+        <strong>Wardrobe and Style</strong>.
+      </p>
+      <blockquote>
+        <p>
+          <em
+            >Compatible with your
+            @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.KLdu0wuFwC95vtss]{Cyberskull}.</em
+          >
+        </p>
+        <p>Effects do not stack</p>
+      </blockquote>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: "0"
+    static: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - cyberware
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: {}
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: Going Metal
+      page: 105
+    - book: Interface RED v3
+      page: 105
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  usage: installed
+  usesType: magazine
+  weaponSkill: Handgun
+type: cyberware

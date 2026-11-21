@@ -1,0 +1,78 @@
+_id: EpnkbYJED7yNCwcy
+_key: "!items!EpnkbYJED7yNCwcy"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/nomad-air-cannon.svg
+name: Nomad Air Cannon
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - paintball
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Excotic Shotgun</strong> Rather than normal shotgun ammunition, this
+        weapon fires whatever liquid is placed into it. Acid can be bought for 10eb
+        (Cheap) that reduces all armour worn by the target by 1 SP. Poison or Biotoxin
+        can also be loaded, though requires 3 vials per shot.
+      </p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Woodchipper's Garage
+      page: 4
+    - book: Danger Gal Dossier
+      page: 145
+    - book: Interface RED v3
+      page: 28
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

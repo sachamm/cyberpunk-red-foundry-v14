@@ -1,0 +1,153 @@
+_id: vzhSPE2tafIJiX95
+_key: "!tables!vzhSPE2tafIJiX95"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Reclaimed Perimeter
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: 2PyDFcs6WulyVFMe
+    _key: "!tables.results!vzhSPE2tafIJiX95.2PyDFcs6WulyVFMe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755858145
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755902581
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Bowling in an abandoned building.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Reclaimed Perimeter
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: MQ9ptBuMy4m1OS37
+    _key: "!tables.results!vzhSPE2tafIJiX95.MQ9ptBuMy4m1OS37"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755858289
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755919396
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Let's go urban spelunking.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Reclaimed Perimeter
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: AXqNGboWBvoFSyhD
+    _key: "!tables.results!vzhSPE2tafIJiX95.AXqNGboWBvoFSyhD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755858424
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755935075
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Get together with a couple friends.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Reclaimed Perimeter
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: uCBBXeAAjI6geboO
+    _key: "!tables.results!vzhSPE2tafIJiX95.uCBBXeAAjI6geboO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755858555
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755956502
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Shoot off some old fireworks at some abandoned cars.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Reclaimed Perimeter
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: Ec15mg3lBmnu4rg9
+    _key: "!tables.results!vzhSPE2tafIJiX95.Ec15mg3lBmnu4rg9"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755858676
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755988564
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grab some tacos from a friend's food truck.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Reclaimed Perimeter
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: EO6hoAUW7bTYuS79
+    _key: "!tables.results!vzhSPE2tafIJiX95.EO6hoAUW7bTYuS79"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755858825
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756002937
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Meetup at the all night diner.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Reclaimed Perimeter
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

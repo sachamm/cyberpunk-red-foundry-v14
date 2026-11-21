@@ -1,0 +1,215 @@
+_id: CW4Vmiv2Rqo4JZxR
+_key: "!items!CW4Vmiv2Rqo4JZxR"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: g1EG80aGeHJnFbw3
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          createdTime: 1786562773546
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786562847759
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/dlc/icons/black-chrome/upgrades/westwood-pull-out-screen.svg
+        name: Westwood Pull-Out Screen
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: Nova Arms
+          canIgnoreArmor: false
+          concealable:
+            concealable: true
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: <p>Can play movie clips stored on an internal memory chip.</p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes: []
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source:
+            book: Black Chrome
+            page: 121
+          sources:
+            - book: Black Chrome
+              page: 121
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+        type: itemUpgrade
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_excellent.svg
+name: Westwood
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 1
+  brand: Nova Arms
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        The Westwood is an Excellent Quality Very Heavy Pistol. 6 shot capacity that
+        can't be upgraded with magazine attachments. Contains a pull-out screen
+        concealed in the grip.
+      </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - g1EG80aGeHJnFbw3
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 6
+    value: 0
+  price:
+    market: 500
+  quality: excellent
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 121
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

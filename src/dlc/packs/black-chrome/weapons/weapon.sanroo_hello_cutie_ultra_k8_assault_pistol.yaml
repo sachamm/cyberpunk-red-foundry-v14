@@ -1,0 +1,123 @@
+_id: tthUaY2iqrpUlO44
+_key: "!items!tthUaY2iqrpUlO44"
+effects:
+  - _id: 19PZd8EBRHpOwPIq
+    _key: "!items.effects!tthUaY2iqrpUlO44.19PZd8EBRHpOwPIq"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: bonuses.wardrobeAndStyle
+        mode: 2
+        priority: null
+        value: "2"
+    description: ""
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/black-chrome/weapons/hello-cutie-ultra-k8.svg
+    name: Hello Cutie Ultra-K8
+    origin: Item.4eZqheqT1blQST2O
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/weapons/hello-cutie-ultra-k8.svg
+name: Sanroo Hello Cutie Ultra-K8 Assault Pistol
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 1
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic
+        Very Heavy Pistol with an Excellent Quality Heavy SMG mode. +2 Bonus to
+        Wardrobe &amp; Style if you are wearing 3 or more Asia Pop clothing items.
+      </p>
+      <blockquote>
+        <p>Switching Autofire modes on or off takes an Action to complete.</p>
+      </blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 2
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 30
+    value: 0
+  price:
+    market: 5000
+  quality: excellent
+  revealed: true
+  rof: 1
+  sources:
+    - book: Black Chrome
+      page: 118
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

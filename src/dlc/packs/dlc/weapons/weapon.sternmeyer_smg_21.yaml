@@ -1,0 +1,73 @@
+_id: cyW3cQE2yh2YnvWu
+_key: "!items!cyW3cQE2yh2YnvWu"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: Uu08EH4AivIhBfQy
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG.svg
+name: Sternmeyer SMG-21
+ownership:
+  default: 0
+sort: 50000
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 0
+  brand: Sternmeyer
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>A heavy SMG. Due to its size it can't be concealed.</p>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 40
+    value: 0
+  price:
+    market: 100
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Cyberpunk RED
+      page: 342
+    - book: Toggle's Temple
+      page: 7
+    - book: Interface RED v5
+      page: 41
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavySmg
+type: weapon

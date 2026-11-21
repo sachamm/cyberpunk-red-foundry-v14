@@ -1,0 +1,153 @@
+_id: 2imwaMOXshtmu73O
+_key: "!tables!2imwaMOXshtmu73O"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Executive Zone
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: f5EPraWvQQ2sIDVS
+    _key: "!tables.results!2imwaMOXshtmu73O.f5EPraWvQQ2sIDVS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754668919
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754689675
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Golf, anyone?</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Executive Zone
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: godmd44dSAqXHvgW
+    _key: "!tables.results!2imwaMOXshtmu73O.godmd44dSAqXHvgW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754669135
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754730215
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Fancy a round of tennis? Ever played on real organic grass?</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Executive Zone
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: LFioiN8pktMuUeEa
+    _key: "!tables.results!2imwaMOXshtmu73O.LFioiN8pktMuUeEa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754669333
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754759453
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Brunch at your Date's favorite spot.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Executive Zone
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: HCvu9ljcFd8HYPyX
+    _key: "!tables.results!2imwaMOXshtmu73O.HCvu9ljcFd8HYPyX"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754669578
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754780937
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Pool Party at a Beaverville McMansion.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Executive Zone
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: QTNeSEdbafS6FlwF
+    _key: "!tables.results!2imwaMOXshtmu73O.QTNeSEdbafS6FlwF"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754669780
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754798134
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Drinks in the business lounge of the Country Club.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Executive Zone
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: rLD10YGrUyvscUgi
+    _key: "!tables.results!2imwaMOXshtmu73O.rLD10YGrUyvscUgi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784754670022
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784754820153
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Masquerade Party in the mansion of a rather recently deceased Exec.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Executive Zone
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

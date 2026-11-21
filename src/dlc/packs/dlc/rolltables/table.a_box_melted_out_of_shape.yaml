@@ -1,0 +1,249 @@
+_id: bOtq937SNIahmbeK
+_key: "!tables!bOtq937SNIahmbeK"
+description: >-
+  <p>Source: Achievements and Loot Boxes pg.6 All weapons come fully loaded with
+  a compatible ammo type of the GM's choosing.</p>
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d6
+img: icons/containers/boxes/crate-wooden-grey.webp
+name: A Box Melted Out Of Shape
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+replacement: true
+results:
+  - _id: fABg1vUrxkxVFiXh
+    _key: "!tables.results!bOtq937SNIahmbeK.fABg1vUrxkxVFiXh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_armor.ZWoM763wXSI3njJA
+    drawn: false
+    flags: {}
+    img: null
+    name: Scavenged Armor
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: 4kibUUAHR3AIsfNo
+    _key: "!tables.results!bOtq937SNIahmbeK.4kibUUAHR3AIsfNo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.IJhN5QHmu4hAJxLo
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_incendiary.svg
+    name: Grenade (Incendiary)
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: 3TasXLmE9oieBVdw
+    _key: "!tables.results!bOtq937SNIahmbeK.3TasXLmE9oieBVdw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_cyberware.MfNQoF64u5w8cK7A
+    drawn: false
+    flags: {}
+    img: null
+    name: Neo-Soviet Cyberarm
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: EecXu96GFBGINFti
+    _key: "!tables.results!bOtq937SNIahmbeK.EecXu96GFBGINFti"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weapons.poMp4coxB8SORzvi
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
+    name: ST-5 Assault Rifle
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: uCN8IKzSfQcwODf8
+    _key: "!tables.results!bOtq937SNIahmbeK.uCN8IKzSfQcwODf8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weapons.5boGB9jFKUJ9cSMR
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+    name: SurvivalMaster
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: pUmneVMNecBD6xLc
+    _key: "!tables.results!bOtq937SNIahmbeK.pUmneVMNecBD6xLc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.qA9wmNHuGLsxBtRB
+    drawn: false
+    flags: {}
+    img: null
+    name: Rifle (Rubber)
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: VYOkYZW8dWTw78J6
+    _key: "!tables.results!bOtq937SNIahmbeK.VYOkYZW8dWTw78J6"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.qA9wmNHuGLsxBtRB
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_rubber.svg
+    name: Rifle (Rubber)
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: gW46vRTu751ecurO
+    _key: "!tables.results!bOtq937SNIahmbeK.gW46vRTu751ecurO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.J3NfMgRdqoUwFDDs
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_basic.svg
+    name: Rifle (Basic)
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: c882saQgR5Rml9cq
+    _key: "!tables.results!bOtq937SNIahmbeK.c882saQgR5Rml9cq"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.J3NfMgRdqoUwFDDs
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_basic.svg
+    name: Rifle (Basic)
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: eD54BZDsA1AmnI7r
+    _key: "!tables.results!bOtq937SNIahmbeK.eD54BZDsA1AmnI7r"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_weapons.Item.qAqYtbD1yFgQNelR
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/flamethrower.svg
+    name: Flamethrower
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: rfMkakfZl1fgqRNA
+    _key: "!tables.results!bOtq937SNIahmbeK.rfMkakfZl1fgqRNA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.MdA5gBfCKbBuHGof
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_incendiary.svg
+    name: Shotgun Shell (Incendiary)
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+sort: 0

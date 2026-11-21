@@ -1,0 +1,57 @@
+_id: ubwGshFKnO3MQ0JF
+_key: "!tables!ubwGshFKnO3MQ0JF"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d2
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lover.svg
+name: Previous Relationship
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: ECL2CiWQEfxMcsi1
+    _key: "!tables.results!ubwGshFKnO3MQ0JF.ECL2CiWQEfxMcsi1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…it ended well.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lover.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 9eXVrO8JL3yNgfGN
+    _key: "!tables.results!ubwGshFKnO3MQ0JF.9eXVrO8JL3yNgfGN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.9KMg3iZPirPBqxO8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lover.svg
+    name: Tragic Love
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+sort: 0

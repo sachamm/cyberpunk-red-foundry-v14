@@ -1,0 +1,145 @@
+_id: WmWdGRlhzhA2ZcmV
+_key: "!tables!WmWdGRlhzhA2ZcmV"
+description: >-
+  Source: Achievements and Loot Boxes pg.6
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d6
+img: icons/containers/boxes/crate-wooden-brown.webp
+name: A Box Showing Signs Of Repair
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+replacement: true
+results:
+  - _id: eSMmjYuRfPdHRHK2
+    _key: "!tables.results!WmWdGRlhzhA2ZcmV.eSMmjYuRfPdHRHK2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_weapons.1VndXRKaCuKQp49H
+    drawn: false
+    flags: {}
+    img: null
+    name: Utility Tomahawk
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: NAW6SeAGHYRp9Qgx
+    _key: "!tables.results!WmWdGRlhzhA2ZcmV.NAW6SeAGHYRp9Qgx"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_cyberware.ViH7d2nQAg0dLQuD
+    drawn: false
+    flags: {}
+    img: null
+    name: Holo Projector Palm
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: XFxM9lyMYSCxHQqS
+    _key: "!tables.results!WmWdGRlhzhA2ZcmV.XFxM9lyMYSCxHQqS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_gear.Item.GPgc2QczR4H1rYPj
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/tech_tool.svg
+    name: Techtool
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: ALhnacS6Hjr3pHNH
+    _key: "!tables.results!WmWdGRlhzhA2ZcmV.ALhnacS6Hjr3pHNH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_gear.Item.Lo7rXsc5ToQf2KlN
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/audio_recorder.svg
+    name: Audio Recorder
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: ye7viJCwPjZqFjih
+    _key: "!tables.results!WmWdGRlhzhA2ZcmV.ye7viJCwPjZqFjih"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.tivSfxqoNYnBlNah
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.svg
+    name: Grenade (Armor-Piercing)
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: YPH6EdW6lvbn2VLj
+    _key: "!tables.results!WmWdGRlhzhA2ZcmV.YPH6EdW6lvbn2VLj"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_cyberware.Item.2EvWIW0HXwoBK6xq
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
+    name: Techscanner
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+sort: 0

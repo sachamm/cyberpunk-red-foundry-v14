@@ -1,0 +1,542 @@
+{
+  "label": "Gear",
+  "mapping": {},
+  "entries": {
+    "Hummingbird": {
+      "name": "Hummingbird",
+      "description": "<p>No frills, just raw processing power.</p>\n<p>2 slots only for Hardware</p>\n<p>+1 to NET Actions each turn.</p>\n"
+    },
+    "Kaliya": {
+      "name": "Kaliya",
+      "description": "<p>\n  A fantastic option for dismantling hostile Netrunners. Just hope they don't\n  have any Black ICE.\n</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>\n  Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be\n  installed in any slot.\n</p>\n"
+    },
+    "Kerberos": {
+      "name": "Kerberos",
+      "description": "<p>Unleash the fires of Hell upon your rivals.</p>\n<p>6 slots for Programs, 5 slots for Hardware.</p>\n<p>Program slots will only accept Hellhound Black ICE.</p>\n"
+    },
+    "Kestrel 2": {
+      "name": "Kestrel 2",
+      "description": "<p>Black ICE can't hit what they can't catch.</p>\n<p>7 slots only for Programs.</p>\n<p>\n  Right after Jacking In, Netrunner can activate a maximum of 2 installed Speedy\n  Gonzalvez Programs without a NET Action.\n</p>\n"
+    },
+    "Kirama Advanced Deck": {
+      "name": "Kirama Advanced Deck",
+      "description": "<p>\n  Though it may not be the flashiest choice, Kirama's finest Cyberdeck is\n  expertly balanced and offers some highly practical safety features.\n</p>\n<p>5 slots for Programs or Hardware.</p>\n<p>Netrunner suffers no negative effects from an Unsafe Jack Out.</p>\n"
+    },
+    "Kirama Entry Deck": {
+      "name": "Kirama Entry Deck",
+      "description": "<p>\n  An affordable and balanced Cyberdeck for novice Netrunners. Though limited by\n  its modest hardware specs, it retains the advanced safety features of Kirama's\n  flagship Cyberdecks.\n</p>\n<p>5 slots only for Programs.</p>\n<p>\n  Only one of each Program category can be installed at a time (Attacker,\n  Defender, Booster, Black ICE). Netrunner suffers no negative effects from an\n  Unsafe Jack Out.\n</p>\n"
+    },
+    "Kirama Training Deck": {
+      "name": "Kirama Training Deck",
+      "description": "<p>\n  The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum\n  hardware specs.\n</p>\n<p>5 slots only for Programs.</p>\n<p>\n  Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain\n  damage from NET combat is doubled.\n</p>\n"
+    },
+    "MicroMate": {
+      "name": "MicroMate",
+      "description": "<p>\n  Perfect for Netrunners who only know one speed: All offense, all the time.\n  Just don't get hit, it's going to hurt. A lot.\n</p>\n<p>9 slots for Programs or Hardware.</p>\n<p>\n  Slots will not accept Defender Programs. All brain damage from NET combat is\n  doubled.\n</p>\n"
+    },
+    "Microtech Assault": {
+      "name": "Microtech Assault",
+      "description": "<p>Relax and let your Black ICE do all the heavy lifting.</p>\n<p>4 slots for Programs, 5 slots for Hardware.</p>\n<p>Program slots only accept Black ICE.</p>\n"
+    },
+    "Microtech Scout": {
+      "name": "Microtech Scout",
+      "description": "<p>5 slots for Programs or Hardware.</p>\n<p>\n  Netrunner can roll Pathfinder without a NET Action right after Jacking In.\n</p>\n"
+    },
+    "Microtech Warrior": {
+      "name": "Microtech Warrior",
+      "description": "<p>7 Slots only for Programs.</p>\n<p>\n  Netrunner can activate one Armor Program without a NET Action right after\n  Jacking In.\n</p>\n"
+    },
+    "Parraline 6000": {
+      "name": "Parraline 6000",
+      "description": "<p>All the Hardware options with none of the restrictions.</p>\n<p>3 Program slots, 6 Hardware slots.</p>\n"
+    },
+    "Phoenix": {
+      "name": "Phoenix",
+      "description": "<p>Never lose a Program again.</p>\n<p>6 slots for Programs or Hardware.</p>\n<p>\n  Any Program destroyed in a netrunning session is restored upon a safe Jack\n  Out.\n</p>\n"
+    },
+    "Verdant Knight": {
+      "name": "Verdant Knight",
+      "description": "<p>\n  The classic sword-and-board Cyberdeck build is highly effective against Black\n  ICE. Just don't plan on going toe-to-toe with a hostile Netrunner.\n</p>\n<p>9 slots only for Programs.</p>\n<p>Slots only accept Sword or Shield Programs.</p>\n"
+    },
+    "Warlock's Book": {
+      "name": "Warlock's Book",
+      "description": "<p>\n  If you prefer sliding through NET Architectures avoiding Black ICE this is the\n  deck for you.\n</p>\n<p>9 slots to install either Programs or Hardware.</p>\n<p><em>No Attacker or Black ICE Program may be installed.</em></p>\n"
+    },
+    "Smart Ears": {
+      "name": "Smart Ears",
+      "description": "<p>\n  A wearable headset with integrated Radio Scanner / Music Player and 2 empty\n  Cyberaudio slots.\n</p>\n<blockquote>\n  <p>Remember to set HL to 0 when installing cyberwear options.</p>\n</blockquote>\n"
+    },
+    "Spider Cyberchair": {
+      "name": "Spider Cyberchair",
+      "description": "<p>\n  The top of the line cyberchair, giving the premier user many options. While\n  using it the operator's base <strong>MOVE</strong> becomes 5, with all regular\n  movement options remaining available. Operation of the cyberchair requires\n  either a free hand, or\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{interface plugs}.\n</p>\n<blockquote>\n  <p>\n    Any cyberware options installed into this device always count as being\n    paired.\n  </p>\n  <p>\n    If the operator suffers a critical injury that reduces their\n    <strong>MOVE</strong>, the cyberchair is affected instead.\n  </p>\n</blockquote>\n"
+    },
+    "Achievment Lootboxes": {
+      "name": "Achievment Lootboxes",
+      "description": ""
+    },
+    "Kibble Flavors": {
+      "name": "Kibble Flavors",
+      "description": ""
+    },
+    "A Box Bound Tightly In Rope": {
+      "name": "A Box Bound Tightly In Rope",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.uq1cseo3a1hAx7Pg]{A\n Box Bound Tightly in Rope}\n</p>\n"
+    },
+    "A Box Covered In Chipped Paint": {
+      "name": "A Box Covered In Chipped Paint",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.xWZowpQzG7fpmoP7]{A\n Box Covered in Chipped Paint}\n</p>\n"
+    },
+    "A Box Dripping Wet With Fluid": {
+      "name": "A Box Dripping Wet With Fluid",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.zRHyYnlEqNlTA4l5]{A\n Box Dripping Wet With Fluid}\n</p>\n"
+    },
+    "A Box Freezing Cold To The Touch": {
+      "name": "A Box Freezing Cold To The Touch",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.VszxZ4TJjQ8FGuoc]{A\n Box Freezing Cold To The Touch}\n</p>\n"
+    },
+    "A Box Handsomely Gift Wrapped": {
+      "name": "A Box Handsomely Gift Wrapped",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.4S3emhUCIIDNoTAg]{A\n Box Handsomely Gift Wrapped}\n</p>\n"
+    },
+    "A Box Marked With A Lime Green X": {
+      "name": "A Box Marked With A Lime Green X",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.T6pocp9VStxtFPzP]{A\n Box Marked With A Lime Green X}\n</p>\n"
+    },
+    "A Box Melted Out Of Shape": {
+      "name": "A Box Melted Out Of Shape",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.bOtq937SNIahmbeK]{A\n Box Melted Out Of Shape}\n</p>\n"
+    },
+    "A Box Reeking Of Oil": {
+      "name": "A Box Reeking Of Oil",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.EVPuZ21eNOpEycGQ]{A\n Box Reeking Of Oil}\n</p>\n"
+    },
+    "A Box Sealed With A Lipstick Kiss": {
+      "name": "A Box Sealed With A Lipstick Kiss",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.McQc33tLYAp7djIV]{A\n Box Sealed With A Lipstick Kiss}\n</p>\n"
+    },
+    "A Box Showing Signs Of Repair": {
+      "name": "A Box Showing Signs Of Repair",
+      "description": "<p>\n  Roll once from\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.WmWdGRlhzhA2ZcmV]{A\n Box Showing Signs Of Repair}\n</p>\n"
+    },
+    "A Touch of Luxury Furniture Set": {
+      "name": "A Touch of Luxury Furniture Set",
+      "description": "<p>This Furniture Set makes your Cargo Container almost feel like a home.</p>\n"
+    },
+    "All-Purpose Soundproofing": {
+      "name": "All-Purpose Soundproofing",
+      "description": "<p>Enjoy peace and quiet in even the loudest neighborhood.</p>\n<blockquote>\n  <p>\n    Does not prevent\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.9pZMYMlVFeWDS56L]{Amplified Hearing}\n    cyberware from eavesdropping.\n  </p>\n</blockquote>\n"
+    },
+    "Apartment Affability Furniture Set": {
+      "name": "Apartment Affability Furniture Set",
+      "description": "<p>\n  Easy to assemble furniture in a box. This is the starting Furniture Set for\n  most Apartments and Corporate Conapts.\n</p>\n"
+    },
+    "Binary Compound": {
+      "name": "Binary Compound",
+      "description": "<p>\n  A double-syringe that contains a pair of corrosive chemicals capable of eating\n  through solid objects.\n</p>\n<blockquote>\n  <p>Requires 2 rounds to apply — Stays active for 6 rounds</p>\n  <p>Deals [[/r 6d6 #Binary Compound Damage]] damage per round.</p>\n</blockquote>\n"
+    },
+    "Branded Jumpsuit (Extreme Security)": {
+      "name": "Branded Jumpsuit (Extreme Security)",
+      "description": "<p>\n  A jacket or jumpsuit that appears commonplace in an extremely secure\n  environment.\n</p>\n"
+    },
+    "Branded Jumpsuit (High Security)": {
+      "name": "Branded Jumpsuit (High Security)",
+      "description": "<p>\n  A jacket or jumpsuit that appears commonplace in a high security environment.\n</p>\n"
+    },
+    "Branded Jumpsuit (Low Security)": {
+      "name": "Branded Jumpsuit (Low Security)",
+      "description": "<p>\n  A jacket or jumpsuit that appears commonplace in a low security environment.\n</p>\n"
+    },
+    "Branded Jumpsuit (Moderate Security)": {
+      "name": "Branded Jumpsuit (Moderate Security)",
+      "description": "<p>\n  A jacket or jumpsuit that appears commonplace in a medium security\n  environment.\n</p>\n"
+    },
+    "Breacher": {
+      "name": "Breacher",
+      "description": "<p>\n  A pocket-sized electronic device designed specifically for hacking agents.\n</p>\n"
+    },
+    "Bullet To Slug Adapter Casings": {
+      "name": "Bullet To Slug Adapter Casings",
+      "description": "<p>\n  A box of 10 casings and a loading jig. Replace 10 bullets of any type with a\n  corresponding Shotgun Slug as an action.\n</p>\n"
+    },
+    "Cargo Container Chic Furniture Set": {
+      "name": "Cargo Container Chic Furniture Set",
+      "description": "<p>\n  It might be cheap, but it is real furniture. This is the starting Furniture\n  Set for most Cargo Containers.\n</p>\n"
+    },
+    "Chicken Coop (Basic)": {
+      "name": "Chicken Coop (Basic)",
+      "description": "<p>A home for your chickens to lay eggs or fatten up.</p>\n"
+    },
+    "Chicken (Hen)": {
+      "name": "Chicken (Hen)",
+      "description": "<p>Feed it leftover kibble crumbs and it might lay eggs.</p>\n"
+    },
+    "Chicken (Rooster)": {
+      "name": "Chicken (Rooster)",
+      "description": "<p>Feed it leftover kibble crumbs to fatten it up.</p>\n"
+    },
+    "Concealment Sleeve": {
+      "name": "Concealment Sleeve",
+      "description": "<p>A custom fit RealSkinn™ sleeve made just for you.</p>\n<blockquote>\n  <p>\n    All installed cyberware concealed by this sleeve becomes undetectable by\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.JMYvZfk6ZBgt6tK0]{Cyberscanners}\n    and unusable until the sleeve is removed. — No automation provided.\n  </p>\n  <p>\n    Counts as a <strong>Very Expensive</strong> item — price categories are\n    currently hardcoded by the system.\n  </p>\n</blockquote>\n"
+    },
+    "Continental Brands Real Instant Coffee™": {
+      "name": "Continental Brands Real Instant Coffee™",
+      "description": "<p>Now made from real coffee beans! Makes 24 cups.</p>\n"
+    },
+    "Continental Brands SmartOven": {
+      "name": "Continental Brands SmartOven",
+      "description": "<p>\n  Transforms bland kibble into a delicious hot meal. (Unflavored Kibble sold\n  separately.)\n</p>\n"
+    },
+    "CrAB Drone": {
+      "name": "CrAB Drone",
+      "description": "<p>\n  Can be neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV21 Electronic/Security Tech]]{DV21 Electronic/Security Tech}\n  check. This drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.aEG91CA3amfU0Q8U]{Grip Feet}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Th74cfC87RqEJKAb]{Airhypo}\n    </p>\n    <ul>\n      <li>\n        <p>\n          @UUID[Compendium.cyberpunk-red-core.core_drugs.Item.6BM5WFyCyIM8lZib]{Black Lace}\n        </p>\n      </li>\n      <li>\n        <p>\n          @UUID[Compendium.cyberpunk-red-core.core_drugs.Item.UrKzMiFp4xFOLNIC]{Blue Glass}\n        </p>\n      </li>\n      <li>\n        <p>\n          @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Biotoxin}\n        </p>\n      </li>\n    </ul>\n  </li>\n</ul>\n"
+    },
+    "Creative Couture Furniture Set": {
+      "name": "Creative Couture Furniture Set",
+      "description": "<p>\n  Furnished with military surplus gear and recycled materials. The bare minimum\n  needed to furnish your Apartment.\n</p>\n"
+    },
+    "Cybercam EX-1": {
+      "name": "Cybercam EX-1",
+      "description": "<p>\n  Head-mounted camera. A Media presenting a story on a livestream while wearing\n  the Cybercam EX-1 gains +1 <strong>Credibility</strong> when using their role\n  ability. This stacks with evidence based bonuses.\n</p>\n"
+    },
+    "Cyberscanner": {
+      "name": "Cyberscanner",
+      "description": "<p>\n  Can scan an individual within 2m/yds and provide a list of all installed\n  Cyberware, takes 1 minute. Spits out an error if a Hardened, Tech Upgraded, or\n  Unique piece of Cyberware is detected.\n</p>\n<blockquote><p>No automation provided</p></blockquote>\n"
+    },
+    "Delaying Compound": {
+      "name": "Delaying Compound",
+      "description": "<p>\n  This additive delays the effects of a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.gaGUmTGViuxZ4mqR]{Poison}\n  or\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Biotoxin}\n  vial by up to an hour.\n</p>\n<blockquote>\n  <p>Mixing multiple Delaying Compounds does not increase delay period.</p>\n</blockquote>\n"
+    },
+    "Desirous Decoration Furniture Set": {
+      "name": "Desirous Decoration Furniture Set",
+      "description": "<p>\n  This Furniture Set is not just a small collection of art and matching\n  furniture, it's an investment in personal comfort.\n</p>\n"
+    },
+    "Distilling Compound": {
+      "name": "Distilling Compound",
+      "description": "<p>\n  This additive increases the <strong>Resist Torture/Drugs</strong> DV of\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.gaGUmTGViuxZ4mqR]{Poison}\n  or\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Biotoxin}\n  vials by 2.\n</p>\n<blockquote><p>Effects do not stack.</p></blockquote>\n"
+    },
+    "Diving Rebreather": {
+      "name": "Diving Rebreather",
+      "description": "<p>\n  A self-contained underwater breathing apparatus that recycles your exhaled\n  breath instead of releasing it into the water as bubbles.\n</p>\n"
+    },
+    "DM 5000 Adelhyde": {
+      "name": "DM 5000 Adelhyde",
+      "description": "<p>Each ingredient canister holds 100 units and must be replaced when empty.</p>\n<blockquote>\n  <p>\n    Used for tracking the fill state of\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.rl7LT2WYItMqMoLm]{Drink Master 5000}\n  </p>\n</blockquote>\n"
+    },
+    "DM 5000 Bronson Extract": {
+      "name": "DM 5000 Bronson Extract",
+      "description": "<p>Each ingredient canister holds 100 units and must be replaced when empty.</p>\n<blockquote>\n  <p>\n    Used for tracking the fill state of\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.rl7LT2WYItMqMoLm]{Drink Master 5000}\n  </p>\n</blockquote>\n"
+    },
+    "DM 5000 Flanergide": {
+      "name": "DM 5000 Flanergide",
+      "description": "<p>Each ingredient canister holds 100 units and must be replaced when empty.</p>\n<blockquote>\n  <p>\n    Used for tracking the fill state of\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.rl7LT2WYItMqMoLm]{Drink Master 5000}\n  </p>\n</blockquote>\n"
+    },
+    "DM 5000 Karmotrine": {
+      "name": "DM 5000 Karmotrine",
+      "description": "<p>Each ingredient canister holds 100 units and must be replaced when empty.</p>\n<blockquote>\n  <p>\n    Used for tracking the fill state of\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.rl7LT2WYItMqMoLm]{Drink Master 5000}\n  </p>\n</blockquote>\n"
+    },
+    "DM 5000 Powdered Delta": {
+      "name": "DM 5000 Powdered Delta",
+      "description": "<p>Each ingredient canister holds 100 units and must be replaced when empty.</p>\n<blockquote>\n  <p>\n    Used for tracking the fill state of\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.rl7LT2WYItMqMoLm]{Drink Master 5000}\n  </p>\n</blockquote>\n"
+    },
+    "Dosimeter Badge": {
+      "name": "Dosimeter Badge",
+      "description": "<p>\n  A personal device worn to monitor radiation exposure. Alerts user when\n  dangerous radiation levels are detected within 10m/yds.\n</p>\n"
+    },
+    "Drink Master 5000": {
+      "name": "Drink Master 5000",
+      "description": "<p>\n  A large, cabinet-sized, drink mixing machine commonly used in bars. Provides\n  <strong>30 HP</strong> for the purposes of cover. See the\n  <strong>Drinktionary</strong> on pg 16 of\n  <em>Mixing Drinks—Changing Lives</em> for associated recipes.\n</p>\n<blockquote>\n  <p>\n    Each ingredient canister holds 100 units and must be replaced when empty.\n    You may use the following items to track Drink Master 5000's fill state:\n  </p>\n  <p>\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.Ig15Vp79R4lMkHGu]{Adelhyde}\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.P6IU6Vm16NgPHJt4]{Bronson Extract}\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.eejNk5t7hvr5BsJA]{Powdered Delta}\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.NjFzze9SENjPu2U3]{Flanergide}\n    @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.87tePbq5yTJxEg49]{Karmotrine}\n  </p>\n</blockquote>\n"
+    },
+    "Fire Safe": {
+      "name": "Fire Safe",
+      "description": "<p>\n  Small fireproof lockbox made of Thick Steel with 50HP. Can be opened with a\n  [[/r 1d10red+@stats.tech+@skills.pickLock #DV15 Pick Lock]]{DV15 Pick Lock}\n  check.\n</p>\n"
+    },
+    "Flippers": {
+      "name": "Flippers",
+      "description": "<p>A set of diving fins. Negates swimming movement penalty.</p>\n"
+    },
+    "Fuel Tank": {
+      "name": "Fuel Tank",
+      "description": "<p>A generic fuel tank that can be used to track your supply.</p>\n"
+    },
+    "GRAF3 Drone": {
+      "name": "GRAF3 Drone",
+      "description": "<p>\n  Quadruped construction drone. Can be neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV17 Electronic/Security Tech]]{DV17 Electronic/Security Tech}\n  check. This drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PxOjhUUs7cRULv75]{Very Heavy Melee}\n    </p>\n  </li>\n</ul>\n"
+    },
+    "Green Light Go Sniffer": {
+      "name": "Green Light Go Sniffer",
+      "description": "<p>\n  Provides a green or red glow depending on if the chemical substance (such as\n  Street Drugs or Pharmaceuticals) is clean or cut/mixed with another substance.\n</p>\n"
+    },
+    "Handprint Glove": {
+      "name": "Handprint Glove",
+      "description": "<p>\n  A glove fabricated from RealSkinn™ that allows you wear somebody else's\n  handprint.\n</p>\n<blockquote>\n  <p>Capable of fooling Handprint Scanners, but not leaving fingerprints.</p>\n  <p>\n    Counts as a <strong>Very Expensive</strong> item — price categories are\n    currently hardcoded by the system.\n  </p>\n</blockquote>\n"
+    },
+    "Hidden Compartment": {
+      "name": "Hidden Compartment",
+      "description": "<p>\n  A small hidden compartment inside your Cargo Container. Can be located with a\n  [[/r 1d10red+@stats.int+@skills.concealOrRevealObject #DV15 Conceal/Reveal Object]]{DV15 Conceal/Reveal Object}\n  check\n</p>\n"
+    },
+    "Húsafell Hydraulic Underjack": {
+      "name": "Húsafell Hydraulic Underjack",
+      "description": "<p>\n  Waterproof all-weather hydraulic undershirt raises <strong>BODY</strong> by 2,\n  but not higher than 10.\n</p>\n<blockquote>\n  <p>\n    Incompatible with <strong>Linear Frames</strong> &amp;\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Lx9FSNDEIxLZ7Pyh]{Grafted Muscle and Bone Lace}.\n  </p>\n</blockquote>\n"
+    },
+    "Inline Skates": {
+      "name": "Inline Skates",
+      "description": "<p>They're roller skates baby!</p>\n<blockquote>\n  <p>\n    <em\n      >Increases movement by 4m/yds when taking the\n      <strong>Run</strong> action.</em\n    >\n  </p>\n  <p>May cause physical tasks to be done at -2.</p>\n</blockquote>\n"
+    },
+    "Ion Cuffs": {
+      "name": "Ion Cuffs",
+      "description": "<p>\n  Handcuffs meant for borgs. Disables any Non-Hardened Cyberware options\n  installed in limbs the cuffs are binding. Cannot prevent the escape of cyborgs\n  with <strong>BODY</strong> greater than 13.\n</p>\n"
+    },
+    "Kibble Pack: Adobo": {
+      "name": "Kibble Pack: Adobo",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Aromatic Beef": {
+      "name": "Kibble Pack: Aromatic Beef",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Bacon Cheddar Dumpburger": {
+      "name": "Kibble Pack: Bacon Cheddar Dumpburger",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Buttered Popcorn": {
+      "name": "Kibble Pack: Buttered Popcorn",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Caramel Crunch Popcorn": {
+      "name": "Kibble Pack: Caramel Crunch Popcorn",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Cheese": {
+      "name": "Kibble Pack: Cheese",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Chili Lime": {
+      "name": "Kibble Pack: Chili Lime",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Collagen Boost": {
+      "name": "Kibble Pack: Collagen Boost",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Extra Fluffy Pankcake": {
+      "name": "Kibble Pack: Extra Fluffy Pankcake",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Fizzy": {
+      "name": "Kibble Pack: Fizzy",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Fruit Fantasy": {
+      "name": "Kibble Pack: Fruit Fantasy",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Kiwi": {
+      "name": "Kibble Pack: Kiwi",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Lemon Ginger": {
+      "name": "Kibble Pack: Lemon Ginger",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Mystery": {
+      "name": "Kibble Pack: Mystery",
+      "description": "<p>\n  One meal. Which\n  @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.wYySmunH9lfLbhN9]{Kibble\n Flavor}\n  will it be?\n</p>\n"
+    },
+    "Kibble Pack: Paprika": {
+      "name": "Kibble Pack: Paprika",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Pineapple Pizza": {
+      "name": "Kibble Pack: Pineapple Pizza",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Protein": {
+      "name": "Kibble Pack: Protein",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: Sport Flakes": {
+      "name": "Kibble Pack: Sport Flakes",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: SportMix": {
+      "name": "Kibble Pack: SportMix",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Kibble Pack: XXL Kibbles": {
+      "name": "Kibble Pack: XXL Kibbles",
+      "description": "<p>One meal.</p>\n"
+    },
+    "Koff Popper": {
+      "name": "Koff Popper",
+      "description": "<p>The only thermos/brewer combo you'll ever need.</p>\n"
+    },
+    "Koff Pops": {
+      "name": "Koff Pops",
+      "description": "<p>\n  Koff Pops used with the\n  @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.LUc8nYLERP5vhxyT]{Continental Brands Koff Popper}.\n</p>\n<blockquote><p>Included in Kibble or higher lifestyle</p></blockquote>\n"
+    },
+    "Laser Microphone": {
+      "name": "Laser Microphone",
+      "description": "<p>\n  An invisible laser allows the user to measure vibrations and eavesdrop through\n  glass windows up to 300m/yds away.\n</p>\n<blockquote>\n  <p>The laser may become visible in foggy or smokey conditions.</p>\n  <p>Audio vibrations are completely blocked by Thick Bulletproof Glass.</p>\n</blockquote>\n"
+    },
+    "Linear Frame Ω (Omega)": {
+      "name": "Linear Frame Ω (Omega)",
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>\n    <p>\n      Requires 3\n      @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}\n    </p>\n  </li>\n  <li>\n    <p>Increases <strong>BODY</strong> to 16 while plugged in</p>\n  </li>\n</ul>\n<blockquote>\n  <p>\n    Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to\n    <strong>BODY</strong> increase — Not currently supported by system.\n  </p>\n</blockquote>\n"
+    },
+    "MagViewer": {
+      "name": "MagViewer",
+      "description": "<p>\n  Binoculars meant for spotting. Provides detail up to 800m/yds. Provides\n  another individual with a +1 to their <strong>attack roll</strong> against a\n  shared target if you make a successful\n  <strong>Complimentary Skill Check</strong>.\n</p>\n<blockquote>\n  <p>\n    This bonus does not stack with the bonuses provided by\n    @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN]{Sniping Scope}\n    or\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.uApwuxpuIJMe47Vn]{TeleOptics}.\n  </p>\n</blockquote>\n"
+    },
+    "Master Mechanic's Tool Kit": {
+      "name": "Master Mechanic's Tool Kit",
+      "description": "<p>\n  A massive tool chest that provides +4 bonus to <strong>Basic Tech</strong>,\n  <strong>Cybertech</strong>, <strong>Electronic/Security Tech</strong>,\n  <strong>Weaponstech</strong>, <strong>Land Vehicle Tech</strong>,\n  <strong>Sea Vehicle Tech</strong>, <strong>Air Vehicle Tech</strong> checks.\n</p>\n<blockquote>\n  <p>Large enough to be considered <strong>Thick Steel Cover</strong></p>\n  <p>Requires <strong>BODY</strong> 10 to move</p>\n</blockquote>\n"
+    },
+    "Mercurius Cyberchair": {
+      "name": "Mercurius Cyberchair",
+      "description": "<p>\n  An impressively affordable cyberchair, offering great features at this price\n  point. While using it the operator's base <strong>MOVE</strong> becomes 5,\n  with all regular movement options remaining available. Operation requires\n  either a free hand, or\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{interface plugs}.\n</p>\n<blockquote>\n  <p>\n    If the operator suffers a critical injury that reduces their\n    <strong>MOVE</strong>, the cyberchair is affected instead.\n  </p>\n</blockquote>\n"
+    },
+    "Militech M97 Ghostsuit": {
+      "name": "Militech M97 Ghostsuit",
+      "description": "<p>\n  Automatically blend into your surroundings after 1 minute without moving.\n  Requires a\n  [[/r 1d10red+@stats.int+@skills.perception #DV17 Perception]]{DV17 Perception}\n  check to spot. The effect ends if you move more than 2m/yds per turn.\n</p>\n"
+    },
+    "MiniMag Speakers": {
+      "name": "MiniMag Speakers",
+      "description": "<p>\n  Small Magnetic Speakers. Can play audio from a connected\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}within\n  100m/yds.\n</p>\n"
+    },
+    "ModBall Construction Kit": {
+      "name": "ModBall Construction Kit",
+      "description": "<p>\n  Allows anyone to create their own ModBall ammunition. All ModBalls take 1 hour\n  to fabricate as if the user were a <strong>Tech</strong> with\n  <strong>Fabrication Expertise</strong> 2.\n</p>\n<table>\n  <tbody>\n    <tr>\n      <td><p style=\"text-align: center\">Modball Type</p></td>\n      <td><p style=\"text-align: center\">Cost / ModBall</p></td>\n      <td><p style=\"text-align: center\">Fabrication Cost</p></td>\n      <td><p style=\"text-align: center\">Fabrication DV</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p><strong>Dazzle Dazzle</strong></p>\n      </td>\n      <td><p style=\"text-align: center\">10eb (Cheap)</p></td>\n      <td><p style=\"text-align: center\">9eb</p></td>\n      <td><p style=\"text-align: center\">13</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p><strong>Mega Ouchie</strong></p>\n      </td>\n      <td><p style=\"text-align: center\">20eb (Everyday)</p></td>\n      <td><p style=\"text-align: center\">19eb</p></td>\n      <td><p style=\"text-align: center\">15</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p><strong>Ouchie</strong></p>\n      </td>\n      <td><p style=\"text-align: center\">10eb (Cheap)</p></td>\n      <td><p style=\"text-align: center\">9eb</p></td>\n      <td><p style=\"text-align: center\">13</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p><strong>Slippy</strong></p>\n      </td>\n      <td><p style=\"text-align: center\">5eb (Dirt Cheap)</p></td>\n      <td><p style=\"text-align: center\">4eb</p></td>\n      <td><p style=\"text-align: center\">9</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p><strong>Splashie</strong></p>\n      </td>\n      <td><p style=\"text-align: center\">5eb (Dirt Cheap)</p></td>\n      <td><p style=\"text-align: center\">4eb</p></td>\n      <td><p style=\"text-align: center\">9</p></td>\n    </tr>\n  </tbody>\n</table>\n"
+    },
+    "My First GRAF3": {
+      "name": "My First GRAF3",
+      "description": "<p>\n  Personal Drone. Tiny GRAF3 that can be linked to an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.\n  Can be neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV9 Electronic/Security Tech]]{DV9 Electronic/Security Tech}\n  check.\n</p>\n"
+    },
+    "NASS-54 Underwater Drone": {
+      "name": "NASS-54 Underwater Drone",
+      "description": "<p>\n  A semi-autonomous torpedeo drone produced by Militech. Can be neutralized in 5\n  min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV21 Electronic/Security Tech]]{DV21 Electronic/Security Tech}\n  check. This drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.JwM7wAbmRZfL3Z3c]{Sonar}\n    </p>\n  </li>\n  <li>\n    <p>Retractable Manipulator Arm</p>\n    <ul>\n      <li>\n        <p>\n          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.hAx2MqVm4JuwXsSV]{Tool Hand}\n        </p>\n      </li>\n      <li>\n        <p>\n          @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PxOjhUUs7cRULv75]{Circular Saw}\n        </p>\n      </li>\n    </ul>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.KgqUdz9Fs55747gv]{Grenade Launchers}\n      x2\n    </p>\n  </li>\n</ul>\n"
+    },
+    "Osmosis Compound": {
+      "name": "Osmosis Compound",
+      "description": "<p>\n  This additive allows a vial of\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.gaGUmTGViuxZ4mqR]{Poison}\n  or\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Biotoxin}\n  to be absorbed through skin contact. A\n  [[/r 1d10red+@stats.int+@skills.perception #DV17 Perception]]{DV17 Perception}\n  check can spot the poison. Lasts for one hour or until washed away by water.\n</p>\n"
+    },
+    "Parabolic Microphone": {
+      "name": "Parabolic Microphone",
+      "description": "<p>\n  A handheld microphone that allows the user to amplify sounds up to 30m/yds\n  away when used with a linked\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent} or\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Lo7rXsc5ToQf2KlN]{Audio Recorder}\n</p>\n"
+    },
+    "Power Chord": {
+      "name": "Power Chord",
+      "description": "<p>\n  Shred righteous bars with this\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.aiX4CSRjs0oKGIFK]{electric guitar}.\n  Non-Rockerboys suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-body.Item.IKKcCgHU1lBJ4wVd]{Crushed Fingers}\n  injury if they play this instrument longer than 10 minutes.\n</p>\n<blockquote>\n  <p>\n    Enable the supplied active effect only if your musician has a base skill\n    rank of 16 in\n    @UUID[Compendium.cyberpunk-red-core.core_skills-play-instrument.Item.WS1dbopsk9h1uTSn]{Play Instrument (Guitar)}.\n  </p>\n  <p>\n    Ultra durable construction cannot be damaged by fire or any weapon that\n    deals less than 6d6.\n  </p>\n</blockquote>\n"
+    },
+    "PressureTech Shower Head": {
+      "name": "PressureTech Shower Head",
+      "description": "<p>Pressure-wash the stress away.</p>\n<blockquote>\n  <p>Using this shower deals 1 damage to an unarmored target.</p>\n</blockquote>\n"
+    },
+    "Professional Disguise Kit": {
+      "name": "Professional Disguise Kit",
+      "description": "<p>\n  With a combination of stage makeup and RealSkinn™ prosthetics you can look\n  like a whole new you! Provides a +2 bonus to\n  <strong>Personal Grooming</strong> checks.\n</p>\n"
+    },
+    "Remote Camera Drone": {
+      "name": "Remote Camera Drone",
+      "description": "<p>\n  A personal drone that must be directly controlled via a connected Agent. The\n  drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.ViH7d2nQAg0dLQuD]{Holographic Projector}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.KgqUdz9Fs55747gv]{Smoke Grenade Launcher}\n    </p>\n  </li>\n</ul>\n"
+    },
+    "Retina Lenses": {
+      "name": "Retina Lenses",
+      "description": "<p>\n  A fabricated lens imprinted with a copy of somebody's retinal patterns. You\n  must provide the <strong>Tech</strong> with a valid retinal pattern prior to\n  fabrication.\n</p>\n<blockquote><p>Capable of fooling Retinal Scanners.</p></blockquote>\n"
+    },
+    "Roller Derby Skates": {
+      "name": "Roller Derby Skates",
+      "description": "<p>A pair of Derby League approved quad-skates.</p>\n<blockquote>\n  <p><em>Increases movement by 4m/yds when taking the run action.</em></p>\n  <p>May cause physical tasks to be done at -2.</p>\n</blockquote>\n"
+    },
+    "Savannah Eagle Drone": {
+      "name": "Savannah Eagle Drone",
+      "description": "<p>\n  Active Airborne Defense Drone that requires a\n  [[/r 1d10red+@stats.int+@skills.perception #DV17 Perception]]{DV17 Perception}\n  check to spot. Can be neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV21 Electronic/Security Tech]]{DV21 Electronic/Security Tech}\n  check. This drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.B53FFRpbpoT3VPP0]{Shrieker}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.FdWzIROFGFrpvFMj]{SMG}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Video Camera}\n    </p>\n  </li>\n  <li><p>Optical Cloaking Device</p></li>\n</ul>\n"
+    },
+    "Savannah Panther Drone": {
+      "name": "Savannah Panther Drone",
+      "description": "<p>\n  Active Defense Drone. Can be neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV17 Electronic/Security Tech]]{DV17 Electronic/Security Tech}\n  check. This drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.O1brHdazB6mqbVp1]{Stun Baton}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.g2d7I3KLRXXbMr1g]{Heavy Melee}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.KgqUdz9Fs55747gv]{Grenade Launcher}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Video Camera}\n    </p>\n  </li>\n</ul>\n"
+    },
+    "Second-hand Special Furniture Set": {
+      "name": "Second-hand Special Furniture Set",
+      "description": "<p>\n  It may not look pretty, but it works. This furniture Set is the bare minimum\n  your Cargo Container needs.\n</p>\n"
+    },
+    "Segotari Double Agent": {
+      "name": "Segotari Double Agent",
+      "description": "<p>\n  A\n  <strong>Poor Quality</strong>\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  that provides +2 <strong>Library Search</strong>, +2\n  <strong>Wardrobe &amp; Style</strong> depending on circumstance. Includes a\n  display screen, touchpad, microphone, and camera.\n</p>\n"
+    },
+    "Segotari RUSH Revolution": {
+      "name": "Segotari RUSH Revolution",
+      "description": "<p>\n  An interactive braindance headset that can generate artificial sensations.\n</p>\n"
+    },
+    "Segotari RUSH (Used)": {
+      "name": "Segotari RUSH (Used)",
+      "description": "<p>A bulky used braindance headset.</p>\n"
+    },
+    "Segotari VRIcade Cabinet": {
+      "name": "Segotari VRIcade Cabinet",
+      "description": "<p>A bulky VRIcade cabinet.</p>\n"
+    },
+    "Skateboard": {
+      "name": "Skateboard",
+      "description": "<p>The coolest wheels around.</p>\n<blockquote>\n  <p><em>Increases movement by 4m/yds when taking the run action.</em></p>\n  <p>May cause physical tasks to be done at -2.</p>\n</blockquote>\n"
+    },
+    "Smart Vanity": {
+      "name": "Smart Vanity",
+      "description": "<p>\n  Smart grooming station. Comes fully equipped with any tools and makeup you'll\n  need.\n</p>\n"
+    },
+    "Smartsticks": {
+      "name": "Smartsticks",
+      "description": "<p>\n  Smart Drum Sticks. Gives the User a +1 bonus to\n  <strong>Play Instrument (Drums)</strong> while in use.\n</p>\n<blockquote>\n  <p>Doesn't stack with other bonuses to Play Instrument.</p>\n</blockquote>\n"
+    },
+    "Solo of Fortune Bodypillow": {
+      "name": "Solo of Fortune Bodypillow",
+      "description": "<p>Bodypillow with the image of a famous Solo from the 2020s.</p>\n"
+    },
+    "Submersible ROV Drone": {
+      "name": "Submersible ROV Drone",
+      "description": "<p>\n  A modified ground drone that can freely maneuver underwater. Can be\n  neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV21 Electronic/Security Tech]]{DV21 Electronic/Security Tech}\n  check. The drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}\n    </p>\n  </li>\n  <li><p>Lightweight Manipulator Arm</p></li>\n</ul>\n"
+    },
+    "Suzumebachi Assassin Drone": {
+      "name": "Suzumebachi Assassin Drone",
+      "description": "<p>\n  A small wasp-shaped drone designed for silent assassinations. Can be\n  neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV21 Electronic/Security Tech]]{DV21 Electronic/Security Tech}\n  check. The drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}\n    </p>\n    <ul>\n      <li>\n        <p>\n          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Iqa0DXFWJji0JRHl]{Low Light, UV, Infrared}\n        </p>\n      </li>\n    </ul>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.fSvkIl83Rsqd7O16]{Dartgun}\n    </p>\n    <ul>\n      <li>\n        <p>\n          @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.CNMadbNFM6dk2F6H]{Biotoxin Arrows}\n          x8\n        </p>\n      </li>\n    </ul>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Th74cfC87RqEJKAb]{Airhypo}\n    </p>\n  </li>\n</ul>\n"
+    },
+    "The Observer": {
+      "name": "The Observer",
+      "description": "<p>\n  Personal Drone. Flying camera that can be linked to an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.\n  Can be neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV13 Electronic/Security Tech]]{DV13 Electronic/Security Tech}\n  check. This drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Video Camera}\n    </p>\n  </li>\n</ul>\n"
+    },
+    "The Transporter": {
+      "name": "The Transporter",
+      "description": "<p>\n  Personal Drone. Transporter Drone that can be linked to an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.\n  Can be neutralized in 5 min with a\n  [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV17 Electronic/Security Tech]]{DV17 Electronic/Security Tech}\n  check. This drone is equipped with:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}\n    </p>\n  </li>\n  <li><p>Gripping Arms</p></li>\n</ul>\n"
+    },
+    "Umbrella": {
+      "name": "Umbrella",
+      "description": "<p>\n  Protects against\n  @UUID[Compendium.cyberpunk-red-core.dlc_weather-effects.Item.yd5RKbg33WnbwKAE]{Acid Rain}\n  and grants a +2 bonus to <strong>Resist Torture/Drugs</strong> checks during\n  @UUID[Compendium.cyberpunk-red-core.dlc_weather-effects.Item.SKqisyIQrtc6AOd1]{Toxic Blood Rain}\n  exposure.\n</p>\n"
+    },
+    "Virtual Barbeque": {
+      "name": "Virtual Barbeque",
+      "description": "<p>Live the Beaverville dream without the Beaverville pricetag.</p>\n<blockquote><p>Fun for up to 6 players.</p></blockquote>\n"
+    },
+    "Wall Art": {
+      "name": "Wall Art",
+      "description": "<p>Cheap poster for your pad.</p>\n"
+    },
+    "Wyzard Technologies Merlyn": {
+      "name": "Wyzard Technologies Merlyn",
+      "description": "<p>\n  Wearable\n  <strong>Excellent Quality</strong>\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  that provides +2 <strong>Library Search</strong>, +2\n  <strong>Wardrobe &amp; Style</strong> depending on circumstance. Includes a\n  touchscreen, microphone, camera, flashlight, and holo-projector.\n</p>\n"
+    },
+    "Zetatch CyberConductor": {
+      "name": "Zetatch CyberConductor",
+      "description": "<p>\n  You may install up to 3 cyberdecks into this Cyberconductor. While you are\n  jacked in, switching between decks de-rezzes all active programs, and deals 3\n  damage directly to your brain.\n</p>\n<p>Installing a cyberdeck into the cyberconductor requires 1 hour.</p>\n<blockquote>\n  <p>\n    Installing cyberdecks into other items is not currently supported. List any\n    installed cyberdecks on this item.\n  </p>\n  <p>List your installed cyberdecks here:</p>\n  <ul>\n    <li><p>[Deck α]</p></li>\n    <li><p>[Deck β]</p></li>\n    <li><p>[Deck γ]</p></li>\n  </ul>\n</blockquote>\n"
+    },
+    "Zetatech Grade A": {
+      "name": "Zetatech Grade A",
+      "description": "<p>\n  A\n  <strong>Standard Quality</strong>\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  that provides +2 <strong>Library Search</strong>, +2\n  <strong>Wardrobe &amp; Style</strong> depending on circumstance. Includes a\n  touchscreen, microphone, camera, and flashlight.\n</p>\n"
+    },
+    "Zetatech Grade A-Plus": {
+      "name": "Zetatech Grade A-Plus",
+      "description": "<p>\n  An\n  <strong>Excellent Quality</strong>\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  that provides +2 <strong>Library Search</strong>, +2\n  <strong>Wardrobe &amp; Style</strong> depending on circumstance. Includes a\n  touchscreen, microphone, camera, flashlight, and holo-projector.\n</p>\n"
+    },
+    "Zetatech Tank Commander Headset": {
+      "name": "Zetatech Tank Commander Headset",
+      "description": "<p>Radio headset with throat mic and earbud perfect for covert operations.</p>\n"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+_id: UFRDjU9K0UMeIUPm
+_key: "!items!UFRDjU9K0UMeIUPm"
+effects: []
+flags:
+  cyberpunk-red-core:
+    cprInstallTree:
+      - _id: ST7ikJA5EHOBMcsJ
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.dlc_cyberware.Item.jgSJKsyaqUANw0zL
+          coreVersion: "13.351"
+          createdTime: 1790201172596
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790201172596
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/personalized-faceplate.svg
+        name: Personalized Faceplate
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          core: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>A personalized faceplate made of durable
+              polymer.</p><p><em>Compatible with your Cyberskull or Quick Change
+              Faceplate Mount.</em></p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          humanityLoss:
+            roll: "0"
+            static: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - cyberware
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isFoundational: false
+          isRanged: false
+          isWeapon: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          price:
+            market: 100
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source: null
+          sources:
+            - book: Going Metal
+              page: 105
+            - book: Interface RED v3
+              page: 105
+          type: cyberwareInternal
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+        type: cyberware
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/quick-change-faceplate.svg
+name: Quick Change Faceplate Mount
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>Allows you to swap between faceplates as an action.</p>
+      <blockquote>
+        <p>
+          Comes with one
+          @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.jgSJKsyaqUANw0zL]{Personalized Faceplate},
+          additional faceplates sold separately.
+        </p>
+      </blockquote>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - cyberware
+    list:
+      - ST7ikJA5EHOBMcsJ
+    slots: 1
+    usedSlots: 1
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: 12 Days of Redmas
+      page: 4
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: cyberware

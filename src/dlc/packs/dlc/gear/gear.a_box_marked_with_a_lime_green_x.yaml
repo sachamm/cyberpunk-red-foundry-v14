@@ -1,0 +1,49 @@
+_id: GKUCcpyPhPJR5SWQ
+_key: "!items!GKUCcpyPhPJR5SWQ"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: WcF65njAcmPq8Kbn
+img: icons/containers/boxes/crate-reinforced-green.webp
+name: A Box Marked With A Lime Green X
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 450000
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Roll once from
+        @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.T6pocp9VStxtFPzP]{A
+       Box Marked With A Lime Green X}
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: true
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Achievments & Lootboxes
+      page: 6
+  usage: toggled
+type: gear

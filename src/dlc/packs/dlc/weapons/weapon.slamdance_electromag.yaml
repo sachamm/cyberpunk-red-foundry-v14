@@ -1,0 +1,89 @@
+_id: YsjeyDYFrWcWjeAc
+_key: "!items!YsjeyDYFrWcWjeAc"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: BKpbrVAy1KKpXtaU
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
+name: SlamDance ElectroMag
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - custom
+  attackmod: 0
+  brand: Slamdance Inc.
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>An electromagnetic shotgun that shoots proprietary rounds.</p>
+      <p>
+        @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.LjJChw12H7TJSkm5]{ElectroMag
+       (Basic-Shell)}
+        @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.BhtcF9fMOrI5tsQE]{ElectroMag
+       (Incendiary-Shell)}
+        @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.CCEXsWo665wo7cD3]{ElectroMag
+       (Basic-Slug)}
+        @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.F3uxV0pSScgCgKat]{ElectroMag
+       (Incendiary-Slug)}
+      </p>
+      <blockquote>
+        <p>
+          User may switch proprietary ammo between <strong>Slug</strong> or
+          <strong>Shell</strong> each time they fire the weapon. (Alternate Fire-Modes
+          are not currently supported.)
+        </p>
+      </blockquote>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 2
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 4
+    value: 0
+  price:
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Toggle's Temple
+      page: 9
+    - book: Interface RED v5
+      page: 43
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

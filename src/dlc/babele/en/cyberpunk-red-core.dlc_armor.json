@@ -1,0 +1,62 @@
+{
+  "label": "Armor",
+  "mapping": {},
+  "entries": {
+    "Diving Helmet": {
+      "name": "Diving Helmet",
+      "description": "<p>\n  A sealed, waterproof diving suit with specialized undergarments to keep the\n  body completely dry and warm in cold water.\n</p>\n"
+    },
+    "Dragoon Plating": {
+      "name": "Dragoon Plating",
+      "description": "<p>\n  Armor plates compatible with\n  @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.u3xfpRFcEbrt8FK2]{Dragoon Plating}\n  cyberware.\n</p>\n<blockquote>\n  <p>\n    Dragoon Plating can be removed, and summoned back within 6m/y as an action.\n  </p>\n  <p>Recovers 1SP per day</p>\n</blockquote>\n"
+    },
+    "Dragoon Plating (Metalgear)": {
+      "name": "Dragoon Plating (Metalgear)",
+      "description": "<p>\n  Armor plates compatible with\n  @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.YMu6SNA9VbtKHFL8]{Dragoon Plating (Metalgear)}\n  cyberware.\n</p>\n<blockquote>\n  <p>\n    Dragoon Plating can be removed, and summoned back within 6m/y as an action.\n  </p>\n  <p>Recovers 1SP per day</p>\n</blockquote>\n"
+    },
+    "Dry Suit": {
+      "name": "Dry Suit",
+      "description": "<p>\n  A sealed, waterproof diving suit with specialized undergarments to keep the\n  body completely dry and warm in cold water.\n</p>\n"
+    },
+    "Esporma Environment Suit": {
+      "name": "Esporma Environment Suit",
+      "description": "<p>A self-repairing armored suit to protect you in radioactive environments.</p>\n"
+    },
+    "FleshWeave (Armor)": {
+      "name": "FleshWeave (Armor)",
+      "description": "<p>\n  Armor Item for tracking the SP of\n  @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.8Az7bJTWSZSK577k]{Sycust FleshWeave}\n  Cyberware.\n</p>\n<blockquote><p>Fully restores SP after 10 minutes</p></blockquote>\n"
+    },
+    "Heavy Subdermal Plating": {
+      "name": "Heavy Subdermal Plating",
+      "description": "<p>\n  Armor item for tracking the SP of\n  @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.JZWQbhT7YjmqZIt6]{Heavy Subdermal Plating}\n  Cyberware.\n</p>\n<blockquote><p>Recovers 1SP per day</p></blockquote>\n"
+    },
+    "High-Density Bulletproof Shield": {
+      "name": "High-Density Bulletproof Shield",
+      "description": "<p>A sturdy shield that's less likely to break after a single hit.</p>\n<blockquote><p>Cannot be installed into popup cyberware.</p></blockquote>\n"
+    },
+    "Light Metalgear® (Body)": {
+      "name": "Light Metalgear® (Body)",
+      "description": "<p>A lighter model of the famous Metalgear® armor.</p>\n"
+    },
+    "Light Metalgear® (Head)": {
+      "name": "Light Metalgear® (Head)",
+      "description": "<p>A lighter model of the famous Metalgear® armor.</p>\n"
+    },
+    "PackShield": {
+      "name": "PackShield",
+      "description": "<p>\n  Businesswear Backpack Bulletproof Shield hybrid. Can store items like a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Carryall},\n  and be equipped in your hand like a shield.\n</p>\n<blockquote>\n  <p>Requires a free arm to be effective.</p>\n  <p>\n    Cannot be installed in\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Popup Shield}.\n  </p>\n</blockquote>\n"
+    },
+    "Roller Derby Helmet": {
+      "name": "Roller Derby Helmet",
+      "description": "<p>\n  Regulation uniform derby padding required for all league sanctioned events.\n</p>\n"
+    },
+    "Roller Derby Padding": {
+      "name": "Roller Derby Padding",
+      "description": "<p>\n  Regulation uniform derby padding required for all league sanctioned events.\n</p>\n"
+    },
+    "Scavenged Armor": {
+      "name": "Scavenged Armor",
+      "description": "<p>A scavenged set of Light Armorjack that is unable to be repaired.</p>\n"
+    }
+  }
+}

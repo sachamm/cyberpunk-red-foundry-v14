@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="ranger-combat-boomerang.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter2"
+       x="-0.078482668"
+       y="-0.078487802"
+       width="1.1569653"
+       height="1.1569756">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood1" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur1" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset1" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite1" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite2" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.00875"
+     inkscape:cx="226.51797"
+     inkscape:cy="306.81537"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     id="rect1"
+     style="opacity:1;vector-effect:none;fill:#1b1f21;fill-rule:evenodd;stop-color:#000000;stop-opacity:1"
+     d="M 0,0 H 512 V 512 H 0 Z"
+     inkscape:label="background" />
+  <g
+     id="g1"
+     style="fill:#e64539;filter:url(#filter2)">
+    <path
+       fill="#000000"
+       d="M 420.2,27.03 342.6,169.4 485,91.76 c -1.5,-2.61 -3.6,-5.88 -6.4,-9.57 -5.9,-7.77 -14.2,-17.06 -23,-25.83 -8.7,-8.76 -18,-17.05 -25.8,-22.94 -3.7,-2.79 -6.9,-4.93 -9.6,-6.39 z M 394.8,36.09 165,53.77 C 173.3,63.41 181,75 187.1,87 H 367 Z M 128.1,48.12 26.3,56.21 c 3.16,12.58 11.96,30.8 21.36,46.09 9.91,16.1 18.38,27.4 21.2,31.1 L 169.8,143 c 5.1,-0.1 7.5,-1.2 8.9,-2.5 1.4,-1.3 2.5,-3.3 2.9,-7.1 0.8,-7.6 -2.4,-20.8 -8.6,-34.04 C 166.8,86.1 157.9,72.57 149,62.8 140.1,53.1 130.9,48.22 128.1,48.12 Z M 194.9,105 c 3.7,10.4 5.6,20.6 4.6,30.1 l 137.3,7.3 20.4,-37.4 z m 281,12.2 L 425,145 v 179.9 c 12,6.1 23.6,13.8 33.2,22.1 z m -68.9,37.6 -37.4,20.4 7.3,137.3 c 1.6,-0.2 3.3,-0.3 4.9,-0.3 8.1,0 16.6,1.9 25.2,4.9 z m -221.4,30.8 -127.96,128 12.72,12.8 128.04,-128 z m 112,16 -255.96,256 12.72,12.8 256.04,-256 z m 16,112 -128,128 12.8,12.8 128,-128 z m 68.1,16.7 c -1.1,0 -2.2,0 -3.1,0.1 -3.8,0.4 -5.8,1.5 -7.1,2.9 -1.3,1.4 -2.4,3.8 -2.5,8.9 l 9.6,100.9 c 3.7,2.9 15,11.3 31.1,21.2 15.3,9.4 33.5,18.2 46.1,21.4 l 8.1,-101.8 c -0.1,-2.8 -5,-12 -14.7,-20.9 -9.8,-8.9 -23.3,-17.8 -36.6,-24 -11.6,-5.4 -23.1,-8.6 -30.9,-8.7 z"
+       id="path1"
+       style="fill:#e64539" />
+  </g>
+</svg>

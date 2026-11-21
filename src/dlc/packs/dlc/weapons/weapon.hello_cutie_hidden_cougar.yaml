@@ -1,0 +1,75 @@
+_id: AML3M1sXcIDwdljF
+_key: "!items!AML3M1sXcIDwdljF"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: Uu08EH4AivIhBfQy
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG_excellent.svg
+name: Hello Cutie Hidden Cougar
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 1
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A concealable heavy SMG. +1 to Attack. Incompatible with any magazine
+        upgrades.
+      </p>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 11
+    value: 0
+  price:
+    market: 500
+  quality: excellent
+  revealed: true
+  rof: 1
+  sources:
+    - book: Toggle's Temple
+      page: 7
+    - book: Interface RED v5
+      page: 41
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
+type: weapon

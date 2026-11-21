@@ -1,0 +1,76 @@
+_id: CgCHZfZHMOwXQF4P
+_key: "!items!CgCHZfZHMOwXQF4P"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: QGREj0H9NMeDIoW8
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_poor.svg
+name: Dai Lung Magnum
+ownership:
+  default: 0
+sort: 100000
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 0
+  brand: Dai Lung
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams
+        and requires using an action to clear.
+      </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 8
+    value: 0
+  price:
+    market: 50
+  quality: poor
+  revealed: true
+  rof: 2
+  sources:
+    - book: Cyberpunk RED
+      page: 342
+    - book: Toggle's Temple
+      page: 4
+    - book: Interface RED v5
+      page: 38
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: weapon

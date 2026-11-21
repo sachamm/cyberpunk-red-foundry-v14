@@ -1,0 +1,76 @@
+_id: qqNh3sElWPyVT4Qq
+_key: "!items!qqNh3sElWPyVT4Qq"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: M-02 Heavy Rifle
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - custom
+  attackmod: 0
+  brand: Sternmeyer
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Assault Rifle</strong> This weapon fires it's own custom ammunition,
+        priced at 500eb (Expensive) for 80 rounds of Armor-Piercing ammo.
+      </p>
+      <blockquote><p>Can only install Scope upgrades.</p></blockquote>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list: []
+    slots: 2
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 80
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Woodchipper's Garage
+      page: 5
+    - book: Interface RED v3
+      page: 29
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: assaultRifle
+type: weapon

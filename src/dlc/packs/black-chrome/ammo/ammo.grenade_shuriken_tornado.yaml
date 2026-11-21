@@ -1,0 +1,52 @@
+_id: KPSBX2Ns6cj6JC4v
+_key: "!items!KPSBX2Ns6cj6JC4v"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/grenade_shurikentornado.svg
+name: Grenade (Shuriken Tornado)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 2
+  amount: 1
+  brand: Great Lakes Cutlery
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p><em>A literal explosion of shurikens.</em></p>
+      <blockquote><p>Roll damage individually for each target.</p></blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 100
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 87
+  type: special
+  variety: grenade
+type: ammo

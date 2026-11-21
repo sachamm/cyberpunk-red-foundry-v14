@@ -1,0 +1,112 @@
+_id: fyi3U9v6On4r1iiO
+_key: "!items!fyi3U9v6On4r1iiO"
+effects:
+  - _id: ML15AmoE6EHh9ERW
+    _key: "!items.effects!fyi3U9v6On4r1iiO.ML15AmoE6EHh9ERW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: L5BVRBGb798QfKk9
+      modifiedTime: 1794551148354
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: bonuses.wardrobeAndStyle
+        mode: 2
+        priority: null
+        value: "2"
+    description: ""
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/black-chrome/armor/laser-light-street-jacket.svg
+    name: Laser Light Light Jacket
+    origin: Item.mCE0BocSEV3GkJIZ
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/black-chrome/armor/laser-light-street-jacket.svg
+name: Laser Light Street Jacket
+ownership:
+  default: 0
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 11
+  brand: Laser Light
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        An armored Urban Flash Jacket that counts as a
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.VbMY2fs3im1sP2dJ]{Light Tattoo}
+        while worn.
+      </p>
+      <blockquote>
+        <p>
+          +2 to Wardrobe &amp; Style if you have at least two Light Tattoos installed
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: true
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 31
+  usage: toggled
+type: armor

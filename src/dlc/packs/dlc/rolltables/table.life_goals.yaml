@@ -1,0 +1,229 @@
+_id: iejESgT0MU8vGFWl
+_key: "!tables!iejESgT0MU8vGFWl"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+name: Life Goals
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: So6GtAq8L5OrtUyr
+    _key: "!tables.results!iejESgT0MU8vGFWl.So6GtAq8L5OrtUyr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they want to get rid of a bad reputation.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: b2wdmHL83PiqSjxo
+    _key: "!tables.results!iejESgT0MU8vGFWl.b2wdmHL83PiqSjxo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they want to gain power and control.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: mZ3ftWUDCE6LtayN
+    _key: "!tables.results!iejESgT0MU8vGFWl.mZ3ftWUDCE6LtayN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they want to get off <em>The Street</em> no matter what.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: ciUUxYnvIv701vg4
+    _key: "!tables.results!iejESgT0MU8vGFWl.ciUUxYnvIv701vg4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they swear to cause pain and suffering to anyone who crosses you.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: dhVF1zMtfRS18MpS
+    _key: "!tables.results!iejESgT0MU8vGFWl.dhVF1zMtfRS18MpS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…they just want to forget whatever happened in the past and start
+      fresh.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: qer2Hlb5aQpyXC7y
+    _key: "!tables.results!iejESgT0MU8vGFWl.qer2Hlb5aQpyXC7y"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…they want to hunt down those who are responsible for their miserable
+      life and make them pay.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: 9stxwwuNjnQ52JN9
+    _key: "!tables.results!iejESgT0MU8vGFWl.9stxwwuNjnQ52JN9"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they just want to get what's rightfully theirs.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: xuOWV3CasqT7BRmT
+    _key: "!tables.results!iejESgT0MU8vGFWl.xuOWV3CasqT7BRmT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they're just trying to protect their loved ones.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: KnLAHIgEyf7Z036J
+    _key: "!tables.results!iejESgT0MU8vGFWl.KnLAHIgEyf7Z036J"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they want to gain fame and recognition.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: vblejXmHarQYnYBH
+    _key: "!tables.results!iejESgT0MU8vGFWl.vblejXmHarQYnYBH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…they want to be respected above all else.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/goals.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: -300000

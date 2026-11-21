@@ -1,0 +1,81 @@
+_id: dB1xFjNIIdZ536Km
+_key: "!items!dB1xFjNIIdZ536Km"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol.svg
+name: Duel Caster
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - custom
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A card launcher constructed from cheap plastic used to launch
+        @UUID[Compendium.cyberpunk-red-core.elflines_ammo.Item.gbp8WiY21LEcNnif]{ELO Trading Cards}.
+        ROF 3 if it is the only weapon fired on your turn.
+      </p>
+      <blockquote>
+        <p>
+          Can also be loaded with normal playing cards but makes the weapon Poor
+          Quality.
+        </p>
+      </blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 26
+    value: 0
+  price:
+    market: 100
+  quality: standard
+  revealed: true
+  rof: 3
+  sources:
+    - book: Elflines Online — TCG
+      page: 9
+    - book: Interface RED v3
+      page: 73
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: weapon

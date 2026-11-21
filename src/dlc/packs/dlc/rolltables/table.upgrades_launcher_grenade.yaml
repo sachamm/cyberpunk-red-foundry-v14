@@ -1,0 +1,158 @@
+_id: Ni28NtWNPp2juhS1
+_key: "!tables!Ni28NtWNPp2juhS1"
+description: >-
+  <p>Random heavy weapons upgrades provided by Gunpath.</p><p>Toggles Temple,
+  pg. 18</p>
+displayRoll: false
+flags: {}
+folder: KmmkVwS79ivnwu2W
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+name: Upgrades-Launcher-Grenade
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: 8LXH2LwvQaZFjN6F
+    _key: "!tables.results!Ni28NtWNPp2juhS1.8LXH2LwvQaZFjN6F"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.J51qZjmuEheNiamo
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/upgrades/generic_drum_magazine.svg
+    name: Drum Magazine (Grenade Launcher)
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: E7VX9ICyamUp1MWl
+    _key: "!tables.results!Ni28NtWNPp2juhS1.E7VX9ICyamUp1MWl"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.P4XioOHNf343JNm9
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/upgrades/generic_extended_magazine.svg
+    name: Extended Magazine (Grenade Launcher)
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: CVrh5fuxPfMUyYB6
+    _key: "!tables.results!Ni28NtWNPp2juhS1.CVrh5fuxPfMUyYB6"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.pEXcsIk1FYMNdbUc
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/upgrades/infrared_nightvision_scope.svg
+    name: Infrared Nightvision Scope
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: 2tEMGelJwZo0YgEv
+    _key: "!tables.results!Ni28NtWNPp2juhS1.2tEMGelJwZo0YgEv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_upgrades.Item.qElWreojgrHxJ1iR
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/silencer.svg
+    name: Silencer
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: gvtrRe4day4WqBCI
+    _key: "!tables.results!Ni28NtWNPp2juhS1.gvtrRe4day4WqBCI"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/upgrades/smartgun_link.svg
+    name: Smartgun Link
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: TamKIsNmLpvkT8MB
+    _key: "!tables.results!Ni28NtWNPp2juhS1.TamKIsNmLpvkT8MB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/upgrades/sniping_scope.svg
+    name: Sniping Scope
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+sort: 250000

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Capa_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 512"
+   xml:space="preserve"
+   sodipodi:docname="segotari-rush-game-used.svg"
+   width="512"
+   height="512"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs47"><filter
+     style="color-interpolation-filters:sRGB;"
+     inkscape:label="Drop Shadow"
+     id="filter6"
+     x="-0.11937824"
+     y="-0.088486909"
+     width="1.2414093"
+     height="1.177957"><feFlood
+       result="flood"
+       in="SourceGraphic"
+       flood-opacity="1.000000"
+       flood-color="rgb(58,63,94)"
+       id="feFlood5" /><feGaussianBlur
+       result="blur"
+       in="SourceGraphic"
+       stdDeviation="15.000000"
+       id="feGaussianBlur5" /><feOffset
+       result="offset"
+       in="blur"
+       dx="0.800000"
+       dy="0.400000"
+       id="feOffset5" /><feComposite
+       result="comp1"
+       operator="out"
+       in="flood"
+       in2="offset"
+       id="feComposite5" /><feComposite
+       result="comp2"
+       operator="atop"
+       in="comp1"
+       in2="SourceGraphic"
+       id="feComposite6" /></filter><filter
+     style="color-interpolation-filters:sRGB;"
+     inkscape:label="Drop Shadow"
+     id="filter35"
+     x="-0.11937824"
+     y="-0.088486909"
+     width="1.2414093"
+     height="1.177957"><feFlood
+       result="flood"
+       in="SourceGraphic"
+       flood-opacity="1.000000"
+       flood-color="rgb(58,63,94)"
+       id="feFlood34" /><feGaussianBlur
+       result="blur"
+       in="SourceGraphic"
+       stdDeviation="15.000000"
+       id="feGaussianBlur34" /><feOffset
+       result="offset"
+       in="blur"
+       dx="0.800000"
+       dy="0.400000"
+       id="feOffset34" /><feComposite
+       result="comp1"
+       operator="out"
+       in="flood"
+       in2="offset"
+       id="feComposite34" /><feComposite
+       result="comp2"
+       operator="atop"
+       in="comp1"
+       in2="SourceGraphic"
+       id="feComposite35" /></filter></defs><sodipodi:namedview
+   id="namedview45"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="1.7816327"
+   inkscape:cx="263.80297"
+   inkscape:cy="241.07101"
+   inkscape:window-width="1920"
+   inkscape:window-height="1009"
+   inkscape:window-x="1912"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Capa_1"
+   inkscape:showpageshadow="0"
+   inkscape:deskcolor="#505050"
+   showguides="true"><sodipodi:guide
+     position="15.715922,330.70562"
+     orientation="0,-1"
+     id="guide13"
+     inkscape:locked="false" /></sodipodi:namedview>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<path
+   d="M 0,0 H 512 V 512 H 0 Z"
+   fill="#b90202"
+   fill-opacity="1"
+   id="path902"
+   style="display:inline;fill:#1b1f21;fill-opacity:1"
+   inkscape:label="background" /><g
+   id="g1"
+   style="fill:#e64539;filter:url(#filter35)"><path
+     id="path12"
+     style="display:inline"
+     inkscape:label="path2"
+     d="M 117.21875 52.580078 L 105.21875 64.580078 L 105.21875 459.41992 L 406.78125 459.41992 L 406.78125 120.41406 L 345.08984 52.580078 L 117.21875 52.580078 z M 146.23633 73.253906 C 151.05201 73.253906 154.62109 76.822993 154.62109 81.638672 L 154.62109 119.75 L 154.62109 171.75 C 154.62109 176.23356 151.05201 180.13477 146.23633 180.13477 C 141.42065 180.13477 137.84961 176.56559 137.84961 172.08203 L 137.84961 120.08203 L 137.84961 81.638672 C 137.84961 77.155109 141.42065 73.253906 146.23633 73.253906 z M 189.82617 73.253906 C 194.30973 73.253906 198.21094 76.822993 198.21094 81.638672 L 198.21094 119.75 L 198.21094 171.75 C 198.21094 176.23356 194.64185 180.13477 189.82617 180.13477 C 185.34261 180.13477 181.43945 176.56568 181.43945 171.75 L 181.43945 119.75 L 181.43945 81.638672 C 181.43945 81.078226 181.49455 80.525999 181.60156 79.990234 C 182.35092 76.239883 185.61245 73.253906 189.82617 73.253906 z M 233.41602 73.253906 C 238.23169 73.253906 241.80273 76.822993 241.80273 81.638672 L 241.80273 119.75 L 241.80273 171.75 C 241.80273 176.23356 238.23169 180.13477 233.41602 180.13477 C 228.60034 180.13477 225.0293 176.56568 225.0293 171.75 L 225.0293 119.75 L 225.0293 81.638672 C 225.0293 81.078226 225.0843 80.525999 225.19141 79.990234 C 225.94077 76.239883 229.2023 73.253906 233.41602 73.253906 z M 320.26367 73.253906 C 324.74723 73.253906 328.65039 76.822993 328.65039 81.638672 L 328.65039 119.75 L 328.65039 171.75 C 328.65039 176.23356 325.07935 180.13477 320.26367 180.13477 C 315.78011 180.13477 311.87891 176.56568 311.87891 171.75 L 311.87891 119.75 L 311.87891 81.638672 C 311.87891 81.078226 311.93401 80.525999 312.04102 79.990234 C 312.79 76.239883 316.04995 73.253906 320.26367 73.253906 z M 157.82227 244.375 L 354.17773 244.375 L 353.76367 244.78906 L 365.34961 256.375 L 365.76367 255.96094 L 365.76367 409.06055 L 354.17773 420.64648 L 157.82227 420.64648 L 158.23633 420.23242 L 146.65039 408.64648 L 146.23633 409.06055 L 146.23633 255.96094 L 157.82227 244.375 z M 214.20508 284.56641 C 213.33982 284.58121 212.47338 284.61961 211.60547 284.68164 C 200.0879 285.50493 189.25311 290.45254 181.08789 298.61719 C 162.34235 317.36241 162.34235 347.75477 181.08789 366.5 C 199.83312 385.24554 230.22548 385.24554 248.9707 366.5 L 215.0293 332.55859 L 248.9707 298.61719 C 240.35656 290.00355 228.8421 285.03413 216.79492 284.5918 C 215.93441 284.5602 215.07033 284.55161 214.20508 284.56641 z M 260.9707 320.55859 C 254.34328 320.55859 248.9707 325.93117 248.9707 332.55859 C 248.9707 339.18601 254.34328 344.55859 260.9707 344.55859 C 267.59812 344.55859 272.9707 339.18601 272.9707 332.55859 C 272.9707 325.93117 267.59812 320.55859 260.9707 320.55859 z M 296.9707 320.55859 C 290.34328 320.55859 284.9707 325.93117 284.9707 332.55859 C 284.9707 339.18601 290.34328 344.55859 296.9707 344.55859 C 303.59812 344.55859 308.9707 339.18601 308.9707 332.55859 C 308.9707 325.93117 303.59812 320.55859 296.9707 320.55859 z M 332.9707 320.55859 C 326.34328 320.55859 320.9707 325.93117 320.9707 332.55859 C 320.9707 339.18601 326.34328 344.55859 332.9707 344.55859 C 339.59812 344.55859 344.9707 339.18601 344.9707 332.55859 C 344.9707 325.93117 339.59812 320.55859 332.9707 320.55859 z " /></g></svg>

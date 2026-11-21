@@ -1,0 +1,186 @@
+_id: zRHyYnlEqNlTA4l5
+_key: "!tables!zRHyYnlEqNlTA4l5"
+description: >-
+  Source: Achievements and Loot Boxes pg.5
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d6
+img: icons/containers/boxes/crate-wooden-beige-red.webp
+name: A Box Dripping Wet With Fluid
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+replacement: true
+results:
+  - _id: 0OxDAp5vfbStfplq
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.0OxDAp5vfbStfplq"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: 5 Cans of Smash
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/drugs/smash.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: qVtkRbxUNz2Mr1GB
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.qVtkRbxUNz2Mr1GB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_gear.Item.Th74cfC87RqEJKAb
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/air_hypo.svg
+    name: Airhypo
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: MWZd45k1dIhuy8If
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.MWZd45k1dIhuy8If"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_cyberware.9rKtuQcxsOmHjKyT
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberware.svg
+    name: Bodyweight AutoInjector
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: Bo75utxjeKLNgn1m
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.Bo75utxjeKLNgn1m"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_gear.Ogmb7zTfss6Kz54C
+    drawn: false
+    flags: {}
+    img: null
+    name: AirWell 50
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: oFcPdGyZZq79XTja
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.oFcPdGyZZq79XTja"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.OufLzsBG6w0CUp81
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_poison.svg
+    name: Grenade (Poison)
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: u8xCSLXpmliqK5eZ
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.u8xCSLXpmliqK5eZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_weapons.my1ugVO4a5VjJSuH
+    drawn: false
+    flags: {}
+    img: null
+    name: TR-4 Detonator Fluid
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: hk0ZG2Yyj1OXXEQE
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.hk0ZG2Yyj1OXXEQE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_consumables.PRLDaeBVeMuBBIeO
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/drugs/smash.svg
+    name: Smash
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: xJR1fxROS011EkKi
+    _key: "!tables.results!zRHyYnlEqNlTA4l5.xJR1fxROS011EkKi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_drugs.Item.6BM5WFyCyIM8lZib
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/drugs/black_lace.svg
+    name: Black Lace
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+sort: 0

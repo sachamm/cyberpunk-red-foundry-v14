@@ -1,0 +1,153 @@
+_id: vvidTKuBj2GIoAT6
+_key: "!tables!vvidTKuBj2GIoAT6"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+name: Lawman
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: BD6lciOh5lqYNwrg
+    _key: "!tables.results!vvidTKuBj2GIoAT6.BD6lciOh5lqYNwrg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740608864
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740618230
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Guard</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: rMznyoNUbCK4ulON
+    _key: "!tables.results!vvidTKuBj2GIoAT6.rMznyoNUbCK4ulON"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740609113
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740647204
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Beat Cop</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: VNrAMlHCcJRm5hG2
+    _key: "!tables.results!vvidTKuBj2GIoAT6.VNrAMlHCcJRm5hG2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740609330
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740658550
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Criminal Investigator</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: bwOOUm0Pc4Z43TnD
+    _key: "!tables.results!vvidTKuBj2GIoAT6.bwOOUm0Pc4Z43TnD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740609567
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740690700
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>SWAT officer</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: vtxP1bV3eQRaioep
+    _key: "!tables.results!vvidTKuBj2GIoAT6.vtxP1bV3eQRaioep"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740609879
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744382514
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Motor Patrol</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: p1pIcNKzw5EWvnCo
+    _key: "!tables.results!vvidTKuBj2GIoAT6.p1pIcNKzw5EWvnCo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740610090
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744454442
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as an <strong>Internal Affairs Investigator</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,60 @@
+_id: nD8jihkwmgT8sVqD
+_key: "!items!nD8jihkwmgT8sVqD"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/armor/mimic-clothing-kit.svg
+name: Mimic Clothing (Urban Flash)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 11
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Light Armorjack made from a Mimic Clothing Kit and
+        @UUID[Compendium.cyberpunk-red-core.core_clothing.Item.y3Ij43Eg3b0tq16F]{Urban Flash}
+        clothing.
+      </p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 200
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  sources:
+    - book: Black Chrome
+      page: 33
+  usage: equipped
+type: armor

@@ -1,0 +1,61 @@
+_id: 4pyXZHjSVn1qJscO
+_key: "!tables!4pyXZHjSVn1qJscO"
+description: ""
+displayRoll: false
+flags: {}
+folder: KmmkVwS79ivnwu2W
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+name: Option-Bayonet
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: VBkOa3oopt1HLhYJ
+    _key: "!tables.results!4pyXZHjSVn1qJscO.VBkOa3oopt1HLhYJ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.xRA275R527XLwaBJ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/upgrades/bayonet.svg
+    name: Bayonet
+    range:
+      - 1
+      - 5
+    type: document
+    weight: 1
+  - _id: 58yVVzjoOgqrmR22
+    _key: "!tables.results!4pyXZHjSVn1qJscO.58yVVzjoOgqrmR22"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_upgrades.Item.5SEXfIt0muRpGrE5
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/airhypo-bayonet.svg
+    name: Airhypo Bayonet
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+sort: 700000

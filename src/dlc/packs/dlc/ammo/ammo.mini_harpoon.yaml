@@ -1,0 +1,63 @@
+_id: rcJgGA1WgEretoxx
+_key: "!items!rcJgGA1WgEretoxx"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 453b05f8b3adc19bceb087b7e3d30217f693b224
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/harpoon_emp.svg
+name: Mini-Harpoon
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 4
+  brand: Sanroo
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Mini-Harpoons come pre-loaded into the Hello Cutie Fisher Kitty and cannot be
+        use with any other weapons.
+      </p>
+      <p>
+        *Note: Reloading the weapon recovers all spent ammo. Refill this stack as
+        needed.
+      </p>
+  favorite: false
+  ignoredByBrowser: true
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 0
+  size: 0
+  source:
+    book: 12DoC
+    page: 4
+  sources:
+    - book: 12 Days of Cutimas
+      page: 12
+  type: emp
+  variety: arrow
+type: ammo

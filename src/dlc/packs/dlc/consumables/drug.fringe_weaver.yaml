@@ -1,0 +1,40 @@
+_id: ZLeBfyzlO2FinwRJ
+_key: "!items!ZLeBfyzlO2FinwRJ"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: OXuMYH1jqRNmGurK
+img: systems/cyberpunk-red-core/icons/compendium/default/default_drink.svg
+name: Fringe Weaver
+ownership:
+  default: 0
+  pLIpYgHBYUznkgBy: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: None
+  description:
+    value: |
+      <p>
+        One of a number of drinks the
+        @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.rl7LT2WYItMqMoLm]{Drink Master 5000}
+        can mix.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  price:
+    market: 20
+  revealed: true
+  sources:
+    - book: Mixing Drinks — Changing Lives
+      page: 17
+  usage: toggled
+type: drug

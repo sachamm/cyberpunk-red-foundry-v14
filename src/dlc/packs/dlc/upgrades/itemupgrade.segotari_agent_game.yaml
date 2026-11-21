@@ -1,0 +1,100 @@
+_id: Usn8ht2Wutm6uBVC
+_key: "!items!Usn8ht2Wutm6uBVC"
+effects: []
+flags:
+  cyberpunk-red-core: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/app_segotari-agent-game.svg
+name: Segotari Agent Game
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Segotari
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A game that uses the Self-Adaptive AI onboard your
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent} to
+        generate new levels or respond in real time to player input.
+      </p>
+      <blockquote>
+        <p>
+          Install this App on your
+          @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}
+        </p>
+      </blockquote>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isRanged: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    damage:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    magazine:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    rof:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+  price:
+    market: 20
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: Segotari Power
+      page: 6
+  type: gear
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: itemUpgrade

@@ -1,0 +1,62 @@
+_id: 7Ki9v2iwMH8AZp8B
+_key: "!items!7Ki9v2iwMH8AZp8B"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/armor/executive-armor.svg
+name: Executive Armor
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 11
+  brand: Torrell and Chiang
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Light Armorjack that looks like
+        @UUID[Compendium.cyberpunk-red-core.core_clothing.Item.2mb53u4D65ddOlNx]{businesswear}.
+      </p>
+      <blockquote>
+        <p>Restores 1SP every day SP isn't lost on the armor.</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: true
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  sources:
+    - book: Black Chrome
+      page: 34
+  usage: toggled
+type: armor

@@ -1,0 +1,10 @@
+{
+  "repository": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-dlc",
+  "commit": "1efa832b7eaa6c79a52f21ba6ed5a1e5e4e6c938",
+  "upstreamVersion": null,
+  "skippedPackFolderEntries": [
+    "black-chrome_programs",
+    "black-chrome_rolltables"
+  ],
+  "skippedPacks": []
+}

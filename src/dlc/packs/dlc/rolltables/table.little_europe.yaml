@@ -1,0 +1,155 @@
+_id: kNCogKzXVVkZlvxU
+_key: "!tables!kNCogKzXVVkZlvxU"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Little Europe
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: 7CCMGHCANYP7O5bg
+    _key: "!tables.results!kNCogKzXVVkZlvxU.7CCMGHCANYP7O5bg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756015146
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756099287
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Meet at the Oasis Megamart for a Cooking with Kibble class.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little Europe
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: z090sr7bzXXgR8b3
+    _key: "!tables.results!kNCogKzXVVkZlvxU.z090sr7bzXXgR8b3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756015356
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756282446
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Pray with them at the Holy Angels Church.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little Europe
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 1WNWgJKJQAhHN92A
+    _key: "!tables.results!kNCogKzXVVkZlvxU.1WNWgJKJQAhHN92A"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756015586
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756301341
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Have a wild night at the Short Circuit.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little Europe
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: TMN3XNNPNC7vT8EE
+    _key: "!tables.results!kNCogKzXVVkZlvxU.TMN3XNNPNC7vT8EE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756015823
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756320252
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Race hot pink go-karts at the Danger Gal Offices</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little Europe
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: uRKL1zKN42mTnYQN
+    _key: "!tables.results!kNCogKzXVVkZlvxU.uRKL1zKN42mTnYQN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756016038
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756339146
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Enjoy a beautiful Italian dinner.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little Europe
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: fbmawYNuUR8FjFBB
+    _key: "!tables.results!kNCogKzXVVkZlvxU.fbmawYNuUR8FjFBB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756016289
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756358379
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>A glass of wine overlooking Night City from Camden Court's rooftop
+      lounge.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little Europe
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,42 @@
+{
+  "label": "Ammo",
+  "mapping": {},
+  "entries": {
+    "Arasaka Acid": {
+      "name": "Arasaka Acid",
+      "description": "<p>\n  A proprietary weapon coating for use with\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.Ifp6KgNYeZ0wfKSN]{Arasaka Weeping Reaver Katana}\n  that improves armor ablation.\n</p>\n<blockquote>\n  <ul>\n    <li><p>Coating lasts for 1 minute.</p></li>\n  </ul>\n</blockquote>\n"
+    },
+    "Arasaka Fire": {
+      "name": "Arasaka Fire",
+      "description": "<p>\n  A proprietary weapon coating for use with\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.Ifp6KgNYeZ0wfKSN]{Arasaka Weeping Reaver Katana}\n  that lights the target <strong>On</strong> <strong>Fire (Mild)</strong>.\n</p>\n<blockquote>\n  <ul>\n    <li><p>Coating lasts for 1 minute.</p></li>\n  </ul>\n</blockquote>\n"
+    },
+    "Arasaka Wound Salt": {
+      "name": "Arasaka Wound Salt",
+      "description": "<p>\n  A proprietary weapon coating for use with\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.Ifp6KgNYeZ0wfKSN]{Arasaka Weeping Reaver Katana}\n  that adds a second critical injury when applying Critical Damage.\n</p>\n<blockquote>\n  <ul>\n    <li><p>Coating lasts for 1 minute.</p></li>\n    <li><p>Does not deal any additional Critical Damage.</p></li>\n  </ul>\n</blockquote>\n"
+    },
+    "Doberman 500 Marking Scent": {
+      "name": "Doberman 500 Marking Scent",
+      "description": "<p>\n  Unique form of ammunition for the\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.iSyf14qCf2US6im1]{Air Pistol}.\n  Provides specialized scent marking on target.\n</p>\n"
+    },
+    "Grenade (Arachnid)": {
+      "name": "Grenade (Arachnid)",
+      "description": "<p>\n  A very sticky grenade. Creates a sticky web that entangles target. Must be\n  destroyed or be torn by anyone in melee range making a\n  [[/r 1d10red+@stats.dex+@skills.brawling #DV15 Brawling]]{DV15 Brawling}\n  check.\n</p>\n"
+    },
+    "Grenade (KTech Security)": {
+      "name": "Grenade (KTech Security)",
+      "description": "<p>Armor piercing Grenade. Deals damage to targets, but not to cover.</p>\n"
+    },
+    "Grenade (Shuriken Tornado)": {
+      "name": "Grenade (Shuriken Tornado)",
+      "description": "<p><em>A literal explosion of shurikens.</em></p>\n<blockquote><p>Roll damage individually for each target.</p></blockquote>\n"
+    },
+    "Net": {
+      "name": "Net",
+      "description": "<p>\n  A retractable net for the net launcher that <strong>Grapples</strong> the\n  target on hit. Targets may escape with by rolling\n  [[/r 1d10red+@stats.dex+@skills.contortionist #DV13 Contortionist]]{DV13Contortionist}\n  if they are trapped in the net. Targets may be freed if an ally rolls\n  [[/r 1d10red+@stats.dex+@skills.brawling #DV13 Brawling]]{DV13 Brawling}\n</p>\n<blockquote>\n  <p>The Net has 15hp and is destroyed when reduced to 0.</p>\n</blockquote>\n"
+    },
+    "Rocks": {
+      "name": "Rocks",
+      "description": "<p>\n  Ammunition that can be used with the\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.MGWv5ebRm7FzFt9C]{Nomad Rocker}.\n</p>\n<blockquote>\n  <p>\n    Ammunition is considered free and available if small rocks are able to be\n    collected in the area the user is in.\n  </p>\n</blockquote>\n"
+    }
+  }
+}

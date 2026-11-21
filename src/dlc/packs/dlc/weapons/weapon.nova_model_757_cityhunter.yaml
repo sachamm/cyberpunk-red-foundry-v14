@@ -1,0 +1,228 @@
+_id: qL9B85FSo6cYhTBL
+_key: "!items!qL9B85FSo6cYhTBL"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: MoHE35vBx0h8B1g5
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC
+          coreVersion: "13.351"
+          createdTime: 1786665790168
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786665834155
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: systems/cyberpunk-red-core/icons/compendium/upgrades/smartgun_link.svg
+        name: Smartgun Link
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: <p>Turns weapon into a "Smartgun".</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: 1
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 2
+          source:
+            book: Core
+            page: 344
+          sources:
+            - book: 12 Days of Gunmas
+              page: 5
+            - book: Danger Gal Dossier
+              page: 145
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg
+name: Nova Model 757 Cityhunter
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - custom
+  attackmod: 0
+  brand: Nova Arms
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 3d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Exotic Heavy Pistol</strong> This pistol fires it's own custom rounds
+        bought in packs of 18, though they cost the same as a pack of 10. Comes with a
+        Smartgun Link.
+      </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list:
+      - MoHE35vBx0h8B1g5
+    slots: 2
+    usedSlots: 2
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 18
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 2
+  source: null
+  sources:
+    - book: 12 Days of Gunmas
+      page: 5
+    - book: Danger Gal Dossier
+      page: 145
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: weapon

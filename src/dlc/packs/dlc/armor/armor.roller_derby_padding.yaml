@@ -1,0 +1,62 @@
+_id: FeU8EiiE8hpIcHBB
+_key: "!items!FeU8EiiE8hpIcHBB"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/armor/roller_derby_padding.svg
+name: Roller Derby Padding
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 7
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Regulation uniform derby padding required for all league sanctioned events.
+      </p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 7
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 10
+    value: 10
+  sources:
+    - book: Chasing the Rabbit
+      page: 9
+    - book: TotR — Hope Reborn
+      page: 185
+    - book: Interface RED v5
+      page: 21
+  usage: toggled
+type: armor

@@ -1,0 +1,72 @@
+{
+  "label": "Upgrades",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
+  "entries": {
+    "4Tify": {
+      "name": "4Tify",
+      "description": "<p>Can reveal weak points by scanning your home. Or a section of cover...</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Arasaka Prototype Heat-Resistant Barrel": {
+      "name": "Arasaka Prototype Heat-Resistant Barrel",
+      "description": "<p>\n  Required to use the\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.8nSzcjNlyulWrZtN]{Arasaka Prototype Railgun Upgrade}.\n</p>\n"
+    },
+    "Arasaka Prototype Railgun Upgrade": {
+      "name": "Arasaka Prototype Railgun Upgrade",
+      "description": "<p>\n  You may swap between firing modes at the start of combat or as an action\n  during combat.\n</p>\n<blockquote>\n  <p>Required before use:</p>\n  <ul>\n    <li>\n      <p>\n        @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.mlYhAxuDlI3fP9hq]{Arasaka\n Prototype Heat-Resistant Barrel}\n      </p>\n    </li>\n    <li>\n      <p>\n        @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.nQF0M9n7cLvHS5RY]{Arasaka\n Prototype Rechargable Battery}\n      </p>\n    </li>\n  </ul>\n</blockquote>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Arasaka Prototype Rechargable Battery": {
+      "name": "Arasaka Prototype Rechargable Battery",
+      "description": "<p>\n  Required for use by the\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.8nSzcjNlyulWrZtN]{Arasaka Prototype Railgun Upgrade}.\n</p>\n<blockquote>\n  <p>\n    Each battery contains enough charge to power 8 shots. The battery can be\n    recharged in any power port in 1 hour.\n  </p>\n</blockquote>\n"
+    },
+    "CO2 Tank": {
+      "name": "CO2 Tank",
+      "description": "<p>\n  A CO<sub>2</sub> tank designed for usage with the\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_armor.Item.D4kiUBYevT8JBVz2]{Masetto AirRider}\n  armor.\n</p>\n<blockquote><p>Must be replaced after every usage.</p></blockquote>\n"
+    },
+    "Digital Gladiator": {
+      "name": "Digital Gladiator",
+      "description": "<p>\n  A pvp battle game you can play on your\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "ModFire 10X (Rifle)": {
+      "name": "ModFire 10X (Rifle)",
+      "description": "<p>\n  Proprietary ModFire parts that convert the\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.OqCYiOiTR4zpimAq]{ModFire 10X (Pistol)}\n  into an Assault Rifle.\n</p>\n<blockquote><p>Pistol mode cannot be used while converted.</p></blockquote>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "ModFire 10X (SMG)": {
+      "name": "ModFire 10X (SMG)",
+      "description": "<p>\n  Proprietary ModFire parts that convert the\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.OqCYiOiTR4zpimAq]{ModFire 10X (Pistol)}\n  into an SMG\n</p>\n<blockquote><p>Pistol mode cannot be used while converted.</p></blockquote>\n",
+      "dvTable": "DV SMG"
+    },
+    "Montage Digital Fashion": {
+      "name": "Montage Digital Fashion",
+      "description": "<p>\n  Allows users to purchase and select styles for their connected\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_armor.Item.ETPujR8m7tEoYFQW]{Montage Variable Clothing}.\n  Choose between\n</p>\n<p>\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.Rs94jDJRrbHVpvIh]{Montage Variables (Gang Colors)}\n  or\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.7fXDqCH4Z3ZLo5kL]{Montage Variables (Generic Chic)}.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Montage Variables (Gang Colors)": {
+      "name": "Montage Variables (Gang Colors)",
+      "description": "<p>[Describe the color or pattern of your downloaded Gang Color Style here.]</p>\n<blockquote>\n  <p>Requires an action to swap styles via connected agent.</p>\n  <p>\n    Additional colors and patterns can be purchased via the\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.pDQRjH8q63YyoWSp]{App}.\n  </p>\n</blockquote>\n"
+    },
+    "Montage Variables (Generic Chic)": {
+      "name": "Montage Variables (Generic Chic)",
+      "description": "<p>\n  [Describe the color or pattern of your downloaded Generic Chic Style here.]\n</p>\n<blockquote>\n  <p>Requires an action to swap styles via connected agent.</p>\n  <p>\n    Additional colors and patterns can be purchased via the\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.pDQRjH8q63YyoWSp]{App}.\n  </p>\n</blockquote>\n"
+    },
+    "NCPD Crime Database": {
+      "name": "NCPD Crime Database",
+      "description": "<p>\n  Requires CitiNet access in Night City. Allows user to research the city's\n  crime database.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Trauma Team MedScan": {
+      "name": "Trauma Team MedScan",
+      "description": "<p>\n  MedScan can connect you to a Trauma Team Remote Specialist but their actual\n  guidance costs extra.\n</p>\n<p>Requires CitiNet access.</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Ziggurat City Database": {
+      "name": "Ziggurat City Database",
+      "description": "<p>\n  Grants +1 bonus to all <strong>Local Expert</strong> Skills Checks related to\n  communities and neighborhoods for your favorite city.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n    — Additional city databases sold separately.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    }
+  }
+}

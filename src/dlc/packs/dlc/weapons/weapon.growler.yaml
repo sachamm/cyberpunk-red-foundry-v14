@@ -1,0 +1,93 @@
+_id: X4SWCsdrRq7Dt5cg
+_key: "!items!X4SWCsdrRq7Dt5cg"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher.svg
+name: Growler
+ownership:
+  IMmQeDHuejnDb1W4: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rocket
+  attackmod: 0
+  brand: Militech
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 8d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        An Exotic Rocket Launcher. Anything with a biological brain must make a
+        <strong>DV 19 Resist Torture/Drugs Check</strong> or suffer a
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.oi3MEn9Y8zdbooNe]{Brain
+       Injury}
+        Critical Injury. Reloading takes <strong>2 Actions</strong>. Requires
+        <strong>BODY 11+</strong> unless mounted.
+      </p>
+      <blockquote>
+        <p>
+          The source material is unclear how this experimental weapon should function.
+        </p>
+        <p>
+          Ask your GM if it is able to shoot and deal damage via standard
+          @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.dHHTQLHUkd0IX8GI]{Rocket
+       (Armor-Piercing)}
+          &amp;
+          @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.e2w1oKiv8t68chiI]{Rocket
+       (Smart)}
+          or if it requires custom
+          @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.FzmgjXxurHiMxdlv]{Rocket
+       (Growler)}
+          ammo that deals <strong>0</strong> damage.
+        </p>
+      </blockquote>
+  dvTable: DV Rocket Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: {}
+    max: 1
+    value: 0
+  price:
+    market: 10000
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: TotR — Street Stories
+      page: 71
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: rocketLauncher
+type: weapon

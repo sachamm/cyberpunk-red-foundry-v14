@@ -1,0 +1,53 @@
+_id: dy2LvajTiRM00UMo
+_key: "!items!dy2LvajTiRM00UMo"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/pistolveryheavy_small.svg
+name: Very Heavy Pistol (Small Game)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 100
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>Small game ammo; not great for people.</p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: modify
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: modify
+      value: "-2d6"
+  price:
+    market: 10
+  size: 0
+  sources:
+    - book: Black Chrome+
+      page: 3
+    - book: Interface RED v4
+      page: 11
+  type: special
+  variety: vHeavyPistol
+type: ammo

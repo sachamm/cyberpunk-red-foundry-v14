@@ -1,0 +1,235 @@
+_id: 4KPettaa7BQ62IV7
+_key: "!tables!4KPettaa7BQ62IV7"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+name: Family (What)
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: K9AESp5IR3YnEZxH
+    _key: "!tables.results!4KPettaa7BQ62IV7.K9AESp5IR3YnEZxH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773391687
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Corporate Execs…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 09hzsMm9HNUXv6r1
+    _key: "!tables.results!4KPettaa7BQ62IV7.09hzsMm9HNUXv6r1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773471461
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Corporate Managers…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: BfDN0i1KH77BaL1k
+    _key: "!tables.results!4KPettaa7BQ62IV7.BfDN0i1KH77BaL1k"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773464996
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Corporate Technicians…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: FtGqpmrtcCmKRKRn
+    _key: "!tables.results!4KPettaa7BQ62IV7.FtGqpmrtcCmKRKRn"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773459206
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Nomad Pack…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: 0RlXnhHcBcZMV0gJ
+    _key: "!tables.results!4KPettaa7BQ62IV7.0RlXnhHcBcZMV0gJ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773453857
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Ganger "Family"…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: fY5klWAoxCViKyTh
+    _key: "!tables.results!4KPettaa7BQ62IV7.fY5klWAoxCViKyTh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773446872
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Combat Zoners…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: Guftd8i7pYQGwHvy
+    _key: "!tables.results!4KPettaa7BQ62IV7.Guftd8i7pYQGwHvy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773477933
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Urban Homeless…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: GYmmvXJZS1sxvhya
+    _key: "!tables.results!4KPettaa7BQ62IV7.GYmmvXJZS1sxvhya"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773485437
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Megastructure Warren Rats…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: ac74Gm2MTshqeUfi
+    _key: "!tables.results!4KPettaa7BQ62IV7.ac74Gm2MTshqeUfi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773491927
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Reclaimers…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: yXF95vLxJdh7r97m
+    _key: "!tables.results!4KPettaa7BQ62IV7.yXF95vLxJdh7r97m"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784773498008
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…their parents are Edgerunners…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: -100000

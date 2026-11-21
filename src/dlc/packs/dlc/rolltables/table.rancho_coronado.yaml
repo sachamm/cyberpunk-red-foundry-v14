@@ -1,0 +1,153 @@
+_id: n2oY2jqVZeJT1Zz6
+_key: "!tables!n2oY2jqVZeJT1Zz6"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Rancho Coronado
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: X64E0DoPmM2NLfFi
+    _key: "!tables.results!n2oY2jqVZeJT1Zz6.X64E0DoPmM2NLfFi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755392490
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755426125
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grab some breakfast at the pancake house.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Rancho Coronado
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: b1N7wFOzZeDATeuH
+    _key: "!tables.results!n2oY2jqVZeJT1Zz6.b1N7wFOzZeDATeuH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755392715
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755452384
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Meet their totally real dog at the park.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Rancho Coronado
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: DrF07aV4I0SNm9HD
+    _key: "!tables.results!n2oY2jqVZeJT1Zz6.DrF07aV4I0SNm9HD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755392941
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755468845
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grab a drink at the local pub.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Rancho Coronado
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: dAcPf0urM2Lc3KQJ
+    _key: "!tables.results!n2oY2jqVZeJT1Zz6.dAcPf0urM2Lc3KQJ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755393138
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755591223
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Mani-pedi date at a local strip-mall.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Rancho Coronado
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: aL23YQ2jV0R7yo9V
+    _key: "!tables.results!n2oY2jqVZeJT1Zz6.aL23YQ2jV0R7yo9V"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755393344
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755614152
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Have you ever LARPed before?</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Rancho Coronado
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 3Ch9uhDSdsOH6ZVs
+    _key: "!tables.results!n2oY2jqVZeJT1Zz6.3Ch9uhDSdsOH6ZVs"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755394108
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755643666
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Roast some SCOP weenies at a company cookout.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Rancho Coronado
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="techno-heart-1.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter3"
+       x="-0.074982999"
+       y="-0.077242942"
+       width="1.1516323"
+       height="1.1553441">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood2" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur2" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.800000"
+         dy="0.400000"
+         id="feOffset2" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite2" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite3" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="255.68278"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="fill:#1b1f21" />
+  <g
+     class=""
+     style="fill:#e64539;filter:url(#filter3)"
+     transform="translate(0,0)"
+     id="g2">
+    <path
+       d="M139.625 23.563c-1.58.008-3.147.052-4.72.125l171.75 258.093h146.25c15.35-16.906 27.875-35.263 35.69-56.56h-96.876c-7.317 18.17-25.136 31.093-45.845 31.093-27.173 0-49.375-22.233-49.375-49.407 0-11.436 3.95-21.978 10.53-30.375l-49.155-77.655c-.03.053-.063.103-.094.156a195.36 195.36 0 0 0-3.624-6c-30.106-48.086-73.28-69.694-114.53-69.468zm228.656 2.656c-35.864.328-72.648 18.056-100.78 57.655h204.125C447.147 47.133 408.293 25.85 368.28 26.22zm-253.967.25c-11.495 2.624-22.58 7.007-32.876 13 10.672 9.08 17.47 22.6 17.47 37.624 0 12.72-4.873 24.35-12.844 33.125l43.187 67.31h85.594L114.314 26.47zM49.5 46.374c-17.074 0-30.72 13.645-30.72 30.72 0 17.073 13.646 30.686 30.72 30.686 17.074 0 30.72-13.612 30.72-30.686 0-17.074-13.646-30.72-30.72-30.72zm232.844 56.188 38.97 61.53a48.966 48.966 0 0 1 24.56-6.593c27.05 0 49.203 22.03 49.407 49.03h98.75c2.575-11.807 3.757-24.49 3.345-38.25-.735-24.555-6.237-46.66-15.22-65.718h-199.81zm-259.47 16.062c-4.02 15.02-5.985 31.62-5.436 49.656.095 3.143.293 6.215.562 9.25h89.063l-35.97-56.06a48.996 48.996 0 0 1-21.593 5c-9.79 0-18.926-2.887-26.625-7.845zm323 57.563c-17.073 0-30.687 13.644-30.687 30.718 0 17.074 13.614 30.72 30.688 30.72 17.074 0 30.72-13.646 30.72-30.72 0-17.074-13.646-30.72-30.72-30.72zm-325.03 20.03c3.693 16.938 10.187 32.203 18.75 46.345h156.968l2.75 4.343L276.97 369.53l9.092 14.345H212.22a49.277 49.277 0 0 1-8.282 19c22.164 24.562 41.335 52.573 53.843 86.75 35.156-90.944 118.132-134.872 176.564-189.156h-137.72l-2.78-4.19-66.594-100.06H20.844zM52.5 261.25c21.193 27.23 49.796 50.764 79.313 75.313 8.633-7.354 19.808-11.813 31.968-11.813 24.116 0 44.348 17.504 48.595 40.438h39.72L186.28 261.25H52.5zm111.28 82.188c-17.073 0-30.718 13.644-30.718 30.718 0 17.074 13.645 30.72 30.72 30.72 17.073 0 30.687-13.646 30.687-30.72 0-17.074-13.615-30.72-30.69-30.72z"
+       fill="#fff"
+       fill-opacity="1"
+       id="path2"
+       style="fill:#e64539" />
+  </g>
+</svg>

@@ -1,0 +1,252 @@
+_id: mbKzQ2euThe61ajy
+_key: "!tables!mbKzQ2euThe61ajy"
+description: <p>Interface RED volume 3 / Digital Dating pg 12</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+name: "Good Date: Middle"
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: Fl6Hc0uTYMU7PdIa
+    _key: "!tables.results!mbKzQ2euThe61ajy.Fl6Hc0uTYMU7PdIa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You learn something new about them…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Good Date: Middle"
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: useqrqPWyJW7nDa3
+    _key: "!tables.results!mbKzQ2euThe61ajy.useqrqPWyJW7nDa3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They vent about one of their enemies…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Good Date: Middle"
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: sEFl2irUUrOMUpkb
+    _key: "!tables.results!mbKzQ2euThe61ajy.sEFl2irUUrOMUpkb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They tell you about a previous relationship…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Good Date: Middle"
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: CTMN1L9XHcicmW6C
+    _key: "!tables.results!mbKzQ2euThe61ajy.CTMN1L9XHcicmW6C"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You learn all about their family…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Good Date: Middle"
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: D73t4Ope6oSOnAp7
+    _key: "!tables.results!mbKzQ2euThe61ajy.D73t4Ope6oSOnAp7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They surprise you with a 20eb gift!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Good Date: Middle"
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 5e7gxRVCsr7RvYAF
+    _key: "!tables.results!mbKzQ2euThe61ajy.5e7gxRVCsr7RvYAF"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They stay quiet and just spend time listening to you.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Good Date: Middle"
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: MmDyZeJZJOobBwgu
+    _key: "!tables.results!mbKzQ2euThe61ajy.MmDyZeJZJOobBwgu"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.IMZtJrBlTxAIZQln
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: Traits
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: gxBdlW1e3FvYMURl
+    _key: "!tables.results!mbKzQ2euThe61ajy.gxBdlW1e3FvYMURl"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.bsLvBIya0G557I0w
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/enemy.svg
+    name: Enemies (What)
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: JJYuDxd7fozuw98C
+    _key: "!tables.results!mbKzQ2euThe61ajy.JJYuDxd7fozuw98C"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.ubwGshFKnO3MQ0JF
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lover.svg
+    name: Previous Relationship
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: tEg4CBcBageCimne
+    _key: "!tables.results!mbKzQ2euThe61ajy.tEg4CBcBageCimne"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.vAFzyUpgAmQfTKMa
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: Family (Who)
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: K3ttN4x5lot4Jpdv
+    _key: "!tables.results!mbKzQ2euThe61ajy.K3ttN4x5lot4Jpdv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.UaNgALzUzD2sqiId
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Good Date: End"
+    range:
+      - 1
+      - 6
+    type: document
+    weight: 1
+sort: 0

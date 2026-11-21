@@ -1,0 +1,55 @@
+_id: ICi9awVbdgYTvWKw
+_key: "!items!ICi9awVbdgYTvWKw"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 3e217bbcff2ddf4ad6a4ee3d429034956ac33c3c
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/modball_splashie.svg
+name: Splashie ModBall
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: Sanroo
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Balls of colourful, but highly combustible paint; keep away from open flames.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 5
+  size: 0
+  sources:
+    - book: 12 Days of Cutimas
+      page: 6
+  type: basic
+  variety: paintball
+type: ammo

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="ballistic-harpoon.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1">Harpoon</title>
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter3"
+       x="-0.075"
+       y="-0.075883285"
+       width="1.15"
+       height="1.1517666">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood2" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur2" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset2" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite2" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite3" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="255.36555"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#1b1f21"
+     fill-opacity="1"
+     id="path1"
+     inkscape:label="background" />
+  <g
+     class=""
+     style="fill:#e64539;filter:url(#filter3)"
+     transform="translate(0,0)"
+     id="g2">
+    <path
+       id="path1-4"
+       d="m 496,18.793613 -18.02208,80.50171 -8.36319,-8.67794 c -3.52166,-3.65414 -8.25496,-5.71557 -13.32587,-5.80653 -5.0986,-0.0811 -9.87364,1.80104 -13.52284,5.32764 L 201.93093,322.8595 c -1.37425,-1.87947 -2.89711,-3.73077 -4.60159,-5.49951 -1.70744,-1.7717 -3.50245,-3.36375 -5.33151,-4.8082 z M 168.49556,309.55487 c 0.9847,-8.8e-4 1.97427,0.17016 2.91969,0.52329 5.64039,2.10786 13.72792,6.03391 20.21956,12.76975 6.49263,6.73683 10.12311,14.97025 12.02631,20.69073 1.02214,3.07236 0.16436,6.52478 -2.18397,8.79381 -1.95164,1.88639 -4.59596,2.71199 -7.26637,2.26313 -2.73073,-0.45874 -5.02568,-2.15534 -6.29316,-4.65372 -2.71886,-5.3606 -6.02086,-10.07264 -9.81144,-14.00559 -3.78959,-3.93295 -8.37617,-7.40473 -13.63098,-10.31737 -2.44796,-1.35745 -4.05915,-3.71357 -4.42199,-6.46308 -0.35395,-2.69117 0.56341,-5.31715 2.51802,-7.20651 1.61297,-1.55791 3.758,-2.39252 5.92433,-2.39444 z m -10.53943,21.10589 c 0.82752,0.69503 1.71317,1.33618 2.68603,1.87501 4.56669,2.532 8.52663,5.52297 11.76949,8.88842 3.24483,3.36742 6.08908,7.43719 8.45201,12.09582 0.50521,0.9956 1.11496,1.90614 1.78232,2.76134 l -35.45714,34.26184 c -0.51213,-12.32285 -5.43938,-23.647 -15.13136,-34.85659 z m -31.60092,30.53693 c 10.32968,12.05392 14.25567,23.74269 12.60755,37.29545 l -9.94275,9.60675 c 0.79588,-15.05159 -3.04962,-28.65019 -11.05888,-38.79004 z m -14.12337,13.64642 c 7.98158,10.5462 10.80114,25.53123 7.79161,41.94917 l -22.955788,22.18147 c -5.05015,-3.35655 -9.67218,-7.19108 -13.76035,-11.43348 -4.0941,-4.24735 -7.75882,-9.01238 -10.9295,-14.1871 z m -45.666358,44.12735 c 3.25175,5.09168 6.95027,9.80741 11.04536,14.05773 4.09608,4.2513 8.67437,8.12138 13.64642,11.559 l -8.16622,7.89202 c -5.04917,-3.35556 -9.67114,-7.18911 -13.76228,-11.43349 -4.09213,-4.24834 -7.75595,-9.01238 -10.92564,-14.1871 z m -13.97468,13.50546 c 3.25175,5.09167 6.94833,9.80741 11.04342,14.05772 4.09707,4.25131 8.67828,8.12138 13.64835,11.559 l -8.16816,7.89202 c -5.05015,-3.35556 -9.67119,-7.19201 -13.76035,-11.43541 -4.09212,-4.24537 -7.75589,-9.00847 -10.92756,-14.18517 z m -13.9747,13.50353 c 3.25373,5.09365 6.95027,9.81329 11.04536,14.05965 4.09707,4.25229 8.67635,8.12138 13.64642,11.559 l -8.16816,7.89202 c -5.05015,-3.35655 -9.67119,-7.19202 -13.76034,-11.43542 -4.09312,-4.24636 -7.75882,-9.01044 -10.9295,-14.18516 z m -13.97855,13.50545 c 3.25175,5.09266 6.95027,9.81033 11.04536,14.05966 4.09707,4.25031 8.67728,8.11944 13.64834,11.55707 l -3.22091,3.11278 c -3.41686,3.30119 -7.921,5.07677 -12.65774,4.98779 -4.74663,-0.085 -9.17707,-2.01497 -12.47431,-5.43579 -6.809,-7.06507 -6.60818,-18.36048 0.44799,-25.17838 z"
+       style="stroke-width:0.988675"
+       inkscape:label="path2" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>The Noun Project</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:source>https://thenounproject.com/icon/harpoon-5047630/</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Amethyst Studio</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:title>Harpoon</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

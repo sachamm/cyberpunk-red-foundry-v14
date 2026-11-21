@@ -1,0 +1,46 @@
+{
+  "label": "Weather Effects",
+  "mapping": {},
+  "entries": {
+    "Acid Rain": {
+      "name": "Acid Rain",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-1 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n<p>Ablates worn armor by 1.</p>\n"
+    },
+    "Ash Storm": {
+      "name": "Ash Storm",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-2 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n<p>\n  Inhaling the Ash Storm [[/r 2d6#Ash Storm]] damage as if\n  it were a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.gaGUmTGViuxZ4mqR]{Vial of\n Poison}\n  and creates a\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-body.Item.xTQ2T50UGNY8DrHl]{Foreign\n Object}\n  injury.\n</p>\n"
+    },
+    "Cold Snap": {
+      "name": "Cold Snap",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-2 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n"
+    },
+    "Dust Storm": {
+      "name": "Dust Storm",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-2 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n<p>\n  Inhaling the Dust Storm may cause the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-body.Item.xTQ2T50UGNY8DrHl]{Foreign\n Object}\n  injury.\n</p>\n"
+    },
+    "Heat Wave": {
+      "name": "Heat Wave",
+      "description": "<p>\n  <span role=\"presentation\">Increase</span><span id=\"page23R_mcid538\"> </span\n  ><span role=\"presentation\">Armor Penalty by 2</span>\n</p>\n"
+    },
+    "Heavy Rain/Sleet": {
+      "name": "Heavy Rain/Sleet",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-2 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n"
+    },
+    "Hot Weather": {
+      "name": "Hot Weather",
+      "description": "<p>\n  <span role=\"presentation\">Increase</span><span id=\"page23R_mcid538\"> </span\n  ><span role=\"presentation\">Armor Penalty by 1</span>\n</p>\n"
+    },
+    "Inversion Smog": {
+      "name": "Inversion Smog",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-4 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n<p>\n  Inhaling the Inversion Smog deals [[/r 2d6#Inversion Smog]]\n  damage as if it were a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.gaGUmTGViuxZ4mqR]{Vial of\n Poison}\n</p>\n"
+    },
+    "Light Rain/Sleet": {
+      "name": "Light Rain/Sleet",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-1 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n"
+    },
+    "Toxic Blood Rain": {
+      "name": "Toxic Blood Rain",
+      "description": "<p>\n  <span role=\"presentation\"\n    >The weather may impose a <strong>-1 penalty</strong> to any Skill Checks as\n    determined by the GM.</span\n  >\n</p>\n<p>\n  Toxic Blood Rain deals [[/r 3d6#Toxic Blood Rain]] damage as if\n  it were a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Vial of\n Biotoxin}\n</p>\n"
+    }
+  }
+}
