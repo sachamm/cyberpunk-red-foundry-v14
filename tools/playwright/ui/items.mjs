@@ -232,23 +232,23 @@ export async function createLoadableWeapon(
     value: 8,
   });
 
-  await (await openItemSettings(page, sheetId))
-    .locator(".manage-installable-types")
-    .click();
-  const installableTypesDialog = page
-    .locator(".application")
-    .filter({ has: page.locator('input[name="selectedTypes"]') });
-  await installableTypesDialog
-    .locator('input[name="selectedTypes"][value="ammo"]')
-    .check();
+  // Ticking Ranged above already adds ammo to the allowed installable types;
+  // only open the dialog when item upgrades must be allowed as well (ammo is
+  // pre-checked there, so confirming keeps it).
   if (includeUpgrades) {
+    await (await openItemSettings(page, sheetId))
+      .locator(".manage-installable-types")
+      .click();
+    const installableTypesDialog = page
+      .locator(".application")
+      .filter({ has: page.locator('input[name="selectedTypes"]') });
     await installableTypesDialog
       .locator('input[name="selectedTypes"][value="itemUpgrade"]')
       .check();
+    await installableTypesDialog
+      .locator('button.cpr-dialog-button[data-action="confirm"]')
+      .click();
   }
-  await installableTypesDialog
-    .locator('button.cpr-dialog-button[data-action="confirm"]')
-    .click();
   await page.waitForFunction(
     ({ id, includeUpgrades }) => {
       const allowed = game.items.get(id).system.installedItems.allowedTypes;
