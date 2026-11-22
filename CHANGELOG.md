@@ -45,7 +45,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Add 4 new CPR default Turn Marker options that can be selected via the system settings menu
 - Add 2 new Bodysculpt items for purchase/installation as described on pg277 of the Core Rule Book
 - Active Effect categories can be collapsed and expanded by clicking on them.
-- Show a compendium pack's source package (e.g. `cyberpunk-red-core`) in the header of an opened Compendium
+- Show the name of a compendium pack's folder (e.g. `Cyberpunk RED: Core`) in the header of an opened Compendium; packs without a folder show their source package instead
 
 ### Bug Fixes
 
