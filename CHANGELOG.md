@@ -2,12 +2,24 @@
 
 # Changelog
 
-## Unreleased
+## Version 0.93.0-v14.alpha.4
+
+### New Features
+
+- Automatically add ammo to a weapon's allowed installable types when Ranged Weapon is ticked.
+- Label opened compendiums with their pack folder or source package.
+- Add a generated Credits journal compendium built from `CREDITS.md`.
+- Update translations.
 
 ### Bug Fixes
 
 - Enable the weapon DV ruler for linked characters when their token is selected, including player sheets opened with C outside combat. Keep token DV updates and weapon highlighting consistent with that selection.
 - Declare system document types in `system.json` instead of the deprecated `template.json`, removing its startup warning.
+- Fix an error when uninstalling upgrades from items in the world item list.
+
+### Testing
+
+- Add browser coverage for the actor document browser, compendium source labels, ranged-weapon ammo, and world-item upgrade removal.
 
 ## Version 0.93.0-v14.alpha.3
 
@@ -88,9 +100,11 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Add a "Homebrew Rules" settings menu with JonJon's optional Luck Roll: when enabled, clicking the LUCK stat rolls 1d10 under your LUCK (Roll Under Max or Roll Under Current), with a Success/Failure chat card; off by default
 - The dialog box for updating mook skills now presents the skills by category, similar to the character sheet
 - Item upgrades may now be configured with negative modifiers
+- Ticking **Ranged Weapon** on a weapon automatically adds ammo to its allowed installable types
 - Add 4 new CPR default Turn Marker options that can be selected via the system settings menu
 - Add 2 new Bodysculpt items for purchase/installation as described on pg277 of the Core Rule Book
 - Active Effect categories can be collapsed and expanded by clicking on them.
+- Show the name of a compendium pack's folder (e.g. `Cyberpunk RED: Core`) in the header of an opened Compendium; packs without a folder show their source package instead
 
 ### Bug Fixes
 
@@ -119,6 +133,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
 - Fix Import All Content breaking items with pre-installed upgrades
+- Fix an error when uninstalling upgrades from items in the world item list
 - The "Damage Dealt To" damage-application card now shows the target's Token name instead of the Actor name
 - Ctrl-Clicking (or Cmd-Clicking) an item properly sends a card to chat
 - Dragging invalid items (e.g. Roles) to a container actor is handled gracefully instead of throwing dev errors

@@ -1,5 +1,5 @@
 {
-  "version": "0.93.0-v14.alpha.3",
+  "version": "0.93.0-v14.alpha.4",
   "flags": {
     "featureVideoURL": ""
   },
@@ -238,7 +238,12 @@
     {
       "name": "Cyberpunk RED: Other",
       "sorting": "m",
-      "packs": ["other_macros", "other_scenes", "other_changelog"]
+      "packs": [
+        "other_macros",
+        "other_scenes",
+        "other_changelog",
+        "other_credits"
+      ]
     }
   ],
   "packs": [
@@ -465,6 +470,14 @@
       "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
     },
     {
+      "label": "Credits",
+      "type": "JournalEntry",
+      "name": "other_credits",
+      "path": "packs/other/credits",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
       "label": "Macros",
       "type": "Macro",
       "name": "other_macros",
@@ -557,7 +570,7 @@
   "secondaryTokenAttribute": null,
   "background": "systems/cyberpunk-red-core/images/Foundry-Background.webp",
   "url": "https://github.com/sachamm/cyberpunk-red-foundry-v14",
-  "manifest": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.3/system.json",
-  "download": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.3/cyberpunk-red-core-0.93.0-v14.alpha.3.zip",
+  "manifest": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.4/system.json",
+  "download": "https://github.com/sachamm/cyberpunk-red-foundry-v14/releases/download/v0.93.0-v14.alpha.4/cyberpunk-red-core-0.93.0-v14.alpha.4.zip",
   "license": "LICENCE.md"
 }

@@ -1,6 +1,6 @@
 import path from "node:path";
 import fs from "fs-extra";
-import { ChangelogUtils } from "./utils/ChangelogUtils.mjs";
+import { MarkdownUtils } from "./utils/MarkdownUtils.mjs";
 import { PackUtils } from "./utils/PackUtils.mjs";
 import log from "./utils/logger.mjs";
 
@@ -95,7 +95,7 @@ export const buildChangelog = (config) => async (done) => {
         continue;
       }
       const markdown = fs.readFileSync(changelogFile, "utf-8");
-      await ChangelogUtils.generateChangelogJournal(
+      await MarkdownUtils.generateChangelogJournal(
         config,
         markdown,
         langFull,

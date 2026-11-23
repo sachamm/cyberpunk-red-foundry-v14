@@ -28,6 +28,27 @@ const Loadable = function Loadable() {
   };
 
   /**
+   * Set whether this item is a ranged weapon. When the item becomes ranged,
+   * ammo is added to the allowed installable types so it can be managed
+   * through the standard installed-items flow (WI #1253). Unticking Ranged
+   * does not remove ammo; the behavior is intentionally one-way.
+   *
+   * @param {Boolean} val - whether the item is a ranged weapon
+   */
+  this.setRanged = function setRanged(val) {
+    const cprItemData = foundry.utils.duplicate(this.system);
+    foundry.utils.setProperty(cprItemData, "isRanged", val);
+    if (val) {
+      // Mirrors migration 032's addAmmoAsInstallable.
+      cprItemData.installedItems.allowed = true;
+      if (!cprItemData.installedItems.allowedTypes.includes("ammo")) {
+        cprItemData.installedItems.allowedTypes.push("ammo");
+      }
+    }
+    this.update({ system: cprItemData });
+  };
+
+  /**
    * Set DV table that a TOKEN (from an actor) will use when measuring distance. This also takes
    * whether the item is set to autofire or not.
    *
@@ -276,7 +297,8 @@ const Loadable = function Loadable() {
    * When a loadable item has an upgrade removed we need to sync the magazine data
    * in case the magazine size decreased, we need to remove the extra bullets.
    *
-   * @returns {Array} - updated embedded documents
+   * @returns {Promise<Array>} - updated embedded documents when the item has an
+   *                             owning actor, or top-level world items otherwise
    */
   this.syncMagazine = async function syncMagazine() {
     const updateData = [];
@@ -309,7 +331,11 @@ const Loadable = function Loadable() {
         }
       }
     }
-    return actor.updateEmbeddedDocuments("Item", updateData);
+    // World items have no owning actor; their installed items are top-level
+    // documents rather than embedded ones.
+    return actor
+      ? actor.updateEmbeddedDocuments("Item", updateData)
+      : Item.updateDocuments(updateData);
   };
 };
 
