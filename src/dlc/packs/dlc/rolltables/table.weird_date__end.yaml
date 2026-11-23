@@ -1,0 +1,209 @@
+_id: aRSM3stWJ4GCjb0u
+_key: "!tables!aRSM3stWJ4GCjb0u"
+description: <p>Interface RED volume 3 / Digital Dating pg 14</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+name: "Weird Date: End"
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: VYWsXUzsheHx60Xw
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.VYWsXUzsheHx60Xw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They are really into you and want another date.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/success.svg
+    name: "Weird Date: End"
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: njqU8XhKmM2nJsFf
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.njqU8XhKmM2nJsFf"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784738050387
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They reveal their true motivation…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Weird Date: End"
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: mBW5DlUI1RcXrrXf
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.mBW5DlUI1RcXrrXf"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They show you their "Lucky Charm".</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Weird Date: End"
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: 45iGdSfg6AjPSDv4
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.45iGdSfg6AjPSDv4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They give you some helpful advice.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Weird Date: End"
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: f6txgG44gZ2knw9J
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.f6txgG44gZ2knw9J"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They give you some street drugs worth 50eb.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Weird Date: End"
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: mMKWLMuf0zxYtBmw
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.mMKWLMuf0zxYtBmw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>Your date ended too abruptly to learn anything else about this
+      person.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Weird Date: End"
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: lc889Z3byrZ8XOxR
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.lc889Z3byrZ8XOxR"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.SrIhrnG0xA4UDkIi
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lucky-cat.svg
+    name: Good Luck Charms
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: Ms1WdPmoAUv8UGlb
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.Ms1WdPmoAUv8UGlb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.uT7oZQXzrPytbXIX
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/motivation.svg
+    name: Motivations
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: h08CBil37HKi6Eis
+    _key: "!tables.results!aRSM3stWJ4GCjb0u.h08CBil37HKi6Eis"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.BIIxmGcvtftmOyzy
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/random.svg
+    name: Post-Date Review
+    range:
+      - 2
+      - 6
+    type: document
+    weight: 1
+sort: 234375

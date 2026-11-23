@@ -1,0 +1,153 @@
+_id: qfFeZRS3MbNdvK1i
+_key: "!tables!qfFeZRS3MbNdvK1i"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Upper Marina
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: jeRrQRNB6AHHmCn7
+    _key: "!tables.results!qfFeZRS3MbNdvK1i.jeRrQRNB6AHHmCn7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756371263
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778204149
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Go to a game at the McCartney Field Stadium.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Upper Marina
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: WQ7tukDNSETdGeCT
+    _key: "!tables.results!qfFeZRS3MbNdvK1i.WQ7tukDNSETdGeCT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756371463
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778213092
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Rent a jetski and enjoy the bay.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Upper Marina
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 1ylz1JDxEE7dSvae
+    _key: "!tables.results!qfFeZRS3MbNdvK1i.1ylz1JDxEE7dSvae"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756371628
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778229080
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a press conference &amp; fashion show hosted by Ziggurat.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Upper Marina
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: ZvLAGG87HM6aQE6B
+    _key: "!tables.results!qfFeZRS3MbNdvK1i.ZvLAGG87HM6aQE6B"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756371783
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778243327
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Get a Johnny Silverhand at the Afterlife</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Upper Marina
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: mj6WP47ErHsom4S4
+    _key: "!tables.results!qfFeZRS3MbNdvK1i.mj6WP47ErHsom4S4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756371902
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778256728
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Spend a day riding the streetcar and being a tourist.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Upper Marina
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: MyY3WMcrqsu0jYih
+    _key: "!tables.results!qfFeZRS3MbNdvK1i.MyY3WMcrqsu0jYih"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756372427
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778264886
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Go fishing!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Upper Marina
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,81 @@
+_id: oYcEZ8R8qVoalhyI
+_key: "!items!oYcEZ8R8qVoalhyI"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/cyberware/popup-net.svg
+name: Popup Net Launcher
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - custom
+  attackmod: 0
+  brand: Pursuit Security Inc.
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: "0"
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>A concealable exotic net launcher.</p>
+      <blockquote>
+        <p>Can't hold anything with this hand while activated.</p>
+      </blockquote>
+  dvTable: DV Shotgun (Slug)
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: clinic
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: true
+  isWeapon: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 3
+  sources:
+    - book: Black Chrome
+      page: 20
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: grenadeLauncher
+type: cyberware

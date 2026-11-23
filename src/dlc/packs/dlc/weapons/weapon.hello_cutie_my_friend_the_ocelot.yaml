@@ -1,0 +1,229 @@
+_id: ailPhc0y7B5jxhrV
+_key: "!items!ailPhc0y7B5jxhrV"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: qC0d50uFECu8kMfR
+        _stats:
+          compendiumSource: Item.seo72ISeTtbPXmju
+          coreVersion: "13.351"
+          createdTime: 1786665554147
+          duplicateSource: null
+          exportSource:
+            coreVersion: "12.343"
+            systemId: cyberpunk-red-core
+            systemVersion: v0.0.0dev
+            uuid: null
+            worldId: dev
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786665761376
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/dlc/icons/black-chrome/upgrades/biometric-key.svg
+        name: Biometric Key
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: Kendachi
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 4d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>A biometric key prevents unwanted users from accessing enhanced
+              features.</p><blockquote><p>A biometric key prevents unauthorized
+              users from loading or unloading the weapon.</p></blockquote>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 7
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source:
+            book: Black Chrome
+            page: 92
+          sources:
+            - book: 12 Days of Cutimas
+              page: 6
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Melee Weapon
+          weaponType: vHeavyMelee
+        type: itemUpgrade
+  scene-packer:
+    hash: 20620543a3af23cc90666e6cb454a16b9a649541
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun_excellent.svg
+name: Hello Cutie My Friend The Ocelot
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - shotgunSlug
+  attackmod: 1
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Excellent Quality Shotgun</strong> that has an alternate SMG style
+        auto fire mode*.
+      </p>
+      <blockquote>
+        <p>Uses only Shotgun Slug Ammunition, cannot install magazine upgrades.</p>
+      </blockquote>
+      <p>*Alternate weapon fire modes are currently not supported.</p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - qC0d50uFECu8kMfR
+    slots: 1
+    usedSlots: 1
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 12
+    value: 0
+  price:
+    market: 1500
+  quality: excellent
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: 12 Days of Cutimas
+      page: 6
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

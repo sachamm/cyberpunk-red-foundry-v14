@@ -5,7 +5,12 @@ import * as CssTools from "./gulp/css.mjs";
 import { buildChangelog } from "./gulp/changelog.mjs";
 import { PackUtils } from "./gulp/utils/PackUtils.mjs";
 import { cprTransformEntry } from "./gulp/utils/cprPackData.mjs";
-import Config from "./tools/release/config.mjs";
+import GitHubConfig from "./tools/release/config.mjs";
+// Bundled DLC: remove this import, the withDlc() wrapper and the bundleDlc
+// task to drop it (see src/dlc/README.md).
+import { withDlc, bundleDlc } from "./tools/dlc/dlc.mjs";
+
+const Config = withDlc(GitHubConfig);
 
 // DevMode defaults are project-specific, so they live here rather than in the
 // shared build system. Merged with any `devMode` block in foundryconfig.json.
@@ -62,6 +67,7 @@ gulp.task("compileCss", CssTools.compileCss(config));
 gulp.task("processImages", ImageTools.processImages(config));
 gulp.task("buildChangelog", buildChangelog(config));
 gulp.task("compilePacks", PackUtils.compilePacks(config));
+gulp.task("bundleDlc", bundleDlc(config));
 gulp.task("extractPacksTask", PackUtils.extractPacks(config));
 gulp.task("watchStaticAssets", BuildTools.watchStaticAssets(config));
 gulp.task("watchImages", ImageTools.watchImages(config));
@@ -77,6 +83,7 @@ const assets = gulp.series(
   "processImages",
   "copyStaticAssets",
   "compilePacks",
+  "bundleDlc",
   "generateDevMode",
 );
 

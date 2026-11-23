@@ -1,0 +1,184 @@
+_id: lCd1wE66lgy83u9s
+_key: "!items!lCd1wE66lgy83u9s"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/vehicle-rooms.svg
+name: Vehicle Room (Luxury)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>Each room provides the vehicle with Luxury seating.</p>
+      <table>
+        <tbody>
+          <tr>
+            <td><p style="text-align: center">Vehicle Type</p></td>
+            <td><p style="text-align: center">Seating per Room</p></td>
+            <td><p style="text-align: center">Cost per Room</p></td>
+          </tr>
+          <tr>
+            <td>
+              <p style="text-align: center">
+                @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.pnc2jyjtjTNDZKCT]{Aerozep}<strong
+                  ><br /></strong
+                >(Minimum 2 rooms)
+              </p>
+            </td>
+            <td><p style="text-align: center">2 seats</p></td>
+            <td>
+              <p style="text-align: center">
+                <span style="font-family: Jost, sans-serif">60,000eb</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p style="text-align: center">
+                @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.6cciJXompBeXxMma]{Cabin Cruiser}<br />(Minimum
+                2 rooms)
+              </p>
+            </td>
+            <td><p style="text-align: center">2 seats</p></td>
+            <td>
+              <p style="text-align: center">
+                <span style="font-family: Jost, sans-serif">60,000eb</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p style="text-align: center">
+                @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.Wo98wgEQA6B7FnMF]{Yacht}<strong
+                  ><br /></strong
+                >(Minimum 4 rooms)
+              </p>
+            </td>
+            <td><p style="text-align: center">4 seats</p></td>
+            <td>
+              <p style="text-align: center">
+                <span style="font-family: Jost, sans-serif">100,000eb</span>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isRanged: false
+  magazine:
+    ammoData: {}
+    max: 0
+    value: 0
+  modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
+    attackmod:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
+      value: null
+    damage:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    magazine:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    rof:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    sdp:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    seats:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: 2
+    secondaryWeapon:
+      configured: false
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
+    speedCombat:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+  price:
+    market: 0
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  source: null
+  sources:
+    - book: 12 Days of Vehiclemas
+      page: 16
+  type: vehicle
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: itemUpgrade

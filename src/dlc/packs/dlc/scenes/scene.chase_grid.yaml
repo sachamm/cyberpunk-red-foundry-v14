@@ -1,0 +1,5839 @@
+_id: pBQGiLen5fM33fpL
+_key: "!scenes!pBQGiLen5fM33fpL"
+active: false
+background:
+  alphaThreshold: 0
+  anchorX: 0
+  anchorY: 0
+  fit: fill
+  offsetX: 0
+  offsetY: 0
+  rotation: 0
+  scaleX: 1
+  scaleY: 1
+  src: systems/cyberpunk-red-core/dlc/assets/maps/S0L-Corp-Road-Quad-100px.webp
+  tint: "#ffffff"
+backgroundColor: "#999999"
+drawings:
+  - _id: qjvFdrLvIV3sdfJL
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qjvFdrLvIV3sdfJL"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 0.1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 48
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 800
+      points: []
+      radius: null
+      type: r
+      width: 500
+    sort: 0
+    strokeAlpha: 0.2
+    strokeColor: "#ffffff"
+    strokeWidth: 8
+    text: ""
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4250
+    "y": 500
+  - _id: rvuDQx7pGkiEDAoj
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.rvuDQx7pGkiEDAoj"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 0.1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 48
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 800
+      points: []
+      radius: null
+      type: r
+      width: 500
+    sort: 0
+    strokeAlpha: 0.2
+    strokeColor: "#ffffff"
+    strokeWidth: 8
+    text: ""
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3750
+    "y": 500
+  - _id: eSjGJSiUauApWBGR
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.eSjGJSiUauApWBGR"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 0.1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 48
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 800
+      points: []
+      radius: null
+      type: r
+      width: 500
+    sort: 0
+    strokeAlpha: 0.2
+    strokeColor: "#ffffff"
+    strokeWidth: 8
+    text: ""
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3250
+    "y": 500
+  - _id: ZIskw7aKe5TqtxPV
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ZIskw7aKe5TqtxPV"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 0.1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 48
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 800
+      points: []
+      radius: null
+      type: r
+      width: 500
+    sort: 0
+    strokeAlpha: 0.2
+    strokeColor: "#ffffff"
+    strokeWidth: 8
+    text: ""
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2750
+    "y": 500
+  - _id: Low8KA5D0S48cQTi
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.Low8KA5D0S48cQTi"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 0.1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 48
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 800
+      points: []
+      radius: null
+      type: r
+      width: 500
+    sort: 0
+    strokeAlpha: 0.2
+    strokeColor: "#ffffff"
+    strokeWidth: 8
+    text: ""
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 500
+  - _id: zcIYBcaxJ2onoIvT
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.zcIYBcaxJ2onoIvT"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 0.1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 48
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 800
+      points: []
+      radius: null
+      type: r
+      width: 500
+    sort: 0
+    strokeAlpha: 0.2
+    strokeColor: "#ffffff"
+    strokeWidth: 8
+    text: ""
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1750
+    "y": 500
+  - _id: YRalKjuTU1shfj2L
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.YRalKjuTU1shfj2L"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 0.1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 48
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 800
+      points: []
+      radius: null
+      type: r
+      width: 500
+    sort: 0
+    strokeAlpha: 0.2
+    strokeColor: "#ffffff"
+    strokeWidth: 8
+    text: ""
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1250
+    "y": 500
+  - _id: VCGmxKxRQnegh9y8
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.VCGmxKxRQnegh9y8"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 1
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: Combat Speed
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4750
+    "y": 500
+  - _id: HIX2xTKjRkEHCtPf
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.HIX2xTKjRkEHCtPf"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 1
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: DV
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4900
+    "y": 500
+  - _id: gL2PePYG4nO7DHDW
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.gL2PePYG4nO7DHDW"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 60 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 550
+  - _id: yyZdAW8JLWODcBkz
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.yyZdAW8JLWODcBkz"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 40 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 575
+  - _id: y0jY0QzOa98MKR2O
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.y0jY0QzOa98MKR2O"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 20 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 600
+  - _id: sdagqvrh9hGNcdA6
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.sdagqvrh9hGNcdA6"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 15 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 625
+  - _id: j9hnmsOMLsiPiNbO
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.j9hnmsOMLsiPiNbO"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 10 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 650
+  - _id: SsVX1UCHs02eX8RN
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.SsVX1UCHs02eX8RN"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 08 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 675
+  - _id: s46R5DJCKjPE6h9l
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.s46R5DJCKjPE6h9l"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "13"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4900
+    "y": 550
+  - _id: hFhx6u8KtxNKFsfO
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.hFhx6u8KtxNKFsfO"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4900
+    "y": 575
+  - _id: NfeIeykwY5KP0DHN
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.NfeIeykwY5KP0DHN"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4900
+    "y": 600
+  - _id: nyUHSf9Mi8dc5fOl
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.nyUHSf9Mi8dc5fOl"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "21"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4900
+    "y": 625
+  - _id: ZaZf8hHJetP1OSup
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ZaZf8hHJetP1OSup"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "24"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4900
+    "y": 650
+  - _id: co2uYBd7c8YjajXV
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.co2uYBd7c8YjajXV"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "29"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4900
+    "y": 675
+  - _id: sieuTHOonUIm4Zzp
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.sieuTHOonUIm4Zzp"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "29"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1150
+    "y": 675
+  - _id: 1c3fSizfpuQrtHmg
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.1c3fSizfpuQrtHmg"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 1
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: Combat Speed
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1000
+    "y": 500
+  - _id: 8lgjWO0FH7NDfhPB
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.8lgjWO0FH7NDfhPB"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 1
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: DV
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1150
+    "y": 500
+  - _id: kq4LQeDdqM2KLizt
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.kq4LQeDdqM2KLizt"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 60 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 550
+  - _id: kPlMArh5jzJ6JT6j
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.kPlMArh5jzJ6JT6j"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 40 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 575
+  - _id: bQOPxVDkbaE6kzNQ
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.bQOPxVDkbaE6kzNQ"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 20 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 600
+  - _id: NbOOyiNNGTrk4hMG
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.NbOOyiNNGTrk4hMG"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "13"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1150
+    "y": 550
+  - _id: 9hojvBwlTTHWmhlq
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.9hojvBwlTTHWmhlq"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 15 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 625
+  - _id: kujnLi8kWYC6vNgn
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.kujnLi8kWYC6vNgn"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1150
+    "y": 575
+  - _id: x4AfqN4C05l8V4HL
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.x4AfqN4C05l8V4HL"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1150
+    "y": 600
+  - _id: qXOPjJTNaRm9kuqc
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qXOPjJTNaRm9kuqc"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 08 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 675
+  - _id: fxVi1nyHKD8cUAuM
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.fxVi1nyHKD8cUAuM"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 10 Move
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 650
+  - _id: I4sEW3P0R45yOVMY
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.I4sEW3P0R45yOVMY"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "21"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1150
+    "y": 625
+  - _id: QvfnMgFpSdE3htU8
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.QvfnMgFpSdE3htU8"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 24
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 25
+      points: []
+      radius: null
+      type: r
+      width: 100
+    sort: 2
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: "24"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1150
+    "y": 650
+  - _id: jkcYwtVntCHcuvui
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.jkcYwtVntCHcuvui"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 0-6 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 900
+  - _id: OBRsHGFyZmhSzE09
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.OBRsHGFyZmhSzE09"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 7-12 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 950
+  - _id: aJHOylm4cNC07NzN
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.aJHOylm4cNC07NzN"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 13-25 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1000
+  - _id: jQx5bmxfTm8MbSQ6
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.jQx5bmxfTm8MbSQ6"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 26-50 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1050
+  - _id: 12Ris5orrfbLFSXT
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.12Ris5orrfbLFSXT"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 51-100 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1100
+  - _id: kIloRsbM84fKSm90
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.kIloRsbM84fKSm90"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 101-200 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1150
+  - _id: LKm7oudT3u4PyJOp
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.LKm7oudT3u4PyJOp"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 201-400 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1200
+  - _id: mBtXQ7MGuIZPt7a6
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.mBtXQ7MGuIZPt7a6"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 401-800 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1250
+  - _id: FZDxNxmY7UujriDq
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.FZDxNxmY7UujriDq"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: Range Bands
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4750
+    "y": 850
+  - _id: NIncAFLLF6fdWrmi
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.NIncAFLLF6fdWrmi"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 0-6 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 900
+  - _id: 1ioukFlWzbqISz1a
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.1ioukFlWzbqISz1a"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: Range Bands
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1000
+    "y": 850
+  - _id: 52cLzesJYNrp71rz
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.52cLzesJYNrp71rz"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 7-12 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 950
+  - _id: xf9ahFyuB6zJbB9L
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.xf9ahFyuB6zJbB9L"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 101-200 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 1150
+  - _id: Bc3ZQowAuIXGMRm0
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.Bc3ZQowAuIXGMRm0"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 201-400 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 1200
+  - _id: iDqB9S2jdWn9brEk
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.iDqB9S2jdWn9brEk"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 51-100 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 1100
+  - _id: e4RxXpgpSHQtsZFx
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.e4RxXpgpSHQtsZFx"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 13-25 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 1000
+  - _id: ufBVDL6bSr8GOgGN
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ufBVDL6bSr8GOgGN"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 26-50 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 1050
+  - _id: 6p84D1a9OzIWsasv
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.6p84D1a9OzIWsasv"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 250
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: 401-800 m/yds
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1000
+    "y": 1250
+  - _id: tqeUzUtJYvx3o8iD
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.tqeUzUtJYvx3o8iD"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 63
+      points: []
+      radius: null
+      type: r
+      width: 400
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#ffffff"
+    strokeWidth: 0
+    text: Lead Chase Position
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4300
+    "y": 425
+  - _id: qWx565CBjhpz2vim
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qWx565CBjhpz2vim"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: Weapon Type
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 2250
+    "y": 1350
+  - _id: vfc3NwNMK8vk4Drz
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.vfc3NwNMK8vk4Drz"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 0-6
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 2550
+    "y": 1350
+  - _id: 8bOMNN87IPeh6up3
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.8bOMNN87IPeh6up3"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 7-12
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 2700
+    "y": 1350
+  - _id: ypwBlA0AqY8QFKGb
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ypwBlA0AqY8QFKGb"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 13-25
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 2850
+    "y": 1350
+  - _id: pmTlyVVatLWsVwMZ
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.pmTlyVVatLWsVwMZ"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 26-50
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 3000
+    "y": 1350
+  - _id: 3M4dwPTrwgDOcJYG
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.3M4dwPTrwgDOcJYG"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 51-100
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 3150
+    "y": 1350
+  - _id: vy6OBtEqvRDyng3b
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.vy6OBtEqvRDyng3b"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 101-200
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 3300
+    "y": 1350
+  - _id: pXyDklq8egDj3l0r
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.pXyDklq8egDj3l0r"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 201-400
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 3450
+    "y": 1350
+  - _id: htR9K0h4gBForqcE
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.htR9K0h4gBForqcE"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 401-800
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 3600
+    "y": 1350
+  - _id: bzK1Z3GVJuoLWVdw
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.bzK1Z3GVJuoLWVdw"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Pistol
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1400
+  - _id: UYMtJgIfZEqRAd67
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.UYMtJgIfZEqRAd67"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: SMG
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1450
+  - _id: iUI3ZgN63wIBFmku
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.iUI3ZgN63wIBFmku"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Shotgun (slug)
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1500
+  - _id: ak8AxfwyESeSRzW6
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ak8AxfwyESeSRzW6"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Assault Rifle
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1550
+  - _id: BZish4sOXnkkmSou
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.BZish4sOXnkkmSou"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Sniper Rifle
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1600
+  - _id: 2wyvOe7Hdp01zKlh
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.2wyvOe7Hdp01zKlh"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Bow/Crossbow
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1650
+  - _id: 21860taMXCBN2bYi
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.21860taMXCBN2bYi"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Grenades
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1700
+  - _id: YNkNr9kw1hV52m48
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.YNkNr9kw1hV52m48"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Rocket Launcher
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2250
+    "y": 1750
+  - _id: wGX30IfHCmBOq8ba
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.wGX30IfHCmBOq8ba"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "13"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1400
+  - _id: vlMAHdkvuV4M6oPf
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.vlMAHdkvuV4M6oPf"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "13"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1450
+  - _id: TbiHLzbGo87yY8Q2
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.TbiHLzbGo87yY8Q2"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "13"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1500
+  - _id: heQuZFpffly9SlLL
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.heQuZFpffly9SlLL"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "13"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1550
+  - _id: 1VYyblhTG8WUWoVr
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.1VYyblhTG8WUWoVr"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1450
+  - _id: 3nbt4BATA9EPjmMo
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.3nbt4BATA9EPjmMo"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1400
+  - _id: l0W54KyxbjRDoVEh
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.l0W54KyxbjRDoVEh"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1500
+  - _id: 9hXo16JZOGncGZRc
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.9hXo16JZOGncGZRc"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1450
+  - _id: MMd0KnPsUOWMz0HB
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.MMd0KnPsUOWMz0HB"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1550
+  - _id: PJgfYR588FUOpenh
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.PJgfYR588FUOpenh"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1550
+  - _id: sr8YccldkROs6BXX
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.sr8YccldkROs6BXX"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1650
+  - _id: MDD5VJvqNP5PkBFe
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.MDD5VJvqNP5PkBFe"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1650
+  - _id: 2gNQ8hYJuJlWkZZk
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.2gNQ8hYJuJlWkZZk"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1700
+  - _id: 7ZtxEpWlFrWsbLnh
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.7ZtxEpWlFrWsbLnh"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1700
+  - _id: RlWUUUmOVD7ny1gD
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.RlWUUUmOVD7ny1gD"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1750
+  - _id: oZsHedAt3JEof7pk
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.oZsHedAt3JEof7pk"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1750
+  - _id: RixrH7ptoyW1vEMc
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.RixrH7ptoyW1vEMc"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1600
+  - _id: gfFEBH3b7bDP37Lr
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.gfFEBH3b7bDP37Lr"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "15"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1600
+  - _id: AKeg74O9H4mcCxOC
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.AKeg74O9H4mcCxOC"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "13"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1650
+  - _id: TDUwpTKSi02XQ2jx
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.TDUwpTKSi02XQ2jx"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1400
+  - _id: 2KMzWxeIpxPDyK2j
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.2KMzWxeIpxPDyK2j"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1450
+  - _id: i9YtKFlW9BxQmzcL
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.i9YtKFlW9BxQmzcL"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1500
+  - _id: wkLvfi6bSnzTU0D6
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.wkLvfi6bSnzTU0D6"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1550
+  - _id: 8ZHBVb7QvoOp5mqS
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.8ZHBVb7QvoOp5mqS"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1600
+  - _id: qpZNPK3csVjo854h
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qpZNPK3csVjo854h"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1650
+  - _id: LtGQfnFb74XIGrC2
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.LtGQfnFb74XIGrC2"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1700
+  - _id: taEFe8A7ssNDe7t6
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.taEFe8A7ssNDe7t6"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1750
+  - _id: FC6qcMtQdfePrQpS
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.FC6qcMtQdfePrQpS"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1550
+  - _id: KqjwZ4oeNpJlLyg2
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.KqjwZ4oeNpJlLyg2"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1650
+  - _id: xWQCDWC2VV33zUhU
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.xWQCDWC2VV33zUhU"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1700
+  - _id: rgVPXFqdStRD26au
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.rgVPXFqdStRD26au"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1750
+  - _id: BWDFINYuyifQzzZI
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.BWDFINYuyifQzzZI"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1600
+  - _id: NOpdpctIR6MVCOXp
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.NOpdpctIR6MVCOXp"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1600
+  - _id: W5UhFOoCdJk1wLSr
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.W5UhFOoCdJk1wLSr"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "16"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1550
+  - _id: Ra4z5boE6TmFZroO
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.Ra4z5boE6TmFZroO"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "16"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1700
+  - _id: Op6GvyeinDb8Hxgg
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.Op6GvyeinDb8Hxgg"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "16"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1750
+  - _id: lKKLbj9t1To7JuWr
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.lKKLbj9t1To7JuWr"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1400
+  - _id: llqVndUVexUNI9cT
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.llqVndUVexUNI9cT"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1450
+  - _id: riv9Qdb9uhcamnqJ
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.riv9Qdb9uhcamnqJ"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1550
+  - _id: bwHWRnv5cwWgqkLV
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.bwHWRnv5cwWgqkLV"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3000
+    "y": 1500
+  - _id: 4LGKIbaoiVriLMFa
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.4LGKIbaoiVriLMFa"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1450
+  - _id: qWVp8pEkGg4lcTKG
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qWVp8pEkGg4lcTKG"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2850
+    "y": 1600
+  - _id: onoUpamcNlaNuKy2
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.onoUpamcNlaNuKy2"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2700
+    "y": 1600
+  - _id: WncT5mOYbWhm3F8a
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.WncT5mOYbWhm3F8a"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1700
+  - _id: MOyrkUzvxXkA2YEB
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.MOyrkUzvxXkA2YEB"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1750
+  - _id: ewlCiIFtnmlWsF9t
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ewlCiIFtnmlWsF9t"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1750
+  - _id: nrLwKtbWaeT0JYgY
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.nrLwKtbWaeT0JYgY"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "22"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1700
+  - _id: aAq8NwOKpsIoX4Wn
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.aAq8NwOKpsIoX4Wn"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "22"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1650
+  - _id: D0fL7iklMXxe5iKA
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.D0fL7iklMXxe5iKA"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2550
+    "y": 1600
+  - _id: qgub0UKmKZQu39Bh
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qgub0UKmKZQu39Bh"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1450
+  - _id: Ktb93AsnL5NPJtxx
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.Ktb93AsnL5NPJtxx"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1400
+  - _id: YVGBmZ6ciMvAecF7
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.YVGBmZ6ciMvAecF7"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3150
+    "y": 1500
+  - _id: zLohENeqNBV8Sym2
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.zLohENeqNBV8Sym2"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1550
+  - _id: 3fkIDTWF9sRWo2Fm
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.3fkIDTWF9sRWo2Fm"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1750
+  - _id: VuhSGAxtCL0ERnw3
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.VuhSGAxtCL0ERnw3"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1400
+  - _id: 5Kx5TpapyuP0qCYw
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.5Kx5TpapyuP0qCYw"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "35"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3300
+    "y": 1500
+  - _id: uKqe8zdPJ3riXeow
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.uKqe8zdPJ3riXeow"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1400
+  - _id: DNR2TgdzWckf28Ep
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.DNR2TgdzWckf28Ep"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1400
+  - _id: IEIAabAweJpExoSZ
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.IEIAabAweJpExoSZ"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1450
+  - _id: ycfHw16sDYzNIgQT
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ycfHw16sDYzNIgQT"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1500
+  - _id: zRQk4d3Mx5CB9dbf
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.zRQk4d3Mx5CB9dbf"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1500
+  - _id: 9iUdLXWt227oAJql
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.9iUdLXWt227oAJql"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3450
+    "y": 1650
+  - _id: SouFYwaWOHSX2uVw
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.SouFYwaWOHSX2uVw"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1650
+  - _id: TCrON3ypneT3oBjr
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.TCrON3ypneT3oBjr"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#c0c0c0"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: N/A
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3600
+    "y": 1700
+  - _id: j8C64wlhyq3mEtg3
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.j8C64wlhyq3mEtg3"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: Autofire Type
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1100
+    "y": 1350
+  - _id: 8kqQ0H4HeJpIOCa8
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.8kqQ0H4HeJpIOCa8"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 13-25
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1700
+    "y": 1350
+  - _id: puCLn4UsbxAxJPUB
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.puCLn4UsbxAxJPUB"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 7-12
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1550
+    "y": 1350
+  - _id: leBPTrJSCBCDXf89
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.leBPTrJSCBCDXf89"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 0-6
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1400
+    "y": 1350
+  - _id: qO96mkXMMRQQIgOA
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qO96mkXMMRQQIgOA"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 51-200
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 2000
+    "y": 1350
+  - _id: ZBcjspyLoZxGW1si
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.ZBcjspyLoZxGW1si"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 26-50
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 1850
+    "y": 1350
+  - _id: 1De2rQtRY7JL6rmI
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.1De2rQtRY7JL6rmI"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: SMG
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1100
+    "y": 1400
+  - _id: YJfb309RdlR6VrvN
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.YJfb309RdlR6VrvN"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1700
+    "y": 1400
+  - _id: KamDGLdPZe7bugE8
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.KamDGLdPZe7bugE8"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2000
+    "y": 1400
+  - _id: wjnJpvXeblhYjOx5
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.wjnJpvXeblhYjOx5"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1850
+    "y": 1400
+  - _id: VeyICmbX16CObOlD
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.VeyICmbX16CObOlD"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1550
+    "y": 1400
+  - _id: 0ut0sGYoClD1qaEE
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.0ut0sGYoClD1qaEE"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1400
+    "y": 1400
+  - _id: otgQIQ0PImIbha8n
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.otgQIQ0PImIbha8n"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "22"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1400
+    "y": 1450
+  - _id: owvLuLQ849U08eeT
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.owvLuLQ849U08eeT"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1850
+    "y": 1450
+  - _id: qtW6cwVP9nFHzP9n
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.qtW6cwVP9nFHzP9n"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1700
+    "y": 1450
+  - _id: YsKRKL3d4F5kNyQK
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.YsKRKL3d4F5kNyQK"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1550
+    "y": 1450
+  - _id: 7ype73aiW3vwGwJ1
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.7ype73aiW3vwGwJ1"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 2000
+    "y": 1450
+  - _id: rthoUTh9blSdwU0Y
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.rthoUTh9blSdwU0Y"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Assault Rifle
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 1100
+    "y": 1450
+  - _id: PhlpbkrgnZP7D8zn
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.PhlpbkrgnZP7D8zn"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4300
+    "y": 1400
+  - _id: 6bLSlGlORkZ8PlWE
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.6bLSlGlORkZ8PlWE"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 26-50
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4600
+    "y": 1350
+  - _id: nCIOUjNzfe98U2Qz
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.nCIOUjNzfe98U2Qz"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "17"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4450
+    "y": 1450
+  - _id: mfw1zAA9IlFAodpD
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.mfw1zAA9IlFAodpD"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 13-25
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4450
+    "y": 1350
+  - _id: jDg8M6hDXr5x4y7A
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.jDg8M6hDXr5x4y7A"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4450
+    "y": 1400
+  - _id: wzBHMfB9AdVOJInv
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.wzBHMfB9AdVOJInv"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 51-200
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4750
+    "y": 1350
+  - _id: vUPUjFpk3fmE1SVc
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.vUPUjFpk3fmE1SVc"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "30"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1400
+  - _id: wu82oNODQgiMG6jw
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.wu82oNODQgiMG6jw"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 7-12
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4300
+    "y": 1350
+  - _id: gLgVDs5YRaKd6o7q
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.gLgVDs5YRaKd6o7q"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4300
+    "y": 1450
+  - _id: 2eVaVomoGMJD66BU
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.2eVaVomoGMJD66BU"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "22"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4150
+    "y": 1450
+  - _id: XME6vCxbHPFLrQxm
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.XME6vCxbHPFLrQxm"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4150
+    "y": 1400
+  - _id: bKw4wg6aDLpVWq48
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.bKw4wg6aDLpVWq48"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: 0-6
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 4150
+    "y": 1350
+  - _id: Os4vxJgsqutyBpNQ
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.Os4vxJgsqutyBpNQ"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4750
+    "y": 1450
+  - _id: Zslcn5U3wdnQjeQE
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.Zslcn5U3wdnQjeQE"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "25"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4600
+    "y": 1400
+  - _id: 9XF12njGe6HPzHOH
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.9XF12njGe6HPzHOH"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 150
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: "20"
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 4600
+    "y": 1450
+  - _id: DbYE288nHywNCZdc
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.DbYE288nHywNCZdc"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: Assault Rifle
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3850
+    "y": 1450
+  - _id: B94WbgsSueQBL6xg
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.B94WbgsSueQBL6xg"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#ffffff"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#dd2027"
+    strokeWidth: 2
+    text: SMG
+    textAlpha: 1
+    textColor: "#000000"
+    texture: null
+    x: 3850
+    "y": 1400
+  - _id: cGKoEilbua0IF7G6
+    _key: "!scenes.drawings!pBQGiLen5fM33fpL.cGKoEilbua0IF7G6"
+    author: w3682e6R5qVcWyUA
+    bezierFactor: 0
+    elevation: 0
+    fillAlpha: 1
+    fillColor: "#dd2027"
+    fillType: 1
+    flags: {}
+    fontFamily: Tektur
+    fontSize: 32
+    hidden: false
+    interface: false
+    locked: true
+    rotation: 0
+    shape:
+      height: 50
+      points: []
+      radius: null
+      type: r
+      width: 300
+    sort: 3
+    strokeAlpha: 1
+    strokeColor: "#2c2e32"
+    strokeWidth: 2
+    text: Autofire Type
+    textAlpha: 1
+    textColor: "#ffffff"
+    texture: null
+    x: 3850
+    "y": 1350
+environment:
+  base:
+    hue: 0
+    intensity: 0
+    luminosity: 0
+    saturation: 0
+    shadows: 0
+  cycle: true
+  dark:
+    hue: 0.7138888888888889
+    intensity: 0
+    luminosity: -0.25
+    saturation: 0
+    shadows: 0
+  darknessLevel: 0
+  darknessLock: false
+  globalLight:
+    alpha: 0.5
+    bright: false
+    color: null
+    coloration: 1
+    contrast: 0
+    darkness:
+      max: 1
+      min: 0
+    enabled: false
+    luminosity: 0
+    saturation: 0
+    shadows: 0
+flags: {}
+fog:
+  colors:
+    explored: null
+    unexplored: null
+  exploration: true
+  overlay: null
+folder: null
+foreground: null
+foregroundElevation: null
+grid:
+  alpha: 0
+  color: "#000000"
+  distance: 2
+  size: 100
+  style: solidLines
+  thickness: 1
+  type: 1
+  units: m/yds
+height: 1200
+initial:
+  scale: null
+  x: null
+  "y": null
+journal: null
+journalEntryPage: null
+levels: []
+lights: []
+name: Chase-Grid
+navName: Chase-Grid
+navOrder: 0
+navigation: false
+notes: []
+ownership:
+  default: 0
+padding: 0.25
+playlist: null
+playlistSound: null
+regions:
+  - _id: KbSvfNasnPE2XKXZ
+    _key: "!scenes.regions!pBQGiLen5fM33fpL.KbSvfNasnPE2XKXZ"
+    behaviors:
+      - _id: 9PtKBsldRLcZPzHh
+        _key: >-
+          !scenes.regions.behaviors!pBQGiLen5fM33fpL.KbSvfNasnPE2XKXZ.9PtKBsldRLcZPzHh
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: null
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        disabled: false
+        flags: {}
+        name: Set Elevation 1
+        system:
+          events:
+            - tokenEnter
+          source: >-
+            if(!event.user.isSelf) return;
+
+            const {token, movement} = event.data;
+
+            const elevation = 1 // set the elevation of that step in this line.
+
+            // Stop movement. Important: no async operations before this!
+
+            token.stopMovement();
+
+            // Await movement animation
+
+            if ( token.rendered ) await token.object.movementAnimationPromise;
+
+            // Adjust pending movement waypoints
+
+            const adjustedWaypoints = movement.pending.waypoints.filter(w =>
+            !w.intermediate).map(w => ({...w, elevation}));
+
+            await token.move(adjustedWaypoints, {
+              ...movement.updateOptions,
+              constrainOptions: movement.constrainOptions,
+              autoRotate: movement.autoRotate,
+              showRuler: movement.showRuler
+            });
+        type: executeScript
+    color: "#ff0000"
+    elevation:
+      bottom: null
+      top: null
+    flags: {}
+    locked: false
+    name: Range_000-006
+    shapes:
+      - height: 800
+        hole: false
+        rotation: 0
+        type: rectangle
+        width: 400
+        x: 4300
+        "y": 500
+    visibility: 0
+  - _id: Y3leKwNGqJspA9CF
+    _key: "!scenes.regions!pBQGiLen5fM33fpL.Y3leKwNGqJspA9CF"
+    behaviors:
+      - _id: SsX5I3Te2qJtESSK
+        _key: >-
+          !scenes.regions.behaviors!pBQGiLen5fM33fpL.Y3leKwNGqJspA9CF.SsX5I3Te2qJtESSK
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: null
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        disabled: false
+        flags: {}
+        name: Set Elevation 7
+        system:
+          events:
+            - tokenEnter
+          source: >-
+            if(!event.user.isSelf) return;
+
+            const {token, movement} = event.data;
+
+            const elevation = 7 // set the elevation of that step in this line.
+
+            // Stop movement. Important: no async operations before this!
+
+            token.stopMovement();
+
+            // Await movement animation
+
+            if ( token.rendered ) await token.object.movementAnimationPromise;
+
+            // Adjust pending movement waypoints
+
+            const adjustedWaypoints = movement.pending.waypoints.filter(w =>
+            !w.intermediate).map(w => ({...w, elevation}));
+
+            await token.move(adjustedWaypoints, {
+              ...movement.updateOptions,
+              constrainOptions: movement.constrainOptions,
+              autoRotate: movement.autoRotate,
+              showRuler: movement.showRuler
+            });
+        type: executeScript
+    color: "#ff8040"
+    elevation:
+      bottom: null
+      top: null
+    flags: {}
+    locked: false
+    name: Range_007-012
+    shapes:
+      - height: 800
+        hole: false
+        rotation: 0
+        type: rectangle
+        width: 400
+        x: 3800
+        "y": 500
+    visibility: 0
+  - _id: rMAe79taCr3pkdKT
+    _key: "!scenes.regions!pBQGiLen5fM33fpL.rMAe79taCr3pkdKT"
+    behaviors:
+      - _id: pxbbB1ZPTl4sshrY
+        _key: >-
+          !scenes.regions.behaviors!pBQGiLen5fM33fpL.rMAe79taCr3pkdKT.pxbbB1ZPTl4sshrY
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: null
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        disabled: false
+        flags: {}
+        name: Set Elevation 13
+        system:
+          events:
+            - tokenEnter
+          source: >-
+            if(!event.user.isSelf) return;
+
+            const {token, movement} = event.data;
+
+            const elevation = 13 // set the elevation of that step in this line.
+
+            // Stop movement. Important: no async operations before this!
+
+            token.stopMovement();
+
+            // Await movement animation
+
+            if ( token.rendered ) await token.object.movementAnimationPromise;
+
+            // Adjust pending movement waypoints
+
+            const adjustedWaypoints = movement.pending.waypoints.filter(w =>
+            !w.intermediate).map(w => ({...w, elevation}));
+
+            await token.move(adjustedWaypoints, {
+              ...movement.updateOptions,
+              constrainOptions: movement.constrainOptions,
+              autoRotate: movement.autoRotate,
+              showRuler: movement.showRuler
+            });
+        type: executeScript
+    color: "#ffff00"
+    elevation:
+      bottom: null
+      top: null
+    flags: {}
+    locked: false
+    name: Range_013-025
+    shapes:
+      - height: 800
+        hole: false
+        rotation: 0
+        type: rectangle
+        width: 400
+        x: 3300
+        "y": 500
+    visibility: 0
+  - _id: IQqoj6GpteWVuOYV
+    _key: "!scenes.regions!pBQGiLen5fM33fpL.IQqoj6GpteWVuOYV"
+    behaviors:
+      - _id: yHby98iZu5PWG5zc
+        _key: >-
+          !scenes.regions.behaviors!pBQGiLen5fM33fpL.IQqoj6GpteWVuOYV.yHby98iZu5PWG5zc
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: null
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        disabled: false
+        flags: {}
+        name: Set Elevation 26
+        system:
+          events:
+            - tokenEnter
+          source: >-
+            if(!event.user.isSelf) return;
+
+            const {token, movement} = event.data;
+
+            const elevation = 26 // set the elevation of that step in this line.
+
+            // Stop movement. Important: no async operations before this!
+
+            token.stopMovement();
+
+            // Await movement animation
+
+            if ( token.rendered ) await token.object.movementAnimationPromise;
+
+            // Adjust pending movement waypoints
+
+            const adjustedWaypoints = movement.pending.waypoints.filter(w =>
+            !w.intermediate).map(w => ({...w, elevation}));
+
+            await token.move(adjustedWaypoints, {
+              ...movement.updateOptions,
+              constrainOptions: movement.constrainOptions,
+              autoRotate: movement.autoRotate,
+              showRuler: movement.showRuler
+            });
+        type: executeScript
+    color: "#00ff00"
+    elevation:
+      bottom: null
+      top: null
+    flags: {}
+    locked: false
+    name: Range_026-050
+    shapes:
+      - height: 800
+        hole: false
+        rotation: 0
+        type: rectangle
+        width: 400
+        x: 2800
+        "y": 500
+    visibility: 0
+  - _id: gT167PPnoUAd1Pvp
+    _key: "!scenes.regions!pBQGiLen5fM33fpL.gT167PPnoUAd1Pvp"
+    behaviors:
+      - _id: pLuP6cG6nDPfeygT
+        _key: >-
+          !scenes.regions.behaviors!pBQGiLen5fM33fpL.gT167PPnoUAd1Pvp.pLuP6cG6nDPfeygT
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: null
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        disabled: false
+        flags: {}
+        name: Set Elevation 51
+        system:
+          events:
+            - tokenEnter
+          source: >-
+            if(!event.user.isSelf) return;
+
+            const {token, movement} = event.data;
+
+            const elevation = 51 // set the elevation of that step in this line.
+
+            // Stop movement. Important: no async operations before this!
+
+            token.stopMovement();
+
+            // Await movement animation
+
+            if ( token.rendered ) await token.object.movementAnimationPromise;
+
+            // Adjust pending movement waypoints
+
+            const adjustedWaypoints = movement.pending.waypoints.filter(w =>
+            !w.intermediate).map(w => ({...w, elevation}));
+
+            await token.move(adjustedWaypoints, {
+              ...movement.updateOptions,
+              constrainOptions: movement.constrainOptions,
+              autoRotate: movement.autoRotate,
+              showRuler: movement.showRuler
+            });
+        type: executeScript
+    color: "#00ffff"
+    elevation:
+      bottom: null
+      top: null
+    flags: {}
+    locked: false
+    name: Range_051-100
+    shapes:
+      - height: 800
+        hole: false
+        rotation: 0
+        type: rectangle
+        width: 400
+        x: 2300
+        "y": 500
+    visibility: 0
+  - _id: kLc6geEpGSjRb8e5
+    _key: "!scenes.regions!pBQGiLen5fM33fpL.kLc6geEpGSjRb8e5"
+    behaviors:
+      - _id: P2AhLX0yiXabxVpu
+        _key: >-
+          !scenes.regions.behaviors!pBQGiLen5fM33fpL.kLc6geEpGSjRb8e5.P2AhLX0yiXabxVpu
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: null
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        disabled: false
+        flags: {}
+        name: Set Elevation 101
+        system:
+          events:
+            - tokenEnter
+          source: >-
+            if(!event.user.isSelf) return;
+
+            const {token, movement} = event.data;
+
+            const elevation = 101 // set the elevation of that step in this
+            line.
+
+            // Stop movement. Important: no async operations before this!
+
+            token.stopMovement();
+
+            // Await movement animation
+
+            if ( token.rendered ) await token.object.movementAnimationPromise;
+
+            // Adjust pending movement waypoints
+
+            const adjustedWaypoints = movement.pending.waypoints.filter(w =>
+            !w.intermediate).map(w => ({...w, elevation}));
+
+            await token.move(adjustedWaypoints, {
+              ...movement.updateOptions,
+              constrainOptions: movement.constrainOptions,
+              autoRotate: movement.autoRotate,
+              showRuler: movement.showRuler
+            });
+        type: executeScript
+    color: "#0000ff"
+    elevation:
+      bottom: null
+      top: null
+    flags: {}
+    locked: false
+    name: Range_101-200
+    shapes:
+      - height: 800
+        hole: false
+        rotation: 0
+        type: rectangle
+        width: 400
+        x: 1800
+        "y": 500
+    visibility: 0
+  - _id: FIBfWnCkKM8WuA83
+    _key: "!scenes.regions!pBQGiLen5fM33fpL.FIBfWnCkKM8WuA83"
+    behaviors:
+      - _id: cGaPMdUN7NFSSiF4
+        _key: >-
+          !scenes.regions.behaviors!pBQGiLen5fM33fpL.FIBfWnCkKM8WuA83.cGaPMdUN7NFSSiF4
+        _stats:
+          compendiumSource: null
+          coreVersion: "13.351"
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: null
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        disabled: false
+        flags: {}
+        name: Set Elevation 401
+        system:
+          events:
+            - tokenEnter
+          source: >-
+            if(!event.user.isSelf) return;
+
+            const {token, movement} = event.data;
+
+            const elevation = 401 // set the elevation of that step in this
+            line.
+
+            // Stop movement. Important: no async operations before this!
+
+            token.stopMovement();
+
+            // Await movement animation
+
+            if ( token.rendered ) await token.object.movementAnimationPromise;
+
+            // Adjust pending movement waypoints
+
+            const adjustedWaypoints = movement.pending.waypoints.filter(w =>
+            !w.intermediate).map(w => ({...w, elevation}));
+
+            await token.move(adjustedWaypoints, {
+              ...movement.updateOptions,
+              constrainOptions: movement.constrainOptions,
+              autoRotate: movement.autoRotate,
+              showRuler: movement.showRuler
+            });
+        type: executeScript
+    color: "#ff00ff"
+    elevation:
+      bottom: null
+      top: null
+    flags: {}
+    locked: false
+    name: Range_401-800
+    shapes:
+      - height: 800
+        hole: false
+        rotation: 0
+        type: rectangle
+        width: 400
+        x: 1300
+        "y": 500
+    visibility: 0
+sort: 0
+sounds: []
+templates: []
+thumb: systems/cyberpunk-red-core/dlc/assets/scenes/Chase_Grid_thumb.webp
+tiles: []
+tokenVision: false
+tokens: []
+walls: []
+weather: ""
+width: 4000

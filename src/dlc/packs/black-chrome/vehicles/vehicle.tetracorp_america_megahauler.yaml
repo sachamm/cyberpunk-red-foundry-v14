@@ -1,0 +1,45 @@
+_id: thLFAzw0AHhT0cSI
+_key: "!items!thLFAzw0AHhT0cSI"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/megahauler.svg
+name: TetraCorp America MegaHauler
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: TetraCorp America
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Armored truck transport. As much a train as a car.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 10</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 143000
+  sdp: 200
+  seats: 4
+  sources:
+    - book: Black Chrome
+      page: 79
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

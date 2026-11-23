@@ -1,0 +1,53 @@
+_id: qQO7cw9BbGNNken1
+_key: "!items!qQO7cw9BbGNNken1"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: icons/weapons/ammunition/arrow-broadhead.webp
+name: Arrow
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>Basic virtual ammo, nothing special.</p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 1
+  size: 0
+  sources:
+    - book: Elflines Online
+      page: 3
+    - book: Interface RED v1
+      page: 42
+  type: basic
+  variety: arrow
+type: ammo

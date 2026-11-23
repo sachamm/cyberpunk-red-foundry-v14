@@ -1,0 +1,218 @@
+{
+  "label": "Cyberware",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
+  "entries": {
+    "Airhypo Cyberfinger": {
+      "name": "Airhypo Cyberfinger",
+      "description": "<p>\n  Cyberfinger that conceals an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Th74cfC87RqEJKAb]{Airhypo}.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Ballpoint Cyberfinger": {
+      "name": "Ballpoint Cyberfinger",
+      "description": "<p>Cyberfinger that conceals a ballpoint pen.</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Budget Chipware Socket": {
+      "name": "Budget Chipware Socket",
+      "description": "<p>\n  A cheap socket for a single installation of chipware. Damage to the head sends\n  the installed chipware 30 m/yds away, potentially breaking it.\n</p>\n",
+      "dvTable": ""
+    },
+    "Bullet Storage Cyberfinger": {
+      "name": "Bullet Storage Cyberfinger",
+      "description": "<p>Cyberfinger that conceals two bullets of any type.</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Dartgun Cyberfinger": {
+      "name": "Dartgun Cyberfinger",
+      "description": "<p>\n  Cyberfinger that conceals a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.fSvkIl83Rsqd7O16]{Dartgun}.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Discount Cyberaudio Suite": {
+      "name": "Discount Cyberaudio Suite",
+      "description": "<p>A cheap and bulky interface for an audio enhancement.</p>\n",
+      "dvTable": ""
+    },
+    "Dynalar Modular Finger Enthusiast Cyberhand": {
+      "name": "Dynalar Modular Finger Enthusiast Cyberhand",
+      "description": "<p>Comes with 8 standard cyberfingers.</p>\n<blockquote><p>Counts as Borgware</p></blockquote>\n",
+      "dvTable": ""
+    },
+    "Explicit Memory Stimulator": {
+      "name": "Explicit Memory Stimulator",
+      "description": "<p>Enhances memorization. +2 <strong>Concentration</strong> while installed.</p>\n<blockquote>\n  <p>\n    Chipware must be installed into a\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.IJarQGKk5rPayoLT]{Chipware Socket}\n    or similar device.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Extra-Jointed Cyberarm Upgrade": {
+      "name": "Extra-Jointed Cyberarm Upgrade",
+      "description": "<p>Enchances cyberarm articulation. +2 <strong>Contortionist</strong>.</p>\n",
+      "dvTable": ""
+    },
+    "Extra-Jointed Cyberleg Upgrade": {
+      "name": "Extra-Jointed Cyberleg Upgrade",
+      "description": "<p>Enchances cyberleg articulation. +2 <strong>Contortionist</strong>.</p>\n",
+      "dvTable": ""
+    },
+    "Flashbulb": {
+      "name": "Flashbulb",
+      "description": "<p>\n  As an action, anyone within 25m/yds that can see the Flashbulb must make a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  critical injury for 1 minute.\n</p>\n",
+      "dvTable": ""
+    },
+    "Flashlight Cyberfinger": {
+      "name": "Flashlight Cyberfinger",
+      "description": "<p>\n  Cyberfinger that conceals a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.spgehgLv94vrH4Zo]{Flashlight}.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Hardened Shielding (Borgware)": {
+      "name": "Hardened Shielding (Borgware)",
+      "description": "<p>Install into a piece of Borgware to make it resistant to EMP effects.</p>\n",
+      "dvTable": ""
+    },
+    "Hardened Shielding (Cybereye)": {
+      "name": "Hardened Shielding (Cybereye)",
+      "description": "<p>The eye and installed options are not affected by EMP effects.</p>\n",
+      "dvTable": ""
+    },
+    "Hardened Shielding (Internal)": {
+      "name": "Hardened Shielding (Internal)",
+      "description": "<p>All internal cyberware is not affected by EMP effects.</p>\n",
+      "dvTable": ""
+    },
+    "Heuristic Health Monitor": {
+      "name": "Heuristic Health Monitor",
+      "description": "<p>\n  Requires\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.0d2bEozOFhfPgkUP]{Biomonitor}.\n  Can know HP at a glance.\n</p>\n",
+      "dvTable": ""
+    },
+    "Homing Tracer Cyberfinger": {
+      "name": "Homing Tracer Cyberfinger",
+      "description": "<p>\n  Cyberfinger that silently points the way to a paired\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.IqXTqNGBmSuigIWv]{Tracer Button}.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Implanted Fūma Kotarō Linear Frame H": {
+      "name": "Implanted Fūma Kotarō Linear Frame H",
+      "description": "<p>\n  Increases your <strong>BODY</strong> stat to 12 and\n  <strong>Stealth</strong> +2. Drawing and sheathing the frame's weapons does\n  not require an Action and can be concealed without a check.\n</p>\n<p>\n  An Internal Linear Frame can be identified with a\n  [[/r 1d10red+@stats.tech+@skills.cybertech #DV13 Cybertech]]{DV13 Cybertech}\n  check.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Lx9FSNDEIxLZ7Pyh]{Grafted Muscle and Bone Lace}\n    x2 (Installed Separately) &amp; <strong>BODY</strong> 8\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Implanted Fūma Kotarō Linear Frame VH": {
+      "name": "Implanted Fūma Kotarō Linear Frame VH",
+      "description": "<p>\n  Increases your <strong>BODY</strong> stat to 12 and\n  <strong>Stealth</strong> +2. Drawing and sheathing the frame's weapons does\n  not require an Action and can be concealed without a check.\n</p>\n<p>\n  An Internal Linear Frame can be identified with a\n  [[/r 1d10red+@stats.tech+@skills.cybertech #DV13 Cybertech]]{DV13 Cybertech}\n  check.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Lx9FSNDEIxLZ7Pyh]{Grafted Muscle and Bone Lace}\n    x2 (Installed Separately) &amp; <strong>BODY</strong> 8\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Implanted LF-001 SWAT Linear Frame": {
+      "name": "Implanted LF-001 SWAT Linear Frame",
+      "description": "<p>\n  Increases your <strong>BODY</strong> stat to 12 and ignores the normal\n  movement penalty for climbing and swimming\n</p>\n<p>\n  An Internal Linear Frame can be identified with a\n  [[/r 1d10red+@stats.tech+@skills.cybertech #DV13 Cybertech]]{DV13 Cybertech}\n  check.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Lx9FSNDEIxLZ7Pyh]{Grafted Muscle and Bone Lace}\n    x2 (Installed Separately) &amp; <strong>BODY</strong> 8\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Implanted Vermilion Linear Frame": {
+      "name": "Implanted Vermilion Linear Frame",
+      "description": "<p>\n  Increases your <strong>BODY</strong> stat to 12 and enhance running speed. No\n  penalty for jumping.\n</p>\n<p>\n  An Internal Linear Frame can be identified with a\n  [[/r 1d10red+@stats.tech+@skills.cybertech #DV13 Cybertech]]{DV13 Cybertech}\n  check.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Lx9FSNDEIxLZ7Pyh]{Grafted Muscle and Bone Lace}\n    x2 (Installed Separately) &amp; <strong>BODY</strong> 8\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Integrated Cyberdeck Upgrade": {
+      "name": "Integrated Cyberdeck Upgrade",
+      "description": "<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.eZg3gGGEJ7r2K9ng]{Cyberdeck (Hardwired)}\n  </p>\n  <p>\n    Adds an extra slot to the cyberdeck — Not currently supported requires\n    manual update.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Laser Pointer Cyberfinger": {
+      "name": "Laser Pointer Cyberfinger",
+      "description": "<p>Cyberfinger that conceals a Laser Pointer.</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Lighter Cyberfinger": {
+      "name": "Lighter Cyberfinger",
+      "description": "<p>Cyberfinger that conceals a lighter.</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Lockpick Cyberfinger": {
+      "name": "Lockpick Cyberfinger",
+      "description": "<p>\n  Cyberfinger that conceals a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.vlhGpguIMioeA8fe]{Lock Picking Set}.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Microphone Cyberfinger": {
+      "name": "Microphone Cyberfinger",
+      "description": "<p>\n  Cyberfinger that conceals an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Lo7rXsc5ToQf2KlN]{Audio Recorder}.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Mini Air Supply Cyberfinger": {
+      "name": "Mini Air Supply Cyberfinger",
+      "description": "<p>Cyberfinger that conceals 10min of breathable air. Recharges in 1hr.</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Modular Finger Cyberhand": {
+      "name": "Modular Finger Cyberhand",
+      "description": "<p>Comes with 5 standard cyberfingers.</p>\n<blockquote>\n  <p>\n    Can be installed into your\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.WzgaetvvHUQeD19B]{Meat Arm}\n    as the only piece of cyberware.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Neo-Soviet Cyberarm": {
+      "name": "Neo-Soviet Cyberarm",
+      "description": "<p>\n  A soviet cybernetical replacement arm. Comes with a free hand pre-installed.\n</p>\n<blockquote>\n  <p>\n    This arm imposes a -1 penalty to rolls for users without\n    <strong>BODY</strong> 8+\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "One Shot Special Cyberfinger": {
+      "name": "One Shot Special Cyberfinger",
+      "description": "<p>Cyberfinger that conceals a single shot Pistol.</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Popup Net Launcher": {
+      "name": "Popup Net Launcher",
+      "description": "<p>A concealable exotic net launcher.</p>\n<blockquote>\n  <p>Can't hold anything with this hand while activated.</p>\n</blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Popup Shotgun": {
+      "name": "Popup Shotgun",
+      "description": "<p>\n  A concealable\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PJhu6eY766OegZBo]{shotgun}.\n</p>\n<blockquote>\n  <p>Can't hold anything with this hand while activated.</p>\n  <p>\n    Incompatible with all upgrades except\n    <a\n      class=\"content-link\"\n      draggable=\"true\"\n      data-link\n      data-uuid=\"Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC\"\n      data-id=\"BC8S1sdK0QGdyHNC\"\n      data-type=\"Item\"\n      data-pack=\"cyberpunk-red-core.core_upgrades\"\n      data-tooltip=\"Item\"\n      data-tooltip-text=\"Upgrade Item\"\n      >Smartgun Link</a\n    >.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "RacerBracer": {
+      "name": "RacerBracer",
+      "description": "<p>\n  Grants immunity to the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.e5wyX6r4Tem6bNwQ]{Whiplash}\n  critical injury.\n</p>\n",
+      "dvTable": ""
+    },
+    "Reflex Co-Processor": {
+      "name": "Reflex Co-Processor",
+      "description": "<p>Negates <strong>REF</strong> requirement to dodge bullets.</p>\n<blockquote>\n  <p>The system does not provide any automation for dodging bullets.</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Reinforced Cyberarm Upgrade": {
+      "name": "Reinforced Cyberarm Upgrade",
+      "description": "<p>\n  Durable reinforcement for your limb that prevents the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-body.Item.Y65igO9rtakP4qSs]{Broken Arm}\n  critical injury.\n</p>\n",
+      "dvTable": ""
+    },
+    "Reinforced Cyberleg Upgrade": {
+      "name": "Reinforced Cyberleg Upgrade",
+      "description": "<p>\n  Durable reinforcement for your limb that prevents the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-body.Item.yBy9rlhgZeaWGtHh]{Broken Leg}\n  critical injury.\n</p>\n",
+      "dvTable": ""
+    },
+    "Sponsored Cybereye": {
+      "name": "Sponsored Cybereye",
+      "description": "<p>A replacement eye with an ad-supported Chyron.</p>\n",
+      "dvTable": ""
+    },
+    "Spray Paint Cyberfinger": {
+      "name": "Spray Paint Cyberfinger",
+      "description": "<p>\n  Cyberfinger that conceals a small can of\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.3HWLPHE0VHMGgv48]{Glow Paint}.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Squirt Cyberfinger": {
+      "name": "Squirt Cyberfinger",
+      "description": "<p>Cyberfinger that conceals and sprays various non-corrosive liquids.</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Standard Cyberfinger": {
+      "name": "Standard Cyberfinger",
+      "description": "<p>\n  A finger for your\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}\n</p>\n",
+      "dvTable": ""
+    },
+    "Trauma Response Nanomatrix": {
+      "name": "Trauma Response Nanomatrix",
+      "description": "<p>\n  Can fully repair\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.micrAI9oicghVbcG]{Skinweave}\n  or\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.O5GmxTYCrrs8uWAd]{Subdermal Armor}\n  once a day.\n</p>\n",
+      "dvTable": ""
+    },
+    "Wirecutter/Scissors Cyberfingers": {
+      "name": "Wirecutter/Scissors Cyberfingers",
+      "description": "<p>\n  A pair of cyberfinger that conceal retractable scissor blades tough enough to\n  cut small wires.\n</p>\n<blockquote>\n  <p>\n    Can only be installed on a\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular Finger Cyberhand}.\n  </p>\n  <p>Function as a <strong>Poor Quality</strong> weapon.</p>\n</blockquote>\n",
+      "dvTable": ""
+    }
+  }
+}

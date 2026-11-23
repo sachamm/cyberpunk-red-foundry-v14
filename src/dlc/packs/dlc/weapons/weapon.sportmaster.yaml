@@ -1,0 +1,75 @@
+_id: LnOj3QW7fU5auvUg
+_key: "!items!LnOj3QW7fU5auvUg"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: SportMaster
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - rifle
+  attackmod: 0
+  brand: Everest VentureWare
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A sport rifle, for fun, not people. Can only load Small Game Ammunition and is
+        incapable of Autofire and Suppressive Fire.
+      </p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 25
+    value: 0
+  price:
+    market: 50
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Black Chrome+
+      page: 3
+    - book: Interface RED v4
+      page: 11
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: assaultRifle
+type: weapon

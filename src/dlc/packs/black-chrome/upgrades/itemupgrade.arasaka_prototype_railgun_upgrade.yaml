@@ -1,0 +1,153 @@
+_id: 8nSzcjNlyulWrZtN
+_key: "!items!8nSzcjNlyulWrZtN"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/black-chrome/upgrades/apv-electronic-reciever.svg
+name: Arasaka Prototype Railgun Upgrade
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - battery
+    - rifle
+  attackmod: 1
+  brand: Arasaka
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        You may swap between firing modes at the start of combat or as an action
+        during combat.
+      </p>
+      <blockquote>
+        <p>Required before use:</p>
+        <ul>
+          <li>
+            <p>
+              @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.mlYhAxuDlI3fP9hq]{Arasaka
+       Prototype Heat-Resistant Barrel}
+            </p>
+          </li>
+          <li>
+            <p>
+              @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.nQF0M9n7cLvHS5RY]{Arasaka
+       Prototype Rechargable Battery}
+            </p>
+          </li>
+        </ul>
+      </blockquote>
+  dvTable: DV Assault Rifle
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 7
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isRanged: true
+  magazine:
+    ammoData: {}
+    max: 8
+    value: 0
+  modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
+    attackmod:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: 0
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
+      value: null
+    damage:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    magazine:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    rof:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    sdp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    seats:
+      isSituational: false
+      onByDefault: false
+      value: null
+    secondaryWeapon:
+      configured: true
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
+    speedCombat:
+      isSituational: false
+      onByDefault: false
+      value: null
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 102
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: assaultRifle
+type: itemUpgrade

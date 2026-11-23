@@ -21,3 +21,9 @@
 
 # Ignore templates, prettier can't handle handlebars partials
 **/src/templates/*
+
+# Bundled DLC (src/dlc/README.md): same rules as the core files above
+**/src/dlc/babele/*/*.json
+!**/src/dlc/babele/en/*.json
+**/src/dlc/icons/*
+**/src/dlc/assets/*

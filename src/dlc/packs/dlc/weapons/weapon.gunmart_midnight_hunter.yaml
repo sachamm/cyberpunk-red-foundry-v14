@@ -1,0 +1,219 @@
+_id: YzgEssOsb2dxgdfc
+_key: "!items!YzgEssOsb2dxgdfc"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: 7X4JWV1e400V4MCE
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.pEXcsIk1FYMNdbUc
+          coreVersion: "13.351"
+          createdTime: 1784572940745
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: C3z4G1obpqMQAu25
+          modifiedTime: 1784572940745
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: Em6tnWjMgSob6YcK
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/infrared_nightvision_scope.svg
+        name: Infrared Nightvision Scope
+        ownership:
+          default: 0
+        sort: 262500
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>Reduces penalties against targets in darkness, smoke/fog to
+              0.</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 500
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 343
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: ""
+          weaponType: ""
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Crossbow_poor.svg
+name: GunMart Midnight Hunter
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - arrow
+  attackmod: 0
+  brand: GunMart
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A poor quality crossbow equipped with a night vision scope, reloaded as part
+        of an Attack action.
+      </p>
+      <p>
+        If you roll 1 on Attack (Crit fail) the weapon jams and requires using an
+        action to clear.
+      </p>
+  dvTable: DV Bows & Crossbows
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - 7X4JWV1e400V4MCE
+    slots: 3
+    usedSlots: 1
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 550
+  quality: poor
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Toggle's Temple
+      page: 12
+    - book: Interface RED v5
+      page: 46
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: bow
+type: weapon

@@ -1,0 +1,140 @@
+_id: e1h7AitpGYGzwmHn
+_key: "!tables!e1h7AitpGYGzwmHn"
+description: ""
+displayRoll: true
+flags: {}
+formula: 1d10
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Dice.svg
+name: Hardened Mini Boss Mini Promotion
+replacement: true
+results:
+  - _id: SfFs4w9vkTdBlSln
+    _key: "!tables.results!e1h7AitpGYGzwmHn.SfFs4w9vkTdBlSln"
+    description: Increase one of their Skill Bases that is above 10 to 17.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: PilKglGsqoDJOcfu
+    _key: "!tables.results!e1h7AitpGYGzwmHn.PilKglGsqoDJOcfu"
+    description: Increase their HP by 10.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: FjsIS0p4CnFe9o4n
+    _key: "!tables.results!e1h7AitpGYGzwmHn.FjsIS0p4CnFe9o4n"
+    description: >-
+      Give them Teamwork 3 (see CP:R page 153), and give them a Team Member of
+      your choice.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: Prn8xzNaeukuI4yV
+    _key: "!tables.results!e1h7AitpGYGzwmHn.Prn8xzNaeukuI4yV"
+    description: >-
+      Give them Medium Armorjack that’s been Tech upgraded, removing the Armor
+      Penalty.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: A6gzjP4MuU6asaUm
+    _key: "!tables.results!e1h7AitpGYGzwmHn.A6gzjP4MuU6asaUm"
+    description: Give them an additional 600eb of Cyberware.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: hfGH9LPi1AUB0YXs
+    _key: "!tables.results!e1h7AitpGYGzwmHn.hfGH9LPi1AUB0YXs"
+    description: Give them a Reputation of 5.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: hO6wFEac94UlXGlw
+    _key: "!tables.results!e1h7AitpGYGzwmHn.hO6wFEac94UlXGlw"
+    description: >-
+      Give them an EMP Grenade (see CP:R page 345) and an Athletics Skill Base
+      of 16.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: YKmjTt0QQgOs386M
+    _key: "!tables.results!e1h7AitpGYGzwmHn.YKmjTt0QQgOs386M"
+    description: >-
+      Give them either a dose of Black Lace (see CP:R page 357) or Synthcoke
+      (see CP:R page 358) before combat starts.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: 5N2D1CMixS0S9vfu
+    _key: "!tables.results!e1h7AitpGYGzwmHn.5N2D1CMixS0S9vfu"
+    description: Increase their MOVE to 8 or increase their Evasion Skill Base to 18.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: UeZQ8jB8pFxYBM9O
+    _key: "!tables.results!e1h7AitpGYGzwmHn.UeZQ8jB8pFxYBM9O"
+    description: >-
+      Give them Gills (see CP:R page 363) and a round of Exotic Bodysculpting
+      (see CP:R page 226). Shark? Arowana? You decide.
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1

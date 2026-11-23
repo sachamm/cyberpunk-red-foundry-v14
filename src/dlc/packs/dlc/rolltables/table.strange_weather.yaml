@@ -1,0 +1,447 @@
+_id: 5L9UqQ3LZTTUAzoZ
+_key: "!tables!5L9UqQ3LZTTUAzoZ"
+description: >-
+  <p><a
+  href="https://rtalsoriangames.com/wp-content/uploads/2021/07/RTG-CPR-NightCityWeather.pdf">Night
+  City Weather</a>, pg 4-5</p>
+displayRoll: false
+flags: {}
+folder: S3DaoDSZDyQyYrdA
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/strange.svg
+name: Strange Weather
+ownership:
+  GSQleko03XTBUGW9: 3
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: N2MOtWuBxrUCTCsH
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.N2MOtWuBxrUCTCsH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: >-
+      Radioactive Windstorm that lasts for [[1d6*10]] minutes. GM may create
+      Wind Bursts that last for [[1d6]] Rounds.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/nuclear-wind-storm.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 2puwp6Vls2BB58fz
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.2puwp6Vls2BB58fz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Ash Storm that lasts for [[1d6*10]] minutes.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/ash-storm.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: TSPhw6QmLW0EjK5W
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.TSPhw6QmLW0EjK5W"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Flooding that lasts for [[1d6]] days.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/flood.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: bN6JnVBxOHxfc3TW
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.bN6JnVBxOHxfc3TW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Acid Rain that lasts for [[1d6]] hours.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/acid-rain.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: siP26yJ5ptyPbY5Z
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.siP26yJ5ptyPbY5Z"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Deadly Thunderstorm that lasts for [[1d6*10]] minute.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/thunder-storm.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: BoFxaDYFGaP6OTEe
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.BoFxaDYFGaP6OTEe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Inversion Smog that lasts for [[1d6]] days.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/inversion-smog.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: YQl0PYpoNNdfnJ7W
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.YQl0PYpoNNdfnJ7W"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: >-
+      Extreme Temperatures that last for [[1d6]] days. (Choose effect that
+      matches the season))
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/extreme-temperature.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: DdDidoTFfDpqt6G2
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.DdDidoTFfDpqt6G2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Dust Storm that lasts for [[1d6*10]] minutes.
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/dust-storm.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: g1m6euUZTlU2RBuK
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.g1m6euUZTlU2RBuK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.tYhpiNpi0aGvdKje
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blood-rain.svg
+    name: Blood Rain
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: oPkOcSbGU05aV7sW
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.oPkOcSbGU05aV7sW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.o2161gOXy1TkjTLl
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: City Blackouts
+    range:
+      - 10
+      - 10
+    type: document
+    weight: 1
+  - _id: J8BQPXEM9kh2PS6f
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.J8BQPXEM9kh2PS6f"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.o2161gOXy1TkjTLl
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/blackout.svg
+    name: City Blackouts
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: mbLm4d5yuxmirIqS
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.mbLm4d5yuxmirIqS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.lkG3eyCLhyMZ5cLo
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/thunder-storm.svg
+    name: Heavy Rain/Sleet
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: OOCNPsiwlA1m1N7j
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.OOCNPsiwlA1m1N7j"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.Vxnb6BIq796jkYjJ
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/inversion-smog.svg
+    name: Inversion Smog
+    range:
+      - 7
+      - 7
+    type: document
+    weight: 1
+  - _id: XskbAdbijyxWgxIS
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.XskbAdbijyxWgxIS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.ZKsirEcYw5QpYwIT
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/cold-snap.svg
+    name: Cold Snap
+    range:
+      - 8
+      - 8
+    type: document
+    weight: 1
+  - _id: WKuwFbzbSKcHTNOe
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.WKuwFbzbSKcHTNOe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.NXlGE2j6mbV4TzwQ
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/cold-snap.svg
+    name: Heat Wave
+    range:
+      - 8
+      - 8
+    type: document
+    weight: 1
+  - _id: KIvqimRNjf7vJv9B
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.KIvqimRNjf7vJv9B"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.LCnlplKGlV0Da39B
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/ash-storm.svg
+    name: Ash Storm
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: cchQtT2BgO64ELyR
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.cchQtT2BgO64ELyR"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.RN6s8BEuouhd8mve
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/dust-storm.svg
+    name: Dust Storm
+    range:
+      - 9
+      - 9
+    type: document
+    weight: 1
+  - _id: Ddnpa79HiqcBOMw8
+    _key: "!tables.results!5L9UqQ3LZTTUAzoZ.Ddnpa79HiqcBOMw8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.yd5RKbg33WnbwKAE
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/acid-rain.svg
+    name: Acid Rain
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+sort: -150000

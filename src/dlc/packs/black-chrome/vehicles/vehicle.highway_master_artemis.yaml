@@ -1,0 +1,48 @@
+_id: 3EVQOiwBjZNnKYjR
+_key: "!items!3EVQOiwBjZNnKYjR"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/artemis.svg
+name: Highway Master Artemis
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Brennan Cycles
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A low-riding Roadbike with retractable glass cover. Has a surpercharge mode
+        that doesn't come with a safety guarantee.
+      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 5</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 60000
+  sdp: 35
+  seats: 2
+  sources:
+    - book: Black Chrome
+      page: 70
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

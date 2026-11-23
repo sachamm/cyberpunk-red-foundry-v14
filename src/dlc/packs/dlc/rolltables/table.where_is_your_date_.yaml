@@ -1,0 +1,498 @@
+_id: wp4UyoiRsFkybbbl
+_key: "!tables!wp4UyoiRsFkybbbl"
+description: <p>Interface RED volume 3 / Digital Dating pg 4</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d20
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Where is your date?
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: aQqJWbAsxgLJdcri
+    _key: "!tables.results!wp4UyoiRsFkybbbl.aQqJWbAsxgLJdcri"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756878027
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: w3682e6R5qVcWyUA
+      modifiedTime: 1788388356673
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.sJTGDPzxGlUkqZKS
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: NorCal Military Base
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: HCv6g14Re885sDgZ
+    _key: "!tables.results!wp4UyoiRsFkybbbl.HCv6g14Re885sDgZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756882094
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756882094
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.8FhJXSztr1evvgNn
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Watson Development
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: ZsZ9K6KEweMOjodJ
+    _key: "!tables.results!wp4UyoiRsFkybbbl.ZsZ9K6KEweMOjodJ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756888147
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756888147
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.54TEwPQ6CnVhZHrO
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: New Westbrook
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: 7VImZ63TqXi3xmrD
+    _key: "!tables.results!wp4UyoiRsFkybbbl.7VImZ63TqXi3xmrD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756892880
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756892880
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.NG4BqIBNAhx5fjul
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Morro Rock
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: jEHg6xw2chqiHmna
+    _key: "!tables.results!wp4UyoiRsFkybbbl.jEHg6xw2chqiHmna"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756898218
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756898218
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.2imwaMOXshtmu73O
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Executive Zone
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: sUI89ZOcSUZq73cW
+    _key: "!tables.results!wp4UyoiRsFkybbbl.sUI89ZOcSUZq73cW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756902413
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756902413
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.qN0LtCkHexRogKzg
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Heywood Industrial Zone
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: h0kZ6evbbdftBiLE
+    _key: "!tables.results!wp4UyoiRsFkybbbl.h0kZ6evbbdftBiLE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756903458
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756903458
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.4z1zVMKvMdfp0VVk
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Heywood (Santo Domingo)
+    range:
+      - 7
+      - 7
+    type: document
+    weight: 1
+  - _id: XZL3wz0AwHNHJWUM
+    _key: "!tables.results!wp4UyoiRsFkybbbl.XZL3wz0AwHNHJWUM"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756907879
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756907879
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.n2oY2jqVZeJT1Zz6
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Rancho Coronado
+    range:
+      - 8
+      - 8
+    type: document
+    weight: 1
+  - _id: S29RvpfAKv8if5aB
+    _key: "!tables.results!wp4UyoiRsFkybbbl.S29RvpfAKv8if5aB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756913917
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756913917
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.DbO5vIsAxSfEqWKp
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Outskirts
+    range:
+      - 9
+      - 9
+    type: document
+    weight: 1
+  - _id: vXDUW5bujA105ap0
+    _key: "!tables.results!wp4UyoiRsFkybbbl.vXDUW5bujA105ap0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756924897
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756924897
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.vzhSPE2tafIJiX95
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Reclaimed Perimeter
+    range:
+      - 10
+      - 10
+    type: document
+    weight: 1
+  - _id: jTcv7YWESAeZ7WSP
+    _key: "!tables.results!wp4UyoiRsFkybbbl.jTcv7YWESAeZ7WSP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756930486
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756930486
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.kNCogKzXVVkZlvxU
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Little Europe
+    range:
+      - 11
+      - 11
+    type: document
+    weight: 1
+  - _id: nxHnbpXI5mofDFMA
+    _key: "!tables.results!wp4UyoiRsFkybbbl.nxHnbpXI5mofDFMA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756938047
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756938047
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.qfFeZRS3MbNdvK1i
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Upper Marina
+    range:
+      - 12
+      - 12
+    type: document
+    weight: 1
+  - _id: Z7JRU1rN7uyNKDXR
+    _key: "!tables.results!wp4UyoiRsFkybbbl.Z7JRU1rN7uyNKDXR"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756941792
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756941792
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.4NK2lbdRhkHEocWT
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: University District
+    range:
+      - 13
+      - 13
+    type: document
+    weight: 1
+  - _id: 6cmpX98KAdzQjaec
+    _key: "!tables.results!wp4UyoiRsFkybbbl.6cmpX98KAdzQjaec"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756948308
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756948308
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.LL3J3HP1ZXmu7ZJC
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Little China
+    range:
+      - 14
+      - 14
+    type: document
+    weight: 1
+  - _id: ekVH7kw5F4y1RMLz
+    _key: "!tables.results!wp4UyoiRsFkybbbl.ekVH7kw5F4y1RMLz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756956795
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756956795
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.dzeYlUgHY1UuUyGI
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Old Japantown
+    range:
+      - 15
+      - 15
+    type: document
+    weight: 1
+  - _id: Gm9IKnXXT01mZcs4
+    _key: "!tables.results!wp4UyoiRsFkybbbl.Gm9IKnXXT01mZcs4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756963315
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756963315
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.QQSLG1LYDrOQJjLv
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: The Glen
+    range:
+      - 16
+      - 16
+    type: document
+    weight: 1
+  - _id: rGDunszahthtQAGd
+    _key: "!tables.results!wp4UyoiRsFkybbbl.rGDunszahthtQAGd"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756972021
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756972021
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.f6Tgl7Z8uOkMqSgR
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Old Combat Zone
+    range:
+      - 17
+      - 17
+    type: document
+    weight: 1
+  - _id: ZklU9HL8KULXfLLn
+    _key: "!tables.results!wp4UyoiRsFkybbbl.ZklU9HL8KULXfLLn"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756976755
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756976755
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.aBvkMWTPhz6eu2aG
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: South Night City
+    range:
+      - 18
+      - 18
+    type: document
+    weight: 1
+  - _id: Qiu0MpD5tqnoXFOT
+    _key: "!tables.results!wp4UyoiRsFkybbbl.Qiu0MpD5tqnoXFOT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756980801
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756980801
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.sQyBXGhX3zcMidKX
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Hot Zone
+    range:
+      - 19
+      - 19
+    type: document
+    weight: 1
+  - _id: 0BGNm1oaszLt50fB
+    _key: "!tables.results!wp4UyoiRsFkybbbl.0BGNm1oaszLt50fB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784756985999
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784756985999
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.XNIggrlObsilgoj1
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Pacifica Playground
+    range:
+      - 20
+      - 20
+    type: document
+    weight: 1
+  - _id: cj4OKVfegy2eODNW
+    _key: "!tables.results!wp4UyoiRsFkybbbl.cj4OKVfegy2eODNW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757011640
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784757011640
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.MyFUbB6Fwy5DAoy1
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/random.svg
+    name: How Does It Go?
+    range:
+      - 1
+      - 20
+    type: document
+    weight: 1
+sort: -300000

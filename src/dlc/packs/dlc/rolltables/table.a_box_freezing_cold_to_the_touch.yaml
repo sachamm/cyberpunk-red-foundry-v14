@@ -1,0 +1,146 @@
+_id: VszxZ4TJjQ8FGuoc
+_key: "!tables!VszxZ4TJjQ8FGuoc"
+description: >-
+  Source: Achievements and Loot Boxes pg.5
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d6
+img: icons/containers/chest/chest-simple-box-blue.webp
+name: A Box Freezing Cold To The Touch
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+replacement: true
+results:
+  - _id: JiMN6zADBZGPIqHC
+    _key: "!tables.results!VszxZ4TJjQ8FGuoc.JiMN6zADBZGPIqHC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_clothing.Item.Xi3LUVQem3nBHgB1
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
+    name: Bohemian Mirrorshades
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: wqG4JWoUVJYhyJqH
+    _key: "!tables.results!VszxZ4TJjQ8FGuoc.wqG4JWoUVJYhyJqH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_armor.OzfbjQ3nPCCf6BQQ
+    drawn: false
+    flags: {}
+    img: null
+    name: Street Viper Riding Suit
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: qVw9IIb1peHOxlXK
+    _key: "!tables.results!VszxZ4TJjQ8FGuoc.qVw9IIb1peHOxlXK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_cyberware.BYDAED1axkFYm1h9
+    drawn: false
+    flags: {}
+    img: null
+    name: Sponsored Cybereye
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: C1PBkQkgZesy7QSz
+    _key: "!tables.results!VszxZ4TJjQ8FGuoc.C1PBkQkgZesy7QSz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_armor.xVE36X9aE4m3mRza
+    drawn: false
+    flags: {}
+    img: null
+    name: Skid Row Trench
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: 1luj1hZCHHXcW6eT
+    _key: "!tables.results!VszxZ4TJjQ8FGuoc.1luj1hZCHHXcW6eT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_consumables.RZ7P9nSOB21pfiaI
+    drawn: false
+    flags: {}
+    img: null
+    name: Prime Time
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: xdzTOenYphIk50Dk
+    _key: "!tables.results!VszxZ4TJjQ8FGuoc.xdzTOenYphIk50Dk"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_armor.fyi3U9v6On4r1iiO
+    drawn: false
+    flags: {}
+    img: null
+    name: Laser Light Street Jacket
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+sort: 0

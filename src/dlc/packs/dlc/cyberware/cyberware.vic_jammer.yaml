@@ -1,0 +1,121 @@
+_id: D7TFt1EHP20nKr8S
+_key: "!items!D7TFt1EHP20nKr8S"
+effects:
+  - _id: E8qjwBDZmIVYcCdw
+    _key: "!items.effects!D7TFt1EHP20nKr8S.E8qjwBDZmIVYcCdw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1759594935536
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: pLIpYgHBYUznkgBy
+      modifiedTime: 1759684951667
+      systemId: cyberpunk-red-core
+      systemVersion: v0.89.2
+    changes:
+      - key: bonuses.stealth
+        mode: 2
+        priority: null
+        value: "2"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/vic_jammer.svg
+    name: VIC Jammer
+    origin: >-
+      Compendium.cyberpunk-red-core.dlc_cyberware.Item.D7TFt1EHP20nKr8S
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/vic_jammer.svg
+name: VIC Jammer
+ownership:
+  default: 0
+  pLIpYgHBYUznkgBy: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>An eye jammer that scrambles digital optics.</p>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: clinic
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - cyberware
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: {}
+    max: 0
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 2
+  sources:
+    - book: Mixing Drinks — Changing Lives
+      page: 16
+  type: cyberEye
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: cyberware

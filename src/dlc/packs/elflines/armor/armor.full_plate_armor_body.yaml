@@ -1,0 +1,60 @@
+_id: N2bk4F8YVgALbUH7
+_key: "!items!N2bk4F8YVgALbUH7"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: icons/equipment/chest/breastplate-banded-steel-gold.webp
+name: Full Plate Armor (Body)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 15
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Virtual armor for you body made of plate metal to withstand the heaviest
+        blows.
+      </p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  penalty: 4
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  sources:
+    - book: Elflines Online
+      page: 3
+    - book: Interface RED v1
+      page: 42
+  usage: equipped
+type: armor

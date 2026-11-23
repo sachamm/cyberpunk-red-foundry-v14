@@ -1,0 +1,235 @@
+_id: O47Q7mRmFQVCgP6N
+_key: "!tables!O47Q7mRmFQVCgP6N"
+description: <p>Interface RED volume 3 / Digital Dating pg 13</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+name: One... Weird... Thing
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: 0Z2sfqz2F1JHZmcA
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.0Z2sfqz2F1JHZmcA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774388183
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You date eats their food in a strange way.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 4L12TJaFr4p84eH8
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.4L12TJaFr4p84eH8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774391968
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date got a call from their parents. Twice.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 2Uyfm1nWv8xbD6DA
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.2Uyfm1nWv8xbD6DA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774395856
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date talked too much about their ex.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: xjkt4XlUnBEcnoxL
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.xjkt4XlUnBEcnoxL"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774402225
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date didn't silene their Agent and it kept going off.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: Wyh4pwrCk1qsABET
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.Wyh4pwrCk1qsABET"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774398981
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date didn't seem to care that their clothing was stained.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: RDXnHPH6BKxUfC1Z
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.RDXnHPH6BKxUfC1Z"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774405458
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date didn't tip.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: uUcVxQ2S5YCmBFJw
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.uUcVxQ2S5YCmBFJw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774408365
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You can tell your date lied to you.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: KraZR5Y694dJ8kzg
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.KraZR5Y694dJ8kzg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774411910
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date showed up 30 minutes late.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: UgmJW3P1KCedtQh7
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.UgmJW3P1KCedtQh7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774415048
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date thought you were somebody else!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: zojOfmJTBbc0x9qU
+    _key: "!tables.results!O47Q7mRmFQVCgP6N.zojOfmJTBbc0x9qU"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784774418690
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date was recovering from a recent gunshot wound.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/red-flag.svg
+    name: One... Weird... Thing
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: 125000

@@ -1,0 +1,80 @@
+_id: g7lNPRaJsniCFbN3
+_key: "!items!g7lNPRaJsniCFbN3"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 3a88609d8e79f0149801a7b303450f32c9a96f5f
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/hello-cutie-mono-paw.svg
+name: Hello Cutie Mono-Paw
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 1
+  brand: Sanroo
+  canIgnoreArmor: true
+  concealable:
+    concealable: true
+    isConcealed: true
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Retractable feline claws that ignore armor below 11SP. Can be concealed
+        without a check.
+      </p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 11
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: false
+  isWeapon: true
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  sources:
+    - book: 12 Days of Cutimas
+      page: 6
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: medMelee
+type: cyberware

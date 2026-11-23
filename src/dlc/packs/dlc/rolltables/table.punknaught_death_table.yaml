@@ -1,0 +1,152 @@
+_id: p2lTBJqKJoYR5wJh
+_key: "!tables!p2lTBJqKJoYR5wJh"
+description: <p>Dreaded Punknaught, pg 7</p>
+displayRoll: false
+flags: {}
+folder: null
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/punknaught_death.svg
+name: Punknaught Death Table
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: BC72Gmh2bQTMgjZQ
+    _key: "!tables.results!p2lTBJqKJoYR5wJh.BC72Gmh2bQTMgjZQ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Punknaught grinds to a halt.
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/punknaught_death.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 4SsjCx7ViKTGTV4r
+    _key: "!tables.results!p2lTBJqKJoYR5wJh.4SsjCx7ViKTGTV4r"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: >-
+      GM moves the Punknaught forward at full speed ramming everything in its
+      path.
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/punknaught_death.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 0F4X7QhQ3usqnjyX
+    _key: "!tables.results!p2lTBJqKJoYR5wJh.0F4X7QhQ3usqnjyX"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Punknaught and anyone inside are On Fire (Strong)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/punknaught_death.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: TxJ8aO1j57snmFHV
+    _key: "!tables.results!p2lTBJqKJoYR5wJh.TxJ8aO1j57snmFHV"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: >-
+      GM moves the Punknaught forward at full speed ramming everything in its
+      path and anything the Punknaught rams is set On Fire (Mild).  The
+      Punknaught and anyone inside are On Fire (Strong).
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/punknaught_death.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: MPwNfukWmJTa2Fun
+    _key: "!tables.results!p2lTBJqKJoYR5wJh.MPwNfukWmJTa2Fun"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: Anyone riding the Punknaught takes [[4d6]] melee damage.
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/punknaught_death.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: BTJse62WIBrcGqCD
+    _key: "!tables.results!p2lTBJqKJoYR5wJh.BTJse62WIBrcGqCD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: The Punknaught explodes dealing [[6d6]] damage to everyone within 6m/yds.
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/punknaught_death.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

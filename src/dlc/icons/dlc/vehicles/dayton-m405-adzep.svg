@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="dayton-m405-adzep.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter15"
+       x="-0.075343977"
+       y="-0.13669839"
+       width="1.150688"
+       height="1.2733968">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood14" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur14" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset14" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite14" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite15" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="fill:#1b1f21" />
+  <g
+     class=""
+     style="filter:url(#filter15)"
+     transform="translate(0,0)"
+     id="g2">
+    <path
+       id="path5"
+       style="fill:#e64539"
+       d="M 248.62891 118.03711 L 243.44727 125.81055 L 283.55859 152.55078 C 285.80065 150.37513 288.51143 148.39266 291.70898 146.75781 L 248.62891 118.03711 z M 376.31055 118.03711 L 333.23047 146.75781 C 336.42749 148.39266 339.13877 150.37513 341.38086 152.55078 L 381.49219 125.81055 L 376.31055 118.03711 z M 57.005859 130.60938 L 64.005859 211.7793 C 73.545859 207.4393 124.605 186.91969 138.875 182.17969 L 138.9043 182.17969 L 110.69531 146.83008 L 57.005859 130.60938 z M 312.4707 151.50781 C 301.0527 151.50781 294.13153 155.17122 289.82227 159.48047 C 287.38141 161.92185 285.88926 164.65597 284.98828 167.07812 L 339.95312 167.07812 C 339.05214 164.65544 337.55804 161.92185 335.11719 159.48047 C 330.80793 155.17122 323.88868 151.50781 312.4707 151.50781 z M 276.69531 172.73047 C 155.20531 172.73047 17.095703 253.49023 17.095703 253.49023 C 17.095703 253.49023 155.21531 334.25977 276.69531 334.25977 C 280.69531 334.25977 336.15469 334.31977 338.05469 334.25977 C 447.66469 330.91977 494.9043 295.96023 494.9043 253.49023 C 494.9043 211.09023 447.86531 176.17047 338.69531 172.73047 C 336.69531 172.67047 280.83531 172.73047 276.69531 172.73047 z M 245.18555 188.35547 L 245.1875 188.35547 L 378.95508 188.35547 C 384.33919 188.35547 389.74679 191.89471 392.85352 196.66016 L 254.3418 196.66016 C 246.03781 196.66016 237.73438 204.96359 237.73438 213.26758 L 237.73438 296.30859 C 251.18894 211.95039 313.44475 199.93244 392.92383 196.76758 C 394.53585 199.27746 395.50977 202.11929 395.50977 204.96289 L 395.50977 304.61133 C 395.50977 312.91532 387.20549 321.21875 377.92578 321.21875 L 245.70117 321.21875 C 237.73452 321.21875 229.42969 312.91532 229.42969 304.61133 L 229.42969 204.96289 C 229.42969 196.65961 237.7332 188.3569 245.18555 188.35547 z M 64.005859 295.18945 L 57.005859 376.36914 L 110.64453 360.15039 L 138.85547 324.80078 C 124.60547 320.06078 73.545859 299.53945 64.005859 295.18945 z M 360.18555 349.14062 C 344.63555 350.44063 268.78586 350.17 264.75586 350 L 269.00586 381.39062 L 350.00586 381.39062 L 360.18555 349.14062 z " />
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+_id: 9rzemFBOwDETIw93
+_key: "!items!9rzemFBOwDETIw93"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: 5xErAUL6upQVKfZ1
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/kibble_sport-flakes.svg
+name: "Kibble Pack: Sport Flakes"
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 400000
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>One meal.</p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 10
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Collecting the Random
+      page: 14
+    - book: Interface RED v3
+      page: 64
+  usage: toggled
+type: gear

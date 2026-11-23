@@ -1,0 +1,57 @@
+_id: hsdFxCDRUIZXjm0H
+_key: "!items!hsdFxCDRUIZXjm0H"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/armor/light-metalgear-head.svg
+name: Light Metalgear® (Head)
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A lighter model of the famous Metalgear® armor.</p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 16
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: false
+  isElectronic: false
+  isHeadLocation: true
+  isShield: false
+  penalty: 3
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: null
+  sources:
+    - book: 12 Days of Redmas
+      page: 3
+  usage: equipped
+type: armor

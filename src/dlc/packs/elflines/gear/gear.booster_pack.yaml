@@ -1,0 +1,51 @@
+_id: nEITubqXVIVK36c2
+_key: "!items!nEITubqXVIVK36c2"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: MgaT7aTvtcZaSWIj
+img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-booster-pack.svg
+name: Booster Pack
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 100000
+system:
+  amount: 1
+  brand: Elflines Online TCG
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        An unopened pack of Elflines Online trading cards. Contains one stack of
+        @UUID[Compendium.cyberpunk-red-core.elflines_rolltables.RollTable.DvNSK7YR1z3mkyKi]{Numbered Cards}
+        and a
+        @UUID[Compendium.cyberpunk-red-core.elflines_rolltables.RollTable.y4VW60EUNSRVTaXy]{Random Face Card}.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 10
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Elflines Online — TCG
+      page: 2
+    - book: Interface RED v3
+      page: 66
+  usage: toggled
+type: gear

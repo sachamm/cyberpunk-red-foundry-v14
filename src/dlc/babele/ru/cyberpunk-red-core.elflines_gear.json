@@ -1,0 +1,134 @@
+{
+  "label": "Gear",
+  "mapping": {},
+  "entries": {
+    "Face Cards": {
+      "name": "Face Cards",
+      "description": ""
+    },
+    "Jokers": {
+      "name": "Jokers",
+      "description": ""
+    },
+    "TCG": {
+      "name": "TCG",
+      "description": ""
+    },
+    "10 Sacred Herbs": {
+      "name": "10 Sacred Herbs",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to recieve 10\n  @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.zDjspn0R9fgRILpv]{Sacred Herbs}!\n</p>\n"
+    },
+    "500 Gold Coins": {
+      "name": "500 Gold Coins",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to recieve 500 gold coins!\n</p>\n"
+    },
+    "Blessing of Arvish": {
+      "name": "Blessing of Arvish",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Booster Box": {
+      "name": "Booster Box",
+      "description": "<p>\n  A box of 10 ELO-TCG\n  @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.nEITubqXVIVK36c2]{Booster\n Packs}.\n</p>\n"
+    },
+    "Booster Pack": {
+      "name": "Booster Pack",
+      "description": "<p>\n  An unopened pack of Elflines Online trading cards. Contains one stack of\n  @UUID[Compendium.cyberpunk-red-core.elflines_rolltables.RollTable.DvNSK7YR1z3mkyKi]{Numbered Cards}\n  and a\n  @UUID[Compendium.cyberpunk-red-core.elflines_rolltables.RollTable.y4VW60EUNSRVTaXy]{Random Face Card}.\n</p>\n"
+    },
+    "Curse of Enthernox": {
+      "name": "Curse of Enthernox",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Duel Flag": {
+      "name": "Duel Flag",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to initiate a pvp duel in town!\n</p>\n"
+    },
+    "Dungeonstone": {
+      "name": "Dungeonstone",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to transport your party to a dungeon!\n</p>\n"
+    },
+    "Flight of Dragons": {
+      "name": "Flight of Dragons",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Gather the Elflines": {
+      "name": "Gather the Elflines",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Hero's Reversal": {
+      "name": "Hero's Reversal",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Hero's Tutor": {
+      "name": "Hero's Tutor",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Numbered Cards": {
+      "name": "Numbered Cards",
+      "description": "<p>\n  A stack of Dirt Cheap numbered cards for building an Elflines Online-TCG deck.\n</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Pot of Miasma": {
+      "name": "Pot of Miasma",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Rank 10 ELO Character": {
+      "name": "Rank 10 ELO Character",
+      "description": "<p>A power-leveled Rank 10 ELO character.</p>\n<blockquote>\n  <p>\n    ELO Character must be created via the provided\n    @UUID[Compendium.cyberpunk-red-core.elflines_macros.Macro.YI3MVPWwjfWK4Woa]\n    macro and ranked up manually.\n  </p>\n</blockquote>\n"
+    },
+    "Rank Up!": {
+      "name": "Rank Up!",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Rank Up Elixir": {
+      "name": "Rank Up Elixir",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to enhance your character's rank!\n</p>\n"
+    },
+    "Revive Sickness Cure": {
+      "name": "Revive Sickness Cure",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to remove Revive Sickness from a character!\n</p>\n"
+    },
+    "Rise from Bog": {
+      "name": "Rise from Bog",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Sacred Herbs": {
+      "name": "Sacred Herbs",
+      "description": "<p>\n  Ingesting Sacred Herbs immediately heals HP equal to the user's\n  [[/r @stats.body+@stats.will #Sacred Herb Healing]]{Body + Will}\n</p>\n"
+    },
+    "Spreading Slime": {
+      "name": "Spreading Slime",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Super Repair Hammer": {
+      "name": "Super Repair Hammer",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to instantly repair your gear for half price!\n</p>\n"
+    },
+    "Tiny Draglin": {
+      "name": "Tiny Draglin",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to summon a Tiny Draglin mini-pet!\n</p>\n"
+    },
+    "Tiny Tent": {
+      "name": "Tiny Tent",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to spawn your very own Tiny Tent once every 24 hours!\n</p>\n"
+    },
+    "Vial of Poison": {
+      "name": "Vial of Poison",
+      "description": "<p>\n  A virtual item that deals [[/r 2d6dmg #Vial of Poison Damage]]{2d6 damage}\n  unless the target passes a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}\n  check. Armor does not apply.\n</p>\n"
+    },
+    "Warlock's Wrath": {
+      "name": "Warlock's Wrath",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    },
+    "Weapon Glow Vial": {
+      "name": "Weapon Glow Vial",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to enhance your equipped weapon with a color of your choice!\n</p>\n"
+    },
+    "Weapon Polish": {
+      "name": "Weapon Polish",
+      "description": "<p>\n  Use\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}\n  to enhance your equipped weapon to Excellent Quality!\n</p>\n<blockquote><p>Manually update your virtual ELO weapon.</p></blockquote>\n"
+    },
+    "Zazzolite Aura": {
+      "name": "Zazzolite Aura",
+      "description": "<p>A face card for building an Elflines Online-TCG deck.</p>\n<blockquote>\n  <p>\n    TCG card items are provided for use as loot and not for actual play. GM's\n    are encouraged to configure their own decks using Foundry's\n    <strong>Card Stack</strong> feature.\n  </p>\n</blockquote>\n"
+    }
+  }
+}

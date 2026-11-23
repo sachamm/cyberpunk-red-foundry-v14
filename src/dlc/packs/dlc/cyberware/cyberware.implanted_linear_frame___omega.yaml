@@ -1,0 +1,150 @@
+_id: jw0vFLgoAnSWMpNW
+_key: "!items!jw0vFLgoAnSWMpNW"
+effects:
+  - _id: sate0Jnbsdj9xuX7
+    _key: "!items.effects!jw0vFLgoAnSWMpNW.sate0Jnbsdj9xuX7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: system.stats.body.value
+        mode: 5
+        priority: null
+        value: "16"
+      - key: system.derivedStats.humanity.max
+        mode: 2
+        priority: null
+        value: "-4"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
+            "1": custom
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/cyberware/implanted_linearframe_sigma.svg
+    name: Implanted Linear Frame Omega
+    origin: null
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 5b867ff767d1e73ca87f69317d61cf69919e73a7
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/implanted_linearframe_omega.svg
+name: Implanted Linear Frame Ω (Omega)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>Increases your <strong>BODY</strong> stat to 16</p>
+      <p>
+        An Internal Linear Frame can be identified with a
+        [[/r 1d10red+@stats.tech+@skills.cybertech #DV13 Cybertech]]{DV13 Cybertech}
+        check.
+      </p>
+      <blockquote>
+        <p>
+          Requires
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Lx9FSNDEIxLZ7Pyh]{Grafted Muscle and Bone Lace}
+          x3 (Installed Separately) &amp; <strong>BODY</strong> 10
+        </p>
+        <p>Counts as two installations for the purposes of Maximum Humanity Loss.</p>
+      </blockquote>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 8d6
+    static: 28
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: hospital
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: true
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 10000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  source: null
+  sources:
+    - book: Going Metal
+      page: 108
+    - book: Interface RED v3
+      page: 108
+  type: borgware
+  unarmedAutomaticCalculation: true
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

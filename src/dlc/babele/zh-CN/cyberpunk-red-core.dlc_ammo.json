@@ -1,0 +1,141 @@
+{
+  "label": "Ammo",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
+  "entries": {
+    "Arrow (Junk)": {
+      "name": "Arrow (Junk)",
+      "description": "<p>Deals less damage against anyone with 1SP or more.</p>\n<blockquote>\n  <p>\n    Not currently supported - This item always deals 1d6 less damage to ALL\n    targets.\n  </p>\n</blockquote>\n"
+    },
+    "Big Dreem Rounds": {
+      "name": "Big Dreem Rounds",
+      "description": "<p>\n  Custom Ammo for use only with the\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.dnfLVJnDKlEdLkpy]{Big\n Dreem}.\n</p>\n"
+    },
+    "Dazzle Dazzle ModBall": {
+      "name": "Dazzle Dazzle ModBall",
+      "description": "<p>\n  Deals no damage. Does not ablate armor. If hit, targets roll\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  On a failure, targets suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  and\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged Ear}\n  Critical injuries (see pg. 188) for 1 minute.\n</p>\n<blockquote>\n  <p>Does not affect inorganic targets.</p>\n  <p>Can ignite flamable surfaces.</p>\n</blockquote>\n"
+    },
+    "ElectroMag (Basic-Shell)": {
+      "name": "ElectroMag (Basic-Shell)",
+      "description": "<p>\n  Magnetic ammo designed for the\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.YsjeyDYFrWcWjeAc]{SlamDance ElectroMag}.\n</p>\n"
+    },
+    "ElectroMag (Basic-Slug)": {
+      "name": "ElectroMag (Basic-Slug)",
+      "description": "<p>\n  Magnetic ammo designed for the\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.YsjeyDYFrWcWjeAc]{SlamDance ElectroMag}.\n</p>\n"
+    },
+    "ElectroMag (Incendiary-Shell)": {
+      "name": "ElectroMag (Incendiary-Shell)",
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
+    },
+    "ElectroMag (Incendiary-Slug)": {
+      "name": "ElectroMag (Incendiary-Slug)",
+      "description": "<p>\n  If damage dealt to target they are set <strong>On Fire (Mild)</strong>. Target\n  takes 2 damage to HP at end of their turn unless they use action to extinguish\n  flames.\n</p>\n<blockquote><p>Fire effects do not stack.</p></blockquote>\n"
+    },
+    "Fire Extinguisher Charges": {
+      "name": "Fire Extinguisher Charges",
+      "description": "<p>Requires access to a charging station, takes 5 minutes.</p>\n"
+    },
+    "Heavy Pistol (Junk)": {
+      "name": "Heavy Pistol (Junk)",
+      "description": "<p>Deals less damage against anyone with 1SP or more.</p>\n<blockquote>\n  <p>\n    Not currently supported - This item always deals 1d6 less damage to ALL\n    targets.\n  </p>\n</blockquote>\n"
+    },
+    "Heavy Pistol (Small Game)": {
+      "name": "Heavy Pistol (Small Game)",
+      "description": "<p>Small game ammo; not great for people.</p>\n"
+    },
+    "Hello Cutie Chromatic Rave Grenade": {
+      "name": "Hello Cutie Chromatic Rave Grenade",
+      "description": "<p>\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.29p2bEfPcAWHpsTY]{A Thrown Weapon}\n  that sticks to surfaces and plays a musical laser light show before exploding\n  into colorful smoke and glitter.\n</p>\n<blockquote>\n  <ul>\n    <li><p>Cannot be loaded into grenade launchers.</p></li>\n    <li>\n      <p>\n        Causes 2 rounds of distraction that impose a\n        <strong>-2 penalty</strong> to all checks for everyone within 10m/yd if\n        they fail a\n        [[/r 1d10red+@stats.will+@skills.Concentration #DV13 Concentration]]{DV13 Concentration}\n        check.\n      </p>\n    </li>\n    <li>\n      <p>\n        After 2 rounds the grenade detonates like a\n        @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.7xhKxgwOELzaPyYr]{Grenade (Smoke)}\n      </p>\n    </li>\n  </ul>\n</blockquote>\n"
+    },
+    "Janus Hex Heavy Scent Balls": {
+      "name": "Janus Hex Heavy Scent Balls",
+      "description": "<p>\n  Targets roll\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On failure, the target suffers\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  Critical Injury for 1 minute.\n</p>\n<blockquote>\n  <p>Does not affect inorganic targets.</p>\n  <p>\n    Requires <strong>Maker Rank 6</strong> or higher to fabricate or modify.\n  </p>\n</blockquote>\n"
+    },
+    "M-02 Rounds": {
+      "name": "M-02 Rounds",
+      "description": "<p>\n  Special Armor-Piercing rounds for use only in the Sternmeyer\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.qqNh3sElWPyVT4Qq]{M-02 Heavy Rifle}.\n  Comes in a drum of 80.\n</p>\n"
+    },
+    "MagnaSlot BatteryBrick": {
+      "name": "MagnaSlot BatteryBrick",
+      "description": "<p>\n  Battery pack that only fits the\n  @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.mqxZ6A9U0LhaDwJm]{Blitzkrieg Arc-Thrower Cyberarm}.\n  Can be recharged in 1 hour.\n</p>\n"
+    },
+    "Medium Pistol (Junk)": {
+      "name": "Medium Pistol (Junk)",
+      "description": "<p>Deals less damage against anyone with 1SP or more.</p>\n<blockquote>\n  <p>\n    Not currently supported - This item always deals 1d6 less damage to ALL\n    targets.\n  </p>\n</blockquote>\n"
+    },
+    "Medium Pistol (Small Game)": {
+      "name": "Medium Pistol (Small Game)",
+      "description": "<p>Small game ammo; not great for people.</p>\n"
+    },
+    "Mega Ouchie ModBall": {
+      "name": "Mega Ouchie ModBall",
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
+    },
+    "Mini-Harpoon": {
+      "name": "Mini-Harpoon",
+      "description": "<p>\n  Mini-Harpoons come pre-loaded into the Hello Cutie Fisher Kitty and cannot be\n  use with any other weapons.\n</p>\n<p>\n  *Note: Reloading the weapon recovers all spent ammo. Refill this stack as\n  needed.\n</p>\n"
+    },
+    "Nova Model 757 Rounds": {
+      "name": "Nova Model 757 Rounds",
+      "description": "<p>\n  If you miss a single shot attack by 4 or less, make a\n  [[/r 1d10red+10 #Smart Ammo Attack]]{Smart Ammo} attack roll. Your target can\n  still attempt to dodge the second roll as normal.\n</p>\n<blockquote>\n  <p>\n    Requires\n    @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.wFp72x2FXhipZXPj]{Targeting Scope Cyberware}\n    - Not enforced by system.\n  </p>\n  <p>\n    For use only with the\n    @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.qL9B85FSo6cYhTBL]{Nova Model 757 Cityhunter}.\n    Comes in packs of 18 instead of the normal 10.\n  </p>\n</blockquote>\n"
+    },
+    "Ouchie ModBall": {
+      "name": "Ouchie ModBall",
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 2d6dmg#Poison Damage]]{2d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
+    },
+    "Paintball (Biotoxin)": {
+      "name": "Paintball (Biotoxin)",
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}\n  directly.\n</p>\n<blockquote>\n  <p>Does not affect inorganic targets.</p>\n  <p>\n    Created from 3\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Vials of Biotoxin}\n  </p>\n</blockquote>\n"
+    },
+    "Paintball (Poison)": {
+      "name": "Paintball (Poison)",
+      "description": "<p>\n  No immediate damage. Does not ablate armor. On a hit, the target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 2d6dmg#Poison Damage]]{2d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
+    },
+    "Reloadable Harpoons": {
+      "name": "Reloadable Harpoons",
+      "description": "<p>\n  Additional harpoons for use with the SlamDance\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.UnVRX1UNOtUtN5xz]{Ballistic Harpoon Launcher}.\n</p>\n"
+    },
+    "Rifle (Junk)": {
+      "name": "Rifle (Junk)",
+      "description": "<p>Deals less damage against anyone with 1SP or more.</p>\n<blockquote>\n  <p>\n    Not currently supported - This item always deals 1d6 less damage to ALL\n    targets.\n  </p>\n</blockquote>\n"
+    },
+    "Rifle (Small Game)": {
+      "name": "Rifle (Small Game)",
+      "description": "<p>Small game ammo; not great for people.</p>\n"
+    },
+    "Rocket (Growler)": {
+      "name": "Rocket (Growler)",
+      "description": "<p>\n  Experimental ammunition that can only be fired by the\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.X4SWCsdrRq7Dt5cg]{Growler}.\n</p>\n"
+    },
+    "Shotgun Slug (Junk)": {
+      "name": "Shotgun Slug (Junk)",
+      "description": "<p>Deals less damage against anyone with 1SP or more.</p>\n<blockquote>\n  <p>\n    Not currently supported - This item always deals 1d6 less damage to ALL\n    targets.\n  </p>\n</blockquote>\n"
+    },
+    "Slippy ModBall": {
+      "name": "Slippy ModBall",
+      "description": "<p>\n  Balls filled with a slippery lubricant. Covers a 2m/yd<sup>2 </sup>surface\n  that requires a\n  [[/r 1d10red+@stats.body+@skills.athletics #DV13 Athletics]]{DV13 Athletics}\n  <strong></strong>check to avoid falling <strong>Prone</strong> when entering\n  or occupying the covered area.\n</p>\n<blockquote>\n  <p>\n    Targets receive a +1 Bonus to <strong>Contortionist Checks</strong> made to\n    escape a grapple\n  </p>\n</blockquote>\n"
+    },
+    "Splashie ModBall": {
+      "name": "Splashie ModBall",
+      "description": "<p>\n  Balls of colourful, but highly combustible paint; keep away from open flames.\n</p>\n"
+    },
+    "Sub-Flechette Rounds": {
+      "name": "Sub-Flechette Rounds",
+      "description": "<p>\n  Special ammo to only be used with the Malorian Arms\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.iKzJWiFQqBcDQ7Gm]{Sub-Flechette Gun}.\n</p>\n"
+    },
+    "Very Heavy Pistol (Junk)": {
+      "name": "Very Heavy Pistol (Junk)",
+      "description": "<p>Deals less damage against anyone with 1SP or more.</p>\n<blockquote>\n  <p>\n    Not currently supported - This item always deals 1d6 less damage to ALL\n    targets.\n  </p>\n</blockquote>\n"
+    },
+    "Very Heavy Pistol (Small Game)": {
+      "name": "Very Heavy Pistol (Small Game)",
+      "description": "<p>Small game ammo; not great for people.</p>\n"
+    },
+    "Molotov Cocktail": {
+      "name": "Molotov Cocktail",
+      "description": "<p>Fragile Incendiary Grenade. Set a target Deadly on Fire (see CP:R p.180)</p>\n",
+      "dvTable": "DV Thrown Weapon"
+    }
+  }
+}

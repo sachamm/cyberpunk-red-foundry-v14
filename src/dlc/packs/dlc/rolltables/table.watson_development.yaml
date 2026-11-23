@@ -1,0 +1,155 @@
+_id: 8FhJXSztr1evvgNn
+_key: "!tables!8FhJXSztr1evvgNn"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Watson Development
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: YkIwKLJBHUORgl8J
+    _key: "!tables.results!8FhJXSztr1evvgNn.YkIwKLJBHUORgl8J"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784752233037
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784752409775
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Party in an unfinished lobby of a megabuilding construction site.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Watson Development
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: r7ZGZepc4CSv42hA
+    _key: "!tables.results!8FhJXSztr1evvgNn.r7ZGZepc4CSv42hA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784752220350
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784752468810
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Museum date at SovOil's Museum of Petroleum.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Watson Development
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: gbt2KC9VGimSPsQY
+    _key: "!tables.results!8FhJXSztr1evvgNn.gbt2KC9VGimSPsQY"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784752220782
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784752506983
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>Enjoy a Corporate picnic luncheon in a park near Watson Central
+      Cubelife.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Watson Development
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: xnvQcHnXckAaelyM
+    _key: "!tables.results!8FhJXSztr1evvgNn.xnvQcHnXckAaelyM"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784752221281
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784752521434
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>An Izakaya date in the Kabuki district.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Watson Development
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: Ztt6xFCPCL9SJrCB
+    _key: "!tables.results!8FhJXSztr1evvgNn.Ztt6xFCPCL9SJrCB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784752221501
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784752549210
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>It's a surprise! Meet up at the High-Security Monorail.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Watson Development
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: BUyt8h8YjtU21YYE
+    _key: "!tables.results!8FhJXSztr1evvgNn.BUyt8h8YjtU21YYE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784752223122
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784752571371
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a demonstration organized by local Rockerboy Lucius Rhyne.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Watson Development
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

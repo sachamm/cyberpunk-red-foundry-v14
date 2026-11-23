@@ -1,0 +1,253 @@
+{
+  "label": "Armes",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
+  "entries": {
+    "Arasaka Prototype Variable Assault Rifle": {
+      "name": "Fusil d'assaut modulable prototype Arasaka",
+      "description": "<p>\n  The Arasaka Prototype Variable Assault Rifle is an Excellent Quality Assault\n  Rifle. Assuming you have all the parts, it can use an alternate unique railgun\n  mode.\n</p>\n<blockquote>\n  <p>Railgun Mode requires:</p>\n  <ul>\n    <li>\n      <p>\n        @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.mlYhAxuDlI3fP9hq]{Arasaka\n Prototype Heat-Resistant Barrel}\n      </p>\n    </li>\n    <li>\n      <p>\n        @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.8nSzcjNlyulWrZtN]{Arasaka\n Prototype Railgun Upgrade}\n      </p>\n    </li>\n    <li>\n      <p>\n        @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.nQF0M9n7cLvHS5RY]{Arasaka\n Prototype Rechargable Battery}\n      </p>\n    </li>\n  </ul>\n</blockquote>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Arasaka Weeping Reaver Katana": {
+      "name": "Katana Larme tranchante Arasaka",
+      "description": "<p>Excellent Quality Two Handed Exotic Very Heavy Melee Weapon.</p>\n<p>\n  Contains three refillable chambers in the hilt for storing proprietary blade\n  coatings:\n</p>\n<ul>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.black-chrome_ammo.Item.wIMBD44ZU3iJ6jNI]{Arasaka\n Acid}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.black-chrome_ammo.Item.9diHOp9hSafmHRqC]{Arasaka\n Fire}\n    </p>\n  </li>\n  <li>\n    <p>\n      @UUID[Compendium.cyberpunk-red-core.black-chrome_ammo.Item.LumJXCKgGQTLZJWu]{Arasaka\n Wound Salt}\n    </p>\n  </li>\n</ul>\n",
+      "dvTable": ""
+    },
+    "E-TACK Public Defender": {
+      "name": "Défenseur de l'ordre E-TAQUE",
+      "description": "<p>\n  This weapon lacks a mechanical trigger and requires a\n  <strong>Subdermal Grip</strong> to operate. The installed\n  <strong>Smartgun Link</strong> comes equipped with both Lethal and Non-lethal\n  settings.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Eagletech Survivalist": {
+      "name": "Survivant Eagletech",
+      "description": "<p>\n  The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is\n  incapable of Autofire. It comes with an integrated\n  <strong>Sniping Scope</strong>.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Faisal's Dead or Alive": {
+      "name": "Mort ou Vif de Faisal",
+      "description": "<p>\n  The Faisal's Dead Or Alive is a Poor Quality Shotgun with an integrated Poor\n  Quality Net Launcher.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Faisal's Magna Knuckles": {
+      "name": "Poing de magma de Faisal",
+      "description": "<p>\n  One Handed Exotic Medium Melee Weapon. Battery powered EMP effect which can\n  deactivate cyberware.\n  @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get\n EMP'd Items}\n</p>\n",
+      "dvTable": ""
+    },
+    "Federated Arms Pepper Shaker": {
+      "name": "Sulfateuse Federated Arms",
+      "description": "<p>\n  The Federated Arms Pepper Shaker is an Exotic SMG incapable of single shot or\n  aimed shots. Autofire only use 6 bullets for this weapon.\n</p>\n",
+      "dvTable": "DV SMG (Autofire)"
+    },
+    "Georgia Arms Matchmaker": {
+      "name": "Entremetteuse Georgia Arms",
+      "description": "<p>\n  <strong>Poor Quality Exotic Shotgun</strong> that only holds one shot in the\n  magazine.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "GunMart Bubba Buster": {
+      "name": "Explose-tronche GunMart",
+      "description": "<p>\n  <strong>Poor Quality Exotic Shotgun</strong> that destroys itself if fired\n  more than 3 times in a minute.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "GunMart Door Cracker": {
+      "name": "Enfonceuse de porte GunMart",
+      "description": "<p>Cheap explosive item, small area of effect.</p>\n",
+      "dvTable": ""
+    },
+    "GunMart Engage Rocket Launcher": {
+      "name": "Lance-roquettes Briscard GunMart",
+      "description": "<p>\n  <strong>Poor Quality Exotic Rocket Launcher</strong> that explodes on a\n  Critical Failure or when unloading the weapon.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "GunMart Smart Special": {
+      "name": "Smartspécial GunMart",
+      "description": "<p>\n  The GunMart Smart Special is a Poor Quality Heavy Pistol with an integrated\n  Smartgun Link.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "GunMart Special": {
+      "name": "Spécial GunMart",
+      "description": "<p>The GunMart Special is a Poor Quality Heavy Pistol.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Hades Multipurpose Assault Shotgun": {
+      "name": "Fusil à pompe d'assaut multifonction Hadès",
+      "description": "<p><strong>Shotgun.</strong> The magazine holds 16 shots.</p>\n<blockquote><p>Incompatible with magazine upgrades.</p></blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Kendachi Mono-Guard": {
+      "name": "Monogarde Kendachi",
+      "description": "<p>Monowire, One Handed Exotic Heavy Melee Weapon.</p>\n<p>Can apply multiple Critical Injuries.</p>\n",
+      "dvTable": ""
+    },
+    "Kendachi Mono-Katana": {
+      "name": "Monokatana Kendachi",
+      "description": "<p>Two Handed Exotic Very Heavy Melee Weapon protected by a biometric key.</p>\n<p>When wielded by the correct user the weapon ignores armor less than 7 SP.</p>\n",
+      "dvTable": ""
+    },
+    "Kendachi Mono-Star": {
+      "name": "Monoétoile Kendachi",
+      "description": "<p>\n  Mono-Shuriken whose orb center contains a kinetic and solar motor allowing the\n  star to spin on itself and vibrate.\n</p>\n<p>Can be used as both a melee and ranged weapon.</p>\n",
+      "dvTable": "DV Thrown Weapon"
+    },
+    "Kendachi Mono-Wakizashi": {
+      "name": "Monowakizashi Kendashi",
+      "description": "<p>\n  One Handed Exotic Heavy Melee Weapon. When wielded by the correct user the\n  weapon ignores armor less than 7 SP.\n</p>\n",
+      "dvTable": ""
+    },
+    "KillChip 100 Micro-Bomb": {
+      "name": "Microbombe Puce-tue-le 100",
+      "description": "<p>Memory chip, but explosive when plugged into Neuralware.</p>\n",
+      "dvTable": ""
+    },
+    "KTech TechHammer": {
+      "name": "TechHammer KTech",
+      "description": "<p>The KTech TechHammer is an Exotic Shotgun/Rocket Launcher.</p>\n<blockquote>\n  <p>Magazine holds either 4 Shotgun slugs/shells, or 2 Smart Rockets.</p>\n</blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Micro Hydrogen Combustor": {
+      "name": "Micro catalyseur à hydrogène",
+      "description": "<p>\n  A small explosive that detonates after being immersed in a liquid. Is both\n  armor piercing and creates a large cloud of smoke.\n</p>\n",
+      "dvTable": ""
+    },
+    "Midnight Arms Beast Shotgun": {
+      "name": "Fusil d'assaut Golgoth Midnight Arms",
+      "description": "<p>\n  The Midnight Arms Beast is an Shotgun that holds holds 40 rounds in its\n  magazine. Requires BODY 10 or higher (unless mounted) when fired or the User\n  will suffer the consequences.\n</p>\n<blockquote><p>Incompatible with magazine upgrades.</p></blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Militech Fox Dual Ammo Pistol": {
+      "name": "Pistolet à double munition Renard Militech",
+      "description": "<p>The Militech Fox Dual Ammo Pistol is a Heavy Pistol.</p>\n<blockquote><p>Incompatible with magazine upgrades.</p></blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Militech Mastiff SMG": {
+      "name": "Pistolet-mitrailleur Mastiff Militech",
+      "description": "<p>The Militech Mastiff SMG is an Two-Handed SMG and Shotgun.</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Militech Perseus": {
+      "name": "Persée Militech",
+      "description": "<p>The Militech Perseus is an Quality Exotic Very Heavy Pistol.</p>\n<blockquote>\n  <p>\n    This weapon has a <strong>2 ROF</strong> if it has been fired in the\n    previous round.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "ModFire 10X (Pistol)": {
+      "name": "ModFire 10X (Pistolet)",
+      "description": "<p>\n  The ModFire 10X is an <strong>Exotic Heavy Pistol</strong> that can also be\n  transformed into an <strong>Exotic SMG</strong> or an\n  <strong>Exotic Assault Rifle</strong>.\n</p>\n<blockquote>\n  <p>\n    The ModFire 10X and all its components fit neatly into a sleek\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_gear.Item.RVr6mvr9BQ6hgS1L]{carrying\n case}.\n    Transforming the weapon from one profile to another takes 1 minute as long\n    as you have all the requisite parts.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Nomad Rocker": {
+      "name": "Rocker nomade",
+      "description": "<p>\n  The Nomad Rocker is a Poor Quality Exotic Very Heavy Pistol that fires rocks.\n  Ammo is free for this weapon.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "OUTLet Explosive": {
+      "name": "Adaptateur EX(plosif)",
+      "description": "<p>Explosive look-alike of an electrical plug adapter.</p>\n",
+      "dvTable": ""
+    },
+    "Overlord Handcannon": {
+      "name": "Canon de poing Overlord",
+      "description": "<p>\n  The Overlord Handcannon is a Poor Quality Exotic Heavy Pistol with a ROF of 1.\n  It may give a +1 bonus to Facedowns* in certain situations.\n</p>\n<blockquote>\n  <p>\n    ⚠️ Creating an ActiveEffect to modify Reputation is known to cause a bug\n    when adjusting the ledger.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Pursuit Security Bouncer": {
+      "name": "Foudre de paume Pursuit Security",
+      "description": "<p>Battery powered glove.</p>\n<p>\n  One Handed Exotic Combination Stun Baton and Microwaver.\n  @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get\n EMP'd Items}\n</p>\n",
+      "dvTable": ""
+    },
+    "Pursuit Security Incorporated Crowd Buster": {
+      "name": "Contrôleur de foules Pursuit Security Incorporated",
+      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Assault Rifle with a unique\n  alternate firing mode. It comes with a free pair of\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.NYxdMQPHdjnpYNLE]{Auto\n Level Dampening Ear Protectors}.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Ranger Combat Boomerang": {
+      "name": "Boomerang de combat Ranger",
+      "description": "<p>\n  Acts like a one Handed Exotic Heavy Melee, though halves SP despite being\n  thrown.\n</p>\n<p>Contains a built in guidance system.</p>\n",
+      "dvTable": "DV Thrown Weapon"
+    },
+    "Rostović Kleaver": {
+      "name": "Hachoir Rostović",
+      "description": "<p>\n  Two Handed Exotic Very Heavy Melee Weapon. Can use a battery pack to increase\n  damage.\n</p>\n<p>Need BODY 11 or more to use it.</p>\n",
+      "dvTable": ""
+    },
+    "Rostović Street Destroyer": {
+      "name": "Rostović Street Destroyer",
+      "description": "<p>\n  The Rostović Ulični Uništitelj (Street Destroyer) is a Poor Quality Shotgun.\n  The magazine only holds 3 shots. It can only shoot Shotgun Shells.\n</p>\n<blockquote><p>Incompatible with magazine upgrades.</p></blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Sanroo Hello Cutie Ultra-K8 Assault Pistol": {
+      "name": "Pistolet d'assaut Hello Cutie Ultra-K8 de Sanroo",
+      "description": "<p>\n  The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic\n  Very Heavy Pistol with an Excellent Quality Heavy SMG mode. +2 Bonus to\n  Wardrobe &amp; Style if you are wearing 3 or more Asia Pop clothing items.\n</p>\n<blockquote>\n  <p>Switching Autofire modes on or off takes an Action to complete.</p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "SlamDance FangFist": {
+      "name": "Poing à lame SlamDance",
+      "description": "<p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>\n<p>A glove with a short retractable blade.</p>\n",
+      "dvTable": ""
+    },
+    "SlamDance Tasmanskiy Klô": {
+      "name": "Tasmanskiy Klô SlamDance",
+      "description": "<p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>\n<p>Big retractable blades in a Combat Glove.</p>\n",
+      "dvTable": ""
+    },
+    "Solo Wolf and Bot Mono-Katana": {
+      "name": "Monokatana Solo Wolf and Bot",
+      "description": "<p>Poor Quality Two Handed Exotic Very Heavy Melee Weapon.</p>\n<p>Mono-Katana cheap look-alike.</p>\n",
+      "dvTable": ""
+    },
+    "Sternmeyer M-04 Variable Assault": {
+      "name": "Fusil d'assaut modulable M-04 Sternmeyer",
+      "description": "<p>\n  The Sternmeyer M-04 Variable Assault is a Poor Quality Exotic Assault Rifle\n  with a custom Grenade Launcher underbarrel.\n</p>\n<blockquote><p>Only accepts Scope upgrades</p></blockquote>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Superchrome® Glam Rifle": {
+      "name": "Fusil glam Superchrome",
+      "description": "<p>\n  The Superchrome® Glam Rifle is an Assault Rifle. It gives the user a +2 bonus\n  to Wardrobe and Style when equipped.\n</p>\n<blockquote>\n  <p>\n    Note: Superchrome effects do not stack and will need to be managed in the\n    Effects tab if multiple Superchrome items are installed.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Superchrome® Javelin": {
+      "name": "Javelot Superchrome",
+      "description": "<p>\n  The Superchrome® Javelin is a Sniper Rifle. Gives the user a +2 bonus to\n  Wardrobe and Style when equipped.\n</p>\n<blockquote>\n  <p>\n    Note: Superchrome effects do not stack and will need to be managed in the\n    Effects tab if multiple Superchrome items are installed.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Superchrome® Sidearm": {
+      "name": "Pistolet Superchrome",
+      "description": "<p>\n  The Superchrome® Sidearm is a Very Heavy Pistol. Gives the user a +2 bonus to\n  Wardrobe and Style when equipped.\n</p>\n<blockquote>\n  <p>\n    Note: Superchrome effects do not stack and will need to be managed in the\n    Effects tab if multiple Superchrome items are installed.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Techtronika Russia BMG-500": {
+      "name": "Mitrailleuse Browning 500 Techtronika Russia",
+      "description": "<p>\n  The Techtronika Russia BMG-500 is an Exotic Assault Rifle with a magazine of\n  500 rounds and a bipod. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Tommyknocker": {
+      "name": "Poltergeist",
+      "description": "<p>\n  The Tommyknocker is a combo Exotic Very Heavy Pistol and Poor Quality Shotgun.\n  Has one empty slot for handgun upgrades.\n</p>\n<blockquote>\n  <p>\n    Requires BODY 10 or to be held in two hands when firing, otherwise the user\n    drops the weapon to the ground.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "TR-4 Detonator Fluid": {
+      "name": "Fluide de détonation TR-4",
+      "description": "<p>Must be poured into a fuel tank vehicle to explode.</p>\n",
+      "dvTable": ""
+    },
+    "Utility Tomahawk": {
+      "name": "Tomahawk multifonction",
+      "description": "<p>\n  Blade and pike, this steel and composite ice axe can help you climb ice walls\n  while also doing serious damage in a fight.\n</p>\n<p>Can be used as both a melee and ranged weapon.</p>\n",
+      "dvTable": "DV Thrown Weapon"
+    },
+    "Westwood": {
+      "name": "Westwood",
+      "description": "<p>\n  The Westwood is an Excellent Quality Very Heavy Pistol. 6 shot capacity that\n  can't be upgraded with magazine attachments. Contains a pull-out screen\n  concealed in the grip.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "White Hornet Tanto": {
+      "name": "Tanto Frelon blanc",
+      "description": "<p>One Handed Exotic Medium Melee Weapon.</p>\n<p>Can render target unconscious rather than dead.</p>\n",
+      "dvTable": ""
+    },
+    "Zhirafa Rhinocefist": {
+      "name": "Rhinopoing Zhirafa",
+      "description": "<p>\n  Armored large stone chisel glove, covering from hand to shoulder. Requires\n  interface plugs. Can be used both for demolition and brawling.\n</p>\n",
+      "dvTable": ""
+    }
+  }
+}

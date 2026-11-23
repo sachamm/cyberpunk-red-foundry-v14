@@ -1,0 +1,91 @@
+_id: ucX1EbPnMOBUyvlB
+_key: "!items!ucX1EbPnMOBUyvlB"
+effects: []
+flags: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/segotari-elflines-online.svg
+name: Elflines Online
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Segotari
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A new in-box copy Elflines Online. Requires the
+        @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.FsrrwGv2ocZ1lQlE]{Segotari RUSH Revolution}
+        to play.
+      </p>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isRanged: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      isSituational: false
+      type: modifier
+      value: null
+    damage:
+      isSituational: false
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: null
+  sources:
+    - book: Elflines Online
+      page: 5
+    - book: Interface RED v1
+      page: 44
+    - book: Segotari Power
+      page: 10
+  type: gear
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: itemUpgrade

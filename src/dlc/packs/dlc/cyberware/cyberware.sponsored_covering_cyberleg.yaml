@@ -1,0 +1,88 @@
+_id: ZgzEBlYC72NkbXkv
+_key: "!items!ZgzEBlYC72NkbXkv"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/sponsored_covering.svg
+name: Sponsored Covering (Cyberleg)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Earn 20eb monthly by sporting a light-up advertisement on your Cyberleg. User
+        may be responsible for paying the installation fee. Corporate sponsorship may
+        be revoked if the terms are violated.
+      </p>
+      <blockquote>
+        <p>
+          Can not be installed in
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.gDN0U6mp3axrm9KQ]{Meat Leg}.
+        </p>
+      </blockquote>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: "0"
+    static: 0
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isFoundational: false
+  isRanged: false
+  isWeapon: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  source: null
+  sources:
+    - book: Must Have Cyberware Deals
+      page: 5
+    - book: Interface RED v3
+      page: 48
+  type: cyberLeg
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: cyberware

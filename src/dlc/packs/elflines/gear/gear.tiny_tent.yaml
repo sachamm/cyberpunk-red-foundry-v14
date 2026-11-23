@@ -1,0 +1,50 @@
+_id: qQGZzdnJkAKDzbq9
+_key: "!items!qQGZzdnJkAKDzbq9"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: Ld94WnhHrzIRpK8Y
+img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+name: Tiny Tent
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 700000
+system:
+  amount: 1
+  brand: Elflines Online TCG
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Use
+        @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.gwFHfshFGizyabzx]{ELO Elftracker}
+        to spawn your very own Tiny Tent once every 24 hours!
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Elflines Online — TCG
+      page: 7
+    - book: Interface RED v3
+      page: 67
+  usage: toggled
+type: gear

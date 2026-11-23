@@ -1,0 +1,45 @@
+_id: eK3VQaeSd2DFYJ9z
+_key: "!items!eK3VQaeSd2DFYJ9z"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/zetatech-destination.svg
+name: Zetatech Destination
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Zetatech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>AV4 style Aerodyne, civilian model.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 6</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 40000
+  sdp: 100
+  seats: 4
+  sources:
+    - book: Black Chrome
+      page: 62
+  speedCombat: 40
+  speedNarrative: 200 MPH / 322 KPH
+type: vehicle

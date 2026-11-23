@@ -1,0 +1,94 @@
+_id: KGl23TyRx24zMFfs
+_key: "!items!KGl23TyRx24zMFfs"
+effects: []
+flags:
+  cyberpunk-red-core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+name: Stun Bayonet
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: true
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 2d6
+  damageCrit:
+    bonus: 5
+    count: 0
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Equips the gun with a non-lethal melee weapon. Target is knocked unconscious
+        if damage dealt would reduce them to under 1 HP. Doesn't cause Critical
+        Injuries or ablate armor.
+      </p>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isRanged: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    damage:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    magazine:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    rof:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: true
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 2
+  size: 1
+  source: null
+  sources:
+    - book: 12 Days of Redmas
+      page: 4
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: assaultRifle
+type: itemUpgrade

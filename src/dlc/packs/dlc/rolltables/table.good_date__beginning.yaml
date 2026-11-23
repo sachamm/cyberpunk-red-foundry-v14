@@ -1,0 +1,241 @@
+_id: idnDMTGnbjBh9Sor
+_key: "!tables!idnDMTGnbjBh9Sor"
+description: <p>Interface RED volume 3 / Digital Dating pg 11</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+name: "Good Date: Beginning"
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: IiWIlAAtdPT3tCF0
+    _key: "!tables.results!idnDMTGnbjBh9Sor.IiWIlAAtdPT3tCF0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745814064
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You learn something new about them…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Good Date: Beginning"
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: yOsKGJKI2ywFJwle
+    _key: "!tables.results!idnDMTGnbjBh9Sor.yOsKGJKI2ywFJwle"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745818648
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They tell you about one of their friends…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Good Date: Beginning"
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: QAodRjWZkFNbBLzO
+    _key: "!tables.results!idnDMTGnbjBh9Sor.QAodRjWZkFNbBLzO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745821717
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They tell you they take on Edgerunning Gigs…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Good Date: Beginning"
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: LO1Y4ig1YfVwBxdh
+    _key: "!tables.results!idnDMTGnbjBh9Sor.LO1Y4ig1YfVwBxdh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745825163
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You discover something you have in common.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Good Date: Beginning"
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: JvorZIvdAg4fCGB9
+    _key: "!tables.results!idnDMTGnbjBh9Sor.JvorZIvdAg4fCGB9"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: w3682e6R5qVcWyUA
+      modifiedTime: 1788825814014
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>You discover a new positive trait about them!</p><p>[Work with your GM
+      to determine what it is.]</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Good Date: Beginning"
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: p0ABIiCKOM93DnNf
+    _key: "!tables.results!idnDMTGnbjBh9Sor.p0ABIiCKOM93DnNf"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745832045
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They are very attractive. You wonder if they've been bodysculpted.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-begin.svg
+    name: "Good Date: Beginning"
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: F4Mis9D42EAhSEge
+    _key: "!tables.results!idnDMTGnbjBh9Sor.F4Mis9D42EAhSEge"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.IMZtJrBlTxAIZQln
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: Traits
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: 0IOX5vkEBZDyv6H4
+    _key: "!tables.results!idnDMTGnbjBh9Sor.0IOX5vkEBZDyv6H4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.uSyfmaY819qyqOcQ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/friends.svg
+    name: Friends
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: cfmGIec7sHeduUvd
+    _key: "!tables.results!idnDMTGnbjBh9Sor.cfmGIec7sHeduUvd"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.guhtVzDPj5C68Hqo
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/default/Default_CPR_Mystery_Man.svg
+    name: Edgerunner
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: QGt1v5ascg36bl02
+    _key: "!tables.results!idnDMTGnbjBh9Sor.QGt1v5ascg36bl02"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.mbKzQ2euThe61ajy
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Good Date: Middle"
+    range:
+      - 1
+      - 6
+    type: document
+    weight: 1
+sort: -100000

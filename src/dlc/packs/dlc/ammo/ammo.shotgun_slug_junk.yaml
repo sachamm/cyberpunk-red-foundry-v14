@@ -1,0 +1,59 @@
+_id: ylPhumg2XILRtZYs
+_key: "!items!ylPhumg2XILRtZYs"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/shotgun_slug_junk.svg
+name: Shotgun Slug (Junk)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 50
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>Deals less damage against anyone with 1SP or more.</p>
+      <blockquote>
+        <p>
+          Not currently supported - This item always deals 1d6 less damage to ALL
+          targets.
+        </p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: modify
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: modify
+      value: "-1d6"
+  price:
+    market: 10
+  size: 0
+  sources:
+    - book: Black Chrome+
+      page: 3
+    - book: Interface RED v4
+      page: 11
+  type: special
+  variety: shotgunSlug
+type: ammo

@@ -1,0 +1,112 @@
+_id: EvQjgP6wtaF9n5vU
+_key: "!items!EvQjgP6wtaF9n5vU"
+effects:
+  - _id: fby6eAZaHGBFcK1v
+    _key: "!items.effects!EvQjgP6wtaF9n5vU.fby6eAZaHGBFcK1v"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: system.stats.body.value
+        mode: 5
+        priority: null
+        value: "16"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_beta.svg
+    name: Linear Frame Omega
+    origin: null
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: cb1cce27d7b2f6ba4eb651b1808108c620eaf7dc
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/linearframe_omega.svg
+name: Linear Frame Ω (Omega)
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  V8F9A9hbCTVYRW7O: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Exoskeleton.</p>
+      <ul>
+        <li>
+          <p>
+            Requires 3
+            @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.KofoAolDFb3rvpbL]{Interface Plugs}
+          </p>
+        </li>
+        <li>
+          <p>Increases <strong>BODY</strong> to 16 while plugged in</p>
+        </li>
+      </ul>
+      <blockquote>
+        <p>
+          Does not affect <strong>HP</strong> or <strong>Deathsave</strong> due to
+          <strong>BODY</strong> increase — Not currently supported by system.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 10000
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Going Metal
+      page: 108
+    - book: Interface RED v3
+      page: 108
+  usage: equipped
+type: gear

@@ -1,0 +1,85 @@
+_id: so83f29D6x7ZwtBz
+_key: "!items!so83f29D6x7ZwtBz"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 1a75783e485c7523429399097f6455989f9cd8a4
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/hello-cutie-hypurr-hammer.svg
+name: Hello Cutie Hypurr-Hammer
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Two-Handed Very Heavy Melee Weapon</strong> requires BODY 9 or higher
+        to wield effectively. Comes in 4 styles: Bengal, Egyptian Mau, Sphinx, and
+        Ussuri.
+      </p>
+      <blockquote>
+        <ul>
+          <li><p>Does not halve SP like normal melee weapons.</p></li>
+          <li>
+            <p>
+              User rolls twice and chooses the outcome when determining critical
+              injuries.
+            </p>
+          </li>
+          <li><p>Users with Body 8 or less deal 1d6 less damage.</p></li>
+        </ul>
+      </blockquote>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: false
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: 12 Days of Cutimas
+      page: 4
+  unarmedAutomaticCalculation: false
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
+type: weapon

@@ -1,0 +1,142 @@
+_id: xuffoWmepDctyMhs
+_key: "!items!xuffoWmepDctyMhs"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: 2pIHyyEbtSeJuPuY
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_ammo.Item.e2w1oKiv8t68chiI
+          coreVersion: "13.351"
+          createdTime: 1786663570257
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786663570257
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: systems/cyberpunk-red-core/icons/compendium/ammo/rocket_smart.svg
+        name: Rocket (Smart)
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ablationValue: 1
+          amount: 0
+          brand: ""
+          concealable:
+            concealable: true
+            isConcealed: false
+          description:
+            value: |-
+              <p>
+                Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by
+                4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add
+                luck. Target can dodge the second roll as normal if able to do so.
+              </p>
+          favorite: false
+          ignoredByBrowser: false
+          installLocation: mall
+          overrides:
+            autofire:
+              minimum: 3
+              mode: none
+              value: -1
+            crit:
+              bonus: 5
+              count: 2
+              override: false
+              threshold: 0
+            damage:
+              minimum: 1d6
+              mode: none
+              value: 3d6
+          price:
+            market: 500
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 346
+          type: smart
+          variety: rocket
+        type: ammo
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_excellent.svg
+name: Archimedes
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rocket
+  attackmod: 1
+  brand: Militech
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 8d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Uses the Pilot Air Vehicle Skill instead of the Heavy Weapons Skill to fire,
+        requires the has Targeting Scope Cyberware, and can only use Smart Rockets. It
+        does come with one Smart Rocket included however. How nice.
+      </p>
+  dvTable: DV Rocket Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list:
+      - 2pIHyyEbtSeJuPuY
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 1
+  price:
+    market: 5000
+  quality: excellent
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Woodchipper's Garage
+      page: 4
+    - book: Interface RED v3
+      page: 28
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Pilot Air Vehicle
+  weaponType: rocketLauncher
+type: weapon

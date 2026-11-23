@@ -1,0 +1,81 @@
+_id: oI6qQBmmJfzIoqpw
+_key: "!items!oI6qQBmmJfzIoqpw"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: 9X0TgOfxJ1Ut1z5R
+img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG_poor.svg
+name: Mustang Arms Rodeo
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  brand: Federated Arms
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 2d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and
+        requires using an action to clear.
+      </p>
+      <blockquote>
+        <p>
+          User must make a <strong>DV15 Handgun</strong> check when making an
+          <strong>autofire attack</strong> or the damage multiplier cannot exceed x2.
+        </p>
+      </blockquote>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 30
+    value: 0
+  price:
+    market: 100
+  quality: poor
+  revealed: true
+  rof: 1
+  sources:
+    - book: Toggle's Temple
+      page: 7
+    - book: Interface RED v5
+      page: 41
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
+type: weapon

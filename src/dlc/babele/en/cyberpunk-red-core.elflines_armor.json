@@ -1,0 +1,42 @@
+{
+  "label": "Armor",
+  "mapping": {},
+  "entries": {
+    "Chainmail Armor (Body)": {
+      "name": "Chainmail Armor (Body)",
+      "description": "<p>Virtual armor for you body made of chainmail.</p>\n"
+    },
+    "Chainmail Armor (Head)": {
+      "name": "Chainmail Armor (Head)",
+      "description": "<p>Virtual armor for you head made of chainmail.</p>\n"
+    },
+    "Full Plate Armor (Body)": {
+      "name": "Full Plate Armor (Body)",
+      "description": "<p>\n  Virtual armor for you body made of plate metal to withstand the heaviest\n  blows.\n</p>\n"
+    },
+    "Full Plate Armor (Head)": {
+      "name": "Full Plate Armor (Head)",
+      "description": "<p>\n  Virtual armor for you head made of plate metal to withstand the heaviest\n  blows.\n</p>\n"
+    },
+    "Leather Armor (Body)": {
+      "name": "Leather Armor (Body)",
+      "description": "<p>Virtual armor for you body made of leather.</p>\n"
+    },
+    "Leather Armor (Head)": {
+      "name": "Leather Armor (Head)",
+      "description": "<p>Virtual armor for you head made of leather.</p>\n"
+    },
+    "Shield": {
+      "name": "Shield",
+      "description": "<p>A virtual shield to protect you on your adventure.</p>\n<blockquote><p>Must be equipped to a free arm.</p></blockquote>\n"
+    },
+    "Studded Leather Armor (Body)": {
+      "name": "Studded Leather Armor (Body)",
+      "description": "<p>Virtual armor for you body made of studded leather.</p>\n"
+    },
+    "Studded Leather Armor (Head)": {
+      "name": "Studded Leather Armor (Head)",
+      "description": "<p>Virtual armor for you head made of studded leather.</p>\n"
+    }
+  }
+}

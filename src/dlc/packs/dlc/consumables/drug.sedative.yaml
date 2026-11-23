@@ -1,0 +1,55 @@
+_id: Tv6eIBNtpwqRqJSO
+_key: "!items!Tv6eIBNtpwqRqJSO"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/drugs/sedative.svg
+name: Sedative
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: None
+  description:
+    value: |
+      <p>
+        Applies the <strong>Unconscious</strong> condition for 4 hours on a willing
+        target. Provides a +2 bonus to a Mechtech's <strong>Surgery</strong> check
+        against targets dosed with this pharmaceutical.
+      </p>
+      <p>
+        Unwilling targets must make a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
+        check. On a failure, the target is <strong>unconscious</strong> for 1 minute,
+        and wakes upon taking damage or if awakened as an action by another actor.
+      </p>
+      <blockquote>
+        <p>+2 Surgery Bonus must be applied manually</p>
+        <p>
+          Pharmaceuticals must be administered by a trained <strong>Medtech</strong>
+        </p>
+        <p>Effects do not stack</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  price:
+    market: 0
+  revealed: true
+  sources:
+    - book: Hornet's Pharmacy
+      page: 4
+    - book: Interface RED v4
+      page: 6
+  usage: toggled
+type: drug

@@ -1,0 +1,60 @@
+_id: ZsltnSIORaBm5bh6
+_key: "!items!ZsltnSIORaBm5bh6"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/rocks.svg
+name: Rocks
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Ammunition that can be used with the
+        @UUID[Compendium.cyberpunk-red-core.black-chrome_weapons.Item.MGWv5ebRm7FzFt9C]{Nomad Rocker}.
+      </p>
+      <blockquote>
+        <p>
+          Ammunition is considered free and available if small rocks are able to be
+          collected in the area the user is in.
+        </p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 0
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 115
+  type: basic
+  variety: custom
+type: ammo

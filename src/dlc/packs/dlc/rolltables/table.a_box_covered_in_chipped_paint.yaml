@@ -1,0 +1,229 @@
+_id: xWZowpQzG7fpmoP7
+_key: "!tables!xWZowpQzG7fpmoP7"
+description: >-
+  Source: Achievements and Loot Boxes pg.5
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d6
+img: icons/containers/boxes/crate-reinforced-brown.webp
+name: A Box Covered in Chipped Paint
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+replacement: true
+results:
+  - _id: pXWJgAjL94Fgr83F
+    _key: "!tables.results!xWZowpQzG7fpmoP7.pXWJgAjL94Fgr83F"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.3rtsVDMaB16lc5tY
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_teargas.svg
+    name: Grenade (Teargas)
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: kB1Uz1Ik3X5gbsgq
+    _key: "!tables.results!xWZowpQzG7fpmoP7.kB1Uz1Ik3X5gbsgq"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_weapons.RwZUbGdbyp5KTEc5
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_poor.svg
+    name: GunMart Smart Special
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: j6zj2lwkNOsXUUPe
+    _key: "!tables.results!xWZowpQzG7fpmoP7.j6zj2lwkNOsXUUPe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_vehicles.XIDIqcWCFJtzYeRw
+    drawn: false
+    flags: {}
+    img: null
+    name: Bicycle
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: Y8W7Mp8xVqTOTcDg
+    _key: "!tables.results!xWZowpQzG7fpmoP7.Y8W7Mp8xVqTOTcDg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weapons.moqJ5beR4WqWCpZM
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
+    name: Flare Gun
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: HEpyqeyPVjaNh0Uf
+    _key: "!tables.results!xWZowpQzG7fpmoP7.HEpyqeyPVjaNh0Uf"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/armor/bullet_proof_shield.svg
+    name: Bullet Proof Shield
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: CLYP5a79aDXgfBJc
+    _key: "!tables.results!xWZowpQzG7fpmoP7.CLYP5a79aDXgfBJc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weapons.cUgtpdroFgBBJGam
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+    name: Crusher
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: JmBWc0G5bpw0tIC7
+    _key: "!tables.results!xWZowpQzG7fpmoP7.JmBWc0G5bpw0tIC7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.WOJD6hQVUVEK8AsJ
+    drawn: false
+    flags: {}
+    img: null
+    name: Heavy Pistol (Rubber)
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: csBVQiIWZ7TzP3ni
+    _key: "!tables.results!xWZowpQzG7fpmoP7.csBVQiIWZ7TzP3ni"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_gear.Item.EUZBOSRdQWOqKVUg
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
+    name: Road Flare
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: srJ48dB0LAX4UuXl
+    _key: "!tables.results!xWZowpQzG7fpmoP7.srJ48dB0LAX4UuXl"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.mkI1KpjAOUz9PxRM
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_basic.svg
+    name: Shotgun Shell (Basic)
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: 8GiUMH48KDkiJc3c
+    _key: "!tables.results!xWZowpQzG7fpmoP7.8GiUMH48KDkiJc3c"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_ammo.Item.jmia1vHSv6bdQEVP
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_basic.svg
+    name: Heavy Pistol (Basic)
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+sort: 0

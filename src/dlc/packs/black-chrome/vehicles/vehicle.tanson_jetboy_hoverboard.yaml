@@ -1,0 +1,45 @@
+_id: mnBXoGrgbAV7arAE
+_key: "!items!mnBXoGrgbAV7arAE"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/jetboy-hoverboard.svg
+name: Tanson JetBoy Hoverboard
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Tanson Group
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> N/A</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 1000
+  sdp: 10
+  seats: 1
+  sources:
+    - book: Black Chrome
+      page: 78
+  speedCombat: 15
+  speedNarrative: 30 MPH / 48 KPH
+type: vehicle

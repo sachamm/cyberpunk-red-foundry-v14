@@ -1,0 +1,78 @@
+_id: poMp4coxB8SORzvi
+_key: "!items!poMp4coxB8SORzvi"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
+name: ST-5 Assault Rifle
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - rifle
+  attackmod: 0
+  brand: Stolbovoy
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Poor Quality Assault Rifle</strong> A - relatively - reliable gun. If
+        you roll 1 on Attack (Crit fail) you must then
+        [[/r 1dc#ST-5 Assult Rifle - Jam Check]]{toss a coin}. If you win, the gun
+        fires as normal, while if you lose the gun jams and requires using an action
+        to clear.
+      </p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 20
+    value: 0
+  price:
+    market: 100
+  quality: poor
+  revealed: true
+  rof: 1
+  sources:
+    - book: 12 Days of Gunmas
+      page: 6
+    - book: Interface RED v2
+      page: 62
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: assaultRifle
+type: weapon

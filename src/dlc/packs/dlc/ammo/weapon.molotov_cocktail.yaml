@@ -1,0 +1,74 @@
+_id: 1004Olp4DHhMOc1z
+_key: "!items!1004Olp4DHhMOc1z"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/molotov-cocktail.svg
+name: Molotov Cocktail
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: >
+      <p>Fragile Incendiary Grenade. Set a target Deadly on Fire (see CP:R
+      p.180)</p>
+  dvTable: DV Thrown Weapon
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 0
+    value: 0
+  price:
+    market: 20
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Black Chrome+
+      page: 4
+    - book: Danger Gal Dossier
+      page: 145
+    - book: Interface RED v4
+      page: 12
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Athletics
+  weaponType: thrownWeapon
+type: weapon

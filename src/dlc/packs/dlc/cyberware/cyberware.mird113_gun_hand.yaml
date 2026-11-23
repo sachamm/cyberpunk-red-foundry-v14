@@ -1,0 +1,80 @@
+_id: jUgKtC1UW35ywBY6
+_key: "!items!jUgKtC1UW35ywBY6"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/cyberware/mird113_gun_hand.svg
+name: MIRD113 Gun Hand
+ownership:
+  default: 0
+  pLIpYgHBYUznkgBy: 3
+sort: 0
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  brand: Rocklin Augmentics
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: >
+      <p>A fully articulated hand that conceals a gun barrel in each finger.</p>
+
+      <blockquote><p>Exotic weapon that can load non-basic
+      ammo.</p></blockquote>
+  dvTable: DV Pistol
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: clinic
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: true
+  isWeapon: true
+  magazine:
+    ammoData: {}
+    max: 5
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  sources:
+    - book: Mixing Drinks — Changing Lives
+      page: 16
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: cyberware

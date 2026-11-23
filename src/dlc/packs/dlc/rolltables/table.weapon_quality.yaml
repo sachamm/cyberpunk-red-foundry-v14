@@ -1,0 +1,84 @@
+_id: YLkXeYJxEWEdAG5I
+_key: "!tables!YLkXeYJxEWEdAG5I"
+description: <p>Random weapon quality provided by Gunpath.</p><p>Toggles Temple, pg. 16</p>
+displayRoll: false
+flags: {}
+folder: KmmkVwS79ivnwu2W
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+name: Weapon-Quality
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: UAJEVqTECAFGzlSb
+    _key: "!tables.results!YLkXeYJxEWEdAG5I.UAJEVqTECAFGzlSb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.p4xjEHc0yfYpqKJS
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Quality-Poor
+    range:
+      - 1
+      - 3
+    type: document
+    weight: 1
+  - _id: Y2nMJf0UyClRYKcH
+    _key: "!tables.results!YLkXeYJxEWEdAG5I.Y2nMJf0UyClRYKcH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.wnzQtN7zXjvmMNLA
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Quality-Standard
+    range:
+      - 4
+      - 5
+    type: document
+    weight: 1
+  - _id: uwbVHGjfabj1uXfK
+    _key: "!tables.results!YLkXeYJxEWEdAG5I.uwbVHGjfabj1uXfK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.7NAINlGEyxfYDhe8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: Quality-Excellent
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+sort: 1300000

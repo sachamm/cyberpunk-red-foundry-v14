@@ -1,0 +1,97 @@
+_id: ubOjhMgg2hwaZGZy
+_key: "!items!ubOjhMgg2hwaZGZy"
+effects:
+  - _id: PTF6h6IzRLqq27fc
+    _key: "!items.effects!ubOjhMgg2hwaZGZy.PTF6h6IzRLqq27fc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: bonuses.run
+        mode: 2
+        priority: null
+        value: "4"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/roller_derby_skates.svg
+    name: Roller Derby Skates
+    origin: Item.vcOCUMuAvOBjnnFV
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/roller_derby_skates.svg
+name: Roller Derby Skates
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A pair of Derby League approved quad-skates.</p>
+      <blockquote>
+        <p><em>Increases movement by 4m/yds when taking the run action.</em></p>
+        <p>May cause physical tasks to be done at -2.</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Chasing the Rabbit
+      page: 9
+    - book: TotR — Hope Reborn
+      page: 186
+    - book: Interface RED v5
+      page: 21
+  usage: equipped
+type: gear

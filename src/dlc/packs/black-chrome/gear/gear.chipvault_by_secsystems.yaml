@@ -1,0 +1,51 @@
+_id: 2LaYl7hRn5V8cGUd
+_key: "!items!2LaYl7hRn5V8cGUd"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/gear/chipvault.svg
+name: ChipVault by SecSystems
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: SecSystems
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP
+        effects.
+      </p>
+      <blockquote>
+        <p>System does not currently support chipware storage</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - cyberware
+      - itemUpgrade
+    list: []
+    slots: 8
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 44
+  usage: toggled
+type: gear

@@ -1,0 +1,55 @@
+_id: FzmgjXxurHiMxdlv
+_key: "!items!FzmgjXxurHiMxdlv"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 42
+      previous: "41"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/rocket_growler.svg
+name: Rocket (Growler)
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: Militech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Experimental ammunition that can only be fired by the
+        @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.X4SWCsdrRq7Dt5cg]{Growler}.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 0
+      count: 0
+      override: true
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
+  price:
+    market: 500
+  size: 0
+  source: null
+  sources:
+    - book: TotR — Street Stories
+      page: 71
+  type: special
+  variety: rocket
+type: ammo

@@ -1,0 +1,245 @@
+_id: Dvnd2PU7YnUhkdhq
+_key: "!tables!Dvnd2PU7YnUhkdhq"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+name: Tech
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: v0dYAGVzF7SvMwDp
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.v0dYAGVzF7SvMwDp"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739575678
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739595454
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Cyberware Technician</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: V7GLGZ9eitY86dxn
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.V7GLGZ9eitY86dxn"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739575945
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739602522
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Vehicle Mechanic</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: vdHzloDZWzkw9wNV
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.vdHzloDZWzkw9wNV"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739576186
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739611799
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Jack of All Trades</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: gODyyTQAKKwBUgj3
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.gODyyTQAKKwBUgj3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739576451
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739626962
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Small Electronics Technician</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: BRGplUVlJvf5uVq8
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.BRGplUVlJvf5uVq8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739576712
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739637520
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Weaponsmith</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 2zGCyQ2xCJXDbHh4
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.2zGCyQ2xCJXDbHh4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739576976
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739647170
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Crazy Inventor</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: D74bigPKn9NL8Wpb
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.D74bigPKn9NL8Wpb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739577261
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739661419
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Drone Mechanic</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: WjokxHEhECVcnmse
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.WjokxHEhECVcnmse"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739577679
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739678021
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Heavy Machinery Mechanic</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: CwexrAtJ6VOuVugr
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.CwexrAtJ6VOuVugr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739578356
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739685518
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Scavenger</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: 5TxeeIbscVpeEioo
+    _key: "!tables.results!Dvnd2PU7YnUhkdhq.5TxeeIbscVpeEioo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739579006
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739695897
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Nautical Mechanic</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: 0

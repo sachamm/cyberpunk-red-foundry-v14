@@ -1,0 +1,49 @@
+_id: YdXY7sRFUX8KBKzq
+_key: "!items!YdXY7sRFUX8KBKzq"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
+name: Kerberos
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: SGI Technologies
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Unleash the fires of Hell upon your rivals.</p>
+      <p>6 slots for Programs, 5 slots for Hardware.</p>
+      <p>Program slots will only accept Hellhound Black ICE.</p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 11
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 1000
+  providesHardening: false
+  quality: standard
+  size: 1
+  sources:
+    - book: Midnight with the Upload
+      page: 4
+    - book: Interface RED v3
+      page: 40
+type: cyberdeck

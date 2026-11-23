@@ -1,0 +1,46 @@
+_id: oNzue3FRO2CpslGJ
+_key: "!items!oNzue3FRO2CpslGJ"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/wall-art.svg
+name: Wall Art
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Cheap poster for your pad.</p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 20
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Cargo Containers & Cube Hotels
+      page: 6
+    - book: Interface RED v2
+      page: 37
+  usage: toggled
+type: gear

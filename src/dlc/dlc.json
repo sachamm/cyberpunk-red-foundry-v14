@@ -1,0 +1,267 @@
+{
+  "packFolders": [
+    {
+      "name": "Cyberpunk RED: Black Chrome",
+      "sorting": "m",
+      "packs": [
+        "black-chrome_ammo",
+        "black-chrome_armor",
+        "black-chrome_clothing",
+        "black-chrome_cyberware",
+        "black-chrome_gear",
+        "black-chrome_upgrades",
+        "black-chrome_vehicles",
+        "black-chrome_weapons"
+      ]
+    },
+    {
+      "name": "Cyberpunk RED: DLC",
+      "sorting": "m",
+      "packs": [
+        "dlc_ammo",
+        "dlc_armor",
+        "dlc_clothing",
+        "dlc_consumables",
+        "dlc_cyberware",
+        "dlc_gear",
+        "dlc_rolltables",
+        "dlc_scenes",
+        "dlc_upgrades",
+        "dlc_vehicles",
+        "dlc_weapons",
+        "dlc_weather-effects",
+        "dlc_macros"
+      ]
+    },
+    {
+      "name": "Cyberpunk RED: Elflines Online",
+      "sorting": "m",
+      "packs": [
+        "elflines_ammo",
+        "elflines_armor",
+        "elflines_gear",
+        "elflines_rolltables",
+        "elflines_macros",
+        "elflines_weapons"
+      ]
+    }
+  ],
+  "packs": [
+    {
+      "name": "black-chrome_ammo",
+      "label": "Ammo",
+      "path": "dlc/packs/black-chrome/ammo",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "black-chrome_armor",
+      "label": "Armor",
+      "path": "dlc/packs/black-chrome/armor",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "black-chrome_clothing",
+      "label": "Clothing",
+      "path": "dlc/packs/black-chrome/clothing",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "black-chrome_cyberware",
+      "label": "Cyberware",
+      "path": "dlc/packs/black-chrome/cyberware",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "black-chrome_gear",
+      "label": "Gear",
+      "path": "dlc/packs/black-chrome/gear",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "black-chrome_upgrades",
+      "label": "Upgrades",
+      "path": "dlc/packs/black-chrome/upgrades",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "black-chrome_vehicles",
+      "label": "Vehicles",
+      "path": "dlc/packs/black-chrome/vehicles",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "black-chrome_weapons",
+      "label": "Weapons",
+      "path": "dlc/packs/black-chrome/weapons",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_ammo",
+      "label": "Ammo",
+      "path": "dlc/packs/dlc/ammo",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_armor",
+      "label": "Armor",
+      "path": "dlc/packs/dlc/armor",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_clothing",
+      "label": "Clothing",
+      "path": "dlc/packs/dlc/clothing",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_consumables",
+      "label": "Consumables",
+      "path": "dlc/packs/dlc/consumables",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_cyberware",
+      "label": "Cyberware",
+      "path": "dlc/packs/dlc/cyberware",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_gear",
+      "label": "Gear",
+      "path": "dlc/packs/dlc/gear",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_macros",
+      "label": "Macros",
+      "path": "dlc/packs/dlc/macros",
+      "type": "Macro",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_rolltables",
+      "label": "Rolltables",
+      "path": "dlc/packs/dlc/rolltables",
+      "type": "RollTable",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_scenes",
+      "label": "Scenes",
+      "path": "dlc/packs/dlc/scenes",
+      "type": "Scene",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_upgrades",
+      "label": "Upgrades",
+      "path": "dlc/packs/dlc/upgrades",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_vehicles",
+      "label": "Vehicles",
+      "path": "dlc/packs/dlc/vehicles",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_weapons",
+      "label": "Weapons",
+      "path": "dlc/packs/dlc/weapons",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "dlc_weather-effects",
+      "label": "Weather Effects",
+      "path": "dlc/packs/dlc/weather-effects",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "elflines_ammo",
+      "label": "Ammo",
+      "path": "dlc/packs/elflines/ammo",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "elflines_armor",
+      "label": "Armor",
+      "path": "dlc/packs/elflines/armor",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "elflines_gear",
+      "label": "Gear",
+      "path": "dlc/packs/elflines/gear",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "elflines_rolltables",
+      "label": "Rolltables",
+      "path": "dlc/packs/elflines/rolltables",
+      "type": "RollTable",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "elflines_macros",
+      "label": "Macros",
+      "path": "dlc/packs/elflines/macros",
+      "type": "Macro",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "name": "elflines_weapons",
+      "label": "Weapons",
+      "path": "dlc/packs/elflines/weapons",
+      "type": "Item",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    }
+  ]
+}

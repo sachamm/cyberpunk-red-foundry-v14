@@ -1,0 +1,55 @@
+_id: px0v8A4RxXI4tRAD
+_key: "!items!px0v8A4RxXI4tRAD"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/zonda-r400-trail.svg
+name: Zonda R400 Trail
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+sort: 0
+system:
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A cheap CHOOH<sup>2</sup>-powered road-bike seen during the time of the Red.
+      </p>
+      <p>
+        <em
+          >Incompatible with
+          @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.lw6N5svBE702A6VE]{Seating Upgrades},
+          or any upgrades that increase either combat or narrative speed.</em
+        >
+      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 850
+  sdp: 16
+  seats: 1
+  source: null
+  sources:
+    - book: 12 Days of Vehiclemas
+      page: 6
+  speedCombat: 10
+  speedNarrative: 30 MPH / 48 KPH
+type: vehicle

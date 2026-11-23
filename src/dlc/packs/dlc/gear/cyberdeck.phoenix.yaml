@@ -1,0 +1,52 @@
+_id: rkLqCqLvZ26DyYDz
+_key: "!items!rkLqCqLvZ26DyYDz"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
+name: Phoenix
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Raven Microcybernetics
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Never lose a Program again.</p>
+      <p>6 slots for Programs or Hardware.</p>
+      <p>
+        Any Program destroyed in a netrunning session is restored upon a safe Jack
+        Out.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 6
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 1000
+  providesHardening: false
+  quality: standard
+  size: 1
+  sources:
+    - book: Midnight with the Upload
+      page: 4
+    - book: Interface RED v3
+      page: 40
+type: cyberdeck

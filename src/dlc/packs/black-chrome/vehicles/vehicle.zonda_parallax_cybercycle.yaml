@@ -1,0 +1,45 @@
+_id: J1uOVT3BkhSWuat6
+_key: "!items!J1uOVT3BkhSWuat6"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/zonda-parallax.svg
+name: Zonda Parallax Cybercycle
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Zonda
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Top of the line Superbike.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 8</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 110000
+  sdp: 35
+  seats: 2
+  sources:
+    - book: Black Chrome
+      page: 83
+  speedCombat: 60
+  speedNarrative: 300 MPH / 483 KPH
+type: vehicle

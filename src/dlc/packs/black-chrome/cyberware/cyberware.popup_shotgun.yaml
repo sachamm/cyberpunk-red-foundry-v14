@@ -1,0 +1,100 @@
+_id: A8TUvYw4Ysv7tqpL
+_key: "!items!A8TUvYw4Ysv7tqpL"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/cyberware/popup-shotgun.svg
+name: Popup Shotgun
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        A concealable
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PJhu6eY766OegZBo]{shotgun}.
+      </p>
+      <blockquote>
+        <p>Can't hold anything with this hand while activated.</p>
+        <p>
+          Incompatible with all upgrades except
+          <a
+            class="content-link"
+            draggable="true"
+            data-link
+            data-uuid="Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC"
+            data-id="BC8S1sdK0QGdyHNC"
+            data-type="Item"
+            data-pack="cyberpunk-red-core.core_upgrades"
+            data-tooltip="Item"
+            data-tooltip-text="Upgrade Item"
+            >Smartgun Link</a
+          >.
+        </p>
+      </blockquote>
+  dvTable: DV Shotgun (Slug)
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: clinic
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isRanged: true
+  isWeapon: true
+  magazine:
+    ammoData: null
+    max: 2
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 3
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 21
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: cyberware

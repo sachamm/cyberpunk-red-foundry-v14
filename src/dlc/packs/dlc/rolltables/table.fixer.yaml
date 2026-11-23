@@ -1,0 +1,245 @@
+_id: 61K2vQXWBhM6exgN
+_key: "!tables!61K2vQXWBhM6exgN"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+name: Fixer
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: LCpqNaXlNcPybviJ
+    _key: "!tables.results!61K2vQXWBhM6exgN.LCpqNaXlNcPybviJ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744477548
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744650323
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Gang Negotiator</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: DPbVoEQSTF4yuBCX
+    _key: "!tables.results!61K2vQXWBhM6exgN.DPbVoEQSTF4yuBCX"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744477764
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744639987
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Rare Commodities Dealer</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: cNuVzXbKDEdivjT7
+    _key: "!tables.results!61K2vQXWBhM6exgN.cNuVzXbKDEdivjT7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744477960
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745328928
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as an <strong>Contact Agent for Discreet Services</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: M98z5ZIw5AAyvA0R
+    _key: "!tables.results!61K2vQXWBhM6exgN.M98z5ZIw5AAyvA0R"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744478215
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744837022
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Night Market Supply Agent</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: yhZBNdRieUGbwo2U
+    _key: "!tables.results!61K2vQXWBhM6exgN.yhZBNdRieUGbwo2U"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744478418
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744871746
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Black Market Dealer</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: Zk7QQfJEzpEJjV71
+    _key: "!tables.results!61K2vQXWBhM6exgN.Zk7QQfJEzpEJjV71"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744478617
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744892594
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Grey Market Dealer</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: uBYmmYGhB6tFlpGS
+    _key: "!tables.results!61K2vQXWBhM6exgN.uBYmmYGhB6tFlpGS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744479100
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744906280
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Night Market Coordinator</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: jsgD8AEZ1KTtVqU7
+    _key: "!tables.results!61K2vQXWBhM6exgN.jsgD8AEZ1KTtVqU7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744479501
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745360880
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Contract Broker for Heavy Machinery</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: HfvEyyZNWdbpfaj3
+    _key: "!tables.results!61K2vQXWBhM6exgN.HfvEyyZNWdbpfaj3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744482765
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744989068
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Fence</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: kAkkbHe2xNNOlXKr
+    _key: "!tables.results!61K2vQXWBhM6exgN.kAkkbHe2xNNOlXKr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744483658
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745055905
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Talent Agent for Celebrity Figures</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: 0

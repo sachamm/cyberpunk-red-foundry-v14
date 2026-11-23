@@ -1,0 +1,47 @@
+_id: swKwgrj4QbNn5EvW
+_key: "!items!swKwgrj4QbNn5EvW"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/gear/one-touch-habitat.svg
+name: Everest VentureWare One Touch Habitat
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: Everest VentureWare
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Provides protection from <strong>Exposure</strong>. Counts as Sleeping in the
+        Wilderness or as Sleeping on the Streets.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 48
+  usage: toggled
+type: gear

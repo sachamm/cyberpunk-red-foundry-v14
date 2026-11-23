@@ -1,0 +1,153 @@
+_id: ogKWzUvdycDijKZd
+_key: "!tables!ogKWzUvdycDijKZd"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+name: Nomad
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: RZrdbR7Bg3qhGg85
+    _key: "!tables.results!ogKWzUvdycDijKZd.RZrdbR7Bg3qhGg85"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745403628
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745496175
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Scout</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: YI5KoiJG7rLKjVxK
+    _key: "!tables.results!ogKWzUvdycDijKZd.YI5KoiJG7rLKjVxK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745403786
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745506660
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as an <strong>Outrider</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: KkXO9SebPLrdZAJa
+    _key: "!tables.results!ogKWzUvdycDijKZd.KkXO9SebPLrdZAJa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745404111
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745519744
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Transport Pilot</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: 4EH3V706m8qh7QIk
+    _key: "!tables.results!ogKWzUvdycDijKZd.4EH3V706m8qh7QIk"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745404253
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745529161
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Loadmaster</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: gmgwjJt0LkGqd9n4
+    _key: "!tables.results!ogKWzUvdycDijKZd.gmgwjJt0LkGqd9n4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745405687
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745537812
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Smuggler</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: zIkR6rtXByrNoYyy
+    _key: "!tables.results!ogKWzUvdycDijKZd.zIkR6rtXByrNoYyy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745406590
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745614965
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Procurement Specialist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

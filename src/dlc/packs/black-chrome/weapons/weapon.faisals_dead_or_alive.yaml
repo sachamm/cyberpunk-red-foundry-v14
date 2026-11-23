@@ -1,0 +1,232 @@
+_id: Zp90Q36fQ769vmhp
+_key: "!items!Zp90Q36fQ769vmhp"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: N1y0GnZG2Kq3V3wA
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.aFg1nXhz37e1C2YP
+          coreVersion: "13.351"
+          createdTime: 1786552979406
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786552999910
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/dlc/icons/black-chrome/upgrades/netlauncher_underbarrel.svg
+        name: Netlauncher Underbarrel
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety:
+            - custom
+          attackmod: 0
+          brand: Faisal Customs
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: "0"
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>On a hit the target is grappled by the net and cannot move or
+              use two handed weapons. </p><blockquote><p>The net has
+              <strong>15HP</strong> and imposes a <strong>-2 penalty</strong> to
+              all physical actions to anyone entangled by it. A <strong>DV13
+              Brawling</strong> <strong>or Contortionist Check</strong> will
+              destroy the net beyond repair.</p></blockquote>
+          dvTable: DV Shotgun (Slug)
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: true
+            allowedTypes:
+              - ammo
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: true
+          magazine:
+            ammoData: null
+            max: 2
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 2
+          source:
+            book: Black Chrome
+            page: 104
+          sources:
+            - book: Black Chrome
+              page: 104
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Shoulder Arms
+          weaponType: shotgun
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun_poor.svg
+name: Faisal's Dead or Alive
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attackmod: 0
+  brand: Faisal Customs
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        The Faisal's Dead Or Alive is a Poor Quality Shotgun with an integrated Poor
+        Quality Net Launcher.
+      </p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - N1y0GnZG2Kq3V3wA
+    slots: 3
+    usedSlots: 2
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 4
+    value: 0
+  price:
+    market: 500
+  quality: poor
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 104
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

@@ -1,0 +1,245 @@
+_id: nFKA0EO4T8rnjw2C
+_key: "!tables!nFKA0EO4T8rnjw2C"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+name: Medtech
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: kohTrbVjqvPNEQpo
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.kohTrbVjqvPNEQpo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739716302
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739731553
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Surgeon</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 9nqVLPYhRkjHamrp
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.9nqVLPYhRkjHamrp"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739716787
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739746351
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>General Practicioner</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 6KEOyZK7VMpdskd0
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.6KEOyZK7VMpdskd0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739717542
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739756483
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Trauma Medic</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: ZUQeRICeyXTmOksQ
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.ZUQeRICeyXTmOksQ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739717850
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739775922
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Psychiatrist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: 4hTKeuMSwMat6sAs
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.4hTKeuMSwMat6sAs"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739718080
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739793668
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Cyberpsycho Therapist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 3RlvqWNLJs889ecZ
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.3RlvqWNLJs889ecZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739718327
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739801235
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Ripperdoc</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: ZXFgGf1FS84dxQtr
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.ZXFgGf1FS84dxQtr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739719108
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739816186
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Cryosystem Operator</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 7
+      - 7
+    type: text
+    weight: 1
+  - _id: cYETDqApU33Jck1w
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.cYETDqApU33Jck1w"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739719319
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739825132
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Pharmacist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 8
+      - 8
+    type: text
+    weight: 1
+  - _id: WoS5wNUFXADIyqsQ
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.WoS5wNUFXADIyqsQ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739720309
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739834061
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Bodysculptor</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 9
+      - 9
+    type: text
+    weight: 1
+  - _id: 53HkS8Wq02q7Kr9r
+    _key: "!tables.results!nFKA0EO4T8rnjw2C.53HkS8Wq02q7Kr9r"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739721059
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739843783
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>…as a <strong>Forensic Pathologist</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: ""
+    range:
+      - 10
+      - 10
+    type: text
+    weight: 1
+sort: 0

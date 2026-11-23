@@ -1,0 +1,62 @@
+_id: CJB0sTptAOnLoEfu
+_key: "!items!CJB0sTptAOnLoEfu"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
+name: Superflash Jacket
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A supercharged
+        @UUID[Compendium.cyberpunk-red-core.core_clothing.Item.y3Ij43Eg3b0tq16F]{Urban Flash Jacket}.
+        As an action, anyone within 5m/yds that can see the jacket must make a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}
+        or suffer the
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}
+        critical injury for 1 minute.
+      </p>
+      <blockquote>
+        <p>
+          Each activation requires a
+          @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MfuoJ69NL1FiP7B8]{Battery Pack}
+          that is destroyed an unable to be recharged after use.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Micro Chrome
+      page: 1
+    - book: Danger Gal Dossier+
+      page: 11
+  style: urbanFlash
+  type: jacket
+  usage: equipped
+type: clothing

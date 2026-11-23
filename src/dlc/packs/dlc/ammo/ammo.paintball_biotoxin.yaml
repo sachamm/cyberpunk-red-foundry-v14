@@ -1,0 +1,63 @@
+_id: oZCZLAUVwbWZnHgj
+_key: "!items!oZCZLAUVwbWZnHgj"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/paintball_biotoxin.svg
+name: Paintball (Biotoxin)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        No immediate damage. Does not ablate armor. On a hit the target rolls a
+        [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}.
+        On a failure, the target takes [[/r 3d6dmg#Biotoxin Damage]]{3d6 Damage}
+        directly.
+      </p>
+      <blockquote>
+        <p>Does not affect inorganic targets.</p>
+        <p>
+          Created from 3
+          @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Vials of Biotoxin}
+        </p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 0
+      count: 0
+      override: true
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: 3d6
+  price:
+    market: 0
+  size: 0
+  sources:
+    - book: Woodchipper's Garage
+      page: 4
+  type: biotoxin
+  variety: paintball
+type: ammo

@@ -1,0 +1,1555 @@
+{
+  "label": "Rolltables",
+  "mapping": {},
+  "entries": {
+    "Achievements and Loot Boxes": {
+      "name": "Achievements and Loot Boxes",
+      "results": [{}]
+    },
+    "Datepaths": {
+      "name": "Datepaths",
+      "results": [{}]
+    },
+    "Digital Dating": {
+      "name": "Digital Dating",
+      "results": [{}]
+    },
+    "Discovered Traits": {
+      "name": "Discovered Traits",
+      "results": [{}]
+    },
+    "Gunpath": {
+      "name": "Gunpath",
+      "results": [{}]
+    },
+    "Gunpath Sub-Tables": {
+      "name": "Gunpath Sub-Tables",
+      "results": [{}]
+    },
+    "Locations": {
+      "name": "Locations",
+      "results": [{}]
+    },
+    "Night City Weather": {
+      "name": "Night City Weather",
+      "results": [{}]
+    },
+    "A Box Bound Tightly in Rope": {
+      "name": "A Box Bound Tightly in Rope",
+      "results": [
+        {
+          "1-1": "Rope (60m/yd)",
+          "2-2": "Virtuality Goggles",
+          "3-3": "Grapple Gun",
+          "4-4": "Vial of Poison",
+          "5-5": "Urban Flash Jewelry",
+          "6-6": "Battery Pack"
+        }
+      ]
+    },
+    "A Box Covered in Chipped Paint": {
+      "name": "A Box Covered in Chipped Paint",
+      "results": [
+        {
+          "1-1": "Grenade (Teargas)",
+          "2-2": "Heavy Pistol (Basic)",
+          "3-3": "Bicycle",
+          "4-4": "Road Flare",
+          "5-5": "Bullet Proof Shield",
+          "6-6": "Shotgun Shell (Basic)"
+        }
+      ]
+    },
+    "A Box Dripping Wet With Fluid": {
+      "name": "A Box Dripping Wet With Fluid",
+      "results": [
+        {
+          "1-1": "Smash",
+          "2-2": "Black Lace",
+          "3-3": "Bodyweight AutoInjector",
+          "4-4": "AirWell 50",
+          "5-5": "Grenade (Poison)",
+          "6-6": "TR-4 Detonator Fluid"
+        }
+      ]
+    },
+    "A Box Freezing Cold To The Touch": {
+      "name": "A Box Freezing Cold To The Touch",
+      "results": [
+        {
+          "1-1": "Bohemian Mirrorshades",
+          "2-2": "Street Viper Riding Suit",
+          "3-3": "Sponsored Cybereye",
+          "4-4": "Skid Row Trench",
+          "5-5": "Prime Time",
+          "6-6": "Laser Light Street Jacket"
+        }
+      ]
+    },
+    "A Box Handsomely Gift Wrapped": {
+      "name": "A Box Handsomely Gift Wrapped",
+      "results": [
+        {
+          "1-1": "Binoculars",
+          "2-2": "Light Armorjack (Body)",
+          "3-3": "Medium Pistol (Smart)",
+          "4-4": "Video Camera",
+          "5-5": "NeuTongue",
+          "6-6": "Reflex Co-Processor"
+        }
+      ]
+    },
+    "A Box Marked With A Lime Green X": {
+      "name": "A Box Marked With A Lime Green X",
+      "results": [
+        {
+          "1-1": "Elflines Online",
+          "2-2": "Disposable Cell Phone",
+          "3-3": "Modular Finger Cyberhand",
+          "4-4": "Leisurewear Jewelry",
+          "5-5": "Agent",
+          "6-6": "Smart Glasses"
+        }
+      ]
+    },
+    "A Box Melted Out Of Shape": {
+      "name": "A Box Melted Out Of Shape",
+      "results": [
+        {
+          "1-1": "Scavenged Armor",
+          "2-2": "Grenade (Incendiary)",
+          "3-3": "Neo-Soviet Cyberarm",
+          "4-4": "Rifle (Basic)",
+          "5-5": "Rifle (Basic)",
+          "6-6": "Shotgun Shell (Incendiary)"
+        }
+      ]
+    },
+    "A Box Reeking Of Oil": {
+      "name": "A Box Reeking Of Oil",
+      "results": [
+        {
+          "1-1": "Shotgun Shell (Basic)",
+          "2-2": "Heavy Pistol (Basic)",
+          "3-3": "Nomad Leathers Footwear",
+          "4-4": "Rifle (Smart)",
+          "5-5": "Sniping Scope",
+          "6-6": "Smartgun Link"
+        }
+      ]
+    },
+    "A Box Sealed With A Lipstick Kiss": {
+      "name": "A Box Sealed With A Lipstick Kiss",
+      "results": [
+        {
+          "1-1": "Combat Knife",
+          "3-3": "Shuriken Tornado Grenade",
+          "4-4": "Asia Pop Footwear",
+          "5-5": "Businesswear Top",
+          "6-6": "White Hornet Tanto",
+          "2-2": "Mr. Studd Sexual Implant"
+        }
+      ]
+    },
+    "A Box Showing Signs Of Repair": {
+      "name": "A Box Showing Signs Of Repair",
+      "results": [
+        {
+          "1-1": "Utility Tomahawk",
+          "2-2": "Holo Projector Palm",
+          "3-3": "Techtool",
+          "4-4": "Audio Recorder",
+          "5-5": "Grenade (Armor-Piercing)",
+          "6-6": "Techscanner"
+        }
+      ]
+    },
+    "Blood Rain": {
+      "name": "Blood Rain",
+      "results": [
+        {
+          "1-3": "Acid Rain",
+          "4-6": "Toxic Blood Rain"
+        }
+      ]
+    },
+    "City Blackouts": {
+      "name": "City Blackouts",
+      "results": [
+        {
+          "1-1": "Blackout in Little China - Lasts [[3d6*0.5]] hours.",
+          "2-2": "Blackout in Old Japantown - Lasts [[3d6*0.5]] hours.",
+          "3-3": "Blackout in Old Combat Zone - Lasts [[3d6*0.5]] hours.",
+          "4-4": "Blackout in South Night City - Lasts [[3d6*0.5]] hours.",
+          "5-5": "Blackout in ALL combat zones - Lasts [[3d6*0.5]] hours.",
+          "6-6": "Blackout in The Glen - Lasts [[1d6*0.5]] hours.",
+          "7-7": "Blackout in The University District - Lasts [[1d6*0.5]] hours.",
+          "8-8": "Blackout in Little Europe - Lasts [[1d6*0.5]] hours.",
+          "9-9": "Blackout in Upper Marina - Lasts [[1d6*0.5]] hours.",
+          "10-10": "Blackout in The Watson Development Zone - Lasts [[1d6*0.5]] hours.",
+          "11-11": "Blackout in Pacifica Playground - Lasts [[1d6*0.5]] hours.",
+          "12-12": "Blackout in NorCal Military Base - Lasts [[1d6*0.5]] hours.",
+          "13-13": "Blackout on Morro Rock - Lasts [[1d6*0.5]] hours.",
+          "14-14": "Blackout in ALL rebuilding urban centers - Lasts [[1d6*0.5]] hours.",
+          "15-15": "Blackout in Rancho Coronado - Lasts [[2d6*0.5]] hours.",
+          "16-16": "Blackout in Heywood (Santo Domingo) - Lasts [[2d6*0.5]] hours.",
+          "17-17": "Blackout in Heywood Industrial Zone - Lasts [[2d6*0.5]] hours.",
+          "18-18": "Blackout in New Westbrook - Lasts [[2d6*0.5]] hours.",
+          "19-19": "Blackout in ALL  overpacked suburbs - Lasts [[2d6*0.5]] hours.",
+          "20-20": "Blackout in the Executive Zone - Lasts [[(2d6kl)*0.5]] hours."
+        }
+      ]
+    },
+    "Edgerunner": {
+      "name": "Edgerunner",
+      "results": [
+        {
+          "1-1": "Rockerboy",
+          "2-2": "Solo",
+          "3-3": "Netrunner",
+          "4-4": "Tech",
+          "5-5": "Medtech",
+          "6-6": "Media",
+          "7-7": "Exec",
+          "8-8": "Lawman",
+          "9-9": "Fixer",
+          "10-10": "Nomad"
+        }
+      ]
+    },
+    "Enemies (What)": {
+      "name": "Enemies (What)",
+      "results": [
+        {
+          "1-1": "<p>…one is an Ex-Friend</p>",
+          "2-2": "<p>…one is an Ex-Lover</p>",
+          "3-3": "<p>…one is an Estranged Relative</p>",
+          "4-4": "<p>…one is a Childhood Enemy</p>",
+          "5-5": "<p>…one is a person working for you</p>",
+          "6-6": "<p>…one is a person you work for</p>",
+          "7-7": "<p>…one is a Partner or Coworker</p>",
+          "8-8": "<p>…one is a Corporate Exec</p>",
+          "9-9": "<p>…one is a Government Official</p>",
+          "10-10": "<p>…one is a Boosterganger</p>"
+        }
+      ]
+    },
+    "Enemies (Who)": {
+      "name": "Enemies (Who)",
+      "results": [
+        {
+          "1-1": "<p>…who caused them to lose face.</p>",
+          "2-2": "<p>…who caused the loss of a loved one.</p>",
+          "3-3": "<p>…who caused a major public humiliation.</p>",
+          "4-4": "<p>…who accused them of cowardice.</p>",
+          "5-5": "<p>…who betrayed them.</p>",
+          "6-6": "<p>…who turned down their job offer.</p>",
+          "7-7": "<p>…who just sucks.</p>",
+          "8-8": "<p>…who was once a romantic rival.</p>",
+          "9-9": "<p>…who was once a business rival.</p>",
+          "10-10": "<p>…who set them up for a crime they didn't commit.</p>"
+        }
+      ]
+    },
+    "Exec": {
+      "name": "Exec",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Procurement Specialist</strong></p>",
+          "2-2": "<p>…as a <strong>Manufacturing Foreman</strong></p>",
+          "3-3": "<p>…as a <strong>R&amp;D Project Manager</strong></p>",
+          "4-4": "<p>…as a <strong>Human Resources Director</strong></p>",
+          "5-5": "<p>…as a <strong>Public Affairs Agent</strong></p>",
+          "6-6": "<p>…as a <strong>Mergers and Acquisitions Coordinator</strong></p>"
+        }
+      ]
+    },
+    "Executive Zone": {
+      "name": "Executive Zone",
+      "results": [
+        {
+          "1-1": "<p>Golf, anyone?</p>",
+          "2-2": "<p>Fancy a round of tennis? Ever played on real organic grass?</p>",
+          "3-3": "<p>Brunch at your Date's favorite spot.</p>",
+          "4-4": "<p>Pool Party at a Beaverville McMansion.</p>",
+          "5-5": "<p>Drinks in the business lounge of the Country Club.</p>",
+          "6-6": "<p>Masquerade Party in the mansion of a rather recently deceased Exec.</p>"
+        }
+      ]
+    },
+    "Fall Weather": {
+      "name": "Fall Weather",
+      "results": [
+        {
+          "1-1": "Light Rain/Sleet",
+          "2-2": "Warm (Around 60°F/15°C) Conditions:  Clear",
+          "3-3": "Warm (Around 60°F/15°C)  Conditions: Overcast",
+          "4-4": "Warm (Around 60°F/15°C)  Conditions: Overcast",
+          "5-5": "Warm (Around 70°F/21°C)  Conditions: Clear",
+          "6-6": "Strange Weather"
+        }
+      ]
+    },
+    "Family (Crisis)": {
+      "name": "Family (Crisis)",
+      "results": [
+        {
+          "1-1": "<p>… who lost everything through betrayal.</p>",
+          "2-2": "<p>… who lost everything through mismanagement.</p>",
+          "3-3": "<p>… who was exiled and driven from their home.</p>",
+          "4-4": "<p>… who was incarcerated.</p>",
+          "5-5": "<p>… who vanished without a trace.</p>",
+          "6-6": "<p>… who was killed.</p>",
+          "7-7": "<p>… who was involved in a conspiracy.</p>",
+          "8-8": "<p>… who has scattered to the winds.</p>",
+          "9-9": "<p>… who are feuding with another clan.</p>",
+          "10-10": "<p>… who inherited the family's debt.</p>"
+        }
+      ]
+    },
+    "Family (What)": {
+      "name": "Family (What)",
+      "results": [
+        {
+          "1-1": "<p>…their parents are Corporate Execs…</p>",
+          "2-2": "<p>…their parents are Corporate Managers…</p>",
+          "3-3": "<p>…their parents are Corporate Technicians…</p>",
+          "4-4": "<p>…their parents are Nomad Pack…</p>",
+          "5-5": "<p>…their parents are Ganger \"Family\"…</p>",
+          "6-6": "<p>…their parents are Combat Zoners…</p>",
+          "7-7": "<p>…their parents are Urban Homeless…</p>",
+          "8-8": "<p>…their parents are Megastructure Warren Rats…</p>",
+          "9-9": "<p>…their parents are Reclaimers…</p>",
+          "10-10": "<p>…their parents are Edgerunners…</p>"
+        }
+      ]
+    },
+    "Family (Who)": {
+      "name": "Family (Who)",
+      "results": [
+        {
+          "1-1": "<p>…who are wealthy and powerful individuals with servants and luxury homes.</p>",
+          "2-2": "<p>…who are well to do, living in large homes in a safe neighborhood.</p>",
+          "3-3": "<p>…who are middle-class and live in a comfortable conapt in the overpacked suburbs.</p>",
+          "4-4": "<p>…who live their life on the road, sleeping in tents and trailers.</p>",
+          "5-5": "<p>…who were savage, violent creatures that couldn't provide for themselves.</p>",
+          "6-6": "<p>…who took them in and gave them shelter as a child.</p>",
+          "7-7": "<p>…who couldn't afford to rent even a cargo container.</p>",
+          "8-8": "<p>…who live in one of the huge megabuilding projects.</p>",
+          "9-9": "<p>…who are working hard to rebuild a nearby ghost town just outside of Night City.</p>",
+          "10-10": "<p>…who are seasoned edgerunners.</p>"
+        }
+      ]
+    },
+    "Find a match!": {
+      "name": "Find a match!",
+      "results": [
+        {
+          "1-20": "Begin your date!",
+          "1-1": "Little Europe",
+          "2-2": "NorCal Military Base",
+          "3-3": "Upper Marina",
+          "4-4": "Watson Development",
+          "5-5": "University District",
+          "6-6": "New Westbrook",
+          "7-7": "Little China",
+          "8-8": "Morro Rock",
+          "9-9": "Old Japantown",
+          "10-10": "Executive Zone",
+          "11-11": "The Glen",
+          "12-12": "Heywood Industrial Zone",
+          "13-13": "Old Combat Zone",
+          "14-14": "Heywood (Santo Domingo)",
+          "15-15": "South Night City",
+          "16-16": "Rancho Coronado",
+          "17-17": "Hot Zone",
+          "18-18": "Outskirts",
+          "19-19": "Pacifica Playground",
+          "20-20": "Reclaimed Perimeter"
+        }
+      ]
+    },
+    "Fixer": {
+      "name": "Fixer",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Gang Negotiator</strong></p>",
+          "2-2": "<p>…as a <strong>Rare Commodities Dealer</strong></p>",
+          "3-3": "<p>…as an <strong>Contact Agent for Discreet Services</strong></p>",
+          "4-4": "<p>…as a <strong>Night Market Supply Agent</strong></p>",
+          "5-5": "<p>…as a <strong>Black Market Dealer</strong></p>",
+          "6-6": "<p>…as a <strong>Grey Market Dealer</strong></p>",
+          "7-7": "<p>…as a <strong>Night Market Coordinator</strong></p>",
+          "8-8": "<p>…as a <strong>Contract Broker for Heavy Machinery</strong></p>",
+          "9-9": "<p>…as a <strong>Fence</strong></p>",
+          "10-10": "<p>…as a <strong>Talent Agent for Celebrity Figures</strong></p>"
+        }
+      ]
+    },
+    "Friends": {
+      "name": "Friends",
+      "results": [
+        {
+          "1-1": "<p>…who is like an older sibling</p>",
+          "2-2": "<p>…who is like a younger sibling</p>",
+          "3-3": "<p>…who is a mentor</p>",
+          "4-4": "<p>…who is a coworker</p>",
+          "5-5": "<p>…who is a former lover</p>",
+          "6-6": "<p>…who is an old enemy</p>",
+          "7-7": "<p>…who is like a parent figure</p>",
+          "8-8": "<p>…who is an old childhood friend</p>",
+          "9-9": "<p>…who is somebody they know from <em>The Street</em></p>",
+          "10-10": "<p>…who is somebody with a common goal.</p>"
+        }
+      ]
+    },
+    "Good Date: Beginning": {
+      "name": "Good Date: Beginning",
+      "results": [
+        {
+          "1-1": "Traits",
+          "2-2": "Friends",
+          "3-3": "Edgerunner",
+          "4-4": "<p>You discover something you have in common.</p>",
+          "5-5": "<p>You discover a new positive trait about them!</p><p>[Work with your GM to determine what it is.]</p>",
+          "6-6": "<p>They are very attractive. You wonder if they've been bodysculpted.</p>",
+          "1-6": "Good Date: Middle"
+        }
+      ]
+    },
+    "Good Date: End": {
+      "name": "Good Date: End",
+      "results": [
+        {
+          "1-1": "Life Goals",
+          "2-2": "<p>They give you some helpful advice.</p>",
+          "3-3": "Outlook",
+          "6-6": "<p>They seem really eager to go on another date.</p>",
+          "4-4": "<p>They're really talented and have a Base 16 in a skill.</p>",
+          "5-5": "<p>The date ended before you could learn anything else about them.</p>",
+          "1-5": "Post-Date Review",
+          "1-6": "One... Weird... Thing"
+        }
+      ]
+    },
+    "Good Date: Middle": {
+      "name": "Good Date: Middle",
+      "results": [
+        {
+          "1-1": "Traits",
+          "2-2": "Enemies (What)",
+          "3-3": "Previous Relationship",
+          "4-4": "Family (Who)",
+          "5-5": "<p>They surprise you with a 20eb gift!</p>",
+          "6-6": "<p>They stay quiet and just spend time listening to you.</p>",
+          "1-6": "Good Date: End"
+        }
+      ]
+    },
+    "Good Luck Charms": {
+      "name": "Good Luck Charms",
+      "results": [
+        {
+          "1-1": "<p>…it's a <strong>weapon</strong></p>",
+          "2-2": "<p>…it's a <strong>tool</strong></p>",
+          "3-3": "<p>…it's a <strong>piece of clothing</strong></p>",
+          "4-4": "<p>…it's a <strong>photograph</strong></p>",
+          "5-5": "<p>…it's a <strong>book or diary</strong></p>",
+          "6-6": "<p>…it's a <strong>recording</strong></p>",
+          "7-7": "<p>…it's a <strong>musical instrument</strong></p>",
+          "8-8": "<p>…it's a <strong>piece of jewelry</strong></p>",
+          "9-9": "<p>…it's a <strong>toy</strong></p>",
+          "10-10": "<p>…it's a <strong>letter</strong></p>"
+        }
+      ]
+    },
+    "Heywood Industrial Zone": {
+      "name": "Heywood Industrial Zone",
+      "results": [
+        {
+          "1-1": "<p>They want to show you some urban art.</p>",
+          "2-2": "<p>Laser tag at the Zhirafa Office park.</p>",
+          "3-3": "<p>Dip into a cargo container speakeasy.</p>",
+          "4-4": "<p>Attent an industrial music concert in an industrial park.</p>",
+          "5-5": "<p>They take you to a teriyaki place where they're a regular.</p>",
+          "6-6": "<p>Dodge flying metal at a drone fight!</p>"
+        }
+      ]
+    },
+    "Heywood (Santo Domingo)": {
+      "name": "Heywood (Santo Domingo)",
+      "results": [
+        {
+          "1-1": "<p>Attend a local street festival.</p>",
+          "2-2": "<p>Let's get drunk at Metalstorm.</p>",
+          "3-3": "<p>Crash an Aldecaldo barbecue.</p>",
+          "4-4": "<p>Let's race some Roadbikes together.</p>",
+          "5-5": "<p>Grandma makes the best mole poblano.</p>",
+          "6-6": "<p>Attend a party tonight at the East Cargo Village.</p>"
+        }
+      ]
+    },
+    "Hot Zone": {
+      "name": "Hot Zone",
+      "results": [
+        {
+          "1-1": "<p>Take a historic tour of the ruins!</p>",
+          "2-2": "<p>You're in for a wild night at the Totentanz.</p>",
+          "3-3": "<p>Break into an old corporate building.</p>",
+          "4-4": "<p>Help your date scavenge a classic piece of tech.</p>",
+          "5-5": "<p>Attend a slightly radioactive street race.</p>",
+          "6-6": "<p>Dine on expired MREs under the beautiful red sky.</p>"
+        }
+      ]
+    },
+    "How does your date go?": {
+      "name": "How does your date go?",
+      "results": [
+        {
+          "1-4": "Good Date: Beginning",
+          "5-8": "Weird Date: Beginning",
+          "9-10": "<p>They don't show up and you never find out why.</p>"
+        }
+      ]
+    },
+    "Kibble Flavors": {
+      "name": "Kibble Flavors",
+      "results": [
+        {
+          "1-5": "Kibble Pack: Fizzy",
+          "6-10": "Kibble Pack: Chili Lime",
+          "11-15": "Kibble Pack: Protein",
+          "16-20": "Kibble Pack: Sport Flakes",
+          "21-25": "Kibble Pack: Extra Fluffy Pankcake",
+          "26-30": "Kibble Pack: SportMix",
+          "31-35": "Kibble Pack: Fruit Fantasy",
+          "36-40": "Kibble Pack: Buttered Popcorn",
+          "41-45": "Kibble Pack: Caramel Crunch Popcorn",
+          "46-50": "Kibble Pack: Bacon Cheddar Dumpburger",
+          "51-55": "Kibble Pack: Kiwi",
+          "56-60": "Kibble Pack: Cheese",
+          "61-65": "Kibble Pack: Lemon Ginger",
+          "66-70": "Kibble Pack: Aromatic Beef",
+          "71-75": "Kibble Pack: Paprika",
+          "76-80": "Kibble Pack: Pineapple Pizza",
+          "81-85": "Kibble Pack: Collagen Boost",
+          "86-90": "Kibble Pack: XXL Kibbles",
+          "91-95": "Kibble Pack: Mystery",
+          "96-100": "Kibble Pack: Adobo"
+        }
+      ]
+    },
+    "Lawman": {
+      "name": "Lawman",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Guard</strong></p>",
+          "2-2": "<p>…as a <strong>Beat Cop</strong></p>",
+          "3-3": "<p>…as a <strong>Criminal Investigator</strong></p>",
+          "4-4": "<p>…as a <strong>SWAT officer</strong></p>",
+          "5-5": "<p>…as a <strong>Motor Patrol</strong></p>",
+          "6-6": "<p>…as an <strong>Internal Affairs Investigator</strong></p>"
+        }
+      ]
+    },
+    "Life Goals": {
+      "name": "Life Goals",
+      "results": [
+        {
+          "1-1": "<p>…they want to get rid of a bad reputation.</p>",
+          "2-2": "<p>…they want to gain power and control.</p>",
+          "3-3": "<p>…they want to get off <em>The Street</em> no matter what.</p>",
+          "4-4": "<p>…they swear to cause pain and suffering to anyone who crosses you.</p>",
+          "5-5": "<p>…they just want to forget whatever happened in the past and start fresh.</p>",
+          "6-6": "<p>…they want to hunt down those who are responsible for their miserable life and make them pay.</p>",
+          "7-7": "<p>…they just want to get what's rightfully theirs.</p>",
+          "8-8": "<p>…they're just trying to protect their loved ones.</p>",
+          "9-9": "<p>…they want to gain fame and recognition.</p>",
+          "10-10": "<p>…they want to be respected above all else.</p>"
+        }
+      ]
+    },
+    "Little China": {
+      "name": "Little China",
+      "results": [
+        {
+          "1-1": "<p>Grab a drink at the Forlorn Hope.</p>",
+          "2-2": "<p>Window shopping and street food.</p>",
+          "3-3": "<p>Get a massage together.</p>",
+          "4-4": "<p>Go thrift shopping.</p>",
+          "5-5": "<p>Sunday morning dim sum.</p>",
+          "6-6": "<p>Go to a Night Market together.</p>"
+        }
+      ]
+    },
+    "Little Europe": {
+      "name": "Little Europe",
+      "results": [
+        {
+          "1-1": "<p>Meet at the Oasis Megamart for a Cooking with Kibble class.</p>",
+          "2-2": "<p>Pray with them at the Holy Angels Church.</p>",
+          "3-3": "<p>Have a wild night at the Short Circuit.</p>",
+          "4-4": "<p>Race hot pink go-karts at the Danger Gal Offices</p>",
+          "5-5": "<p>Enjoy a beautiful Italian dinner.</p>",
+          "6-6": "<p>A glass of wine overlooking Night City from Camden Court's rooftop lounge.</p>"
+        }
+      ]
+    },
+    "Media": {
+      "name": "Media",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Blogger</strong></p>",
+          "2-2": "<p>…as a <strong>Novelist</strong></p>",
+          "3-3": "<p>…as a <strong>Videographer</strong></p>",
+          "4-4": "<p>…as a <strong>Documentarian</strong></p>",
+          "5-5": "<p>…as a <strong>Investigative Reporter</strong></p>",
+          "6-6": "<p>…as a <strong>Street Scribe</strong></p>"
+        }
+      ]
+    },
+    "Medtech": {
+      "name": "Medtech",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Surgeon</strong></p>",
+          "2-2": "<p>…as a <strong>General Practicioner</strong></p>",
+          "3-3": "<p>…as a <strong>Trauma Medic</strong></p>",
+          "4-4": "<p>…as a <strong>Psychiatrist</strong></p>",
+          "5-5": "<p>…as a <strong>Cyberpsycho Therapist</strong></p>",
+          "6-6": "<p>…as a <strong>Ripperdoc</strong></p>",
+          "7-7": "<p>…as a <strong>Cryosystem Operator</strong></p>",
+          "8-8": "<p>…as a <strong>Pharmacist</strong></p>",
+          "9-9": "<p>…as a <strong>Bodysculptor</strong></p>",
+          "10-10": "<p>…as a <strong>Forensic Pathologist</strong></p>"
+        }
+      ]
+    },
+    "Morro Rock": {
+      "name": "Morro Rock",
+      "results": [
+        {
+          "1-1": "<p>Watch a test of the Orbital Massdriver.</p>",
+          "2-2": "<p>A perfect place to watch the fireworks.</p>",
+          "3-3": "<p>Lunch date at the Orbital Air Massdriver's employee cafeteria.</p>",
+          "4-4": "<p>Go for a cruise on a boat docked at Morro Rock.</p>",
+          "5-5": "<p>Double date with someone from their Family.</p>",
+          "6-6": "<p>Ringside seats to an underground pit fight at the construction site.</p>"
+        }
+      ]
+    },
+    "Motivations": {
+      "name": "Motivations",
+      "results": [
+        {
+          "1-1": "<p>…it's <strong>Money</strong></p>",
+          "2-2": "<p>…it's <strong>Honor</strong></p>",
+          "3-3": "<p>…it's <strong>Their Word</strong></p>",
+          "4-4": "<p>…it's <strong>Honesty</strong></p>",
+          "5-5": "<p>…it's <strong>Knowledge</strong></p>",
+          "6-6": "<p>…it's <strong>Vengeance</strong></p>",
+          "7-7": "<p>…it's <strong>Love</strong></p>",
+          "8-8": "<p>…it's <strong>Power</strong></p>",
+          "9-9": "<p>…it's <strong>Family</strong></p>",
+          "10-10": "<p>…it's <strong>Friendship</strong></p>"
+        }
+      ]
+    },
+    "Netrunner": {
+      "name": "Netrunner",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Freelance Hacker</strong></p>",
+          "2-2": "<p>…as a <strong>Corpo \"Clone Runner\"</strong></p>",
+          "3-3": "<p>…as a <strong>Hacktivist</strong></p>",
+          "4-4": "<p>…as a <strong>Script Kiddie</strong></p>",
+          "5-5": "<p>…as a <strong>Network Troubleshooter</strong></p>",
+          "6-6": "<p>…as a <strong>File Recovery Professional</strong></p>"
+        }
+      ]
+    },
+    "New Westbrook": {
+      "name": "New Westbrook",
+      "results": [
+        {
+          "2-2": "<p>Attend a Skate Foot race near Night City Firestation #1.</p>",
+          "3-3": "<p>Attend a gala hosted by Rocklin Augmentics on their campus.</p>",
+          "4-4": "<p>Rock climbing on the cliffs below the WorldSat Offices.</p>",
+          "5-5": "<p>Track down an elusive food truck in the area.</p>",
+          "6-6": "<p>Grab a drink at an Executive Bar.</p>",
+          "1-1": "<p>Joint the audience of a live N54 show.</p>"
+        }
+      ]
+    },
+    "Night City Tarot": {
+      "name": "Night City Tarot",
+      "results": [
+        {
+          "1-1": "The Fool. All of the target's cyberware is inoperable for 1 hour. Their Checks gain the \"Obscured by Darkness\" modifier if it would leave them with no way to sense an enemy. Cyberlimbs affected will act as their dismembered meat counterpart, but are still attached to the target's body. If the target doesn't have any cyberware, they are dealt the Foreign Object Critical Injury and take 3d6 Humanity Loss instead. (See Night City Tarot Page 3).",
+          "2-2": "The Magician. The GM must select one of the target's cyberware. It is then Destroyed. The target is now also Deadly On Fire (CP:R Page 180). (See Night City Tarot Page 3).",
+          "3-3": "The High Priestess. The target is dealt the Foreign Object Critical Injury. When moving more than 4 m/yards, instead of taking the Critical Injury Bonus Damage, they must beat a DV 15 Resist Torture/Drugs Skill Check or take 3d6 Damage directly to their HP. (See Night City Tarot Page 3).",
+          "4-4": "The Empress. The next 3 Attack Checks that hit the target of this card automatically deal a Critical Injury, no matter the Damage Roll results. This doesn't work with weapons incapable of causing a Critical Injury, with exception of Light Melee Weapons. (See Night City Tarot Page 3).",
+          "5-5": "The Emperor. The GM must select a Player. This Player then selects one Critical Injury from the Head Critical Injury Rolltable (CPR: Page 188) and from the Body Critical Injury Rolltable (CP:R Page 187). The target is dealt both Critical Injuries. (See Night City Tarot Page 3).",
+          "6-6": "The Hierophant. Double the damage the Attack would've dealt after armor and modifiers. (Just like how you would double the damage on an Aimed Shot to the Head). If the Attack was made with a weapon, that weapon is now Destroyed Beyond Repair. (See Night City Tarot Page 3).",
+          "7-7": "The Lovers. The Attack is now treated as an Aimed Shot to the Head. If the Attack was a Melee Attack, the target is now grappled by the Attacker. (See Night City Tarot Page 3).",
+          "8-8": "The Chariot. The target's armor location is ablated by another 5 points, even if the Damage Roll didn't beat the target's armor SP. (See Night City Tarot Page 4).",
+          "9-9": "Strength. The Attack deals 25 more points of damage. That damage is added before any armor or multipliers. (See Night City Tarot Page 4).",
+          "10-10": "The Hermit. The target is dealt the Lost Eye Critical Injury twice while only taking the penalty once. Their Checks gain the \"Obscured by Darkness\" modifier if it would leave them with no way to sense an enemy. (See Night City Tarot Page 4).",
+          "11-11": "Wheel of Fortune. It the Attack was a Ranged Attack, the GM randomly selects a new target. If it was a Melee Attack, the Attacker falls prone and the Attack misses. The weapon used for the Attack malfunctions and requires an Action to be used to reverse the malfunction before being used again. (See Night City Tarot Page 4).",
+          "12-12": "Justice. For the next 5 minutes, the target suffers a -5 penalty to Evasion Skill Checks and they cannot dodge Ranged Attacks. (See Night City Tarot Page 4).",
+          "13-13": "The Hanged Man. The target is knocked prone and is dealt the Spinal Injury and Whiplash Critical Injuries. (See Night City Tarot Page 4).",
+          "14-14": "Death. The target must roll a Death Save regardless of their HP. Failure means they are reduced to 0 HP and are considered unconscious for one minute. When they regain consciousness, they regain 3d6 Humanity Points up to their Max Humanity. (See Night City Tarot Page 4).",
+          "15-15": "Temperance. The target chooses one of their limbs to be dealt the Dismembered Limb Critical Injury and another one to be dealt the Broken Limb Critical Injury. (See Night City Tarot Page 5).",
+          "16-16": "The Devil. The Attack is now considered an Aimed Shot to the Head. The target is dealt the Brain Injury and the Lost Ear Critical Injuries. (See Night City Tarot Page 5).",
+          "17-17": "The Tower. The target is dealt the Cracked Skull, Crushed Windpipe and Whiplash Critical Injuries but without taking their Bonus Damage. The target cannot feel pain and ignores the Seriously Wounded Wound State for 1 hour. (See Night City Tarot Page 5).",
+          "18-18": "The Star. If the Attack was a Ranged Attack, it hits the target and hits a second target within 20 m/yards that is chosen by the GM. If there is no valid second target, it hits the first target another time. The second hit hits the body. You roll a new Damage Roll for the second hit. If the Attack was a Melee Attack, the target is dealt the Broken Ribs and Collapsed Lung Critical Injuries. (See Night City Tarot Page 5).",
+          "19-19": "The Moon. The target is dealt the Foreign Object Critical Injury twice, once in the Body and once in the Head locations. If the Attack was a Melee Attack with a melee weapon, the weapon is stuck in the target's body and the Attacker is disarmed. (See Night City Tarot Page 5).",
+          "20-20": "The Sun. If the target carries any explosives, the GM must choose one. It explodes. If the target wasn't carrying any, the GM must choose one non-weapon equipment on the target. It is Destroyed Beyond Repair. (See Night City Tarot Page 5).",
+          "21-21": "Judgement. The target is dealt the Crushed Fingers Critical Injury on one hand. The other hand is dealt the Dismembered Hand Critical Injury. (See Night City Tarot Page 5).",
+          "22-22": "The World. The Attacker takes an additional Turn right after this one. They gain a +5 Bonus to any of their Skill Checks, ignore their Wound State effects and do not make a Death Save if they are Mortally wounded during that next turn. (See Night City Tarot Page 5)."
+        }
+      ]
+    },
+    "Nomad": {
+      "name": "Nomad",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Scout</strong></p>",
+          "2-2": "<p>…as an <strong>Outrider</strong></p>",
+          "3-3": "<p>…as a <strong>Transport Pilot</strong></p>",
+          "4-4": "<p>…as a <strong>Loadmaster</strong></p>",
+          "5-5": "<p>…as a <strong>Smuggler</strong></p>",
+          "6-6": "<p>…as a <strong>Procurement Specialist</strong></p>"
+        }
+      ]
+    },
+    "NorCal Military Base": {
+      "name": "NorCal Military Base",
+      "results": [
+        {
+          "1-1": "<p>Shoot away the jitters at the gun range.</p>",
+          "2-2": "<p>Something about a rope course?</p>",
+          "3-3": "<p>Apparently the food is pretty good on base.</p>",
+          "4-4": "<p>Watch a live training exercise together.</p>",
+          "5-5": "<p>Go see a movie at the base's theater.</p>",
+          "6-6": "<p>Shoot it out in a paintball game.</p>"
+        }
+      ]
+    },
+    "Old Combat Zone": {
+      "name": "Old Combat Zone",
+      "results": [
+        {
+          "1-1": "<p>The Jessie James Kosher Deli is worth the risk.</p>",
+          "2-2": "<p>Climb up to an abandoned rooftop to enjoy the view.</p>",
+          "3-3": "<p>Romantically fire Grenade Launchers into piles of rubble.</p>",
+          "4-4": "<p>Bring your own spray cans for a graffiti date.</p>",
+          "5-5": "<p>Help weed your Date's rooftop garden.</p>",
+          "6-6": "<p>Hang out in an abandoned mall.</p>"
+        }
+      ]
+    },
+    "Old Japantown": {
+      "name": "Old Japantown",
+      "results": [
+        {
+          "1-1": "<p>Enjoy a picnic overlooking the Hot Zone.</p>",
+          "2-2": "<p>Get conveyor belt \"sushi\".</p>",
+          "3-3": "<p>Sing karaoke in an all concrete building.</p>",
+          "4-4": "<p>Your date wants you to meet their best friend.</p>",
+          "5-5": "<p>Attend a large parade and enjoy the atmosphere.</p>",
+          "6-6": "<p>You date's father wants to meet you.</p>"
+        }
+      ]
+    },
+    "One... Weird... Thing": {
+      "name": "One... Weird... Thing",
+      "results": [
+        {
+          "1-1": "<p>You date eats their food in a strange way.</p>",
+          "2-2": "<p>Your date got a call from their parents. Twice.</p>",
+          "3-3": "<p>Your date talked too much about their ex.</p>",
+          "5-5": "<p>Your date didn't silene their Agent and it kept going off.</p>",
+          "4-4": "<p>Your date didn't seem to care that their clothing was stained.</p>",
+          "6-6": "<p>Your date didn't tip.</p>",
+          "7-7": "<p>You can tell your date lied to you.</p>",
+          "8-8": "<p>Your date showed up 30 minutes late.</p>",
+          "9-9": "<p>Your date thought you were somebody else!</p>",
+          "10-10": "<p>Your date was recovering from a recent gunshot wound.</p>"
+        }
+      ]
+    },
+    "Option-Bayonet": {
+      "name": "Option-Bayonet",
+      "results": [
+        {
+          "1-5": "Bayonet",
+          "6-6": "Airhypo Bayonet"
+        }
+      ]
+    },
+    "Outlook": {
+      "name": "Outlook",
+      "results": [
+        {
+          "1-1": "<p>…they stay neutral about most people.</p>",
+          "2-2": "<p>…they seem to like almost everyone.</p>",
+          "3-3": "<p>…they seem to hate almost everyone.</p>",
+          "4-4": "<p>…they think people are tools to be used and discarded.</p>",
+          "5-5": "<p>…they think every person is a valuable individual.</p>",
+          "6-6": "<p>…they see people as obstacles to be destroyed if necessary.</p>",
+          "7-7": "<p>…they feel that people are inherently untrustworthy.</p>",
+          "8-8": "<p>…they think it would be better if humanity gave up and let nature run its course.</p>",
+          "9-9": "<p>…they think people are just wonderful!</p>"
+        }
+      ]
+    },
+    "Outskirts": {
+      "name": "Outskirts",
+      "results": [
+        {
+          "1-1": "<p>Let's go for a hike!</p>",
+          "2-2": "<p>My Family let me borrow our Gyrocopter.</p>",
+          "3-3": "<p>Foraging for mushrooms is fun, I promise!</p>",
+          "4-4": "<p>Have you ever tried archery?</p>",
+          "5-5": "<p>Let's go off-roading in the badlands!</p>",
+          "6-6": "<p>Track down a secret waterfall.</p>"
+        }
+      ]
+    },
+    "Pacifica Playground": {
+      "name": "Pacifica Playground",
+      "results": [
+        {
+          "1-1": "<p>Your date wants to share their favorite braindance with you.</p>",
+          "2-2": "<p>Picnic lunch in the Playland by the Sea parking lot.</p>",
+          "3-3": "<p>A backstage tour of the Playland by the Sea Concert Hall.</p>",
+          "4-4": "<p>Shell hunting on the beach.</p>",
+          "5-5": "<p>Ride the rides and dine on unique Playland by the Sea kibble.</p>",
+          "6-6": "<p>Drag racing down by the pier.</p>"
+        }
+      ]
+    },
+    "Post-Date Review": {
+      "name": "Post-Date Review",
+      "results": [
+        {
+          "1-1": "<p>Failure: They're just not that into you.</p>",
+          "2-2": "<p>Success: They say they want another date and promise to keep in touch.</p>"
+        }
+      ]
+    },
+    "Previous Relationship": {
+      "name": "Previous Relationship",
+      "results": [
+        {
+          "1-1": "<p>…it ended well.</p>",
+          "2-2": "Tragic Love"
+        }
+      ]
+    },
+    "Punknaught Death Table": {
+      "name": "Punknaught Death Table",
+      "results": [
+        {
+          "1-1": "Punknaught grinds to a halt.",
+          "2-2": "GM moves the Punknaught forward at full speed ramming everything in its path.",
+          "3-3": "Punknaught and anyone inside are On Fire (Strong)",
+          "4-4": "GM moves the Punknaught forward at full speed ramming everything in its path and anything the Punknaught rams is set On Fire (Mild).  The Punknaught and anyone inside are On Fire (Strong).",
+          "5-5": "Anyone riding the Punknaught takes [[4d6]] melee damage.",
+          "6-6": "The Punknaught explodes dealing [[6d6]] damage to everyone within 6m/yds."
+        }
+      ]
+    },
+    "Quality-Excellent": {
+      "name": "Quality-Excellent",
+      "results": [
+        {
+          "1-6": "Medium Pistol (Excellent)",
+          "7-12": "Heavy Pistol (Excellent)",
+          "13-18": "Very Heavy Pistol (Excellent)",
+          "19-24": "SMG (Excellent)",
+          "25-30": "Heavy SMG (Excellent)",
+          "31-36": "Shotgun (Excellent)",
+          "43-48": "Sniper Rifle (Excellent)",
+          "4-6": "Upgrades-Handgun-Medium",
+          "28-30": "Upgrades-Handgun-HSMG",
+          "22-24": "Upgrades-Handgun-SMG",
+          "16-18": "Upgrades-Handgun-VHeavy",
+          "10-12": "Upgrades-Handgun-Heavy",
+          "37-42": "Assault Rifle (Excellent)",
+          "49-51": "Bow (Excellent)",
+          "52-54": "Upgrades-Archery",
+          "34-36": "Upgrades-Shoulder-Shotgun",
+          "40-42": "Upgrades-Shoulder-Assault",
+          "46-48": "Upgrades-Shoulder-Sniper",
+          "55-58": "Grenade Launcher (Excellent)",
+          "57-58": "Upgrades-Launcher-Grenade",
+          "59-60": "Rocket Launcher (Excellent)",
+          "60-60": "Upgrades-Launcher-Rocket"
+        }
+      ]
+    },
+    "Quality-Poor": {
+      "name": "Quality-Poor",
+      "results": [
+        {
+          "1-6": "Medium Pistol (Poor)",
+          "7-12": "Heavy Pistol (Poor)",
+          "13-18": "Very Heavy Pistol (Poor)",
+          "19-24": "SMG (Poor)",
+          "25-30": "Heavy SMG (Poor)",
+          "31-36": "Shotgun (Poor)",
+          "43-48": "Sniper Rifle (Poor)",
+          "4-6": "Upgrades-Handgun-Medium",
+          "28-30": "Upgrades-Handgun-HSMG",
+          "22-24": "Upgrades-Handgun-SMG",
+          "16-18": "Upgrades-Handgun-VHeavy",
+          "10-12": "Upgrades-Handgun-Heavy",
+          "37-42": "Assault Rifle (Poor)",
+          "49-51": "Bow (Poor)",
+          "52-54": "Upgrades-Archery",
+          "34-36": "Upgrades-Shoulder-Shotgun",
+          "40-42": "Upgrades-Shoulder-Assault",
+          "46-48": "Upgrades-Shoulder-Sniper",
+          "55-58": "Grenade Launcher (Poor)",
+          "57-58": "Upgrades-Launcher-Grenade",
+          "59-60": "Rocket Launcher (Poor)",
+          "60-60": "Upgrades-Launcher-Rocket"
+        }
+      ]
+    },
+    "Quality-Standard": {
+      "name": "Quality-Standard",
+      "results": [
+        {
+          "1-6": "Medium Pistol",
+          "7-12": "Heavy Pistol",
+          "13-18": "Very Heavy Pistol",
+          "19-24": "SMG",
+          "25-30": "Heavy SMG",
+          "31-36": "Shotgun",
+          "43-48": "Sniper Rifle",
+          "4-6": "Upgrades-Handgun-Medium",
+          "28-30": "Upgrades-Handgun-HSMG",
+          "22-24": "Upgrades-Handgun-SMG",
+          "16-18": "Upgrades-Handgun-VHeavy",
+          "10-12": "Upgrades-Handgun-Heavy",
+          "37-42": "Assault Rifle",
+          "49-51": "Bow",
+          "52-54": "Upgrades-Archery",
+          "34-36": "Upgrades-Shoulder-Shotgun",
+          "40-42": "Upgrades-Shoulder-Assault",
+          "46-48": "Upgrades-Shoulder-Sniper",
+          "55-58": "Grenade Launcher",
+          "57-58": "Upgrades-Launcher-Grenade",
+          "59-60": "Rocket Launcher",
+          "60-60": "Upgrades-Launcher-Rocket"
+        }
+      ]
+    },
+    "Rancho Coronado": {
+      "name": "Rancho Coronado",
+      "results": [
+        {
+          "1-1": "<p>Grab some breakfast at the pancake house.</p>",
+          "2-2": "<p>Meet their totally real dog at the park.</p>",
+          "3-3": "<p>Grab a drink at the local pub.</p>",
+          "4-4": "<p>Mani-pedi date at a local strip-mall.</p>",
+          "5-5": "<p>Have you ever LARPed before?</p>",
+          "6-6": "<p>Roast some SCOP weenies at a company cookout.</p>"
+        }
+      ]
+    },
+    "Random Loot Box": {
+      "name": "Random Loot Box",
+      "results": [
+        {
+          "1-1": "A Box Bound Tightly In Rope",
+          "2-2": "A Box Covered In Chipped Paint",
+          "3-3": "A Box Dripping Wet With Fluid",
+          "4-4": "A Box Freezing Cold To The Touch",
+          "5-5": "A Box Handsomely Gift Wrapped",
+          "6-6": "A Box Marked With A Lime Green X",
+          "7-7": "A Box Melted Out Of Shape",
+          "8-8": "A Box Reeking Of Oil",
+          "9-9": "A Box Sealed With A Lipstick Kiss",
+          "10-10": "A Box Showing Signs Of Repair"
+        }
+      ]
+    },
+    "Reclaimed Perimeter": {
+      "name": "Reclaimed Perimeter",
+      "results": [
+        {
+          "1-1": "<p>Bowling in an abandoned building.</p>",
+          "2-2": "<p>Let's go urban spelunking.</p>",
+          "3-3": "<p>Get together with a couple friends.</p>",
+          "4-4": "<p>Shoot off some old fireworks at some abandoned cars.</p>",
+          "5-5": "<p>Grab some tacos from a friend's food truck.</p>",
+          "6-6": "<p>Meetup at the all night diner.</p>"
+        }
+      ]
+    },
+    "Rockerboy": {
+      "name": "Rockerboy",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Musician</strong></p>",
+          "2-2": "<p>…as a <strong>Slam Poet</strong></p>",
+          "3-3": "<p>…as a <strong>Street Artist</strong></p>",
+          "4-4": "<p>…as a <strong>Performance Artist</strong></p>",
+          "5-5": "<p>…as a <strong>Comedian</strong></p>",
+          "6-6": "<p>…as a <strong>Orator</strong></p>",
+          "7-7": "<p>…as a <strong>Politico</strong></p>",
+          "8-8": "<p>…as a <strong>Rap Artist</strong></p>",
+          "9-9": "<p>…as a <strong>DJ</strong></p>",
+          "10-10": "<p>…as a <strong>Idoru</strong></p>"
+        }
+      ]
+    },
+    "Roll Random Gunpath": {
+      "name": "Roll Random Gunpath",
+      "results": [
+        {
+          "1-1": "Weapon-Quality"
+        }
+      ]
+    },
+    "Solo": {
+      "name": "Solo",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Bodyguard</strong></p>",
+          "2-2": "<p>…as <strong>Street Muscle for Hire</strong></p>",
+          "3-3": "<p>…as a <strong>Corporate Enforcer</strong></p>",
+          "4-4": "<p>…as a <strong>Local Vigilante</strong></p>",
+          "5-5": "<p>…as a <strong>Hitman for Hire</strong></p>"
+        }
+      ]
+    },
+    "South Night City": {
+      "name": "South Night City",
+      "results": [
+        {
+          "1-1": "<p>Grab lunch with your date after their tattoo appointment.</p>",
+          "2-2": "<p>Soak up the sun at the beach!</p>",
+          "3-3": "<p>Sneak ino Playland by the Sea on a boat.</p>",
+          "4-4": "<p>Your date wants to introduce you to the whole gang.</p>",
+          "5-5": "<p>Grab a drink at a rowdy Sea Nomad bar.</p>",
+          "6-6": "<p>Enjoy live music in an abandoned gymnasium.</p>"
+        }
+      ]
+    },
+    "Spring Weather": {
+      "name": "Spring Weather",
+      "results": [
+        {
+          "1-1": "old (Around 40°F/4°C)  Conditions: Clear",
+          "2-2": "Light Rain/Sleet",
+          "3-3": "Cool (Around 50°F/10°C)  Conditions: Overcast",
+          "4-4": "Light Rain/Sleet",
+          "5-5": "Heavy Rain/Sleet",
+          "6-6": "Strange Weather"
+        }
+      ]
+    },
+    "Strange Weather": {
+      "name": "Strange Weather",
+      "results": [
+        {
+          "1-1": "Radioactive Windstorm that lasts for [[1d6*10]] minutes. GM may create Wind Bursts that last for [[1d6]] Rounds.",
+          "2-2": "Ash Storm",
+          "3-3": "Flooding that lasts for [[1d6]] days.",
+          "5-5": "Acid Rain",
+          "6-6": "Heavy Rain/Sleet",
+          "7-7": "Inversion Smog",
+          "8-8": "Heat Wave",
+          "9-9": "Dust Storm",
+          "4-4": "Blood Rain",
+          "10-10": "City Blackouts"
+        }
+      ]
+    },
+    "Summer Weather": {
+      "name": "Summer Weather",
+      "results": [
+        {
+          "1-1": "Light Rain/Sleet",
+          "2-2": "Warm (Around 70°F/21°C) Conditions:  Clear",
+          "3-3": "Warm (Around 70°F/21°C) Conditions: Overcast",
+          "4-4": "Hot (Around 80°F/27°C)   Conditions:  Overcast",
+          "5-5": "Hot (Around 80°F/27°C) Conditions: Clear",
+          "6-6": "Strange Weather"
+        }
+      ]
+    },
+    "Tech": {
+      "name": "Tech",
+      "results": [
+        {
+          "1-1": "<p>…as a <strong>Cyberware Technician</strong></p>",
+          "2-2": "<p>…as a <strong>Vehicle Mechanic</strong></p>",
+          "3-3": "<p>…as a <strong>Jack of All Trades</strong></p>",
+          "4-4": "<p>…as a <strong>Small Electronics Technician</strong></p>",
+          "5-5": "<p>…as a <strong>Weaponsmith</strong></p>",
+          "6-6": "<p>…as a <strong>Crazy Inventor</strong></p>",
+          "7-7": "<p>…as a <strong>Drone Mechanic</strong></p>",
+          "8-8": "<p>…as a <strong>Heavy Machinery Mechanic</strong></p>",
+          "9-9": "<p>…as a <strong>Scavenger</strong></p>",
+          "10-10": "<p>…as a <strong>Nautical Mechanic</strong></p>"
+        }
+      ]
+    },
+    "The Glen": {
+      "name": "The Glen",
+      "results": [
+        {
+          "1-1": "<p>Go clubbing at Club Atlantis.</p>",
+          "2-2": "<p>Take a guided tour of City Hall.</p>",
+          "3-3": "<p>Enjoy happy hour at an Excellent Bar.</p>",
+          "4-4": "<p>Score fresh baked goods at a local bakery.</p>",
+          "5-5": "<p>Attend a political fundraiser.</p>",
+          "6-6": "<p>A night at the opera.</p>"
+        }
+      ]
+    },
+    "Tragic Love": {
+      "name": "Tragic Love",
+      "results": [
+        {
+          "1-1": "<p>…their lover died in an accident.</p>",
+          "2-2": "<p>…their lover vanished mysteriously.</p>",
+          "3-3": "<p>…things just didn't work out.</p>",
+          "4-4": "<p>…a personal vendetta came between them and their lover.</p>",
+          "5-5": "<p>…their lover was kidnapped!</p>",
+          "6-6": "<p>…their lover went cyberpsycho!</p>",
+          "7-7": "<p>…their lover committed suicide.</p>",
+          "8-8": "<p>…their lover was killed in a fight.</p>",
+          "9-9": "<p>…they lost their lover to a rival interest.</p>",
+          "10-10": "<p>…their lover was imprisoned.</p>"
+        }
+      ]
+    },
+    "Traits": {
+      "name": "Traits",
+      "results": [
+        {
+          "1-2": "<p>... Adorable</p>",
+          "3-4": "<p>... Adventurous</p>",
+          "5-6": "<p>... Affectionate</p>",
+          "7-8": "<p>... Ambitious</p>",
+          "9-10": "<p>... Athletic</p>",
+          "11-12": "<p>... a Baking Enthusiast</p>",
+          "13-14": "<p>... Brave</p>",
+          "15-16": "<p>... Caring</p>",
+          "17-18": "<p>... Charming</p>",
+          "19-20": "<p>... a Cooking Enthusiast</p>",
+          "21-22": "<p>... Courageous</p>",
+          "23-24": "<p>... Creative</p>",
+          "25-26": "<p>... a Drinking Enthusiast</p>",
+          "27-28": "<p>…they describe themself as an <strong>Elflines Online player</strong></p>",
+          "29-30": "<p>... an Exec</p>",
+          "31-32": "<p>... a Fishing Enthusiast</p>",
+          "33-34": "<p>... Fixer</p>",
+          "35-36": "<p>... a Foodie</p>",
+          "37-38": "<p>... Funny</p>",
+          "39-40": "<p>... a Gardening Enthusiast</p>",
+          "41-42": "<p>... Hard Working</p>",
+          "43-44": "<p>... a Hiking Enthusiast</p>",
+          "45-46": "<p>... Hopeful</p>",
+          "47-48": "<p>... a Hunting Enthusiast</p>",
+          "49-50": "<p>... Independent</p>",
+          "51-52": "<p>... Insightful</p>",
+          "53-54": "<p>... Intelligent</p>",
+          "55-56": "<p>... a Lawman</p>",
+          "57-58": "<p>... Loving</p>",
+          "59-60": "<p>... Loyal</p>",
+          "61-62": "<p>... a Media</p>",
+          "63-64": "<p>... a Medtech</p>",
+          "65-66": "<p>... Modest</p>",
+          "67-68": "<p>... a Netrunner</p>",
+          "69-70": "<p>... a Nomad</p>",
+          "71-72": "<p>... Optimistic</p>",
+          "73-74": "<p>... Passionate</p>",
+          "75-76": "<p>... Patient</p>",
+          "77-78": "<p>... Physically Fit</p>",
+          "79-80": "<p>... Quiet</p>",
+          "81-82": "<p>... Rational</p>",
+          "83-84": "<p>... Respectful</p>",
+          "85-86": "<p>... a Rockerboy</p>",
+          "87-88": "<p>... a Running Enthusiast</p>",
+          "89-90": "<p>... a Solo</p>",
+          "91-92": "<p>... Spontaneous</p>",
+          "93-94": "<p>... a Sports Enthusiast</p>",
+          "95-96": "<p>…they describe themself as a <strong>Tabletop RPG Enthusiast</strong></p>",
+          "97-98": "<p>... a Tech</p>",
+          "99-100": "<p>... Virtuous</p>"
+        }
+      ]
+    },
+    "University District": {
+      "name": "University District",
+      "results": [
+        {
+          "1-1": "<p>Attend a wild party off campus at the University Cargo Bay.</p>",
+          "2-2": "<p>How about a charming nature walk through the Lake Park?</p>",
+          "3-3": "<p>Tour Biotechnica's living museum inside a geodesic greendome.</p>",
+          "4-4": "<p>Your date wants to show you their new research project.</p>",
+          "5-5": "<p>Participate in a group eating competition to win some T-shirts.</p>",
+          "6-6": "<p>Attend a concert held on campus by the music department.</p>"
+        }
+      ]
+    },
+    "Upgrades-Archery": {
+      "name": "Upgrades-Archery",
+      "results": [
+        {
+          "1-1": "Grapple Gun Underbarrel",
+          "2-3": "Infrared Nightvision Scope",
+          "4-4": "Smartgun Link",
+          "5-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Handgun-Heavy": {
+      "name": "Upgrades-Handgun-Heavy",
+      "results": [
+        {
+          "1-1": "Drum Magazine (Heavy Pistol)",
+          "2-2": "Extended Magazine (Heavy Pistol)",
+          "3-3": "Infrared Nightvision Scope",
+          "4-4": "Silencer",
+          "5-5": "Smartgun Link",
+          "6-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Handgun-HSMG": {
+      "name": "Upgrades-Handgun-HSMG",
+      "results": [
+        {
+          "1-1": "Drum Magazine (Heavy SMG)",
+          "2-2": "Extended Magazine (Heavy SMG)",
+          "3-3": "Infrared Nightvision Scope",
+          "4-4": "Silencer",
+          "5-5": "Smartgun Link",
+          "6-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Handgun-Medium": {
+      "name": "Upgrades-Handgun-Medium",
+      "results": [
+        {
+          "1-1": "Drum Magazine (Medium Pistol)",
+          "2-2": "Extended Magazine (Medium Pistol)",
+          "3-3": "Infrared Nightvision Scope",
+          "4-4": "Silencer",
+          "5-5": "Smartgun Link",
+          "6-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Handgun-SMG": {
+      "name": "Upgrades-Handgun-SMG",
+      "results": [
+        {
+          "1-1": "Drum Magazine (SMG)",
+          "2-2": "Extended Magazine (SMG)",
+          "3-3": "Infrared Nightvision Scope",
+          "4-4": "Silencer",
+          "5-5": "Smartgun Link",
+          "6-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Handgun-VHeavy": {
+      "name": "Upgrades-Handgun-VHeavy",
+      "results": [
+        {
+          "1-1": "Drum Magazine (Very Heavy Pistol)",
+          "2-2": "Extended Magazine (Very Heavy Pistol)",
+          "3-3": "Infrared Nightvision Scope",
+          "4-4": "Silencer",
+          "5-5": "Smartgun Link",
+          "6-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Launcher-Grenade": {
+      "name": "Upgrades-Launcher-Grenade",
+      "results": [
+        {
+          "1-1": "Drum Magazine (Grenade Launcher)",
+          "2-2": "Extended Magazine (Grenade Launcher)",
+          "3-3": "Infrared Nightvision Scope",
+          "4-4": "Silencer",
+          "5-5": "Smartgun Link",
+          "6-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Launcher-Rocket": {
+      "name": "Upgrades-Launcher-Rocket",
+      "results": [
+        {
+          "1-1": "Drum Magazine (Rocket Launcher)",
+          "2-2": "Extended Magazine (Rocket Launcher)",
+          "3-3": "Infrared Nightvision Scope",
+          "4-4": "Silencer",
+          "5-5": "Smartgun Link",
+          "6-6": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Shoulder-Assault": {
+      "name": "Upgrades-Shoulder-Assault",
+      "results": [
+        {
+          "1-1": "Option-Bayonet",
+          "2-2": "Drum Magazine (Assault Rifle)",
+          "3-3": "Extended Magazine (Assault Rifle)",
+          "4-4": "Grapple Gun Underbarrel",
+          "5-5": "Grenade Launcher Underbarrel",
+          "6-6": "Infrared Nightvision Scope",
+          "7-7": "Shotgun Underbarrel",
+          "8-8": "Silencer",
+          "9-9": "Smartgun Link",
+          "10-10": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Shoulder-Shotgun": {
+      "name": "Upgrades-Shoulder-Shotgun",
+      "results": [
+        {
+          "1-1": "Option-Bayonet",
+          "2-2": "Drum Magazine (Shotgun)",
+          "3-3": "Extended Magazine (Shotgun)",
+          "4-4": "Grapple Gun Underbarrel",
+          "5-5": "Grenade Launcher Underbarrel",
+          "6-6": "Infrared Nightvision Scope",
+          "7-7": "Shotgun Underbarrel",
+          "8-8": "Silencer",
+          "9-9": "Smartgun Link",
+          "10-10": "Sniping Scope"
+        }
+      ]
+    },
+    "Upgrades-Shoulder-Sniper": {
+      "name": "Upgrades-Shoulder-Sniper",
+      "results": [
+        {
+          "1-1": "Option-Bayonet",
+          "2-2": "Drum Magazine (Sniper Rifle)",
+          "3-3": "Extended Magazine (Sniper Rifle)",
+          "4-4": "Grapple Gun Underbarrel",
+          "5-5": "Grenade Launcher Underbarrel",
+          "6-6": "Infrared Nightvision Scope",
+          "7-7": "Shotgun Underbarrel",
+          "8-8": "Silencer",
+          "9-9": "Smartgun Link",
+          "10-10": "Sniping Scope"
+        }
+      ]
+    },
+    "Upper Marina": {
+      "name": "Upper Marina",
+      "results": [
+        {
+          "1-1": "<p>Go to a game at the McCartney Field Stadium.</p>",
+          "2-2": "<p>Rent a jetski and enjoy the bay.</p>",
+          "3-3": "<p>Attend a press conference &amp; fashion show hosted by Ziggurat.</p>",
+          "4-4": "<p>Get a Johnny Silverhand at the Afterlife</p>",
+          "5-5": "<p>Spend a day riding the streetcar and being a tourist.</p>",
+          "6-6": "<p>Go fishing!</p>"
+        }
+      ]
+    },
+    "Watson Development": {
+      "name": "Watson Development",
+      "results": [
+        {
+          "1-1": "<p>Party in an unfinished lobby of a megabuilding construction site.</p>",
+          "2-2": "<p>Museum date at SovOil's Museum of Petroleum.</p>",
+          "3-3": "<p>Enjoy a Corporate picnic luncheon in a park near Watson Central Cubelife.</p>",
+          "4-4": "<p>An Izakaya date in the Kabuki district.</p>",
+          "5-5": "<p>It's a surprise! Meet up at the High-Security Monorail.</p>",
+          "6-6": "<p>Attend a demonstration organized by local Rockerboy Lucius Rhyne.</p>"
+        }
+      ]
+    },
+    "Weapon-Manufacturer": {
+      "name": "Weapon-Manufacturer",
+      "results": [
+        {
+          "1-10": "<b>Manufacturer:</b> A local Tech",
+          "11-12": "<b>Manufacturer:</b> A nomad Weaponsmith",
+          "13-20": "<b>Manufacturer:</b> Arasaka",
+          "21-23": "<b>Manufacturer:</b> Budget Arms (Likely Poor Quality)",
+          "24-25": "<b>Manufacturer:</b> Centurion Essentials",
+          "26-27": "<b>Manufacturer:</b> Chadran Arms",
+          "28-29": "<b>Manufacturer:</b> Constitutional Arms",
+          "30-31": "<b>Manufacturer:</b> Dai Lung (Likely Poor Quality)",
+          "32-32": "<b>Manufacturer:</b> Eagletech (Likely a Bow or Crossbow)",
+          "33-33": "<b>Manufacturer:</b> Everest VentureWare (Likely a Bow,Crossbow, or Rifle)",
+          "34-34": "<b>Manufacturer:</b> Faisal's Customs",
+          "35-37": "<b>Manufacturer:</b> Federated Arms",
+          "38-38": "<b>Manufacturer:</b> Georgia Arms (Likely Poor Quality)",
+          "39-54": "<b>Manufacturer:</b> GunMart (Likely Poor Quality)",
+          "55-55": "<b>Manufacturer:</b> IMI",
+          "56-56": "<b>Manufacturer:</b> Kendachi",
+          "57-58": "<b>Manufacturer:</b> KTech",
+          "59-60": "<b>Manufacturer:</b> Magnum Opus",
+          "61-61": "<b>Manufacturer:</b> Malorian Arms (Likely Excellent Quality)",
+          "62-62": "<b>Manufacturer:</b> MetaCorp",
+          "63-65": "<b>Manufacturer:</b> Midnight Arms (Likely Excellent Quality)",
+          "66-76": "<b>Manufacturer:</b> Militech",
+          "77-78": "<b>Manufacturer:</b> Mustang Arms",
+          "79-80": "<b>Manufacturer:</b> Nova Arms",
+          "81-82": "<b>Manufacturer:</b> Pursuit Security Inc.",
+          "83-85": "<b>Manufacturer:</b> Rostović",
+          "86-86": "<b>Manufacturer:</b> Sanroo Firearms of Tokyo (Likely Cute)",
+          "87-87": "<b>Manufacturer:</b> Segotari (Likely a Game Tie-In)",
+          "88-89": "<b>Manufacturer:</b> Sternmeyer",
+          "90-91": "<b>Manufacturer:</b> Stolbovoy",
+          "92-95": "<b>Manufacturer:</b> Techtronika Russia",
+          "96-97": "<b>Manufacturer:</b> Towa Manufacturing",
+          "98-98": "<b>Manufacturer:</b> Tsunami Arms (Likely Excellent Quality)",
+          "99-100": "<b>Manufacturer:</b> UrbanTech (Rarely Excellent Quality)"
+        }
+      ]
+    },
+    "Weapon-Name": {
+      "name": "Weapon-Name",
+      "results": [
+        {
+          "1-9": "<b>Name:</b> Letters - Numbers",
+          "10-15": "<b>Name:</b> Descriptor - Numbers",
+          "16-21": "<b>Name:</b> Model/Mark/Version - Number",
+          "22-24": "<b>Name:</b> Deadly Animal - Name",
+          "25-27": "<b>Name:</b> Descriptor - Deadly Animal Name",
+          "28-30": "<b>Name:</b> Deadly Animal Name - Descriptor",
+          "31-33": "<b>Name:</b> Noun - Deadly Animal Name",
+          "34-36": "<b>Name:</b> Deadly Animal Name - Noun",
+          "37-39": "<b>Name:</b> Mythological/Fictional - Name",
+          "40-42": "<b>Name:</b> Descriptor - Mythological/Fictional Name",
+          "43-45": "<b>Name:</b> Mythological/Fictional Name - Descriptor",
+          "46-48": "<b>Name:</b> Noun - Mythological/Fiction Name",
+          "49-51": "<b>Name:</b> Mythological/Fiction Name - Noun",
+          "52-54": "<b>Name:</b> Descriptor - Type of Person",
+          "55-57": "<b>Name:</b> Type of Person - Descriptor",
+          "58-60": "<b>Name:</b> Type of Person - Type of Person",
+          "61-63": "<b>Name:</b> Noun1 (space) Noun2",
+          "64-66": "<b>Name:</b> Noun1 (no space) noun2",
+          "67-69": "<b>Name:</b> Noun1 (no space) Noun2",
+          "70-72": "<b>Name:</b> Descriptor - Descriptive Noun",
+          "73-75": "<b>Name:</b> Descriptive Noun - Descriptor",
+          "76-78": "<b>Name:</b> Location",
+          "79-81": "<b>Name:</b> Location - Descriptor",
+          "82-84": "<b>Name:</b> Descriptor - Location",
+          "85-87": "<b>Name:</b> Location - Noun",
+          "88-90": "<b>Name:</b> Noun - Location",
+          "91-93": "<b>Name:</b> Technobabble Word - Number",
+          "94-96": "<b>Name:</b> Technobabble Word - Descriptor",
+          "97-99": "<b>Name:</b> Technobabble Word - Noun",
+          "100-100": "<b>Name:</b> Something Geeky"
+        }
+      ]
+    },
+    "Weapon-Quality": {
+      "name": "Weapon-Quality",
+      "results": [
+        {
+          "1-3": "Quality-Poor",
+          "4-5": "Quality-Standard",
+          "6-6": "Quality-Excellent"
+        }
+      ]
+    },
+    "Weird Date: Beginning": {
+      "name": "Weird Date: Beginning",
+      "results": [
+        {
+          "1-1": "Tragic Love",
+          "2-2": "<p>Your date does not match their profile picture from the Garden Patch.</p>",
+          "3-3": "Third Wheel",
+          "4-4": "<p>Your date has some very strange notions about fashion.</p>",
+          "5-5": "<p>Your date is wearing gang colors.</p>",
+          "6-6": "<p>Your date is chromed up and you worry they might be a cyberpsycho.</p>",
+          "1-6": "Weird Date: Middle"
+        }
+      ]
+    },
+    "Weird Date: End": {
+      "name": "Weird Date: End",
+      "results": [
+        {
+          "1-1": "<p>They are really into you and want another date.</p>",
+          "2-2": "Motivations",
+          "3-3": "Good Luck Charms",
+          "4-4": "<p>They give you some helpful advice.</p>",
+          "5-5": "<p>They give you some street drugs worth 50eb.</p>",
+          "6-6": "<p>Your date ended too abruptly to learn anything else about this person.</p>",
+          "2-6": "Post-Date Review"
+        }
+      ]
+    },
+    "Weird Date: Middle": {
+      "name": "Weird Date: Middle",
+      "results": [
+        {
+          "1-1": "<p>Your date leaves to use the restroom and never returns.</p>",
+          "2-2": "<p>They start a fight, but quickly finish it.</p><p>You learn they have a <strong>Base 16</strong> in a combat skill.</p>",
+          "3-3": "<p>They spend all their time on their Agent and you learn nothing new about them.</p>",
+          "4-4": "<p>Your date loves to drink, maybe too much. They might also be high?</p>",
+          "5-5": "Enemies",
+          "6-6": "Family (Crisis)",
+          "2-6": "Weird Date: End"
+        }
+      ]
+    },
+    "Where is your date?": {
+      "name": "Where is your date?",
+      "results": [
+        {
+          "1-1": "NorCal Military Base",
+          "2-2": "Watson Development",
+          "3-3": "New Westbrook",
+          "4-4": "Morro Rock",
+          "5-5": "Executive Zone",
+          "6-6": "Heywood Industrial Zone",
+          "7-7": "Heywood (Santo Domingo)",
+          "8-8": "Rancho Coronado",
+          "9-9": "Outskirts",
+          "10-10": "Reclaimed Perimeter",
+          "11-11": "Little Europe",
+          "12-12": "Upper Marina",
+          "13-13": "University District",
+          "14-14": "Little China",
+          "15-15": "Old Japantown",
+          "16-16": "The Glen",
+          "17-17": "Old Combat Zone",
+          "18-18": "South Night City",
+          "19-19": "Hot Zone",
+          "20-20": "Pacifica Playground",
+          "1-20": "How Does It Go?"
+        }
+      ]
+    },
+    "Winter Weather": {
+      "name": "Winter Weather",
+      "results": [
+        {
+          "1-1": "Cold (Around 35°F/2°C) Conditions:  Clear",
+          "2-2": "Light Rain/Sleet",
+          "3-3": "Cold (Around 40°F/4°C)  Conditions: Overcast",
+          "4-4": "Cold (Around 50°F/10°C)  Conditions: Overcast",
+          "5-5": "Heavy Rain/Sleet",
+          "6-6": "Strange Weather"
+        }
+      ]
+    }
+  }
+}

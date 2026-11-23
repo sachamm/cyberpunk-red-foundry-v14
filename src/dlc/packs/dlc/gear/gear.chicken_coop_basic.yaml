@@ -1,0 +1,41 @@
+_id: BOh2Yin5Zfqpd5q4
+_key: "!items!BOh2Yin5Zfqpd5q4"
+effects: []
+flags:
+  cyberpunk-red-core: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/chicken-coop.svg
+name: Chicken Coop (Basic)
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A home for your chickens to lay eggs or fatten up.</p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  source: null
+  sources:
+    - book: TotR — Street Stories
+      page: 79
+  usage: toggled
+type: gear

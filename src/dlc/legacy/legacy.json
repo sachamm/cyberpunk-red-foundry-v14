@@ -1,0 +1,23 @@
+{
+  "source": {
+    "repository": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core",
+    "version": "v0.89.2",
+    "commit": "7a71f44b191e18912f64c742c9f594713c65ff46"
+  },
+  "packFolders": [
+    {
+      "name": "Cyberpunk RED: DLC",
+      "packs": ["dlc_hardened-enemies"]
+    }
+  ],
+  "packs": [
+    {
+      "label": "Hardened Enemies (v12)",
+      "type": "RollTable",
+      "name": "dlc_hardened-enemies",
+      "path": "dlc/legacy/packs/hardened-enemies",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+_id: D4kiUBYevT8JBVz2
+_key: "!items!D4kiUBYevT8JBVz2"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: 874qcTTXCTHGYGmJ
+        _stats:
+          compendiumSource: Item.BOUyCR9zmEJypyiC
+          coreVersion: "13.351"
+          createdTime: 1786546094445
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786546459697
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: NdYYLLJXXJitIYgT
+        img: systems/cyberpunk-red-core/dlc/icons/black-chrome/upgrades/co2-tank.svg
+        name: CO2 Tank
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: Masetto Tech Clothing
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>A CO<sub>2</sub> tank designed for usage with the Masetto
+              AirRider armor. Must be replaced after every usage.</p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: {}
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 20
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source:
+            book: Black Chrome
+            page: 33
+          sources:
+            - book: Black Chrome
+              page: 33
+          type: armor
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/armor/masetto-airrider.svg
+name: Masetto AirRider
+ownership:
+  default: 0
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 7
+  brand: Masetto Tech Clothing
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Kevlar Body Armor that ignores the
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.e5wyX6r4Tem6bNwQ]{Whiplash}
+        critical injury from car crashes as long as the armor's
+        @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.7OjWV0lnM3L3mG9X]{CO2 tank}
+        is full.
+      </p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list:
+      - 874qcTTXCTHGYGmJ
+    slots: 1
+    usedSlots: 1
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 33
+  usage: toggled
+type: armor

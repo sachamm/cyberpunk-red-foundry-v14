@@ -1,0 +1,247 @@
+_id: 6xiNejWyN3Lmkg2U
+_key: "!tables!6xiNejWyN3Lmkg2U"
+description: >-
+  <p>Select a random loot box to add to your inventory. (<em>Source:
+  Achievements and Loot Boxes)</em></p>
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/random-loot-box.svg
+name: Random Loot Box
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+replacement: true
+results:
+  - _id: wLcKf0IdDAZ7XVPR
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.wLcKf0IdDAZ7XVPR"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.e7x9MAbybJSEy09n
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/box-gift-blue.webp
+    name: A Box Bound Tightly In Rope
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: UjR7rWtKZJ3aOF3i
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.UjR7rWtKZJ3aOF3i"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.T2ZONCLN6EZmYm8b
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/crate-reinforced-brown.webp
+    name: A Box Covered In Chipped Paint
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: 2uOtMPHxgnwq2EIz
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.2uOtMPHxgnwq2EIz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.d1Uq6md45qeBlvAv
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/crate-wooden-beige-red.webp
+    name: A Box Dripping Wet With Fluid
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: VSrp1JkiWzgHF0tC
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.VSrp1JkiWzgHF0tC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.rgahJ1ZeujkiTxFV
+    drawn: false
+    flags: {}
+    img: icons/containers/chest/chest-simple-box-blue.webp
+    name: A Box Freezing Cold To The Touch
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: sRQSifquf0wCMcNb
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.sRQSifquf0wCMcNb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.vMLZ77uCZmIMtTDn
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/box-gift-green.webp
+    name: A Box Handsomely Gift Wrapped
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: R6QjDum4Bt5ryWQ5
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.R6QjDum4Bt5ryWQ5"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.GKUCcpyPhPJR5SWQ
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/crate-reinforced-green.webp
+    name: A Box Marked With A Lime Green X
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: VdV2rcQIyk0ENZSR
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.VdV2rcQIyk0ENZSR"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.2mie25PfeNrTUqDd
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/crate-wooden-grey.webp
+    name: A Box Melted Out Of Shape
+    range:
+      - 7
+      - 7
+    type: document
+    weight: 1
+  - _id: Nt2LvXgDOEMDVvf3
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.Nt2LvXgDOEMDVvf3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.eRokY7ccBBLNcKtF
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/box-gift-white.webp
+    name: A Box Reeking Of Oil
+    range:
+      - 8
+      - 8
+    type: document
+    weight: 1
+  - _id: imFFcUsTRkIJd8Xy
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.imFFcUsTRkIJd8Xy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.UGubWAFsjpMcfdm6
+    drawn: false
+    flags: {}
+    img: icons/containers/chest/chest-simple-box-red.webp
+    name: A Box Sealed With A Lipstick Kiss
+    range:
+      - 9
+      - 9
+    type: document
+    weight: 1
+  - _id: 5L1a1Xubf2WPBuLo
+    _key: "!tables.results!6xiNejWyN3Lmkg2U.5L1a1Xubf2WPBuLo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_gear.Item.mREVjcsdogzLCSQa
+    drawn: false
+    flags: {}
+    img: icons/containers/boxes/crate-wooden-brown.webp
+    name: A Box Showing Signs Of Repair
+    range:
+      - 10
+      - 10
+    type: document
+    weight: 1
+sort: 0

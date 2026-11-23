@@ -1,0 +1,153 @@
+_id: 4z1zVMKvMdfp0VVk
+_key: "!tables!4z1zVMKvMdfp0VVk"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Heywood (Santo Domingo)
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: c6S2sbpFEJcPQztj
+    _key: "!tables.results!4z1zVMKvMdfp0VVk.c6S2sbpFEJcPQztj"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755163513
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755197303
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a local street festival.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Santo Domingo
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: M9gHyYEkj3rGed24
+    _key: "!tables.results!4z1zVMKvMdfp0VVk.M9gHyYEkj3rGed24"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755163706
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755225836
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Let's get drunk at Metalstorm.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Santo Domingo
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 8CfBVOeKD696BJM2
+    _key: "!tables.results!4z1zVMKvMdfp0VVk.8CfBVOeKD696BJM2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755163868
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755248292
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Crash an Aldecaldo barbecue.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Santo Domingo
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: f2T0sZfFY0ATHjIy
+    _key: "!tables.results!4z1zVMKvMdfp0VVk.f2T0sZfFY0ATHjIy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755164074
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755284263
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Let's race some Roadbikes together.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Santo Domingo
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: 0jGGignjnJALPSdT
+    _key: "!tables.results!4z1zVMKvMdfp0VVk.0jGGignjnJALPSdT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755164231
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755347971
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grandma makes the best mole poblano.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Santo Domingo
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 3buddWHKZ42UrGeU
+    _key: "!tables.results!4z1zVMKvMdfp0VVk.3buddWHKZ42UrGeU"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784755164441
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784755375608
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a party tonight at the East Cargo Village.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Santo Domingo
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,157 @@
+_id: lzmfwfxPjDjYE1nM
+_key: "!items!lzmfwfxPjDjYE1nM"
+effects:
+  - _id: eBjRKSVNnIpbuFK5
+    _key: "!items.effects!lzmfwfxPjDjYE1nM.eBjRKSVNnIpbuFK5"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: L5BVRBGb798QfKk9
+      modifiedTime: 1794510971210
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    changes:
+      - key: bonuses.deathSavePenalty
+        mode: 2
+        value: "1"
+      - key: system.derivedStats.humanity.max
+        mode: 2
+        value: "-2"
+    description: ""
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
+            "1": custom
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/status/beserker_addiction.svg
+    name: Berserker Addiction
+    origin: null
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+  - _id: cbYx1SsnLl0jFUpx
+    _key: "!items.effects!lzmfwfxPjDjYE1nM.cbYx1SsnLl0jFUpx"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1794511321843
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: L5BVRBGb798QfKk9
+      modifiedTime: 1794544229158
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    changes: []
+    description: ""
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats: {}
+          situational: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/status/beserker.svg
+    name: Berserker Primary
+    origin: Compendium.cyberpunk-red-core.dlc_consumables.Item.lzmfwfxPjDjYE1nM
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/drugs/berserker.svg
+name: Berserker
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: Berserker Primary
+  description:
+    value: |
+      <p><strong>Primary Effect</strong> lasts for 10 Minutes.</p>
+      <ul>
+        <li><p>Induces a state of frenzy and increased aggression</p></li>
+        <li>
+          <p>
+            <strong>Wound State/Facedown</strong> penalties to Skill or Stat checks
+            are halved — No automation provided
+          </p>
+        </li>
+        <li>
+          <p>
+            User takes no Bonus Damage for any <strong>Critical Injury</strong> — No
+            automation provided
+          </p>
+        </li>
+      </ul>
+      <hr />
+      <p>
+        <strong
+          >Secondary Effect
+          [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV17 Resist Torture/Drugs]]{DV17 Resist Torture/Drugs}</strong
+        >
+      </p>
+      <ul>
+        <li><p>User is now addicted to Berserker if not already addicted</p></li>
+        <li>
+          <p>+1 to <strong>Death Save</strong> while addicted</p>
+        </li>
+        <li>
+          <p>-2 <strong>Humanity Loss</strong> while addicted</p>
+        </li>
+      </ul>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  price:
+    market: 100
+  revealed: true
+  sources:
+    - book: Hornet's Pharmacy
+      page: 2
+    - book: Interface RED v4
+      page: 4
+  usage: snorted
+type: drug

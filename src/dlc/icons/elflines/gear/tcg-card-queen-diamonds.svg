@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="card-queen-diamonds.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter3"
+       x="-0.057537399"
+       y="-0.043636364"
+       width="1.1150748"
+       height="1.0872727">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood2" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="8.000000"
+         id="feGaussianBlur2" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset2" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite2" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite3" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="255.68278"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="fill:#1b1f21" />
+  <g
+     class=""
+     style="fill:#e64539;filter:url(#filter3)"
+     transform="translate(0,0)"
+     id="g2">
+    <path
+       d="M119.436 36c-16.126 0-29.2 17.237-29.2 38.5v363c0 21.263 13.074 38.5 29.2 38.5h275.298c16.126 0 29.198-17.237 29.198-38.5v-363c0-21.263-13.072-38.5-29.198-38.5H119.436zm26.884 3.717h.002l47.393 58.271-47.393 58.287-47.377-58.289 47.375-58.27zm99.59 125.287c14.978 0 28.65 3.804 41.012 11.412 12.363 7.529 22.267 18.387 29.717 32.572 7.45 14.106 11.175 29.916 11.175 47.43 0 16.008-2.932 30.272-8.796 42.793-5.786 12.521-14.9 23.972-27.342 34.353 1.268 3.25 2.656 7.688 4.162 13.315 2.774 10.54 5.427 17.394 7.963 20.564 2.536 3.17 5.428 4.756 8.678 4.756 3.01 0 5.586-1.703 7.726-5.111 2.22-3.329 3.408-8.916 3.566-16.762h7.133c-.079 14.265-2.852 24.766-8.32 31.502-5.468 6.736-12.602 10.104-21.398 10.104-8.163 0-14.82-3.29-19.971-9.868-5.072-6.498-8.44-19.018-10.104-37.562-4.438 1.11-8.717 1.941-12.838 2.496-4.12.555-8.042.832-11.767.832-14.74 0-28.372-3.804-40.893-11.412-12.442-7.687-22.348-18.663-29.718-32.928-7.291-14.344-10.936-30.51-10.936-48.5 0-25.518 8.28-47.31 24.844-65.379 15.057-16.404 33.76-24.607 56.107-24.607zm.358 9.035c-9.827 0-18.663 2.773-26.508 8.32-7.767 5.548-13.87 14.226-18.307 26.034-4.359 11.728-6.539 27.698-6.539 47.906 0 14.264 1.309 26.507 3.924 36.73 2.615 10.223 6.697 19.933 12.244 29.125-.158-3.645-.238-6.578-.238-8.797 0-9.826 3.13-17.91 9.39-24.25 6.34-6.34 14.621-9.51 24.844-9.51 10.302 0 18.94 3.448 25.914 10.342 5.23 5.23 10.144 14.304 14.74 27.221 4.28-8.083 7.41-16.839 9.391-26.27 1.981-9.43 2.973-21.238 2.973-35.423 0-19.97-2.179-35.743-6.537-47.313-4.359-11.65-10.501-20.247-18.426-25.795-7.925-5.547-16.88-8.32-26.865-8.32zm-1.545 114.83c-7.45 0-13.552 2.378-18.307 7.133-4.755 4.755-7.133 10.897-7.133 18.426 0 7.45 2.933 14.501 8.797 21.158 5.627 2.457 11.53 3.685 17.711 3.685 4.755 0 9.233-.594 13.434-1.783a46.804 46.804 0 0 0 11.886-5.23c-.158-14.265-2.02-24.606-5.586-31.026-4.517-8.241-11.451-12.363-20.802-12.363zm120.94 63.654h.001l47.39 58.272-47.39 58.287-47.377-58.289 47.375-58.27z"
+       fill="#fff"
+       fill-opacity="1"
+       id="path2"
+       style="fill:#e64539" />
+  </g>
+</svg>

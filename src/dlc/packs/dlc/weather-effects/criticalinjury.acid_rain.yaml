@@ -1,0 +1,104 @@
+_id: yd5RKbg33WnbwKAE
+_key: "!items!yd5RKbg33WnbwKAE"
+effects:
+  - _id: fthWQl4jqKuvqGEa
+    _key: "!items.effects!yd5RKbg33WnbwKAE.fthWQl4jqKuvqGEa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: cyberpunk-red-core
+      systemVersion: v0.0.0dev
+    changes:
+      - key: bonuses.allActions
+        mode: 2
+        priority: null
+        value: "-1"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": misc
+            "1": skill
+            "2": skill
+            "3": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+            "2":
+              isSituational: false
+              onByDefault: false
+            "3":
+              isSituational: false
+              onByDefault: false
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/acid-rain.svg
+    name: Acid Rain
+    origin: Item.rIY59a8aTD54qgrG
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/acid-rain.svg
+name: Acid Rain
+ownership:
+  GSQleko03XTBUGW9: 3
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  deathSaveIncrease: false
+  description:
+    value: |
+      <p>
+        <span role="presentation"
+          >The weather may impose a <strong>-1 penalty</strong> to any Skill Checks as
+          determined by the GM.</span
+        >
+      </p>
+      <p>Ablates worn armor by 1.</p>
+  favorite: false
+  ignoredByBrowser: false
+  location: body
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 0
+    type: notApplicable
+  revealed: true
+  sources:
+    - book: Night City Weather
+      page: 4
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 0
+    type: quickFix
+  usage: always
+type: criticalInjury

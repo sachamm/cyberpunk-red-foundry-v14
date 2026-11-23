@@ -1,0 +1,229 @@
+_id: bvQRqNfxhDKuArrL
+_key: "!tables!bvQRqNfxhDKuArrL"
+description: >-
+  <p><a
+  href="https://rtalsoriangames.com/wp-content/uploads/2021/07/RTG-CPR-NightCityWeather.pdf">Night
+  City Weather</a>, pg 4-5</p>
+displayRoll: false
+flags: {}
+folder: S3DaoDSZDyQyYrdA
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/calendar.svg
+name: Winter Weather
+ownership:
+  GSQleko03XTBUGW9: 3
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: AtFZo2s3GXi5oJdJ
+    _key: "!tables.results!bvQRqNfxhDKuArrL.AtFZo2s3GXi5oJdJ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: "Cold (Around 35°F/2°C) Conditions:  Clear"
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/clear.svg
+    name: ""
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: BdotVwbyX3eSKnU3
+    _key: "!tables.results!bvQRqNfxhDKuArrL.BdotVwbyX3eSKnU3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: "Cold (Around 40°F/4°C) Conditions:  Light Rain/Sleet"
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/rain-sleet.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: zWMov9pezxBydlyc
+    _key: "!tables.results!bvQRqNfxhDKuArrL.zWMov9pezxBydlyc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: "Cold (Around 40°F/4°C)  Conditions: Overcast"
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/overcast.svg
+    name: ""
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: QnVQFOFJA7HekU8J
+    _key: "!tables.results!bvQRqNfxhDKuArrL.QnVQFOFJA7HekU8J"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: "Cold (Around 50°F/10°C)  Conditions: Overcast"
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/overcast.svg
+    name: ""
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: BEAqCfqLJ7bhUJN4
+    _key: "!tables.results!bvQRqNfxhDKuArrL.BEAqCfqLJ7bhUJN4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: "Cold (Around 50°F/10°C)  Conditions: Heavy Rain/Sleet"
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/thunder-storm.svg
+    name: ""
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: JhZLO41bTrxNiQES
+    _key: "!tables.results!bvQRqNfxhDKuArrL.JhZLO41bTrxNiQES"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.D9INs26wmotstYTr
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/rain-sleet.svg
+    name: Light Rain/Sleet
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: r1RyT0nvhOQEYld8
+    _key: "!tables.results!bvQRqNfxhDKuArrL.r1RyT0nvhOQEYld8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_weather-effects.Item.lkG3eyCLhyMZ5cLo
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/thunder-storm.svg
+    name: Heavy Rain/Sleet
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: t0uFa2JoMD2X3bwG
+    _key: "!tables.results!bvQRqNfxhDKuArrL.t0uFa2JoMD2X3bwG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: "Cool (Around 60°F/15°C) Conditions: Strange"
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/strange.svg
+    name: ""
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: 8AYOCdasFLQvvXmG
+    _key: "!tables.results!bvQRqNfxhDKuArrL.8AYOCdasFLQvvXmG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.5L9UqQ3LZTTUAzoZ
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/night_city_weather/strange.svg
+    name: Strange Weather
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+sort: -400000

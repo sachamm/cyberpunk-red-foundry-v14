@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 512 512"
+   style="height:512px;width:512px"
+   width="512"
+   height="512"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="punknaught_spike-strip-launcher.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <defs
+     id="defs2">
+    <filter
+       id="shadow-1"
+       height="1.1621652"
+       width="1.1512605"
+       x="-0.075630252"
+       y="-0.081082588">
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="out"
+         result="composite"
+         id="feComposite1" />
+      <feGaussianBlur
+         in="composite"
+         stdDeviation="15"
+         result="blur"
+         id="feGaussianBlur1" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset1" />
+      <feComposite
+         in2="SourceGraphic"
+         in="offset"
+         operator="atop"
+         id="feComposite2" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4"
+       x="-0.15126051"
+       y="-0.16216518"
+       width="1.302521"
+       height="1.3243303">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood3" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur3" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset3" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite3" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite4" />
+    </filter>
+  </defs>
+  <path
+     d="M0 0h512v512H0z"
+     fill="#1b1f21"
+     fill-opacity="1"
+     id="path2" />
+  <g
+     class=""
+     transform="translate(0,0)"
+     id="g3"
+     style="filter:url(#filter4);fill:#e64539">
+    <path
+       d="M85.365 46.973L65.95 137.566l8.753 40.844c14.597 4.118 35.126-.73 35.707-14.564zm68.254 0l-14.936 71.14 17.515 61.64c11.382-.696 22.047-5.993 22.464-15.907zm68.253 0l-15.244 71.14 30.16 58.762c5.76-2.613 9.873-6.952 10.128-13.03zm68.254 0l-25.045 116.873c.255 6.077 4.368 10.416 10.13 13.03l30.16-58.763zm68.254 0l-25.044 116.873c.417 9.914 11.082 15.21 22.465 15.906l17.516-61.64zm68.255 0L401.59 163.846c.58 13.835 21.11 18.682 35.707 14.564l8.752-40.844zM18 51.12V179.81c4.793-.103 9.544-1.012 13.547-2.736l6.723-31.37zm476 0l-20.27 94.585 6.723 31.37c4.003 1.725 8.754 2.634 13.547 2.738zM52.982 162.956L30.84 266.293l13.69 63.902c17.79 3.014 39.45-3.694 39.974-20.136zm81.207 0l-16.75 75.156 23.156 92.375c13.14-1.656 24.732-8.457 25.115-20.427zm81.206 0l-16.105 75.156 36.41 88.205c6.49-3.46 10.982-8.88 11.218-16.257zm81.208 0L265.082 310.06c.236 7.38 4.728 12.798 11.217 16.258l36.41-88.205zm81.207 0L346.29 310.06c.382 11.97 11.975 18.772 25.114 20.428l23.155-92.375zm81.208 0L427.496 310.06c.524 16.44 22.185 23.15 39.973 20.135l13.69-63.902zM112 282.957L73.08 464.582c.88 35.177 76.96 35.177 77.84 0zm96 0l-38.92 181.625c.88 35.177 76.96 35.177 77.84 0zm96 0l-38.92 181.625c.88 35.177 76.96 35.177 77.84 0zm96 0l-38.92 181.625c.88 35.177 76.96 35.177 77.84 0zM18 292.29v198.642c18.55-.59 36.495-9.37 36.92-26.35zm476 0l-36.92 172.292c.425 16.98 18.37 25.76 36.92 26.35z"
+       fill="#e64539"
+       fill-opacity="1"
+       filter="url(#shadow-1)"
+       id="path3"
+       style="fill:#e64539" />
+  </g>
+  <path
+     d="m 413.43019,360 -4.06389,12.95986 c -25.35217,5.8932 -44.3732,26.73254 -44.3732,51.82015 0,3.93808 0.47318,7.76974 1.36166,11.45747 L 360,437.57333 l 2.11863,9.70529 7.55737,-1.58924 c 2.83937,6.04429 6.8715,11.50848 11.81741,16.16067 l -7.28482,23.2312 9.66757,2.91875 6.12351,-19.52747 c 9.64566,6.17802 21.39702,9.79682 34.00034,9.79682 16.56071,0 31.64905,-6.24833 42.42315,-16.34182 l 11.73283,18.42074 8.57791,-5.26071 -13.3794,-21.0056 c 6.09064,-8.39617 9.65242,-18.45106 9.65242,-29.30195 0,-0.97412 -0.0301,-1.94106 -0.0871,-2.90194 L 488,420.80966 l -2.11863,-9.70528 -4.55701,0.95812 c -6.32918,-23.50636 -29.79229,-40.77184 -57.32435,-40.77184 -1.11495,0 -2.22259,0.0309 -3.32293,0.0866 l -7.24661,-11.37697 z m 13.56596,21.29923 c 21.73899,1.15995 39.36239,14.85019 44.42574,32.84577 l -20.72885,4.35855 -23.6966,-37.20432 z m -10.40938,2.38414 23.58703,37.03172 -37.68293,7.92414 14.09619,-44.95586 z m -10.7814,0.63277 -14.64495,46.7053 -14.91245,3.13574 a 40.654631,39.892573 0 0 1 -1.13939,-9.37717 c 0,-18.22857 12.59375,-34.01537 30.69651,-40.46387 z m 67.07455,39.67311 c 0.005,0.26303 0.0112,0.52662 0.0112,0.79076 0,7.19404 -1.96409,14.00648 -5.45111,20.01659 l -11.04554,-17.3413 16.48541,-3.46633 z m -27.00437,5.67786 15.07317,23.66545 c -8.91706,9.17232 -22.08909,15.01093 -36.94871,15.01093 -11.78789,0 -22.51254,-3.67615 -30.89517,-9.77421 l 5.97739,-19.06316 46.79361,-9.83901 z m -58.1232,12.22121 -2.84554,9.07582 c -1.94498,-2.30721 -3.63876,-4.79005 -5.04536,-7.41682 l 7.89118,-1.65872 z"
+     fill="#ffffff"
+     fill-opacity="1"
+     id="path2-4"
+     style="stroke-width:0.278339"
+     inkscape:label="punknaught" />
+</svg>

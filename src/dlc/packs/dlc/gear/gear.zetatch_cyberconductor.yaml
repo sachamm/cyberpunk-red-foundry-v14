@@ -1,0 +1,57 @@
+_id: Ws4kKdmeqNQ4Hzsv
+_key: "!items!Ws4kKdmeqNQ4Hzsv"
+effects: []
+flags:
+  cyberpunk-red-core: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/zetatech-cyberconductor.svg
+name: Zetatch CyberConductor
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        You may install up to 3 cyberdecks into this Cyberconductor. While you are
+        jacked in, switching between decks de-rezzes all active programs, and deals 3
+        damage directly to your brain.
+      </p>
+      <p>Installing a cyberdeck into the cyberconductor requires 1 hour.</p>
+      <blockquote>
+        <p>
+          Installing cyberdecks into other items is not currently supported. List any
+          installed cyberdecks on this item.
+        </p>
+        <p>List your installed cyberdecks here:</p>
+        <ul>
+          <li><p>[Deck α]</p></li>
+          <li><p>[Deck β]</p></li>
+          <li><p>[Deck γ]</p></li>
+        </ul>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  source: null
+  sources: []
+  usage: toggled
+type: gear

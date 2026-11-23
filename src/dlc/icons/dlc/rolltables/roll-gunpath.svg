@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="gunpath.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter5"
+       x="-0.075"
+       y="-0.075"
+       width="1.15"
+       height="1.15">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood4" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur4" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset4" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite4" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite5" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.5761719"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M0 0h512v512H0z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="fill:#1b1f21" />
+  <g
+     class=""
+     style="fill:#e64539;filter:url(#filter5)"
+     transform="translate(0,0)"
+     id="g2">
+    <path
+       id="path2"
+       style="fill:#e64539"
+       d="M 166 16 C 158.156 16 151 23.353 151 31 L 151 61 L 166 61 L 166 91 L 106 91 C 37.76 91 30.996 144.136 31 166 L 31 436 C 31.002 447.74 16 466 16 466 L 16 496 L 496 496 L 496 466 C 496 466 480.998 447.74 481 436 L 481 166 C 481.004 144.136 474.24 91 406 91 L 346 91 L 346 61 L 361 61 L 361 31 C 361 23.353 353.844 16 346 16 L 166 16 z M 238.0293 61 C 239.0743 60.993 240.062 61 241 61 L 271 61 C 286 61 316 61 316 91 L 196 91 C 196 62.875 222.3753 61.11 238.0293 61 z M 121 151 L 391 151 C 410.21 151 421 161.98 421 181 L 421 421 C 421 429.467 413.267 436 406 436 L 106 436 C 98.733 436 91 429.467 91 421 L 91 181 C 91 161.98 101.79 151 121 151 z M 154.94727 216.98047 L 138.76953 255.48633 L 369.23047 255.48633 L 369.07617 216.98047 L 219.37109 216.98047 L 219.37109 248.53125 L 210.85938 248.53125 L 210.85938 216.98047 L 201.39453 216.98047 L 201.39453 248.53125 L 192.88672 248.53125 L 192.88672 216.98047 L 182.99414 216.98047 L 182.99414 248.53125 L 174.48242 248.53125 L 174.48242 216.98047 L 154.94727 216.98047 z M 375.01562 226.03516 L 375.01562 249.10742 L 385.61914 249.10742 L 385.61914 226.03516 L 375.01562 226.03516 z M 142.19727 263.99805 L 153.86719 282.16406 L 126.38086 381.94922 L 184.07617 386.01953 L 196.29883 330.41406 L 261.97266 330.41406 L 270.29492 284.87695 L 369.33984 282.67969 L 369.26562 263.99805 L 142.19727 263.99805 z M 259.46875 285.11719 L 253.13086 319.8125 L 198.62891 319.8125 L 205.99414 286.30469 L 213.10352 286.14648 L 211.8418 306.29102 L 219.93555 313.99414 L 220.50391 294.90039 L 234.51367 285.67188 L 259.46875 285.11719 z " />
+  </g>
+</svg>

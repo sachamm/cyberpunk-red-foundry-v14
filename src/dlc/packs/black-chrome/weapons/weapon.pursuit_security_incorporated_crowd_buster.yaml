@@ -1,0 +1,233 @@
+_id: dnX1vhlKwmacyuNs
+_key: "!items!dnX1vhlKwmacyuNs"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+    cprInstallTree:
+      - _id: T15TmzysvT1BKlji
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.aFg1nXhz37e1C2YP
+          coreVersion: "13.351"
+          createdTime: 1786562278234
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1786562306852
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 44
+              previous: "38"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/dlc/icons/black-chrome/upgrades/shrieker_underbarrel.svg
+        name: Shrieker Underbarrel
+        ownership:
+          default: 0
+        sort: 0
+        system:
+          ammoVariety:
+            - battery
+          attackmod: 0
+          brand: Pursuit Security Inc.
+          canIgnoreArmor: false
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: "0"
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>An Exotic Very Heavy Pistol. Requires ear protection to prevent
+              Damaged Ear critical injuries. The target must beat a <strong>DV15
+              Resist Torture/Drugs</strong> Check or suffer the
+              @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged
+              Ear} critical injury.</p>
+          dvTable: DV Pistol
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 0
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: true
+            allowedTypes:
+              - itemUpgrade
+              - ammo
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: true
+          isRanged: true
+          magazine:
+            ammoData: null
+            max: 8
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: true
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            speedCombat:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 2
+          source:
+            book: Black Chrome
+            page: 116
+          sources:
+            - book: Black Chrome
+              page: 116
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+          weaponType: vHeavyPistol
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: Pursuit Security Incorporated Crowd Buster
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rifle
+  attackmod: 0
+  brand: Pursuit Security Inc.
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        The Pursuit Security Inc. Crowd Buster is an Assault Rifle with a unique
+        alternate firing mode. It comes with a free pair of
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.NYxdMQPHdjnpYNLE]{Auto
+       Level Dampening Ear Protectors}.
+      </p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list:
+      - T15TmzysvT1BKlji
+    slots: 3
+    usedSlots: 2
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 25
+    value: 0
+  price:
+    market: 2000
+  quality: standard
+  revealed: true
+  rof: 1
+  source: null
+  sources:
+    - book: Black Chrome
+      page: 116
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: assaultRifle
+type: weapon

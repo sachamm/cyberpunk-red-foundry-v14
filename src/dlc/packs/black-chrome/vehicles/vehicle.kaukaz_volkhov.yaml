@@ -1,0 +1,48 @@
+_id: 7CayuDCC2lrf4LkR
+_key: "!items!7CayuDCC2lrf4LkR"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/volkhov.svg
+name: Kaukaz Volkhov
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Kaukaz
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        An armored pickup Compact Groundcar with mounted machine gun. Comes with a
+        bottle of vodka.
+      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 7</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 41000
+  sdp: 55
+  seats: 4
+  sources:
+    - book: Black Chrome
+      page: 71
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

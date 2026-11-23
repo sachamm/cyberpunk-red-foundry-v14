@@ -1,0 +1,62 @@
+_id: O455ilkzLFqzgtYE
+_key: "!items!O455ilkzLFqzgtYE"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/armor/dirk-combat-jacket.svg
+name: Dirk Combat Jacket
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 11
+  brand: Zhukova International
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Light Armorjack that looks like
+        @UUID[Compendium.cyberpunk-red-core.core_clothing.Item.Yxw3WxrFc8yIz2Vh]{Leisurewear}.
+      </p>
+      <blockquote>
+        <p>Bulky enough to conceal two standard magazines without a check.</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  penalty: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  sources:
+    - book: Black Chrome
+      page: 28
+  usage: toggled
+type: armor

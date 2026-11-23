@@ -1,0 +1,60 @@
+_id: etGQrEprF1AboZmt
+_key: "!items!etGQrEprF1AboZmt"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/cannister_net.svg
+name: Net
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A retractable net for the net launcher that <strong>Grapples</strong> the
+        target on hit. Targets may escape with by rolling
+        [[/r 1d10red+@stats.dex+@skills.contortionist #DV13 Contortionist]]{DV13Contortionist}
+        if they are trapped in the net. Targets may be freed if an ally rolls
+        [[/r 1d10red+@stats.dex+@skills.brawling #DV13 Brawling]]{DV13 Brawling}
+      </p>
+      <blockquote>
+        <p>The Net has 15hp and is destroyed when reduced to 0.</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
+  price:
+    market: 50
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 20
+  type: special
+  variety: custom
+type: ammo

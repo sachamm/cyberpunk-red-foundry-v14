@@ -1,0 +1,75 @@
+_id: Q6lZKEJKJ1mvDNDD
+_key: "!items!Q6lZKEJKJ1mvDNDD"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: z1LtJoNPE7bJPrsX
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Bow.svg
+name: Arasaka Origami
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - arrow
+  attackmod: 0
+  brand: Arasaka
+  canIgnoreArmor: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>A concealable folding bow, reloaded as part of an Attack Action.</p>
+      <blockquote>
+        <p>Foilding/Unfolding does not require an <strong>Action</strong></p>
+      </blockquote>
+  dvTable: DV Bows & Crossbows
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 200
+  quality: standard
+  revealed: true
+  rof: 1
+  sources:
+    - book: Toggle's Temple
+      page: 10
+    - book: Interface RED v5
+      page: 44
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: bow
+type: weapon

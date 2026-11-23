@@ -1,0 +1,10 @@
+{
+  "label": "Clothing",
+  "mapping": {},
+  "entries": {
+    "Superflash Jacket": {
+      "name": "Superflash Jacket",
+      "description": "<p>\n  A supercharged\n  @UUID[Compendium.cyberpunk-red-core.core_clothing.Item.y3Ij43Eg3b0tq16F]{Urban Flash Jacket}.\n  As an action, anyone within 5m/yds that can see the jacket must make a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}\n  or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qoegLCfpEOQifeZq]{Damaged Eye}\n  critical injury for 1 minute.\n</p>\n<blockquote>\n  <p>\n    Each activation requires a\n    @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MfuoJ69NL1FiP7B8]{Battery Pack}\n    that is destroyed an unable to be recharged after use.\n  </p>\n</blockquote>\n"
+    }
+  }
+}

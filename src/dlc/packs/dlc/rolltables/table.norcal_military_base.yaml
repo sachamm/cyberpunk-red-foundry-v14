@@ -1,0 +1,153 @@
+_id: sJTGDPzxGlUkqZKS
+_key: "!tables!sJTGDPzxGlUkqZKS"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: NorCal Military Base
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: ZU82BJ0Dj6VpmZVm
+    _key: "!tables.results!sJTGDPzxGlUkqZKS.ZU82BJ0Dj6VpmZVm"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784751563983
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784751767786
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Shoot away the jitters at the gun range.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at the NorCal Military Base
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: XiTaLyjMbu8ngUp1
+    _key: "!tables.results!sJTGDPzxGlUkqZKS.XiTaLyjMbu8ngUp1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784751561930
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784751761996
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Something about a rope course?</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at the NorCal Military Base
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: dmajT7FpqnWiYynn
+    _key: "!tables.results!sJTGDPzxGlUkqZKS.dmajT7FpqnWiYynn"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784751562331
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784751747614
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Apparently the food is pretty good on base.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at the NorCal Military Base
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: kQPJY83AOPSPwpA6
+    _key: "!tables.results!sJTGDPzxGlUkqZKS.kQPJY83AOPSPwpA6"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784751562706
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784751780321
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Watch a live training exercise together.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at the NorCal Military Base
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: ZFTD7cmkCA5usI00
+    _key: "!tables.results!sJTGDPzxGlUkqZKS.ZFTD7cmkCA5usI00"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784751563045
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784751800059
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Go see a movie at the base's theater.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at the NorCal Military Base
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 0gY5JBuOskOqvjYK
+    _key: "!tables.results!sJTGDPzxGlUkqZKS.0gY5JBuOskOqvjYK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784751563403
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784751829990
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Shoot it out in a paintball game.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is at the NorCal Military Base
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

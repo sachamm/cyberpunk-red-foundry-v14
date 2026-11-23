@@ -1,0 +1,50 @@
+_id: Ik8mQIo1XkBrPmN4
+_key: "!items!Ik8mQIo1XkBrPmN4"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/clothing/holo-wear.svg
+name: Masetto Holo-Wear
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: Masetto Tech Clothing
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Holographic clothing that can be swapped between downloaded styles as an
+        action. EMP blasts may disrupt this clothing. Holo-Wear does not provide any
+        protection from the environment.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 35
+  style: genericChic
+  type: jacket
+  usage: toggled
+type: clothing

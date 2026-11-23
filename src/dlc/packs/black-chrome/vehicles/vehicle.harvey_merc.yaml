@@ -1,0 +1,45 @@
+_id: 8m4m9SW2tfrhX9cs
+_key: "!items!8m4m9SW2tfrhX9cs"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/harvey-merc.svg
+name: Harvey Merc
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: AmeriCar
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A classic Roadbike, this time with mounted weapons.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 4</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 30000
+  sdp: 35
+  seats: 2
+  sources:
+    - book: Black Chrome
+      page: 69
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

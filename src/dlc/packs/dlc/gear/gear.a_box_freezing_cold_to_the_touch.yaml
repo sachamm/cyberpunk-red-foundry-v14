@@ -1,0 +1,49 @@
+_id: rgahJ1ZeujkiTxFV
+_key: "!items!rgahJ1ZeujkiTxFV"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: WcF65njAcmPq8Kbn
+img: icons/containers/chest/chest-simple-box-blue.webp
+name: A Box Freezing Cold To The Touch
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 400000
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Roll once from
+        @UUID[Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.VszxZ4TJjQ8FGuoc]{A
+       Box Freezing Cold To The Touch}
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: true
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Achievments & Lootboxes
+      page: 5
+  usage: toggled
+type: gear

@@ -1,0 +1,78 @@
+_id: bgZcWzg1Ta0AUkVp
+_key: "!items!bgZcWzg1Ta0AUkVp"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: f2tdVbPJQOaX3KUL
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_excellent.svg
+name: Militech Hotshot L-ATGM
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rocket
+  attackmod: 1
+  brand: Militech
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 8d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Bring out the big guns. This rocket launcher will do some damage. +1 to
+        Attack.
+      </p>
+  dvTable: DV Rocket Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 1
+    value: 0
+  price:
+    market: 1000
+  quality: excellent
+  revealed: true
+  rof: 1
+  sources:
+    - book: Cyberpunk RED
+      page: 342
+    - book: Toggle's Temple
+      page: 13
+    - book: Interface RED v5
+      page: 47
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: rocketLauncher
+type: weapon

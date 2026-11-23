@@ -1,0 +1,153 @@
+_id: aBvkMWTPhz6eu2aG
+_key: "!tables!aBvkMWTPhz6eu2aG"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: South Night City
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: dvgYxmsR8udeLUQr
+    _key: "!tables.results!aBvkMWTPhz6eu2aG.dvgYxmsR8udeLUQr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757991371
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778834814
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grab lunch with your date after their tattoo appointment.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in South Night City
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: rliRqeyKzJu6PxOe
+    _key: "!tables.results!aBvkMWTPhz6eu2aG.rliRqeyKzJu6PxOe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757991547
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778847723
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Soak up the sun at the beach!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in South Night City
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 7G0tNJfMeu75TSh4
+    _key: "!tables.results!aBvkMWTPhz6eu2aG.7G0tNJfMeu75TSh4"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757991739
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778864069
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Sneak ino Playland by the Sea on a boat.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in South Night City
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: zt0Kog6gdbgCnoqW
+    _key: "!tables.results!aBvkMWTPhz6eu2aG.zt0Kog6gdbgCnoqW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757991922
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778882320
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date wants to introduce you to the whole gang.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in South Night City
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: Kt7FQi3BDbxiPUj3
+    _key: "!tables.results!aBvkMWTPhz6eu2aG.Kt7FQi3BDbxiPUj3"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757992103
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778895458
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grab a drink at a rowdy Sea Nomad bar.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in South Night City
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: 3Y7HZs8RlXQelpKN
+    _key: "!tables.results!aBvkMWTPhz6eu2aG.3Y7HZs8RlXQelpKN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757992342
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778910543
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Enjoy live music in an abandoned gymnasium.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in South Night City
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

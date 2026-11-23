@@ -1,0 +1,48 @@
+{
+  "label": "Weapons",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
+  "entries": {
+    "Bow": {
+      "name": "Bow",
+      "description": "<p>A virtual bow, reloaded as part of an Attack Action.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Dagger": {
+      "name": "Dagger",
+      "description": "<p>A virtual knife fit for a hunter.</p>\n",
+      "dvTable": ""
+    },
+    "Duel Caster": {
+      "name": "Duel Caster",
+      "description": "<p>\n  A card launcher constructed from cheap plastic used to launch\n  @UUID[Compendium.cyberpunk-red-core.elflines_ammo.Item.gbp8WiY21LEcNnif]{ELO Trading Cards}.\n  ROF 3 if it is the only weapon fired on your turn.\n</p>\n<blockquote>\n  <p>\n    Can also be loaded with normal playing cards but makes the weapon Poor\n    Quality.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Greataxe": {
+      "name": "Greataxe",
+      "description": "<p>\n  A virtual axe with a curved blade on each side. Favoured by raid parties for\n  close engagements. Requires 2 hands to wield even by a wielder with\n  <strong>BODY</strong> 8 or higher.\n</p>\n",
+      "dvTable": ""
+    },
+    "Longsword": {
+      "name": "Longsword",
+      "description": "<p>A bladed, hilted weapon. Specifically designed for virtual combat.</p>\n<blockquote>\n  <p>\n    2 <strong>ROF</strong> if wielding a second longsword — requires manual\n    update\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Scarlet Blackbow": {
+      "name": "Scarlet Blackbow",
+      "description": "<p>\n  A plastic toy bow that must be reloaded after every attack. If you roll 1 on\n  Attack (Crit fail) the bow's battery pack explodes. Comes bundeled with a\n  Quiver and\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.tXkeWEPGKEJEgCPW]{6 Rubber Arrows}.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Shortsword": {
+      "name": "Shortsword",
+      "description": "<p>A short bladed, hilted weapon. Specifically designed for virtual combat.</p>\n",
+      "dvTable": ""
+    },
+    "Sword of Arvish": {
+      "name": "Sword of Arvish",
+      "description": "<p>\n  A metal replica of the hero's blade! If you roll 1 on Attack (Crit Fail) the\n  wielder suffers the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-body.Item.IKKcCgHU1lBJ4wVd]{Crushed Fingers}\n  critical injury.\n</p>\n",
+      "dvTable": ""
+    }
+  }
+}

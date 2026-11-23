@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 512 512"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="pursuit-security-bouncer.svg"
+   width="512"
+   height="512"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#">
+  <defs
+     id="defs3">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter3"
+       x="-0.08693501"
+       y="-0.12811453"
+       width="1.17387"
+       height="1.2562291">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood2" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur2" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset2" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite2" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite3" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.0454684"
+     inkscape:cx="336.21293"
+     inkscape:cy="233.86646"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <path
+     id="rect3"
+     style="display:inline;opacity:1;vector-effect:none;fill:#1b1f21;fill-rule:evenodd;stop-color:#000000;stop-opacity:1"
+     inkscape:label="background"
+     d="M 0,0 H 512 V 512 H 0 Z" />
+  <g
+     id="g2"
+     style="filter:url(#filter3)"
+     transform="matrix(0,-1.0818579,1.0818579,0,-54.877911,482.96497)">
+    <path
+       id="path19"
+       style="display:inline;fill:#e64539;stroke-width:7.39469"
+       d="m 416.84307,213.40823 a 7.3946866,7.3946866 0 0 0 -7.39541,-7.39372 H 305.92205 a 7.3946866,7.3946866 0 0 1 0,-14.78912 h 36.97368 a 7.3946866,7.3946866 0 0 0 7.3954,-7.39542 v -29.57826 a 7.3946866,7.3946866 0 0 0 -7.3954,-7.39541 h -127.5586 a 29.704456,29.704456 0 0 0 -18.48598,6.51416 l -53.68538,42.88966 a 44.560381,44.560381 0 0 1 -27.6557,9.75439 H 76.687973 V 390.88119 H 116.6188 a 44.641722,44.641722 0 0 1 25.74154,8.25307 l 32.53542,23.22587 a 29.778403,29.778403 0 0 0 17.14811,5.49474 h 217.40379 a 7.3946866,7.3946866 0 0 0 7.39541,-7.39541 v -29.57827 a 7.3946866,7.3946866 0 0 0 -7.39541,-7.39541 H 387.2648 a 7.3946866,7.3946866 0 0 1 0,-14.78912 h 22.18286 a 7.3946866,7.3946866 0 0 0 7.39541,-7.39373 v -29.57996 a 7.3946866,7.3946866 0 0 0 -7.39541,-7.39371 H 387.2648 a 7.3946866,7.3946866 0 0 1 0,-14.78914 h 22.18286 a 7.3946866,7.3946866 0 0 0 7.39541,-7.39541 v -29.57826 a 7.3946866,7.3946866 0 0 0 -7.39541,-7.39541 H 387.2648 a 7.3946866,7.3946866 0 0 1 0,-14.78914 h 22.18286 a 7.3946866,7.3946866 0 0 0 7.39541,-7.39371 z m -88.73649,29.57996 v 147.893 a 22.18406,22.18406 0 0 1 -22.18453,22.18454 h -88.73479 a 22.18406,22.18406 0 0 1 -22.18453,-22.18454 v -147.893 a 22.18406,22.18406 0 0 1 22.18453,-22.18455 h 88.73479 a 22.18406,22.18406 0 0 1 22.18453,22.18455 z m -14.78912,0 c 0,-4.08398 -3.31144,-7.39541 -7.39541,-7.39541 h -88.73479 c -4.08397,0 -7.39541,3.31143 -7.39541,7.39541 v 147.893 c 0,4.08398 3.31144,7.39542 7.39541,7.39542 h 88.73479 c 4.08397,0 7.39541,-3.31144 7.39541,-7.39542 z m -12.9407,134.9523 -53.24897,-39.77413 c 7.99071,-8.24786 17.42098,-18.0131 26.29592,-27.1603 l -7.3516,-6.50068 12.52619,-9.73754 18.73201,21.0438 c -8.40009,7.37428 -18.20719,16.00668 -27.63885,24.30595 z m -2.25956,-103.7615 c -12.03522,9.36043 -26.11769,20.38311 -39.59384,30.81503 l 6.45182,8.9675 -9.75945,10.07286 -26.45597,-22.12388 c 12.70163,-9.4812 27.66761,-20.6316 41.83148,-31.2228 l -15.60466,-14.73354 h 27.80396 z m -0.0978,85.67316 -22.80967,-19.09089 5.55034,-4.85615 c 5.74741,7.96524 11.51192,15.95611 17.25933,23.94704 z m -38.31658,-86.33875 -15.53895,11.59273 -21.43136,-18.97127 v -10.20597 h 21.33195 z M 61.898847,198.61909 c 0,-4.09665 -3.298758,-7.3937 -7.395413,-7.3937 H 10.136041 c -4.0966553,0 -7.3954133,3.29705 -7.3954133,7.3937 v 199.65752 c 0,4.09666 3.298758,7.39371 7.3954133,7.39371 h 44.367393 c 4.096655,0 7.395413,-3.29705 7.395413,-7.39371 z" />
+  </g>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

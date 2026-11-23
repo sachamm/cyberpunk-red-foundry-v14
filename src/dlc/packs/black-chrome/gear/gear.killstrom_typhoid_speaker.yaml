@@ -1,0 +1,50 @@
+_id: qVrAYOVvfBpIgEor
+_key: "!items!qVrAYOVvfBpIgEor"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/dlc/icons/black-chrome/gear/killstrom-typhoid-speaker.svg
+name: KillStrom Typhoid Speaker
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: KillStrom Music
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        When linked to a
+        @UUID[Compendium.cyberpunk-red-core.black-chrome_gear.Item.NoN4GJNgu6tE6mqd]{KillStrom Sonic Boom Amp},
+        the DV is increased by 1 and the range is increased by 90m/yds.
+      </p>
+      <blockquote><p>Must be plugged into a wall socket.</p></blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Black Chrome
+      page: 41
+  usage: toggled
+type: gear

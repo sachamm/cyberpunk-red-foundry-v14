@@ -1,0 +1,248 @@
+_id: guhtVzDPj5C68Hqo
+_key: "!tables!guhtVzDPj5C68Hqo"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d10
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/default/Default_CPR_Mystery_Man.svg
+name: Edgerunner
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: z2uJ1JUJb1Qtflrh
+    _key: "!tables.results!guhtVzDPj5C68Hqo.z2uJ1JUJb1Qtflrh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739142462
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739142462
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.5Hx4lztHQ79meK6J
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/rockerboy.svg
+    name: Rockerboy
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: 3oyPoo2PTfTk29S5
+    _key: "!tables.results!guhtVzDPj5C68Hqo.3oyPoo2PTfTk29S5"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739276643
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739276643
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.dKaThmT2dUhUr11H
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/solo.svg
+    name: Solo
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+  - _id: zVJCg8mbS2NMMkfV
+    _key: "!tables.results!guhtVzDPj5C68Hqo.zVJCg8mbS2NMMkfV"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739557426
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739557426
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.VQoqtWyvqtVWF3ih
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/netrunner.svg
+    name: Netrunner
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: CRA1fq4PWwIkWmvi
+    _key: "!tables.results!guhtVzDPj5C68Hqo.CRA1fq4PWwIkWmvi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739703381
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739703381
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.Dvnd2PU7YnUhkdhq
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/tech.svg
+    name: Tech
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: iS4H3Xr8QxJAQTrn
+    _key: "!tables.results!guhtVzDPj5C68Hqo.iS4H3Xr8QxJAQTrn"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739848355
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739848355
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.nFKA0EO4T8rnjw2C
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/medtech.svg
+    name: Medtech
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: hX5cxQBfzXxYwWGB
+    _key: "!tables.results!guhtVzDPj5C68Hqo.hX5cxQBfzXxYwWGB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784739946744
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784739946744
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.Yce2r6XFY5QtohSx
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/media.svg
+    name: Media
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: TVBqrXlqs1YjR0od
+    _key: "!tables.results!guhtVzDPj5C68Hqo.TVBqrXlqs1YjR0od"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784740586157
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784740586157
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.2CcSw54SBYbGdyd2
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/exec.svg
+    name: Exec
+    range:
+      - 7
+      - 7
+    type: document
+    weight: 1
+  - _id: oJyKnL5iXXAYIsVa
+    _key: "!tables.results!guhtVzDPj5C68Hqo.oJyKnL5iXXAYIsVa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784744460693
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784744460693
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.vvidTKuBj2GIoAT6
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/lawman.svg
+    name: Lawman
+    range:
+      - 8
+      - 8
+    type: document
+    weight: 1
+  - _id: gJ9Q5tKW4LlpQzJS
+    _key: "!tables.results!guhtVzDPj5C68Hqo.gJ9Q5tKW4LlpQzJS"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745372846
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745372846
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.61K2vQXWBhM6exgN
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/fixer.svg
+    name: Fixer
+    range:
+      - 9
+      - 9
+    type: document
+    weight: 1
+  - _id: T4tflV81ywdjnEBI
+    _key: "!tables.results!guhtVzDPj5C68Hqo.T4tflV81ywdjnEBI"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784745655340
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784745655340
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.ogKWzUvdycDijKZd
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/nomad.svg
+    name: Nomad
+    range:
+      - 10
+      - 10
+    type: document
+    weight: 1
+sort: 0

@@ -1,0 +1,340 @@
+{
+  "label": "Améliorations",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
+  "entries": {
+    "Aerie": {
+      "name": "Aerie",
+      "description": "<p>\n  Each installed Raven Black ICE destroys <strong>Programs</strong> instead of\n  derezzing.\n</p>\n<blockquote><p>No automation provided</p></blockquote>\n",
+      "dvTable": ""
+    },
+    "Aerozep Selfsealing Gasbag": {
+      "name": "Aerozep Selfsealing Gasbag",
+      "description": "<p>\n  Hardens an Aerozep's weakpoint and prevents any bonus damage from aimed shots.\n</p>\n<blockquote>\n  <p>Moto Rank Required: 7</p>\n  <p>Availability: Aerozep</p>\n</blockquote>\n"
+    },
+    "Airhypo Bayonet": {
+      "name": "Airhypo Bayonet",
+      "description": "<p>\n  A hypodermic syringe that can deliver 1 dose of any liquid compound to the\n  target as if it were an\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Th74cfC87RqEJKAb]{Airhypo}.\n</p>\n<blockquote><p>Requires 1 Action to reload</p></blockquote>\n"
+    },
+    "Ask Alex Anything": {
+      "name": "Ask Alex Anything",
+      "description": "<p>Allows users to search for information on the CitiNet.</p>\n<blockquote>\n  <p>\n    Pre-Installed on all\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{agents}\n    by default.\n  </p>\n</blockquote>\n"
+    },
+    "BabelChat": {
+      "name": "BabelChat",
+      "description": "<p>Allows users to send and receive text and video messages.</p>\n<blockquote>\n  <p>\n    Pre-Installed on all\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{agents}\n    by default.\n  </p>\n</blockquote>\n"
+    },
+    "BangMe!": {
+      "name": "BangMe!",
+      "description": "<p>Online banking and peer to peer payment system.</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Big SAAI": {
+      "name": "Big SAAI",
+      "description": "<p>Grants a +1 bonus to your agent's Library Search functions.</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Bottle Dynamo": {
+      "name": "Dynamo de roue",
+      "description": "<p>\n  A dynamo on your\n  @UUID[Compendium.cyberpunk-red-core.dlc_vehicles.Item.XIDIqcWCFJtzYeRw]{bike's}\n  wheel for converting mechanical energy into electricity. Can fully charge a\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.MfuoJ69NL1FiP7B8]{battery pack}\n  in one hour.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Brainwasher": {
+      "name": "Brainwasher",
+      "description": "<p>\n  Provides basic therapy. Use for 1 week before receiving therapy, then roll\n  [[/r 1d10 #Brainwasher Therapy]]\n</p>\n<p><strong>On even results:</strong> Therapy takes 1 less day to complete.</p>\n<p><strong>On odd results:</strong> Therapy takes 1 more day to complete.</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Bulletproof Enclosure": {
+      "name": "Bulletproof Enclosure",
+      "description": "<p>\n  Your\n  @UUID[Compendium.cyberpunk-red-core.dlc_vehicles.Item.XIDIqcWCFJtzYeRw]{bicycle's}\n  windows are now considered thin cover with 7 HP. Refer to the cover rules in\n  CP:R, pg. 182.\n</p>\n<p>\n  Bike first requires the\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.X3QvlINFBZtTGISU]{Enclosure}\n  upgrade to install this upgrade.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Bushido Accelerator": {
+      "name": "Accélérateur Bushido",
+      "description": "<p>+3 <strong>Speed</strong> to all installed Killer Black ICE.</p>\n<blockquote>\n  <p>No automation provided — Requires manual program configuration.</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Buzzsaw Arm": {
+      "name": "Buzzsaw Arm",
+      "description": "<p>\n  Acts as a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PxOjhUUs7cRULv75]{Very Heavy Melee Weapon},\n  choose location: Front, Rear, Side. A passenger must use their Action to\n  extend or retract the arm.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 1 days</p>\n  <p><strong>Salvage DV:</strong> 9</p>\n  <p><strong>Construction Modifier:</strong> +1</p>\n</blockquote>\n"
+    },
+    "Catapult": {
+      "name": "Catapult",
+      "description": "<p>\n  A <strong>Heavy Weapon</strong> mounted on the roof that can launch any object\n  the size of a person. Any individual launched by the catapult must make a\n  [[/r 1d10red+@stats.body+@skills.athletics #DV15 Athletics]]{DV15 Athletics}\n  check to land safely on the ground or the person takes\n  [[/r 2d6dmg #Unsafe Landing]]{2d6 damage} directly to their HP.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 1 days</p>\n  <p><strong>Salvage DV:</strong> 13</p>\n  <p><strong>Construction Modifier:</strong> +1</p>\n</blockquote>\n"
+    },
+    "Cockpit Glass": {
+      "name": "Cockpit Glass",
+      "description": "<p>All glass on the vehicle's cockpit is now considered cover with 30HP.</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 3 days</p>\n  <p><strong>Salvage DV:</strong> 15</p>\n  <p><strong>Construction Modifier:</strong> +1</p>\n</blockquote>\n"
+    },
+    "Cold-Weather Jacket Lining": {
+      "name": "Doublure isolante d'hiver",
+      "description": "<p>\n  User will not suffer <strong>Exposure</strong> penalties from cold\n  temperatures (CP:R pg 181).\n</p>\n<blockquote>\n  <p>Upgrade designed for use with any <strong>Jacket</strong>.</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Combat Recorder": {
+      "name": "Enregistreur de Combat",
+      "description": "<p>Real-world Combat data is invaluable for Black ICE development.</p>\n<p>\n  If another Netrunner in the same NET Architecture fails a\n  <strong>Death Save</strong>, the last 5 minutes of non-self incriminating\n  Netrun combat data is saved to the Cyberdeck. Recordings can be sold for 50eb.\n</p>\n",
+      "dvTable": ""
+    },
+    "Combat Spikes": {
+      "name": "Combat Spikes",
+      "description": "<p>\n  Increases ramming damage by [[/r 2d6dmg #Bonus Ramming Damage]]{2d6} when\n  boosted by\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.n51IrwLux1v0fY78]{NOS}.\n  Constructing this upgrade a second time increases the damage to\n  [[/r 3d6dmg #Bonus Ramming Damage]]{3d6}\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 3 days</p>\n  <p><strong>Salvage DV:</strong> 13</p>\n  <p><strong>Construction Modifier:</strong> +1</p>\n</blockquote>\n"
+    },
+    "Crunch Whistle": {
+      "name": "Crunch Whistle",
+      "description": "<p>\n  Connects your cyberdeck to a\n  @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.VxgRZlqHqwv1TI3e]{Breacher}.\n  When this upgrade is installed, a <strong>Netrunner</strong> may add their\n  Interface Rank to the result when hacking an agent.\n</p>\n<blockquote>\n  <p>\n    <em\n      >Provided AE must be manually updated to match the Netrunner's role\n      ability.</em\n    >\n  </p>\n</blockquote>\n"
+    },
+    "Cuddlefish Outfit (Costly)": {
+      "name": "Cuddlefish Outfit (Costly)",
+      "description": "<p>\n  A cute outfit for your\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.hopvkkGSKLpKg4p7]{Captain Cuddlefish Ultra Snag-Em}!\n  Prized by collectors.\n</p>\n"
+    },
+    "Cuddlefish Outfit (Default)": {
+      "name": "Cuddlefish Outfit (Default)",
+      "description": "<p>\n  A cute outfit for your\n  @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.hopvkkGSKLpKg4p7]{Captain Cuddlefish Ultra Snag-Em}!\n  Collect them all!\n</p>\n"
+    },
+    "Cycle Armor": {
+      "name": "Blindé",
+      "description": "<p>\n  A\n  @UUID[Compendium.cyberpunk-red-core.dlc_vehicles.Item.XIDIqcWCFJtzYeRw]{Bicycle}\n  armored with 7 SP.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle.</p>\n  <p>\n    <strong>Requires:</strong>\n    @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.zZYQHXJ96WQS8FAu]{Reinforced Frame}\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Defense Sequencer": {
+      "name": "Séquenceur de défense",
+      "description": "<p>\n  If an active\n  @UUID[Compendium.cyberpunk-red-core.core_programs.Item.yommG7jwlXzoyf8Z]{Armor}\n  is derezzed or destroyed, this upgrade activates a yet-unused copy of\n  @UUID[Compendium.cyberpunk-red-core.core_programs.Item.yommG7jwlXzoyf8Z]{Armor}\n  at the start of your turn.\n</p>\n",
+      "dvTable": ""
+    },
+    "Electric Pedal Assist": {
+      "name": "Assistance pédalage électrique",
+      "description": "<p>\n  Electric motorized system helping to increase the bicycle's Speed (narrative)\n  to the next <strong>BODY</strong> tier or adds 5MPH/8KPH to Speed (narrative)\n  if already at the highest <strong>BODY</strong> tier.\n</p>\n<p>\n  Rider get +4 bonus to <strong>Endurance</strong> Checks to resisting\n  exhaustion when riding.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle.</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Elflines Online": {
+      "name": "Elflines Online",
+      "description": "<p>\n  A new in-box copy Elflines Online. Requires the\n  @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.FsrrwGv2ocZ1lQlE]{Segotari RUSH Revolution}\n  to play.\n</p>\n"
+    },
+    "Elflines Online Elftracker": {
+      "name": "Elflines Online Elftracker",
+      "description": "<p>\n  A companion app for\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.ucX1EbPnMOBUyvlB]{ELO}\n  that allows users to track in-game stats and connect with other players.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Enclosure": {
+      "name": "Carénage",
+      "description": "<p>The bike becomes a trike with a covering body of fiberglass and plastic.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle.</p>\n  <p>\n    Can't install this Upgrade with the\n    @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.BMtpB0IpvAp6xon8]{Folding Frame}\n    upgrade.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Extended Seat": {
+      "name": "Selle longue",
+      "description": "<p>An elongated saddle, gaining a seat for a passenger.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Extra AV-4 Engine": {
+      "name": "Extra AV-4 Engine",
+      "description": "<p>\n  An\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.g0ywfFzHeILd8KGd]{Extra AV-4 Engine}\n  can be added for each\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.Z4CwN5KrhElqcU6O]{Extra Chassis}\n  installed into your Punknaught Core.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 2 days</p>\n  <p><strong>Salvage DV:</strong> 15</p>\n  <p><strong>Construction Modifier:</strong> +2</p>\n</blockquote>\n"
+    },
+    "Extra Chassis": {
+      "name": "Extra Chassis",
+      "description": "<p>\n  Only 3\n  @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.Z4CwN5KrhElqcU6O]{Extra Chassis}\n  can be installed onto a\n  @UUID[Compendium.cyberpunk-red-core.dlc_vehicles.Item.6CYGY3LJdRM9vjaI]{Punknaught Core}.\n</p>\n<p>\n  Each Extra Chassis increases ramming damage by\n  [[/r 1d6dmg #Extra Ramming Damage]]{1d6}.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 3 days</p>\n  <p><strong>Salvage DV:</strong> 13</p>\n  <p><strong>Construction Modifier:</strong> +2</p>\n</blockquote>\n"
+    },
+    "Feline Instinct": {
+      "name": "Instinct Félin",
+      "description": "<p>\n  If an installed Sabertooth Black ICE destroys a <strong>Program</strong>, that\n  Sabertooth deals an extra [[/r 1d6dmg #Sabertooth Bonus Damage]]{1d6 damage}\n  on each subsequent attack for the duration of the Netrun.\n</p>\n<blockquote><p>No automation provided</p></blockquote>\n",
+      "dvTable": ""
+    },
+    "Folding Frame": {
+      "name": "Cadre pliant",
+      "description": "<p>\n  You can now fold your bike to the size of a large suitcase for easier\n  transport and storage.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n  <p>\n    Incompatible with\n    @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.X3QvlINFBZtTGISU]{Enclosure},\n    @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.zZYQHXJ96WQS8FAu]{Reinforced Frame},\n    or\n    @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.81qxDB83rnxGNjdK]{Smuggling Compartment}\n    upgrades.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Grapple Gun Underbarrel": {
+      "name": "Grapple Gun Underbarrel",
+      "description": "<p>\n  Mounts under any crossbow or shoulder arm. Functions like a standard\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.VrwVUEHuMCGjp8Fi].\n</p>\n"
+    },
+    "Gun Mount": {
+      "name": "Support d'arme",
+      "description": "<p>\n  A system to attach an\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.QrQNdHTuEDxrfIxS]{Assault Rifle},\n  a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.nFXxinLVjYA06z1K]{Heavy SMG}\n  or a\n  @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PJhu6eY766OegZBo]{Shotgun}\n  on the handlebars, along with a firing button.\n</p>\n<p>Shoots only forwards. Mounting and detaching requires one Action.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Handprint Scanner": {
+      "name": "Handprint Scanner",
+      "description": "<p>\n  Use your agent to scan a handprint by making a DV13 Criminology Check.\n  Scanning a full handprint takes 3 rounds. 5 partial prints may be combined to\n  create a full handprint.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Hangar": {
+      "name": "Hangar",
+      "description": "<p>\n  Provides safe parking for another vehicle. May be installed multiple times.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n  <p><strong>Availability:</strong> Aerozep, Yacht</p>\n</blockquote>\n"
+    },
+    "Hangry Hangry Dragon": {
+      "name": "Dragon Morfal Morfal",
+      "description": "<p>\n  Everytime an installed Dragon Black ICE destroys a <strong>Program</strong> it\n  regains full REZ.\n</p>\n<blockquote><p>No automation provided</p></blockquote>\n",
+      "dvTable": ""
+    },
+    "Hot-Weather Jacket Lining": {
+      "name": "Doublure isolante d'été",
+      "description": "<p>\n  User will not suffer <strong>Exposure</strong> penalties from hot temperatures\n  (CP:R pg 181).\n</p>\n<blockquote>\n  <p>Upgrade designed for use with any <strong>Jacket</strong>.</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "HusTool": {
+      "name": "HusTool",
+      "description": "<p>\n  Find odd jobs and get paid! Jobs take 30 minutes to complete and pay 10eb.\n  Available jobs are determined by the GM, roll\n  [[/r 1d10 #HusTool]]\n</p>\n<ul>\n  <li>\n    <p>\n      <strong>On a 1:</strong> Factors outside of your control prevent you from\n      finishing the errand.\n    </p>\n    <ul>\n      <li><p>You waste your time and don't get paid.</p></li>\n    </ul>\n  </li>\n  <li>\n    <p>\n      <strong>On a 10:</strong> The errand is completed, but you encounter\n      trouble.\n    </p>\n    <ul>\n      <li><p>GM rolls on an appropriate encounter table.</p></li>\n    </ul>\n  </li>\n</ul>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Neon Lighting": {
+      "name": "Neon Lighting",
+      "description": "<p>\n  Fiber-optic lights on bike's frame and wheels that count as a\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.VbMY2fs3im1sP2dJ]{Light Tattoo}\n  when you are on or near the bike.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "NOS": {
+      "name": "NOS",
+      "description": "<p>\n  Boost the Punknaught's speed and gain an extra\n  <strong>Move Action</strong> for one turn. May be installed multiple times.\n  Each tank only provides one turn of boost.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 1 days</p>\n  <p><strong>Salvage DV:</strong> 13</p>\n  <p><strong>Construction Modifier:</strong> +2</p>\n</blockquote>\n"
+    },
+    "Perfume Shoppe": {
+      "name": "Parfumerie",
+      "description": "<p>Skunk Black ICE will only take 1 option slot to install.</p>\n<blockquote>\n  <p>No automation provided — manually update the program</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Punknaught Armor": {
+      "name": "Punknaught Armor",
+      "description": "<p>\n  Provides <strong>SP13</strong> armor to your Punknaught.\n  <strong>Preem</strong> attacks made against your Punknaught ignore this armor\n  unless this upgrade has been installed twice.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 1 days</p>\n  <p><strong>Salvage DV:</strong> 13</p>\n  <p><strong>Construction Modifier:</strong> +1</p>\n</blockquote>\n"
+    },
+    "Reinforced Frame": {
+      "name": "Cadre renforcé",
+      "description": "<p>Bike is now more resistant: +5 SDP and rider can be BODY 11 or more.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n  <p>\n    Incompatible with the\n    @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.BMtpB0IpvAp6xon8]{Folding Frame}\n    upgrade.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Reinforced Hull": {
+      "name": "Reinforced Hull",
+      "description": "<p>Hardens a vessel's hull and prevents any bonus damage from aimed shots.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Sea Vehicles</p>\n</blockquote>\n"
+    },
+    "Reinforced Tires": {
+      "name": "Reinforced Tires",
+      "description": "<p>Hardens a vehicle's tires and prevents any bonus damage from aimed shots.</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Land Vehicles</p>\n</blockquote>\n"
+    },
+    "Retina Scanner": {
+      "name": "Retina Scanner",
+      "description": "<p>\n  Use your\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent} to\n  extract the retinal pattern from footage recorded by a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Video Camera}\n  or\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.YzRXqhofQHcRcHFr]{MicroVideo}\n  cybercam. Copying a retinal patern takes 5 rounds and may require a number of\n  <strong>Brawling</strong> checks to restrain an unwilling subject.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Roach Race": {
+      "name": "Roach Race",
+      "description": "<p>A retro sidescroller game from Poland.</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Sealed Environment": {
+      "name": "Sealed Environment",
+      "description": "<p>\n  Protects occupants from breathing in any hazardous gasses from outside the\n  vehicle.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 1</p>\n  <p><strong>Availability:</strong> All Vehicles</p>\n</blockquote>\n"
+    },
+    "Security System": {
+      "name": "Système de sécurité",
+      "description": "<p>\n  Your\n  @UUID[Compendium.cyberpunk-red-core.dlc_vehicles.Item.XIDIqcWCFJtzYeRw]{Bike}\n  is registered with a Nano-VIN linked to your\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}.\n  When secured, the bike is electrified to deter theft. A thief must roll a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the thief must unhand the bike.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Segotari Agent Game": {
+      "name": "Segotari Agent Game",
+      "description": "<p>\n  A game that uses the Self-Adaptive AI onboard your\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent} to\n  generate new levels or respond in real time to player input.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Segotari RUSH Game (Used)": {
+      "name": "Segotari RUSH Game (Used)",
+      "description": "<p>\n  A used virtual reality game formatted for the original\n  @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.F6Tqc5Wja6rdkaNz]{RUSH }\n  virtual reality headset.\n</p>\n"
+    },
+    "Segotari RUSH Revolution Game": {
+      "name": "Segotari RUSH Revolution Game",
+      "description": "<p>\n  A virtual reality game formatted for the\n  @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.FsrrwGv2ocZ1lQlE]{RUSH Revolution}\n  headset.\n</p>\n"
+    },
+    "Shining Finger": {
+      "name": "Doigt étincelant",
+      "description": "<p>\n  Access to a library of pornographic content that can be linked to various\n  cyberware options. Charged monthly.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Silencer": {
+      "name": "Silencer",
+      "description": "<p>Greatly reduces the weapon's audio profile.</p>\n<blockquote>\n  <p>\n    A <strong>Perception Check</strong> to determine the location of the gunshot\n    may be rolled against a <strong>DV</strong> set by the GM.\n  </p>\n</blockquote>\n"
+    },
+    "Smithy": {
+      "name": "Forgeur",
+      "description": "<p>\n  Be prepared for anything. Use Meat Action to change any and all installed\n  @UUID[Compendium.cyberpunk-red-core.core_programs.Item.iHUrp2OkBZb3Ugf8]{Sword Programs}\n  into\n  @UUID[Compendium.cyberpunk-red-core.core_programs.Item.ccLHU1Ym4K4mnOds]{Banhammer Programs}\n  or vice versa.\n</p>\n",
+      "dvTable": ""
+    },
+    "Smuggling Compartment": {
+      "name": "Compartiment caché",
+      "description": "<p>\n  Adds a small hidden storage space in the frame that requires a\n  [[/r 1d10red+@stats.int+@skills.concealOrRevealObject #DV17 Conceal/Reveal Object]]{DV17 Conceal/Reveal Object}\n  check to discover.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n  <p>\n    Incompatible with the\n    @UUID[Compendium.cyberpunk-red-core.dlc_upgrades.Item.BMtpB0IpvAp6xon8]{Folding Frame}\n    upgrade.\n  </p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Snaketrap": {
+      "name": "Piège à Serpent",
+      "description": "<p>\n  Protects against the first attack (Asp, Raven, or Poison Flatline effects)\n  that would destroy a random installed <strong>Program</strong>. This\n  protective effect can be use only once per Netrun even if multiple copies of\n  this upgrade are installed.\n</p>\n",
+      "dvTable": ""
+    },
+    "Spike Strip Launcher": {
+      "name": "Spike Strip Launcher",
+      "description": "<p>\n  This <strong>Heavy Weapon</strong> launches a coil of metal spikes from the\n  rear of your\n  @UUID[Compendium.cyberpunk-red-core.dlc_vehicles.Item.6CYGY3LJdRM9vjaI]{Punknaught}.\n  Drivers following behind you must make a\n  [[/r 1d10red+@stats.ref+@skills.driveLandVehicle #DV17 Drive Land Vehicle]]{DV17 Drive Land Vehicle}\n  check to avoid [[/r 4d6dmg #4d6 Weak Point Damage]]{4d6} weak point damage.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 1 days</p>\n  <p><strong>Salvage DV:</strong> 9</p>\n  <p><strong>Construction Modifier:</strong> +1</p>\n</blockquote>\n"
+    },
+    "Stun Bayonet": {
+      "name": "Stun Bayonet",
+      "description": "<p>\n  Equips the gun with a non-lethal melee weapon. Target is knocked unconscious\n  if damage dealt would reduce them to under 1 HP. Doesn't cause Critical\n  Injuries or ablate armor.\n</p>\n"
+    },
+    "Stunt Frame": {
+      "name": "Cadre Freestyle",
+      "description": "<p>\n  The bike loses weight and gains maneuverability. Rider obtain a +2 bonus to\n  <strong>Athletics</strong> skill checks when riding and doing maneuvers.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Submersible Upgrade": {
+      "name": "Submersible Upgrade",
+      "description": "<p>\n  Driver may use <strong>Pilot Sea Vehicle</strong> to navigate underwater at\n  <strong>MOVE</strong> 20.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 5</p>\n  <p>\n    <strong>Availability:</strong> All Land and Sea Vehicles except Bikes and\n    Jetskis\n  </p>\n</blockquote>\n"
+    },
+    "Swamp Mist": {
+      "name": "Brume Marécageuse",
+      "description": "<p>\n  Wisp Black ICE deal 2d6 damage instead of 1d6. Black ICE Program restrictions:\n  Only Wisps can be installed.\n</p>\n<blockquote>\n  <p>No automation provided — manually update any installed Wisp Programs</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Swifty Clean": {
+      "name": "Nettoyage Rapide",
+      "description": "<p>\n  A <strong>Netrunner</strong> can roll <strong>Cloak</strong> twice in a single\n  NET Action and take the higher roll. <strong>Cloak</strong> can only be used\n  once per Netrun when this upgrade is installed.\n</p>\n",
+      "dvTable": ""
+    },
+    "The Garden": {
+      "name": "The Garden",
+      "description": "<p>\n  A free social media platform hosted by Ziggurat. Users require an account to\n  comment or publish content.\n</p>\n<p>\n  Find love in The Garden!\n  @UUID[Compendium.cyberpunk-red-core.dlc_macros.Macro.3n77kf9lHNb2dFY3]{See who you match with!}\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Titanic Hull (13+ Rooms)": {
+      "name": "Titanic Hull (13+ Rooms)",
+      "description": "<p>\n  Increase <strong>SDP</strong> for vehicles with <strong>13+ rooms</strong>.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n  <p><strong>Availability:</strong> Aerozep, Yacht</p>\n</blockquote>\n"
+    },
+    "Titanic Hull (1-4 Rooms)": {
+      "name": "Titanic Hull (1-4 Rooms)",
+      "description": "<p>\n  Increase <strong>SDP</strong> for vehicles with <strong>1-4 rooms</strong>.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n  <p><strong>Availability:</strong> Aerozep, Yacht</p>\n</blockquote>\n"
+    },
+    "Titanic Hull (5-8 Rooms)": {
+      "name": "Titanic Hull (5-8 Rooms)",
+      "description": "<p>\n  Increase <strong>SDP</strong> for vehicles with <strong>5-8 rooms</strong>.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n  <p><strong>Availability:</strong> Aerozep, Yacht</p>\n</blockquote>\n"
+    },
+    "Titanic Hull (9-12 Rooms)": {
+      "name": "Titanic Hull (9-12 Rooms)",
+      "description": "<p>\n  Increase <strong>SDP</strong> for vehicles with <strong>9-12 rooms</strong>.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> 7</p>\n  <p><strong>Availability:</strong> Aerozep, Yacht</p>\n</blockquote>\n"
+    },
+    "Trailer": {
+      "name": "Remorque",
+      "description": "<p>\n  Hook with a small cargo trailer. An action is needed to attach and detach the\n  trailer.\n</p>\n<blockquote>\n  <p><strong>Moto Rank Required:</strong> N/A</p>\n  <p><strong>Availability:</strong> Bicycle</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Turret": {
+      "name": "Turret",
+      "description": "<p>\n  Adds a swivel mount that can support any\n  <strong>2-handed ranged weapon</strong> you already own. This upgrade may be\n  constructed 3 times for each chassis installed into your\n  @UUID[Compendium.cyberpunk-red-core.dlc_vehicles.Item.6CYGY3LJdRM9vjaI]{Punknaught}.\n  A passenger riding the Punknaught may use their Action to fire or reload the\n  weapon.\n</p>\n<blockquote>\n  <p><strong>Availability:</strong> Punknaught</p>\n  <p><strong>Construction Time:</strong> 1 days</p>\n  <p><strong>Salvage DV:</strong> 13</p>\n  <p><strong>Construction Modifier:</strong> +1</p>\n</blockquote>\n"
+    },
+    "Vehicle Room (Complex)": {
+      "name": "Vehicle Room (Complex)",
+      "description": "<p>\n  Each room provides the vehicle with additional seating and ample space for\n  specialized purpose.\n</p>\n<table>\n  <tbody>\n    <tr>\n      <td><p style=\"text-align: center\">Vehicle Type</p></td>\n      <td><p style=\"text-align: center\">Seating per Room</p></td>\n      <td><p style=\"text-align: center\">Cost per Room</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.pnc2jyjtjTNDZKCT]{Aerozep}<br />(Minimum\n          2 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">6 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">90,000eb</span>\n        </p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.6cciJXompBeXxMma]{Cabin Cruiser}<br />(Minimum\n          2 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">6 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">90,000eb</span>\n        </p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.Wo98wgEQA6B7FnMF]{Yacht}<br />(Minimum\n          4 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">12 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">150,000eb</span>\n        </p>\n      </td>\n    </tr>\n  </tbody>\n</table>\n"
+    },
+    "Vehicle Room (Luxury)": {
+      "name": "Vehicle Room (Luxury)",
+      "description": "<p>Each room provides the vehicle with Luxury seating.</p>\n<table>\n  <tbody>\n    <tr>\n      <td><p style=\"text-align: center\">Vehicle Type</p></td>\n      <td><p style=\"text-align: center\">Seating per Room</p></td>\n      <td><p style=\"text-align: center\">Cost per Room</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.pnc2jyjtjTNDZKCT]{Aerozep}<strong\n            ><br /></strong\n          >(Minimum 2 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">2 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">60,000eb</span>\n        </p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.6cciJXompBeXxMma]{Cabin Cruiser}<br />(Minimum\n          2 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">2 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">60,000eb</span>\n        </p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.Wo98wgEQA6B7FnMF]{Yacht}<strong\n            ><br /></strong\n          >(Minimum 4 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">4 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">100,000eb</span>\n        </p>\n      </td>\n    </tr>\n  </tbody>\n</table>\n"
+    },
+    "Vehicle Room (Standard)": {
+      "name": "Vehicle Room (Standard)",
+      "description": "<p>Each room provides the vehicle with additional seating.</p>\n<table>\n  <tbody>\n    <tr>\n      <td><p style=\"text-align: center\">Vehicle Type</p></td>\n      <td><p style=\"text-align: center\">Seating per Room</p></td>\n      <td><p style=\"text-align: center\">Cost per Room</p></td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.pnc2jyjtjTNDZKCT]{Aerozep}<strong\n            ><br /></strong\n          >(Minimum 2 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">2 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">30,000eb</span>\n        </p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.6cciJXompBeXxMma]{Cabin Cruiser}<br />(Minimum\n          2 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">2 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">30,000eb</span>\n        </p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p style=\"text-align: center\">\n          @UUID[Compendium.cyberpunk-red-core.core_vehicles.Item.Wo98wgEQA6B7FnMF]{Yacht}<strong\n            ><br /></strong\n          >(Minimum 4 rooms)\n        </p>\n      </td>\n      <td><p style=\"text-align: center\">4 seats</p></td>\n      <td>\n        <p style=\"text-align: center\">\n          <span style=\"font-family: Jost, sans-serif\">50,000eb</span>\n        </p>\n      </td>\n    </tr>\n  </tbody>\n</table>\n"
+    },
+    "WatchBox": {
+      "name": "WatchBox",
+      "description": "<p>\n  Turns your agent into an alarm system. Requires 5 minutes to scan and\n  establish a security perimeter. The alarm is triggered by loud noises, bright\n  lights, and movement. Avoid detection with a\n  [[/r 1d10red+@stats.dex+@skills.stealth #DV13 Stealth]]{DV13 Stealth} check.\n</p>\n<blockquote>\n  <p>\n    Install this App on your\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}\n  </p>\n</blockquote>\n"
+    },
+    "Waterproof Jacket Lining": {
+      "name": "Doublure imperméable",
+      "description": "<p>\n  Mechanically similar to an\n  @UUID[Compendium.cyberpunk-red-core.dlc_gear.Item.qLpYhxmPD1u2lMG8]{umbrella},\n  does not serve as a\n  @UUID[Compendium.cyberpunk-red-core.dlc_armor.Item.XlpdmDjdNH9uzhq8]{Dry Suit}.\n</p>\n<p>\n  Protects against\n  @UUID[Compendium.cyberpunk-red-core.dlc_weather-effects.Item.yd5RKbg33WnbwKAE]{Acid Rain}\n  and provides +2 to <strong>Resist Torture/Drugs</strong> Checks from\n  @UUID[Compendium.cyberpunk-red-core.dlc_weather-effects.Item.SKqisyIQrtc6AOd1]{Blood Rain}\n  exposure.\n</p>\n<blockquote>\n  <p>Upgrade designed for use with any <strong>Jacket</strong>.</p>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "ZPost": {
+      "name": "ZPost",
+      "description": "<p>Allows users to organize, send, and receive emails.</p>\n<blockquote>\n  <p>\n    Pre-Installed on all\n    @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{agents}\n    by default.\n  </p>\n</blockquote>\n"
+    }
+  }
+}

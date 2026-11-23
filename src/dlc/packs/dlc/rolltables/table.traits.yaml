@@ -1,0 +1,1069 @@
+_id: IMZtJrBlTxAIZQln
+_key: "!tables!IMZtJrBlTxAIZQln"
+description: ""
+displayRoll: false
+flags: {}
+folder: 27WdM2zKf6bXf5Ix
+formula: 1d100
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+name: Traits
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: GtLjHAXOL3wAQvwf
+    _key: "!tables.results!IMZtJrBlTxAIZQln.GtLjHAXOL3wAQvwf"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Adorable</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 1
+      - 2
+    type: text
+    weight: 2
+  - _id: eHVDVM1hXczHv5e5
+    _key: "!tables.results!IMZtJrBlTxAIZQln.eHVDVM1hXczHv5e5"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Adventurous</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 3
+      - 4
+    type: text
+    weight: 2
+  - _id: DfOQ6MpbYv0QNJNZ
+    _key: "!tables.results!IMZtJrBlTxAIZQln.DfOQ6MpbYv0QNJNZ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Affectionate</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 5
+      - 6
+    type: text
+    weight: 2
+  - _id: q66hezJMKK4WMxkn
+    _key: "!tables.results!IMZtJrBlTxAIZQln.q66hezJMKK4WMxkn"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Ambitious</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 7
+      - 8
+    type: text
+    weight: 2
+  - _id: sX2FESRG0cL0OY4v
+    _key: "!tables.results!IMZtJrBlTxAIZQln.sX2FESRG0cL0OY4v"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Athletic</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 9
+      - 10
+    type: text
+    weight: 2
+  - _id: PfGK2Usi7YlEJPaI
+    _key: "!tables.results!IMZtJrBlTxAIZQln.PfGK2Usi7YlEJPaI"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Baking Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 11
+      - 12
+    type: text
+    weight: 2
+  - _id: IjfGpFDAz6fM55XW
+    _key: "!tables.results!IMZtJrBlTxAIZQln.IjfGpFDAz6fM55XW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Brave</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 13
+      - 14
+    type: text
+    weight: 2
+  - _id: QDMu7o3d8QtJ1SjN
+    _key: "!tables.results!IMZtJrBlTxAIZQln.QDMu7o3d8QtJ1SjN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Caring</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 15
+      - 16
+    type: text
+    weight: 2
+  - _id: fYdqp1Kt9yeN6EMb
+    _key: "!tables.results!IMZtJrBlTxAIZQln.fYdqp1Kt9yeN6EMb"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Charming</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 17
+      - 18
+    type: text
+    weight: 2
+  - _id: shuwlD1dlpQtddrp
+    _key: "!tables.results!IMZtJrBlTxAIZQln.shuwlD1dlpQtddrp"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Cooking Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 19
+      - 20
+    type: text
+    weight: 2
+  - _id: k9cKaTrBmQpirjjo
+    _key: "!tables.results!IMZtJrBlTxAIZQln.k9cKaTrBmQpirjjo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Courageous</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 21
+      - 22
+    type: text
+    weight: 2
+  - _id: UdoOinSFC94xc4f0
+    _key: "!tables.results!IMZtJrBlTxAIZQln.UdoOinSFC94xc4f0"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Creative</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 23
+      - 24
+    type: text
+    weight: 2
+  - _id: sRirlVo6uFsh1u6h
+    _key: "!tables.results!IMZtJrBlTxAIZQln.sRirlVo6uFsh1u6h"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Drinking Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 25
+      - 26
+    type: text
+    weight: 2
+  - _id: wQN1bMPPfK4bKNAt
+    _key: "!tables.results!IMZtJrBlTxAIZQln.wQN1bMPPfK4bKNAt"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…they describe themself as an <strong>Elflines Online
+      player</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 27
+      - 28
+    type: text
+    weight: 2
+  - _id: QYywmgFRWoDWurA1
+    _key: "!tables.results!IMZtJrBlTxAIZQln.QYywmgFRWoDWurA1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... an Exec</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 29
+      - 30
+    type: text
+    weight: 2
+  - _id: mX5xGsOU6h3SnTSd
+    _key: "!tables.results!IMZtJrBlTxAIZQln.mX5xGsOU6h3SnTSd"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Fishing Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 31
+      - 32
+    type: text
+    weight: 2
+  - _id: 8ZduSWvqQpCRmWBN
+    _key: "!tables.results!IMZtJrBlTxAIZQln.8ZduSWvqQpCRmWBN"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Fixer</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 33
+      - 34
+    type: text
+    weight: 2
+  - _id: 9kF90wjMBfS1dtGs
+    _key: "!tables.results!IMZtJrBlTxAIZQln.9kF90wjMBfS1dtGs"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Foodie</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 35
+      - 36
+    type: text
+    weight: 2
+  - _id: eLdZ1OnALN4jbFoH
+    _key: "!tables.results!IMZtJrBlTxAIZQln.eLdZ1OnALN4jbFoH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Funny</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 37
+      - 38
+    type: text
+    weight: 2
+  - _id: 7y1SfMOufpYs8KwH
+    _key: "!tables.results!IMZtJrBlTxAIZQln.7y1SfMOufpYs8KwH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Gardening Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 39
+      - 40
+    type: text
+    weight: 2
+  - _id: p9GHJIbLDqc0FAWL
+    _key: "!tables.results!IMZtJrBlTxAIZQln.p9GHJIbLDqc0FAWL"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Hard Working</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 41
+      - 42
+    type: text
+    weight: 2
+  - _id: r9quTi9oyED8EGkx
+    _key: "!tables.results!IMZtJrBlTxAIZQln.r9quTi9oyED8EGkx"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Hiking Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 43
+      - 44
+    type: text
+    weight: 2
+  - _id: s8swqmL4HKUAYl2M
+    _key: "!tables.results!IMZtJrBlTxAIZQln.s8swqmL4HKUAYl2M"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Hopeful</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 45
+      - 46
+    type: text
+    weight: 2
+  - _id: nIsPHptbT33gc38b
+    _key: "!tables.results!IMZtJrBlTxAIZQln.nIsPHptbT33gc38b"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Hunting Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 47
+      - 48
+    type: text
+    weight: 2
+  - _id: qC76YrhpPWX8Airc
+    _key: "!tables.results!IMZtJrBlTxAIZQln.qC76YrhpPWX8Airc"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Independent</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 49
+      - 50
+    type: text
+    weight: 2
+  - _id: bG1kjE7pH2Ha35Wf
+    _key: "!tables.results!IMZtJrBlTxAIZQln.bG1kjE7pH2Ha35Wf"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Insightful</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 51
+      - 52
+    type: text
+    weight: 2
+  - _id: 7SY0jTIV5kN7kup7
+    _key: "!tables.results!IMZtJrBlTxAIZQln.7SY0jTIV5kN7kup7"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Intelligent</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 53
+      - 54
+    type: text
+    weight: 2
+  - _id: Y7MiAMEGPVC5i4DY
+    _key: "!tables.results!IMZtJrBlTxAIZQln.Y7MiAMEGPVC5i4DY"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Lawman</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 55
+      - 56
+    type: text
+    weight: 2
+  - _id: M3is2ETO9Lzo9oF8
+    _key: "!tables.results!IMZtJrBlTxAIZQln.M3is2ETO9Lzo9oF8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Loving</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 57
+      - 58
+    type: text
+    weight: 2
+  - _id: aa7n2A5vaaI14Fvw
+    _key: "!tables.results!IMZtJrBlTxAIZQln.aa7n2A5vaaI14Fvw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Loyal</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 59
+      - 60
+    type: text
+    weight: 2
+  - _id: SC4OKNFgvwZ2CYW2
+    _key: "!tables.results!IMZtJrBlTxAIZQln.SC4OKNFgvwZ2CYW2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Media</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 61
+      - 62
+    type: text
+    weight: 2
+  - _id: RZaEcBwxxOBA5JUV
+    _key: "!tables.results!IMZtJrBlTxAIZQln.RZaEcBwxxOBA5JUV"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Medtech</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 63
+      - 64
+    type: text
+    weight: 2
+  - _id: fyLePbaMaLiSWKxj
+    _key: "!tables.results!IMZtJrBlTxAIZQln.fyLePbaMaLiSWKxj"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Modest</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 65
+      - 66
+    type: text
+    weight: 2
+  - _id: hPI5Lb3xCuZjBuKP
+    _key: "!tables.results!IMZtJrBlTxAIZQln.hPI5Lb3xCuZjBuKP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Netrunner</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 67
+      - 68
+    type: text
+    weight: 2
+  - _id: kIgPFXQgbhQK3Jxg
+    _key: "!tables.results!IMZtJrBlTxAIZQln.kIgPFXQgbhQK3Jxg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Nomad</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 69
+      - 70
+    type: text
+    weight: 2
+  - _id: 1DB117QtDq1gD8qo
+    _key: "!tables.results!IMZtJrBlTxAIZQln.1DB117QtDq1gD8qo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Optimistic</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 71
+      - 72
+    type: text
+    weight: 2
+  - _id: kjrmIkpRz516c1Dy
+    _key: "!tables.results!IMZtJrBlTxAIZQln.kjrmIkpRz516c1Dy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Passionate</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 73
+      - 74
+    type: text
+    weight: 2
+  - _id: 9X3unu7d6yUZqweC
+    _key: "!tables.results!IMZtJrBlTxAIZQln.9X3unu7d6yUZqweC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Patient</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 75
+      - 76
+    type: text
+    weight: 2
+  - _id: Rh2iv8N7xNMR0nsy
+    _key: "!tables.results!IMZtJrBlTxAIZQln.Rh2iv8N7xNMR0nsy"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Physically Fit</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 77
+      - 78
+    type: text
+    weight: 2
+  - _id: lihMSaLZXkBI9HSP
+    _key: "!tables.results!IMZtJrBlTxAIZQln.lihMSaLZXkBI9HSP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Quiet</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 79
+      - 80
+    type: text
+    weight: 2
+  - _id: VdBKUruF2dtwDeZT
+    _key: "!tables.results!IMZtJrBlTxAIZQln.VdBKUruF2dtwDeZT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Rational</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 81
+      - 82
+    type: text
+    weight: 2
+  - _id: IpubeULUZSnadqRK
+    _key: "!tables.results!IMZtJrBlTxAIZQln.IpubeULUZSnadqRK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Respectful</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 83
+      - 84
+    type: text
+    weight: 2
+  - _id: gXAU7NunImDH4EVi
+    _key: "!tables.results!IMZtJrBlTxAIZQln.gXAU7NunImDH4EVi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Rockerboy</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 85
+      - 86
+    type: text
+    weight: 2
+  - _id: C9QSytAvCX7ePWJ2
+    _key: "!tables.results!IMZtJrBlTxAIZQln.C9QSytAvCX7ePWJ2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Running Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 87
+      - 88
+    type: text
+    weight: 2
+  - _id: FNgN170c6Qc0CuZk
+    _key: "!tables.results!IMZtJrBlTxAIZQln.FNgN170c6Qc0CuZk"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Solo</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 89
+      - 90
+    type: text
+    weight: 2
+  - _id: MoUBvh6p2HaLHi3c
+    _key: "!tables.results!IMZtJrBlTxAIZQln.MoUBvh6p2HaLHi3c"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Spontaneous</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 91
+      - 92
+    type: text
+    weight: 2
+  - _id: rBy23rzuSojOIfEO
+    _key: "!tables.results!IMZtJrBlTxAIZQln.rBy23rzuSojOIfEO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Sports Enthusiast</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 93
+      - 94
+    type: text
+    weight: 2
+  - _id: z1R4PXDvODRRJcQg
+    _key: "!tables.results!IMZtJrBlTxAIZQln.z1R4PXDvODRRJcQg"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>…they describe themself as a <strong>Tabletop RPG
+      Enthusiast</strong></p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 95
+      - 96
+    type: text
+    weight: 2
+  - _id: Oexl5MZx9cE1ynNt
+    _key: "!tables.results!IMZtJrBlTxAIZQln.Oexl5MZx9cE1ynNt"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... a Tech</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 97
+      - 98
+    type: text
+    weight: 2
+  - _id: dhxTHzePBgx60i8U
+    _key: "!tables.results!IMZtJrBlTxAIZQln.dhxTHzePBgx60i8U"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>... Virtuous</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/traits.svg
+    name: They describe themself as...
+    range:
+      - 99
+      - 100
+    type: text
+    weight: 2
+sort: 0

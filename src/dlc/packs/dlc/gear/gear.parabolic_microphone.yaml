@@ -1,0 +1,48 @@
+_id: zrHcEmuNtABJGLeu
+_key: "!items!zrHcEmuNtABJGLeu"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/parabolic-microphone.svg
+name: Parabolic Microphone
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A handheld microphone that allows the user to amplify sounds up to 30m/yds
+        away when used with a linked
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent} or
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Lo7rXsc5ToQf2KlN]{Audio Recorder}
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Going Quiet
+      page: 7
+  usage: toggled
+type: gear

@@ -1,0 +1,55 @@
+_id: 2h87i3r9DkK7sabX
+_key: "!items!2h87i3r9DkK7sabX"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/doberman500_markingscent.svg
+name: Doberman 500 Marking Scent
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 0
+  amount: 12
+  brand: KTech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Unique form of ammunition for the
+        @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.iSyf14qCf2US6im1]{Air Pistol}.
+        Provides specialized scent marking on target.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
+  price:
+    market: 50
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 44
+  type: special
+  variety: custom
+type: ammo

@@ -1,0 +1,50 @@
+_id: AFb5xt7apNdhlLWp
+_key: "!items!AFb5xt7apNdhlLWp"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/telectronics_minimag_speakers.svg
+name: MiniMag Speakers
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: Telectronics
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Small Magnetic Speakers. Can play audio from a connected
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}within
+        100m/yds.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: 12 Days of Gearmas
+      page: 4
+    - book: Interface RED v4
+      page: 68
+  usage: toggled
+type: gear

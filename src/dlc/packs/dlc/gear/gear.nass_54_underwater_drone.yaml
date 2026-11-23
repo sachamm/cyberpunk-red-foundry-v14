@@ -1,0 +1,79 @@
+_id: UKKqkfbap49lWpg3
+_key: "!items!UKKqkfbap49lWpg3"
+effects: []
+flags:
+  cyberpunk-red-core: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/nass-54-underwater-drone.svg
+name: NASS-54 Underwater Drone
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  amount: 1
+  brand: Militech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A semi-autonomous torpedeo drone produced by Militech. Can be neutralized in 5
+        min with a
+        [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV21 Electronic/Security Tech]]{DV21 Electronic/Security Tech}
+        check. This drone is equipped with:
+      </p>
+      <ul>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}
+          </p>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.JwM7wAbmRZfL3Z3c]{Sonar}
+          </p>
+        </li>
+        <li>
+          <p>Retractable Manipulator Arm</p>
+          <ul>
+            <li>
+              <p>
+                @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.hAx2MqVm4JuwXsSV]{Tool Hand}
+              </p>
+            </li>
+            <li>
+              <p>
+                @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.PxOjhUUs7cRULv75]{Circular Saw}
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.KgqUdz9Fs55747gv]{Grenade Launchers}
+            x2
+          </p>
+        </li>
+      </ul>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 10000
+  providesHardening: false
+  revealed: true
+  source: null
+  sources:
+    - book: TotR — Street Stories
+      page: 58
+  usage: toggled
+type: gear

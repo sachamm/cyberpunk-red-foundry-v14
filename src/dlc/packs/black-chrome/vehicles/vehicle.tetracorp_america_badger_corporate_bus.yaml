@@ -1,0 +1,48 @@
+_id: Qs40FdFNYmpEf6lM
+_key: "!items!Qs40FdFNYmpEf6lM"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/vehicles/badger-corporate-bus.svg
+name: TetraCorp America Badger Corporate Bus
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: TetraCorp America
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A luxurious bus for corporate road trips. Equally well equipped for work
+        meetings and after meeting drinks.
+      </p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 6</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 50000
+  sdp: 70
+  seats: 12
+  sources:
+    - book: Black Chrome
+      page: 80
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+type: vehicle

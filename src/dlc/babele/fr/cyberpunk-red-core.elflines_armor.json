@@ -1,0 +1,42 @@
+{
+  "label": "Armure",
+  "mapping": {},
+  "entries": {
+    "Chainmail Armor (Body)": {
+      "name": "Cotte de mailles (Corps)",
+      "description": "<p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>\n"
+    },
+    "Chainmail Armor (Head)": {
+      "name": "Cotte de mailles (Tête)",
+      "description": "<p>\n  Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and\n  MOVE.\n</p>\n"
+    },
+    "Full Plate Armor (Body)": {
+      "name": "Armure de plate (Corps)",
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
+    },
+    "Full Plate Armor (Head)": {
+      "name": "Armure de plate (Tête)",
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
+    },
+    "Leather Armor (Body)": {
+      "name": "Armure de cuir (Corps)",
+      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
+    },
+    "Leather Armor (Head)": {
+      "name": "Armure de cuir (Tête)",
+      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
+    },
+    "Shield": {
+      "name": "Bouclier",
+      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
+    },
+    "Studded Leather Armor (Body)": {
+      "name": "Armure de cuir clouté (Corps)",
+      "description": "<p>Standard Studded Leather Armor. No armor penalty.</p>\n"
+    },
+    "Studded Leather Armor (Head)": {
+      "name": "Armure de cuir clouté (Tête)",
+      "description": "<p>Standard Studded Leather Armor for your head. No armor penalty.</p>\n"
+    }
+  }
+}

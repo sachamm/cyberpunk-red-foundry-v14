@@ -1,0 +1,55 @@
+_id: QbTwGu5hr1Ty9tlp
+_key: "!items!QbTwGu5hr1Ty9tlp"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
+name: Kirama Training Deck
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Kirama
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum
+        hardware specs.
+      </p>
+      <p>5 slots only for Programs.</p>
+      <p>
+        Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain
+        damage from NET combat is doubled.
+      </p>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 5
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 20
+  providesHardening: false
+  quality: standard
+  size: 1
+  sources:
+    - book: Midnight with the Upload
+      page: 3
+    - book: Interface RED v3
+      page: 39
+type: cyberdeck

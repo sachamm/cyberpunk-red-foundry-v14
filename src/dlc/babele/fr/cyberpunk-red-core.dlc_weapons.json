@@ -1,0 +1,632 @@
+{
+  "label": "Armes",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
+  "entries": {
+    "Aegis": {
+      "name": "Égide",
+      "description": "<p>\n  This weapon can't cause Critical Injuries, can't ablate armor, and if it would\n  reduce a target to under 1 HP it instead leaves them Unconscious on 1 HP.\n</p>\n<blockquote>\n  <p>\n    <strong>DV13 Heavy Weapons Check</strong> to spray an area similar to using\n    shotgun shells.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Arasaka Minami 10": {
+      "name": "Arasaka Minami 10",
+      "description": "<p>A concealable SMG. +1 to Attack.</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Arasaka Minami 10 P/M/S": {
+      "name": "Arasaka Minami 10 P/M/S",
+      "description": "<p>A concealable SMG. +1 to Attack. Equipped with a Silencer.</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Arasaka Origami": {
+      "name": "Arasaka Origami",
+      "description": "<p>A concealable folding bow, reloaded as part of an Attack Action.</p>\n<blockquote>\n  <p>Foilding/Unfolding does not require an <strong>Action</strong></p>\n</blockquote>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Arasaka Rapid Assault": {
+      "name": "Arasaka Rapid Assault",
+      "description": "<p>An all-purpose shotgun.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Arasaka WSS Sniper System": {
+      "name": "Arasaka WSS Sniper System",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Archimedes": {
+      "name": "Archimède",
+      "description": "<p>\n  Uses the Pilot Air Vehicle Skill instead of the Heavy Weapons Skill to fire,\n  requires the has Targeting Scope Cyberware, and can only use Smart Rockets. It\n  does come with one Smart Rocket included however. How nice.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "ARS-5 Submachine Gun": {
+      "name": "Pistolet-mitrailleur ARS-5",
+      "description": "<p>\n  This heavy SMG is the complete package; it comes with a Smartgun Link,\n  Infrared Nightvision Scope, and a Sniping Scope.\n</p>\n<blockquote><p>These upgrades cannot be removed.</p></blockquote>\n",
+      "dvTable": "DV SMG"
+    },
+    "Ballistic Harpoon Launcher": {
+      "name": "Ballistic Harpoon Launcher",
+      "description": "<p>\n  A very heavy exotic melee weapon that may also be launched as a ranged weapon\n  as if it were a crossbow.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Big Dreem": {
+      "name": "Big Dreem",
+      "description": "<p>\n  Exotic SMG. Autofire only. Even if you drop the weapon, it will continue to\n  Autofire.\n</p>\n<blockquote>\n  <p>\n    Can only load custom\n    @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.OCEWvjde4ZKq78ao]{Big Dreem\n Rounds},\n    sold seperately.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV SMG (Autofire)"
+    },
+    "Burst Flamethrower": {
+      "name": "Lance-flammes à rafale",
+      "description": "<p>\n  Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon\n  burn for 4HP a turn.\n</p>\n<p>\n  Additionally, this weapon can consume all it's remaining ammo to shoot a\n  fireball, which explodes in a similar fashion to an incendiary grenade. The\n  user of the weapon is also consumed by the fireball, getting Deadly on Fire*.\n</p>\n<p>\n  <em\n    >*Special fire mode not currently supported; will need to be manually\n    applied</em\n  >\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Captain Cuddlefish Ultra Snag-Em": {
+      "name": "Captain Cuddlefish Ultra Snag-Em",
+      "description": "<p>\n  <strong>Exotic Light Melee Weapon</strong> Buy and equip collectible outfits\n  for your Captain Cuddlefish! (Sold separately.)\n</p>\n<blockquote>\n  <p>\n    Able to make melee attacks up to 10 m/yds away. Grants a +2 bonus to aimed\n    shots against held items when using this weapon.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Thrown Weapon"
+    },
+    "Chadran Arms City Reaper": {
+      "name": "Chadran Arms City Reaper",
+      "description": "<p>\n  A heavy SMG. Due to its size it can't be concealed. If you roll 1 on Attack\n  (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Chadran Arms Jungle Reaper": {
+      "name": "Chadran Arms Jungle Reaper",
+      "description": "<p>\n  A poor quality assault rifle. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Chainknife": {
+      "name": "Couteau tronçonneur",
+      "description": "<p>\n  Takes an action to rev up, but once revved is a powerful melee weapon. When\n  not revved deals 2d6 damage*.\n</p>\n<p>\n  <em\n    >*Not revved mode not currently supported, so will need to manually reduce\n    damage</em\n  >\n</p>\n",
+      "dvTable": ""
+    },
+    "Crusher": {
+      "name": "Crusher",
+      "description": "<p>A Very Heavy Pistol that fires shotgun shells. What's not to love?</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Dai Lung Cybermag 20": {
+      "name": "Dai Lung Cybermag 20",
+      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear. Equipped with a Drum Magazine.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Dai Lung Magnum": {
+      "name": "Dai Lung Magnum",
+      "description": "<p>\n  A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Dai Lung Streetmaster": {
+      "name": "Dai Lung Streetmaster",
+      "description": "<p>\n  A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the\n  gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Darra Polytechnic Binary": {
+      "name": "Darra Polytechnic Binary",
+      "description": "<p>\n  A standard-issue assault rifle. Equipped with Grenade Launcher Underbarrel.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Dragon Flamethrower": {
+      "name": "Crache-feu Dragon",
+      "description": "<p>\n  Fire at your finger tips. Can only fire Incendiary Shotgun Shells, but targets\n  ignited by this weapon burn for 4HP a turn.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "E-TACK Rapid Responder": {
+      "name": "E-TACK Rapid Responder",
+      "description": "<p>Comes equipped with a Extended Magazine and Integrated Stun Bayonet.</p>\n<p>\n  This weapon may shoot 3 rounds at a time in <strong>Burst Mode</strong>*\n  dealing [[/r 3d6dmgab2 #Burst Mode (Armor Piercing)]]{3d6 damage}.\n</p>\n<blockquote><p>*Burst Mode is not currently supported .</p></blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Eagletech Arbelest": {
+      "name": "Eagletech Arbelest",
+      "description": "<p>\n  An excellent quality crossbow equipped with a Smartgun Link, reloaded as part\n  of an Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Bearcat": {
+      "name": "Eagletech Bearcat",
+      "description": "<p>\n  An excellent quality recurve bow , reloaded as part of an Attack action. +1 to\n  Attack check.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Scorpion": {
+      "name": "Eagletech Scorpion",
+      "description": "<p>\n  A sleek crossbow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Stryker": {
+      "name": "Eagletech Stryker",
+      "description": "<p>\n  A crossbow branded with the Eagletech logo, reloaded as part of an Attack\n  action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Tigercat": {
+      "name": "Eagletech Tigercat",
+      "description": "<p>\n  A compound bow equipped with a Smart Link, reloaded as part of an Attack\n  action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Tomcat": {
+      "name": "Eagletech Tomcat",
+      "description": "<p>\n  A revitalized bow branded with the Eagletech logo, reloaded as part of an\n  Attack Action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Enviro-launcher": {
+      "name": "Enviro-lanceur",
+      "description": "<p>\n  This specially engineered rocket launcher is only capable of being fired once.\n  However, once it has been fired the user can use an action to break of a vial\n  attached to the launcher, which will release an enzyme that will destroy the\n  launcher totally within an hour.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "EVW Mountaineer": {
+      "name": "EVW Mountaineer",
+      "description": "<p>\n  A hunting crossbow equipped with an underbarrel grapple gun, reloaded as part\n  of an Attack action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Faisal's Convenience (Armor-Piercing)": {
+      "name": "Faisal's Convenience (Armor-Piercing)",
+      "description": "<p>\n  A single use disposable very heavy pistol loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.oFcsVOL1UHu7MTnu]{8\n Armor-Piercing Rounds}.\n  It can't be concealed or reloaded.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Faisal's Convenience (Basic)": {
+      "name": "Faisal's Convenience (Basic)",
+      "description": "<p>\n  A single use disposable very heavy pistol loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.NQP4I9heyv9fXj46]{8 Basic\n Rounds}.\n  It can't be concealed or reloaded.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Faisal's Convenience (Expansive)": {
+      "name": "Faisal's Convenience (Expansive)",
+      "description": "<p>\n  A single use disposable very heavy pistol loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.6FCKkulioIa0IQOr]{8\n Expansive Rounds}.\n  It can't be concealed or reloaded.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Faisal's Convenience (Incendiary)": {
+      "name": "Faisal's Convenience (Incendiary)",
+      "description": "<p>\n  A single use disposable very heavy pistol loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.TIDzfziwhCxuIrnT]{8\n Incendiary Rounds}.\n  It can't be concealed or reloaded.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Faisal's Convenience (Rubber)": {
+      "name": "Faisal's Convenience (Rubber)",
+      "description": "<p>\n  A single use disposable very heavy pistol loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.6ta0PBU9FFrkg97B]{8 Rubber\n Rounds}.\n  It can't be concealed or reloaded.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Faisal's Escape Plan": {
+      "name": "Faisal's Escape Plan",
+      "description": "<p>\n  A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the\n  gun jams and requires using an action to clear.\n</p>\n<blockquote>\n  <p>\n    Can be thrown as if it were a\n    @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.7xhKxgwOELzaPyYr]{Smoke\n Grenade}.\n    When thrown, any installed attatchments and loaded ammunition are Destroyed\n    Beyond Repair.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Faisal's Only Chance (Armor-Piercing)": {
+      "name": "Faisal's Only Chance (Armor-Piercing)",
+      "description": "<p>\n  A single use disposable shotgun loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.YFtrIcr5qsT2zO9V]{4\n Armor-Piercing Rounds}.\n  It can't be concealed or reloaded. If you roll 1 on Attack (Crit fail) the gun\n  jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Faisal's Only Chance (Basic)": {
+      "name": "Faisal's Only Chance (Basic)",
+      "description": "<p>\n  A single use disposable shotgun loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.YFnV9OetCCRru5Ky]{4 Basic\n Rounds}.\n  It can't be concealed or reloaded. If you roll 1 on Attack (Crit fail) the gun\n  jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Faisal's Only Chance (Expansive)": {
+      "name": "Faisal's Only Chance (Expansive)",
+      "description": "<p>\n  A single use disposable shotgun loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.WjWIkjjjMW4j5Bzp]{4\n Expansive Rounds}.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Faisal's Only Chance (Incendiary)": {
+      "name": "Faisal's Only Chance (Incendiary)",
+      "description": "<p>\n  A single use disposable shotgun loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.yxGinCJXUJjdsK0g]{4\n Incendiary Rounds}.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Faisal's Only Chance (Rubber)": {
+      "name": "Faisal's Only Chance (Rubber)",
+      "description": "<p>\n  A single use disposable shotgun loaded with\n  @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.qRKLIX7yU2n83JKJ]{4 Rubber\n Rounds}.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Federated Arms Super Chief Plus": {
+      "name": "Federated Arms Super Chief Plus",
+      "description": "<p>\n  A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit\n  fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Federated Arms Tech-Assault III": {
+      "name": "Federated Arms Tech-Assault III",
+      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Federated Arms X-9mm": {
+      "name": "Federated Arms X-9mm",
+      "description": "<p>A concealable, medium-sized pistol.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Fire Extinguisher": {
+      "name": "Extincteur",
+      "description": "<p>\n  A two-handed exotic very heavy pistol that extinguishes burning objects and\n  edgerunners.\n</p>\n<p>\n  <em>Maximum Range 6m/yds, roll combat damage only when fighting fires.</em>\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Flare Gun": {
+      "name": "Pistolet lance-fusées",
+      "description": "<p>\n  As well as normal Grenade Ammunition, this weapon can fire road flares*. They\n  don't deal any damage, but if fired into the air can be seen from 3 miles. You\n  cannot install this weapon in Pop-up Cyberware.\n</p>\n<p>\n  <em\n    >*Currently not supported so will need to manually delete a road flare from\n    actors inventory after firing</em\n  >\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "Growler": {
+      "name": "Growler",
+      "description": "<p>\n  An Exotic Rocket Launcher. Anything with a biological brain must make a\n  <strong>DV 19 Resist Torture/Drugs Check</strong> or suffer a\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.oi3MEn9Y8zdbooNe]{Brain\n Injury}\n  Critical Injury. Reloading takes <strong>2 Actions</strong>. Requires\n  <strong>BODY 11+</strong> unless mounted.\n</p>\n<blockquote>\n  <p>\n    The source material is unclear how this experimental weapon should function.\n  </p>\n  <p>\n    Ask your GM if it is able to shoot and deal damage via standard\n    @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.dHHTQLHUkd0IX8GI]{Rocket\n (Armor-Piercing)}\n    &amp;\n    @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.e2w1oKiv8t68chiI]{Rocket\n (Smart)}\n    or if it requires custom\n    @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.FzmgjXxurHiMxdlv]{Rocket\n (Growler)}\n    ammo that deals <strong>0</strong> damage.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "GunMart Hawk's Eye": {
+      "name": "GunMart Hawk's Eye",
+      "description": "<p>\n  A concealable poor quality folding bow, reloaded as part of an Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "GunMart Home Defender": {
+      "name": "GunMart Home Defender",
+      "description": "<p>\n  An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "GunMart Hunter": {
+      "name": "GunMart Hunter",
+      "description": "<p>\n  A poor quality crossbow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "GunMart Midnight Defender": {
+      "name": "GunMart Midnight Defender",
+      "description": "<p>\n  A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear. Comes with an integrated IR/Nightvision\n  Scope.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "GunMart Midnight Hunter": {
+      "name": "GunMart Midnight Hunter",
+      "description": "<p>\n  A poor quality crossbow equipped with a night vision scope, reloaded as part\n  of an Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "GunMart Porta-Morta": {
+      "name": "GunMart Porta-Morta",
+      "description": "<p>\n  A poor quality grenade launcher equipped with a drum magazine. If you roll 1\n  on Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "GunMart Sherwood": {
+      "name": "GunMart Sherwood",
+      "description": "<p>\n  A poor quality bow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "GunMart Snipe-Starr": {
+      "name": "GunMart Snipe-Starr",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on\n  Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Hellbringer": {
+      "name": "Hellbringer",
+      "description": "<p>\n  <strong>Exotic Very Heavy Pistol</strong> When this things shoots, you know\n  about it. If fired by someone with less than 10 BODY, this pistol jams. An\n  action is required to unjam it.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Hello Cutie 1TruLuv": {
+      "name": "Hello Cutie 1TruLuv",
+      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>\n  Equipped with a Sniping Scope and Infrared Night Vision Scope, and built-in\n  Agent which includes a pseudo AI girlfriend who can recognize and talk to the\n  owner.\n</p>\n<p>\n  Take good care of it/her and use it/her regularly and the weapon improves.\n  Neglect it/her and you'll have to apologize...<em><br /></em>\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Hello Cutie Fisher Kitty": {
+      "name": "Hello Cutie Fisher Kitty",
+      "description": "<p>\n  <strong>Exotic Heavy Pistol (50m/yd Max Range)</strong> Fires mini-harpoons\n  that cannot cause critcal injuries. Each mini-harpoon sticks to its target\n  regardless of damage dealt, and removing a mini-harpoon takes 1 Action. All\n  retractable mini-harpoons are dislodged and recovered when using an action to\n  reloading the weapon.\n</p>\n<blockquote>\n  <p>\n    The user may use an action to electrify the cables connected to each\n    mini-harpoon and deal\n    [[/r 2d6dmgab0cd0#Electric Damage (Ignores Armor)]]{2d6} damage directly to\n    any connected target's HP. If a target is connected by 3 or more\n    mini-harpoons they take\n    [[/r 3d6dmgab0cd0#Electric Damage (Ignores Armor)]]{3d6} damage instead.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Hello Cutie Gun-Gun Friend-Friend": {
+      "name": "Hello Cutie Gun-Gun Friend-Friend",
+      "description": "<p>\n  <strong>Excellent Quality Assault Rifle</strong> that can conceal another\n  one-handed gun inside Gun-Gun Friend-Friend's frame as an action*. Contains\n  two available upgrade slots that do not affect the concealed weapon.\n</p>\n<p>\n  *Currently unsupported, make a note on any weapon you \"install\" into this gun.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Hello Cutie Happy Dancer": {
+      "name": "Hello Cutie Happy Dancer",
+      "description": "<p>\n  A heavy SMG that plays video game sounds when fired. Due to its size it can't\n  be concealed. +1 to Attack.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Hello Cutie Hidden Cougar": {
+      "name": "Hello Cutie Hidden Cougar",
+      "description": "<p>\n  A concealable heavy SMG. +1 to Attack. Incompatible with any magazine\n  upgrades.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Hello Cutie Hypurr-Hammer": {
+      "name": "Hello Cutie Hypurr-Hammer",
+      "description": "<p>\n  <strong>Two-Handed Very Heavy Melee Weapon</strong> requires BODY 9 or higher\n  to wield effectively. Comes in 4 styles: Bengal, Egyptian Mau, Sphinx, and\n  Ussuri.\n</p>\n<blockquote>\n  <ul>\n    <li><p>Does not halve SP like normal melee weapons.</p></li>\n    <li>\n      <p>\n        User rolls twice and chooses the outcome when determining critical\n        injuries.\n      </p>\n    </li>\n    <li><p>Users with Body 8 or less deal 1d6 less damage.</p></li>\n  </ul>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "Hello Cutie Janus Hex": {
+      "name": "Hello Cutie Janus Hex",
+      "description": "<p>\n  <strong>Excellent Quality Very Heavy Pistol</strong> that shoots proprietary\n  Scent Balls. Incompatible with all magazine upgrades.\n</p>\n<blockquote>\n  <p>\n    Targets with meat eyes must suffer -3 penalty to ranged attack and\n    perception checks unless they succeed a\n    <strong>DV 15 Resist Drugs/Torture check</strong>, in which case the penalty\n    is reduced by 2.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Hello Cutie Modball Gun": {
+      "name": "Hello Cutie Modball Gun",
+      "description": "<p>\n  <strong>Medium Pistol</strong> that shoots ModBalls. Incompatible with\n  magazine upgrades.\n</p>\n<blockquote>\n  <p>\n    ModBall ammo can be purchased or created with a ModBall Construction Kit.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Hello Cutie My Friend The Ocelot": {
+      "name": "Hello Cutie My Friend The Ocelot",
+      "description": "<p>\n  <strong>Excellent Quality Shotgun</strong> that has an alternate SMG style\n  auto fire mode*.\n</p>\n<blockquote>\n  <p>Uses only Shotgun Slug Ammunition, cannot install magazine upgrades.</p>\n</blockquote>\n<p>*Alternate weapon fire modes are currently not supported.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Hello Cutie Thundercat Bat": {
+      "name": "Hello Cutie Thundercat Bat",
+      "description": "<p>\n  <strong>Excellent Quality Exotic Two-handed Medium Melee Weapon</strong> Comes\n  with an integrated speaker that plays beloved baseball sound effects.\n</p>\n<blockquote>\n  <ul>\n    <li>\n      <p>\n        Both user and target suffer the\n        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged\n Ear}\n        critical injury if they fail a\n        <strong>DV15 Resist Torture/Drugs Check.</strong>\n      </p>\n    </li>\n    <li>\n      <p>\n        Target is knocked unconscious if damage dealt would reduce them to under\n        1 HP. Doesn't cause Critical Injuries or ablate armor.\n      </p>\n    </li>\n  </ul>\n</blockquote>\n",
+      "dvTable": ""
+    },
+    "IMI UZ 2045 Pro": {
+      "name": "IMI UZ 2045 Pro",
+      "description": "<p>\n  A heavy SMG. Due to its size it can't be concealed. Equipped with a Smartgun\n  Link.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Kodiak Hunter": {
+      "name": "Kodiak Hunter",
+      "description": "<p>A long-distance hunting rifle. +1 to Attack.</p>\n<blockquote>\n  <p>\n    An action is required to eject the spent round each time the rifle is fired.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "M-02 Heavy Rifle": {
+      "name": "Fusil Lourd M-02",
+      "description": "<p>\n  <strong>Assault Rifle</strong> This weapon fires it's own custom ammunition,\n  priced at 500eb (Expensive) for 80 rounds of Armor-Piercing ammo.\n</p>\n<blockquote><p>Can only install Scope upgrades.</p></blockquote>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "M-95A4 Assault Weapon": {
+      "name": "M-95A4 Assault Weapon",
+      "description": "<p>\n  An excellent quality assault rifle equipped with a Drum Magazine &amp; Sniping\n  Scope.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "MetaCorp Hela Smart Launcher": {
+      "name": "MetaCorp Hela Smart Launcher",
+      "description": "<p>\n  Bring out the big guns. This smartgun link equipped rocket launcher will do\n  some damage.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "MicroCutie by HelloCutie": {
+      "name": "MicroCutie de HelloCutie",
+      "description": "<p>\n  An excellent quality pistol with a unique Hypurrburst™ mode fire mode*. The\n  weapon purrs when used. Hypurrburst™ is disabled if less than 4 bullets are in\n  the clip.\n</p>\n<p>When in Hypurrburst™ mode, the following applies</p>\n<ul>\n  <li>MicroCutie is ROF 1</li>\n  <li>Purrs audibly</li>\n  <li>Fires a single shot, drains clip, and does 4d6 damage</li>\n  <li>Cannot be used to make aimed shots</li>\n</ul>\n<p>\n  <em\n    >*Special fire mode not currently supported; will need to be manually\n    applied</em\n  >\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Militech Avenger": {
+      "name": "Militech Avenger",
+      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Militech Boomer Buster": {
+      "name": "Militech Boomer Buster",
+      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Militech Bulldog": {
+      "name": "Militech Bulldog",
+      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Militech Dragon": {
+      "name": "Militech Dragon",
+      "description": "<p>An excellent quality assault rifle. +1 to Attack.</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Militech Hotshot L-ATGM": {
+      "name": "Militech Hotshot L-ATGM",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. +1 to\n  Attack.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Militech Hotshot L-ATGM-N": {
+      "name": "Militech Hotshot L-ATGM-N",
+      "description": "<p>\n  Bring out the big guns. Equipped with an IR/Nightvision scope, this rocket\n  launcher will do some damage. +1 to Attack.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Militech Mini-Gat": {
+      "name": "Militech Mini-Gat",
+      "description": "<p>A concealable SMG with 5 rotating barrels.</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Militech Mini-Grenade": {
+      "name": "Militech Mini-Grenade",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "Militech Ninja Sniper": {
+      "name": "Militech Ninja Sniper",
+      "description": "<p>\n  A long-distance sniper rifle equipped with a silencer. Holds 4 bullets in a\n  magazine.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Militech Ronin": {
+      "name": "Militech Ronin",
+      "description": "<p>A standard-issue assault rifle.</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Militech Ronin Hyperlight Assualt": {
+      "name": "Militech Ronin Hyperlight Assualt",
+      "description": "<p>\n  An excellent quality light assault rifle. +1 to Attack. Equipped with an\n  Extended Magazine.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Militech Sherriff": {
+      "name": "Militech Sherriff",
+      "description": "<p>\n  A concealable, heavy pistol. +1 to Attack. Incompatible with magazine\n  upgrades.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Militech Urban": {
+      "name": "Militech Urban",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Militech Viper": {
+      "name": "Militech Viper",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Multiple Ammunition Pistol": {
+      "name": "Pistolet à munitions multiples",
+      "description": "<p>\n  A very heavy pistol capable of loading up to five different ammo types at\n  once*, with the user able to pick between them before firing.\n</p>\n<blockquote><p>Incompatible with magazine upgrades.</p></blockquote>\n<p>\n  <em>*Currently not supported, so users have to manually change ammo types</em>\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Mustang Arms Deathstalker": {
+      "name": "Mustang Arms Deathstalker",
+      "description": "<p>An all-purpose shotgun. Equipped with an Airhypo Bayonet.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Mustang Arms Mark II": {
+      "name": "Mustang Arms Mark II",
+      "description": "<p>\n  A concealable, heavy pistol. +1 to Attack. Equipped with an Extended Magazine.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Mustang Arms Mark III": {
+      "name": "Mustang Arms Mark III",
+      "description": "<p>A concealable, heavy pistol.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Mustang Arms Rodeo": {
+      "name": "Mustang Arms Rodeo",
+      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n<blockquote>\n  <p>\n    User must make a <strong>DV15 Handgun</strong> check when making an\n    <strong>autofire attack</strong> or the damage multiplier cannot exceed x2.\n  </p>\n</blockquote>\n",
+      "dvTable": "DV SMG"
+    },
+    "Nat's Long-Barreled Pistol": {
+      "name": "Nat's Long-Barreled Pistol",
+      "description": "<p>An <strong>Excellent Quality</strong> very heavy pistol.</p>\n",
+      "dvTable": "DV Long-Barrel Pistol"
+    },
+    "Nomad .357 Magnum": {
+      "name": "Nomad .357 Magnum",
+      "description": "<p>A concealable, medium-sized pistol with an extended magazine.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Nomad Air Cannon": {
+      "name": "Canon à air Nomade",
+      "description": "<p>\n  <strong>Excotic Shotgun</strong> Rather than normal shotgun ammunition, this\n  weapon fires whatever liquid is placed into it. Acid can be bought for 10eb\n  (Cheap) that reduces all armour worn by the target by 1 SP. Poison or Biotoxin\n  can also be loaded, though requires 3 vials per shot.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Nomad Big Gulp": {
+      "name": "Nomad Big Gulp",
+      "description": "<p>\n  A very heavy double-barreled pistol. It can't be concealed. +1 to Attack.\n  Incompatible with all magazine upgrades.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Nomad Long Rifle": {
+      "name": "Nomad Long Rifle",
+      "description": "<p>\n  A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets in a\n  magazine.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Nomad Pneumatic Bolt Gun": {
+      "name": "Fusil à verrou pneumatique de Nomade",
+      "description": "<p>\n  <strong>Exotic Sniper Rifle</strong> Capable of firing all Non-Basic\n  ammunition, this weapon is still as versatile as when it was invented over two\n  decades ago.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Nova Cityhunter X": {
+      "name": "Nova Cityhunter X",
+      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Nova Model 757 Cityhunter": {
+      "name": "Nova Model 757 Cityhunter",
+      "description": "<p>\n  <strong>Exotic Heavy Pistol</strong> This pistol fires it's own custom rounds\n  bought in packs of 18, though they cost the same as a pack of 10. Comes with a\n  Smartgun Link.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Pocket Launcher": {
+      "name": "Lance-roquettes de poche",
+      "description": "<p>\n  <strong>Poor Quality Exotic Rocket Launcher</strong> While unloaded, this\n  weapon can be concealed.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Scrambler": {
+      "name": "Scrambler",
+      "description": "<p>\n  Exotic Very Heavy Pistol. Deals no damage and instead on a hit instantly kills\n  a Biodrone. Can not be reloaded.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "SDF-45": {
+      "name": "SDF-45",
+      "description": "<p>\n  <strong>Exotic Rocket Launcher</strong> This rocket launcher can only load\n  Armor-Piercing rockets, and has a maximum range of 400 m/yds. When fired one\n  rocket at a time, the GM chooses where they rockets land. When fired two\n  rockets at a time, the GM chooses where the rockets land but this time up to\n  50 m/yds away from the target, and with each rocket more than 10 m/yds from\n  each other.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "SlamDance ElectroMag": {
+      "name": "SlamDance ElectroMag",
+      "description": "<p>An electromagnetic shotgun that shoots proprietary rounds.</p>\n<p>\n  @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.LjJChw12H7TJSkm5]{ElectroMag\n (Basic-Shell)}\n  @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.BhtcF9fMOrI5tsQE]{ElectroMag\n (Incendiary-Shell)}\n  @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.CCEXsWo665wo7cD3]{ElectroMag\n (Basic-Slug)}\n  @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.F3uxV0pSScgCgKat]{ElectroMag\n (Incendiary-Slug)}\n</p>\n<blockquote>\n  <p>\n    User may switch proprietary ammo between <strong>Slug</strong> or\n    <strong>Shell</strong> each time they fire the weapon. (Alternate Fire-Modes\n    are not currently supported.)\n  </p>\n</blockquote>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "SportMaster": {
+      "name": "SportMaster",
+      "description": "<p>\n  A sport rifle, for fun, not people. Can only load Small Game Ammunition and is\n  incapable of Autofire and Suppressive Fire.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "ST-5 Assault Rifle": {
+      "name": "Fusil d'assaut ST-5",
+      "description": "<p>\n  <strong>Poor Quality Assault Rifle</strong> A - relatively - reliable gun. If\n  you roll 1 on Attack (Crit fail) you must then\n  [[/r 1dc#ST-5 Assult Rifle - Jam Check]]{toss a coin}. If you win, the gun\n  fires as normal, while if you lose the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Sternmeyer P-35": {
+      "name": "Sternmeyer P-35",
+      "description": "<p>A very heavy pistol. It can't be concealed.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Sternmeyer P-35 Covert": {
+      "name": "Sternmeyer P-35 Covert",
+      "description": "<p>A very heavy pistol. It can't be concealed. Equipped with a Silencer.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Sternmeyer SMG-21": {
+      "name": "Sternmeyer SMG-21",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed.</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Sub-Flechette Gun": {
+      "name": "Mitrailleuse à fléchettes",
+      "description": "<p>\n  This SMG can only fire it's own custom Armor-Piercing\n  @UUID[Compendium.cyberpunk-red-core.dlc_ammo.Item.V1DsAqTT45qL6ZUY]{Ammunition},\n  however that ammo ablates by 4 when dealing damage. Comes with a Smartgun\n  Link.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "SurvivalMaster": {
+      "name": "SurvivalMaster",
+      "description": "<p>\n  <strong>Exotic Assault Rifle</strong>, no Autofire, no Suppressive Fire. Can\n  be disassembled and packed into its stock for easy concealment.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Tactical Umbrella": {
+      "name": "Parapluie tactique",
+      "description": "<p>\n  A stylish umbrella with pop-out weapons. Contains a\n  <strong>Poor Quality Exotic Heavy Pistol</strong> (2 bullet capacity) and an\n  <strong>Excellent Quality Exotic Heavy Melee Weapon</strong>.\n</p>\n<p>Provides the protection of a normal umbrella (NCW pg 6)</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "TearJerker": {
+      "name": "Tire-Larmes",
+      "description": "<p>\n  <strong>Excellent Quality Grenade Launcher</strong> This weapon can only fire\n  Smoke or Teargas Ammunition.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "Teen Dreem": {
+      "name": "Teen Dreem",
+      "description": "<p>\n  <strong>Poor Quality Exotic SMG</strong> This SMG can use Autofire and\n  Suppressive Fire all the way down to it's last 2 bullets. Caution is required\n  however, as using either firing mode well melt the gun beyond repair.\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Thermal Dagger": {
+      "name": "Thermal Dagger",
+      "description": "<p>\n  A concealable <strong>Excellent Quality</strong> Exotic Medium Melee Weapon\n  that applies the <code>Strongly On Fire</code> condition to its target.\n</p>\n"
+    },
+    "Timeless WW1 Rifle to Pistol Conversion": {
+      "name": "Timeless Conversion Fusil 1ereGM en Pistolet",
+      "description": "<p>\n  <strong>Poor Quality Very Heavy Pistol</strong> Manual re-arming of the bolt\n  between each shot (one Action).\n</p>\n<blockquote><p>Cannot install any magazine upgrades.</p></blockquote>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Towa Manufacturing Type-G": {
+      "name": "Towa Manufacturing Type-G",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "Towa Manufacturing Type-G*2": {
+      "name": "Towa Manufacturing Type-G*2",
+      "description": "<p>A double-barrel grenade launcher.</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "Towa Manufacturing Type-R": {
+      "name": "Towa Manufacturing Type-R",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. If you roll\n  1 on Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Towa Manufacturing Type-R*2": {
+      "name": "Towa Manufacturing Type-R*2",
+      "description": "<p>\n  Bring out the big guns. This double-barrel rocket launcher will do some\n  damage.\n</p>\n<p>Reloading this weapon takes 2 actions.</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Towa Type-00-Kai": {
+      "name": "Towa Type-00-Kai",
+      "description": "<p>\n  An excellent quality sniper rifle equipped with a Smart Link. +1 to Attack.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
+    },
+    "Triple Threat": {
+      "name": "Triple Threat",
+      "description": "<p>\n  <strong>Poor Quality Exotic Rocket Launcher</strong> Comes with a Grenade\n  Launcher Underbarrel which cannot be removed. Both weapons can fire non-Basic\n  Ammunition.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Tsunami Arms Type-18": {
+      "name": "Tsunami Arms Type-18",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  +1 to Attack.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "Tsunami Arms Type-18-S": {
+      "name": "Tsunami Arms Type-18-S",
+      "description": "<p>\n  A high-impact grenade launcher equipped with Smartgun Link. You can use a\n  variety of grenades with this. +1 to Attack.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
+    },
+    "Type-12 Police Pistol": {
+      "name": "Type-12 Police Pistol",
+      "description": "<p>\n  A concealable, medium-sized pistol. +1 to Attack. Comes with integrated Smart\n  Link, but is incompatible with any magazine upgrades.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "WAA Bullpup Assault Weapon": {
+      "name": "Fusil d'assaut bullpup WAA",
+      "description": "<p>A bullpup rifle that comes with an integrated Smartgun Link.</p>\n",
+      "dvTable": "DV Assault Rifle"
+    }
+  }
+}

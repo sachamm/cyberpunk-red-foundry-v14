@@ -1,0 +1,18 @@
+{
+  "label": "Ammo",
+  "mapping": {},
+  "entries": {
+    "Arrow": {
+      "name": "Arrow",
+      "description": "<p>Basic virtual ammo, nothing special.</p>\n"
+    },
+    "ELO Trading Cards (Ammo)": {
+      "name": "ELO Trading Cards (Ammo)",
+      "description": "<p>\n  Trading cards used for tracking the ammo of your\n  @UUID[Compendium.cyberpunk-red-core.elflines_weapons.Item.dB1xFjNIIdZ536Km]{Duel Caster}.\n</p>\n<blockquote>\n  <p>\n    For deck construction use\n    @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.nEITubqXVIVK36c2]{Booster Packs}\n    &amp;\n    @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.HY1enelBmakuWORI]{Numbered Cards}\n  </p>\n</blockquote>\n"
+    },
+    "Poison Arrow": {
+      "name": "Poison Arrow",
+      "description": "<p>\n  No immediate damage. If hit target rolls a\n  [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV13 Resist Torture/Drugs]]{DV13 Resist Torture/Drugs}.\n  On a failure, the target takes [[/r 2d6dmg#Poison Damage]]{2d6 Damage}\n  directly.\n</p>\n<blockquote><p>Does not affect inorganic targets.</p></blockquote>\n"
+    }
+  }
+}

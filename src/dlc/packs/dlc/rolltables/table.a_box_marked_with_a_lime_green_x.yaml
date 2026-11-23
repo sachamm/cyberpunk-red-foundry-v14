@@ -1,0 +1,165 @@
+_id: T6pocp9VStxtFPzP
+_key: "!tables!T6pocp9VStxtFPzP"
+description: >-
+  Source: Achievements and Loot Boxes pg.6
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: false
+flags: {}
+folder: B1qjlWJWYKwXwdOD
+formula: 1d6
+img: icons/containers/boxes/crate-reinforced-green.webp
+name: A Box Marked With A Lime Green X
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+replacement: true
+results:
+  - _id: JMQL50Vwsp7AMmWo
+    _key: "!tables.results!T6pocp9VStxtFPzP.JMQL50Vwsp7AMmWo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_upgrades.Item.ucX1EbPnMOBUyvlB
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/memory_chip.svg
+    name: Elflines Online
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: r6fFsAFxIRq1HriP
+    _key: "!tables.results!T6pocp9VStxtFPzP.r6fFsAFxIRq1HriP"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: 2 Disposable Cell Phones
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/disposable_cellphone.svg
+    name: ""
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: a6fZu5y7jIoTN38p
+    _key: "!tables.results!T6pocp9VStxtFPzP.a6fZu5y7jIoTN38p"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.black-chrome_cyberware.f9u0uhwRBcunP0gz
+    drawn: false
+    flags: {}
+    img: null
+    name: Modular Finger Cyberhand
+    range:
+      - 3
+      - 3
+    type: document
+    weight: 1
+  - _id: g0YvDqhptZVY8bIh
+    _key: "!tables.results!T6pocp9VStxtFPzP.g0YvDqhptZVY8bIh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_clothing.Item.Q7LFdojJFEIRaLlN
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
+    name: Leisurewear Jewelry
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: lcpBqFf1ztvwm6ZJ
+    _key: "!tables.results!T6pocp9VStxtFPzP.lcpBqFf1ztvwm6ZJ"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
+    name: Agent
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: X7XamnHpkEyA1BOt
+    _key: "!tables.results!T6pocp9VStxtFPzP.X7XamnHpkEyA1BOt"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_gear.Item.it4Mfyti7WPpuuYE
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/smart_glasses.svg
+    name: Smart Glasses
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: bEJSghOjTTcHngHW
+    _key: "!tables.results!T6pocp9VStxtFPzP.bEJSghOjTTcHngHW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_gear.Item.OjMJ2SyoMr4VWmnm
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/disposable_cellphone.svg
+    name: Disposable Cell Phone
+    range:
+      - 2
+      - 2
+    type: document
+    weight: 1
+sort: 0

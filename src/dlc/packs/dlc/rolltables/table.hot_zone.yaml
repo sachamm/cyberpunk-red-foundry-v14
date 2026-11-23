@@ -1,0 +1,153 @@
+_id: sQyBXGhX3zcMidKX
+_key: "!tables!sQyBXGhX3zcMidKX"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Hot Zone
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: HQ6uWiZSCfMUjH58
+    _key: "!tables.results!sQyBXGhX3zcMidKX.HQ6uWiZSCfMUjH58"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757819678
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778929497
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Take a historic tour of the ruins!</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Hot Zone
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: WrrrkIAPn9GvPXA6
+    _key: "!tables.results!sQyBXGhX3zcMidKX.WrrrkIAPn9GvPXA6"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757819834
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778941881
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>You're in for a wild night at the Totentanz.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Hot Zone
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: l9QhGXbwST1TgyRv
+    _key: "!tables.results!sQyBXGhX3zcMidKX.l9QhGXbwST1TgyRv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757819983
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778953622
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Break into an old corporate building.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Hot Zone
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: 7ukZdzfYzCXEIWVo
+    _key: "!tables.results!sQyBXGhX3zcMidKX.7ukZdzfYzCXEIWVo"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757820140
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778965611
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Help your date scavenge a classic piece of tech.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Hot Zone
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: dBKZ1yYYW3NBv6kB
+    _key: "!tables.results!sQyBXGhX3zcMidKX.dBKZ1yYYW3NBv6kB"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757820402
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778977276
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Attend a slightly radioactive street race.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Hot Zone
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: mOCegNYXSbG9Khvr
+    _key: "!tables.results!sQyBXGhX3zcMidKX.mOCegNYXSbG9Khvr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757820814
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778991108
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Dine on expired MREs under the beautiful red sky.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in The Hot Zone
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

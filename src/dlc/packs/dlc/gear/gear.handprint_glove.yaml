@@ -1,0 +1,53 @@
+_id: iM7SveRZWmVhIsFj
+_key: "!items!iM7SveRZWmVhIsFj"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/handprint-glove.svg
+name: Handprint Glove
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A glove fabricated from RealSkinn™ that allows you wear somebody else's
+        handprint.
+      </p>
+      <blockquote>
+        <p>Capable of fooling Handprint Scanners, but not leaving fingerprints.</p>
+        <p>
+          Counts as a <strong>Very Expensive</strong> item — price categories are
+          currently hardcoded by the system.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Going Quiet
+      page: 6
+  usage: toggled
+type: gear

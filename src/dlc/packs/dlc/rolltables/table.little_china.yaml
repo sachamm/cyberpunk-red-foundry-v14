@@ -1,0 +1,153 @@
+_id: LL3J3HP1ZXmu7ZJC
+_key: "!tables!LL3J3HP1ZXmu7ZJC"
+description: ""
+displayRoll: false
+flags: {}
+folder: fZw2RpvHk1GFhaAb
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+name: Little China
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: N99qqB79TsOnmV7V
+    _key: "!tables.results!LL3J3HP1ZXmu7ZJC.N99qqB79TsOnmV7V"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757851315
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778456369
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Grab a drink at the Forlorn Hope.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little China
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: pM1mJHBlIUOH91eT
+    _key: "!tables.results!LL3J3HP1ZXmu7ZJC.pM1mJHBlIUOH91eT"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757851670
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778468859
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Window shopping and street food.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little China
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: vXNg8TRBgjifn9eG
+    _key: "!tables.results!LL3J3HP1ZXmu7ZJC.vXNg8TRBgjifn9eG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757851883
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778476558
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Get a massage together.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little China
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: DoW577LGEp9bkL4K
+    _key: "!tables.results!LL3J3HP1ZXmu7ZJC.DoW577LGEp9bkL4K"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757852121
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778489082
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Go thrift shopping.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little China
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: dGOHuQPPkBaQOJT8
+    _key: "!tables.results!LL3J3HP1ZXmu7ZJC.dGOHuQPPkBaQOJT8"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757852284
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778504661
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Sunday morning dim sum.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little China
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: JaBID63cb1dmeZrr
+    _key: "!tables.results!LL3J3HP1ZXmu7ZJC.JaBID63cb1dmeZrr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784757852530
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784778518862
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Go to a Night Market together.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/location.svg
+    name: Your date is in Little China
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+sort: 0

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="height: 512px; width: 512px;"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="hydrosubsidium-bimac.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter17"
+       x="-0.37500838"
+       y="-0.88262189"
+       width="1.7500168"
+       height="2.7652438">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood16" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="15.000000"
+         id="feGaussianBlur16" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset16" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite16" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite17" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter20"
+       x="-0.12500279"
+       y="-0.2942073"
+       width="1.2500056"
+       height="1.5884146">
+      <feFlood
+         result="flood"
+         in="SourceGraphic"
+         flood-opacity="1.000000"
+         flood-color="rgb(58,63,94)"
+         id="feFlood19" />
+      <feGaussianBlur
+         result="blur"
+         in="SourceGraphic"
+         stdDeviation="5.000000"
+         id="feGaussianBlur19" />
+      <feOffset
+         result="offset"
+         in="blur"
+         dx="0.000000"
+         dy="0.000000"
+         id="feOffset19" />
+      <feComposite
+         result="comp1"
+         operator="out"
+         in="flood"
+         in2="offset"
+         id="feComposite19" />
+      <feComposite
+         result="comp2"
+         operator="atop"
+         in="comp1"
+         in2="SourceGraphic"
+         id="feComposite20" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showguides="true"
+     inkscape:zoom="1.4785156"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M 0,0 H 512 V 512 H 0 Z"
+     fill="#000"
+     fill-opacity="1"
+     id="path1"
+     style="display:inline;fill:#1b1f21" />
+  <g
+     data-name="Layer 1"
+     id="g5"
+     transform="matrix(4.666461,0,0,4.666461,32.000212,160.83421)"
+     inkscape:label="g2"
+     style="fill:#e64539;filter:url(#filter20)">
+    <path
+       id="path1-0"
+       d="M 46.000168 -4.8350345e-05 A 2.88 2.88 0 0 0 43.290088 1.8800568 L 39.850065 1.8800568 A 1 1 0 0 0 39.850065 3.8798659 L 43.310178 3.8798659 A 2.88 2.88 0 0 0 46.000168 5.749926 L 47.04988 5.749926 A 1.39 1.39 0 0 1 48.050203 6.1998622 A 9.77 9.77 0 0 1 50.630116 10.759912 C 49.930116 11.029912 49.220184 11.279946 48.510184 11.509946 A 9.49 9.49 0 0 1 44.18996 11.90003 L 16.519935 7.8999929 A 4 4 0 0 0 12.000065 11.319926 A 4 4 0 0 0 13.580073 15.039956 L 13.83999 15.240021 A 2 2 0 0 1 14.089861 18.240153 L 12.660111 19.7398 L 94.759851 19.7398 A 14.12 14.12 0 0 0 93.610107 17.999908 A 14.63 14.63 0 0 0 90.730097 15.139988 L 65.130197 15.139988 A 1 1 0 0 1 65.130197 13.140179 L 87.220177 13.140179 C 81.000177 10.460179 73.159889 7.2400162 66.639889 5.7700162 A 11.4 11.4 0 0 0 59.640139 6.4601973 L 55.170076 2.1500185 A 7.67 7.67 0 0 0 49.839902 -4.8350345e-05 L 46.000168 -4.8350345e-05 z M 4.4197922 21.719938 A 4.42 4.42 0 0 0 -4.5430574e-05 26.130149 A 4.4 4.4 0 0 0 4.4001206 30.549987 L 4.9998959 30.549987 A 6.89 6.89 0 0 0 10.109915 36.150122 A 5.39 5.39 0 0 0 12.000065 34.539978 A 11.33 11.33 0 0 1 30.269983 34.539978 A 5.15 5.15 0 0 0 31.899798 35.999864 L 37.469798 35.899832 A 5.31 5.31 0 0 0 38.869832 34.580159 A 11.33 11.33 0 0 1 57.110033 34.580159 A 4.86 4.86 0 0 0 57.890201 35.429806 L 65.090016 35.259876 A 4.36 4.36 0 0 0 65.689792 34.580159 A 11.32 11.32 0 0 1 82.999985 33.440041 A 32.73 32.73 0 0 0 86.10015 31.880123 A 32.1 32.1 0 0 0 95.78989 23.320036 A 1 1 0 0 0 95.889923 22.269906 A 1 1 0 0 0 95.000096 21.719938 L 4.4197922 21.719938 z M 21.149882 31.999827 A 9.26 9.26 0 0 0 13.619835 35.81989 A 7.33 7.33 0 0 1 1.8101627 35.81989 A 1 1 0 0 0 0.4101289 35.610198 A 1 1 0 0 0 0.1899741 37.000187 A 9.25 9.25 0 0 0 7.7099763 40.759979 A 9.26 9.26 0 0 0 15.270159 37.000187 A 7.27 7.27 0 0 1 21.180017 34.000055 A 7.26 7.26 0 0 1 27.089876 37.000187 A 9.32 9.32 0 0 0 42.090119 37.000187 A 7.27 7.27 0 0 1 47.999977 34.000055 A 7.24 7.24 0 0 1 54.009868 37.000187 A 9.32 9.32 0 0 0 69.010111 37.000187 A 7.33 7.33 0 0 1 80.810157 37.000187 A 9.34 9.34 0 0 0 95.809981 37.000187 A 1.0543719 1.0543719 0 0 0 94.090178 35.780128 A 7.33 7.33 0 0 1 82.300178 35.780128 A 9.33 9.33 0 0 0 67.299935 35.780128 A 7.33 7.33 0 0 1 55.489844 35.780128 A 9.22 9.22 0 0 0 47.999977 31.999827 A 9.28 9.28 0 0 0 40.479975 35.809845 A 7.23 7.23 0 0 1 34.580162 38.809977 A 7.31 7.31 0 0 1 28.659839 35.809845 A 9.22 9.22 0 0 0 21.149882 31.999827 z "
+       inkscape:label="path2"
+       style="fill:#e64539" />
+  </g>
+  <metadata
+     id="metadata20">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+        <dc:source>https://thenounproject.com/icon/jetski-4612709/</dc:source>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

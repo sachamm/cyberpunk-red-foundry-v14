@@ -1,0 +1,51 @@
+_id: EBdbf1JaVGl0M7LJ
+_key: "!items!EBdbf1JaVGl0M7LJ"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/black-chrome/ammo/grenade_ktechsecurity.svg
+name: Grenade (KTech Security)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 2
+  amount: 1
+  brand: KTech
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>Armor piercing Grenade. Deals damage to targets, but not to cover.</p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 100
+  size: 0
+  sources:
+    - book: Black Chrome
+      page: 89
+  type: armorPiercing
+  variety: grenade
+type: ammo

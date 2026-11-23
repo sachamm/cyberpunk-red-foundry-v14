@@ -1,0 +1,52 @@
+_id: EDyAgDm44dFXiBKE
+_key: "!items!EDyAgDm44dFXiBKE"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/distilling_compound.svg
+name: Distilling Compound
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        This additive increases the <strong>Resist Torture/Drugs</strong> DV of
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.gaGUmTGViuxZ4mqR]{Poison}
+        or
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.tr7G2kdlPBTvyTON]{Biotoxin}
+        vials by 2.
+      </p>
+      <blockquote><p>Effects do not stack.</p></blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Hornet's Pharmacy
+      page: 4
+    - book: Interface RED v4
+      page: 6
+  usage: toggled
+type: gear

@@ -1,0 +1,57 @@
+_id: TTn8GdqM6rnjHSCX
+_key: "!items!TTn8GdqM6rnjHSCX"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_armorpiercing.svg
+name: M-02 Rounds
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 2
+  amount: 80
+  brand: Sternmeyer
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Special Armor-Piercing rounds for use only in the Sternmeyer
+        @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.qqNh3sElWPyVT4Qq]{M-02 Heavy Rifle}.
+        Comes in a drum of 80.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 500
+  size: 0
+  sources:
+    - book: Woodchipper's Garage
+      page: 5
+    - book: Interface RED v3
+      page: 29
+  type: armorPiercing
+  variety: custom
+type: ammo

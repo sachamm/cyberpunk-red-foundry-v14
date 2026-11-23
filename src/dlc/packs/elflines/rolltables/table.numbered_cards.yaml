@@ -1,0 +1,64 @@
+_id: DvNSK7YR1z3mkyKi
+_key: "!tables!DvNSK7YR1z3mkyKi"
+description: >-
+  <p>A stack of random Number Cards found inside an Elfine Online TCG
+  @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.nEITubqXVIVK36c2]{Booster
+  Pack}. May contain a rare Joker.</p>
+displayRoll: false
+flags: {}
+folder: null
+formula: 1d20
+img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-numbered.svg
+name: Numbered Cards
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: kQDQDacV0qusmP7N
+    _key: "!tables.results!DvNSK7YR1z3mkyKi.kQDQDacV0qusmP7N"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: RollTable.P4YqBGEvIMfkaVvZ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-joker.svg
+    name: Jokers
+    range:
+      - 20
+      - 20
+    type: document
+    weight: 1
+  - _id: 2pUagd8hAj49O0cI
+    _key: "!tables.results!DvNSK7YR1z3mkyKi.2pUagd8hAj49O0cI"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.elflines_gear.Item.HY1enelBmakuWORI
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/elflines/gear/tcg-card-numbered.svg
+    name: Numbered Cards
+    range:
+      - 1
+      - 20
+    type: document
+    weight: 1
+sort: 200000

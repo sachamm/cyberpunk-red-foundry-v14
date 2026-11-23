@@ -1,0 +1,160 @@
+_id: DyHD5oJN81onTFUZ
+_key: "!items!DyHD5oJN81onTFUZ"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/app_hustool.svg
+name: HusTool
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: No/Brainer
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        Find odd jobs and get paid! Jobs take 30 minutes to complete and pay 10eb.
+        Available jobs are determined by the GM, roll
+        [[/r 1d10 #HusTool]]
+      </p>
+      <ul>
+        <li>
+          <p>
+            <strong>On a 1:</strong> Factors outside of your control prevent you from
+            finishing the errand.
+          </p>
+          <ul>
+            <li><p>You waste your time and don't get paid.</p></li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            <strong>On a 10:</strong> The errand is completed, but you encounter
+            trouble.
+          </p>
+          <ul>
+            <li><p>GM rolls on an appropriate encounter table.</p></li>
+          </ul>
+        </li>
+      </ul>
+      <blockquote>
+        <p>
+          Install this App on your
+          @UUID[Compendium.cyberpunk-red-core.core_gear.Item.GqYz689ddSKQHMen]{Agent}
+        </p>
+      </blockquote>
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installLocation: mall
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isRanged: false
+  magazine:
+    ammoData: {}
+    max: 0
+    value: 0
+  modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
+    attackmod:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
+      value: null
+    damage:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    magazine:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    rof:
+      isSituational: false
+      onByDefault: false
+      type: modifier
+      value: null
+    sdp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    seats:
+      isSituational: false
+      onByDefault: false
+      value: null
+    secondaryWeapon:
+      configured: false
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
+    speedCombat:
+      isSituational: false
+      onByDefault: false
+      value: null
+  price:
+    market: 10
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  sources:
+    - book: All About Agents
+      page: 8
+    - book: Interface RED v5
+      page: 30
+  type: gear
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+type: itemUpgrade

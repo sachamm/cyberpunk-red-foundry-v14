@@ -1,0 +1,50 @@
+_id: OuewlDX1XfT8mmGK
+_key: "!items!OuewlDX1XfT8mmGK"
+effects: []
+flags:
+  core: {}
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/pressuretech-shower-head.svg
+name: PressureTech Shower Head
+ownership:
+  IMREvhAZtigyN7Gy: 3
+  default: 0
+sort: 0
+system:
+  amount: 1
+  brand: Kendachi
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>Pressure-wash the stress away.</p>
+      <blockquote>
+        <p>Using this shower deals 1 damage to an unarmored target.</p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Corporate Conapts & Studio Apartments
+      page: 8
+    - book: Interface RED v4
+      page: 52
+  usage: toggled
+type: gear

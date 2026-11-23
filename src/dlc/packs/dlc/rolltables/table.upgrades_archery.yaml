@@ -1,0 +1,110 @@
+_id: SYVlWtjzWbG4XEfi
+_key: "!tables!SYVlWtjzWbG4XEfi"
+description: >-
+  <p>Random archery upgrades provided by Gunpath.</p><p>Toggles Temple, pg.
+  18</p>
+displayRoll: false
+flags: {}
+folder: KmmkVwS79ivnwu2W
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+name: Upgrades-Archery
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: hj6DO3Hu0YTYXUUF
+    _key: "!tables.results!SYVlWtjzWbG4XEfi.hj6DO3Hu0YTYXUUF"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_upgrades.Item.vX1a56BegwIc5tJF
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/upgrades/grapple-gun-underbarrel.svg
+    name: Grapple Gun Underbarrel
+    range:
+      - 1
+      - 1
+    type: document
+    weight: 1
+  - _id: 9iiWSfk9RDVKpXQE
+    _key: "!tables.results!SYVlWtjzWbG4XEfi.9iiWSfk9RDVKpXQE"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.pEXcsIk1FYMNdbUc
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/upgrades/infrared_nightvision_scope.svg
+    name: Infrared Nightvision Scope
+    range:
+      - 2
+      - 3
+    type: document
+    weight: 1
+  - _id: 6P5aIORRfwCZ6bwh
+    _key: "!tables.results!SYVlWtjzWbG4XEfi.6P5aIORRfwCZ6bwh"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/upgrades/smartgun_link.svg
+    name: Smartgun Link
+    range:
+      - 4
+      - 4
+    type: document
+    weight: 1
+  - _id: V4v7IJyclDRFZOOO
+    _key: "!tables.results!SYVlWtjzWbG4XEfi.V4v7IJyclDRFZOOO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/upgrades/sniping_scope.svg
+    name: Sniping Scope
+    range:
+      - 5
+      - 6
+    type: document
+    weight: 1
+sort: 100000

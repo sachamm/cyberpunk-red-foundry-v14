@@ -1,0 +1,65 @@
+_id: q7x8ew6xdBFmBeVk
+_key: "!items!q7x8ew6xdBFmBeVk"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/armor/sycust_fleshweave.svg
+name: FleshWeave (Armor)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 7
+  brand: Sycust
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Armor Item for tracking the SP of
+        @UUID[Compendium.cyberpunk-red-core.dlc_cyberware.Item.8Az7bJTWSZSK577k]{Sycust FleshWeave}
+        Cyberware.
+      </p>
+      <blockquote><p>Fully restores SP after 10 minutes</p></blockquote>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 7
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: true
+  isShield: false
+  penalty: 0
+  price:
+    market: 0
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  sources:
+    - book: 12 Days of Cybermas
+      page: 5
+    - book: Danger Gal Dossier
+      page: 145
+    - book: Interface RED v3
+      page: 87
+  usage: toggled
+type: armor

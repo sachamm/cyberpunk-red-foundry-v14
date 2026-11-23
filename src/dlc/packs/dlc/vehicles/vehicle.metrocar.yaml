@@ -1,0 +1,47 @@
+_id: cpFm1nJT5GQoERj4
+_key: "!items!cpFm1nJT5GQoERj4"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/vehicles/zonda_metrocar.svg
+name: Metrocar
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  brand: Zonda
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>A Cheap Compact Groundcar built for city driving.</p>
+      <blockquote>
+        <p><strong>Moto Rank Required:</strong> 1</p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  price:
+    market: 1000
+  sdp: 25
+  seats: 2
+  sources:
+    - book: 12 Days of Gearmas
+      page: 4
+    - book: Interface RED v4
+      page: 68
+  speedCombat: 10
+  speedNarrative: 30 MPH / 48 KPH
+type: vehicle

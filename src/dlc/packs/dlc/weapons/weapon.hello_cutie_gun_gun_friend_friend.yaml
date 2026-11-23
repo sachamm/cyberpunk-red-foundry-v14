@@ -1,0 +1,79 @@
+_id: Z3HRbOtxu0mcCrOC
+_key: "!items!Z3HRbOtxu0mcCrOC"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+  scene-packer:
+    hash: 111cd678c92cec72bc114d17d5a2db076595aaef
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_excellent.svg
+name: Hello Cutie Gun-Gun Friend-Friend
+ownership:
+  default: 0
+  eMgDDuUqplwN8vV7: 3
+sort: 0
+system:
+  ammoVariety:
+    - rifle
+  attackmod: 1
+  brand: Sanroo
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 5d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Excellent Quality Assault Rifle</strong> that can conceal another
+        one-handed gun inside Gun-Gun Friend-Friend's frame as an action*. Contains
+        two available upgrade slots that do not affect the concealed weapon.
+      </p>
+      <p>
+        *Currently unsupported, make a note on any weapon you "install" into this gun.
+      </p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 2
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 25
+    value: 0
+  price:
+    market: 1000
+  quality: excellent
+  revealed: true
+  rof: 1
+  sources:
+    - book: 12 Days of Cutimas
+      page: 4
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: assaultRifle
+type: weapon

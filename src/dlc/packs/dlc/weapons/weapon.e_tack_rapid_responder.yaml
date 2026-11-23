@@ -1,0 +1,313 @@
+_id: rEPBwYDt38udnrIk
+_key: "!items!rEPBwYDt38udnrIk"
+effects: []
+flags:
+  cyberpunk-red-core:
+    cprInstallTree:
+      - _id: eHlfpydWXINl3KeD
+        _stats:
+          compendiumSource: Item.Gw2ZTD3DQldEWx9p
+          coreVersion: "13.351"
+          createdTime: 1790120669590
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790120669590
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags: {}
+        folder: null
+        img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+        name: Integrated Stun Bayonet
+        ownership:
+          default: 0
+        sort: 200000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 2d6
+          damageCrit:
+            bonus: 5
+            count: 0
+            threshold: 0
+          description:
+            value: >-
+              <p>Equips the gun with a non-lethal melee weapon. Target is
+              knocked unconscious if damage dealt would reduce them to under 1
+              HP. Doesn't cause Critical Injuries or ablate armor.</p>
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: true
+            allowedTypes: []
+            list: []
+            slots: 3
+            usedSlots: 0
+          isElectronic: true
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            secondaryWeapon:
+              configured: true
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 2
+          size: 0
+          source: null
+          sources:
+            - book: 12 Days of Redmas
+              page: 4
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Handgun
+          weaponType: assaultRifle
+        type: itemUpgrade
+      - _id: a4xe0H4SqsDn7eyC
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.nV0EYctCZSP41Cp0
+          coreVersion: "13.351"
+          createdTime: 1790120669590
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: w3682e6R5qVcWyUA
+          modifiedTime: 1790120669590
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/upgrades/generic_extended_magazine.svg
+        name: Extended Magazine (Medium Pistol)
+        ownership:
+          default: 0
+        sort: 100000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: <p>Increases magazine size to a hefty 18 bullets.</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          handsReq: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: mall
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isRanged: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          modifiers:
+            Wardrobe & Style:
+              isSituational: false
+              onByDefault: false
+              value: null
+            attackmod:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            bodySp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            cool:
+              isSituational: false
+              onByDefault: false
+              value: null
+            damage:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            headSp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            magazine:
+              isSituational: false
+              onByDefault: false
+              type: override
+              value: 18
+            rof:
+              isSituational: false
+              onByDefault: false
+              type: modifier
+              value: null
+            sdp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            seats:
+              isSituational: false
+              onByDefault: false
+              value: null
+            secondaryWeapon:
+              configured: false
+            shieldHp:
+              isSituational: false
+              onByDefault: false
+              value: null
+            slots:
+              isSituational: false
+              onByDefault: false
+              value: null
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 1
+          source: null
+          sources:
+            - book: 12 Days of Redmas
+              page: 3
+          type: weapon
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Archery
+          weaponType: assaultRifle
+        type: itemUpgrade
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Weapon.svg
+name: E-TACK Rapid Responder
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  brand: Pursuit Security Inc.
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 2d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: >
+      <p>Comes equipped with a Extended Magazine and Integrated Stun
+      Bayonet.</p>
+
+      <p>
+        This weapon may shoot 3 rounds at a time in <strong>Burst Mode</strong>*
+        dealing [[/r 3d6dmgab2 #Burst Mode (Armor Piercing)]]{3d6 damage}.
+      </p>
+
+      <blockquote><p>*Burst Mode is not currently supported .</p></blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list:
+      - eHlfpydWXINl3KeD
+      - a4xe0H4SqsDn7eyC
+    slots: 1
+    usedSlots: 1
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 12
+    value: 0
+  price:
+    market: 500
+  quality: poor
+  revealed: true
+  rof: 2
+  source: null
+  sources:
+    - book: 12 Days of Redmas
+      page: 3
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: weapon

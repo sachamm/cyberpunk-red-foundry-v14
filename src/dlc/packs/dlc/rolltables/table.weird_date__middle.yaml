@@ -1,0 +1,283 @@
+_id: X9fLaJa3QrM9onHw
+_key: "!tables!X9fLaJa3QrM9onHw"
+description: <p>Interface RED volume 3 / Digital Dating pg 14</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d6
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+name: "Weird Date: Middle"
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: h6txhtUJtGtcz03R
+    _key: "!tables.results!X9fLaJa3QrM9onHw.h6txhtUJtGtcz03R"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784750660811
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date leaves to use the restroom and never returns.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/failure.svg
+    name: "Weird Date: Middle"
+    range:
+      - 1
+      - 1
+    type: text
+    weight: 1
+  - _id: 5rxr7jrNUvw8FfNG
+    _key: "!tables.results!X9fLaJa3QrM9onHw.5rxr7jrNUvw8FfNG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784738273196
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>They start a fight, but quickly finish it.</p><p>You learn they have a
+      <strong>Base 16</strong> in a combat skill.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Weird Date: Middle"
+    range:
+      - 2
+      - 2
+    type: text
+    weight: 1
+  - _id: 742ddHiURvc8Dgse
+    _key: "!tables.results!X9fLaJa3QrM9onHw.742ddHiURvc8Dgse"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>They spend all their time on their Agent and you learn nothing new
+      about them.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Weird Date: Middle"
+    range:
+      - 3
+      - 3
+    type: text
+    weight: 1
+  - _id: QpIHRRwjnsWzAitr
+    _key: "!tables.results!X9fLaJa3QrM9onHw.QpIHRRwjnsWzAitr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>Your date loves to drink, maybe too much. They might also be high?</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Weird Date: Middle"
+    range:
+      - 4
+      - 4
+    type: text
+    weight: 1
+  - _id: TOV0C3ocIm0N9SZd
+    _key: "!tables.results!X9fLaJa3QrM9onHw.TOV0C3ocIm0N9SZd"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784684811915
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They tell you all about their enemies and rivals…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Weird Date: Middle"
+    range:
+      - 5
+      - 5
+    type: text
+    weight: 1
+  - _id: jd4Yj5Px0SL1z3yM
+    _key: "!tables.results!X9fLaJa3QrM9onHw.jd4Yj5Px0SL1z3yM"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784684817642
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: >-
+      <p>They tell you stories about their family and you learn a lot about
+      them…</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-middle.svg
+    name: "Weird Date: Middle"
+    range:
+      - 6
+      - 6
+    type: text
+    weight: 1
+  - _id: eCcn5aAervb4aFEe
+    _key: "!tables.results!X9fLaJa3QrM9onHw.eCcn5aAervb4aFEe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.tQa5fsQ2FABDFnVB
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/enemy.svg
+    name: Enemies
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: YmK4IVPk5ayyn7bj
+    _key: "!tables.results!X9fLaJa3QrM9onHw.YmK4IVPk5ayyn7bj"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.tQa5fsQ2FABDFnVB
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/enemy.svg
+    name: Enemies
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: X1i8GQFTDJieQAcr
+    _key: "!tables.results!X9fLaJa3QrM9onHw.X1i8GQFTDJieQAcr"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.tQa5fsQ2FABDFnVB
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/enemy.svg
+    name: Enemies
+    range:
+      - 5
+      - 5
+    type: document
+    weight: 1
+  - _id: 8tRPDoszgfFB758w
+    _key: "!tables.results!X9fLaJa3QrM9onHw.8tRPDoszgfFB758w"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.4KPettaa7BQ62IV7
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: Family
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: p25N1qtnooipSvzi
+    _key: "!tables.results!X9fLaJa3QrM9onHw.p25N1qtnooipSvzi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: w3682e6R5qVcWyUA
+      modifiedTime: 1788904200325
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.vapukmsoth9PyrP0
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/family.svg
+    name: Family (Crisis)
+    range:
+      - 6
+      - 6
+    type: document
+    weight: 1
+  - _id: pnnXmoYniL1Numhi
+    _key: "!tables.results!X9fLaJa3QrM9onHw.pnnXmoYniL1Numhi"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.aRSM3stWJ4GCjb0u
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/date-end.svg
+    name: "Weird Date: End"
+    range:
+      - 2
+      - 6
+    type: document
+    weight: 1
+sort: 181250

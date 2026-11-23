@@ -1,0 +1,765 @@
+_id: gzuEbVDRUHBZpuUL
+_key: "!tables!gzuEbVDRUHBZpuUL"
+description: >-
+  <p>Random weapon manufacturer provided by Gunpath.</p><p>Toggles Temple, pg.
+  15</p>
+displayRoll: false
+flags: {}
+folder: KmmkVwS79ivnwu2W
+formula: 1d100
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+name: Weapon-Manufacturer
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+replacement: true
+results:
+  - _id: YNDidwZWdaS3e93y
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.YNDidwZWdaS3e93y"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> A local Tech
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 1
+      - 10
+    type: text
+    weight: 1
+  - _id: GE7Q4Y9JxfSSO9NX
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.GE7Q4Y9JxfSSO9NX"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> A nomad Weaponsmith
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 11
+      - 12
+    type: text
+    weight: 1
+  - _id: bMW0ZnsIwWMO8jti
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.bMW0ZnsIwWMO8jti"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Arasaka
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 13
+      - 20
+    type: text
+    weight: 1
+  - _id: 6bRaSmZFCNPawNnU
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.6bRaSmZFCNPawNnU"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Budget Arms (Likely Poor Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 21
+      - 23
+    type: text
+    weight: 1
+  - _id: Xt0gwFIE840Uwpsa
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.Xt0gwFIE840Uwpsa"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Centurion Essentials
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 24
+      - 25
+    type: text
+    weight: 1
+  - _id: BW9RiGsXYkQ7SFtz
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.BW9RiGsXYkQ7SFtz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Chadran Arms
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 26
+      - 27
+    type: text
+    weight: 1
+  - _id: sIS1Dqnp0o9L9jCw
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.sIS1Dqnp0o9L9jCw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Constitutional Arms
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 28
+      - 29
+    type: text
+    weight: 1
+  - _id: hh0mKndUjrVTzl89
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.hh0mKndUjrVTzl89"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Dai Lung (Likely Poor Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 30
+      - 31
+    type: text
+    weight: 1
+  - _id: 8iQ7uNdPu7l0SwXW
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.8iQ7uNdPu7l0SwXW"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Eagletech (Likely a Bow or Crossbow)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 32
+      - 32
+    type: text
+    weight: 1
+  - _id: xnwIbELrOWDA1cca
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.xnwIbELrOWDA1cca"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Everest VentureWare (Likely a Bow,Crossbow, or Rifle)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 33
+      - 33
+    type: text
+    weight: 1
+  - _id: Y8LGj8blG5qb77iD
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.Y8LGj8blG5qb77iD"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Faisal's Customs
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 34
+      - 34
+    type: text
+    weight: 1
+  - _id: QsaBsuGJZwSuROCK
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.QsaBsuGJZwSuROCK"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Federated Arms
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 35
+      - 37
+    type: text
+    weight: 1
+  - _id: mzGY1lTWbjgrOZKC
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.mzGY1lTWbjgrOZKC"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Georgia Arms (Likely Poor Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 38
+      - 38
+    type: text
+    weight: 1
+  - _id: bvEuVvItBXcl731J
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.bvEuVvItBXcl731J"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> GunMart (Likely Poor Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 39
+      - 54
+    type: text
+    weight: 1
+  - _id: qg5e5i9QnTDyKHkk
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.qg5e5i9QnTDyKHkk"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> IMI
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 55
+      - 55
+    type: text
+    weight: 1
+  - _id: xhKQT0wH29tYcxm5
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.xhKQT0wH29tYcxm5"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Kendachi
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 56
+      - 56
+    type: text
+    weight: 1
+  - _id: zpweoNMjN2CBxCSz
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.zpweoNMjN2CBxCSz"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> KTech
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 57
+      - 58
+    type: text
+    weight: 1
+  - _id: CbwASnGtXP14bzdp
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.CbwASnGtXP14bzdp"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Magnum Opus
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 59
+      - 60
+    type: text
+    weight: 1
+  - _id: fjc7O3BfHzO3txqG
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.fjc7O3BfHzO3txqG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Malorian Arms (Likely Excellent Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 61
+      - 61
+    type: text
+    weight: 1
+  - _id: O8GnlrqR201ZxQp1
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.O8GnlrqR201ZxQp1"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> MetaCorp
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 62
+      - 62
+    type: text
+    weight: 1
+  - _id: CufC1ScLiiA74wJk
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.CufC1ScLiiA74wJk"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Midnight Arms (Likely Excellent Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 63
+      - 65
+    type: text
+    weight: 1
+  - _id: LbW7jR7rHYHu7IZU
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.LbW7jR7rHYHu7IZU"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Militech
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 66
+      - 76
+    type: text
+    weight: 1
+  - _id: 92RkV9BDxhy57bY6
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.92RkV9BDxhy57bY6"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Mustang Arms
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 77
+      - 78
+    type: text
+    weight: 1
+  - _id: j9Diwia45xrLEvlH
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.j9Diwia45xrLEvlH"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Nova Arms
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 79
+      - 80
+    type: text
+    weight: 1
+  - _id: uG45XCDPPHF0a8L2
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.uG45XCDPPHF0a8L2"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Pursuit Security Inc.
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 81
+      - 82
+    type: text
+    weight: 1
+  - _id: 2PLHs6zHSgaZAuhM
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.2PLHs6zHSgaZAuhM"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Rostović
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 83
+      - 85
+    type: text
+    weight: 1
+  - _id: yweOiIEi7SW8LqbU
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.yweOiIEi7SW8LqbU"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Sanroo Firearms of Tokyo (Likely Cute)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 86
+      - 86
+    type: text
+    weight: 1
+  - _id: OcbE1rzbd4UDHOpG
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.OcbE1rzbd4UDHOpG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Segotari (Likely a Game Tie-In)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 87
+      - 87
+    type: text
+    weight: 1
+  - _id: Fn8ZfzKz211QuZDA
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.Fn8ZfzKz211QuZDA"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Sternmeyer
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 88
+      - 89
+    type: text
+    weight: 1
+  - _id: lyFk9mBeXNk9PyNe
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.lyFk9mBeXNk9PyNe"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Stolbovoy
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 90
+      - 91
+    type: text
+    weight: 1
+  - _id: eE1h87ClfNv4jnGv
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.eE1h87ClfNv4jnGv"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Techtronika Russia
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 92
+      - 95
+    type: text
+    weight: 1
+  - _id: r3txmUoelO5Vr97Y
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.r3txmUoelO5Vr97Y"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Towa Manufacturing
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 96
+      - 97
+    type: text
+    weight: 1
+  - _id: tbcxo3xu4YDLxQ4G
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.tbcxo3xu4YDLxQ4G"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> Tsunami Arms (Likely Excellent Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 98
+      - 98
+    type: text
+    weight: 1
+  - _id: KEzlRF68PhMoFh1W
+    _key: "!tables.results!gzuEbVDRUHBZpuUL.KEzlRF68PhMoFh1W"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    description: <b>Manufacturer:</b> UrbanTech (Rarely Excellent Quality)
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/gunpath-table.svg
+    name: ""
+    range:
+      - 99
+      - 100
+    type: text
+    weight: 1
+sort: 1100000

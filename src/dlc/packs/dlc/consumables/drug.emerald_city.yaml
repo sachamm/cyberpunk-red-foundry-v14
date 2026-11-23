@@ -1,0 +1,145 @@
+_id: FIVTc5dNR52C5O6h
+_key: "!items!FIVTc5dNR52C5O6h"
+effects:
+  - _id: R9nF6tzuznYI2bv9
+    _key: "!items.effects!FIVTc5dNR52C5O6h.R9nF6tzuznYI2bv9"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1789927654829
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: w3682e6R5qVcWyUA
+      modifiedTime: 1789929049989
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    changes:
+      - key: bonuses.hasPainSuppression
+        mode: 2
+        value: "2"
+    description: ""
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": misc
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/status/emerald-city.svg
+    name: Emerald City
+    origin: Compendium.cyberpunk-red-core.dlc_consumables.Item.FIVTc5dNR52C5O6h
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+  - _id: fOuEi5S5FfzWx8qG
+    _key: "!items.effects!FIVTc5dNR52C5O6h.fOuEi5S5FfzWx8qG"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1789929005064
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: w3682e6R5qVcWyUA
+      modifiedTime: 1789929040593
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    changes:
+      - key: bonuses.hasPainSuppression
+        mode: 2
+        value: "0"
+    description: ""
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": misc
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/status/emerald-city_addiction.svg
+    name: Emerald City Addiction
+    origin: Compendium.cyberpunk-red-core.dlc_consumables.Item.FIVTc5dNR52C5O6h
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
+flags: {}
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/drugs/emerald-city.svg
+name: Emerald City
+ownership:
+  default: 0
+  w3682e6R5qVcWyUA: 3
+sort: 0
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: Emerald City
+  description:
+    value: |
+      <p><strong>Primary Effect</strong> Dose lasts 8 hours.</p>
+      <ul>
+        <li>
+          <p>Ignore the effects of <strong>Seriously Wounded</strong></p>
+        </li>
+        <li>
+          <p>
+            The GM may incite hallucinations where you cannot tell friend from foe.
+          </p>
+        </li>
+      </ul>
+      <p>
+        <strong
+          >Secondary Effect
+          [[/r 1d10red+@stats.will+@skills.resistTortureOrDrugs #DV15 Resist Torture/Drugs]]{DV15 Resist Torture/Drugs}</strong
+        >
+      </p>
+      <ul>
+        <li>
+          <p>
+            The GM may continue to incite hallucinations, but you can tell friend from
+            foe as long as you aren't subject to the primary effect.
+          </p>
+        </li>
+      </ul>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  price:
+    market: 100
+  revealed: true
+  source: null
+  sources:
+    - book: Interface RED v2
+      page: 24
+  usage: snorted
+type: drug

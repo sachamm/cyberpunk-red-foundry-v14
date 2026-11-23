@@ -1,0 +1,98 @@
+{
+  "label": "Armure",
+  "mapping": {},
+  "entries": {
+    "Corporate Island": {
+      "name": "Corporatiste sous les tropiques",
+      "description": "<p>Light Armorjack that looks like businesswear.</p>\n"
+    },
+    "Dirk Combat Jacket": {
+      "name": "Veste de combat Surineuse",
+      "description": "<p>\n  Leisurewear-styled Light Armorjack and the ability to conceal two standard\n  magazines without a check.\n</p>\n"
+    },
+    "Executive Armor": {
+      "name": "Armure corporatiste",
+      "description": "<p>\n  Light Armorjack that looks like businesswear. Restores 1SP every day SP isn't\n  lost on the armor.\n</p>\n"
+    },
+    "Fire Brand Bunker Gear": {
+      "name": "Tenue de protection ignifugée Fire Brand",
+      "description": "<p>\n  Fireproof flak armor with a built in gas mask and oxygen tank. -4 to REF, DEX,\n  and MOVE.\n</p>\n"
+    },
+    "Laser Light Street Jacket": {
+      "name": "Veste urbaine Laser Light",
+      "description": "<p>An armored Urban Flash Jacket that counts as a Light Tattoo while worn.</p>\n<blockquote>\n  <p>\n    +2 to Wardrobe &amp; Style if you have at least two Light Tattoos installed\n  </p>\n</blockquote>\n"
+    },
+    "Lotos Netsuit": {
+      "name": "Combinaison CitiNet Lotos",
+      "description": "<p>\n  A netsuit allowing an extra cyberdeck hardware slot that's installed directly\n  into the suit which is uninstalled if the suit is removed. Comes standard with\n  an Excellent Quality Cyberdeck*. -2 to REF, DEX, and MOVE.\n</p>\n<p><em>*Must be manually added after acquiring the armor</em></p>\n"
+    },
+    "Masetto AirRider": {
+      "name": "AirRider Masetto",
+      "description": "<p>\n  Kevlar Body Armor that ignores the Whiplash critical injury from car crashes\n  as long as the armor's CO<sub>2</sub> tank is full.\n</p>\n"
+    },
+    "MechaMan Motorcycle Helmet": {
+      "name": "Casque de moto MechaMan",
+      "description": "<p>\n  A Kevlar motorcycle helmet with integrated smart glasses that come with Chyron\n  and Low Light / IR / UV pre-installed.\n</p>\n"
+    },
+    "Mimic Clothing (Asia Pop)": {
+      "name": "Kit de blindage de vêtements (Pop asiatique)",
+      "description": "<p>Light Armorjack made from a Mimic Clothing Kit and \"Asia Pop\" clothing.</p>\n"
+    },
+    "Mimic Clothing (Bag Lady Chic)": {
+      "name": "Kit de blindage de vêtements (Vagabond)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Bag Lady Chic\" clothing.\n</p>\n"
+    },
+    "Mimic Clothing (Bohemian)": {
+      "name": "Kit de blindage de vêtements (Bohème)",
+      "description": "<p>Light Armorjack made from a Mimic Clothing Kit and \"Bohemian\" clothing.</p>\n"
+    },
+    "Mimic Clothing (Businesswear)": {
+      "name": "Kit de blindage de vêtements (Cadre sup)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Businesswear\" clothing.\n</p>\n"
+    },
+    "Mimic Clothing (Gang Colors)": {
+      "name": "Kit de blindage de vêtements (Couleurs du gang)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Gang Colors\" clothing.\n</p>\n"
+    },
+    "Mimic Clothing (Generic Chic)": {
+      "name": "Kit de blindage de vêtements (Générique)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Generic Chic\" clothing.\n</p>\n"
+    },
+    "Mimic Clothing (High Fashion)": {
+      "name": "Kit de blindage de vêtements (Haute couture)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"High Fashion\" clothing.\n</p>\n"
+    },
+    "Mimic Clothing (Leisurewear)": {
+      "name": "Kit de blindage de vêtements (Décontracté)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Leisurewear\" clothing.\n</p>\n"
+    },
+    "Mimic Clothing (Nomad Leathers)": {
+      "name": "Kit de blindage de vêtements (Âme nomade)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Nomad Leathers\" clothing.\n</p>\n"
+    },
+    "Mimic Clothing (Urban Flash)": {
+      "name": "Kit de blindage de vêtements (Urbain flash)",
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Urban Flash\" clothing.\n</p>\n"
+    },
+    "Montage Variable Clothing": {
+      "name": "Montage Variable Clothing",
+      "description": "<p>\n  Light Armorjack that can swap between pre-programmed patterns and styles via a\n  connected\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.pDQRjH8q63YyoWSp]{App}\n</p>\n<blockquote>\n  <p>\n    Comes with your choice of 3 pre-programmed patterns or colors selected from\n    either\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.Rs94jDJRrbHVpvIh]{Gang\n Colors}\n    or\n    @UUID[Compendium.cyberpunk-red-core.black-chrome_upgrades.Item.7fXDqCH4Z3ZLo5kL]{Generic\n Chic}\n    styles.\n  </p>\n  <p>Requires an action to swap styles via connected agent.</p>\n</blockquote>\n"
+    },
+    "Shock Armor": {
+      "name": "Armure taser",
+      "description": "<p>Kevlar armor designed for prison use.</p>\n<blockquote>\n  <p>\n    Use an action on your turn during a grapple to shock the attacker. The\n    grapple ends immediately on a failed\n    <strong>DV15 Resist Torture/Dugs Check</strong>.\n  </p>\n</blockquote>\n"
+    },
+    "Skid Row Trench": {
+      "name": "Trench-coat SkidRow",
+      "description": "<p>\n  Flak Body Armor that looks like a trench coat in exchange for less protection.\n  -4 to REF, DEX, and MOVE.\n</p>\n"
+    },
+    "Street Viper Riding Suit": {
+      "name": "Combinaison de moto Street Viper",
+      "description": "<p>Kevlar Body Armor that comes with two pre-installed Viper Blades.</p>\n"
+    },
+    "Tactical Smart Armor": {
+      "name": "Armure tactique intelligente",
+      "description": "<p>\n  A full set of medium armorjack with integrated smart glasses. -2 to REF, DEX,\n  and MOVE.\n</p>\n"
+    }
+  }
+}

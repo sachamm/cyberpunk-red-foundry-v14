@@ -1,0 +1,84 @@
+_id: MyFUbB6Fwy5DAoy1
+_key: "!tables!MyFUbB6Fwy5DAoy1"
+description: <p>Interface RED volume 3 / Digital Dating pg 11</p>
+displayRoll: false
+flags: {}
+folder: afOJTZywcF8usxy2
+formula: 1d10
+img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/random.svg
+name: How does your date go?
+ownership:
+  C3z4G1obpqMQAu25: 3
+  default: 0
+replacement: true
+results:
+  - _id: zGWJFqFhYGG4L9qw
+    _key: "!tables.results!MyFUbB6Fwy5DAoy1.zGWJFqFhYGG4L9qw"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784746026893
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784746026893
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.idnDMTGnbjBh9Sor
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/random.svg
+    name: "Good Date: Beginning"
+    range:
+      - 1
+      - 4
+    type: document
+    weight: 4
+  - _id: iwOR45x21a2gbKzY
+    _key: "!tables.results!MyFUbB6Fwy5DAoy1.iwOR45x21a2gbKzY"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784746034472
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784746034472
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: ""
+    documentUuid: Compendium.cyberpunk-red-core.dlc_rolltables.RollTable.tEEA2vrBTk31PqbJ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/random.svg
+    name: "Weird Date: Beginning"
+    range:
+      - 5
+      - 8
+    type: document
+    weight: 4
+  - _id: tj5JX7dL6CvJOmwO
+    _key: "!tables.results!MyFUbB6Fwy5DAoy1.tj5JX7dL6CvJOmwO"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: 1784746037098
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: C3z4G1obpqMQAu25
+      modifiedTime: 1784750520582
+      systemId: cyberpunk-red-core
+      systemVersion: DUMMY_VALUE
+    description: <p>They don't show up and you never find out why.</p>
+    documentUuid: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/dlc/icons/dlc/rolltables/digital_dating/failure.svg
+    name: You've Been Ghosted
+    range:
+      - 9
+      - 10
+    type: document
+    weight: 2
+sort: -200000

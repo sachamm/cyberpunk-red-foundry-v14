@@ -1,0 +1,76 @@
+_id: 8X8llGr7eUD7KMmP
+_key: "!items!8X8llGr7eUD7KMmP"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/weapons/ww1-rifle-to-pistol-conversion.svg
+name: Timeless WW1 Rifle to Pistol Conversion
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 0
+  brand: ""
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Poor Quality Very Heavy Pistol</strong> Manual re-arming of the bolt
+        between each shot (one Action).
+      </p>
+      <blockquote><p>Cannot install any magazine upgrades.</p></blockquote>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - ammo
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 5
+    value: 0
+  price:
+    market: 20
+  quality: poor
+  revealed: true
+  rof: 1
+  sources:
+    - book: Black Chrome+
+      page: 4
+    - book: Interface RED v4
+      page: 12
+  unarmedAutomaticCalculation: true
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

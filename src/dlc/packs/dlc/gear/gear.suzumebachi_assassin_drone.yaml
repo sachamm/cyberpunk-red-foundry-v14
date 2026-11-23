@@ -1,0 +1,83 @@
+_id: ELiFtgO54UTQ10gU
+_key: "!items!ELiFtgO54UTQ10gU"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/suzumebachi_assassin_drone.svg
+name: Suzumebachi Assassin Drone
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: Arasaka
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        A small wasp-shaped drone designed for silent assassinations. Can be
+        neutralized in 5 min with a
+        [[/r 1d10red+@stats.tech.skills.electronicOrSecurityTech #DV21 Electronic/Security Tech]]{DV21 Electronic/Security Tech}
+        check. The drone is equipped with:
+      </p>
+      <ul>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.clCxd7qkp2olsKii]{Observation Camera}
+          </p>
+          <ul>
+            <li>
+              <p>
+                @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.Iqa0DXFWJji0JRHl]{Low Light, UV, Infrared}
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_weapons.Item.fSvkIl83Rsqd7O16]{Dartgun}
+          </p>
+          <ul>
+            <li>
+              <p>
+                @UUID[Compendium.cyberpunk-red-core.core_ammo.Item.CNMadbNFM6dk2F6H]{Biotoxin Arrows}
+                x8
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            @UUID[Compendium.cyberpunk-red-core.core_gear.Item.Th74cfC87RqEJKAb]{Airhypo}
+          </p>
+        </li>
+      </ul>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: Hornet's Pharmacy
+      page: 5
+    - book: Interface RED v4
+      page: 7
+  usage: toggled
+type: gear

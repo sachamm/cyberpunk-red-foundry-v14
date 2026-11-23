@@ -1,0 +1,59 @@
+_id: NTD1wXId7S541HTe
+_key: "!items!NTD1wXId7S541HTe"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/gear/optitech_magviewer.svg
+name: MagViewer
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  amount: 1
+  brand: Optitech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Binoculars meant for spotting. Provides detail up to 800m/yds. Provides
+        another individual with a +1 to their <strong>attack roll</strong> against a
+        shared target if you make a successful
+        <strong>Complimentary Skill Check</strong>.
+      </p>
+      <blockquote>
+        <p>
+          This bonus does not stack with the bonuses provided by
+          @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN]{Sniping Scope}
+          or
+          @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.uApwuxpuIJMe47Vn]{TeleOptics}.
+        </p>
+      </blockquote>
+  equipped: owned
+  favorite: false
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  sources:
+    - book: 12 Days of Gearmas
+      page: 4
+    - book: Interface RED v4
+      page: 68
+  usage: equipped
+type: gear

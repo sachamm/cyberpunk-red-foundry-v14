@@ -1,0 +1,64 @@
+_id: gbp8WiY21LEcNnif
+_key: "!items!gbp8WiY21LEcNnif"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: icons/sundries/gaming/rune-card.webp
+name: ELO Trading Cards (Ammo)
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ablationValue: 1
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Trading cards used for tracking the ammo of your
+        @UUID[Compendium.cyberpunk-red-core.elflines_weapons.Item.dB1xFjNIIdZ536Km]{Duel Caster}.
+      </p>
+      <blockquote>
+        <p>
+          For deck construction use
+          @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.nEITubqXVIVK36c2]{Booster Packs}
+          &amp;
+          @UUID[Compendium.cyberpunk-red-core.elflines_gear.Item.HY1enelBmakuWORI]{Numbered Cards}
+        </p>
+      </blockquote>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 10
+  size: 0
+  sources:
+    - book: Elflines Online — TCG
+      page: 2
+    - book: Interface RED v3
+      page: 66
+  type: basic
+  variety: custom
+type: ammo

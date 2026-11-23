@@ -1,0 +1,56 @@
+_id: LjJChw12H7TJSkm5
+_key: "!items!LjJChw12H7TJSkm5"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/dlc/icons/dlc/ammo/slamdance_shell_basic.svg
+name: ElectroMag (Basic-Shell)
+ownership:
+  GhPkzdD89HrVDo6W: 3
+  default: 0
+sort: 0
+system:
+  ablationValue: 1
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>
+        Magnetic ammo designed for the
+        @UUID[Compendium.cyberpunk-red-core.dlc_weapons.Item.YsjeyDYFrWcWjeAc]{SlamDance ElectroMag}.
+      </p>
+  favorite: false
+  ignoredByBrowser: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    crit:
+      bonus: 5
+      count: 2
+      override: false
+      threshold: 0
+    damage:
+      minimum: 1d6
+      mode: set
+      value: 3d6
+  price:
+    market: 10
+  size: 0
+  sources:
+    - book: Toggle's Temple
+      page: 9
+    - book: Interface RED v5
+      page: 43
+  type: basic
+  variety: custom
+type: ammo

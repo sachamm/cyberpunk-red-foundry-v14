@@ -1,0 +1,78 @@
+_id: puBNVffqHLoGXXnd
+_key: "!items!puBNVffqHLoGXXnd"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 44
+      previous: "38"
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_excellent.svg
+name: TearJerker
+ownership:
+  default: 0
+  rRCcEOJu9poJ2EaX: 3
+sort: 0
+system:
+  ammoVariety:
+    - grenade
+  attackmod: 1
+  brand: Pursuit Security Inc.
+  canIgnoreArmor: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 6d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
+  description:
+    value: |
+      <p>
+        <strong>Excellent Quality Grenade Launcher</strong> This weapon can only fire
+        Smoke or Teargas Ammunition.
+      </p>
+  dvTable: DV Grenade Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
+  ignoredByBrowser: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - ammo
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  magazine:
+    ammoData: null
+    max: 3
+    value: 0
+  price:
+    market: 500
+  quality: excellent
+  revealed: true
+  rof: 1
+  sources:
+    - book: Woodchipper's Garage
+      page: 4
+    - book: Danger Gal Dossier
+      page: 145
+    - book: Interface RED v3
+      page: 28
+  unarmedAutomaticCalculation: true
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: grenadeLauncher
+type: weapon
