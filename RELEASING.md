@@ -59,3 +59,38 @@ fixtures, full migration wizard execution, token state and compendia, active
 effects, actor creation, roll cards, combat initiative and turn progression,
 Interface and program rolls, rez controls, and the real canvas/DV ruler. A real
 pre-v14 campaign export and third-party module combinations remain unverified.
+
+## Automated daily upstream sync
+
+A scheduled Claude task runs this every morning (Pacific time). It integrates
+upstream `dev` from
+`https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core.git` and cuts
+the next alpha prerelease. It does nothing when upstream has no new commits.
+
+1. Fetch upstream `dev` and this repository's `dev`. Stop if
+   `git rev-list --count origin/dev..upstream/dev` is 0.
+2. On a working branch from `origin/dev`, run
+   `git merge --no-ff upstream/dev` with the message
+   `Merge upstream dev through <short sha>` and a body summarising the upstream
+   commits. Resolve only conflicts whose correct outcome is clear, keeping
+   Foundry v14 compatibility and direct legacy migration support. Never edit
+   `gulp/` by hand; take upstream's subtree changes as they are.
+3. Run `npm ci`, `npm run lint`, `npm run prettier`, `npm run stylelint`,
+   `npm run test:unit` and `npm run package:release -- <version>`. All must
+   pass. The licensed Foundry browser suite cannot run in the cloud and is
+   recorded as not run.
+4. Add a `release: prepare v<version>` commit. Bump the alpha number in
+   `src/system.json` (`version`, `manifest` and `download`) and the example in
+   this file. Move the `Unreleased` changelog entries and a summary of the
+   upstream changes under `## Version <version>`. Write
+   `.github/release-notes/v<version>.md` in the shape of earlier release
+   notes: heading `# Foundry v14 Alpha <n>`, changes, validation actually run,
+   installation, compatibility and limits, and downloads.
+5. Open a pull request to `dev`, merge it with a merge commit, and let the
+   `Publish v14 prerelease` workflow build, tag and publish the prerelease.
+   Check that the workflow passed and the release has all four assets.
+
+The task stops and reports instead of pushing when a conflict is not clearly
+resolvable or any check fails. When upstream tags a release newer than the
+fork's base version (currently `0.93.0`), the next fork version restarts at
+`<that version>-v14.alpha.1`.

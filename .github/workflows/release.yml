@@ -1,0 +1,78 @@
+name: Publish v14 prerelease
+# Publishes a GitHub prerelease when dev carries a system.json version that has
+# release notes in .github/release-notes/v<version>.md and no tag yet. The
+# daily upstream sync commits both files together; a version bump without a
+# notes file is left for the manual process in RELEASING.md.
+on:
+  push:
+    branches: [dev]
+    paths:
+      - src/system.json
+      - .github/release-notes/**
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-prerelease
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Decide whether to publish
+        id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="$(jq -r .version src/system.json)"
+          tag="v${version}"
+          notes=".github/release-notes/${tag}.md"
+          publish=false
+          if [[ "${version}" != *-v14.* ]]; then
+            echo "Version ${version} is not a v14 fork version; skipping."
+          elif [[ ! -f "${notes}" ]]; then
+            echo "No ${notes}; leaving ${tag} to the manual release process."
+          elif gh release view "${tag}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            echo "Release ${tag} already exists; skipping."
+          else
+            publish=true
+          fi
+          {
+            echo "version=${version}"
+            echo "tag=${tag}"
+            echo "notes=${notes}"
+            echo "publish=${publish}"
+          } >>"${GITHUB_OUTPUT}"
+      - if: steps.plan.outputs.publish == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+      - if: steps.plan.outputs.publish == 'true'
+        run: npm ci
+      - if: steps.plan.outputs.publish == 'true'
+        run: npm run lint
+      - if: steps.plan.outputs.publish == 'true'
+        run: npm run test:unit
+      - name: Build and validate artifacts
+        if: steps.plan.outputs.publish == 'true'
+        env:
+          VERSION: ${{ steps.plan.outputs.version }}
+        run: npm run package:release -- "${VERSION}"
+      - name: Tag and publish prerelease
+        if: steps.plan.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.plan.outputs.tag }}
+          NOTES: ${{ steps.plan.outputs.notes }}
+        run: |
+          title="$(sed -n 's/^# //p;q' "${NOTES}")"
+          gh release create "${TAG}" dist/release/* \
+            --repo "${GITHUB_REPOSITORY}" \
+            --target "${GITHUB_SHA}" \
+            --prerelease \
+            --title "Cyberpunk RED for Foundry v14 - ${title#Foundry v14 }" \
+            --notes-file "${NOTES}"
