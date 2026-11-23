@@ -1,0 +1,19 @@
+/* Source label injected into an opened Compendium popout's header banner
+   (see src/modules/hooks/foundry/ui/compendium-source-label.js). Mirrors the
+   source chip Foundry shows on each pack thumbnail in the Compendium sidebar,
+   so core and DLC packs stay distinguishable once a pack is open. */
+.compendium-directory .header-banner .cpr-compendium-source {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--font-size-12);
+  line-height: normal;
+  padding: 0.063rem 0.5rem 0 0.25rem;
+  background: var(--cpr-color-faded-black);
+  border-radius: 0 0.1875rem 0 0;
+  pointer-events: none;
+  z-index: 1;
+}

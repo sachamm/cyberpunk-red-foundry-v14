@@ -580,6 +580,8 @@ export default class CPRItemSheet extends CPRScrollableSheetMixin(ItemSheetV2) {
     const value = !foundry.utils.getProperty(cprItem, target);
     if (target === "system.concealable.concealable") {
       this.item.setConcealable(value);
+    } else if (target === "system.isRanged") {
+      this.item.setRanged(value);
     } else if (foundry.utils.hasProperty(cprItem, target)) {
       foundry.utils.setProperty(cprItem, target, value);
       this.item.update(cprItem);

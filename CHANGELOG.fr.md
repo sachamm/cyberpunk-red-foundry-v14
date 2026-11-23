@@ -42,9 +42,11 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Add a "Homebrew Rules" settings menu with JonJon's optional Luck Roll: when enabled, clicking the LUCK stat rolls 1d10 under your LUCK (Roll Under Max or Roll Under Current), with a Success/Failure chat card; off by default
 - The dialog box for updating mook skills now presents the skills by category, similar to the character sheet
 - Item upgrades may now be configured with negative modifiers
+- Ticking **Ranged Weapon** on a weapon automatically adds ammo to its allowed installable types
 - Add 4 new CPR default Turn Marker options that can be selected via the system settings menu
 - Add 2 new Bodysculpt items for purchase/installation as described on pg277 of the Core Rule Book
 - Active Effect categories can be collapsed and expanded by clicking on them.
+- Show the name of a compendium pack's folder (e.g. `Cyberpunk RED: Core`) in the header of an opened Compendium; packs without a folder show their source package instead
 
 ### Corrections de bugs
 
@@ -64,6 +66,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
 - Fix Import All Content breaking items with pre-installed upgrades
+- Fix an error when uninstalling upgrades from items in the world item list
 - The "Damage Dealt To" damage-application card now shows the target's Token name instead of the Actor name
 - Ctrl-Clicking (or Cmd-Clicking) an item properly sends a card to chat
 - Dragging invalid items (e.g. Roles) to a container actor is handled gracefully instead of throwing dev errors

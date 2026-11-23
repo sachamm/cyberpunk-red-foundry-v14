@@ -240,6 +240,93 @@ test.describe("Weapon item sheet", () => {
     await closeDocSheet(game, { collection: "items", id: itemId });
   });
 
+  test("adds ammo as an allowed installable type when Ranged is ticked", async ({
+    page: game,
+  }) => {
+    const { itemId, sheetId } = await createWeaponSheet(game, "ranged-ammo");
+
+    // A fresh weapon is melee and only allows item upgrades.
+    const initialState = await game.evaluate((id) => {
+      const item = game.items.get(id);
+      return {
+        isRanged: item.system.isRanged,
+        allowedTypes: item.system.installedItems.allowedTypes,
+      };
+    }, itemId);
+    expect(initialState.isRanged).toBe(false);
+    expect(initialState.allowedTypes).not.toContain("ammo");
+
+    await toggleItemCheckbox(game, {
+      sheetId,
+      itemId,
+      target: "system.isRanged",
+      expected: true,
+    });
+
+    // Ticking Ranged adds ammo to the allowed installable types without
+    // loading any ammo into the weapon.
+    await game.waitForFunction(
+      (id) => {
+        const item = game.items.get(id);
+        const installed = item.system.installedItems;
+        return (
+          installed.allowed === true &&
+          installed.allowedTypes.includes("ammo") &&
+          installed.list.length === 0 &&
+          item.system.magazine.value === 0
+        );
+      },
+      itemId,
+      { timeout: 10000 },
+    );
+
+    await closeDocSheet(game, { collection: "items", id: itemId });
+  });
+
+  test("keeps ammo as an allowed installable type when Ranged is unticked", async ({
+    page: game,
+  }) => {
+    const { itemId, sheetId } = await createWeaponSheet(
+      game,
+      "ranged-ammo-reverse",
+    );
+
+    await toggleItemCheckbox(game, {
+      sheetId,
+      itemId,
+      target: "system.isRanged",
+      expected: true,
+    });
+    await game.waitForFunction(
+      (id) =>
+        game.items.get(id).system.installedItems.allowedTypes.includes("ammo"),
+      itemId,
+      { timeout: 10000 },
+    );
+
+    // Unticking Ranged does not remove ammo; the behavior is one-way.
+    await toggleItemCheckbox(game, {
+      sheetId,
+      itemId,
+      target: "system.isRanged",
+      expected: false,
+    });
+    await game.waitForFunction(
+      (id) => {
+        const item = game.items.get(id);
+        return (
+          item.system.isRanged === false &&
+          item.system.installedItems.allowed === true &&
+          item.system.installedItems.allowedTypes.includes("ammo")
+        );
+      },
+      itemId,
+      { timeout: 10000 },
+    );
+
+    await closeDocSheet(game, { collection: "items", id: itemId });
+  });
+
   test("switches between automatic and manual unarmed damage", async ({
     page: game,
   }) => {

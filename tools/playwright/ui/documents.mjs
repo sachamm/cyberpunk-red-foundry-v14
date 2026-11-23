@@ -56,17 +56,26 @@ async function deleteDirectoryEntryViaUI(page, { documentTab, id }) {
   await openSidebarTab(page, documentTab);
   const entry = page.locator(`#${documentTab} [data-entry-id="${id}"]`);
   await expect(entry).toBeVisible();
-  await clearNotifications(page);
-  await entry.click({ button: "right" });
   const deleteItem = page.locator("#context-menu .context-item", {
     hasText: "Delete",
   });
-  await expect(deleteItem).toBeVisible();
-  await clickThroughOverlays(page, deleteItem);
   const dialog = page
     .locator(".application.dialog")
     .filter({ hasText: /Delete|Remove/ });
-  await expect(dialog).toBeVisible();
+  await expect(async () => {
+    await clearNotifications(page);
+    await entry.click({ button: "right" });
+    await expect(deleteItem).toBeVisible({ timeout: 2000 });
+    await page.waitForFunction(
+      () => {
+        const menu = document.querySelector("#context-menu");
+        return !!menu && menu.style.height === "";
+      },
+      { timeout: 2000 },
+    );
+    await clickThroughOverlays(page, deleteItem);
+    await expect(dialog).toBeVisible({ timeout: 2000 });
+  }).toPass({ timeout: 15000 });
   await clickThroughOverlays(
     page,
     dialog

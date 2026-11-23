@@ -24,6 +24,23 @@ export async function openItemBrowser(page, { readySelector = null } = {}) {
   return documentBrowser;
 }
 
+export async function openActorBrowser(page) {
+  await openSidebarTab(page, "actors");
+  const launch = page.locator('#actors .cpr-browser-launch[data-mode="actor"]');
+  await expect(launch).toBeVisible();
+  await launch.click();
+
+  const documentBrowser = page.locator("#cpr-document-browser");
+  await expect(documentBrowser).toBeVisible();
+  await expect(
+    documentBrowser.locator(".cpr-browser-results-list"),
+  ).toBeVisible();
+  await expect(
+    documentBrowser.locator(".cpr-browser-entry, .cpr-browser-empty").first(),
+  ).toBeVisible();
+  return documentBrowser;
+}
+
 export async function waitForBrowserResultsSettled(documentBrowser) {
   const footer = documentBrowser.locator(".cpr-browser-results-footer");
   await expect(footer).toHaveCount(1, { timeout: 30000 });
