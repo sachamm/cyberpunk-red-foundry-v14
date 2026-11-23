@@ -2,12 +2,24 @@
 
 # Changelog
 
-## Unreleased
+## Version 0.93.0-v14.alpha.4
+
+### New Features
+
+- Automatically add ammo to a weapon's allowed installable types when Ranged Weapon is ticked.
+- Label opened compendiums with their pack folder or source package.
+- Add a generated Credits journal compendium built from `CREDITS.md`.
+- Update translations.
 
 ### Bug Fixes
 
 - Enable the weapon DV ruler for linked characters when their token is selected, including player sheets opened with C outside combat. Keep token DV updates and weapon highlighting consistent with that selection.
 - Declare system document types in `system.json` instead of the deprecated `template.json`, removing its startup warning.
+- Fix an error when uninstalling upgrades from items in the world item list.
+
+### Testing
+
+- Add browser coverage for the actor document browser, compendium source labels, ranged-weapon ammo, and world-item upgrade removal.
 
 ## Version 0.93.0-v14.alpha.3
 

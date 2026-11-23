@@ -14,7 +14,7 @@ Use Node 24 and run:
 npm ci
 npm run lint
 npm run test:unit
-npm run package:release -- 0.93.0-v14.alpha.3
+npm run package:release -- 0.93.0-v14.alpha.4
 ```
 
 The release command ignores local Foundry paths and developer migration
